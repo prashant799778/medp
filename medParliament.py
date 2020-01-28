@@ -41,7 +41,7 @@ def addUser():
 
         	output= {"result":"User Added Successfully","patient Details":data8[-1],"status":"true"}
             
-            return output
+            return "ok"
 
             
         else:
