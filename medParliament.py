@@ -27,22 +27,7 @@ def addUser():
         data= databasefile.SelectQuery("userMaster",column,whereCondition)
         UserId=uuid.uuid1()
         UserID=UserId.hex
-        if data==None:
-        	
-        	column=" name, mobileNo, email, userTypeId "
-        	
-        	values =  "'" +str(data1["name"])+"','"+str(data1["mobileNo"])+"','"+str(data1["email"])+"','"+str(["userTypeId"])+ "'"
-        	
-        	insertdata=databasefile.InsertQuery("userMaster",column,values)
-        	
-        	column = " * "
-        	whereCondition= "mobileNo='"+str(data1["mobileNo"])+ "'"
-        	data8= databasefile.SelectQuery1("userMaster",column,whereCondition)
-            return data8
-            
-        else:
-            output = {"result":"User Already Added Existed ","status":"true","patient Details":data}
-            return output 
+        return {"userid":str(UserID)}
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"result":"something went wrong","status":"false"}
