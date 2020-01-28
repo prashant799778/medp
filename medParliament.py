@@ -10,37 +10,45 @@ import pymysql
 from flask_cors import CORS
 from datetime import datetime
 from config import Connection
-
+import databasefile
+from config import Connection
+import commonfile
 
 from flask import Flask, render_template
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 
-@app.route('/login', methods=['GET'])
-def login1():
+@app.route('/addUser', methods=['POST'])
+def addUser():
     try:
-        # userid = request.args['userid']
-        password = request.args['password']
-        name = request.args['name']
-        Name=name
-        
-             
-          
-        query ="select  um.Email,um.ID,um.name as name,us.Usertype as Usertype,um.Usertype_Id as Usertype_Id from userMaster  as um,Usertype_master as us  where um.Usertype_Id=us.ID and  um.Email = '" + name + "' and password='" + password + "' and um.Status<>'2' ;"   
-        conn=Connection()
-        cursor = conn.cursor()
-        cursor.execute(query)
-        loginuser = cursor.fetchall()
-        return data
+        data1 = commonfile.DecodeInputdata(request.get_data())
+        column = " * "
+        whereCondition= "mobile='"+str(data1["mobile"])+ "'"
+        data= databasefile.SelectQuery("userMaster",column,whereCondition)
+        UserId=uuid.uuid1()
+        UserID=UserId.hex
+        if data==None:
+        	
+        	column=" name, mobileNo, email, userTypeId "
+        	
+        	values =  "'" +str(data1["name"])+"','"+str(data1["mobileNo"])+"','"+str(data1["email"])+"','"+str(["userTypeId"])+ "'"
+        	
+        	insertdata=databasefile.InsertQuery("userMaster",column,values)
+        	
+        	column = " * "
+        	whereCondition= "mobile='"+str(data1["mobile"])+ "'"
+        	data8= databasefile.SelectQuery1("userMaster",column,whereCondition)
 
-    
-    except KeyError as e:
-        print("Exception---->" +str(e))        
-        output = {"result":"Input Keys are not Found","status":"false"}
-        return output 
-    
+        	output= {"result":"User Added Successfully","patient Details":data8[-1],"status":"true"}
+            cursor.close()
+            return output
+
+            
+        else:
+            output = {"result":"User Already Added Existed ","status":"true","patient Details":data}
+            return output 
     except Exception as e :
-        print("Exception---->" +str(e))           
+        print("Exception---->" + str(e))    
         output = {"result":"something went wrong","status":"false"}
         return output
 
