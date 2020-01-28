@@ -40,7 +40,7 @@ def addUser():
         	data8= databasefile.SelectQuery1("userMaster",column,whereCondition)
 
         	output= {"result":"User Added Successfully","patient Details":data8[-1],"status":"true"}
-            cursor.close()
+            
             return output
 
             
