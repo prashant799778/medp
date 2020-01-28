@@ -18,12 +18,12 @@ from flask import Flask, render_template
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 
-@app.route('/addUser', methods=['POST'])
+@app.route('/Signup', methods=['POST'])
 def addUser():
     try:
         data1 = commonfile.DecodeInputdata(request.get_data())
         column = " * "
-        whereCondition= "mobile='"+str(data1["mobile"])+ "'"
+        whereCondition= "mobileNo='"+str(data1["mobileNo"])+ "'"
         data= databasefile.SelectQuery("userMaster",column,whereCondition)
         UserId=uuid.uuid1()
         UserID=UserId.hex
@@ -36,7 +36,7 @@ def addUser():
         	insertdata=databasefile.InsertQuery("userMaster",column,values)
         	
         	column = " * "
-        	whereCondition= "mobile='"+str(data1["mobile"])+ "'"
+        	whereCondition= "mobileNo='"+str(data1["mobileNo"])+ "'"
         	data8= databasefile.SelectQuery1("userMaster",column,whereCondition)
 
         	output= {"result":"User Added Successfully","patient Details":data8[-1],"status":"true"}
