@@ -18,7 +18,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 
-@app.route('/Signup', methods=['POST'])
+@app.route('/addUser', methods=['POST'])
 def addUser():
     try:
         data1 = commonfile.DecodeInputdata(request.get_data())
