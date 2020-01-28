@@ -55,5 +55,5 @@ def addUser():
 
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
-    app.run(host='0.0.0.0',port=5090,debug=True)
+    app.run(host='0.0.0.0',port=5031,debug=True)
     
