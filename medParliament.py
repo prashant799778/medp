@@ -31,8 +31,7 @@ def login1():
         cursor = conn.cursor()
         cursor.execute(query)
         loginuser = cursor.fetchall()
-                            
-            return data
+        return data
 
     
     except KeyError as e:
