@@ -25,7 +25,8 @@ def addUser():
         column = " * "
         whereCondition= " and mobileNo='"+str(data1["mobileNo"])+ "'"
         data= databasefile.SelectQuery("userMaster",column,whereCondition)
-        print(data,'data')
+        print(data["message"],'data')
+        
         UserId=uuid.uuid1()
         UserID=UserId.hex
         return {"userid":str(UserID)}
