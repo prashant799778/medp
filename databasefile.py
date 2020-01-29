@@ -1,21 +1,21 @@
 
-
-from config import Connection
+from connection import DBconnection
 import commonfile
 import json
 import smtplib 
 import config
-
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 def InsertQuery(table,columns,values):
     try:
         
         query = " insert into " + table + " (" + columns + ") values(" + values + ");" 
         print(query)
-        conn = Connection()
-        cursor = conn.cursor()
+        con = DBconnection()
+        cursor = con.cursor()
         cursor.execute(query)            
-        conn.commit()        
+        con.commit()        
         cursor.close()   
 
         message = commonfile.Successmessage('insert')
@@ -26,54 +26,32 @@ def InsertQuery(table,columns,values):
         print("Error--->" + str(e))            
         return "0" 
 
-
-def SelectQuery(table,columns,whereCondition):
+def InsertRtnId(table,columns,values):
     try:
-       
         
-        if whereCondition != "":
-            whereCondition = " where 1=1 " + whereCondition
-        
-        
-       
-                
-        query = " select " + columns + " from " + table + " " + whereCondition  + "  ;"
-
+        query = " insert into " + table + " (" + columns + ") values(" + values + ");" 
         print(query)
-        conn = Connection()      
-        cursor = conn.cursor()
-        cursor.execute(query)
-        data = cursor.fetchone()
-        cursor.close()
-      
-        if data:
-            data = {"status":"true","message":"","result":data}
-        else:
-            data = {"status":"true","message":"No Data Found","result":""}
-
-        return data
+        con = DBconnection()
+        cursor = con.cursor()
+        cursor.execute(query)     
+        Id = cursor.lastrowid
+        con.commit()        
+        cursor.close()   
+              
+        return Id
 
     except Exception as e:
         print("Error--->" + str(e))            
         return "0" 
 
-
-
-def SelectQuery1(table,columns,whereCondition):
+def SelectQueryMaxId(table,columns):
     try:
-       
-        
-        if whereCondition != "":
-            whereCondition = " where 1=1 " + whereCondition
-        
-        
-       
-                
-        query = " select " + columns + " from " + table + " " + whereCondition  + "  ;"
+
+        query = " select " + columns + " from " + table + " ;"
 
         print(query)
-        conn = Connection()      
-        cursor = conn.cursor()
+        con = DBconnection()      
+        cursor = con.cursor()
         cursor.execute(query)
         data = cursor.fetchall()
         cursor.close()
@@ -87,9 +65,234 @@ def SelectQuery1(table,columns,whereCondition):
 
     except Exception as e:
         print("Error--->" + str(e))            
-        return "0"         
+        return "0" 
+
+def SelectTimeQuery(columns):
+    try:         
+        query = " select " + columns +" ;"
+
+        print(query)
+        con = DBconnection()      
+        cursor = con.cursor()
+        cursor.execute(query)
+        data = cursor.fetchall()
+        cursor.close()
+      
+        if data:
+            data = {"status":"true","message":"","result":data}
+        else:
+            data = {"status":"true","message":"No Data Found","result":""}
+
+        return data
+
+    except Exception as e:
+        print("Error--->" + str(e))            
+        return "0" 
+
+def SelectQuery(table,columns,whereCondition,groupby,startlimit,endlimit):
+    try:
+        limitCondition= ""
+        
+        if whereCondition != "":
+            whereCondition = " where 1=1 " + whereCondition
+        if startlimit != "" and endlimit != "":
+            limitCondition = "limit "+startlimit+","+endlimit
+        
+        if groupby != "":
+            groupby = " group by " + groupby
+                
+        query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ limitCondition +" ;"
+
+        print(query)
+        con = DBconnection()      
+        cursor = con.cursor()
+        cursor.execute(query)
+        data = cursor.fetchall()
+        cursor.close()
+      
+        if data:
+            data = {"status":"true","message":"","result":data}
+        else:
+            data = {"status":"true","message":"No Data Found","result":""}
+
+        return data
+
+    except Exception as e:
+        print("Error--->" + str(e))            
+        return "0" 
+
+def SelectQueryOrderbyAsc(table,columns,whereCondition,groupby,orderby,startlimit,endlimit):
+    try:
+        limitCondition= ""
+        
+        if whereCondition != "":
+            whereCondition = " where 1=1 " + whereCondition
+        if startlimit != "" and endlimit != "":
+            limitCondition = "limit "+startlimit+","+endlimit
+        
+        if groupby != "":
+            groupby = " group by " + groupby
+
+        if orderby != "":
+            orderby = " order by " + orderby            
+                
+        query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
+
+        print(query)
+        con = DBconnection()      
+        cursor = con.cursor()
+        cursor.execute(query)
+        data = cursor.fetchall()
+        cursor.close()
+      
+        if data:
+            data = {"status":"true","message":"","result":data}
+        else:
+            data = {"status":"true","message":"No Data Found","result":""}
+
+        return data
+
+    except Exception as e:
+        print("Error--->" + str(e))            
+        return "0" 
+
+def SelectQueryOrderby(table,columns,whereCondition,groupby,startlimit,endlimit,orderby):
+    try:
+        limitCondition= ""
+        
+        if whereCondition != "":
+            whereCondition = " where 1=1 " + whereCondition
+        if startlimit != "" and endlimit != "":
+            limitCondition = "  limit "+startlimit+","+endlimit
+        if orderby != "":
+            orderby = " order by " + orderby + " DESC "  
+        if groupby != "":
+            groupby = " group by " + groupby
+                
+        query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
+
+        print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",query)
+        con = DBconnection()      
+        cursor = con.cursor()
+        cursor.execute(query)
+        data = cursor.fetchall()
+        cursor.close()
+      
+        if data:
+            data = {"status":"true","message":"","result":data}
+        else:
+            data = {"status":"true","message":"No Data Found","result":""}
+
+        return data
+
+    except Exception as e:
+        print("Error--->" + str(e))            
+        return "0" 
 
 
+def rtnJsonFormatData(table,columns,whereCondition,groupby):
+    try:
+        groupby = ""
+        if whereCondition != "":
+            whereCondition = " where 1=1 " + whereCondition
+        if groupby != "":
+            groupby = " group by " + groupby
+                
+        query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby + ";"
+        
+        print(query)
+        con = DBconnection()      
+        cursor = con.cursor()
+        cursor.execute(query)
+        data = cursor.fetchall()
+        cursor.close()
+        print(data)        
+        if data:
+            return data
+        else:
+            return "0"
+
+    except Exception as e:
+        print("Error--->" + str(e))            
+        return "0" 
+
+def SelectTotalCountQuery(table,whereCondition,groupby):
+    try:
+        groupby = ""
+        if whereCondition != "":
+            whereCondition = " where 1=1 " + whereCondition
+        if groupby != "":
+            groupby = " group by " + groupby
+               
+        query = " select count(*) as count from " + table + " " + whereCondition  + " " + groupby  + ";"
+        print(query)
+        con = DBconnection()
+        cursor = con.cursor()
+        cursor.execute(query)
+        data = cursor.fetchall()  
+        cursor.close()   
+
+        if data:
+            data = json.loads(json.dumps(data))                                 
+            return str(data[0]["count"])
+        else:
+            return "0"
+
+    except Exception as e:
+        print("Error--->" + str(e))            
+        return "0" 
+
+def SelectCountQuery(table,whereCondition,groupby):
+    try:
+        groupby = ""
+        if whereCondition != "":
+            whereCondition = " where 1=1 " + whereCondition
+        if groupby != "":
+            groupby = " group by " + groupby
+               
+        query = " select count(1) as count from " + table + " " + whereCondition  + " " + groupby  + ";"
+        print(query)
+        con = DBconnection()
+        cursor = con.cursor()
+        cursor.execute(query)
+        data = cursor.fetchall()  
+        cursor.close()   
+
+        if data:
+            data = json.loads(json.dumps(data))                                 
+            return str(data[0]["count"])
+        else:
+            return "0"
+
+    except Exception as e:
+        print("Error--->" + str(e))            
+        return "0" 
+
+def rtnsum(table,column,whereCondition,groupbycolumns):
+    try:     
+        groupby = "" 
+        if whereCondition != "":
+            whereCondition = " where 1=1 " + whereCondition
+        if groupbycolumns != "":
+            groupby = " group by " + groupbycolumns
+              
+        query = " select sum("+column+") as total from " + table + " " + whereCondition  + " " + groupby  + ";"
+        print(query)
+        con = DBconnection()
+        cursor = con.cursor()
+        cursor.execute(query)
+        data = cursor.fetchall()  
+        cursor.close()   
+
+        if data:
+            data = json.loads(json.dumps(data))                                 
+            return str(data[0]["total"])
+        else:
+            return "0"
+
+    except Exception as e:
+        print("Error--->" + str(e))            
+        return "0"
 
 def UpdateQuery(table,columns,whereCondition):
     try:
@@ -100,10 +303,10 @@ def UpdateQuery(table,columns,whereCondition):
         if columns != "":   
             query = " update " + table + " set " + columns  + " " + whereCondition  + ";"             
             print(query)
-            conn = Connection()
-            cursor = conn.cursor()         
+            con = DBconnection()
+            cursor = con.cursor()         
             cursor.execute(query)
-            conn.commit()
+            con.commit()
             cursor.close()
               
             message = commonfile.Successmessage('update')
@@ -130,6 +333,14 @@ def DeleteQuery(table,whereCondition):
             con.commit()
             cursor.close()
 
+            query = " alter table " + table + " " + " AUTO_INCREMENT = 0 " + ";" 
+            print(query)
+            con = DBconnection()
+            cursor = con.cursor()
+            cursor.execute(query)
+            con.commit()
+            cursor.close()            
+
             message = commonfile.Successmessage('delete')
             data = {"status":"true","message":message,"result":""}
             return data
@@ -141,3 +352,72 @@ def DeleteQuery(table,whereCondition):
        print("Error--->" + str(e))            
        return "0"
 
+def SendEmail(emailto,subject,message):
+       
+    message = Mail(
+    from_email = config.EmailFrom,
+    to_emails = emailto,
+    subject = "Fandom email Varification",
+    html_content = '<strong>Thank you for visiting FandomLive </strong> <br> . <br> Thanks, FandomLive Team')
+    print(message)
+
+    try:
+        sg = SendGridAPIClient('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')
+        response = sg.send(message)
+       
+        return "1" 
+            
+    except Exception as e:
+        print("Error--->" + str(e))            
+        return "0"
+
+#method to insert points generated by the multiple events
+def findVotingtype(campaignId):
+    
+    try:           
+                
+        query = " select ;" 
+        print(query)
+        con = DBconnection()
+        cursor = con.cursor()
+        cursor.execute(query)            
+        con.commit()        
+        cursor.close()   
+        
+        data = {"status":"true","message":"","result":""}       
+        return data
+                
+    except Exception as e:
+        print("Error--->" + str(e))            
+        return "0"
+
+#method to insert points generated by the multiple events
+def usersPoints(fdpFor,fdp,userId,campaignType):
+    
+    try:           
+                
+        query = " insert into UserPoints (UserId,FDPFor,FDP) values('" + userId + "','" + fdpFor + "','" + fdp + "');" 
+        print(query)
+        con = DBconnection()
+        cursor = con.cursor()
+        cursor.execute(query)            
+        con.commit()        
+        cursor.close()   
+        
+        data = {"status":"true","message":"","result":""}       
+        return data
+                
+    except Exception as e:
+        print("Error--->" + str(e))            
+        return "0"
+
+def SendSMS(SMSTo,message):
+    try:   
+            
+        return commonfile.GetRandomNo()
+            
+        #return "1" 
+                
+    except Exception as e:
+       print("Error--->" + str(e))            
+       return "0"
