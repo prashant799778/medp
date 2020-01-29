@@ -295,7 +295,40 @@ def addAdmin():
     except Exception as e :
         print("Exception---->" +str(e))           
         output = {"result":"something went wrong","status":"false"}
-        return output      
+        return output
+
+
+
+@app.route('/adminPannel', methods=['GET'])
+def ambulanceMaster():
+    try:
+        column="count(*)"
+        whereCondition=" and usertypeId='2'"
+        whereCondition1=" and usertypeId='3'"
+        whereCondition3=" and usertypeId='4'"
+
+        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        policyMakerMasterCount=data["result"][0]
+        data2 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition1,""," ",startlimit,endlimit)
+        enterprenuerMasterCount=data2["result"][0]
+        data3 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition3,""," ",startlimit,endlimit)
+        studentMasterCount=data3["result"][0]
+        
+        
+
+
+        if data:           
+            Data = {"policyMakerMasterCount":policyMakerMasterCount,"enterprenuerMasterCount":enterprenuerMasterCount,"studentMasterCount":studentMasterCount,"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output  
+
 
     
 
