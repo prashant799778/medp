@@ -68,6 +68,9 @@ def SignUp():
                    ImeiNo = inputdata['ImeiNo']
                 if 'ipAddress' in inputdata:                    
                    ipAddress = inputdata['ipAddress']
+                if 'password' in inputdata:                    
+                   Password = inputdata['password']
+
 
 
                
