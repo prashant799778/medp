@@ -226,7 +226,7 @@ def login():
                
       
         if  loginuser["status"]!="false":   
-            Data = {"result":loginuser,"status":"true"}                  
+            Data = {"result":loginuser["result"],"status":"true"}                  
             return Data
         else:
             data={"status":"False","result":"wrong credentials"}
