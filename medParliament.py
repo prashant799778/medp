@@ -31,7 +31,7 @@ def addUser():
         if data["message"] == 'No Data Found':
             print('A')
             column = " userId, userName, mobileNo, email, userTypeId, gender "
-            values = "'"+str(userID)+ "','"+str(data1["userName"])+"','"+str(data1["mobileNo"])+"','"+str(data1["email"])+"','"+str(data1["userTypeId"])+"','"+str(data1["gender"])+"'"
+            values = "'"+str(UserID)+ "','"+str(data1["userName"])+"','"+str(data1["mobileNo"])+"','"+str(data1["email"])+"','"+str(data1["userTypeId"])+"','"+str(data1["gender"])+"'"
             insertdata=databasefile.InsertQuery("userMaster",column,values)
             return {"userid":str(UserID)}
         else:
