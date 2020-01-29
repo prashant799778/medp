@@ -32,7 +32,7 @@ def SignUp():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":  
-            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country= "","","","","",""
+            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City= "","","","","","",""
          
             Name = inputdata["userName"]
             MobileNo = inputdata["mobileNo"]
@@ -54,6 +54,8 @@ def SignUp():
                 
                 if 'country' in inputdata:                    
                     Country = inputdata["country"]  
+                if 'city' in inputdata:                    
+                    City = inputdata["city"]  
                 if 'userTypeId' in inputdata:                                    
                     userTypeId = inputdata['userTypeId']
                 if 'gender' in inputdata:                    
@@ -80,7 +82,7 @@ def SignUp():
                 columns = " userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, country, city, deviceid, imeiNo "          
                 values = " '" + str(UserId) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Email) + "','" + str(userTypeId) + "','" + str(Gender) + "', "            
                 values = values + " '" + str(Password) + "','" + str(DeviceType) + "','" + str(Os) + "','" + str(ipAddress) + "','"                 
-                values = values + str(Country) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
+                values = values + str(Country) + "','" + str(City) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
 
 
                 data = databasefile.InsertQuery("userMaster",columns,values) 
