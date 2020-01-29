@@ -303,16 +303,16 @@ def addAdmin():
 def ambulanceMaster():
     try:
         column="count(*)"
-        startlimit,endlimit="",""
-        whereCondition=" and usertypeId='2'"
-        whereCondition1=" and usertypeId='3'"
-        whereCondition3=" and usertypeId='4'"
+        startlimit,endlimit="",
+        WhereCondition=" and usertypeId='2'"
+        WhereCondition1=" and usertypeId='3'"
+        WhereCondition3=" and usertypeId='4'"
 
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
         policyMakerMasterCount=data["result"][0]
-        data2 = databasefile.SelectQueryOrderby("userMaster",column,'3',""," ",startlimit,endlimit)
+        data2 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition1,""," ",startlimit,endlimit)
         enterprenuerMasterCount=data2["result"][0]
-        data3 = databasefile.SelectQueryOrderby("userMaster",column,'4',""," ",startlimit,endlimit)
+        data3 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition3,""," ",startlimit,endlimit)
         studentMasterCount=data3["result"][0]
         
         
