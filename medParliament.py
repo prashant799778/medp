@@ -22,14 +22,19 @@ app.config['SECRET_KEY'] = 'secret!'
 def addUser():
     try:
         data1 = commonfile.DecodeInputdata(request.get_data())
+        UserId=uuid.uuid1()
+        UserID=UserId.hex
         column = " * "
         whereCondition= " and mobileNo='"+str(data1["mobileNo"])+ "'"
         data= databasefile.SelectQuery("userMaster",column,whereCondition)
         print(data["message"],'data')
-        
-        UserId=uuid.uuid1()
-        UserID=UserId.hex
-        return {"userid":str(UserID)}
+        if data=='No Data Found':
+            column = " userId, userName, mobileNo, email, userTypeId, gender "
+            values = "'"+str(userId)+ "','"+str(data1["userName"])+"','"+str(data1["mobileNo"])+"','"+str(data1["email"])+"','"+str(data1["userTypeId"])+"','"+str(data1["gender"])+"'"
+            insertdata=databasefile.InsertQuery("userMaster",column,values)
+            return {"userid":str(UserID)}
+        else:
+            return {"Status":"User already existed"}
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"result":"something went wrong","status":"false"}
