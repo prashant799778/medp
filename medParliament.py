@@ -90,7 +90,7 @@ def SignUp():
                 if data != "0":
                     column = 'userId,userName,userTypeId'
                     
-                    data = databasefile.SelectQuery("UserMaster",column,WhereCondition,"",startlimit,endlimit) 
+                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit) 
                     return data
                 else:
                     return commonfile.Errormessage()
