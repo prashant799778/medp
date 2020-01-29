@@ -219,17 +219,17 @@ def login():
        
         mobile = request.args['email']
         column=  "us.mobileNo,us.userName,us.email,um.usertype,us.userId"
-        whereCondition= "us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.usertypeId=um.Id"
+        whereCondition= "us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.userTypeId=um.id"
         groupby,startlimit,endlimit="","",""
         loginuser=databasefile.SelectQuery("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
         
                
       
-        if (loginuser!=0):   
+        if  loginuser["status"]!="false":   
             Data = {"result":loginuser,"status":"true"}                  
             return Data
         else:
-            data={"status":"Failed","result":"Login Failed"}
+            data={"status":"False","result":"wrong credentials"}
             return data
 
     except KeyError as e:
@@ -300,7 +300,7 @@ def addAdmin():
 
 
 @app.route('/adminPannel', methods=['GET'])
-def ambulanceMaster():
+def adminPannel():
     try:
         column="count(*) as count"
         startlimit,endlimit="",""
@@ -328,7 +328,90 @@ def ambulanceMaster():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"result":"something went wrong","status":"false"}
+        return output
+
+
+@app.route('/policyMakerPannel', methods=['GET'])
+def policyMakerPannel():
+    try:
+        column="count(*) as count"
+        startlimit,endlimit="",""
+        WhereCondition=" and usertypeId='5'"
+        
+        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        policyMakerMasterCount=data["result"][0]
+        
+        
+        
+
+
+        if data:           
+            Data = {"policyMakeruserCount":policyMakerMasterCount,"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output    
+
+@app.route('/enterprenuerMasterPannel', methods=['GET'])
+def enterprenuerMasterPannel():
+    try:
+        column="count(*) as count"
+        startlimit,endlimit="",""
+        WhereCondition=" and usertypeId='6'"
+        
+        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        policyMakerMasterCount=data["result"][0]
+        
+        
+        
+
+
+        if data:           
+            Data = {"enterprenueruserCount":policyMakerMasterCount,"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
         return output  
+
+
+@app.route('/studentMasterPannel', methods=['GET'])
+def studentMasterPannel():
+    try:
+        column="count(*) as count"
+        startlimit,endlimit="",""
+        WhereCondition=" and usertypeId='7'"
+        
+        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        policyMakerMasterCount=data["result"][0]
+        
+        
+        
+
+
+        if data:           
+            Data = {"studentuserCount":policyMakerMasterCount,"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output          
+
+
+
 
 
     
