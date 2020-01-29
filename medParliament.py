@@ -242,7 +242,7 @@ def login():
         output = {"result":"something went wrong","status":"false"}
         return output        
 
-@app.route('/addAdmin', methods=['POST'])
+@app.route('/addSubAdmins', methods=['POST'])
 def addAdmin():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
@@ -331,6 +331,44 @@ def adminPannel():
         return output
 
 
+@app.route('/allSubAdmins', methods=['GET'])
+def allpolicyMakers():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        usertypeId=""
+        if usertypeId !="":
+            if 'userTypeId' in inputdata:                                    
+                userTypeId = inputdata['userTypeId'] 
+        
+        column="*"
+        
+        startlimit,endlimit="",""
+        WhereCondition=" and usertypeId='" + str(userTypeId) + "'"
+        
+        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        
+        
+        
+        
+
+
+
+        if (data["status"]!="false"):           
+            Data = {"result":data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output
+
+                  
+
+
+
 @app.route('/policyMakerPannel', methods=['GET'])
 def policyMakerPannel():
     try:
@@ -355,7 +393,34 @@ def policyMakerPannel():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"result":"something went wrong","status":"false"}
-        return output    
+        return output 
+
+
+@app.route('/allpolicyMakers', methods=['GET'])
+def allpolicyMakers():
+    try:
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId"
+        column=column+"pm.userId,pm.aboutProfile,pm.organization,pm.designation"
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId "
+        
+        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
+      
+        
+        
+
+
+        if (data["status"]!="false"):           
+            Data = {"result":data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output                 
 
 @app.route('/enterprenuerMasterPannel', methods=['GET'])
 def enterprenuerMasterPannel():
@@ -373,7 +438,7 @@ def enterprenuerMasterPannel():
 
         if data:           
             Data = {"enterprenueruserCount":policyMakerMasterCount,"status":"true"}
-            return Data
+            return Data 
         else:
             output = {"result":"No Data Found","status":"false"}
             return output
@@ -384,6 +449,34 @@ def enterprenuerMasterPannel():
         return output  
 
 
+@app.route('/allenterprenuers', methods=['GET'])
+def allenterprenuer():
+    try:
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId"
+        column=column+"pm.userId,pm.areaOfActivity,pm.profileCategoryId,pm.designation,pm.interestId"
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId "
+        
+        data = databasefile.SelectQueryOrderby("userMaster as um,enterprenuerMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
+     
+        
+        
+        
+
+
+        if (data["status"]!="false"):           
+            Data = {"result":data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output         
+
+
 @app.route('/studentMasterPannel', methods=['GET'])
 def studentMasterPannel():
     try:
@@ -391,7 +484,7 @@ def studentMasterPannel():
         startlimit,endlimit="",""
         WhereCondition=" and usertypeId='7'"
         
-        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("userMaster ",column,WhereCondition,""," ",startlimit,endlimit)
         policyMakerMasterCount=data["result"][0]
         
         
@@ -408,7 +501,36 @@ def studentMasterPannel():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"result":"something went wrong","status":"false"}
-        return output          
+        return output  
+
+
+
+
+@app.route('/allstudents', methods=['GET'])
+def allstudents():
+    try:
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId"
+        column=column+"pm.userId,pm.address,pm.qualification,pm.batchofQualification,pm.instituteName,pm.universityAddress,pm.universityName,pm.interestId "
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId "
+        
+        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
+      
+        
+        
+
+
+        if (data["status"]!="false"):           
+            Data = {"result":data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output                   
 
 
 
