@@ -66,8 +66,7 @@ def SignUp():
                 if 'OsVersion' in inputdata:                    
                     OsVersion = inputdata['OsVersion']
 
-                column = "userId,email,userName,mobileNo,gender,userTypeId,DeviceId,DeviceType,Os,OsVersion,"
-                column = column + "Password,Country"                
+                columns = " userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, country, city, deviceid, imeiNo "          
                 values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Gender) + "','" + str(userTypeId) + "', "            
                 values = values + " '" + str(DeviceId) + "','" + str(DeviceType) + "','" + str(Os) + "','" + str(OsVersion) + "','"                 
                 values = values + " '" + str(Password) + "','" + str(Country) + "',"                
@@ -140,9 +139,10 @@ def login():
         password = request.args['password']
        
         mobile = request.args['email']
-        column=  "us.mobileNo,us.UserName,us.email,um.usertype,us.userId"
+        column=  "us.mobileNo,us.userName,us.email,um.usertype,us.userId"
         whereCondition= "us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.usertypeId=um.Id"
-        loginuser=databasefile.SelectQuery1("userMaster as us,userTypeMaster as um",column,whereCondition)
+        groupby,startlimit,endlimit="","",""
+        loginuser=databasefile.SelectQuery1("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
         
                
       
