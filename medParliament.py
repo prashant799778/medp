@@ -198,7 +198,7 @@ def addAdmin():
             else:
                 
                 column = "userId,email,userName,password,userTypeId"                
-                values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(userTypeId) + "','" + str(password) + "'"
+                values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(password) + "','" + str(userTypeId) + "'"
 
                 data = databasefile.InsertQuery("userMaster",column,values)        
                 
