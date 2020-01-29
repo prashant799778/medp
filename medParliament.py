@@ -32,7 +32,7 @@ def SignUp():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":  
-            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City= "","","","","","",""
+            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City,organization,aboutProfile,designation= "","","","","","","","","",""
          
             Name = inputdata["userName"]
             MobileNo = inputdata["mobileNo"]
@@ -73,6 +73,14 @@ def SignUp():
                    ipAddress = inputdata['ipAddress']
                 if 'password' in inputdata:                    
                    Password = inputdata['password']
+                if 'organization' in inputdata:                    
+                    organization = inputdata['organization']
+                
+                if 'aboutProfile' in inputdata:                    
+                    aboutProfile = inputdata['aboutProfile']
+
+                if 'designation' in inputdata:                    
+                   designation = inputdata['designation']   
                 print(Password)
 
 
@@ -90,7 +98,34 @@ def SignUp():
                 if data != "0":
                     column = 'userId,userName,userTypeId'
                     
-                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit) 
+                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)
+                    if data["status"]!="false":
+                        y=data["result"][0]
+                        if (y["userTypeId"] == 5):
+                            column="userId,aboutProfile,organization,designation"
+                            values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
+                            data1=databasefile.InsertQuery("policyMakerMaster",columns,values) 
+
+
+
+                        if (y["userTypeId"]==6):
+                            column="userId,aboutProfile,organization,designation"
+                            values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
+                            data1=databasefile.InsertQuery("policyMakerMaster",columns,values) 
+
+
+                        if (y["userTypeId"]==7):
+                            column="userId,aboutProfile,organization,designation"
+                            values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
+                            data1=databasefile.InsertQuery("policyMakerMaster",columns,values) 
+
+
+                    else:
+                        return commonfile.Errormessage()
+
+
+                    
+                        
                     return data
                 else:
                     return commonfile.Errormessage()
