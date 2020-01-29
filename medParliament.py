@@ -62,7 +62,7 @@ def SignUp():
                     DeviceType = inputdata['deviceType']
                     DeviceType = ConstantData.GetDeviceTypeId(DeviceType)
                 if 'os' in inputdata:                    
-                    Os = inputdata['Os'] 
+                    Os = inputdata['os'] 
                 if 'ImeiNo' in inputdata:                    
                    ImeiNo = inputdata['ImeiNo']
                 if 'ipAddress' in inputdata:                    
