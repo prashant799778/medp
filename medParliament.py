@@ -111,13 +111,13 @@ def SignUp():
                         if (y["userTypeId"]==6):
                             columns="userId,aboutProfile,organization,designation"
                             values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
-                            data1=databasefile.InsertQuery("policyMakerMaster",columns,values) 
+                            data1=databasefile.InsertQuery("enterprenuerMaster",columns,values) 
 
 
                         if (y["userTypeId"]==7):
                             columns="userId,aboutProfile,organization,designation"
                             values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
-                            data1=databasefile.InsertQuery("policyMakerMaster",columns,values) 
+                            data1=databasefile.InsertQuery("studentMaster",columns,values) 
 
 
                     else:
