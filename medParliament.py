@@ -163,7 +163,59 @@ def login():
         output = {"result":"something went wrong","status":"false"}
         return output        
 
+@app.route('/addAdmin', methods=['POST'])
+def addAdmin():
+    try:
+        inputdata = request.form.get('data')
+        startlimit,endlimit="",""
 
+        keyarr = ['adminName','userTypeId','emailId','password']
+      
+        inputdata = json.loads(inputdata)
+        commonfile.writeLog("addAdmin",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+       
+        if msg == "1":  
+            DeviceId,DeviceType,Os,OsVersion,Country= "","","","","",""
+         
+            Name = inputdata["adminName"]
+            userTypeId = inputdata["userTypeId"]
+            Email = inputdata["emailId"]
+            Password = inputdata["password"]
+
+            UserId = commonfile.CreateHashKey(Email,Name)
+            
+            WhereCondition = " and Email = '" + str(Email) + "' or password = '" + str(password) + "'"
+            count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
+            
+            if int(count) > 0:         
+                return commonfile.EmailMobileAlreadyExistMsg()
+            else:
+                
+                column = "userId,email,userName,password,userTypeId"                
+                values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(userTypeId) + "','" + str(password) + "'"
+
+                data = databasefile.InsertQuery("userMaster",column,values)        
+                
+                if data != "0":
+                    column = 'UserId,userName,UserType'
+                    
+                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
+                    return data
+                else:
+                    return commonfile.Errormessage()
+        else:
+            return msg 
+
+
+
+
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"result":"something went wrong","status":"false"}
+        return output      
+
+    
 
 
 
