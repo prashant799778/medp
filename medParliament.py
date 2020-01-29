@@ -206,7 +206,7 @@ def addAdmin():
                 data = databasefile.InsertQuery("userMaster",column,values)        
                 
                 if data != "0":
-                    column = 'UserId,userName,UserType'
+                    column = 'userId,userName,userTypeId'
                     
                     data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
                     return data
