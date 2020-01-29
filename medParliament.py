@@ -80,7 +80,7 @@ def SignUp():
                 columns = " userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, country, city, deviceid, imeiNo "          
                 values = " '" + str(UserId) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Email) + "','" + str(userTypeId) + "','" + str(Gender) + "', "            
                 values = values + " '" + str(Password) + "','" + str(DeviceType) + "','" + str(Os) + "','" + str(ipAddress) + "','"                 
-                values = values + " '" + str(Country) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
+                values = values + str(Country) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
 
 
                 data = databasefile.InsertQuery("UserMaster",columns,values) 
