@@ -284,7 +284,7 @@ def adminPannel():
 
 
 @app.route('/allSubAdmins', methods=['GET'])
-def allpolicyMakers():
+def allSubAdmins():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         usertypeId=""
