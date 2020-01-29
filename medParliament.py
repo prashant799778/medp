@@ -39,6 +39,7 @@ def SignUp():
             Email = inputdata["email"] 
             Gender = inputdata["gender"]
             Password = inputdata["password"]
+            print(Password)
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
@@ -70,7 +71,7 @@ def SignUp():
                    ipAddress = inputdata['ipAddress']
                 if 'password' in inputdata:                    
                    Password = inputdata['password']
-                print(password)
+                print(Password)
 
 
 
