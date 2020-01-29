@@ -32,7 +32,7 @@ def SignUp():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":  
-            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country= "","","","","","",""
+            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country= "","","","","",""
          
             Name = inputdata["userName"]
             MobileNo = inputdata["mobileNo"]
@@ -42,12 +42,11 @@ def SignUp():
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
-            WhereCondition = " and email = '" + str(Email) + "' or mobileNo = '" + str(MobileNo) + "'"
-            count = databasefile.SelectCountQuery("UserMaster",WhereCondition,"")
+            WhereCondition = " and email = '" + str(Email) + "' or password = '" + str(password) + "'"
+            count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
             
             if int(count) > 0:
-                print(count)
-
+                print('F')         
                 return commonfile.EmailMobileAlreadyExistMsg()
             else:
                 print("qqqqqqqqqqqqqqqqqqqqq")
