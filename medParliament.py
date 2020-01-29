@@ -102,20 +102,20 @@ def SignUp():
                     if data["status"]!="false":
                         y=data["result"][0]
                         if (y["userTypeId"] == 5):
-                            column="userId,aboutProfile,organization,designation"
+                            columns="userId,aboutProfile,organization,designation"
                             values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
                             data1=databasefile.InsertQuery("policyMakerMaster",columns,values) 
 
 
 
                         if (y["userTypeId"]==6):
-                            column="userId,aboutProfile,organization,designation"
+                            columns="userId,aboutProfile,organization,designation"
                             values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
                             data1=databasefile.InsertQuery("policyMakerMaster",columns,values) 
 
 
                         if (y["userTypeId"]==7):
-                            column="userId,aboutProfile,organization,designation"
+                            columns="userId,aboutProfile,organization,designation"
                             values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
                             data1=databasefile.InsertQuery("policyMakerMaster",columns,values) 
 
