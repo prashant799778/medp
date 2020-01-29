@@ -170,13 +170,10 @@ def login():
 @app.route('/addAdmin', methods=['POST'])
 def addAdmin():
     try:
-        inputdata = request.form.get('data')
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         print(inputdata,"A")
         startlimit,endlimit="",""
-
         keyarr = ['adminName','userTypeId','emailId','password']
-      
-        inputdata = json.loads(inputdata)
         print(inputdata,"B")
         commonfile.writeLog("addAdmin",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
