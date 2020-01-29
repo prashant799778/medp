@@ -66,7 +66,7 @@ def SignUp():
                 if 'ImeiNo' in inputdata:                    
                    ImeiNo = inputdata['ImeiNo']
                 if 'ipAddress' in inputdata:                    
-                   ipAddress = inputdata['ip']
+                   ipAddress = inputdata['ipAddress']
 
 
                 UserId=uuid.uuid1()
