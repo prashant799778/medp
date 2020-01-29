@@ -173,11 +173,13 @@ def login():
 def addAdmin():
     try:
         inputdata = request.form.get('data')
+        print(inputdata,"A")
         startlimit,endlimit="",""
 
         keyarr = ['adminName','userTypeId','emailId','password']
       
         inputdata = json.loads(inputdata)
+        print(inputdata,"B")
         commonfile.writeLog("addAdmin",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
