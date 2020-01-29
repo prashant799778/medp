@@ -120,7 +120,7 @@ def SignUp():
 
                         if (y["userTypeId"] == 6):
                             columns="userId,areaOfActivity,profileCategoryId,designation,interestId"
-                            values=" '" + str(y["userId"]) + "','" + str(areaOfActivity) + "','" + str(profileCategoryId) + "','" + str(designation) + "','" + str(interestId) + "'"
+                            values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation) + "','" + str(interestId) + "'"
                             data2=databasefile.InsertQuery("enterprenuerMaster",columns,values) 
 
 
