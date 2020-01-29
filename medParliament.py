@@ -33,6 +33,7 @@ def SignUp():
        
         if msg == "1":  
             DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City,organization,aboutProfile,designation= "","","","","","","","","",""
+            areaofActivity,profileCategoryId,interestId="","",""
          
             Name = inputdata["userName"]
             MobileNo = inputdata["mobileNo"]
@@ -80,7 +81,16 @@ def SignUp():
                     aboutProfile = inputdata['aboutProfile']
 
                 if 'designation' in inputdata:                    
-                   designation = inputdata['designation']   
+                   designation = inputdata['designation'] 
+
+                if 'areaofActivity' in inputdata:                    
+                    areaofActivity = inputdata['areaofActivity']
+                
+                if 'profileCategoryId' in inputdata:                    
+                    profileCategoryId = inputdata['profileCategoryId']
+
+                if 'interestId' in inputdata:                    
+                   interestId = inputdata['interestId']        
                 print(Password)
 
 
@@ -108,16 +118,16 @@ def SignUp():
 
 
 
-                        if (y["userTypeId"]==6):
-                            columns="userId,aboutProfile,organization,designation"
-                            values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
-                            data1=databasefile.InsertQuery("enterprenuerMaster",columns,values) 
+                        if (y["userTypeId"] == 6):
+                            columns="userId,areaOfActivity,profileCategoryId,designation,interestId"
+                            values=" '" + str(y["userId"]) + "','" + str(areaOfActivity) + "','" + str(profileCategoryId) + "','" + str(designation) + "','" + str(interestId) + "'"
+                            data2=databasefile.InsertQuery("enterprenuerMaster",columns,values) 
 
 
-                        if (y["userTypeId"]==7):
+                        if (y["userTypeId"]== 7):
                             columns="userId,aboutProfile,organization,designation"
                             values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
-                            data1=databasefile.InsertQuery("studentMaster",columns,values) 
+                            data3 = databasefile.InsertQuery("studentMaster",columns,values) 
 
 
                     else:
