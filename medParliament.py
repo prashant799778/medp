@@ -24,11 +24,9 @@ def SignUp():
 
     try: 
         startlimit,endlimit="",""   
-        inputdata = request.form.get('data')       
+        inputdata =  commonfile.DecodeInputdata(request.get_data())       
         
         keyarr = ['name','mobileNo','email','password','gender',"userTypeId"]
-      
-        inputdata = json.loads(inputdata)
         commonfile.writeLog("signup",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -78,13 +76,12 @@ def SignUp():
                 values = values + " '" + str(Country) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
 
                 data = databasefile.InsertQuery("UserMaster",column,values) 
-                     
+
                 
                 if data != "0":
                     column = 'userId,userName,userTypeId'
                     
-                    data = databasefile.SelectQuery("UserMaster",column,WhereCondition,"",startlimit,endlimit)   
-                               
+                    data = databasefile.SelectQuery("UserMaster",column,WhereCondition,"",startlimit,endlimit) 
                     return data
                 else:
                     return commonfile.Errormessage()
