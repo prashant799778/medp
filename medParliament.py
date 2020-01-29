@@ -23,7 +23,7 @@ def addUser():
     try:
         data1 = commonfile.DecodeInputdata(request.get_data())
         column = " * "
-        whereCondition= "mobileNo='"+str(data1["mobileNo"])+ "'"
+        whereCondition= " and mobileNo='"+str(data1["mobileNo"])+ "'"
         data= databasefile.SelectQuery("userMaster",column,whereCondition)
         print(data,'data')
         UserId=uuid.uuid1()
