@@ -33,13 +33,13 @@ def addUser():
             columns = " userId, userName, mobileNo, email, userTypeId, gender "
             values = "'"+str(UserID)+ "','"+str(data1["userName"])+"','"+str(data1["mobileNo"])+"','"+str(data1["email"])+"','"+str(data1["userTypeId"])+"','"+str(data1["gender"])+"'"
             insertdata=databasefile.InsertQuery("userMaster",columns,values)
-            # columns = " * "
-            # whereCondition= " and mobileNo='"+str(data1["mobileNo"])+ "'"
-            # user_data= databasefile.SelectQuery("userMaster",columns,whereCondition)
-            # print('user_data', user_data["result"]["userTypeId"])
+            columns = " * "
+            whereCondition= " and mobileNo='"+str(data1["mobileNo"])+ "'"
+            user_data= databasefile.SelectQuery("userMaster",columns,whereCondition)
+            print('user_data', user_data["result"]["userTypeId"])
             # if user_data["result"]["userTypeId"]=='2' & user_data["result"]["userTypeId"]=='5':
             #     columns = 
-            return {"userid":str(UserID)}
+            return {"userid":str(UserID), "userTypeId":str(user_data["result"]["userTypeId"]), "Status":"User added  successfully"}
         else:
             print('B')
             return {"Status":"User already existed"}
@@ -47,6 +47,35 @@ def addUser():
         print("Exception---->" + str(e))    
         output = {"result":"something went wrong","status":"false"}
         return output
+
+
+@app.route('/addMakers', methods=['POST'])
+def addMakers():
+    try:
+        data1 = commonfile.DecodeInputdata(request.get_data())
+        if data1["userTypeId"] == 2 & data1["userTypeId"] == 5:
+            columns = " userId, organization, abotProfile, designation "
+            values = "'"+str(data1["userId"])+ "','"+str(data1["organization"])+"','"+str(data1["abotProfile"])+"','"+str(data1["designation"])+"'"
+            insertdata=databasefile.InsertQuery("policyMaker",columns,values)
+            return {"Status":"PolicyMaker added  successfully"}
+        elif data1["userTypeId"] == 3 & data1["userTypeId"] == 6:
+            columns = " userId, designation, areaofActivity, profileCategoryId, interestId "
+            values = "'"+str(data1["userId"])+ "','"+str(data1["designation"])+"','"+str(data1["areaofActivity"])+"','"+str(data1["profileCategoryId"])+"','"+str(data1["interestId"])+"'"
+            insertdata=databasefile.InsertQuery("enterprenuerMaster",columns,values)
+            return {"Status":"Enterprenuer added  successfully"}
+        elif data1["userTypeId"] == 4 & data1["userTypeId"] == 7:
+            columns = " userId, address, qualification, batchofQualification, instituteName, universityName, universityAddress, interestId "
+            values = "'"+str(data1["userId"])+ "','"+str(data1["address"])+"','"+str(data1["qualification"])+"','"+str(data1["batchofQualification"])+"','"+str(data1["instituteName"])+"','"+str(data1["universityName"])+"','"+str(data1["universityAddress"])+"','"+str(data1["interestId"])+"'"
+            insertdata=databasefile.InsertQuery("studentMaster",columns,values)
+            return {"Status":"Student added  successfully"}
+        else:
+            return {"Status":"User Alreay Existed"}
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output
+
+
 
 
 if __name__ == "__main__":
