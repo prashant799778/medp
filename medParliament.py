@@ -33,7 +33,7 @@ def SignUp():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":  
-            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country= "","","","","","",""
+            DeviceId,DeviceType,Os,OsVersion,Country= "","","","","",""
          
             Name = inputdata["userName"]
             MobileNo = inputdata["mobileNo"]
@@ -77,8 +77,7 @@ def SignUp():
                 values = values + " '" + str(Password) + "','" + str(DeviceType) + "','" + str(Os) + "','" + str(ipAddress) + "','"                 
                 values = values + " '" + str(Country) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
 
-                data = databasefile.InsertQuery("UserMaster",column,values) 
-                     
+                data = databasefile.InsertQuery("UserMaster",column,values)        
                 
                 if data != "0":
                     column = 'userId,userName,userTypeId'
