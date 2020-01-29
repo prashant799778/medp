@@ -32,8 +32,8 @@ def SignUp():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":  
-            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City,organization,aboutProfile,designation= "","","","","","","","","",""
-            areaofActivity,profileCategoryId,interestId="","",""
+            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City,organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","","","","","","","",""
+            
          
             Name = inputdata["userName"]
             MobileNo = inputdata["mobileNo"]
@@ -85,12 +85,12 @@ def SignUp():
 
                 if 'areaofActivity' in inputdata:                    
                     areaofActivity = inputdata['areaofActivity']
-                
+
                 if 'profileCategoryId' in inputdata:                    
                     profileCategoryId = inputdata['profileCategoryId']
 
                 if 'interestId' in inputdata:                    
-                   interestId = inputdata['interestId']        
+                    interestId = inputdata['interestId']        
                 print(Password)
 
 
