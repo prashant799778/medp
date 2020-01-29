@@ -65,6 +65,35 @@ def addUser():
         output = {"result":"something went wrong","status":"false"}
         return output
 
+@app.route('/Login', methods=['GET'])
+def login():
+    try:
+        password = request.args['password']
+       
+        mobile = request.args['email']
+        column=  "us.mobile,us.name,us.email,um.usertype,us.userId"
+        whereCondition= "us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.usertypeId=um.Id"
+        loginuser=databasefile.SelectQuery1("userMaster as us,userTypeMaster as um",column,whereCondition)
+        
+               
+      
+        if (loginuser!=0):   
+            Data = {"result":loginuser,"status":"true"}                  
+            return Data
+        else:
+            data={"status":"Failed","result":"Login Failed"}
+            return data
+
+    except KeyError as e:
+        print("Exception---->" +str(e))        
+        output = {"result":"Input Keys are not Found","status":"false"}
+        return output 
+    
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"result":"something went wrong","status":"false"}
+        return output        
+
 
 
 
