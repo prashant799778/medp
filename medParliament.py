@@ -176,11 +176,12 @@ def addAdmin():
         keyarr = ['adminName','userTypeId','emailId','password']
         print(inputdata,"B")
         commonfile.writeLog("addAdmin",inputdata,0)
+        print('C')
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print('D')
        
-        if msg == "1":  
-            DeviceId,DeviceType,Os,OsVersion,Country= "","","","","",""
-         
+        if msg == "1":
+            print('E')
             Name = inputdata["adminName"]
             userTypeId = inputdata["userTypeId"]
             Email = inputdata["emailId"]
