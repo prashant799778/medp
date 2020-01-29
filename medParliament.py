@@ -303,7 +303,7 @@ def addAdmin():
 def ambulanceMaster():
     try:
         column="count(*)"
-        startlimit,endlimit="",
+        startlimit,endlimit="",""
         WhereCondition=" and usertypeId='2'"
         WhereCondition1=" and usertypeId='3'"
         WhereCondition3=" and usertypeId='4'"
