@@ -70,6 +70,7 @@ def SignUp():
                    ipAddress = inputdata['ipAddress']
                 if 'password' in inputdata:                    
                    Password = inputdata['password']
+                print(password)
 
 
 
