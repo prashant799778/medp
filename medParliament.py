@@ -78,7 +78,7 @@ def SignUp():
                 values = values + " '" + str(Country) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
 
                 data = databasefile.InsertQuery("UserMaster",column,values) 
-                data="1"       
+                     
                 
                 if data != "0":
                     column = 'userId,userName,userTypeId'
