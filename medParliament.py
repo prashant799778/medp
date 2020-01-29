@@ -66,31 +66,6 @@ def addUser():
         return output
 
 
-@app.route('/addMakers', methods=['POST'])
-def addMakers():
-    try:
-        data1 = commonfile.DecodeInputdata(request.get_data())
-        if data1["userTypeId"] == 2 or data1["userTypeId"] == 5:
-            columns = " userId, organization, abotProfile, designation "
-            values = "'"+str(data1["userId"])+ "','"+str(data1["organization"])+"','"+str(data1["abotProfile"])+"','"+str(data1["designation"])+"'"
-            insertdata=databasefile.InsertQuery("policyMaker",columns,values)
-            return {"Status":"PolicyMaker added  successfully"}
-        elif data1["userTypeId"] == 3 or data1["userTypeId"] == 6:
-            columns = " userId, designation, areaofActivity, profileCategoryId, interestId "
-            values = "'"+str(data1["userId"])+ "','"+str(data1["designation"])+"','"+str(data1["areaofActivity"])+"','"+str(data1["profileCategoryId"])+"','"+str(data1["interestId"])+"'"
-            insertdata=databasefile.InsertQuery("enterprenuerMaster",columns,values)
-            return {"Status":"Enterprenuer added  successfully"}
-        elif data1["userTypeId"] == 4 or data1["userTypeId"] == 7:
-            columns = " userId, address, qualification, batchofQualification, instituteName, universityName, universityAddress, interestId "
-            values = "'"+str(data1["userId"])+ "','"+str(data1["address"])+"','"+str(data1["qualification"])+"','"+str(data1["batchofQualification"])+"','"+str(data1["instituteName"])+"','"+str(data1["universityName"])+"','"+str(data1["universityAddress"])+"','"+str(data1["interestId"])+"'"
-            insertdata=databasefile.InsertQuery("studentMaster",columns,values)
-            return {"Status":"Student added  successfully"}
-        else:
-            return {"Status":"User Alreay Existed"}
-    except Exception as e :
-        print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
-        return output
 
 
 
