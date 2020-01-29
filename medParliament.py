@@ -302,7 +302,7 @@ def addAdmin():
 @app.route('/adminPannel', methods=['GET'])
 def ambulanceMaster():
     try:
-        column="count(*)"
+        column="count(*) as count"
         startlimit,endlimit="",""
         WhereCondition=" and usertypeId='2'"
         WhereCondition1=" and usertypeId='3'"
