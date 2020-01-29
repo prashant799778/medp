@@ -54,8 +54,7 @@ def addUser():
                 return {"Status":"Student added  successfully"}
             else:
                 return {"Status":"Not Found"}
-            # if user_data["result"]["userTypeId"]=='2' & user_data["result"]["userTypeId"]=='5':
-            #     columns = 
+
             return {"userid":str(UserID), "userTypeId":str(user_data["result"]["userTypeId"])}
         else:
             print('B')
