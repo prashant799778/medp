@@ -35,7 +35,7 @@ def SignUp():
         if msg == "1":  
             DeviceId,DeviceType,Os,OsVersion,Country= "","","","","",""
          
-            Name = inputdata["name"]
+            Name = inputdata["userName"]
             MobileNo = inputdata["mobileNo"]
             Email = inputdata["email"] 
             Gender = inputdata["gender"]
@@ -43,41 +43,47 @@ def SignUp():
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
-            WhereCondition = " and Email = '" + str(Email) + "' or MobileNo = '" + str(MobileNo) + "'"
+            WhereCondition = " and email = '" + str(Email) + "' or mobileNo = '" + str(MobileNo) + "'"
             count = databasefile.SelectCountQuery("UserMaster",WhereCondition,"")
             
             if int(count) > 0:         
                 return commonfile.EmailMobileAlreadyExistMsg()
             else:
                 
-                if 'Country' in inputdata:                    
-                    Country = inputdata["Country"]  
+                if 'country' in inputdata:                    
+                    Country = inputdata["country"]  
                 if 'userTypeId' in inputdata:                                    
                     userTypeId = inputdata['userTypeId']
-                if 'Gender' in inputdata:                    
-                    Gender = inputdata['Gender']                  
-                if 'DeviceId' in inputdata:                   
-                    DeviceId = inputdata['DeviceId'] 
-                if 'DeviceType' in inputdata:                    
-                    DeviceType = inputdata['DeviceType']
+                if 'gender' in inputdata:                    
+                    Gender = inputdata['gender']                  
+                if 'deviceid' in inputdata:                   
+                    DeviceId = inputdata['deviceid'] 
+                if 'deviceType' in inputdata:                    
+                    DeviceType = inputdata['deviceType']
                     DeviceType = ConstantData.GetDeviceTypeId(DeviceType)
-                if 'Os' in inputdata:                    
+                if 'os' in inputdata:                    
                     Os = inputdata['Os'] 
-                if 'OsVersion' in inputdata:                    
-                    OsVersion = inputdata['OsVersion']
+                if 'ImeiNo' in inputdata:                    
+                   ImeiNo = inputdata['ImeiNo']
+                if 'ipAddress' in inputdata:                    
+                   ipAddress = inputdata['ip']
+
+
+                UserId=uuid.uuid1()
+                UserID=UserId.hex    
 
                 columns = " userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, country, city, deviceid, imeiNo "          
-                values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Gender) + "','" + str(userTypeId) + "', "            
-                values = values + " '" + str(DeviceId) + "','" + str(DeviceType) + "','" + str(Os) + "','" + str(OsVersion) + "','"                 
-                values = values + " '" + str(Password) + "','" + str(Country) + "',"                
-                values = values + " '3' "
+                values = " '" + str(UserId) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Email) + "','" + str(userTypeId) + "','" + str(Gender) + "', "            
+                values = values + " '" + str(Password) + "','" + str(DeviceType) + "','" + str(Os) + "','" + str(ipAddress) + "','"                 
+                values = values + " '" + str(Country) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
 
                 data = databasefile.InsertQuery("UserMaster",column,values)        
                 
                 if data != "0":
-                    column = 'UserId,UserName,UserType'
+                    column = 'userId,userName,userTypeId'
                     
-                    data = databasefile.SelectQuery("UserMaster",column,WhereCondition,"",startlimit,endlimit)                  
+                    data = databasefile.SelectQuery("UserMaster",column,WhereCondition,"",startlimit,endlimit)   
+                               
                     return data
                 else:
                     return commonfile.Errormessage()
