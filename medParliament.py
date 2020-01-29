@@ -196,13 +196,15 @@ def addAdmin():
                 print('F')         
                 return commonfile.EmailMobileAlreadyExistMsg()
             else:
+                print('G')
                 
                 column = "userId,email,userName,password,userTypeId"                
                 values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(password) + "','" + str(userTypeId) + "'"
 
                 data = databasefile.InsertQuery("userMaster",column,values)        
-                
+                print('h')
                 if data != "0":
+                    print('i')
                     column = 'userId,userName,userTypeId'
                     
                     data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
