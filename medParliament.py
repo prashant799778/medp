@@ -192,7 +192,7 @@ def addAdmin():
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
-            WhereCondition = " and Email = '" + str(Email) + "' or password = '" + str(password) + "'"
+            WhereCondition = " and email = '" + str(Email) + "' or password = '" + str(password) + "'"
             count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
             
             if int(count) > 0:
@@ -201,7 +201,7 @@ def addAdmin():
             else:
                 
                 column = "userId,email,userName,password,userTypeId"                
-                values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(userTypeId) + "','" + str(password) + "'"
+                values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(password) + "','" + str(userTypeId) + "'"
 
                 data = databasefile.InsertQuery("userMaster",column,values)        
                 
