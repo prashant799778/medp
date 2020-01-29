@@ -185,14 +185,15 @@ def addAdmin():
             Name = inputdata["adminName"]
             userTypeId = inputdata["userTypeId"]
             Email = inputdata["emailId"]
-            Password = inputdata["password"]
+            password = inputdata["password"]
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
             WhereCondition = " and Email = '" + str(Email) + "' or password = '" + str(password) + "'"
             count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
             
-            if int(count) > 0:         
+            if int(count) > 0:
+                print('F')         
                 return commonfile.EmailMobileAlreadyExistMsg()
             else:
                 
