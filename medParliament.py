@@ -34,9 +34,9 @@ def addUser():
             values = "'"+str(UserID)+ "','"+str(data1["userName"])+"','"+str(data1["mobileNo"])+"','"+str(data1["email"])+"','"+str(data1["userTypeId"])+"','"+str(data1["gender"])+"'"
             insertdata=databasefile.InsertQuery("userMaster",columns,values)
             columns = " * "
-            # whereCondition= " and mobileNo='"+str(data1["mobileNo"])+ "'"
+            whereCondition= " and mobileNo='"+str(data1["mobileNo"])+ "'"
             user_data= databasefile.SelectQuery("userMaster",columns,whereCondition)
-            print('user_data', user_data)
+            print('user_data', user_data["result"]["userTypeId"])
             return {"userid":str(UserID)}
         else:
             print('B')
