@@ -97,6 +97,7 @@ def SelectQuery(table,columns,whereCondition,groupby,startlimit,endlimit):
             whereCondition = " where 1=1 " + whereCondition
         if startlimit != "" and endlimit != "":
             limitCondition = "limit "+startlimit+","+endlimit
+            whereCondition = " where 1=1 and " + whereCondition
         
         if groupby != "":
             groupby = " group by " + groupby
@@ -129,6 +130,7 @@ def SelectQueryOrderbyAsc(table,columns,whereCondition,groupby,orderby,startlimi
             whereCondition = " where 1=1 " + whereCondition
         if startlimit != "" and endlimit != "":
             limitCondition = "limit "+startlimit+","+endlimit
+            whereCondition = " where 1=1  and " + whereCondition
         
         if groupby != "":
             groupby = " group by " + groupby
@@ -180,10 +182,10 @@ def SelectQueryOrderby(table,columns,whereCondition,groupby,startlimit,endlimit,
       
         if data:
             data = {"status":"true","message":"","result":data}
+            return data
         else:
-            data = {"status":"true","message":"No Data Found","result":""}
-
-        return data
+            data =0
+            return data
 
     except Exception as e:
         print("Error--->" + str(e))            
@@ -298,7 +300,7 @@ def UpdateQuery(table,columns,whereCondition):
     try:
 
         if whereCondition != "":
-            whereCondition = " where 1=1 " + whereCondition  
+            whereCondition = " where 1=1 and " + whereCondition  
 
         if columns != "":   
             query = " update " + table + " set " + columns  + " " + whereCondition  + ";"             
