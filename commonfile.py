@@ -162,9 +162,9 @@ def writeLog(apiName,data,flag):
         data["api"] = str(apiName)
        
         if flag == 0:
-            log = open("/var/www/FandomLive/FandomLog/request.log", "a")
+            log = open("/var/www/medParliament/backend/med_parliament/request.log", "a")
         elif flag == 1:
-            log = open("/var/www/FandomLive/FandomLog/responce.log", "a")
+            log = open("/var/www/medParliament/backend/med_parliament/response.log", "a")
     
         log.write(str(data) + "\n")
         log.close()
