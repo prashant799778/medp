@@ -24,15 +24,15 @@ def addUser():
         data1 = commonfile.DecodeInputdata(request.get_data())
         UserId=uuid.uuid1()
         UserID=UserId.hex
-        column = " * "
+        columns = " * "
         whereCondition= " and mobileNo='"+str(data1["mobileNo"])+ "'"
-        data= databasefile.SelectQuery("userMaster",column,whereCondition)
+        data= databasefile.SelectQuery("userMaster",columns,whereCondition)
         print(data["message"],'data')
         if data["message"] == 'No Data Found':
             print('A')
-            column = " userId, userName, mobileNo, email, userTypeId, gender "
+            columns = " userId, userName, mobileNo, email, userTypeId, gender "
             values = "'"+str(UserID)+ "','"+str(data1["userName"])+"','"+str(data1["mobileNo"])+"','"+str(data1["email"])+"','"+str(data1["userTypeId"])+"','"+str(data1["gender"])+"'"
-            insertdata=databasefile.InsertQuery("userMaster",column,values)
+            insertdata=databasefile.InsertQuery("userMaster",columns,values)
             return {"userid":str(UserID)}
         else:
             print('B')
