@@ -43,7 +43,7 @@ def SignUp():
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
-            WhereCondition = " and email = '" + str(Email) + "' or password = '" + str(Password) + "'"
+            WhereCondition = " and email = '" + str(Email) + "' and password = '" + str(Password) + "'"
             count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
             
             if int(count) > 0:
