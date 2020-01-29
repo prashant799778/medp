@@ -36,7 +36,7 @@ def addUser():
             columns = " * "
             # whereCondition= " and mobileNo='"+str(data1["mobileNo"])+ "'"
             user_data= databasefile.SelectQuery("userMaster",columns,whereCondition)
-            print('user_data', user_data[-1])
+            print('user_data', user_data)
             return {"userid":str(UserID)}
         else:
             print('B')
