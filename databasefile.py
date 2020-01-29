@@ -32,7 +32,7 @@ def SelectQuery(table,columns,whereCondition):
        
         
         if whereCondition != "":
-            whereCondition = " where 1=1 " + whereCondition
+            whereCondition = " where 1=1 and " + whereCondition
         
         
        
@@ -64,7 +64,7 @@ def SelectQuery1(table,columns,whereCondition):
        
         
         if whereCondition != "":
-            whereCondition = " where 1=1 " + whereCondition
+            whereCondition = " where 1=1  and " + whereCondition
         
         
        
@@ -80,10 +80,10 @@ def SelectQuery1(table,columns,whereCondition):
       
         if data:
             data = {"status":"true","message":"","result":data}
+            return data
         else:
-            data = {"status":"true","message":"No Data Found","result":""}
-
-        return data
+            data =0
+            return data
 
     except Exception as e:
         print("Error--->" + str(e))            
@@ -95,7 +95,7 @@ def UpdateQuery(table,columns,whereCondition):
     try:
 
         if whereCondition != "":
-            whereCondition = " where 1=1 " + whereCondition  
+            whereCondition = " where 1=1 and " + whereCondition  
 
         if columns != "":   
             query = " update " + table + " set " + columns  + " " + whereCondition  + ";"             
