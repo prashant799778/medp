@@ -142,7 +142,7 @@ def login():
         column=  "us.mobileNo,us.userName,us.email,um.usertype,us.userId"
         whereCondition= "us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.usertypeId=um.Id"
         groupby,startlimit,endlimit="","",""
-        loginuser=databasefile.SelectQuery1("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
+        loginuser=databasefile.SelectQuery("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
         
                
       
