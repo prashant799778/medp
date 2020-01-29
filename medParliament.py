@@ -33,6 +33,7 @@ def SignUp():
        
         if msg == "1":  
             DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City,organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","","","","","","","",""
+            address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
             
          
             Name = inputdata["userName"]
@@ -90,7 +91,27 @@ def SignUp():
                     profileCategoryId = inputdata['profileCategoryId']
 
                 if 'interestId' in inputdata:                    
-                    interestId = inputdata['interestId']        
+                    interestId = inputdata['interestId']   
+
+                if 'address' in inputdata:                    
+                    address = inputdata['address']
+
+                if 'qualification' in inputdata:                    
+                    qualification = inputdata['qualification']
+
+                if 'batchofQualification' in inputdata:                    
+                    batchofQualification = inputdata['batchofQualification']
+
+                if 'instituteName' in inputdata:                    
+                    instituteName = inputdata['instituteName']  
+
+                if 'universityName' in inputdata:                    
+                    universityName = inputdata['universityName']
+
+                if 'universityAddress' in inputdata:                    
+                    universityAddress = inputdata['universityAddress']
+
+
                 print(Password)
 
 
@@ -125,8 +146,8 @@ def SignUp():
 
 
                         if (y["userTypeId"]== 7):
-                            columns="userId,aboutProfile,organization,designation"
-                            values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
+                            columns="userId,address,qualification,batchofQualification,instituteName,universityAddress,universityName,interestId"
+                            values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "','" + str(interestId) + "'"
                             data3 = databasefile.InsertQuery("studentMaster",columns,values) 
 
 
