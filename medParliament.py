@@ -44,9 +44,12 @@ def SignUp():
             WhereCondition = " and email = '" + str(Email) + "' or mobileNo = '" + str(MobileNo) + "'"
             count = databasefile.SelectCountQuery("UserMaster",WhereCondition,"")
             
-            if int(count) > 0:         
+            if int(count) > 0:
+                print(count)
+
                 return commonfile.EmailMobileAlreadyExistMsg()
             else:
+                print("qqqqqqqqqqqqqqqqqqqqq")
                 
                 if 'country' in inputdata:                    
                     Country = inputdata["country"]  
