@@ -28,7 +28,7 @@ def addUser():
         whereCondition= " and mobileNo='"+str(data1["mobileNo"])+ "'"
         data= databasefile.SelectQuery("userMaster",column,whereCondition)
         print(data["message"],'data')
-        if data == 'No Data Found':
+        if data["message"] == 'No Data Found':
             print('A')
             column = " userId, userName, mobileNo, email, userTypeId, gender "
             values = "'"+str(userId)+ "','"+str(data1["userName"])+"','"+str(data1["mobileNo"])+"','"+str(data1["email"])+"','"+str(data1["userTypeId"])+"','"+str(data1["gender"])+"'"
