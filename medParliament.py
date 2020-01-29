@@ -24,7 +24,8 @@ def SignUp():
 
     try: 
         startlimit,endlimit="",""   
-        inputdata =  commonfile.DecodeInputdata(request.get_data())       
+        inputdata =  commonfile.DecodeInputdata(request.get_data())  
+        print(inputdata)     
         
         keyarr = ['userName','mobileNo','email','password','gender',"userTypeId"]
         commonfile.writeLog("signup",inputdata,0)
@@ -70,8 +71,7 @@ def SignUp():
                    ipAddress = inputdata['ipAddress']
 
 
-                UserId=uuid.uuid1()
-                UserID=UserId.hex    
+               
 
                 columns = " userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, country, city, deviceid, imeiNo "          
                 values = " '" + str(UserId) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Email) + "','" + str(userTypeId) + "','" + str(Gender) + "', "            
