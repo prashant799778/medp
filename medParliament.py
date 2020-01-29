@@ -26,12 +26,12 @@ def SignUp():
         startlimit,endlimit="",""   
         inputdata =  commonfile.DecodeInputdata(request.get_data())       
         
-        keyarr = ['name','mobileNo','email','password','gender',"userTypeId"]
+        keyarr = ['userName','mobileNo','email','password','gender',"userTypeId"]
         commonfile.writeLog("signup",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":  
-            DeviceId,DeviceType,Os,OsVersion,Country= "","","","","",""
+            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country= "","","","","","",""
          
             Name = inputdata["userName"]
             MobileNo = inputdata["mobileNo"]
