@@ -674,7 +674,6 @@ def UpdateUser():
 
                 if 'universityAddress' in inputdata:                    
                     universityAddress = inputdata['universityAddress']
-                    
 
             
                 WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"             
@@ -682,7 +681,9 @@ def UpdateUser():
                 column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "' "
 
                 data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
+                print("11")
                 if (UserTypeId == 5):
+                    print("1111111")
                     WhereCondition = " and userId = '" + str(UserId) + "' "
                     column =" organization = '" + str(organization) + "',aboutProfile='" + str(aboutProfile) + "',designation='" + str(designation) + "' "
                     output=databasefile.UpdateQuery("policyMakerMaster",column,WhereCondition)
