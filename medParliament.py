@@ -289,8 +289,10 @@ def allSubAdmins():
             column="*"
             WhereCondition=" and userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+            print(data)
 
-            if (data["status"]!="false"):           
+            if (data["status"]!="false"): 
+                print("111111111111111")          
                 Data = {"result":data["result"],"status":"true"}
                 return Data
             else:
