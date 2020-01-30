@@ -320,10 +320,6 @@ def policyMakerPannel():
         
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
         policyMakerMasterCount=data["result"][0]
-        
-        
-        
-
 
         if data:           
             Data = {"policyMakeruserCount":policyMakerMasterCount,"status":"true"}
@@ -830,6 +826,28 @@ def allPosts():
         output = {"result":"something went wrong","status":"false"}
         return output        
 
+
+@app.route('/allQualifications', methods=['GET'])
+def allQualifications():
+    try:
+        column=" qualificationName "
+        startlimit,endlimit="",""
+        WhereCondition=""
+        
+        data = databasefile.SelectQuery("qualificationMaster",column,WhereCondition,""," ",startlimit,endlimit)
+       
+
+        if data:           
+            Data = {"Qualifications": data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output 
 
 
 
