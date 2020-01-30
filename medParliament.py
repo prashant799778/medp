@@ -614,7 +614,7 @@ def UpdateUser():
             if msg == "1":
                 print('3')
                 organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","",""
-                address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
+                address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
                 UserId = inputdata["userId"]
                 UserName = inputdata["userName"]
                 MobileNo = inputdata["mobileNo"]
@@ -673,7 +673,7 @@ def UpdateUser():
                     batchofQualification = inputdata['batchofQualification']
 
                 if 'institutionName' in inputdata:                    
-                    instituteName = inputdata['institutionName']  
+                    institutionName = inputdata['institutionName']  
 
                 if 'universityName' in inputdata:                    
                     universityName = inputdata['universityName']
@@ -697,7 +697,7 @@ def UpdateUser():
                     output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
                 if (UserTypeId == 7):
                     WhereCondition = " and userId = '" + str(UserId) + "'"
-                    column=" address='" + str(address) + "',qualification  = '" + str(qualification) + "', batchOfQualification ='" + str(batchofQualification) + "', institutionName ='" + str(institutionName) + "',universityName ='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "',interestId ='" + str(interstId) + "'"  
+                    column=" address='" + str(address) + "',qualification  = '" + str(qualification) + "', batchOfQualification ='" + str(batchofQualification) + "', institutionName ='" + str(institutionName) + "',universityName ='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "',interestId ='" + str(interestId) + "'"  
                     output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)             
                 if data != "0":
                     column = 'userId,userName,userTypeId'
