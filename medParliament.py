@@ -676,17 +676,17 @@ def UpdateUser():
                     universityAddress = inputdata['universityAddress']
 
             
-                WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"             
-                column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',country = '" + str(Country) + "', "               
-                column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "' "
+                WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+                column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',country = '" + str(Country) + "', "
+                column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'"
                 data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
                 if (UserTypeId == 5):
-                    WhereCondition = " and userId = '" + str(UserId) + "' "
-                    column =" organization = '" + str(organization) + "',aboutProfile='" + str(aboutProfile) + "',designation='" + str(designation) + "' "
+                    WhereCondition = " and userId = '" + str(UserId) + "'"
+                    column =" organization = '" + str(organization) + "',aboutProfile='" + str(aboutProfile) + "',designation='" + str(designation) + "'"
                     output=databasefile.UpdateQuery("policyMakerMaster",column,WhereCondition)
                 if (UserTypeId == 6):
                     WhereCondition = " and userId = '" + str(UserId) + "'"
-                    column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaOfActivity) + "',profileCategoryId='" + str(areaOfActivity) + "',interestId = '" + str(interestId) + "' "
+                    column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaOfActivity) + "',profileCategoryId='" + str(areaOfActivity) + "',interestId = '" + str(interestId) + "'"
                     output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
                 if (UserTypeId == 7):
                     WhereCondition = " and userId = '" + str(UserId) + "'"
