@@ -686,11 +686,11 @@ def UpdateUser():
                     column =" organization = '" + str(organization) + "',aboutProfile='" + str(aboutProfile) + "',designation='" + str(designation) + "' "
                     output=databasefile.UpdateQuery("policyMakerMaster",column,WhereCondition)
                 if  (UserTypeId == 6):
-                    WhereCondition = " and userId = '" + str(UserId) + "'
+                    WhereCondition = " and userId = '" + str(UserId) + "'"
                     column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaOfActivity) + "',profileCategoryId='" + str(areaOfActivity) + "',interestId = '" + str(interestId) + "' "
                     output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
                 if (UserTypeId == 7):
-                    WhereCondition = " and userId = '" + str(UserId) + "' 
+                    WhereCondition = " and userId = '" + str(UserId) + "'" 
                     column=" address='" + str(address) + "',qualification  = '" + str(qualifiaction) + "', batchOfQualification ='" + str(batchOfQualification) + "', institutionName ='" + str(institutionName) + "',universityName ='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "',interestId ='" + str(interstId) + "'"  
                     output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)               
                 if data != "0":
