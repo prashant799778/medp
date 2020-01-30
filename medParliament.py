@@ -865,7 +865,7 @@ def allQualifications():
         return output 
 
 
-@app.route('/allinterests', methods=['GET'])
+@app.route('/allinterests', methods=['POST'])
 def allinterests():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
