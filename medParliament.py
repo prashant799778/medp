@@ -673,7 +673,46 @@ def DeleteStudents():
 
 
 
+
        
+@app.route('/createPost', methods=['POST'])
+def addAdmin():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        startlimit,endlimit="",""
+        keyarr = ['adminName','userTypeId','emailId','password']
+        commonfile.writeLog("addAdmin",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+       
+        if msg == "1":
+            Name = inputdata["adminName"]
+            userTypeId = inputdata["userTypeId"]
+            Email = inputdata["emailId"]
+            password = inputdata["password"]
+
+            UserId = commonfile.CreateHashKey(Email,Name)
+            
+            WhereCondition = " and email = '" + str(Email) + "' or password = '" + str(password) + "'"
+            count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
+            
+            if int(count) > 0:
+                return commonfile.EmailMobileAlreadyExistMsg()
+            else:
+                
+                column = "userId,email,userName,password,userTypeId"                
+                values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(password) + "','" + str(userTypeId) + "'"
+
+                data = databasefile.InsertQuery("userMaster",column,values)        
+                if data != "0":
+                    column = 'userId,userName,userTypeId'
+                    
+                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
+                    return data
+                else:
+                    return commonfile.Errormessage()
+        else:
+            return msg 
+
 
 
 
