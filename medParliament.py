@@ -306,6 +306,7 @@ def allSubAdmins():
         output = {"result":"something went wrong","status":"false"}
         return output
 
+
                   
 
 
@@ -798,6 +799,39 @@ def userPost():
     except Exception as e:
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
+
+@app.route('/allPosts', methods=['POST'])
+def allPosts():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("allPosts",inputdata,0)
+        print('C')
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userTypeId=inputdata["userTypeId"]
+            column="*"
+            WhereCondition=" and userTypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
+            print(data)
+
+            if (data["status"]!="false"): 
+                print("111111111111111")          
+                Data = {"result":data["result"],"status":"true"}
+                return Data
+            else:
+                output = {"result":"No Data Found","status":"false"}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output        
+
 
 
 
