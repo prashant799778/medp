@@ -283,7 +283,7 @@ def adminPannel():
         return output
 
 
-@app.route('/allSubAdmins', methods=['GET'])
+@app.route('/allSubAdmins', methods=['POST'])
 def allSubAdmins():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -351,7 +351,7 @@ def policyMakerPannel():
 @app.route('/allpolicyMakers', methods=['GET'])
 def allpolicyMakers():
     try:
-        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId"
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender"
         column=column+"pm.userId,pm.aboutProfile,pm.organization,pm.designation"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId "
@@ -404,7 +404,7 @@ def enterprenuerMasterPannel():
 @app.route('/allenterprenuers', methods=['GET'])
 def allenterprenuer():
     try:
-        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId"
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender"
         column=column+"pm.userId,pm.areaOfActivity,pm.profileCategoryId,pm.designation,pm.interestId"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId "
@@ -461,7 +461,7 @@ def studentMasterPannel():
 @app.route('/allstudents', methods=['GET'])
 def allstudents():
     try:
-        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId"
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender"
         column=column+"pm.userId,pm.address,pm.qualification,pm.batchofQualification,pm.instituteName,pm.universityAddress,pm.universityName,pm.interestId "
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId "
@@ -488,7 +488,201 @@ def allstudents():
 
 
 
-    
+@app.route('/DeleteSubAdmin', methods=['GET'])
+def DeleteUser():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        usertypeId,userId="",""
+        if (usertypeId !="" and userId!=""):
+            if 'userTypeId' in inputdata:                                    
+                userTypeId = inputdata['userTypeId'] 
+            if 'userId' in inputdata:                                    
+                userId = inputdata['userId']     
+
+        if len(inputdata) > 0:           
+            commonfile.writeLog("DeleteUser",inputdata,0)
+
+        keyarr = ['userId,usertypeId']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        
+        if msg == "1":                        
+            WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
+            data = databasefile.DeleteQuery("UserMaster",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+ 
+
+
+@app.route('/DeletePolicyMakers', methods=['GET'])
+def DeletePolicyMakers():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        usertypeId,userId="",""
+        if (usertypeId !="" and userId!=""):
+            if 'userTypeId' in inputdata:                                    
+                userTypeId = inputdata['userTypeId'] 
+            if 'userId' in inputdata:                                    
+                userId = inputdata['userId']     
+
+        if len(inputdata) > 0:           
+            commonfile.writeLog("DeleteUser",inputdata,0)
+
+        keyarr = ['userId,usertypeId']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        
+        if msg == "1":
+            WhereCondition1=  " and  userId = '" + str(userTypeId) + "' "  
+            data2=   databasefile.DeleteQuery("policyMakerMaster",WhereCondition1)                  
+            WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
+            data = databasefile.DeleteQuery("UserMaster",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+@app.route('/DeleteEnterpeneurs', methods=['GET'])
+def DeleteEnterpeneurs():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        usertypeId,userId="",""
+        if (usertypeId !="" and userId!=""):
+            if 'userTypeId' in inputdata:                                    
+                userTypeId = inputdata['userTypeId'] 
+            if 'userId' in inputdata:                                    
+                userId = inputdata['userId']     
+
+        if len(inputdata) > 0:           
+            commonfile.writeLog("DeleteUser",inputdata,0)
+
+        keyarr = ['userId,usertypeId']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        
+        if msg == "1":
+            WhereCondition1=  " and  userId = '" + str(userTypeId) + "' "  
+            data2=   databasefile.DeleteQuery("enterprenuerMaster",WhereCondition1)                  
+            WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
+            data = databasefile.DeleteQuery("UserMaster",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+@app.route('/DeleteStudents', methods=['GET'])
+def DeleteStudents():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        usertypeId,userId="",""
+        if (usertypeId !="" and userId!=""):
+            if 'userTypeId' in inputdata:                                    
+                userTypeId = inputdata['userTypeId'] 
+            if 'userId' in inputdata:                                    
+                userId = inputdata['userId']     
+
+        if len(inputdata) > 0:           
+            commonfile.writeLog("DeleteUser",inputdata,0)
+
+        keyarr = ['userId,usertypeId']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        
+        if msg == "1":
+            WhereCondition1=  " and  userId = '" + str(userTypeId) + "' "  
+            data2=   databasefile.DeleteQuery("studentMaster",WhereCondition1)                  
+            WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
+            data = databasefile.DeleteQuery("UserMaster",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()    
+
+
+# @app.route('/UpdateUser', methods=['POST'])
+# def UpdateUser():
+#     try:
+#         startlimit,endlimit="",""
+#         if request.data:
+#             inputdata = commonfile.DecodeInputdata(request.get_data())         
+#             keyarr = ['userId','userName','mobileNo','email','gender','country','city','userTypeId']
+#             commonfile.writeLog("UpdateUser",inputdata,0)
+#             msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+
+#             if msg == "1":
+                 #organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","","","","","","","",""
+                 #address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
+
+#                 
+#                 UserId = inputdata["userId"]
+#                 UserName = inputdata["userName"]
+#                 MobileNo = inputdata["mobileNo"]
+#                 Email = inputdata["email"] 
+#                 Gender = inputdata["gender"]
+#                 # Password = inputdata["password"]
+#                 Country = inputdata["country"] 
+                   #City = inputdata["city"] 
+                   #UserTypeId= inputdata["city"] 
+            
+#                 WhereCondition = " and userId = '" + str(UserId) + "' and  userrTypeId = '" + str(UserTypeId) + " '"             
+#                 column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',country = '" + str(Country) + "', "               
+#                 column = column + " userName = '" + str(UserName) + "',mobileNo = '" + str(MobileNo) + "' "
+
+#                 data = databasefile.UpdateQuery("UserMaster",column,WhereCondition)
+                  #if (UserTypeId ==5):
+                        #  WhereCondition = " and userId = '" + str(UserId) + "' "
+
+                  #if  (UserTypeId == 6):
+                           # WhereCondition = " and userId = '" + str(UserId) + "'
+
+                  #if (UserTypeId ==7):
+                           #WhereCondition = " and userId = '" + str(UserId) + "'  
+                
+#                 if data != "0":
+#                     column = 'UserId,UserName,UserType'
+#                     data = databasefile.SelectQuery("UserMaster",column,WhereCondition,"",startlimit,endlimit)                  
+#                     return data
+#                 else:
+#                     return commonfile.Errormessage()
+#             else:
+#                  return msg
+#         else:
+#             return commonfile.InputKeyNotFoundMsg()
+
+#     except Exception as e :
+#         print("Exception--->" + str(e))                                  
+#         return commonfile.Errormessage()
+
+
+
+       
 
 
 
