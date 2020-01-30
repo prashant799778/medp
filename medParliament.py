@@ -741,6 +741,8 @@ def userPost():
                 
                 if 'userTypeId' in inputdata:                                    
                     userTypeId = inputdata['userTypeId']
+                if 'userId' in inputdata:                                    
+                    UserId = inputdata['userId']
                 if 'postImage' in inputdata:
                     
                     file = request.files.get('postImage')        
