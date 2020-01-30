@@ -596,13 +596,16 @@ def DeleteStudents():
 @app.route('/UpdateUser', methods=['POST'])
 def UpdateUser():
     try:
+        print('1')
         startlimit,endlimit="",""
         if request.data:
+            print('2')
             inputdata = commonfile.DecodeInputdata(request.get_data())         
             keyarr = ['userId','userName','mobileNo','email','gender','country','city','userTypeId']
             commonfile.writeLog("UpdateUser",inputdata,0)
             msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
             if msg == "1":
+                print('3')
                 organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","","","","","","","",""
                 address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
                 UserId = inputdata["userId"]
