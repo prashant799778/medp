@@ -697,7 +697,7 @@ def UpdateUser():
                     output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
                 if (UserTypeId == 7):
                     WhereCondition = " and userId = '" + str(UserId) + "'"
-                    column=" address='" + str(address) + "',qualification  = '" + str(qualification) + "', batchOfQualification ='" + str(batchOfQualification) + "', institutionName ='" + str(institutionName) + "',universityName ='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "',interestId ='" + str(interstId) + "'"  
+                    column=" address='" + str(address) + "',qualification  = '" + str(qualification) + "', batchOfQualification ='" + str(batchofQualification) + "', institutionName ='" + str(institutionName) + "',universityName ='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "',interestId ='" + str(interstId) + "'"  
                     output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)             
                 if data != "0":
                     column = 'userId,userName,userTypeId'
