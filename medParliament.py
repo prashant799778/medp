@@ -283,7 +283,7 @@ def adminPannel():
         return output
 
 
-@app.route('/allSubAdmins', methods=['GET'])
+@app.route('/allSubAdmins', methods=['POST'])
 def allSubAdmins():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
