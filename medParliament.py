@@ -285,9 +285,9 @@ def allSubAdmins():
         print('C')
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
-            usertypeId=inputdata["usertypeId"]
+            userTypeId=inputdata["userTypeId"]
             column="*"
-            WhereCondition=" and usertypeId='" + str(userTypeId) + "'"
+            WhereCondition=" and userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
 
             if (data["status"]!="false"):           
