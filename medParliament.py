@@ -284,7 +284,7 @@ def allSubAdmins():
         commonfile.writeLog("addAdmin",inputdata,0)
         print('C')
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        if msg ="1":
+        if msg =="1":
             usertypeId=inputdata["usertypeId"]
             column="*"
             WhereCondition=" and usertypeId='" + str(userTypeId) + "'"
