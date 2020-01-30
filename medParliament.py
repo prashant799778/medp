@@ -708,7 +708,8 @@ def userPost():
     try: 
         startlimit,endlimit="",""   
         inputdata = request.form.get('data')       
-        inputdata = json.loads(inputdata)   
+        inputdata = json.loads(inputdata)
+        print(inputdata)   
         
         keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId']
         commonfile.writeLog("userPost",inputdata,0)
@@ -719,7 +720,7 @@ def userPost():
 
          
             userTypeId = inputdata["userTypeId"]
-            userId = inputdata["userId"]
+            UserId = inputdata["userId"]
             postTitle = inputdata["postTitle"] 
             postDescription = inputdata["postDescription"]
             showuserTypeId = inputdata["showuserTypeId"]
@@ -728,7 +729,7 @@ def userPost():
             PostId = commonfile.CreateHashKey(postTitle,postDescription)
             
             WhereCondition = " and postTitle = '" + str(postTitle) + "' and postDescription = '" + str(postDescription) + "'"
-            count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
+            count = databasefile.SelectCountQuery("userPost",WhereCondition,"")
             
             if int(count) > 0:
                 print('F')         
@@ -771,6 +772,7 @@ def userPost():
 
                 if data != "0":
                     column = '*'
+                    WhereCondition = " and postTitle = '" + str(postTitle) + "' and postDescription = '" + str(postDescription) + "'"
                     
                     data = databasefile.SelectQuery("userPost",column,WhereCondition,"",startlimit,endlimit)
                     if data["status"]!="false":
