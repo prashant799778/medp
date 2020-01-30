@@ -59,7 +59,7 @@ def getforumCommentReplyImagePath(filename):
 #folder path to save image
 def GetrewardCampaignImagePath(filename):
 
-    path = "/var/www/FandomLive/backend/FandomLive/Api/RewardImage/"+filename
+    path = "/var/www/medParliament/backend/med_parliament/RewardImage/"+filename
     return path
 
 def getSecurityCampaignUpdatePath(filename):
