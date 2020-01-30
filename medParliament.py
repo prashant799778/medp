@@ -743,7 +743,7 @@ def userPost():
                     userTypeId = inputdata['userTypeId']
                 if 'userId' in inputdata:                                    
                     UserId = inputdata['userId']
-                if 'postImage' in inputdata:
+                if 'postImage' in request.files:
                     
                     file = request.files.get('postImage')        
                     filename = file.filename or ''                 
@@ -765,7 +765,7 @@ def userPost():
                
 
                 columns = " userId,userTypeId,postId, postTitle , postDescription,postImage, postImagePath  "          
-                values = " '" + str(UserId) + "','" + str(userTypeId) + "','" + str(PostId) + "','" + str( postTitle) + "','" + str(postDescription) + "','" + str(postImage) + "', "            
+                values = " '" + str(UserId) + "','" + str(userTypeId) + "','" + str(PostId) + "','" + str( postTitle) + "','" + str(postDescription) + "','" + str(filename) + "', "            
                 values = values + " '" + str(PicPath) + "'"       
                 
 
