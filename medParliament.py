@@ -423,9 +423,9 @@ def studentMasterPannel():
     try:
         column="count(*) as count"
         startlimit,endlimit="",""
-        WhereCondition=" and usertypeId='7'"
+        WhereCondition=" and usertypeId='7' "
         
-        data = databasefile.SelectQueryOrderby("userMaster ",column,WhereCondition,""," ",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("userMaster  ",column,WhereCondition,""," ",startlimit,endlimit)
         policyMakerMasterCount=data["result"][0]
         
         
@@ -596,67 +596,10 @@ def DeleteStudents():
         return commonfile.Errormessage()    
 
 
-# @app.route('/UpdateUser', methods=['POST'])
-# def UpdateUser():
-#     try:
-#         startlimit,endlimit="",""
-#         if request.data:
-#             inputdata = commonfile.DecodeInputdata(request.get_data())         
-#             keyarr = ['userId','userName','mobileNo','email','gender','country','city','userTypeId']
-#             commonfile.writeLog("UpdateUser",inputdata,0)
-#             msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-
-#             if msg == "1":
-                 #organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","","","","","","","",""
-                 #address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
-
-#                 
-#                 UserId = inputdata["userId"]
-#                 UserName = inputdata["userName"]
-#                 MobileNo = inputdata["mobileNo"]
-#                 Email = inputdata["email"] 
-#                 Gender = inputdata["gender"]
-#                 # Password = inputdata["password"]
-#                 Country = inputdata["country"] 
-                   #City = inputdata["city"] 
-                   #UserTypeId= inputdata["city"] 
-            
-#                 WhereCondition = " and userId = '" + str(UserId) + "' and  userrTypeId = '" + str(UserTypeId) + " '"             
-#                 column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',country = '" + str(Country) + "', "               
-#                 column = column + " userName = '" + str(UserName) + "',mobileNo = '" + str(MobileNo) + "' "
-
-#                 data = databasefile.UpdateQuery("UserMaster",column,WhereCondition)
-                  #if (UserTypeId ==5):
-                        #  WhereCondition = " and userId = '" + str(UserId) + "' "
-
-                  #if  (UserTypeId == 6):
-                           # WhereCondition = " and userId = '" + str(UserId) + "'
-
-                  #if (UserTypeId ==7):
-                           #WhereCondition = " and userId = '" + str(UserId) + "'  
-                
-#                 if data != "0":
-#                     column = 'UserId,UserName,UserType'
-#                     data = databasefile.SelectQuery("UserMaster",column,WhereCondition,"",startlimit,endlimit)                  
-#                     return data
-#                 else:
-#                     return commonfile.Errormessage()
-#             else:
-#                  return msg
-#         else:
-#             return commonfile.InputKeyNotFoundMsg()
-
-#     except Exception as e :
-#         print("Exception--->" + str(e))                                  
-#         return commonfile.Errormessage()
 
 
 
        
-
-
-
-
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
     app.run(host='0.0.0.0',port=5031,debug=True)
