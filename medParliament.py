@@ -620,6 +620,65 @@ def DeleteStudents():
 #                 Country = inputdata["country"] 
                    #City = inputdata["city"] 
                    #UserTypeId= inputdata["city"] 
+                # if 'country' in inputdata:                    
+                #     Country = inputdata["country"]  
+                # if 'city' in inputdata:                    
+                #     City = inputdata["city"]  
+                # if 'userTypeId' in inputdata:                                    
+                #     userTypeId = inputdata['userTypeId']
+                # if 'gender' in inputdata:                    
+                #     Gender = inputdata['gender']                  
+                # if 'deviceid' in inputdata:                   
+                #     DeviceId = inputdata['deviceid'] 
+                # if 'deviceType' in inputdata:                    
+                #     DeviceType = inputdata['deviceType']
+                #     DeviceType = ConstantData.GetDeviceTypeId(DeviceType)
+                # if 'os' in inputdata:                    
+                #     Os = inputdata['os'] 
+                # if 'ImeiNo' in inputdata:                    
+                #    ImeiNo = inputdata['ImeiNo']
+                # if 'ipAddress' in inputdata:                    
+                #    ipAddress = inputdata['ipAddress']
+                # if 'password' in inputdata:                    
+                #    Password = inputdata['password']
+                # if 'organization' in inputdata:                    
+                #     organization = inputdata['organization']
+                
+                # if 'aboutProfile' in inputdata:                    
+                #     aboutProfile = inputdata['aboutProfile']
+
+                # if 'designation' in inputdata:                    
+                #    designation = inputdata['designation'] 
+
+                # if 'areaofActivity' in inputdata:                    
+                #     areaofActivity = inputdata['areaofActivity']
+
+                # if 'profileCategoryId' in inputdata:                    
+                #     profileCategoryId = inputdata['profileCategoryId']
+
+                # if 'interestId' in inputdata:                    
+                #     interestId = inputdata['interestId']   
+
+                # if 'address' in inputdata:                    
+                #     address = inputdata['address']
+
+                # if 'qualification' in inputdata:                    
+                #     qualification = inputdata['qualification']
+
+                # if 'batchofQualification' in inputdata:                    
+                #     batchofQualification = inputdata['batchofQualification']
+
+                # if 'institutionName' in inputdata:                    
+                #     instituteName = inputdata['institutionName']  
+
+                # if 'universityName' in inputdata:                    
+                #     universityName = inputdata['universityName']
+
+                # if 'universityAddress' in inputdata:                    
+                #     universityAddress = inputdata['universityAddress']
+
+
+
             
 #                 WhereCondition = " and userId = '" + str(UserId) + "' and  userrTypeId = '" + str(UserTypeId) + " '"             
 #                 column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',country = '" + str(Country) + "', "               
@@ -628,12 +687,17 @@ def DeleteStudents():
 #                 data = databasefile.UpdateQuery("UserMaster",column,WhereCondition)
                   #if (UserTypeId ==5):
                         #  WhereCondition = " and userId = '" + str(UserId) + "' "
-
+                        #column =" "organization = '" + str(organization) + "',aboutProfile='" + str(aboutProfile) + "',designation='" + str(designation) + "' "
+                        #output=databasefile.UpdateQuery("policyMakerMaster",column,WhereCondition)
                   #if  (UserTypeId == 6):
                            # WhereCondition = " and userId = '" + str(UserId) + "'
-
+                           #column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaOfActivity) + "',profileCategoryId='" + str(areaOfActivity) + "',interestId = '" + str(interestId) + "' "
+                            #output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
                   #if (UserTypeId ==7):
-                           #WhereCondition = " and userId = '" + str(UserId) + "'  
+                           #WhereCondition = " and userId = '" + str(UserId) + "' 
+                           #column=
+                          #output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)
+
                 
 #                 if data != "0":
 #                     column = 'UserId,UserName,UserType'
