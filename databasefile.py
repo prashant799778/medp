@@ -75,8 +75,8 @@ def SelectQuery1(table,columns,whereCondition):
         query = " select " + columns + " from " + table + " " + whereCondition  + "  ;"
 
         print(query)
-        conn = Connection()      
-        cursor = conn.cursor()
+        con = DBconnection()      
+        cursor = con.cursor()
         cursor.execute(query)
         data = cursor.fetchall()
         cursor.close()
@@ -84,7 +84,7 @@ def SelectQuery1(table,columns,whereCondition):
         if data:
             data = {"status":"true","message":"","result":data}
         else:
-            data = {"status":"true","message":"No Data Found","result":""}
+            data = {"status":"False","message":"No Data Found","result":""}
 
         return data
 

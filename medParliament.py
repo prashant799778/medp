@@ -868,17 +868,24 @@ def allQualifications():
 @app.route('/allinterests', methods=['GET'])
 def allinterests():
     try:
-        columns=" id, name "
-        whereCondition="and interestId = '" + str(id) + "'"
-        
-        data = databasefile.SelectQuery1("interestMaster;",columns,whereCondition)
-
-        if data:           
-            Data = {"allInterests": data["result"],"status":"true"}
-            return Data
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        keyarr = ['id']
+        commonfile.writeLog("allinterests",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            id=inputdata["id"]
+            columns=" id, name "
+            whereCondition="and interestId = '" + str(inputdata['id']) + "'"
+            
+            data = databasefile.SelectQuery1("interestMaster",columns,whereCondition)
+            if (data["status"]!="false"):         
+                Data = {"result":data["result"],"status":"true"}
+                return Data
+            else:
+                output = {"result":"No Data Found","status":"false"}
+                return output
         else:
-            output = {"result":"No Data Found","status":"false"}
-            return output
+            return msg         
 
     except Exception as e :
         print("Exception---->" + str(e))    
