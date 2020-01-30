@@ -852,6 +852,26 @@ def allQualifications():
         return output 
 
 
+@app.route('/allUniversities', methods=['GET'])
+def allUniversities():
+    try:
+        columns=" id,  universityName  "
+        
+        data = databasefile.SelectQueryMaxId("universityMaster ",columns)
+       
+
+        if data:           
+            Data = {"Universities": data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output 
+
 
        
 if __name__ == "__main__":
