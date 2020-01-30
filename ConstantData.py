@@ -57,9 +57,9 @@ def getforumCommentReplyImagePath(filename):
 
 
 #folder path to save image
-def GetrewardCampaignImagePath(filename):
+def GetPostImagePath(filename):
 
-    path = "/var/www/medParliament/backend/med_parliament/RewardImage/"+filename
+    path = "/var/www/medParliament/backend/med_parliament/postImage/"+filename
     return path
 
 def getSecurityCampaignUpdatePath(filename):
