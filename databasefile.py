@@ -114,7 +114,7 @@ def SelectQuery(table,columns,whereCondition,groupby,startlimit,endlimit):
         if data:
             data = {"status":"true","message":"","result":data}
         else:
-            data = {"status":"true","message":"No Data Found","result":""}
+            data = {"status":"false","message":"No Data Found","result":""}
 
         return data
 
