@@ -1,7 +1,7 @@
 
 def GetBaseURL():
  
-    path = "http://139.59.78.54:5001"
+    path = "http://134.209.153.34:5031"
     return path
 
 def getwebBaseurl():
