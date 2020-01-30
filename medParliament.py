@@ -674,6 +674,7 @@ def UpdateUser():
 
                 if 'universityAddress' in inputdata:                    
                     universityAddress = inputdata['universityAddress']
+                    
 
             
                 WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"             
