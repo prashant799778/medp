@@ -724,7 +724,7 @@ def userPost():
 
          
             userTypeId = inputdata["userTypeId"]
-            userId = inputdata["userId"]
+            UserId = inputdata["userId"]
             postTitle = inputdata["postTitle"] 
             postDescription = inputdata["postDescription"]
             showuserTypeId = inputdata["showuserTypeId"]
@@ -733,7 +733,7 @@ def userPost():
             PostId = commonfile.CreateHashKey(postTitle,postDescription)
             
             WhereCondition = " and postTitle = '" + str(postTitle) + "' and postDescription = '" + str(postDescription) + "'"
-            count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
+            count = databasefile.SelectCountQuery("userPost",WhereCondition,"")
             
             if int(count) > 0:
                 print('F')         
