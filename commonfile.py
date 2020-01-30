@@ -43,6 +43,10 @@ def EmailMobileAlreadyExistMsg():
     data = {"status":"false","message":"Email Or MobileNo Already Exists","result":""}
     return data  
 
+def postTitlepostDescriptionAlreadyExistMsg():
+    data = {"status":"false","message":"postTitle Or postDescription Already Exists","result":""}
+    return data      
+
 def MobileNoNotFound():
     data = {"status":"false","message":"MobileNo Not Exists","result":""}
     return data   

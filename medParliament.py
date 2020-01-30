@@ -707,6 +707,99 @@ def UpdateUser():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
+@app.route('/userPost', methods=['POST'])
+def userPost():
+
+    try: 
+        startlimit,endlimit="",""   
+        inputdata = request.form.get('data')       
+        inputdata = json.loads(inputdata)   
+        
+        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId']
+        commonfile.writeLog("userPost",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+       
+        if msg == "1":  
+            postImage,postFilePath="",""
+
+         
+            userTypeId = inputdata["userTypeId"]
+            userId = inputdata["userId"]
+            postTitle = inputdata["postTitle"] 
+            postDescription = inputdata["postDescription"]
+            showuserTypeId = inputdata["showuserTypeId"]
+           
+
+            PostId = commonfile.CreateHashKey(postTitle,postDescription)
+            
+            WhereCondition = " and postTitle = '" + str(postTitle) + "' and postDescription = '" + str(postDescription) + "'"
+            count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
+            
+            if int(count) > 0:
+                print('F')         
+                return commonfile.postTitlepostDescriptionAlreadyExistMsg()
+            else:
+                print("qqqqqqqqqqqqqqqqqqqqq")
+                postImage,postFilePath="",""
+                
+                
+                if 'userTypeId' in inputdata:                                    
+                    userTypeId = inputdata['userTypeId']
+                if 'postImage' in inputdata:
+                    
+                    file = request.files.get('postImage')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    
+                    FolderPath = ConstantData.GetPostImagePath(filename)
+                    filepath = '/postImage/' + filename 
+                    file.save(FolderPath)
+                    PicPath = filepath
+
+
+                
+
+ 
+
+
+
+               
+
+                columns = " userId,userTypeId,postId, postTitle , postDescription,postImage,postFilePath "          
+                values = " '" + str(UserId) + "','" + str(userTypeId) + "','" + str(PostId) + "','" + str( postTitle) + "','" + str(postDescription) + "','" + str(postImage) + "', "            
+                values = values + " '" + str(PicPath) + "'"       
+                
+
+
+                data = databasefile.InsertQuery("userPost",columns,values) 
+
+                if data != "0":
+                    column = '*'
+                    
+                    data = databasefile.SelectQuery("userPost",column,WhereCondition,"",startlimit,endlimit)
+                    if data["status"]!="false":
+                        for i in showuserTypeId:
+                            column="userId,showuserTypeId,postId"
+                            values= " '" + str(data["userId"]) + "','" + str(i) + "','" + str(data["postId"]) + "'"
+                            data2 = databasefile.InsertQuery("postUserTypeMapping",columns,values) 
+
+                        
+
+
+                    else:
+                        return commonfile.Errormessage()
+
+                    return data
+                else:
+                    return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
 
 
        
