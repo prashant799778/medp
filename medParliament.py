@@ -674,28 +674,15 @@ def UpdateUser():
 
                 if 'universityAddress' in inputdata:                    
                     universityAddress = inputdata['universityAddress']
-
-            
-                WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"             
-                column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',country = '" + str(Country) + "', "               
-                column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "' "
-
-                data = databasefile.UpdateQuery("UserMaster",column,WhereCondition)
-                if (UserTypeId == 5):
-                    WhereCondition = " and userId = '" + str(UserId) + "' "
-                    column =" organization = '" + str(organization) + "',aboutProfile='" + str(aboutProfile) + "',designation='" + str(designation) + "' "
-                    output=databasefile.UpdateQuery("policyMakerMaster",column,WhereCondition)
-                if  (UserTypeId == 6):
-                    WhereCondition = " and userId = '" + str(UserId) + "'"
-                    column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaOfActivity) + "',profileCategoryId='" + str(areaOfActivity) + "',interestId = '" + str(interestId) + "' "
-                    output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
-                if (UserTypeId == 7):
-                    WhereCondition = " and userId = '" + str(UserId) + "'" 
-                    column=" address='" + str(address) + "',qualification  = '" + str(qualifiaction) + "', batchOfQualification ='" + str(batchOfQualification) + "', institutionName ='" + str(institutionName) + "',universityName ='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "',interestId ='" + str(interstId) + "'"  
-                    output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)               
+                
+                WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+                column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',country = '" + str(Country) + "', "
+                column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'"
+                data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
+                           
                 if data != "0":
-                    column = 'UserId,UserName,UserType'
-                    data = databasefile.SelectQuery("UserMaster",column,WhereCondition,"",startlimit,endlimit)                  
+                    column = 'userId,userName,userTypeId'
+                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
                     return data
                 else:
                     return commonfile.Errormessage()
