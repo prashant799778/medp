@@ -623,7 +623,7 @@ def UpdateUser():
                 # Password = inputdata["password"]
                 Country = inputdata["country"] 
                 City = inputdata["city"] 
-                UserTypeId= inputdata["city"] 
+                UserTypeId= inputdata["userTypeId"] 
                 if 'country' in inputdata:                    
                     Country = inputdata["country"]  
                 if 'city' in inputdata:                    
