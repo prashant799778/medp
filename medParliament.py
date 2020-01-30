@@ -719,7 +719,7 @@ def userPost():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":  
-            postImage,postFilePath="",""
+            
 
          
             userTypeId = inputdata["userTypeId"]
