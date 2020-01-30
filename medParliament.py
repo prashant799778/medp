@@ -481,22 +481,18 @@ def allstudents():
 def DeleteUser():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
-        usertypeId,userId="",""
-        if (usertypeId !="" and userId!=""):
-            if 'userTypeId' in inputdata:                                    
-                userTypeId = inputdata['userTypeId'] 
-            if 'userId' in inputdata:                                    
-                userId = inputdata['userId']     
+        startlimit,endlimit="",""
+        keyarr = ['userTypeId','userId']
+        print(inputdata,"B")
+        commonfile.writeLog("DeleteSubAdmin",inputdata,0)
+        print('C')
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userTypeId=inputdata["userTypeId"]
+            userId=inputdata["userId"]
 
-        if len(inputdata) > 0:           
-            commonfile.writeLog("DeleteUser",inputdata,0)
-
-        keyarr = ['userId,usertypeId']
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
-        
-        if msg == "1":                        
             WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
-            data = databasefile.DeleteQuery("UserMaster",WhereCondition)
+            data = databasefile.DeleteQuery("userMaster",WhereCondition)
 
             if data != "0":
                 return data
@@ -515,24 +511,19 @@ def DeleteUser():
 def DeletePolicyMakers():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
-        usertypeId,userId="",""
-        if (usertypeId !="" and userId!=""):
-            if 'userTypeId' in inputdata:                                    
-                userTypeId = inputdata['userTypeId'] 
-            if 'userId' in inputdata:                                    
-                userId = inputdata['userId']     
-
-        if len(inputdata) > 0:           
-            commonfile.writeLog("DeleteUser",inputdata,0)
-
-        keyarr = ['userId,usertypeId']
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
-        
-        if msg == "1":
+        startlimit,endlimit="",""
+        keyarr = ['userTypeId','userId']
+        print(inputdata,"B")
+        commonfile.writeLog("DeletePolicyMakers",inputdata,0)
+        print('C')
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userTypeId=inputdata["userTypeId"]
+            userId=inputdata["userId"]
             WhereCondition1=  " and  userId = '" + str(userTypeId) + "' "  
             data2=   databasefile.DeleteQuery("policyMakerMaster",WhereCondition1)                  
             WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
-            data = databasefile.DeleteQuery("UserMaster",WhereCondition)
+            data = databasefile.DeleteQuery("userMaster",WhereCondition)
 
             if data != "0":
                 return data
@@ -549,24 +540,19 @@ def DeletePolicyMakers():
 def DeleteEnterpeneurs():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
-        usertypeId,userId="",""
-        if (usertypeId !="" and userId!=""):
-            if 'userTypeId' in inputdata:                                    
-                userTypeId = inputdata['userTypeId'] 
-            if 'userId' in inputdata:                                    
-                userId = inputdata['userId']     
-
-        if len(inputdata) > 0:           
-            commonfile.writeLog("DeleteUser",inputdata,0)
-
-        keyarr = ['userId,usertypeId']
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
-        
-        if msg == "1":
+        startlimit,endlimit="",""
+        keyarr = ['userTypeId','userId']
+        print(inputdata,"B")
+        commonfile.writeLog("DeleteEnterpeneurs",inputdata,0)
+        print('C')
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userTypeId=inputdata["userTypeId"]
+            userId=inputdata["userId"]
             WhereCondition1=  " and  userId = '" + str(userTypeId) + "' "  
             data2=   databasefile.DeleteQuery("enterprenuerMaster",WhereCondition1)                  
             WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
-            data = databasefile.DeleteQuery("UserMaster",WhereCondition)
+            data = databasefile.DeleteQuery("userMaster",WhereCondition)
 
             if data != "0":
                 return data
@@ -584,24 +570,19 @@ def DeleteEnterpeneurs():
 def DeleteStudents():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
-        usertypeId,userId="",""
-        if (usertypeId !="" and userId!=""):
-            if 'userTypeId' in inputdata:                                    
-                userTypeId = inputdata['userTypeId'] 
-            if 'userId' in inputdata:                                    
-                userId = inputdata['userId']     
-
-        if len(inputdata) > 0:           
-            commonfile.writeLog("DeleteUser",inputdata,0)
-
-        keyarr = ['userId,usertypeId']
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
-        
-        if msg == "1":
+        startlimit,endlimit="",""
+        keyarr = ['userTypeId','userId']
+        print(inputdata,"B")
+        commonfile.writeLog("DeleteStudents",inputdata,0)
+        print('C')
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userTypeId=inputdata["userTypeId"]
+            userId=inputdata["userId"]
             WhereCondition1=  " and  userId = '" + str(userTypeId) + "' "  
             data2=   databasefile.DeleteQuery("studentMaster",WhereCondition1)                  
             WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
-            data = databasefile.DeleteQuery("UserMaster",WhereCondition)
+            data = databasefile.DeleteQuery("userMaster",WhereCondition)
 
             if data != "0":
                 return data
