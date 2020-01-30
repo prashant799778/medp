@@ -254,22 +254,33 @@ def adminPannel():
     try:
         column="count(*) as count"
         startlimit,endlimit="",""
-        WhereCondition=" and usertypeId='2'"
-        WhereCondition1=" and usertypeId='3'"
-        WhereCondition3=" and usertypeId='4'"
+        WhereCondition=" and usertypeId<'5'"
+       
+        WhereCondition4=" and usertypeId='5'"
+        WhereCondition5=" and usertypeId='6'"
+        WhereCondition6=" and usertypeId='7'"
+
+        
+
 
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
-        policyMakerMasterCount=data["result"][0]
-        data2 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition1,""," ",startlimit,endlimit)
-        enterprenuerMasterCount=data2["result"][0]
-        data3 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition3,""," ",startlimit,endlimit)
-        studentMasterCount=data3["result"][0]
+        totalsubAdmins=data["result"][0]
+        y=int(totalsubAdmins["count"])-1
+        print(y)
+        y2=[]
+        y2.append({"count":y})
+        data2 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition4,""," ",startlimit,endlimit)
+        subAdmins2=data2["result"][0]
+        data3 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition5,""," ",startlimit,endlimit)
+        subAdmins3=data3["result"][0]
+        data4 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition6,""," ",startlimit,endlimit)
+        subAdmins4=data4["result"][0]
         
         
 
 
         if data:           
-            Data = {"policyMakerMasterCount":policyMakerMasterCount,"enterprenuerMasterCount":enterprenuerMasterCount,"studentMasterCount":studentMasterCount,"status":"true"}
+            Data = {"totalAdmins":y2,"policyMakerMasterCount":subAdmins2,"enterprenuerMasterCount":subAdmins3,"studentMasterCount":subAdmins4,"status":"true"}
             return Data
         else:
             output = {"result":"No Data Found","status":"false"}
