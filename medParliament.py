@@ -606,7 +606,7 @@ def UpdateUser():
             msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
             if msg == "1":
                 print('3')
-                organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","","","","","","","",""
+                organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","",""
                 address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
                 UserId = inputdata["userId"]
                 UserName = inputdata["userName"]
