@@ -832,7 +832,7 @@ def allPosts():
 @app.route('/allQualifications', methods=['GET'])
 def allQualifications():
     try:
-        columns=" qualificationName "
+        columns=" id, qualificationName "
         
         data = databasefile.SelectQueryMaxId("qualificationMaster",columns)
        
