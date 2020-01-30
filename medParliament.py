@@ -680,7 +680,7 @@ def UpdateUser():
                 column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',country = '" + str(Country) + "', "               
                 column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "' "
 
-                data = databasefile.UpdateQuery("UserMaster",column,WhereCondition)
+                data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
                 if (UserTypeId == 5):
                     WhereCondition = " and userId = '" + str(UserId) + "' "
                     column =" organization = '" + str(organization) + "',aboutProfile='" + str(aboutProfile) + "',designation='" + str(designation) + "' "
@@ -694,8 +694,8 @@ def UpdateUser():
                     column=" address='" + str(address) + "',qualification  = '" + str(qualifiaction) + "', batchOfQualification ='" + str(batchOfQualification) + "', institutionName ='" + str(institutionName) + "',universityName ='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "',interestId ='" + str(interstId) + "'      "  
                     output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)               
                 if data != "0":
-                    column = 'UserId,UserName,UserType'
-                    data = databasefile.SelectQuery("UserMaster",column,WhereCondition,"",startlimit,endlimit)                  
+                    column = 'userId,userName,userTypeId'
+                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
                     return data
                 else:
                     return commonfile.Errormessage()
