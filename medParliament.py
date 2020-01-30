@@ -786,10 +786,9 @@ def userPost():
                     
                     data = databasefile.SelectQuery("userPost",column,WhereCondition,"",startlimit,endlimit)
                     if data["status"]!="false":
-                        for i in showuserTypeId:
-                            column="userId,showuserTypeId,postId"
-                            values= " '" + str(data["userId"]) + "','" + str(i) + "','" + str(data["postId"]) + "'"
-                            data2 = databasefile.InsertQuery("postUserTypeMapping",columns,values) 
+                        column="userId,showuserTypeId,postId"
+                        values= " '" + str(data["userId"]) + "','" + str(showuserTypeId) + "','" + str(data["postId"]) + "'"
+                        data2 = databasefile.InsertQuery("postUserTypeMapping",columns,values) 
 
                         
 
