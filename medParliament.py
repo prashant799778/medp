@@ -736,7 +736,7 @@ def userPost():
                 return commonfile.postTitlepostDescriptionAlreadyExistMsg()
             else:
                 print("qqqqqqqqqqqqqqqqqqqqq")
-                postImage,postFilePath="",""
+                postImage,postFilePath,PicPath="","",""
                 
                 
                 if 'userTypeId' in inputdata:                                    
@@ -774,7 +774,7 @@ def userPost():
                     column = '*'
                     WhereCondition = " and postTitle = '" + str(postTitle) + "' and postDescription = '" + str(postDescription) + "'"
                     
-                    data = databasefile.SelectQuery("userPost",column,WhereCondition,"",startlimit,endlimit)
+                    data11 = databasefile.SelectQuery("userPost",column,WhereCondition,"",startlimit,endlimit)
                     if data["status"]!="false":
                         column="userId,showuserTypeId,postId"
                         values= " '" + str(data["userId"]) + "','" + str(showuserTypeId) + "','" + str(data["postId"]) + "'"
@@ -786,7 +786,7 @@ def userPost():
                     else:
                         return commonfile.Errormessage()
 
-                    return data
+                    return data11
                 else:
                     return commonfile.Errormessage()
         else:
