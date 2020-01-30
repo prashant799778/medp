@@ -832,11 +832,9 @@ def allPosts():
 @app.route('/allQualifications', methods=['GET'])
 def allQualifications():
     try:
-        column=" qualificationName "
-        startlimit,endlimit="",""
-        WhereCondition=""
+        columns=" qualificationName "
         
-        data = databasefile.SelectQuery("qualificationMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        data = databasefile.SelectQueryMaxId("qualificationMaster",columns)
        
 
         if data:           
