@@ -198,17 +198,12 @@ def login():
 def addAdmin():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
-        print(inputdata,"A")
         startlimit,endlimit="",""
         keyarr = ['adminName','userTypeId','emailId','password']
-        print(inputdata,"B")
         commonfile.writeLog("addAdmin",inputdata,0)
-        print('C')
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        print('D')
        
         if msg == "1":
-            print('E')
             Name = inputdata["adminName"]
             userTypeId = inputdata["userTypeId"]
             Email = inputdata["emailId"]
@@ -220,18 +215,14 @@ def addAdmin():
             count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
             
             if int(count) > 0:
-                print('F')         
                 return commonfile.EmailMobileAlreadyExistMsg()
             else:
-                print('G')
                 
                 column = "userId,email,userName,password,userTypeId"                
                 values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(password) + "','" + str(userTypeId) + "'"
 
                 data = databasefile.InsertQuery("userMaster",column,values)        
-                print('h')
                 if data != "0":
-                    print('i')
                     column = 'userId,userName,userTypeId'
                     
                     data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
