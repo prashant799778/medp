@@ -32,17 +32,20 @@ def SignUp():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":  
-            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country= "","","","","",""
+            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City,organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","","","","","","","",""
+            address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
+            
          
             Name = inputdata["userName"]
             MobileNo = inputdata["mobileNo"]
             Email = inputdata["email"] 
             Gender = inputdata["gender"]
             Password = inputdata["password"]
+            print(Password)
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
-            WhereCondition = " and email = '" + str(Email) + "' or password = '" + str(password) + "'"
+            WhereCondition = " and email = '" + str(Email) + "' and password = '" + str(Password) + "'"
             count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
             
             if int(count) > 0:
@@ -53,6 +56,8 @@ def SignUp():
                 
                 if 'country' in inputdata:                    
                     Country = inputdata["country"]  
+                if 'city' in inputdata:                    
+                    City = inputdata["city"]  
                 if 'userTypeId' in inputdata:                                    
                     userTypeId = inputdata['userTypeId']
                 if 'gender' in inputdata:                    
@@ -68,6 +73,47 @@ def SignUp():
                    ImeiNo = inputdata['ImeiNo']
                 if 'ipAddress' in inputdata:                    
                    ipAddress = inputdata['ipAddress']
+                if 'password' in inputdata:                    
+                   Password = inputdata['password']
+                if 'organization' in inputdata:                    
+                    organization = inputdata['organization']
+                
+                if 'aboutProfile' in inputdata:                    
+                    aboutProfile = inputdata['aboutProfile']
+
+                if 'designation' in inputdata:                    
+                   designation = inputdata['designation'] 
+
+                if 'areaofActivity' in inputdata:                    
+                    areaofActivity = inputdata['areaofActivity']
+
+                if 'profileCategoryId' in inputdata:                    
+                    profileCategoryId = inputdata['profileCategoryId']
+
+                if 'interestId' in inputdata:                    
+                    interestId = inputdata['interestId']   
+
+                if 'address' in inputdata:                    
+                    address = inputdata['address']
+
+                if 'qualification' in inputdata:                    
+                    qualification = inputdata['qualification']
+
+                if 'batchofQualification' in inputdata:                    
+                    batchofQualification = inputdata['batchofQualification']
+
+                if 'institutionName' in inputdata:                    
+                    instituteName = inputdata['institutionName']  
+
+                if 'universityName' in inputdata:                    
+                    universityName = inputdata['universityName']
+
+                if 'universityAddress' in inputdata:                    
+                    universityAddress = inputdata['universityAddress']
+
+
+                print(Password)
+
 
 
                
@@ -75,15 +121,39 @@ def SignUp():
                 columns = " userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, country, city, deviceid, imeiNo "          
                 values = " '" + str(UserId) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Email) + "','" + str(userTypeId) + "','" + str(Gender) + "', "            
                 values = values + " '" + str(Password) + "','" + str(DeviceType) + "','" + str(Os) + "','" + str(ipAddress) + "','"                 
-                values = values + " '" + str(Country) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
+                values = values + str(Country) + "','" + str(City) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
 
 
-                data = databasefile.InsertQuery("UserMaster",column,values) 
+                data = databasefile.InsertQuery("userMaster",columns,values) 
 
                 if data != "0":
                     column = 'userId,userName,userTypeId'
                     
-                    data = databasefile.SelectQuery("UserMaster",column,WhereCondition,"",startlimit,endlimit) 
+                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)
+                    if data["status"]!="false":
+                        y=data["result"][0]
+                        if (y["userTypeId"] == 5):
+                            columns="userId,aboutProfile,organization,designation"
+                            values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
+                            data1=databasefile.InsertQuery("policyMakerMaster",columns,values) 
+
+
+
+                        if (y["userTypeId"] == 6):
+                            columns="userId,areaOfActivity,profileCategoryId,designation,interestId"
+                            values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation) + "','" + str(interestId) + "'"
+                            data2=databasefile.InsertQuery("enterprenuerMaster",columns,values) 
+
+
+                        if (y["userTypeId"]== 7):
+                            columns="userId,address,qualification,batchofQualification,institutionName,universityAddress,universityName,interestId"
+                            values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "','" + str(interestId) + "'"
+                            data3 = databasefile.InsertQuery("studentMaster",columns,values) 
+
+
+                    else:
+                        return commonfile.Errormessage()
+
                     return data
                 else:
                     return commonfile.Errormessage()
@@ -93,51 +163,6 @@ def SignUp():
     except Exception as e:
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
-@app.route('/addUser', methods=['POST'])
-def addUser():
-    try:
-        data1 = commonfile.DecodeInputdata(request.get_data())
-        UserId=uuid.uuid1()
-        UserID=UserId.hex
-        columns = " * "
-        whereCondition= " and mobileNo='"+str(data1["mobileNo"])+ "'"
-        data= databasefile.SelectQuery("userMaster",columns,whereCondition)
-        print(data["message"],'data')
-        if data["message"] == 'No Data Found':
-            print('A')
-            columns = " userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, country, city, deviceid, imeiNo "
-            values = "'"+str(UserID)+ "','"+str(data1["userName"])+"','"+str(data1["mobileNo"])+"','"+str(data1["email"])+"','"+str(data1["userTypeId"])+"','"+str(data1["gender"])+"','"+str(data1["password"])+"','"+str(data1["deviceType"])+"','"+str(data1["os"])+"','"+str(data1["ipAddress"])+"','"+str(data1["country"])+"','"+str(data1["city"])+"','"+str(data1["deviceid"])+"','"+str(data1["ImeiNo"])+"'"
-            insertdata=databasefile.InsertQuery("userMaster",columns,values)
-            columns = " * "
-            whereCondition= " and mobileNo='"+str(data1["mobileNo"])+ "'"
-            user_data= databasefile.SelectQuery("userMaster",columns,whereCondition)
-            print('user_data', user_data["result"]["userTypeId"])
-            if user_data["result"]["userTypeId"] == 2 or user_data["result"]["userTypeId"] == 5:
-                columns = " userId, organization, aboutProfile, designation "
-                values = "'"+str(data1["userId"])+ "','"+str(data1["organization"])+"','"+str(data1["aboutProfile"])+"','"+str(data1["designation"])+"'"
-                insertdata=databasefile.InsertQuery("policyMaker",columns,values)
-                return {"Status":"PolicyMaker added  successfully"}
-            elif user_data["result"]["userTypeId"] == 3 or user_data["result"]["userTypeId"] == 6:
-                columns = " userId, designation, areaofActivity, profileCategoryId, interestId "
-                values = "'"+str(data1["userId"])+ "','"+str(data1["designation"])+"','"+str(data1["areaofActivity"])+"','"+str(data1["profileCategoryId"])+"','"+str(data1["interestId"])+"'"
-                insertdata=databasefile.InsertQuery("enterprenuerMaster",columns,values)
-                return {"Status":"Enterprenuer added  successfully"}
-            elif user_data["result"]["userTypeId"] == 4 or user_data["result"]["userTypeId"] == 7:
-                columns = " userId, address, qualification, batchofQualification, instituteName, universityName, universityAddress, interestId "
-                values = "'"+str(data1["userId"])+ "','"+str(data1["address"])+"','"+str(data1["qualification"])+"','"+str(data1["batchofQualification"])+"','"+str(data1["instituteName"])+"','"+str(data1["universityName"])+"','"+str(data1["universityAddress"])+"','"+str(data1["interestId"])+"'"
-                insertdata=databasefile.InsertQuery("studentMaster",columns,values)
-                return {"Status":"Student added  successfully"}
-            else:
-                return {"Status":"Not Found"}
-
-            return {"userid":str(UserID), "userTypeId":str(user_data["result"]["userTypeId"])}
-        else:
-            print('B')
-            return {"Status":"User already existed"}
-    except Exception as e :
-        print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
-        return output
 
 @app.route('/Login', methods=['GET'])
 def login():
@@ -145,18 +170,18 @@ def login():
         password = request.args['password']
        
         mobile = request.args['email']
-        column=  "us.mobileNo,us.userName,us.email,um.usertype,us.userId"
-        whereCondition= "us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.usertypeId=um.Id"
+        column=  "us.mobileNo,us.userName,us.email,um.userName as userName,us.userId as userId"
+        whereCondition= " and us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.userTypeId=um.id"
         groupby,startlimit,endlimit="","",""
         loginuser=databasefile.SelectQuery("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
         
                
       
-        if (loginuser!=0):   
-            Data = {"result":loginuser,"status":"true"}                  
+        if  (loginuser["status"]!="false"):   
+            Data = {"result":loginuser["result"],"status":"true"}                  
             return Data
         else:
-            data={"status":"Failed","result":"Login Failed"}
+            data={"status":"False","result":"wrong credentials"}
             return data
 
     except KeyError as e:
@@ -169,7 +194,7 @@ def login():
         output = {"result":"something went wrong","status":"false"}
         return output        
 
-@app.route('/addAdmin', methods=['POST'])
+@app.route('/addSubAdmins', methods=['POST'])
 def addAdmin():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
@@ -213,9 +238,442 @@ def addAdmin():
     except Exception as e :
         print("Exception---->" +str(e))           
         output = {"result":"something went wrong","status":"false"}
-        return output      
+        return output
 
-    
+
+
+@app.route('/adminPannel', methods=['GET'])
+def adminPannel():
+    try:
+        column="count(*) as count"
+        startlimit,endlimit="",""
+        WhereCondition=" and usertypeId='2'"
+        WhereCondition1=" and usertypeId='3'"
+        WhereCondition3=" and usertypeId='4'"
+
+        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        policyMakerMasterCount=data["result"][0]
+        data2 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition1,""," ",startlimit,endlimit)
+        enterprenuerMasterCount=data2["result"][0]
+        data3 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition3,""," ",startlimit,endlimit)
+        studentMasterCount=data3["result"][0]
+        
+        
+
+
+        if data:           
+            Data = {"policyMakerMasterCount":policyMakerMasterCount,"enterprenuerMasterCount":enterprenuerMasterCount,"studentMasterCount":studentMasterCount,"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output
+
+
+@app.route('/allSubAdmins', methods=['POST'])
+def allSubAdmins():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        usertypeId=""
+        if usertypeId !="":
+            if 'userTypeId' in inputdata:                                    
+                userTypeId = inputdata['userTypeId'] 
+        
+        column="*"
+        
+        startlimit,endlimit="",""
+        WhereCondition=" and usertypeId='" + str(userTypeId) + "'"
+        
+        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        
+        
+        
+        
+
+
+
+        if (data["status"]!="false"):           
+            Data = {"result":data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output
+
+                  
+
+
+
+@app.route('/policyMakerPannel', methods=['GET'])
+def policyMakerPannel():
+    try:
+        column="count(*) as count"
+        startlimit,endlimit="",""
+        WhereCondition=" and usertypeId='5'"
+        
+        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        policyMakerMasterCount=data["result"][0]
+        
+        
+        
+
+
+        if data:           
+            Data = {"policyMakeruserCount":policyMakerMasterCount,"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output 
+
+
+@app.route('/allpolicyMakers', methods=['GET'])
+def allpolicyMakers():
+    try:
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.country,"
+        column=column+"pm.aboutProfile,pm.organization,pm.designation"
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId "
+        
+        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
+      
+        
+        
+
+
+        if (data["status"]!="false"):           
+            Data = {"result":data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output                 
+
+@app.route('/enterprenuerMasterPannel', methods=['GET'])
+def enterprenuerMasterPannel():
+    try:
+        column="count(*) as count"
+        startlimit,endlimit="",""
+        WhereCondition=" and usertypeId='6'"
+        
+        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        policyMakerMasterCount=data["result"][0]
+        
+        
+        
+
+
+        if data:           
+            Data = {"enterprenueruserCount":policyMakerMasterCount,"status":"true"}
+            return Data 
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output  
+
+
+@app.route('/allenterprenuers', methods=['GET'])
+def allenterprenuer():
+    try:
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.country,um.city,"
+        column=column+"pm.areaOfActivity,pm.profileCategoryId,pm.designation,pm.interestId"
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId "
+        
+        data = databasefile.SelectQueryOrderby("userMaster as um,enterprenuerMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
+     
+        
+        
+        
+
+
+        if (data["status"]!="false"):           
+            Data = {"result":data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output         
+
+
+@app.route('/studentMasterPannel', methods=['GET'])
+def studentMasterPannel():
+    try:
+        column="count(*) as count"
+        startlimit,endlimit="",""
+        WhereCondition=" and usertypeId='7'"
+        
+        data = databasefile.SelectQueryOrderby("userMaster ",column,WhereCondition,""," ",startlimit,endlimit)
+        policyMakerMasterCount=data["result"][0]
+        
+        
+        
+
+
+        if data:           
+            Data = {"studentuserCount":policyMakerMasterCount,"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output  
+
+
+
+
+@app.route('/allstudents', methods=['GET'])
+def allstudents():
+    try:
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,"
+        column=column+" pm.address,pm.qualification,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityName,pm.interestId "
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId "
+        
+        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
+      
+        
+        
+
+
+        if (data["status"]!="false"):           
+            Data = {"result":data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output                   
+
+
+
+
+
+@app.route('/DeleteSubAdmin', methods=['GET'])
+def DeleteUser():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        usertypeId,userId="",""
+        if (usertypeId !="" and userId!=""):
+            if 'userTypeId' in inputdata:                                    
+                userTypeId = inputdata['userTypeId'] 
+            if 'userId' in inputdata:                                    
+                userId = inputdata['userId']     
+
+        if len(inputdata) > 0:           
+            commonfile.writeLog("DeleteUser",inputdata,0)
+
+        keyarr = ['userId,usertypeId']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        
+        if msg == "1":                        
+            WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
+            data = databasefile.DeleteQuery("UserMaster",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+ 
+
+
+@app.route('/DeletePolicyMakers', methods=['GET'])
+def DeletePolicyMakers():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        usertypeId,userId="",""
+        if (usertypeId !="" and userId!=""):
+            if 'userTypeId' in inputdata:                                    
+                userTypeId = inputdata['userTypeId'] 
+            if 'userId' in inputdata:                                    
+                userId = inputdata['userId']     
+
+        if len(inputdata) > 0:           
+            commonfile.writeLog("DeleteUser",inputdata,0)
+
+        keyarr = ['userId,usertypeId']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        
+        if msg == "1":
+            WhereCondition1=  " and  userId = '" + str(userTypeId) + "' "  
+            data2=   databasefile.DeleteQuery("policyMakerMaster",WhereCondition1)                  
+            WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
+            data = databasefile.DeleteQuery("UserMaster",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+@app.route('/DeleteEnterpeneurs', methods=['GET'])
+def DeleteEnterpeneurs():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        usertypeId,userId="",""
+        if (usertypeId !="" and userId!=""):
+            if 'userTypeId' in inputdata:                                    
+                userTypeId = inputdata['userTypeId'] 
+            if 'userId' in inputdata:                                    
+                userId = inputdata['userId']     
+
+        if len(inputdata) > 0:           
+            commonfile.writeLog("DeleteUser",inputdata,0)
+
+        keyarr = ['userId,usertypeId']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        
+        if msg == "1":
+            WhereCondition1=  " and  userId = '" + str(userTypeId) + "' "  
+            data2=   databasefile.DeleteQuery("enterprenuerMaster",WhereCondition1)                  
+            WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
+            data = databasefile.DeleteQuery("UserMaster",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+@app.route('/DeleteStudents', methods=['GET'])
+def DeleteStudents():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        usertypeId,userId="",""
+        if (usertypeId !="" and userId!=""):
+            if 'userTypeId' in inputdata:                                    
+                userTypeId = inputdata['userTypeId'] 
+            if 'userId' in inputdata:                                    
+                userId = inputdata['userId']     
+
+        if len(inputdata) > 0:           
+            commonfile.writeLog("DeleteUser",inputdata,0)
+
+        keyarr = ['userId,usertypeId']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        
+        if msg == "1":
+            WhereCondition1=  " and  userId = '" + str(userTypeId) + "' "  
+            data2=   databasefile.DeleteQuery("studentMaster",WhereCondition1)                  
+            WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
+            data = databasefile.DeleteQuery("UserMaster",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()    
+
+
+# @app.route('/UpdateUser', methods=['POST'])
+# def UpdateUser():
+#     try:
+#         startlimit,endlimit="",""
+#         if request.data:
+#             inputdata = commonfile.DecodeInputdata(request.get_data())         
+#             keyarr = ['userId','userName','mobileNo','email','gender','country','city','userTypeId']
+#             commonfile.writeLog("UpdateUser",inputdata,0)
+#             msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+
+#             if msg == "1":
+                 #organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","","","","","","","",""
+                 #address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
+
+#                 
+#                 UserId = inputdata["userId"]
+#                 UserName = inputdata["userName"]
+#                 MobileNo = inputdata["mobileNo"]
+#                 Email = inputdata["email"] 
+#                 Gender = inputdata["gender"]
+#                 # Password = inputdata["password"]
+#                 Country = inputdata["country"] 
+                   #City = inputdata["city"] 
+                   #UserTypeId= inputdata["city"] 
+            
+#                 WhereCondition = " and userId = '" + str(UserId) + "' and  userrTypeId = '" + str(UserTypeId) + " '"             
+#                 column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',country = '" + str(Country) + "', "               
+#                 column = column + " userName = '" + str(UserName) + "',mobileNo = '" + str(MobileNo) + "' "
+
+#                 data = databasefile.UpdateQuery("UserMaster",column,WhereCondition)
+                  #if (UserTypeId ==5):
+                        #  WhereCondition = " and userId = '" + str(UserId) + "' "
+
+                  #if  (UserTypeId == 6):
+                           # WhereCondition = " and userId = '" + str(UserId) + "'
+
+                  #if (UserTypeId ==7):
+                           #WhereCondition = " and userId = '" + str(UserId) + "'  
+                
+#                 if data != "0":
+#                     column = 'UserId,UserName,UserType'
+#                     data = databasefile.SelectQuery("UserMaster",column,WhereCondition,"",startlimit,endlimit)                  
+#                     return data
+#                 else:
+#                     return commonfile.Errormessage()
+#             else:
+#                  return msg
+#         else:
+#             return commonfile.InputKeyNotFoundMsg()
+
+#     except Exception as e :
+#         print("Exception--->" + str(e))                                  
+#         return commonfile.Errormessage()
+
+
+
+       
 
 
 
