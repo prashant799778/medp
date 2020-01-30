@@ -693,7 +693,7 @@ def UpdateUser():
                     output=databasefile.UpdateQuery("policyMakerMaster",column,WhereCondition)
                 if (UserTypeId == 6):
                     WhereCondition = " and userId = '" + str(UserId) + "'"
-                    column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaOfActivity) + "',profileCategoryId='" + str(profileCategoryId) + "',interestId = '" + str(interestId) + "'"
+                    column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaofActivity) + "',profileCategoryId='" + str(profileCategoryId) + "',interestId = '" + str(interestId) + "'"
                     output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
                 if (UserTypeId == 7):
                     WhereCondition = " and userId = '" + str(UserId) + "'"
