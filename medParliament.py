@@ -870,14 +870,15 @@ def allinterests():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         keyarr = ['id']
+        startlimit,endlimit="",""
         commonfile.writeLog("allinterests",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
-            id=inputdata["id"]
+            id = inputdata["id"]
             columns=" id, name "
-            whereCondition="and interestId = '" + str(inputdata['id']) + "'"
+            whereCondition="and interestId = '" + str(id) + "'"
             
-            data = databasefile.SelectQuery1("interestMaster",columns,whereCondition)
+            data = databasefile.SelectQueryOrderby("interestMaster",columns,whereCondition,""," ",startlimit,endlimit)
             if (data["status"]!="false"):         
                 Data = {"result":data["result"],"status":"true"}
                 return Data
