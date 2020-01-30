@@ -776,6 +776,7 @@ def userPost():
 
                 if data != "0":
                     column = '*'
+                    WhereCondition = " and postTitle = '" + str(postTitle) + "' and postDescription = '" + str(postDescription) + "'"
                     
                     data = databasefile.SelectQuery("userPost",column,WhereCondition,"",startlimit,endlimit)
                     if data["status"]!="false":
