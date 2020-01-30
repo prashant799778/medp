@@ -102,8 +102,8 @@ def SignUp():
                 if 'batchofQualification' in inputdata:                    
                     batchofQualification = inputdata['batchofQualification']
 
-                if 'instituteName' in inputdata:                    
-                    instituteName = inputdata['instituteName']  
+                if 'institutionName' in inputdata:                    
+                    instituteName = inputdata['institutionName']  
 
                 if 'universityName' in inputdata:                    
                     universityName = inputdata['universityName']
@@ -146,7 +146,7 @@ def SignUp():
 
 
                         if (y["userTypeId"]== 7):
-                            columns="userId,address,qualification,batchofQualification,instituteName,universityAddress,universityName,interestId"
+                            columns="userId,address,qualification,batchofQualification,institutionName,universityAddress,universityName,interestId"
                             values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "','" + str(interestId) + "'"
                             data3 = databasefile.InsertQuery("studentMaster",columns,values) 
 
@@ -462,7 +462,7 @@ def studentMasterPannel():
 def allstudents():
     try:
         column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,"
-        column=column+" pm.address,pm.qualification,pm.batchofQualification,pm.instituteName,pm.universityAddress,pm.universityName,pm.interestId "
+        column=column+" pm.address,pm.qualification,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityName,pm.interestId "
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId "
         
