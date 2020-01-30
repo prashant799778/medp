@@ -277,7 +277,7 @@ def adminPannel():
 
 
         if data:           
-            Data = {"totalAdmins":y2,"policyMakerMasterCount":subAdmins2,"enterprenuerMasterCount":subAdmins3,"studentMasterCount":subAdmins4,"status":"true"}
+            Data = {"totalAdmins":totalsubAdmins,"policyMakerMasterCount":subAdmins2,"enterprenuerMasterCount":subAdmins3,"studentMasterCount":subAdmins4,"status":"true"}
             return Data
         else:
             output = {"result":"No Data Found","status":"false"}
