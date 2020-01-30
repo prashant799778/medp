@@ -869,12 +869,12 @@ def allQualifications():
 def allinterests():
     try:
         columns=" id, name "
+        whereCondition="and interestId = '" + str(id) + "'"
         
-        data = databasefile.SelectQueryMaxId("interestMaster;",columns)
-       
+        data = databasefile.SelectQuery1("interestMaster;",columns,whereCondition)
 
         if data:           
-            Data = {"Qualifications": data["result"],"status":"true"}
+            Data = {"allInterests": data["result"],"status":"true"}
             return Data
         else:
             output = {"result":"No Data Found","status":"false"}
