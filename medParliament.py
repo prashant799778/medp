@@ -615,8 +615,8 @@ def UpdateUser():
                 Gender = inputdata["gender"]
                 # Password = inputdata["password"]
                 Country = inputdata["country"] 
-                   City = inputdata["city"] 
-                   UserTypeId= inputdata["city"] 
+                City = inputdata["city"] 
+                UserTypeId= inputdata["city"] 
                 if 'country' in inputdata:                    
                     Country = inputdata["country"]  
                 if 'city' in inputdata:                    
