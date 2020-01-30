@@ -283,34 +283,30 @@ def adminPannel():
         return output
 
 
-@app.route('/allSubAdmins', methods=['POST'])
+@app.route('/allSubAdmins', methods=['GET'])
 def allSubAdmins():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
-        usertypeId=""
-        if usertypeId !="":
-            if 'userTypeId' in inputdata:                                    
-                userTypeId = inputdata['userTypeId'] 
-        
-        column="*"
-        
         startlimit,endlimit="",""
-        WhereCondition=" and usertypeId='" + str(userTypeId) + "'"
-        
-        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
-        
-        
-        
-        
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("addAdmin",inputdata,0)
+        print('C')
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg ="1":
+            usertypeId=inputdata["usertypeId"]
+            column="*"
+            WhereCondition=" and usertypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
 
-
-
-        if (data["status"]!="false"):           
-            Data = {"result":data["result"],"status":"true"}
-            return Data
+            if (data["status"]!="false"):           
+                Data = {"result":data["result"],"status":"true"}
+                return Data
+            else:
+                output = {"result":"No Data Found","status":"false"}
+                return output
         else:
-            output = {"result":"No Data Found","status":"false"}
-            return output
+            return msg         
 
     except Exception as e :
         print("Exception---->" + str(e))    
@@ -488,7 +484,7 @@ def allstudents():
 
 
 
-@app.route('/DeleteSubAdmin', methods=['GET'])
+@app.route('/DeleteSubAdmin', methods=['POST'])
 def DeleteUser():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -522,7 +518,7 @@ def DeleteUser():
  
 
 
-@app.route('/DeletePolicyMakers', methods=['GET'])
+@app.route('/DeletePolicyMakers', methods=['POST'])
 def DeletePolicyMakers():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -556,7 +552,7 @@ def DeletePolicyMakers():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
-@app.route('/DeleteEnterpeneurs', methods=['GET'])
+@app.route('/DeleteEnterpeneurs', methods=['POST'])
 def DeleteEnterpeneurs():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -591,7 +587,7 @@ def DeleteEnterpeneurs():
         return commonfile.Errormessage() 
 
 
-@app.route('/DeleteStudents', methods=['GET'])
+@app.route('/DeleteStudents', methods=['POST'])
 def DeleteStudents():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
