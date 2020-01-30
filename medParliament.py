@@ -19,6 +19,13 @@ from flask import Flask, render_template
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 
+@app.route("/postImage/<image_name>")
+def postImage(image_name):
+    try:
+        return send_from_directory('postImage', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
 @app.route('/SignUp', methods=['POST'])
 def SignUp():
 
