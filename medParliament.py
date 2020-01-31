@@ -769,10 +769,7 @@ def userPost():
                     UserId = inputdata['userId']
                 
 
-                if 'postImage' not in request.files:
-                    print('AA')
-                    filename = "null"
-                    PicPath = "null"
+               
                 if 'postImage' in request.files:
                     file = request.files.get('postImage')
                     print(file,'file')        
