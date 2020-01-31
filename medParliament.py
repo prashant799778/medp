@@ -853,7 +853,51 @@ def allPosts():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
-        return output        
+        return output   
+
+
+@app.route('/allPosts1', methods=['POST'])
+def allPosts1():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("allPosts",inputdata,0)
+      
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            
+            userTypeId=inputdata["userTypeId"]
+            column="um.userName,um.email,um.country,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userTypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,""," ",startlimit,endlimit)
+            print("11111111111111")
+
+          
+
+            if (data["status"]!="false"):
+                for i in data["result"]:
+                    if (i["status"] == 1):
+                        column="um.userName as approvedBy"
+                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userPost as pm,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        i["approvedBy"]=data1 
+                        print(data1)
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output                    
 
 
 @app.route('/myPosts', methods=['POST'])
