@@ -254,7 +254,7 @@ def adminPannel():
     try:
         column="count(*) as count"
         startlimit,endlimit="",""
-        WhereCondition=" and usertypeId<'5'"
+        WhereCondition=" and userTypeId>'1'  and usertypeId<'5'"
        
         WhereCondition4=" and usertypeId='5'"
         WhereCondition5=" and usertypeId='6'"
@@ -265,7 +265,7 @@ def adminPannel():
 
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
         totalsubAdmins=data["result"][0]
-        
+       
         data2 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition4,""," ",startlimit,endlimit)
         subAdmins2=data2["result"][0]
         data3 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition5,""," ",startlimit,endlimit)
@@ -352,7 +352,7 @@ def policyMakerPannel():
 @app.route('/allpolicyMakers', methods=['GET'])
 def allpolicyMakers():
     try:
-        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.country,um.email"
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.country,um.email,"
         column=column+"pm.aboutProfile,pm.organization,pm.designation"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId "
