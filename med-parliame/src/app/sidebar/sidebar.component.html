@@ -21,7 +21,17 @@
             <div class="side-menu">
                 <ul>
                     <li><a href="javascript:void(0)" (click)="goTo('dashboard')">Dashboard <img src="../../assets/images/a-dashboard.svg"></a></li>
-                    <li><a href="javascript:void(0)" (click)="goTo('Admin')">Admin <img src="../../assets/images/d-admin.svg"></a></li>
+                    <li class="dp-downn"><a href="javascript:void(0)" (click)="goTo('Admin')">Admin <img src="../../assets/images/d-admin.svg"></a>
+                        <div class="inner-dropdown drop-showw mr-left">
+							<ul>
+								<li><a href="#">Policy Maker Admin</a></li>
+								<li><a href="#">Entrepreneur Admin </a></li>
+                                <li><a href="#">Student Admin</a></li>
+                                <li><a href="#">Admin New Admin</a></li>
+							</ul>
+						</div>
+                    
+                    </li>
                     <li class="dp-down"><a href="javascript:void(0)" (click)="goTo('User')">Users <img src="../../assets/images/d-users.svg"></a>
                         <div class="inner-dropdown drop-show mr-left">
 							<ul>

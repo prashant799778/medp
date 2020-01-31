@@ -263,6 +263,9 @@ button.togg:focus {
 .drop-show{
     display: none;
 }
+.drop-showw{
+    display: none;
+}
 .side-menu ul li a {
     display: flex;
     justify-content: space-between;
