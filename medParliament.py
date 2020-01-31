@@ -827,16 +827,18 @@ def allPosts():
         keyarr = ['userTypeId']
         print(inputdata,"B")
         commonfile.writeLog("allPosts",inputdata,0)
-        print('C')
+      
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
+            
             userTypeId=inputdata["userTypeId"]
             column="*"
             WhereCondition=" and userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
-            print(data)
+          
 
             if (data["status"]!="false"): 
+                
                 print("111111111111111")          
                 Data = {"result":data["result"],"status":"true"}
                 return Data
@@ -850,6 +852,44 @@ def allPosts():
         print("Exception---->" + str(e))    
         output = {"result":"something went wrong","status":"false"}
         return output        
+
+
+@app.route('/myPosts', methods=['POST'])
+def myPosts():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userId','userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("myPosts",inputdata,0)
+      
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            
+            userTypeId=inputdata["userTypeId"]
+            userId=inputdata["userId"]
+            column="*"
+            WhereCondition=" and userId='" + str(userId) + "'and userTypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
+          
+
+            if (data["status"]!="false"): 
+                
+                print("111111111111111")          
+                Data = {"result":data["result"],"status":"true"}
+                return Data
+            else:
+                output = {"result":"No Data Found","status":"false"}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output        
+
+
 
 
 @app.route('/allQualifications', methods=['GET'])
