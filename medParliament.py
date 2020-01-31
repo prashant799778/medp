@@ -177,7 +177,7 @@ def login():
         password = request.args['password']
        
         mobile = request.args['email']
-        column=  "us.mobileNo,us.userName,us.email,um.userName as userName,us.userId as userId"
+        column=  "us.mobileNo,us.userName,us.email,um.id as userTypeId,us.userId as userId"
         whereCondition= " and us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.userTypeId=um.id"
         groupby,startlimit,endlimit="","",""
         loginuser=databasefile.SelectQuery("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
