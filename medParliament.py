@@ -738,10 +738,7 @@ def userPost():
         commonfile.writeLog("userPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
-        if msg == "1":  
-            
-
-         
+        if msg == "1":      
             userTypeId = inputdata["userTypeId"]
             UserId = inputdata["userId"]
             postTitle = inputdata["postTitle"] 
@@ -1128,6 +1125,63 @@ def verifyPost():
         print("Exception---->" +str(e))           
         output = {"status":"false","message":"something went wrong","result":""}
         return output
+
+
+
+
+@app.route('/updatePost', methods=['POST'])
+def updatePost():
+    try:
+        print('1')
+        startlimit,endlimit="",""
+        inputdata = request.form.get('data') 
+        print("===========================",inputdata)
+
+        inputdata = json.loads(inputdata)
+        print("111111111111111111111111111",inputdata)
+
+        keyarr = ['postId','userTypeId']
+        commonfile.writeLog("updatePost",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+
+        if msg == "1":
+            columns=" postId, userTypeId "
+            whereCondition="and postId = '" + str(postId) + "'and userTypeId = '" + str(userTypeId) + "'"
+            
+            data = databasefile.SelectQueryOrderby("userPost",columns,whereCondition,""," ",startlimit,endlimit)
+            print(data)
+            # userTypeId = inputdata["userTypeId"]
+            # UserId = inputdata["userId"]
+            # postTitle = inputdata["postTitle"] 
+            # postDescription = inputdata["postDescription"]
+            # showuserTypeId = inputdata["showuserTypeId"]
+            # postId = inputdata["postId"]
+
+            postImage,postFilePath,PicPath="","",""
+
+            # if 'postImage' in request.files:
+            #         print("immmmmmmmmmmmmmmmm")
+            #         file = request.files.get('postImage')
+                        
+            #         filename = file.filename or ''                 
+            #         filename = filename.replace("'","")
+            #         print(filename,filename) 
+            #         FolderPath = ConstantData.GetPostImagePath(filename)
+            #         filepath = '/postImage/' + filename 
+            #         file.save(FolderPath)
+            #         PicPath = filepath
+            #         print(PicPath)        
+
+            # WhereCondition = " and postId = '" + str(postId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+            # column = " postTitle = '" + str(postTitle) + "',postDescription = '" + str(postDescription) + "',postImage = '" + str(filename) + "', "
+            # column = column +  " postImagePath = '" + str(PicPath) + "'"
+            # data = databasefile.UpdateQuery("userPost",column,WhereCondition)
+            # return data
+        else:
+            return msg
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
 
 
 
