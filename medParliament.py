@@ -830,7 +830,7 @@ def allPosts():
         if msg =="1":
             
             userTypeId=inputdata["userTypeId"]
-            column="um.userName,um.email,um.country,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.Id,pm.postImage,pm.postImage,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="um.userName,um.email,um.country,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.Id,pm.postImage,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,""," ",startlimit,endlimit)
           
