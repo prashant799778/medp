@@ -449,7 +449,7 @@ def studentMasterPannel():
 
 
         if data:           
-            Data = {"studentuserCount":policyMakerMasterCount,"postCounts":postCount"status":"true"}
+            Data = {"studentuserCount":policyMakerMasterCount,"postCounts":postCount,"status":"true"}
             return Data
         else:
             output = {"result":"No Data Found","status":"false"}
