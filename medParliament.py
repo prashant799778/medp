@@ -912,7 +912,7 @@ def allQualifications():
         output = {"result":"something went wrong","status":"false"}
         return output 
 
-@app.route('selectUserTypeMaster', methods=['GET'])
+@app.route('/selectUserTypeMaster', methods=['GET'])
 def selectUserTypeMaster():
     try:
         columns=" id, userName "
