@@ -188,7 +188,7 @@ def login():
             Data = {"result":loginuser["result"],"status":"true"}                  
             return Data
         else:
-            data={"status":"False","result":"wrong credentials"}
+            data={"status":"False","message":"wrong credentials","result":""}
             return data
 
     except KeyError as e:
