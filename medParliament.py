@@ -346,7 +346,7 @@ def policyMakerPannel():
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
         data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
         policyMakerMasterCount=data["result"][0]
-        postCounts=data2["result"][0]
+        
 
         if data:           
             Data = {"status":"true","message":"","result":policyMakerMasterCount,"postCounts":postCounts}
@@ -746,7 +746,7 @@ def userPost():
         inputdata = json.loads(inputdata)
         print("111111111111111111111111111",inputdata)   
         
-        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId']
+        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag','postId']
         commonfile.writeLog("userPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -756,6 +756,9 @@ def userPost():
             postTitle = inputdata["postTitle"] 
             postDescription = inputdata["postDescription"]
             showuserTypeId = inputdata["showuserTypeId"]
+            flag = inputdata["flag"]
+            print('====',flag)
+            postId1 = inputdata["postId"]
            
 
             PostId = commonfile.CreateHashKey(postTitle,postDescription)
@@ -768,7 +771,7 @@ def userPost():
                 return commonfile.postTitlepostDescriptionAlreadyExistMsg()
             else:
                 print("qqqqqqqqqqqqqqqqqqqqq")
-                postImage,postFilePath,PicPath="","",""
+                postImage,postFilePath,PicPath,filename="","","","",""
                 
                 
                 if 'userTypeId' in inputdata:                                    
@@ -791,16 +794,19 @@ def userPost():
                     PicPath = filepath
                     print(PicPath)
                     
-
                
-                filename=""
-                columns = " userId,userTypeId,postId, postTitle , postDescription,postImage, postImagePath  "          
-                values = " '" + str(UserId) + "','" + str(userTypeId) + "','" + str(PostId) + "','" + str( postTitle) + "','" + str(postDescription) + "','" + str(filename) + "', "            
-                values = values + " '" + str(PicPath) + "'"       
-                
 
+                if flag == 'n':
+                    columns = " userId,userTypeId,postId, postTitle , postDescription,postImage, postImagePath  "          
+                    values = " '" + str(UserId) + "','" + str(userTypeId) + "','" + str(PostId) + "','" + str( postTitle) + "','" + str(postDescription) + "','" + str(filename) + "', "            
+                    values = values + " '" + str(PicPath) + "'"
+                    data = databasefile.InsertQuery("userPost",columns,values)
+                if flag == 'u':
+                    WhereCondition = " and postId = '" + str(postId1) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+                    column = " postTitle = '" + str(postTitle) + "',postDescription = '" + str(postDescription) + "',postImage = '" + str(filename) + "', "
+                    column = column +  " postImagePath = '" + str(PicPath) + "'"
+                    data = databasefile.UpdateQuery("userPost",column,WhereCondition)
 
-                data = databasefile.InsertQuery("userPost",columns,values) 
 
                 if data != "0":
                     column = '*'
@@ -811,11 +817,7 @@ def userPost():
                         y=data11["result"][0]
                         column="userId,showuserTypeId,postId"
                         values= " '" + str(y["userId"]) + "','" + str(showuserTypeId) + "','" + str(y["postId"]) + "'"
-                        data2 = databasefile.InsertQuery("postUserTypeMapping",column,values) 
-
-                        
-
-
+                        data2 = databasefile.InsertQuery("postUserTypeMapping",column,values)
                     else:
                         return commonfile.Errormessage()
 
@@ -1259,13 +1261,8 @@ def verifyPost():
 def updatePost():
     try:
         print('1')
-        startlimit,endlimit="",""
-        inputdata = request.form.get('data') 
-        print("===========================",inputdata)
-
-        inputdata = json.loads(inputdata)
-        print("111111111111111111111111111",inputdata)
-
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="","" 
         keyarr = ['postId','userTypeId']
         commonfile.writeLog("updatePost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
@@ -1277,37 +1274,37 @@ def updatePost():
             whereCondition="and postId = '" + str(postId) + "'and userTypeId = '" + str(userTypeId) + "'"
             
             data = databasefile.SelectQueryOrderby("userPost",columns,whereCondition,""," ",startlimit,endlimit)
-            print('---',data['result'][0]['postTitle'])
+            # print('---',data['result'][0]['postTitle'])
             return data
-            userTypeId = inputdata["userTypeId"]
-            UserId = data['result'][0]['userId']
-            postTitle = data['result'][0]['postTitle'] 
-            postDescription = data['result'][0]['postDescription']
-            showuserTypeId = data['result'][0]['showuserTypeId']
-            postId = inputdata["postId"]
-            postImage = inputdata["postImage"]
-            postImagePath = inputdata["postImagePath"]
+            # userTypeId = inputdata["userTypeId"]
+            # UserId = data['result'][0]['userId']
+            # postTitle = data['result'][0]['postTitle'] 
+            # postDescription = data['result'][0]['postDescription']
+            # showuserTypeId = data['result'][0]['showuserTypeId']
+            # postId = inputdata["postId"]
+            # postImage = inputdata["postImage"]
+            # postImagePath = inputdata["postImagePath"]
 
-            postImage,postFilePath,PicPath,filename="","","",""
+            # postImage,postFilePath,PicPath,filename="","","",""
 
-            if 'postImage' in request.files:
-                    print("immmmmmmmmmmmmmmmm")
-                    file = request.files.get('postImage')
+            # if 'postImage' in request.files:
+            #         print("immmmmmmmmmmmmmmmm")
+            #         file = request.files.get('postImage')
                         
-                    filename = file.filename or ''                 
-                    filename = filename.replace("'","")
-                    print(filename,filename) 
-                    FolderPath = ConstantData.GetPostImagePath(filename)
-                    filepath = '/postImage/' + filename 
-                    file.save(FolderPath)
-                    PicPath = filepath
-                    print(PicPath)        
+            #         filename = file.filename or ''                 
+            #         filename = filename.replace("'","")
+            #         print(filename,filename) 
+            #         FolderPath = ConstantData.GetPostImagePath(filename)
+            #         filepath = '/postImage/' + filename 
+            #         file.save(FolderPath)
+            #         PicPath = filepath
+            #         print(PicPath)        
 
-            WhereCondition = " and postId = '" + str(postId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
-            column = " postTitle = '" + str(postTitle) + "',postDescription = '" + str(postDescription) + "',postImage = '" + str(filename) + "', "
-            column = column +  " postImagePath = '" + str(PicPath) + "'"
-            data = databasefile.UpdateQuery("userPost",column,WhereCondition)
-            return data
+            # WhereCondition = " and postId = '" + str(postId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+            # column = " postTitle = '" + str(postTitle) + "',postDescription = '" + str(postDescription) + "',postImage = '" + str(filename) + "', "
+            # column = column +  " postImagePath = '" + str(PicPath) + "'"
+            # data = databasefile.UpdateQuery("userPost",column,WhereCondition)
+            # return data
         else:
             return msg
     except Exception as e :
