@@ -815,7 +815,7 @@ def userPost():
                             return commonfile.Errormessage()
                     return data11
                 if flag == 'u':
-                    WhereCondition = " and postId = '" + str(postId1) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+                    WhereCondition = " and postId = '" + str(postId1) + "' and  userTypeId = '" + str(userTypeId) + " '"
                     column = " postTitle = '" + str(postTitle) + "',postDescription = '" + str(postDescription) + "',postImage = '" + str(filename) + "', "
                     column = column +  " postImagePath = '" + str(PicPath) + "'"
                     data = databasefile.UpdateQuery("userPost",column,WhereCondition)
