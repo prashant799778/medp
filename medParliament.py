@@ -159,7 +159,7 @@ def SignUp():
 
 
                         if (y["userTypeId"]== 7):
-                            columns="userId,address,qualification,batchofQualification,institutionName,universityAddress,universityName"
+                            columns="userId,address,qualification,batchOfQualification,institutionName,universityAddress,universityName"
                             values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "'"
                             data3 = databasefile.InsertQuery("studentMaster",columns,values) 
                             for i in interestId:
