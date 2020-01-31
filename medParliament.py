@@ -1213,33 +1213,35 @@ def updatePost():
             data = databasefile.SelectQueryOrderby("userPost",columns,whereCondition,""," ",startlimit,endlimit)
             print('---',data['result'][0]['postTitle'])
             return data
-            # userTypeId = inputdata["userTypeId"]
-            # UserId = inputdata["userId"]
-            # postTitle = inputdata["postTitle"] 
-            # postDescription = inputdata["postDescription"]
-            # showuserTypeId = inputdata["showuserTypeId"]
-            # postId = inputdata["postId"]
+            userTypeId = inputdata["userTypeId"]
+            UserId = data['result'][0]['userId']
+            postTitle = data['result'][0]['postTitle'] 
+            postDescription = data['result'][0]['postDescription']
+            showuserTypeId = data['result'][0]['showuserTypeId']
+            postId = inputdata["postId"]
+            postImage = inputdata["postImage"]
+            postImagePath = inputdata["postImagePath"]
 
-            # postImage,postFilePath,PicPath="","",""
+            postImage,postFilePath,PicPath,filename="","","",""
 
-            # if 'postImage' in request.files:
-            #         print("immmmmmmmmmmmmmmmm")
-            #         file = request.files.get('postImage')
+            if 'postImage' in request.files:
+                    print("immmmmmmmmmmmmmmmm")
+                    file = request.files.get('postImage')
                         
-            #         filename = file.filename or ''                 
-            #         filename = filename.replace("'","")
-            #         print(filename,filename) 
-            #         FolderPath = ConstantData.GetPostImagePath(filename)
-            #         filepath = '/postImage/' + filename 
-            #         file.save(FolderPath)
-            #         PicPath = filepath
-            #         print(PicPath)        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","")
+                    print(filename,filename) 
+                    FolderPath = ConstantData.GetPostImagePath(filename)
+                    filepath = '/postImage/' + filename 
+                    file.save(FolderPath)
+                    PicPath = filepath
+                    print(PicPath)        
 
-            # WhereCondition = " and postId = '" + str(postId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
-            # column = " postTitle = '" + str(postTitle) + "',postDescription = '" + str(postDescription) + "',postImage = '" + str(filename) + "', "
-            # column = column +  " postImagePath = '" + str(PicPath) + "'"
-            # data = databasefile.UpdateQuery("userPost",column,WhereCondition)
-            # return data
+            WhereCondition = " and postId = '" + str(postId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+            column = " postTitle = '" + str(postTitle) + "',postDescription = '" + str(postDescription) + "',postImage = '" + str(filename) + "', "
+            column = column +  " postImagePath = '" + str(PicPath) + "'"
+            data = databasefile.UpdateQuery("userPost",column,WhereCondition)
+            return data
         else:
             return msg
     except Exception as e :
