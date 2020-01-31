@@ -715,12 +715,21 @@ def UpdateUser():
                     output=databasefile.UpdateQuery("policyMakerMaster",column,WhereCondition)
                 if (UserTypeId == 6):
                     WhereCondition = " and userId = '" + str(UserId) + "'"
-                    column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaofActivity) + "',profileCategoryId='" + str(profileCategoryId) + "',interestId = '" + str(interestId) + "'"
+                    column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaofActivity) + "',profileCategoryId='" + str(profileCategoryId) + "'"
                     output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
+                    for i in interestId:
+                        WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='6'"
+                        column="interestId='" + str(i) + "'"
+                        output1=databasefile.UpdateQuery("userInterestMapping ",column,WhereCondition)
+
                 if (UserTypeId == 7):
                     WhereCondition = " and userId = '" + str(UserId) + "'"
                     column=" address='" + str(address) + "',qualification  = '" + str(qualification) + "', batchOfQualification ='" + str(batchofQualification) + "', institutionName ='" + str(institutionName) + "',universityName ='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "',interestId ='" + str(interestId) + "'"  
-                    output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)             
+                    output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)
+                    for i in interestId:
+                        WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='7'"
+                        column="interestId='" + str(i) + "'"
+                        output=databasefile.UpdateQuery("userInterestMapping ",column,WhereCondition)             
                 if data != "0":
                     column = 'userId,userName,userTypeId'
                     data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
