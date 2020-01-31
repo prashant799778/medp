@@ -196,6 +196,7 @@ def SelectQueryOrderby(table,columns,whereCondition,groupby,startlimit,endlimit,
             orderby = " order by " + orderby + " DESC "  
         if groupby != "":
             groupby = " group by " + groupby
+        print(orderby)    
                 
         query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
 
