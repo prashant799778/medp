@@ -769,19 +769,17 @@ def userPost():
                     print('AA')
                     filename = "null"
                     PicPath = "null"
-                    # file = request.files.get('postImage')
-                    # print(file,'file')        
-                    # filename = file.filename or ''                 
-                    # filename = filename.replace("'","")
-                    # print(filename,filename) 
-                    # FolderPath = ConstantData.GetPostImagePath(filename)
-                    # filepath = '/postImage/' + filename 
-                    # file.save(FolderPath)
-                    # PicPath = filepath
                 else:
-                    print('BB')
-                    filename = "null"
-                    PicPath = "null"
+                    file = request.files.get('postImage')
+                    print(file,'file')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","")
+                    print(filename,filename) 
+                    FolderPath = ConstantData.GetPostImagePath(filename)
+                    filepath = '/postImage/' + filename 
+                    file.save(FolderPath)
+                    PicPath = filepath
+                    
 
                
 
