@@ -142,20 +142,32 @@ def SignUp():
                         if (y["userTypeId"] == 5):
                             columns="userId,aboutProfile,organization,designation"
                             values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
-                            data1=databasefile.InsertQuery("policyMakerMaster",columns,values) 
+                            data1=databasefile.InsertQuery("policyMakerMaster",columns,values)
+
 
 
 
                         if (y["userTypeId"] == 6):
-                            columns="userId,areaOfActivity,profileCategoryId,designation,interestId"
-                            values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation) + "','" + str(interestId) + "'"
-                            data2=databasefile.InsertQuery("enterprenuerMaster",columns,values) 
+                            columns="userId,areaOfActivity,profileCategoryId,designation"
+                            values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation) + "'"
+                            data2=databasefile.InsertQuery("enterprenuerMaster",columns,values)
+                            for i in interestId:
+                                column="userId,userTypeId,interestId"
+                                values=" '" + str(y["userId"]) + "','" + str('6') + "','" + str(i) + "'"
+                                data4=databasefile.InsertQuery("userInterestMapping ",column,values) 
+
 
 
                         if (y["userTypeId"]== 7):
-                            columns="userId,address,qualification,batchofQualification,institutionName,universityAddress,universityName,interestId"
-                            values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "','" + str(interestId) + "'"
+                            columns="userId,address,qualification,batchofQualification,institutionName,universityAddress,universityName"
+                            values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "'"
                             data3 = databasefile.InsertQuery("studentMaster",columns,values) 
+                            for i in interestId:
+                                column="userId,userTypeId,interestId"
+                                values=" '" + str(y["userId"]) + "','" + str('7') + "','" + str(i) + "'"
+                                data5=databasefile.InsertQuery("userInterestMapping ",column,values) 
+
+                             
 
 
                     else:
