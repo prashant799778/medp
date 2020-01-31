@@ -352,7 +352,7 @@ def policyMakerPannel():
 @app.route('/allpolicyMakers', methods=['GET'])
 def allpolicyMakers():
     try:
-        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.country,"
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.country,um.email"
         column=column+"pm.aboutProfile,pm.organization,pm.designation"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId "
@@ -405,7 +405,7 @@ def enterprenuerMasterPannel():
 @app.route('/allenterprenuers', methods=['GET'])
 def allenterprenuer():
     try:
-        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.country,um.city,"
+        column="um.mobileNo as mobileNo,um.email ,um.userName as userName,um.password as password,um.userId,um.gender,um.country,um.city,"
         column=column+"pm.areaOfActivity,pm.profileCategoryId,pm.designation,pm.interestId"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId "
@@ -462,7 +462,7 @@ def studentMasterPannel():
 @app.route('/allstudents', methods=['GET'])
 def allstudents():
     try:
-        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,"
+        column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
         column=column+" pm.address,pm.qualification,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityName,pm.interestId "
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId "
