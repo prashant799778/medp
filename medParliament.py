@@ -1203,6 +1203,7 @@ def updatePost():
             
             data = databasefile.SelectQueryOrderby("userPost",columns,whereCondition,""," ",startlimit,endlimit)
             print(data)
+            return data
             # userTypeId = inputdata["userTypeId"]
             # UserId = inputdata["userId"]
             # postTitle = inputdata["postTitle"] 
@@ -1210,7 +1211,7 @@ def updatePost():
             # showuserTypeId = inputdata["showuserTypeId"]
             # postId = inputdata["postId"]
 
-            postImage,postFilePath,PicPath="","",""
+            # postImage,postFilePath,PicPath="","",""
 
             # if 'postImage' in request.files:
             #         print("immmmmmmmmmmmmmmmm")
