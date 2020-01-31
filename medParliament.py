@@ -1202,7 +1202,7 @@ def updatePost():
             whereCondition="and postId = '" + str(postId) + "'and userTypeId = '" + str(userTypeId) + "'"
             
             data = databasefile.SelectQueryOrderby("userPost",columns,whereCondition,""," ",startlimit,endlimit)
-            print('---',data['result']['postTitle'],'---')
+            print('---',data['result']['postTitle'])
             return data
             # userTypeId = inputdata["userTypeId"]
             # UserId = inputdata["userId"]
