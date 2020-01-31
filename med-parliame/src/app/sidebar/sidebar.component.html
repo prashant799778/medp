@@ -22,7 +22,15 @@
                 <ul>
                     <li><a href="javascript:void(0)" (click)="goTo('dashboard')">Dashboard <img src="../../assets/images/a-dashboard.svg"></a></li>
                     <li><a href="javascript:void(0)" (click)="goTo('Admin')">Admin <img src="../../assets/images/d-admin.svg"></a></li>
-                    <li><a href="javascript:void(0)" (click)="goTo('User')">Users <img src="../../assets/images/d-users.svg"></a></li>
+                    <li class="dp-down"><a href="javascript:void(0)" (click)="goTo('User')">Users <img src="../../assets/images/d-users.svg"></a>
+                        <div class="inner-dropdown drop-show mr-left">
+							<ul>
+								<li><a href="#">Policy Maker</a></li>
+								<li><a href="#">Entrepreneur  </a></li>
+								<li><a href="#">Student </a></li>
+							</ul>
+						</div>
+                    </li>
                     <li><a href="javascript:void(0)">Settings <img src="../../assets/images/d-settings.svg"></a></li>
                 </ul>
             </div>
