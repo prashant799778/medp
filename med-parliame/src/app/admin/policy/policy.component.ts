@@ -18,5 +18,14 @@ export class PolicyComponent implements OnInit {
 				
 			})
 	}
+	getGender(value){
+		if(value == '0'){
+			return 'Female'
+		}else if(value == '1'){
+			return 'Male'
+		}else{
+			return 'Other'
+		}
+	}
 
 }
