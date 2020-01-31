@@ -125,7 +125,7 @@ def SignUp():
 
                
 
-                columns = " userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, country, city, deviceid, imeiNo "          
+                columns = " userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, countryId, city, deviceid, imeiNo "          
                 values = " '" + str(UserId) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Email) + "','" + str(userTypeId) + "','" + str(Gender) + "', "            
                 values = values + " '" + str(Password) + "','" + str(DeviceType) + "','" + str(Os) + "','" + str(ipAddress) + "','"                 
                 values = values + str(Country) + "','" + str(City) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
@@ -159,7 +159,7 @@ def SignUp():
 
 
                         if (y["userTypeId"]== 7):
-                            columns="userId,address,qualification,batchOfQualification,institutionName,universityAddress,universityName"
+                            columns="userId,address,qualificationId,batchOfQualification,institutionName,universityAddress,universityId"
                             values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "'"
                             data3 = databasefile.InsertQuery("studentMaster",columns,values) 
                             for i in interestId:
@@ -704,7 +704,7 @@ def UpdateUser():
                     universityAddress = inputdata['universityAddress']
                 print('A')
                 WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
-                column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',country = '" + str(Country) + "', "
+                column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',countryId = '" + str(Country) + "', "
                 column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'"
                 data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
                 print(data,'B')
@@ -724,7 +724,7 @@ def UpdateUser():
 
                 if (UserTypeId == 7):
                     WhereCondition = " and userId = '" + str(UserId) + "'"
-                    column=" address='" + str(address) + "',qualification  = '" + str(qualification) + "', batchOfQualification ='" + str(batchofQualification) + "', institutionName ='" + str(institutionName) + "',universityName ='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "',interestId ='" + str(interestId) + "'"  
+                    column=" address='" + str(address) + "',qualificationId  = '" + str(qualification) + "', batchOfQualification ='" + str(batchofQualification) + "', institutionName ='" + str(institutionName) + "',universityId='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "',interestId ='" + str(interestId) + "'"  
                     output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)
                     for i in interestId:
                         WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='7'"
