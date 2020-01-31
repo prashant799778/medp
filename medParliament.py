@@ -763,6 +763,8 @@ def userPost():
                     userTypeId = inputdata['userTypeId']
                 if 'userId' in inputdata:                                    
                     UserId = inputdata['userId']
+
+
                 if 'postImage' in request.files:
                     
                     file = request.files.get('postImage')        
@@ -774,13 +776,9 @@ def userPost():
                     filepath = '/postImage/' + filename 
                     file.save(FolderPath)
                     PicPath = filepath
-
-
-                
-
- 
-
-
+                elif 'postImage' not in request.files:
+                    filename = "0"
+                    PicPath = "0"
 
                
 
