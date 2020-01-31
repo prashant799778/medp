@@ -836,6 +836,7 @@ def allPosts():
             column="um.userName,um.email,um.country,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,""," ",startlimit,endlimit)
+            print("11111111111111")
           
 
             if (data["status"]!="false"): 
