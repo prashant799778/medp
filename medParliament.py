@@ -929,7 +929,63 @@ def allPosts1():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
-        return output                    
+        return output  
+
+
+@app.route('/allUsersPost', methods=['POST'])
+def allPosts2():
+    try:
+        #inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        #keyarr = ['']
+        #print(inputdata,"B")
+        #commonfile.writeLog("allPosts",inputdata,0)
+      
+        #msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        msg="1"
+        if msg =="1":
+            orderby="pm.id"
+            
+            
+            column="um.userName,um.email,um.country,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId "
+            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
+            print("11111111111111")
+
+          
+
+            if (data["status"]!="false"):
+                for i in data["result"]:
+                    if (i["status"] == 1):
+                        print(i["postId"])
+                        column="um.userName as approvedBy"
+                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        print(data1)
+                        i["approvedBy"]=data1["approvedBy"]
+                        print(data1)
+                    if (i["status"]==2):
+                        column="um.userName as rejectedBy"
+                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        print(data1)
+                        i["rejectedBy"]=data1["rejectedBy"]
+                        
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output                                       
 
 
 @app.route('/myPosts1', methods=['POST'])
