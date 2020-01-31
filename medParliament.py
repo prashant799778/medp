@@ -1247,8 +1247,8 @@ def verifyPost():
 def updatePost():
     try:
         print('1')
-        startlimit,endlimit="",""
-        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="","" 
         keyarr = ['postId','userTypeId']
         commonfile.writeLog("updatePost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
