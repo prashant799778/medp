@@ -769,7 +769,7 @@ def userPost():
                     print('AA')
                     filename = "null"
                     PicPath = "null"
-                else:
+                elif 'postImage' in request.files:
                     file = request.files.get('postImage')
                     print(file,'file')        
                     filename = file.filename or ''                 
