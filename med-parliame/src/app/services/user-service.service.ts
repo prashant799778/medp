@@ -6,7 +6,7 @@ import { SessionStorageService, LocalStorageService } from 'angular-web-storage'
 	providedIn: 'root'
 })
 export class UserServiceService {
-	baseUrl: 'http://134.209.153.34:5031/';
+	baseUrl= 'http://134.209.153.34:5031/';
 	user: any;
 	KEY = 'value';
 
@@ -18,6 +18,20 @@ export class UserServiceService {
 		return  new Promise((resolve, reject) => {
 				let url = this.baseUrl+endpoint;
 				this.http.post(url,data).toPromise().then(res =>{
+					if(res ){
+						resolve(res);
+					}else{
+						reject('error')
+					}
+				});
+			})
+	}
+	getApiData( endpoint){
+		return  new Promise((resolve, reject) => {
+			console.log(this.baseUrl, endpoint)
+				let url = this.baseUrl+''+endpoint;
+				console.log(url)
+				this.http.get(url).toPromise().then(res =>{
 					if(res ){
 						resolve(res);
 					}else{

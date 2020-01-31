@@ -21,7 +21,7 @@ export class AuthsService {
     // port = (this.window.location.port) ? ':' + this.window.location.port : '';
     // baseUrl = `${this.window.location.protocol}//${this.window.location.hostname}${this.port}`;
     // authUrl = this.baseUrl + '/api/auth';
-    baseUrl = `https://api.fandomlive.fourbrick.in/`;
+    baseUrl= 'http://134.209.153.34:5031/';
     // baseUrl = `http://139.59.78.54:5021/`;
     isAuthenticated = false;
     loginSuccess: number;
@@ -88,9 +88,18 @@ export class AuthsService {
     return s;
 }
 
-  login(userLogin): Observable<boolean> {
+  login(userLoign){
+    console.log(userLoign)
+    if(userLoign.email == 'adminmed@gmail.com' && userLoign.password == 'adminMed123'){
+      return 'true';
+      
+    }else{
+      return 'false';
+    }
+  }
+  logiin(userLogin): Observable<boolean> {
     console.log(userLogin);
-    return this.http.post<boolean>(this.baseUrl + 'Login', userLogin)
+    return this.http.get<boolean>(this.baseUrl + 'Login'+'?email='+userLogin.email+'&password='+userLogin.password, )
         .pipe(
             map(loggedIn => {
                 let resp;

@@ -1,5 +1,5 @@
 <div class="main-container">
-    <div class="sidebar bg-white-fff">
+    <!-- <div class="sidebar bg-white-fff">
         <div class="inner-side-bar">
             <div class="logo-container">
                 <a href="#" class="logo-side ">MedParliament</a>
@@ -24,9 +24,9 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="top-bar">
-        <div class="inner-top-bar bg-white-fff pd-lr-space">
+        <!-- <div class="inner-top-bar bg-white-fff pd-lr-space">
             <div class="container-fluid">
                 <div class="row">
                                   <div class="col-sm-12 col-md-12">
@@ -59,7 +59,7 @@
             </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
         <!-- Main Content- box -->
@@ -82,8 +82,8 @@
                           <img class="inner-image-set" src="../../assets/images/entrepreneur.svg">
                           <div class="card-st">
                                
-                              <h2 class="card-hading-txt">total admins</h2>
-                              <h3 class="card-info-txt">210</h3>
+                              <h2 class="card-hading-txt">total admin</h2>
+                              <h3 class="card-info-txt">{{totalAdmins}}</h3>
                           </div>
                           <div class="circle-box-back"></div>
                           <div class="circle-box-down"></div>
@@ -92,7 +92,7 @@
                             <img class="inner-image-set" src="../../assets/images/entrepreneur.svg">
                           <div class="card-st">
                               <h2 class="card-hading-txt">total entrepreneur</h2>
-                              <h3 class="card-info-txt">564</h3>
+                              <h3 class="card-info-txt">{{totalEnterprenuer}}</h3>
                           </div>
                             <div class="circle-box-back"></div>
                           <div class="circle-box-down"></div>
@@ -101,7 +101,7 @@
                           <img class="inner-image-set" src="../../assets/images/entrepreneur.svg">
                           <div class="card-st">
                               <h2 class="card-hading-txt">Total student</h2>
-                              <h3 class="card-info-txt">25000</h3>
+                              <h3 class="card-info-txt">{{totalStudent}}</h3>
                           </div>
                             <div class="circle-box-back"></div>
                           <div class="circle-box-down"></div>
@@ -110,7 +110,7 @@
                           <img class="inner-image-set" src="../../assets/images/entrepreneur.svg">
                           <div class="card-st">
                               <h2 class="card-hading-txt">Total Policy Maker</h2>
-                              <h3 class="card-info-txt">25000</h3>
+                              <h3 class="card-info-txt">{{totalPolicy}}</h3>
                           </div>
                             <div class="circle-box-back"></div>
                           <div class="circle-box-down"></div>
@@ -141,11 +141,11 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
-                                      <td>mike bhand</td>
-                                      <td>policy Maker</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>Date</td>
+                                  <tr *ngFor="let policy of PolicyList">
+                                      <td>{{policy.userName}}</td>
+                                      <td>{{policy}}</td>
+                                      <td>{{policy.email}}</td>
+                                      <td>{{policy}}</td>
                                       <td class="txt-color-r text-uppercase">--</td>
                                       <td>
                                           <button type="button" class="btn ab-btn dc-bg-color-one border-round-rem">pending</button>
