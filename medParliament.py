@@ -773,7 +773,7 @@ def userPost():
                     print('AA')
                     filename = "null"
                     PicPath = "null"
-                elif 'postImage' in request.files:
+                if 'postImage' in request.files:
                     file = request.files.get('postImage')
                     print(file,'file')        
                     filename = file.filename or ''                 
@@ -910,9 +910,6 @@ def DeletePost():
 
             WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userId) + "' and  postId = '" + str(postId) + "'"
             data = databasefile.DeleteQuery("userPost",WhereCondition)
-            whereCondition = " and usertypeId='" + str(userTypeId) + "'"
-            
-            
 
             if data != "0":
                 return data
