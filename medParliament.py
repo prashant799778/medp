@@ -781,7 +781,7 @@ def userPost():
                     
 
                
-
+                filename=""
                 columns = " userId,userTypeId,postId, postTitle , postDescription,postImage, postImagePath  "          
                 values = " '" + str(UserId) + "','" + str(userTypeId) + "','" + str(PostId) + "','" + str( postTitle) + "','" + str(postDescription) + "','" + str(filename) + "', "            
                 values = values + " '" + str(PicPath) + "'"       
