@@ -879,9 +879,10 @@ def allPosts1():
             if (data["status"]!="false"):
                 for i in data["result"]:
                     if (i["status"] == 1):
+                        print(i["postId"])
                         column="um.userName as approvedBy"
                         WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
-                        data1=databasefile.SelectQuery1("userPost as pm,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        data1=databasefile.SelectQuery1("userPost as um,approvedBy as ap,userPost as pm",column,WhereCondition)
                         i["approvedBy"]=data1 
                         print(data1)
                 
