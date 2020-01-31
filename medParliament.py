@@ -942,8 +942,8 @@ def allCategories():
         output = {"result":"something went wrong","status":"false"}
         return output 
 
-@app.route('/allCategories', methods=['GET'])
-def allCategories():
+@app.route('/allCountries', methods=['GET'])
+def allCountries():
     try:
         columns=" id, countryName "
         
