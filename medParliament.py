@@ -729,7 +729,7 @@ def userPost():
         startlimit,endlimit="",""   
         inputdata = request.form.get('data')       
         inputdata = json.loads(inputdata)
-        print(inputdata)   
+        print(inputdata,'inputdata')   
         
         keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId']
         commonfile.writeLog("userPost",inputdata,0)
@@ -767,14 +767,11 @@ def userPost():
 
                 if 'postImage' in request.files:
                     print('AA')
-                    
                     file = request.files.get('postImage')
                     print(file,'file')        
                     filename = file.filename or ''                 
                     filename = filename.replace("'","")
                     print(filename,filename) 
-
-                    
                     FolderPath = ConstantData.GetPostImagePath(filename)
                     filepath = '/postImage/' + filename 
                     file.save(FolderPath)
