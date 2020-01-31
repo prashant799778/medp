@@ -759,7 +759,7 @@ def userPost():
                 return commonfile.postTitlepostDescriptionAlreadyExistMsg()
             else:
                 print("qqqqqqqqqqqqqqqqqqqqq")
-                postImage,postFilePath,PicPath,filename=""="","","",""
+                postImage,postFilePath,PicPath,filename="","","","",""
                 
                 
                 if 'userTypeId' in inputdata:                                    
