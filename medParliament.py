@@ -728,8 +728,6 @@ def userPost():
     try: 
         startlimit,endlimit="",""   
         inputdata = request.form.get('data') 
-        a=request.files.get("postImage")
-        print("aaaaaaaaaaaaaa",type(a))
         print("===========================",inputdata)      
         inputdata = json.loads(inputdata)
         print("111111111111111111111111111",inputdata)   
@@ -769,7 +767,8 @@ def userPost():
                 
 
                
-                if ('postImage' in request.files) and ('postImage' in request.files !="") :
+                if 'postImage' in request.files:
+                    print("immmmmmmmmmmmmmmmm")
                     file = request.files.get('postImage')
                         
                     filename = file.filename or ''                 
@@ -782,7 +781,7 @@ def userPost():
                     
 
                
-
+                filename=""
                 columns = " userId,userTypeId,postId, postTitle , postDescription,postImage, postImagePath  "          
                 values = " '" + str(UserId) + "','" + str(userTypeId) + "','" + str(PostId) + "','" + str( postTitle) + "','" + str(postDescription) + "','" + str(filename) + "', "            
                 values = values + " '" + str(PicPath) + "'"       
