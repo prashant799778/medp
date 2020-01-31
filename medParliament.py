@@ -817,7 +817,7 @@ def userPost():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
-@app.route('/allPosts', methods=['POST'])
+@app.route('/allPosts1', methods=['POST'])
 def allPosts():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -856,7 +856,7 @@ def allPosts():
         return output   
 
 
-@app.route('/allPosts1', methods=['POST'])
+@app.route('/allPosts', methods=['POST'])
 def allPosts1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
