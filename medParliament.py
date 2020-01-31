@@ -922,6 +922,26 @@ def allUniversities():
         return output 
 
 
+@app.route('/allCategories', methods=['GET'])
+def allCategories():
+    try:
+        columns=" id, name "
+        
+        data = databasefile.SelectQueryMaxId(" profileCategoryMaster ",columns)
+       
+
+        if data:           
+            Data = {"Categories": data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output 
+
        
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
