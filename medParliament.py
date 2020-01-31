@@ -768,6 +768,7 @@ def userPost():
 
                
                 if 'postImage' in request.files:
+                    print("immmmmmmmmmmmmmmmm")
                     file = request.files.get('postImage')
                         
                     filename = file.filename or ''                 
