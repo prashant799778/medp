@@ -248,13 +248,16 @@ button.togg:focus {
 }
 .side-menu ul li {
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
 }
 .side-menu ul li a {
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 400;
     color: #707070;
     text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 .inner-dropdown ul li {
     margin: 0;
@@ -265,11 +268,6 @@ button.togg:focus {
 }
 .drop-showw{
     display: none;
-}
-.side-menu ul li a {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
 }
 /* End Sidebar Section*/
 
