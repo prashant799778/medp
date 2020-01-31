@@ -88,78 +88,17 @@ export class AuthsService {
     return s;
 }
 
-  login(userLoign){
-    console.log(userLoign)
-    if(userLoign.email == 'adminmed@gmail.com' && userLoign.password == 'adminMed123'){
-      return 'true';
-      
-    }else{
-      return 'false';
-    }
-  }
-  logiin(userLogin): Observable<boolean> {
+  
+  login(userLogin): Observable<boolean> {
     console.log(userLogin);
-    return this.http.get<boolean>(this.baseUrl + 'Login'+'?email='+userLogin.email+'&password='+userLogin.password, )
+    return this.http.get<boolean>(this.baseUrl + 'Login'+'?email='+userLogin.email+'&password='+userLogin.password )
         .pipe(
             map(loggedIn => {
                 let resp;
                 resp = loggedIn;
                 if(resp.status == 'true'){
                   this.loginCondition(resp)
-                //  this.isAuthenticated = resp.status;
-                // this.loginSuccess = 1;
-                // this.loginSuccesss = 1
-                // this.userAuthChanged(resp.status);
-                // this.userService.getSaveCustomer(resp);
-               
-                // let userIIId = resp.result;
-               
-                // this.href = this.router.url;
-               
-                // let charhref = this.href.split('?');
-             
-                // if(charhref[0] == '/campaign/voting'){
-                //   let id = charhref[1].split('=')
-                 
-                //   let campId = id[1].split('&')
-                //   console.log(campId)
-                 
-                  
-                //   this.userService.getCampaignss(campId[0],userIIId[0].UserId)
-                // }
-                // if(charhref[0] == '/campaign/reward'){
-                //   let id = charhref[1].split('=')
-                  
-                //   let campId = id[1]
-                 
-                  
-                //   this.userService.GetRewardCampaignInfo(campId,userIIId[0].UserId)
-                // }
-
-                // if(charhref[0] == '/campaign/launchpad'){
-                //   let id = charhref[1].split('=')
-                  
-                //   let campId = id[1]
-                 
-                  
-                //   this.userService.GetSecurityCampaignInfo(campId[0],userIIId[0].UserId)
-                // }
-
-                // if(charhref[0] == '/sub-campaign/sub-reward'){
-                //   // let id = charhref[1].split('=')
-                //   // console.log(id[1])
-                //   this.userService.getRewardCampaignList(userIIId[0].UserId)
-                // }
-                // console.log(charhref[0])
-                // if(charhref[0] == '/home'){
-                //   this.userService.getCampaigns(userIIId[0].UserId)
-                // }
-                // if(charhref[0] == '/search'){
-                //   let id = charhref[1].split('=')
-                //   console.log(id[1])
-                //   this.userService.getSearch(id[1], userIIId[0].UserId)
-                // }
-               
+                
 
                 }
                 else{
