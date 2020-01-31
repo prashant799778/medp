@@ -922,7 +922,7 @@ def myPosts():
             userId=inputdata["userId"]
             column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
-            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,""," ",startlimit,endlimit,orderby)
+            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
           
 
             if (data["status"]!="false"): 
