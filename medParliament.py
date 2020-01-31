@@ -729,7 +729,7 @@ def userPost():
         startlimit,endlimit="",""   
         inputdata = request.form.get('data') 
         a=request.files.get("postImage")
-        print("aaaaaaaaaaaaaa",a)
+        print("aaaaaaaaaaaaaa",type(a))
         print("===========================",inputdata)      
         inputdata = json.loads(inputdata)
         print("111111111111111111111111111",inputdata)   
