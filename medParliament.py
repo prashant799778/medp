@@ -185,7 +185,7 @@ def login():
                
       
         if  (loginuser["status"]!="false"):   
-            Data = {"result":loginuser["result"],"status":"true"}                  
+            Data = {"message":loginuser["result"],"status":"true"}                  
             return Data
         else:
             data={"status":"False","message":"wrong credentials","result":""}
@@ -193,12 +193,12 @@ def login():
 
     except KeyError as e:
         print("Exception---->" +str(e))        
-        output = {"result":"Input Keys are not Found","status":"false"}
+        output = {"message":"Input Keys are not Found","status":"false"}
         return output 
     
     except Exception as e :
         print("Exception---->" +str(e))           
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output        
 
 @app.route('/addSubAdmins', methods=['POST'])
@@ -240,7 +240,7 @@ def addAdmin():
             return msg 
     except Exception as e :
         print("Exception---->" +str(e))           
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output
 
 
@@ -276,12 +276,12 @@ def adminPannel():
             Data = {"totalAdmins":totalsubAdmins,"policyMakerMasterCount":subAdmins2,"enterprenuerMasterCount":subAdmins3,"studentMasterCount":subAdmins4,"status":"true"}
             return Data
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output
 
 
@@ -304,17 +304,17 @@ def allSubAdmins():
 
             if (data["status"]!="false"): 
                 print("111111111111111")          
-                Data = {"result":data["result"],"status":"true"}
+                Data = {"message":data["result"],"status":"true"}
                 return Data
             else:
-                output = {"result":"No Data Found","status":"false"}
+                output = {"message":"No Data Found","status":"false"}
                 return output
         else:
             return msg         
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output
 
 
@@ -335,15 +335,15 @@ def policyMakerPannel():
         postCounts=data2["result"][0]
 
         if data:           
-            Data = {"policyMakeruserCount":policyMakerMasterCount,"postCount":postCounts,"status":"true"}
+            Data = {"message":policyMakerMasterCount,"postCount":postCounts,"status":"true"}
             return Data
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output 
 
 
@@ -362,15 +362,15 @@ def allpolicyMakers():
 
 
         if (data["status"]!="false"):           
-            Data = {"result":data["result"],"status":"true"}
+            Data = {"message":data["result"],"status":"true"}
             return Data
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output                 
 
 @app.route('/enterprenuerMasterPannel', methods=['GET'])
@@ -389,15 +389,15 @@ def enterprenuerMasterPannel():
 
 
         if data:           
-            Data = {"enterprenueruserCount":policyMakerMasterCount,"postCounts":postCounts,"status":"true"}
+            Data = {"message":policyMakerMasterCount,"postCounts":postCounts,"status":"true"}
             return Data 
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output  
 
 
@@ -417,15 +417,15 @@ def allenterprenuer():
 
 
         if (data["status"]!="false"):           
-            Data = {"result":data["result"],"status":"true"}
+            Data = {"message":data["result"],"status":"true"}
             return Data
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output         
 
 
@@ -445,15 +445,15 @@ def studentMasterPannel():
 
 
         if data:           
-            Data = {"studentuserCount":policyMakerMasterCount,"postCounts":postCounts,"status":"true"}
+            Data = {"message":policyMakerMasterCount,"postCounts":postCounts,"status":"true"}
             return Data
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output  
 
 
@@ -474,15 +474,15 @@ def allstudents():
 
 
         if (data["status"]!="false"):           
-            Data = {"result":data["result"],"status":"true"}
+            Data = {"message":data["result"],"status":"true"}
             return Data
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output                   
 
 
@@ -838,17 +838,17 @@ def allPosts():
             if (data["status"]!="false"): 
                 
                 print("111111111111111")          
-                Data = {"result":data["result"],"status":"true"}
+                Data = {"message":data["result"],"status":"true"}
                 return Data
             else:
-                output = {"result":"No Data Found","status":"false"}
+                output = {"message":"No Data Found","status":"false"}
                 return output
         else:
             return msg         
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output        
 
 
@@ -874,17 +874,17 @@ def myPosts():
             if (data["status"]!="false"): 
                 
                 print("111111111111111")          
-                Data = {"result":data["result"],"status":"true"}
+                Data = {"message":data["result"],"status":"true"}
                 return Data
             else:
-                output = {"result":"No Data Found","status":"false"}
+                output = {"message":"No Data Found","status":"false"}
                 return output
         else:
             return msg         
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output        
 
 
@@ -935,15 +935,15 @@ def allQualifications():
        
 
         if data:           
-            Data = {"Qualifications": data["result"],"status":"true"}
+            Data = {"message": data["result"],"status":"true"}
             return Data
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output 
 
 @app.route('/selectUserTypeMaster', methods=['GET'])
@@ -955,15 +955,15 @@ def selectUserTypeMaster():
        
 
         if data:           
-            Data = {"Qualifications": data["result"],"status":"true"}
+            Data = {"message": data["result"],"status":"true"}
             return Data
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output 
 
 @app.route('/allinterests', methods=['POST'])
@@ -981,17 +981,17 @@ def allinterests():
             
             data = databasefile.SelectQueryOrderby("interestMaster",columns,whereCondition,""," ",startlimit,endlimit)
             if (data["status"]!="false"):         
-                Data = {"result":data["result"],"status":"true"}
+                Data = {"message":data["result"],"status":"true"}
                 return Data
             else:
-                output = {"result":"No Data Found","status":"false"}
+                output = {"message":"No Data Found","status":"false"}
                 return output
         else:
             return msg         
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output 
 
 @app.route('/allUniversities', methods=['GET'])
@@ -1003,15 +1003,15 @@ def allUniversities():
        
 
         if data:           
-            Data = {"Universities": data["result"],"status":"true"}
+            Data = {"message": data["result"],"status":"true"}
             return Data
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output 
 
 
@@ -1024,15 +1024,15 @@ def allCategories():
        
 
         if data:           
-            Data = {"Categories": data["result"],"status":"true"}
+            Data = {"message": data["result"],"status":"true"}
             return Data
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output 
 
 @app.route('/allCountries', methods=['GET'])
@@ -1044,15 +1044,15 @@ def allCountries():
        
 
         if data:           
-            Data = {"Countries": data["result"],"status":"true"}
+            Data = {"message": data["result"],"status":"true"}
             return Data
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output 
 
 @app.route('/allStatus', methods=['GET'])
@@ -1064,55 +1064,66 @@ def allStatus():
        
 
         if data:           
-            Data = {"statusMaster": data["result"],"status":"true"}
+            Data = {"message": data["result"],"status":"true"}
             return Data
         else:
-            output = {"result":"No Data Found","status":"false"}
+            output = {"message":"No Data Found","status":"false"}
             return output
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"result":"something went wrong","status":"false"}
+        output = {"message":"something went wrong","status":"false"}
         return output 
 
 
 
-# @app.route('/verifyPost', methods=['POST'])
-# def verifyPost():
-#     try:
-#         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
-#         startlimit,endlimit="",""
-#         keyarr = ['approvedUserId','postId','userTypeId']
-#         commonfile.writeLog("verifyPost",inputdata,0)
-#         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+@app.route('/verifyPost', methods=['POST'])
+def verifyPost():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        startlimit,endlimit="",""
+        keyarr = ['approvedUserId','postId','userTypeId','id']
+        commonfile.writeLog("verifyPost",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
-#         if msg == "1":
-#             approvedUserId = inputdata["approvedUserId"]
-#             postId = inputdata["postId"]
-#             userTypeId = inputdata["userTypeId"]
+        if msg == "1":
+            approvedUserId = inputdata["approvedUserId"]
+            postId = inputdata["postId"]
+            userTypeId = inputdata["userTypeId"]
+            id = inputdata["id"]
     
-#             column = "approvedUserId,postId,userTypeId"                
-#             values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
-#             data = databasefile.InsertQuery("approvedBy",column,values)
+            column = "approvedUserId,postId,userTypeId"                
+            values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
+            data = databasefile.InsertQuery("approvedBy",column,values)
+            if id == 1:
+                WhereCondition = " and postId = '" + str(postId) + "'"
+                column = " status = '" + str("1") + "'"
+                data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
+                WhereCondition = " and postId = '" + str(postId) + "'"
+                column = " status = '" + str("1") + "'"
+                data = databasefile.UpdateQuery("userPost",column,WhereCondition)
+            if id == 2:
+                WhereCondition = " and postId = '" + str(postId) + "'"
+                column = " status = '" + str("2") + "'"
+                data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
+                WhereCondition = " and postId = '" + str(postId) + "'"
+                column = " status = '" + str("2") + "'"
+                data = databasefile.UpdateQuery("userPost",column,WhereCondition)
 
-#             WhereCondition = " and postId = '" + str(postId) + "'"
-#             column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',country = '" + str(Country) + "', "
-#             column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'"
-#             data = databasefile.UpdateQuery("userMaster",column,WhereCondition)        
-#             if data != "0":
-#                 column = 'userId,userName,userTypeId'
+            if data != "0":
+                column = 'approvedUserId,postId,userTypeId'
                 
-#                 data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
-#                 return data
-#             else:
-#                 return commonfile.Errormessage()
-#         else:
-#             return msg 
+                data = databasefile.SelectQuery("approvedBy",column,WhereCondition,"",startlimit,endlimit)                  
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg 
 
-#     except Exception as e :
-#         print("Exception---->" +str(e))           
-#         output = {"result":"something went wrong","status":"false"}
-#         return output
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"message":"something went wrong","status":"false"}
+        return output
 
 
 
