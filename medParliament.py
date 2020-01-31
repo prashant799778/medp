@@ -771,19 +771,18 @@ def userPost():
                     file = request.files.get('postImage')        
                     filename = file.filename or ''                 
                     filename = filename.replace("'","")
-                    print(filename,'filename') 
-
-                    
-                    FolderPath = ConstantData.GetPostImagePath(filename)
-                    filepath = '/postImage/' + filename 
-                    file.save(FolderPath)
-                    PicPath = filepath
-                else:
-                    print('BB')
-                    filename = "null"
-                    PicPath = "null"
-
-               
+                    print(filename,'filename')
+                    if filename != None:
+                        print('Lets see')
+                        FolderPath = ConstantData.GetPostImagePath(filename)
+                        filepath = '/postImage/' + filename 
+                        file.save(FolderPath)
+                        PicPath = filepath
+                    else:
+                        print('hope')
+                        print('BB')
+                        filename = "null"
+                        PicPath = "null"
 
                 columns = " userId,userTypeId,postId, postTitle , postDescription,postImage, postImagePath  "          
                 values = " '" + str(UserId) + "','" + str(userTypeId) + "','" + str(PostId) + "','" + str( postTitle) + "','" + str(postDescription) + "','" + str(filename) + "', "            
