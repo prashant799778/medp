@@ -334,10 +334,12 @@ def policyMakerPannel():
         WhereCondition=" and usertypeId='5'"
         
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
         policyMakerMasterCount=data["result"][0]
+        postCounts=data2["result"][0]
 
         if data:           
-            Data = {"policyMakeruserCount":policyMakerMasterCount,"status":"true"}
+            Data = {"policyMakeruserCount":policyMakerMasterCount,"postCount":postCounts,"status":"true"}
             return Data
         else:
             output = {"result":"No Data Found","status":"false"}
@@ -383,14 +385,15 @@ def enterprenuerMasterPannel():
         WhereCondition=" and usertypeId='6'"
         
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
         policyMakerMasterCount=data["result"][0]
-        
+        postCounts=data2["result"][0]
         
         
 
 
         if data:           
-            Data = {"enterprenueruserCount":policyMakerMasterCount,"status":"true"}
+            Data = {"enterprenueruserCount":policyMakerMasterCount,"postCounts":postCounts,"status":"true"}
             return Data 
         else:
             output = {"result":"No Data Found","status":"false"}
@@ -438,14 +441,15 @@ def studentMasterPannel():
         WhereCondition=" and usertypeId='7' "
         
         data = databasefile.SelectQueryOrderby("userMaster  ",column,WhereCondition,""," ",startlimit,endlimit)
+        data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
         policyMakerMasterCount=data["result"][0]
-        
-        
+        postCounts=data2["result"][0]
+
         
 
 
         if data:           
-            Data = {"studentuserCount":policyMakerMasterCount,"status":"true"}
+            Data = {"studentuserCount":policyMakerMasterCount,"postCounts":postCount"status":"true"}
             return Data
         else:
             output = {"result":"No Data Found","status":"false"}
