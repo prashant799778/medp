@@ -1055,46 +1055,64 @@ def allCountries():
         output = {"result":"something went wrong","status":"false"}
         return output 
 
-
-@app.route('/verifyPost', methods=['POST'])
-def verifyPost():
+@app.route('/allStatus', methods=['GET'])
+def allStatus():
     try:
-        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
-        startlimit,endlimit="",""
-        keyarr = ['approvedUserId','postId','userTypeId']
-        commonfile.writeLog("verifyPost",inputdata,0)
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        columns=" id, name "
+        
+        data = databasefile.SelectQueryMaxId("statusMaster",columns)
        
-        if msg == "1":
-            approvedUserId = inputdata["approvedUserId"]
-            postId = inputdata["postId"]
-            userTypeId = inputdata["userTypeId"]
-            
-            WhereCondition = " and postId = '" + str(postId) + "'"
-            count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
-            
-            if int(count) > 0:
-                return commonfile.EmailMobileAlreadyExistMsg()
-            else:
-                
-                column = "userId,email,userName,password,userTypeId"                
-                values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(password) + "','" + str(userTypeId) + "'"
 
-                data = databasefile.InsertQuery("userMaster",column,values)        
-                if data != "0":
-                    column = 'userId,userName,userTypeId'
-                    
-                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
-                    return data
-                else:
-                    return commonfile.Errormessage()
+        if data:           
+            Data = {"statusMaster": data["result"],"status":"true"}
+            return Data
         else:
-            return msg 
+            output = {"result":"No Data Found","status":"false"}
+            return output
 
     except Exception as e :
-        print("Exception---->" +str(e))           
+        print("Exception---->" + str(e))    
         output = {"result":"something went wrong","status":"false"}
-        return output
+        return output 
+
+
+
+# @app.route('/verifyPost', methods=['POST'])
+# def verifyPost():
+#     try:
+#         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+#         startlimit,endlimit="",""
+#         keyarr = ['approvedUserId','postId','userTypeId']
+#         commonfile.writeLog("verifyPost",inputdata,0)
+#         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+       
+#         if msg == "1":
+#             approvedUserId = inputdata["approvedUserId"]
+#             postId = inputdata["postId"]
+#             userTypeId = inputdata["userTypeId"]
+    
+#             column = "approvedUserId,postId,userTypeId"                
+#             values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
+#             data = databasefile.InsertQuery("approvedBy",column,values)
+
+#             WhereCondition = " and postId = '" + str(postId) + "'"
+#             column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',country = '" + str(Country) + "', "
+#             column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'"
+#             data = databasefile.UpdateQuery("userMaster",column,WhereCondition)        
+#             if data != "0":
+#                 column = 'userId,userName,userTypeId'
+                
+#                 data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
+#                 return data
+#             else:
+#                 return commonfile.Errormessage()
+#         else:
+#             return msg 
+
+#     except Exception as e :
+#         print("Exception---->" +str(e))           
+#         output = {"result":"something went wrong","status":"false"}
+#         return output
 
 
 
