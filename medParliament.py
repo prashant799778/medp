@@ -238,10 +238,6 @@ def addAdmin():
                     return commonfile.Errormessage()
         else:
             return msg 
-
-
-
-
     except Exception as e :
         print("Exception---->" +str(e))           
         output = {"result":"something went wrong","status":"false"}
@@ -731,9 +727,10 @@ def userPost():
 
     try: 
         startlimit,endlimit="",""   
-        inputdata = request.form.get('data')       
+        inputdata = request.form.get('data') 
+        print("===========================",inputdata)      
         inputdata = json.loads(inputdata)
-        print(inputdata)   
+        print("111111111111111111111111111",inputdata)   
         
         keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId']
         commonfile.writeLog("userPost",inputdata,0)
@@ -1056,6 +1053,50 @@ def allCountries():
         print("Exception---->" + str(e))    
         output = {"result":"something went wrong","status":"false"}
         return output 
+
+
+@app.route('/verifyPost', methods=['POST'])
+def verifyPost():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        startlimit,endlimit="",""
+        keyarr = ['approvedUserId','postId','userTypeId']
+        commonfile.writeLog("verifyPost",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+       
+        if msg == "1":
+            approvedUserId = inputdata["approvedUserId"]
+            postId = inputdata["postId"]
+            userTypeId = inputdata["userTypeId"]
+            
+            WhereCondition = " and postId = '" + str(postId) + "'"
+            count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
+            
+            if int(count) > 0:
+                return commonfile.EmailMobileAlreadyExistMsg()
+            else:
+                
+                column = "userId,email,userName,password,userTypeId"                
+                values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(password) + "','" + str(userTypeId) + "'"
+
+                data = databasefile.InsertQuery("userMaster",column,values)        
+                if data != "0":
+                    column = 'userId,userName,userTypeId'
+                    
+                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
+                    return data
+                else:
+                    return commonfile.Errormessage()
+        else:
+            return msg 
+
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"result":"something went wrong","status":"false"}
+        return output
+
+
+
 
        
 if __name__ == "__main__":
