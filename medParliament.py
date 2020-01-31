@@ -767,7 +767,7 @@ def userPost():
                 
 
                
-                if 'postImage' in request.files:
+                if ('postImage' in request.files) and ('postImage' in request.files !="") :
                     file = request.files.get('postImage')
                         
                     filename = file.filename or ''                 
