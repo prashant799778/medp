@@ -810,27 +810,25 @@ def userPost():
                     values = " '" + str(UserId) + "','" + str(userTypeId) + "','" + str(PostId) + "','" + str( postTitle) + "','" + str(postDescription) + "','" + str(filename) + "', "            
                     values = values + " '" + str(PicPath) + "'"
                     data = databasefile.InsertQuery("userPost",columns,values)
+                    if data != "0":
+                        column = '*'
+                        WhereCondition = " and postTitle = '" + str(postTitle) + "' and postDescription = '" + str(postDescription) + "'"
+                        
+                        data11 = databasefile.SelectQuery("userPost",column,WhereCondition,"",startlimit,endlimit)
+                        if data11["status"]!="false":
+                            y=data11["result"][0]
+                            column="userId,showuserTypeId,postId"
+                            values= " '" + str(y["userId"]) + "','" + str(showuserTypeId) + "','" + str(y["postId"]) + "'"
+                            data2 = databasefile.InsertQuery("postUserTypeMapping",column,values)
+                        else:
+                            return commonfile.Errormessage()
+                    return data11
                 if flag == 'u':
-                    WhereCondition = " and postId = '" + str(postId1) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+                    WhereCondition = " and postId = '" + str(postId1) + "' and  userTypeId = '" + str(userTypeId) + " '"
                     column = " postTitle = '" + str(postTitle) + "',postDescription = '" + str(postDescription) + "',postImage = '" + str(filename) + "', "
                     column = column +  " postImagePath = '" + str(PicPath) + "'"
                     data = databasefile.UpdateQuery("userPost",column,WhereCondition)
-
-
-                if data != "0":
-                    column = '*'
-                    WhereCondition = " and postTitle = '" + str(postTitle) + "' and postDescription = '" + str(postDescription) + "'"
-                    
-                    data11 = databasefile.SelectQuery("userPost",column,WhereCondition,"",startlimit,endlimit)
-                    if data11["status"]!="false":
-                        y=data11["result"][0]
-                        column="userId,showuserTypeId,postId"
-                        values= " '" + str(y["userId"]) + "','" + str(showuserTypeId) + "','" + str(y["postId"]) + "'"
-                        data2 = databasefile.InsertQuery("postUserTypeMapping",column,values)
-                    else:
-                        return commonfile.Errormessage()
-
-                    return data11
+                    return data
                 else:
                     return commonfile.Errormessage()
         else:
