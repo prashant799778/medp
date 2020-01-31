@@ -912,6 +912,25 @@ def allQualifications():
         output = {"result":"something went wrong","status":"false"}
         return output 
 
+@app.route('selectUserTypeMaster', methods=['GET'])
+def selectUserTypeMaster():
+    try:
+        columns=" id, userName "
+        
+        data = databasefile.SelectQueryMaxId("userTypeMaster",columns)
+       
+
+        if data:           
+            Data = {"Qualifications": data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output 
 
 @app.route('/allinterests', methods=['POST'])
 def allinterests():
