@@ -334,7 +334,7 @@ def policyMakerPannel():
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
         data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
         policyMakerMasterCount=data["result"][0]
-        postCounts=data2["result"][0]
+        
 
         if data:           
             Data = {"status":"true","message":"","result":policyMakerMasterCount,"postCounts":postCounts}
@@ -734,7 +734,7 @@ def userPost():
         inputdata = json.loads(inputdata)
         print("111111111111111111111111111",inputdata)   
         
-        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId']
+        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag','postId']
         commonfile.writeLog("userPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -744,6 +744,9 @@ def userPost():
             postTitle = inputdata["postTitle"] 
             postDescription = inputdata["postDescription"]
             showuserTypeId = inputdata["showuserTypeId"]
+            flag = inputdata["flag"]
+            print('====',flag)
+            postId1 = inputdata["postId"]
            
 
             PostId = commonfile.CreateHashKey(postTitle,postDescription)
@@ -756,7 +759,7 @@ def userPost():
                 return commonfile.postTitlepostDescriptionAlreadyExistMsg()
             else:
                 print("qqqqqqqqqqqqqqqqqqqqq")
-                postImage,postFilePath,PicPath="","",""
+                postImage,postFilePath,PicPath,filename=""="","","",""
                 
                 
                 if 'userTypeId' in inputdata:                                    
@@ -779,16 +782,19 @@ def userPost():
                     PicPath = filepath
                     print(PicPath)
                     
-
                
-                filename=""
-                columns = " userId,userTypeId,postId, postTitle , postDescription,postImage, postImagePath  "          
-                values = " '" + str(UserId) + "','" + str(userTypeId) + "','" + str(PostId) + "','" + str( postTitle) + "','" + str(postDescription) + "','" + str(filename) + "', "            
-                values = values + " '" + str(PicPath) + "'"       
-                
 
+                if flag == 'n':
+                    columns = " userId,userTypeId,postId, postTitle , postDescription,postImage, postImagePath  "          
+                    values = " '" + str(UserId) + "','" + str(userTypeId) + "','" + str(PostId) + "','" + str( postTitle) + "','" + str(postDescription) + "','" + str(filename) + "', "            
+                    values = values + " '" + str(PicPath) + "'"
+                    data = databasefile.InsertQuery("userPost",columns,values)
+                if flag == 'u':
+                    WhereCondition = " and postId = '" + str(postId1) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+                    column = " postTitle = '" + str(postTitle) + "',postDescription = '" + str(postDescription) + "',postImage = '" + str(filename) + "', "
+                    column = column +  " postImagePath = '" + str(PicPath) + "'"
+                    data = databasefile.UpdateQuery("userPost",column,WhereCondition)
 
-                data = databasefile.InsertQuery("userPost",columns,values) 
 
                 if data != "0":
                     column = '*'
@@ -799,11 +805,7 @@ def userPost():
                         y=data11["result"][0]
                         column="userId,showuserTypeId,postId"
                         values= " '" + str(y["userId"]) + "','" + str(showuserTypeId) + "','" + str(y["postId"]) + "'"
-                        data2 = databasefile.InsertQuery("postUserTypeMapping",column,values) 
-
-                        
-
-
+                        data2 = databasefile.InsertQuery("postUserTypeMapping",column,values)
                     else:
                         return commonfile.Errormessage()
 
