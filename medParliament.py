@@ -778,6 +778,7 @@ def userPost():
                     filepath = '/postImage/' + filename 
                     file.save(FolderPath)
                     PicPath = filepath
+                    print(PicPath)
                     
 
                
@@ -866,9 +867,9 @@ def myPosts():
             
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
-            column="*"
-            WhereCondition=" and userId='" + str(userId) + "'and userTypeId='" + str(userTypeId) + "'"
-            data = databasefile.SelectQueryOrderby("userPost as",column,WhereCondition,""," ",startlimit,endlimit)
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.Id,pm.postImage,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,""," ",startlimit,endlimit)
           
 
             if (data["status"]!="false"): 
