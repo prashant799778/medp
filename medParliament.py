@@ -885,7 +885,7 @@ def myPosts():
 
     except Exception as e :
         print("Exception---->" + str(e))    
-        output = {"message":"something went wrong","status":"false"}
+        output = {"status":"false","message":"something went wrong","result":""}
         return output        
 
 
