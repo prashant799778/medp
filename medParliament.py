@@ -833,7 +833,7 @@ def allPosts():
         if msg =="1":
             
             userTypeId=inputdata["userTypeId"]
-            column="um.userName,um.email,um.country,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.Id,pm.postImage,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="um.userName,um.email,um.country,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,""," ",startlimit,endlimit)
           
@@ -869,7 +869,7 @@ def myPosts():
             
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.Id,pm.postImage,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,""," ",startlimit,endlimit)
           
@@ -1093,19 +1093,19 @@ def verifyPost():
             approvedUserId = inputdata["approvedUserId"]
             postId = inputdata["postId"]
             userTypeId = inputdata["userTypeId"]
-            id = inputdata["id"]
+            statusid = inputdata["id"]
     
             column = "approvedUserId,postId,userTypeId"                
             values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
             data = databasefile.InsertQuery("approvedBy",column,values)
-            if id == 1:
+            if (statusid == 1):
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("1") + "'"
                 data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("1") + "'"
                 data = databasefile.UpdateQuery("userPost",column,WhereCondition)
-            if id == 2:
+            if (statusid == 2):
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("2") + "'"
                 data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)

@@ -82,7 +82,7 @@ def SelectQuery1(table,columns,whereCondition):
         cursor.close()
       
         if data:
-            data = {"status":"true","message":"","result":data}
+            return data
         else:
             data = {"status":"False","message":"No Data Found","result":""}
 
