@@ -8,10 +8,7 @@
 body{
     background: #f5f5f5;
 }
-.sidebar.active{
-    left: -250px;
-    transition: all 500ms linear;
-}
+
 /*All Use*/
 .mr-left-2r {
     margin-left: 2rem !important;
@@ -33,7 +30,7 @@ body{
    text-decoration: none;
 }
 .border-round-rem{
-    border-radius: 0px !important
+    border-radius: 0px !important; 
 }
 .small-space {
     padding: 1rem 0;
@@ -119,12 +116,58 @@ align-items: center;
 }
 /* End All use*/
 /*Sidebar Section*/
+
+/* active Side bar */
+    .sidebar.active{
+        left: -150px;
+        transition: all 500ms linear;
+    }
+    .shw{
+        display: none;
+    }
+    .logo-sidee{
+        display: none;
+    }
+    .sidebar.active .side-bar-menu {
+        margin: 24px 2.7rem;
+    }
+    .sidebar.active .shw{
+        display: block;
+        position: relative;
+        left: 130px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+    }
+    .sidebar.active .hid{
+        display: none;
+    }
+    .sidebar.active .logo-side{
+        display: none;
+        transition: all 500ms linear;
+    }
+    .sidebar.active .logo-sidee{
+        display: block;
+        font-size: 2rem;
+        font-weight: 900;
+        line-height: 1.71;
+        color: #3b8cf6;
+        position: absolute;
+        right: 25px;
+    }
+    .top-bar.active {
+        margin-left: 100px;
+        transition: all 500ms linear;
+}
+/* End Active Side bar*/
+
 .sidebar{
     position: fixed;
     width: 250px;
     height: 100%;
     left: 0;
     transition: all 500ms linear;
+    z-index: 9;
 }
 span.line-bar {
     height: 2px;
@@ -136,9 +179,11 @@ span.line-bar {
 button.togg {
     position: absolute;
     left: 250px;
-    top: 20px;
+    top: 10px;
     border: none;
-    background: transparent;
+    background: #fff;
+    padding: 10px;
+    z-index: 9;
     transition: all 500ms linear;
 }
 button.togg:focus {
@@ -202,8 +247,6 @@ button.togg:focus {
     padding-top: 2rem;
 }
 .side-menu ul li {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
 }
@@ -211,6 +254,19 @@ button.togg:focus {
     font-size: 1rem;
     font-weight: 500;
     color: #707070;
+    text-decoration: none;
+}
+.inner-dropdown ul li {
+    margin: 0;
+    margin-top: 1rem;
+}
+.drop-show{
+    display: none;
+}
+.side-menu ul li a {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 /* End Sidebar Section*/
 
@@ -220,11 +276,6 @@ button.togg:focus {
 .top-bar {
     width: 100%;
     margin-left: 250px;
-    transition: all 500ms linear;
-}
-.top-bar.active {
-    width: 100%;
-    margin-left: 0px;
     transition: all 500ms linear;
 }
 .inner-top-bar{
@@ -255,7 +306,7 @@ button.togg:focus {
 .top-wrap-box {
     justify-content: space-between;
     align-items: center;
-    margin: 0.5rem 0;
+    margin: 0.5rem 20px;
 }
 .top-bar-option ul li {
     margin-right: 2rem;
@@ -447,9 +498,43 @@ width: 100%;
         height: 100vh;
         left: 0;
         transition: all 500ms linear;
+        z-index: 9;
+    }
+    .shw{
+        display: none;
+    }
+    .logo-sidee{
+        display: none;
+    }
+    .sidebar.active .side-bar-menu {
+        margin: 24px 2.7rem;
+    }
+    .sidebar.active .shw{
+        display: block;
+        position: relative;
+        left: 280px;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+    }
+    .sidebar.active .hid{
+        display: none;
+    }
+    .sidebar.active .logo-side{
+        display: none;
+        transition: all 500ms linear;
+    }
+    .sidebar.active .logo-sidee{
+        display: block;
+        font-size: 2rem;
+        font-weight: 900;
+        line-height: 1.71;
+        color: #3b8cf6;
+        position: absolute;
+        right: 25px;
     }
 .sidebar.active{
-    left: -400px;
+    left: -300px;
     transition: all 500ms linear;
 }
     .logo-container {
@@ -477,23 +562,25 @@ width: 100%;
         overflow: hidden;
     }
     .side-bar-menu {
-        margin: 0 3.7rem;
+        margin: 0 2.7rem;
     }
     button.togg {
         position: absolute;
         left: 400px;
-        top: 42px;
+        top: 32px;
         border: none;
-        background: transparent;
+        background: #fff;
+        padding: 10px;
+        z-index: 9;
         transition: all 500ms linear;
-    }
+}
 .top-bar {
     width: 100%;
     margin-left: 400px;
     transition: all 500ms linear;
 }
 .top-bar.active {
-    margin-left: 0px;
+    margin-left: 100px;
     transition: all 500ms linear;
 }
 .inner-top-bar{
@@ -503,7 +590,7 @@ width: 100%;
 .top-wrap-box {
     justify-content: space-between;
     align-items: center;
-    margin: 1.5rem 0;
+    margin: 1.5rem 20px;
     }
     .record-box tbody tr td {
         vertical-align: middle;
