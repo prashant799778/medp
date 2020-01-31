@@ -1196,7 +1196,9 @@ def updatePost():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
 
         if msg == "1":
-            columns=" postId, userTypeId "
+            userTypeId = inputdata["userTypeId"]
+            postId = inputdata["postId"]
+            columns="*"
             whereCondition="and postId = '" + str(postId) + "'and userTypeId = '" + str(userTypeId) + "'"
             
             data = databasefile.SelectQueryOrderby("userPost",columns,whereCondition,""," ",startlimit,endlimit)
