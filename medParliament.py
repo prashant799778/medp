@@ -898,7 +898,7 @@ def DeletePost():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        keyarr = ['userTypeId','userId','postId']
+        keyarr = ['userTypeId','userId','postId','showUserTypeId']
         print(inputdata,"B")
         commonfile.writeLog("DeletePost",inputdata,0)
         print('C')
@@ -907,9 +907,14 @@ def DeletePost():
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
             postId=inputdata["postId"]
+            showUserTypeId=inputdata["showUserTypeId"]
 
             WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userId) + "' and  postId = '" + str(postId) + "'"
             data = databasefile.DeleteQuery("userPost",WhereCondition)
+
+            whereCondition = " and postId='" + str(postId) +  "'and  userId = '" + str(userId) + "' and  showUserTypeId = '" + str(showUserTypeId) + "'"
+            data2 = databasefile.DeleteQuery("postUserTypeMapping",whereCondition)
+
 
             if data != "0":
                 return data
