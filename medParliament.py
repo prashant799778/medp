@@ -770,7 +770,8 @@ def userPost():
                     
                     file = request.files.get('postImage')        
                     filename = file.filename or ''                 
-                    filename = filename.replace("'","") 
+                    filename = filename.replace("'","")
+                    print(filename,'filename') 
 
                     
                     FolderPath = ConstantData.GetPostImagePath(filename)
