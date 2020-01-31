@@ -889,6 +889,37 @@ def myPosts():
         return output        
 
 
+@app.route('/DeletePost', methods=['POST'])
+def DeletePost():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userTypeId','userId','postId']
+        print(inputdata,"B")
+        commonfile.writeLog("DeletePost",inputdata,0)
+        print('C')
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userTypeId=inputdata["userTypeId"]
+            userId=inputdata["userId"]
+            postId=inputdata["postId"]
+
+            WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userId) + "' and  postId = '" + str(postId) + "'"
+            data = databasefile.DeleteQuery("userPost",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+ 
+
+
 
 
 @app.route('/allQualifications', methods=['GET'])
