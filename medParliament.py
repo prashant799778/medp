@@ -910,6 +910,9 @@ def DeletePost():
 
             WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userId) + "' and  postId = '" + str(postId) + "'"
             data = databasefile.DeleteQuery("userPost",WhereCondition)
+            whereCondition = " and usertypeId='" + str(userTypeId) + "'"
+            
+            
 
             if data != "0":
                 return data
