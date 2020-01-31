@@ -911,7 +911,7 @@ def allPosts1():
         return output                    
 
 
-@app.route('/myPosts', methods=['POST'])
+@app.route('/myPosts1', methods=['POST'])
 def myPosts():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -949,7 +949,7 @@ def myPosts():
         return output
 
 
-@app.route('/myPosts1', methods=['POST'])
+@app.route('/myPosts', methods=['POST'])
 def myPosts1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
