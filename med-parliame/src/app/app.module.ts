@@ -6,7 +6,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AccountComponent } from './account/account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserSigninComponent } from './user-signin/user-signin.component';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { AdminComponent } from './Component/admin/admin.component';
 import { EnterpenureComponent } from './admin/enterpenure/enterpenure.component';
@@ -21,7 +20,6 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     AccountComponent,
     DashboardComponent,
-    UserSigninComponent,
     AdminComponent,
     EnterpenureComponent,
     StudentComponent,

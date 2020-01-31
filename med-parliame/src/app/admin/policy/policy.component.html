@@ -25,20 +25,20 @@
                               <th>Gender</th>
                               <th>Password</th>
                               <th>Status</th>
-                              <th>Action</th>
+                              <th>Actions</th>
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td>mike bhand</td>
-                              <td>mikebhand@gmail.com</td>
-                              <td>+91 987-098-8765</td>
-                              <td>male</td>
-                              <td>Mike Bhand</td>
+                          <tr *ngFor="let policy of PolicyList">
+                              <td>{{policy.userName}}</td>
+                              <td>{{policy.email}}</td>
+                              <td>{{policy.mobileNo}}</td>
+                              <td>{{policy.gender}}</td>
+                              <td>{{policy}}</td>
                               <td> <button type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">INACTIVE</button></td>
                               <td></td>
                           </tr>
-                          <tr>
+                          <!-- <tr>
                               <td>mike bhand</td>
                               <td>mikebhand@gmail.com</td>
                               <td>+91 987-098-8765</td>
@@ -118,7 +118,7 @@
                               <td>Mike Bhand</td>
                               <td> <button type="button" class="btn ab-btn dc-bg-color-one border-round-rem">PENDING</button></td>
                               <td></td>
-                          </tr>
+                          </tr> -->
                       </tbody>
                   </table>
               </div>
