@@ -364,7 +364,7 @@ def policyMakerPannel():
 @app.route('/allpolicyMakers', methods=['GET'])
 def allpolicyMakers():
     try:
-        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.country,um.email,"
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
         column=column+"pm.aboutProfile,pm.organization,pm.designation"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId "
