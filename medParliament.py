@@ -477,7 +477,7 @@ def studentMasterPannel():
 def allstudents():
     try:
         column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
-        column=column+" pm.address,pm.qualification,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityName,pm.interestId "
+        column=column+" pm.address,pm.qualificationId,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId,pm.interestId "
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId "
         
