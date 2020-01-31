@@ -24,5 +24,21 @@
       document.getElementById("slide").classList.toggle('active');
     }
   </script>
+   <script type="text/javascript">
+    var flag = true;
+      $(document).ready(function(){
+      $(".dp-down").click(function(){
+        if(flag){
+          $(".drop-show").css({"display":"block"});   
+          
+        flag=false;
+      }
+      else{
+          $(".drop-show").css({"display":"none"});  
+        flag= true;
+      }
+      });
+      });
+</script>
 </body>
 </html>
