@@ -875,10 +875,10 @@ def myPosts():
             if (data["status"]!="false"): 
                 
                 print("111111111111111")          
-                Data = {"message":data["result"],"status":"true"}
+                Data = {"status":"true","message":"","result":data["result"]}
                 return Data
             else:
-                output = {"message":"No Data Found","status":"false"}
+                output = {"status":"false","message":"No Data Found","result":""}
                 return output
         else:
             return msg         
