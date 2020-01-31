@@ -14,6 +14,8 @@ import databasefile
 from config import Connection
 import commonfile
 import ConstantData
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 from flask import Flask, render_template
 app = Flask(__name__)
@@ -1387,7 +1389,7 @@ def updateStatus():
         if msg =="1":
             column="status"
             whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' "
-            data=databasefile.SelectQuery1("userMaster",column,whereCondition)
+            data=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
             if data1[0]["Status"]==0:
                 column="status='1'"
                 whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' "
@@ -1398,7 +1400,12 @@ def updateStatus():
                 whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' "
                 output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
             output=output1    
-            return output
+           
+            if output!='0':
+                Data = {"status":"true","message":"","result":data["result"]}                  
+                return Data
+            else:
+                return commonfile.Errormessage()    
 
                 
 
@@ -1413,7 +1420,146 @@ def updateStatus():
     except Exception as e :
         print("Exceptio`121QWAaUJIHUJG n---->" +str(e))    
         output = {"result":"somthing went wrong","status":"false"}
-        return output        
+        return output
+
+
+@app.route('/generateOtp', methods=['POST'])
+def generateOtp():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['email']
+        print(inputdata,"B")
+        commonfile.writeLog("generateOtp",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            email=str(inputdata["email"])
+
+            digits = "0123456789"
+            OTP = ""
+            for i in range(4):
+                OTP += digits[math.floor(random.random() * 10)]
+            message = Mail(
+                from_email = 'abcd@gmail.com',
+                to_emails = str(emailto),
+                subject = "Otp for Reset Password",
+                html_content = '<strong> Otp To Reset Your Password is:' + str(otp) + ' </strong> <br> .<br> Thanks,medParliament Team')
+            sg = SendGridAPIClient('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')
+            response = sg.send(message)
+
+          
+            column="otp='" + str(OTP)+ "'"
+            whereCondition= "  and email = '" + str(data["email"])+ "' "
+            output=databasefile.UpdateQuery("userMaster",column,whereCondition)
+            columns='otp'
+            
+            data=databasefile.SelectQuery("userMaster",columns,whereCondition,"",startlimit,endlimit)
+            if output!='0':
+                Data = {"status":"true","message":"","result":data["result"]}                  
+                return Data
+            else:
+                return commonfile.Errormessage()    
+
+          
+                
+
+        else:
+            return msg         
+ 
+    except KeyError :
+        print("Key Exception---->")   
+        output = {"result":"key error","status":"false"}
+        return output  
+
+    except Exception as e :
+        print("Exceptio`121QWAaUJIHUJG n---->" +str(e))    
+        output = {"result":"somthing went wrong","status":"false"}
+        return output
+
+@app.route('/updatePassword', methods=['POST'])
+def updatePassword():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['email','password']
+        print(inputdata,"B")
+        commonfile.writeLog("updatePassword",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            email=str(inputdata["email"])
+            password=str(inputdata["password"])
+
+          
+
+          
+            column="password='" + password+ "'"
+            whereCondition= "  and email = '" + str(data["email"])+ "' "
+            output=databasefile.UpdateQuery("userMaster",column,whereCondition)
+            
+            
+            if output!='0':
+                Data = {"status":"true","message":"","result":data["result"]}                  
+                return Data
+            else:
+                return commonfile.Errormessage()    
+
+          
+                
+
+        else:
+            return msg         
+ 
+    except KeyError :
+        print("Key Exception---->")   
+        output = {"result":"key error","status":"false"}
+        return output  
+
+    except Exception as e :
+        print("Exceptio`121QWAaUJIHUJG n---->" +str(e))    
+        output = {"result":"somthing went wrong","status":"false"}
+        return output
+
+
+
+@app.route('/verifyOtp', methods=['POST'])
+def verifyOtp():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['otp']
+        print(inputdata,"B")
+        commonfile.writeLog("verifyOtp",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            otp=str(inputdata['otp'])
+            column="email"
+            whereCondition= " and otp='" + otp+ "' "
+            data1=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
+            if  (data1["status"]!="false"):   
+                Data = {"status":"true","message":"","result":data1["result"]}                  
+                return Data
+            else:
+                data = {"status":"false","message":"No Data Found","result":""}
+                return data
+
+
+            
+
+                
+
+        else:
+            return msg         
+ 
+    except KeyError :
+        print("Key Exception---->")   
+        output = {"result":"key error","status":"false"}
+        return output  
+
+    except Exception as e :
+        print("Exceptio`121QWAaUJIHUJG n---->" +str(e))    
+        output = {"result":"somthing went wrong","status":"false"}
+        return output          
+
 
 
 
