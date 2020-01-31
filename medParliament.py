@@ -772,7 +772,7 @@ def userPost():
                     filename = file.filename or ''                 
                     filename = filename.replace("'","")
                     print(filename,'filename')
-                    if filename != None:
+                    if filename != " ":
                         print('Lets see')
                         FolderPath = ConstantData.GetPostImagePath(filename)
                         filepath = '/postImage/' + filename 
