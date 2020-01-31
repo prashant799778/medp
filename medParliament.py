@@ -1091,19 +1091,19 @@ def verifyPost():
             approvedUserId = inputdata["approvedUserId"]
             postId = inputdata["postId"]
             userTypeId = inputdata["userTypeId"]
-            id = inputdata["id"]
+            statusid = inputdata["id"]
     
             column = "approvedUserId,postId,userTypeId"                
             values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
             data = databasefile.InsertQuery("approvedBy",column,values)
-            if id == 1:
+            if statusid == 1:
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("1") + "'"
                 data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("1") + "'"
                 data = databasefile.UpdateQuery("userPost",column,WhereCondition)
-            if id == 2:
+            if statusid == 2:
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("2") + "'"
                 data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
