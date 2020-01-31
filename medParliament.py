@@ -942,6 +942,26 @@ def allCategories():
         output = {"result":"something went wrong","status":"false"}
         return output 
 
+@app.route('/allCategories', methods=['GET'])
+def allCategories():
+    try:
+        columns=" id, countryName "
+        
+        data = databasefile.SelectQueryMaxId("countryMaster",columns)
+       
+
+        if data:           
+            Data = {"Countries": data["result"],"status":"true"}
+            return Data
+        else:
+            output = {"result":"No Data Found","status":"false"}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"result":"something went wrong","status":"false"}
+        return output 
+
        
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
