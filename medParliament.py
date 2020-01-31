@@ -772,7 +772,7 @@ def userPost():
                
                 if 'postImage' in request.files:
                     file = request.files.get('postImage')
-                    print(file,'file')        
+                        
                     filename = file.filename or ''                 
                     filename = filename.replace("'","")
                     print(filename,filename) 
