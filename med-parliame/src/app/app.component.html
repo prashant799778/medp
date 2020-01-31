@@ -1,4 +1,14 @@
-<app-header></app-header>
-<app-sidebar></app-sidebar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div class="main-container">
+    <div class="sidebar bg-white-fff" id="side-bar">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="top-bar" id="slide">
+        <div class="inner-top-bar bg-white-fff pd-lr-space">
+        <app-header></app-header>
+    </div>
+        <div class="dashboard-section">
+            <router-outlet></router-outlet>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</div>
