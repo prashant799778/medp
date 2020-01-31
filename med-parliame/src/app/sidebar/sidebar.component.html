@@ -1,26 +1,31 @@
 
     <div class="inner-side-bar">
-        <div class="logo-container">
-            <a href="javascript:void(0)" class="logo-side ">MedParliament</a>
-        </div>
+
+            <div class="logo-container">
+                <a href="javascript:void(0)" class="logo-side ">MedParliament</a>
+                <a href="javascript:void(0)"  class="logo-sidee ">MP</a>
+            </div>
     </div>
-    <div class="side-bar-menu">
-        <div class="profile-box">
-            <div class="image-section">
-                <img src="../../assets/images/man.svg">
+        <div class="side-bar-menu">
+            <img src="../../assets/images/man.svg" class="im-circle shw">
+            <div class="profile-box hid">
+                <div class="image-section">
+                    <img src="../../assets/images/man.svg" class="im-circle shw">
+                                                            
+                </div>
+                <div class="user-description">
+                    <h2>Admin Name</h2>
+                    <h3>Admin</h3>
+                </div>
             </div>
-            <div class="user-description">
-                <h2>Admin Name</h2>
-                <h3>Admin</h3>
+            <div class="side-menu">
+                <ul>
+                    <li><a href="javascript:void(0)" (click)="goTo('dashboard')">Dashboard</a> <img src="../../assets/images/a-dashboard.svg"></li>
+                    <li><a href="javascript:void(0)" (click)="goTo('Admin')">Admin</a> <img src="../../assets/images/d-admin.svg"></li>
+                    <li><a href="javascript:void(0)" (click)="goTo('User')">Users</a> <img src="../../assets/images/d-users.svg"></li>
+                    <li><a href="javascript:void(0)">Settings</a> <img src="../../assets/images/d-settings.svg"></li>
+                </ul>
             </div>
-        </div>
-        <div class="side-menu">
-            <ul>
-                <li><a href="javascript:void(0)" (click)="goTo('dashboard')">Dashboard</a> <img src="../../assets/images/a-dashboard.svg"></li>
-                <li><a href="javascript:void(0)" (click)="goTo('Admin')">Admin</a> <img src="../../assets/images/d-admin.svg"></li>
-                <li><a href="javascript:void(0)" (click)="goTo('User')">Users</a> <img src="../../assets/images/d-users.svg"></li>
-                <li><a href="javascript:void(0)">Settings</a> <img src="../../assets/images/d-settings.svg"></li>
-            </ul>
         </div>
     </div>
     <button type="button" class="togg" onclick="toggleside()">
