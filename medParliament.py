@@ -1375,6 +1375,47 @@ def updatePost():
         return commonfile.Errormessage()
 
 
+@app.route('/updateStatus', methods=['POST'])
+def updateStatus():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userTypeId','email']
+        print(inputdata,"B")
+        commonfile.writeLog("updateStatus",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            column="status"
+            whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' "
+            data=databasefile.SelectQuery1("userMaster",column,whereCondition)
+            if data1[0]["Status"]==0:
+                column="status='1'"
+                whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' "
+                output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
+
+            else:
+                column="status='0'"
+                whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' "
+                output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
+            output=output1    
+            return output
+
+                
+
+        else:
+            return msg         
+ 
+    except KeyError :
+        print("Key Exception---->")   
+        output = {"result":"key error","status":"false"}
+        return output  
+
+    except Exception as e :
+        print("Exceptio`121QWAaUJIHUJG n---->" +str(e))    
+        output = {"result":"somthing went wrong","status":"false"}
+        return output        
+
+
 
 
        
