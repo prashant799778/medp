@@ -777,8 +777,8 @@ def userPost():
                     file.save(FolderPath)
                     PicPath = filepath
                 elif 'postImage' not in request.files:
-                    filename = "0"
-                    PicPath = "0"
+                    filename = "null"
+                    PicPath = "null"
 
                
 
