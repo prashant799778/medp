@@ -800,7 +800,7 @@ def userPost():
                         y=data11["result"][0]
                         column="userId,showuserTypeId,postId"
                         values= " '" + str(y["userId"]) + "','" + str(showuserTypeId) + "','" + str(y["postId"]) + "'"
-                        data2 = databasefile.InsertQuery("postUserTypeMapping",columns,values) 
+                        data2 = databasefile.InsertQuery("postUserTypeMapping",column,values) 
 
                         
 
