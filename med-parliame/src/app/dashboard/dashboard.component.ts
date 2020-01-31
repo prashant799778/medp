@@ -17,13 +17,15 @@ export class DashboardComponent implements OnInit {
 
 	ngOnInit() {
 		this.userService.getApiData(AppSettings.AdminPannel).then(resp=>{
-			console.log(resp)
-			this.totalEnterprenuer = resp['enterprenuerMasterCount'].count
-			this.totalPolicy = resp['policyMakerMasterCount'].count
-			this.totalStudent = resp['studentMasterCount'].count
-			this.totalAdmins = resp['totalAdmins'].count
+			
+			
+			this.totalEnterprenuer = resp['result']['enterprenuerMasterCount'].count
+			this.totalPolicy = resp['result']['policyMakerMasterCount'].count
+			this.totalStudent = resp['result']['studentMasterCount'].count
+			this.totalAdmins = resp['result']['totalAdmins'].count
 			
 		})
+		console.log(this.totalPolicy)
 		this.userService.getApiData(AppSettings.AllPolicyMaker).then(resp=>{
 			console.log(resp)
 			this.PolicyList = resp['result']
