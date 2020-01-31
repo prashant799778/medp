@@ -766,6 +766,7 @@ def userPost():
 
 
                 if 'postImage' in request.files:
+                    print('AA')
                     
                     file = request.files.get('postImage')        
                     filename = file.filename or ''                 
@@ -777,6 +778,7 @@ def userPost():
                     file.save(FolderPath)
                     PicPath = filepath
                 else:
+                    print('BB')
                     filename = "null"
                     PicPath = "null"
 
