@@ -188,12 +188,12 @@ def login():
             Data = {"status":"true","message":"","result":loginuser["result"]}                  
             return Data
         else:
-            data={"status":"false","message":"No Data Found""result":""}
+            data = {"status":"false","message":"No Data Found","result":""}
             return data
 
     except KeyError as e:
         print("Exception---->" +str(e))        
-        output = {"status":"false","message":"No Data Found""result":""}
+        output = {"status":"false","message":"No Data Found","result":""}
         return output 
     
     except Exception as e :
@@ -278,7 +278,7 @@ def adminPannel():
             Data = {"status":"true","message":"","result":Data1}
             return Data
         else:
-            output = {"status":"false","message":"No Data Found""result":""}
+            output = {"status":"false","message":"No Data Found","result":""}
             return output
 
     except Exception as e :
@@ -309,7 +309,7 @@ def allSubAdmins():
                 Data = {"status":"true","message":"","result":data["result"]}
                 return Data
             else:
-                output = {"status":"false","message":"No Data Found""result":""}
+                output = {"status":"false","message":"No Data Found","result":""}
                 return output
         else:
             return msg         
@@ -340,7 +340,7 @@ def policyMakerPannel():
             Data = {"status":"true","message":"","result":policyMakerMasterCount,"postCounts":postCounts}
             return Data
         else:
-            output = {"status":"false","message":"No Data Found""result":""}
+            output = {"status":"false","message":"No Data Found","result":""}
             return output
 
     except Exception as e :
@@ -367,7 +367,7 @@ def allpolicyMakers():
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
         else:
-            output = {"status":"false","message":"No Data Found""result":""}
+            output = {"status":"false","message":"No Data Found","result":""}
             return output
 
     except Exception as e :
@@ -394,7 +394,7 @@ def enterprenuerMasterPannel():
             Data = {"status":"true","message":"","result":policyMakerMasterCount,"postCounts":postCounts}
             return Data 
         else:
-            output = {"status":"false","message":"No Data Found""result":""}
+            output = {"status":"false","message":"No Data Found","result":""}
             return output
 
     except Exception as e :
@@ -422,7 +422,7 @@ def allenterprenuer():
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
         else:
-            output = {"status":"false","message":"No Data Found""result":""}
+            output = {"status":"false","message":"No Data Found","result":""}
             return output
 
     except Exception as e :
@@ -450,7 +450,7 @@ def studentMasterPannel():
             Data = {"status":"true","message":"","result":policyMakerMasterCount,"postCounts":postCounts}
             return Data
         else:
-            output = {"status":"false","message":"No Data Found""result":""}
+            output = {"status":"false","message":"No Data Found","result":""}
             return output
 
     except Exception as e :
@@ -479,7 +479,7 @@ def allstudents():
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
         else:
-            output = {"status":"false","message":"No Data Found""result":""}
+            output = {"status":"false","message":"No Data Found","result":""}
             return output
 
     except Exception as e :
