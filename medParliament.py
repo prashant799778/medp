@@ -733,7 +733,7 @@ def userPost():
         startlimit,endlimit="",""   
         inputdata = request.form.get('data')       
         inputdata = json.loads(inputdata)
-        print(inputdata,'inputdata')   
+        print(inputdata)   
         
         keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId']
         commonfile.writeLog("userPost",inputdata,0)
