@@ -335,6 +335,39 @@ def allSubAdmins():
         return output
 
 
+@app.route('/totalSubAdmins', methods=['GET'])
+def totalAdmins():
+    try:
+       
+        startlimit,endlimit="",""
+        msg="1"
+       
+        if msg =="1":
+            orderby="um.id"
+           
+            column="um.userName as userName,ut.userName as userType,um.usertypeId as userTypeId"
+            WhereCondition=" and um.userTypeId>'1' and um.userTypeId>'5' and um.userTypeId=ut.id "
+            data = databasefile.SelectQueryOrderby("userMaster as um,userTypeMaster as ut",column,WhereCondition,"",startlimit,endlimit,orderby)
+            count=len(data["result"])
+            print(count)
+
+            if (data["status"]!="false"): 
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+
                   
 
 
