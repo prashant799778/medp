@@ -1382,22 +1382,22 @@ def updateStatus():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        keyarr = ['userTypeId','email']
+        keyarr = ['userTypeId','email','userId']
         print(inputdata,"B")
         commonfile.writeLog("updateStatus",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             column="status"
-            whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' "
+            whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "'  and userId = '" + str(data["userId"])+ "' "
             data=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
             if data1[0]["Status"]==0:
                 column="status='1'"
-                whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' "
+                whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' and userId = '" + str(data["userId"])+ "' "
                 output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
 
             else:
                 column="status='0'"
-                whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' "
+                whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' and userId = '" + str(data["userId"])+ "' "
                 output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
             output=output1    
            
