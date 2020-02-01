@@ -992,7 +992,7 @@ def allPosts2():
 
           
 
-            if (data["status"]!="false"):
+            if (data!=0):
                 for i in data["result"]:
                     if (i["status"] == 1):
                         print(i["postId"])
@@ -1083,7 +1083,7 @@ def myPosts1():
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
           
 
-            if (data["status"]!="false"): 
+            if (data!=0): 
                 for i in data["result"]:
                     if (i["status"] == 1):
                         print(i["postId"])
