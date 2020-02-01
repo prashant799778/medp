@@ -349,14 +349,14 @@ def totalAdmins():
             WhereCondition=" and um.userTypeId>'1' and um.userTypeId<'5' and um.userTypeId=ut.id "
             data = databasefile.SelectQueryOrderby("userMaster as um,userTypeMaster as ut",column,WhereCondition,"",startlimit,endlimit,orderby)
             count=len(data["result"])
-            for i in data["result"]:
-                y=i["userTypeId"]
-                y.split("_")
-                print(y,"y")
-                usertypeId=""
-                for i in y:
-                    usertypeId+=i
-                    del i["userTypeId"]
+            # for i in data["result"]:
+            #     y=i["userTypeId"]
+            #     y.split("_")
+            #     print(y,"y")
+            #     usertypeId=""
+            #     for i in y:
+            #         usertypeId+=i
+            #         del i["userTypeId"]
                     #i.update("userTypeId":usertypeId)
 
 
