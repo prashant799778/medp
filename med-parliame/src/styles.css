@@ -124,10 +124,30 @@ align-items: center;
 .drop-show {
     margin-bottom: 1rem;
 }
+
+.drop-show1{
+    margin-bottom: 1rem;
+    display: none;
+}
 /* End All use*/
 /*Sidebar Section*/
 
 /* active Side bar */
+.drop-showw {
+    margin-bottom: 1rem;
+}
+.img-hdi{
+    display:none;
+}
+.side-menu ul li a.active .img-hdi{
+    display: inline-block;
+}
+.side-menu ul li a.active .img-sdi{
+    display:none;
+}
+.side-menu ul li a.active {
+    color: #3b8cf6;
+}
     .sidebar.active{
         left: -150px;
         transition: all 500ms linear;
