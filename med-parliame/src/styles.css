@@ -121,6 +121,9 @@ align-items: center;
 .acton-btn:focus {
     outline: 0;
 }
+.drop-show {
+    margin-bottom: 1rem;
+}
 /* End All use*/
 /*Sidebar Section*/
 
