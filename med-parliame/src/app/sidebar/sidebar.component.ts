@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+declare var $: any;
 
 @Component({
   selector: 'app-sidebar',
@@ -7,8 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
-	constructor(public router: Router) { }
+	numbers: number;
+	numberss: number;
+	constructor(public router: Router) { 
+		this.numbers = 0;
+		this.numbers = 1;
+			
+	}
 
 	ngOnInit() {
 	}
@@ -16,4 +22,24 @@ export class SidebarComponent implements OnInit {
 		this.router.navigateByUrl('/'+routes)
 	}
 
+	showSLider(event, num){
+		
+		if(this.numbers == 0){
+			this.numbers = 1;
+			$(".drop-showw").css({"display":"block"});  
+		}else{
+			this.numbers = 0;
+			$(".drop-showw").css({"display":"none"}); 
+		}
+	}
+	showSLiders(event, num){
+		
+		if(this.numberss == 0){
+			this.numberss = 1;
+			$(".drop-show").css({"display":"block"});  
+		}else{
+			this.numberss = 0;
+			$(".drop-show").css({"display":"none"}); 
+		}
+	}
 }
