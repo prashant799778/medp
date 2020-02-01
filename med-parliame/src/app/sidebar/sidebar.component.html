@@ -20,8 +20,8 @@
             </div>
             <div class="side-menu">
                 <ul>
-                    <li><a href="javascript:void(0)" (click)="goTo('dashboard')">Dashboard <img src="../../assets/images/a-dashboard.svg"></a></li>
-                    <li class="dp-down"><a href="javascript:void(0)" (click)="showSLiders($event,0)">Admin <img src="../../assets/images/d-admin.svg"></a></li>
+                    <li><a href="javascript:void(0)" (click)="goTo('dashboard')" class="active">Dashboard <img src="../../assets/images/a-dashboard.svg" class="img-hdi"><img src="../../assets/images/d-home.svg" class="img-sdi"></a></li>
+                    <li class="dp-down"><a href="javascript:void(0)" (click)="showSLiders($event,0)">Admin <img src="../../assets/images/a-admin.svg" class="img-hdi"><img src="../../assets/images/d-admin.svg" class="img-sdi"></a> </li>
                     <div class="inner-dropdown drop-show mr-left">
                         <ul>
                             <li><a href="javascript:void(0)" (click)="goTo('Admin/policy')">Policy Maker</a></li>
@@ -38,7 +38,7 @@
 								<li><a href="javascript:void(0)" (click)="goTo('User/student')">Student </a></li>
 							</ul>
 						</div>
-                    
+                        <li><a href="javascript:void(0)">Post <img src="../../assets/images/d-post.svg"></a></li>
                     <li><a href="javascript:void(0)">Settings <img src="../../assets/images/d-settings.svg"></a></li>
                 </ul>
             </div>
