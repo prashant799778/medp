@@ -1400,16 +1400,18 @@ def verifyPost():
                 data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("1") + "'"
-                data = databasefile.UpdateQuery("userPost",column,WhereCondition)
-                return data
+                data1 = databasefile.UpdateQuery("userPost",column,WhereCondition)
+                if data1!="0":
+                    return data1
             if statusid == '2':
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("2") + "'"
                 data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("2") + "'"
-                data = databasefile.UpdateQuery("userPost",column,WhereCondition)            
-                return Data
+                data2 = databasefile.UpdateQuery("userPost",column,WhereCondition)            
+                if data2!="0":
+                    return data2
             else:
                 return commonfile.Errormessage()
         else:
@@ -1469,16 +1471,13 @@ def updateStatus():
                 column="status='0'"
                 whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' and userId = '" + str(data["userId"])+ "' "
                 output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
-            output=output1    
+                output=output1    
            
             if output!='0':
                 Data = {"status":"true","message":"","result":data["result"]}                  
                 return Data
             else:
-                return commonfile.Errormessage()    
-
-                
-
+                return commonfile.Errormessage()
         else:
             return msg         
  
