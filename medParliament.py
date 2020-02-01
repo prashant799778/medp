@@ -1619,7 +1619,7 @@ def verifyOtp():
 def userProfile():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
-        startlimit,endlimit="",""
+        startlimit,endlimit="0","5"
         keyarr = ['userId','userTypeId']
         print(inputdata,"B")
         commonfile.writeLog("userProfile",inputdata,0)
@@ -1636,8 +1636,14 @@ def userProfile():
                 WhereCondition=" and cm.id=um.countryId and um.UserId=ms.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,policyMakerMaster ms,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
-                if  data1:                     
-                    return data1
+                orderby="pm.id"
+                column="*"
+                whereCondition="and userId='" + userId+ "'and um.userTypeId>'1' and um.userTypeId<'5''""
+                data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+                data2={"result1":data1,"result2":data}
+                data3={"status":"true","message":"","result":data2}
+                if  data3:                     
+                    return data3
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 6:
@@ -1648,8 +1654,14 @@ def userProfile():
                 WhereCondition=" and cm.id=um.countryId and pcm.id=em.profileCategoryId and um.UserId=em.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,enterprenuerMaster em,countryMaster cm,profileCategoryMaster pcm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
-                if  data1:                     
-                    return data1
+                orderby="pm.id"
+                column="*"
+                whereCondition="and userId='" + userId+ "'and um.userTypeId>'1' and um.userTypeId<'5''""
+                data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+                data2={"result1":data1,"result2":data}
+                data3={"status":"true","message":"","result":data2}
+                if  data3:                     
+                    return data3
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 7:
@@ -1659,8 +1671,14 @@ def userProfile():
                 WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.UserId=sm.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,countryMaster cm,universityMaster un,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
-                if  data1:                     
-                    return data1
+                orderby="pm.id"
+                column="*"
+                whereCondition="and userId='" + userId+ "'and um.userTypeId>'1' and um.userTypeId<'5''""
+                data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+                data2={"result1":data1,"result2":data}
+                data3={"status":"true","message":"","result":data2}
+                if  data3:                     
+                    return data3
                 else:
                     return commonfile.Errormessage()
             else:
