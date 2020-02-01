@@ -114,6 +114,13 @@ align-items: center;
 .sub-heading li:last-child {
     color: #3b8cf6 !important;
 }
+.acton-btn {
+    background: transparent;
+    border: 0;
+}
+.acton-btn:focus {
+    outline: 0;
+}
 /* End All use*/
 /*Sidebar Section*/
 
