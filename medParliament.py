@@ -897,7 +897,7 @@ def userPost():
                             data2 = databasefile.InsertQuery("postUserTypeMapping",column,values)
                         else:
                             return commonfile.Errormessage()
-                    return data11
+                        return data11
                 if flag == 'u':
                     WhereCondition = " and postId = '" + str(postId1) + "' and  userTypeId = '" + str(userTypeId) + " '"
                     column = " postTitle = '" + str(postTitle) + "',postDescription = '" + str(postDescription) + "',postImage = '" + str(filename) + "', "
@@ -1613,6 +1613,28 @@ def userProfile():
                 column=column+" ms.aboutProfile, ms.designation"
                 WhereCondition=" and cm.id=um.countryId and um.UserId=ms.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,policyMakerMaster ms,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
+                print(data1)
+                if  data1:                     
+                    return data1
+                else:
+                    return commonfile.Errormessage()
+            if userTypeId == 6:
+                column="um.userName,um.email,cm.countryName,pcm.name"
+                column=column+"em.designation,"
+                column=column+" em.areaOfActivity"
+                WhereCondition=" and cm.id=um.countryId and pcm.id=em.profileCategoryId and um.UserId=ms.userId and um.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userMaster um,enterprenuerMaster em,countryMaster cm,profileCategoryMaster pcm",column,WhereCondition,"",startlimit,endlimit,"")
+                print(data1)
+                if  data1:                     
+                    return data1
+                else:
+                    return commonfile.Errormessage()
+            if userTypeId == 7:
+                column="um.userName,um.email,cm.countryName,un.universityName,"
+                column=column+"sm.address,"
+                column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
+                WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and um.UserId=ms.userId and um.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,countryMaster cm,universityMaster un,",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 if  data1:                     
                     return data1
