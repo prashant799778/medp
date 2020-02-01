@@ -1638,7 +1638,7 @@ def userProfile():
                 print(data1)
                 orderby="pm.id"
                 column="*"
-                whereCondition="and userId='" + userId+ "'and um.userTypeId>'1' and um.userTypeId<'5''""
+                whereCondition="and userId='" + userId+ "'and um.userTypeId>'1' and um.userTypeId<'5'"
                 data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
                 data2={"result1":data1,"result2":data}
                 data3={"status":"true","message":"","result":data2}
@@ -1656,7 +1656,7 @@ def userProfile():
                 print(data1)
                 orderby="pm.id"
                 column="*"
-                whereCondition="and userId='" + userId+ "'and um.userTypeId>'1' and um.userTypeId<'5''""
+                whereCondition="and userId='" + userId+ "'and um.userTypeId>'1' and um.userTypeId<'5'"
                 data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
                 data2={"result1":data1,"result2":data}
                 data3={"status":"true","message":"","result":data2}
@@ -1673,7 +1673,7 @@ def userProfile():
                 print(data1)
                 orderby="pm.id"
                 column="*"
-                whereCondition="and userId='" + userId+ "'and um.userTypeId>'1' and um.userTypeId<'5''""
+                whereCondition="and userId='" + userId+ "'and um.userTypeId>'1' and um.userTypeId<'5'"
                 data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
                 data2={"result1":data1,"result2":data}
                 data3={"status":"true","message":"","result":data2}
