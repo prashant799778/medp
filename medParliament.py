@@ -402,10 +402,10 @@ def policyMakerPannel():
         postCounts=data2["result"][0]
         approvedPosts=data3["result"][0]
         rejectedPost=data4["result"][0]
-        data2=[]
-        data2.append({"totalpostCounts":postCounts})
-        data2.append({"approvedPost":approvedPosts})
-        data2.append({"rejectedPost":rejectedPost})
+        data2=[ {"totalpostCounts":postCounts}]
+        # data2.append({"totalpostCounts":postCounts})
+        # data2.append({"approvedPost":approvedPosts})
+        # data2.append({"rejectedPost":rejectedPost})
 
         
 
