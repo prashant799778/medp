@@ -3,7 +3,8 @@ export class AppSettings {
     // getAPI
     public static AdminPannel = 'adminPannel';
     public static AllPolicyMaker = 'allpolicyMakers';
-    // public static AllPosts = 'allPosts';
+    public static AllPosts = 'allUsersPost';
+    public static AllSubAdmins = 'allSubAdmins';
     
     
    

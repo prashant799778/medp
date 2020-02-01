@@ -12,8 +12,15 @@ export class DashboardComponent implements OnInit {
 	totalPolicy: any;
 	totalStudent: any;
 	totalAdmins: any;
-	PolicyList = [];
-	constructor(public userService: UserServiceService) { }
+	PostList = [];
+	postStatus= [];
+	totalRecords: any;
+	pageSize: any;
+	constructor(public userService: UserServiceService) {
+		// this.postStatus = 0;
+		this.totalRecords= 50;
+		this.pageSize = 10
+	 }
 
 	ngOnInit() {
 		this.userService.getApiData(AppSettings.AdminPannel).then(resp=>{
@@ -26,12 +33,36 @@ export class DashboardComponent implements OnInit {
 			
 		})
 		console.log(this.totalPolicy)
-		this.userService.getApiData(AppSettings.AllPolicyMaker).then(resp=>{
+		this.userService.dataPostApi(null,AppSettings.AllPosts).then(resp=>{
 			console.log(resp)
-			this.PolicyList = resp['result']
+			this.PostList = resp['result']
+			this.PostList.forEach(resp =>{
+				this.getStatus(resp.status)
+				// this.postStatus.push(0)
+			})
+			
 			
 		})
 		
+	}
+	getUserType(type){
+		if(type == '7'){
+			return 'Student'
+		}else if(type == '6'){
+			return 'Professional'
+		}else if(type == '5'){
+			return 'Policy Maker'
+		}
+	}
+	getStatus(status){
+
+		if(status == '0'){
+			this.postStatus.push(0)
+		}else if(status == '1'){
+			this.postStatus.push(1);
+		}else{
+			this.postStatus.push(2);
+		}
 	}
 
 }

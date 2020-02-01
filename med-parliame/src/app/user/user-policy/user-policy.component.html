@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12">
+      <div class="upper-wrap">
+        <div class="image-section-set bg-color">
+            <img class="image-set" src="image/policies.svg">
+        </div>
+        <ul class="sub-heading d-flex al-item mr-remove">
+            <li>Admin /</li>
+            <li>Policy Maker</li>
+          </ul> 
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12">
+        <div class="record-box table-responsive bg-white-fff border-round same-margin shadow-box">
+               <div class="upper-wrap">
+                  <h2 class="main-hading mr-bottom">Users / Policy</h2>   
+              </div>
+                <table class="table">                               
+                    <thead>
+                        <tr >
+                            <th>Name </th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Gender</th>
+                            <th>Address</th>
+                            <th>No. of Policy</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let userPolicy of UserPolicyList">
+                            <td>{{userPolicy.userName}}</td>
+                            <td>{{userPolicy.email}}</td>
+                            <td>{{userPolicy.mobileNo}}</td>
+                            <td>{{userPolicy.gender}}</td>
+                            <td>{{userPolicy.countryId}}</td>
+                            <td>{{userPolicy}}</td>
+                            <td></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>

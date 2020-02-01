@@ -78,72 +78,20 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr *ngFor="let policy of PolicyList">
-                                      <td>{{policy.userName}}</td>
-                                      <td>{{policy}}</td>
-                                      <td>{{policy.email}}</td>
-                                      <td>{{policy}}</td>
+                                  <tr *ngFor="let post of PostList;let i = index;">
+                                      <td>{{post.userName}}</td>
+                                      <td>{{getUserType(post.userTypeId)}}</td>
+                                      <td>{{post.email}}</td>
+                                      <td>{{post.DateCreate | date}}</td>
                                       <td class="txt-color-r text-uppercase">--</td>
-                                      <td>
-                                          <button type="button" class="btn ab-btn dc-bg-color-one border-round-rem">pending</button>
+                                      <td (onCreate)="getStatus(post.status,i)">
+                                          <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-one border-round-rem">pending</button>
+                                          <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">approved</button>
+                                          <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button>
                                       </td>
                                       <td></td>
                                   </tr>
-                                  <tr>
-                                      <td>mike bhand</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td class="txt-color-r text-uppercase">als</td>
-                                      <td>
-                                          <button type="button" class="btn ab-btn dc-bg-color-two border-round-rem">approved</button>
-                                      </td>
-                                      <td></td>
-                                  </tr>
-                                  <tr>
-                                      <td>mike bhand</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td class="txt-color-r text-uppercase">Admin name / email</td>
-                                      <td>
-                                          <button type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button>
-                                      </td>
-                                      <td></td>
-                                  </tr>
-                                  <tr>
-                                      <td>mike bhand</td>
-                                      <td>policy Maker</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>Date</td>
-                                      <td class="txt-color-r text-uppercase">--</td>
-                                      <td>
-                                          <button type="button" class="btn ab-btn dc-bg-color-one border-round-rem">pending</button>
-                                      </td>
-                                      <td></td>
-                                  </tr>
-                                  <tr>
-                                      <td>mike bhand</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td class="txt-color-r text-uppercase">als</td>
-                                      <td>
-                                          <button type="button" class="btn ab-btn dc-bg-color-two border-round-rem">approved</button>
-                                      </td>
-                                      <td></td>
-                                  </tr>
-                                  <tr>
-                                      <td>mike bhand</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td class="txt-color-r text-uppercase">Admin name / email</td>
-                                      <td>
-                                          <button type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button>
-                                      </td>
-                                      <td></td>
-                                  </tr>
+                                  
                               </tbody>
                           </table>
                       </div>
@@ -152,4 +100,9 @@
 
               <!-- End latest Post -->
           </div>
+          <div class="dis-page" >
+                
+            <nz-pagination [nzPageIndex]="1" [nzTotal]="totalRecords" (nzPageIndexChange)="nzPageIndexChange($event)" [nzPageSize]="pageSize"></nz-pagination>
+         
+        </div>
            <!-- End Main Content- box -->

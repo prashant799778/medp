@@ -14,6 +14,11 @@ import { PolicyComponent } from './admin/policy/policy.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { UserPolicyComponent } from './user/user-policy/user-policy.component';
+import { UserStudentComponent } from './user/user-student/user-student.component';
+import { UserEnterpenureComponent } from './user/user-enterpenure/user-enterpenure.component';
+import { AddAdminComponent } from './admin/add-admin/add-admin.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,11 @@ import { FooterComponent } from './footer/footer.component';
     PolicyComponent,
     SidebarComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    UserPolicyComponent,
+    UserStudentComponent,
+    UserEnterpenureComponent,
+    AddAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +43,7 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    NgZorroAntdModule,
     DeviceDetectorModule.forRoot(),
   ],
   providers: [],

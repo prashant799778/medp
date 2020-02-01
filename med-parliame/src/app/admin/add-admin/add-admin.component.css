@@ -1,0 +1,47 @@
+.form-label {
+    font-size: 0.8rem;
+    line-height: 1.33;
+    text-align: left;
+    color: #444444;
+}
+.form-box input{
+    background-color: #fafafa;
+    border: 0px;
+}
+.form-box input:focus {
+    color: #495057;
+    background-color: #fafafa;
+    border-color: transparent;
+    outline: 0;
+    box-shadow: none;
+}
+.admin-description-box h2{
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #434343;
+  margin: 0;
+}
+.admin-description-box ul li{
+  font-size: 0.8rem;
+  text-align: left;
+  color: #191919;
+}
+.admin-description-box {
+    width: 100%;
+    margin-left: 1rem;
+}
+.im-circle {
+    border-radius: 50%;
+}
+.inner-admin-box {
+
+  padding: 25px;
+}
+.inner-admin-box:nth-child(odd){
+  background-color: #fafafa;
+}
+.admin-add-box h2 {
+  text-align: left !important;
+  justify-content: unset;
+  margin: 0;
+}
