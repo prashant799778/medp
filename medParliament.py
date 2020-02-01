@@ -390,8 +390,8 @@ def policyMakerPannel():
         column="count(*) as count"
         startlimit,endlimit="",""
         WhereCondition=" and usertypeId='5'"
-        whereCondition=" and usertypeId='5'and status='1' and  approvedUserId='" + str(userId) + "'"
-        whereCondition2=" and usertypeId='5'and status='2' and  approvedUserId='" + str(userId) + "'"
+        whereCondition=" and usertypeId='2'and status='1' and  approvedUserId='" + str(userId) + "'"
+        whereCondition2=" and usertypeId='2'and status='2' and  approvedUserId='" + str(userId) + "'"
 
         
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
@@ -406,7 +406,7 @@ def policyMakerPannel():
         
 
         if data:           
-            Data = {"status":"true","message":"","totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedBy":rejectedPost}
+            Data = {"status":"true","message":"","totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}
             return Data
         else:
             output = {"status":"false","message":"No Data Found","result":""}
