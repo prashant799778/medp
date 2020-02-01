@@ -1577,9 +1577,9 @@ def userProfile():
             userTypeId=str(inputdata['userTypeId'])
             print(userTypeId,'--------')
             if userTypeId == '5':
-                column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,cm.id,cm.countryName, ms.organization, ms.aboutProfile, ms.designation"
-                WhereCondition=" and um.userId=pm.userId and um.countryId=cm.id and pm.userId=ms.userId and pm.userId='" + str(userId) + "'"
-                data1 = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um,policyMakerMaster  as mm,countryMaster as cm,policyMakerMaster as ms",column,WhereCondition,"",startlimit,endlimit,orderby)
+                column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,ms.organization, ms.aboutProfile, ms.designation"
+                WhereCondition=" and um.userId=pm.userId and pm.userId=ms.userId and pm.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um,policyMakerMaster  as mm,policyMakerMaster as ms",column,WhereCondition,"",startlimit,endlimit,orderby)
                 if  (data1["status"]!="false"):   
                     Data = {"status":"true","message":"","result":data1["result"]}                  
                     return Data
