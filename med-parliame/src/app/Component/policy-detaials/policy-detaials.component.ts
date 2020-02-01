@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { AppSettings } from 'src/app/utils/constant';
+import { LocalStorageService } from 'angular-web-storage';
 
 @Component({
   selector: 'app-policy-detaials',
@@ -13,6 +14,7 @@ export class PolicyDetaialsComponent implements OnInit {
 	userTypeId: any;
 	postDetails: any;
 	constructor(private route: ActivatedRoute, private router: Router,
+				public local: LocalStorageService,
 				public userService: UserServiceService) { }
 
 	ngOnInit() {
@@ -28,11 +30,12 @@ export class PolicyDetaialsComponent implements OnInit {
 			this.postDetails = resp['result']['0']
 		})
 	}
-	Approve(){
+	Approve(id){
 		let data = {
 			'postId': this.id,
-			'userTypeId': this.userTypeId,
-			
+			'userTypeId': this.local.get('userData1')[0].userTypeId,
+			'approvedUserId': this.local.get('userData1')[0].userId,
+			'id': id
 
 		}
 		this.userService.dataPostApi(data, AppSettings.VerifyPost).then(resp =>{
