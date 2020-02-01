@@ -335,6 +335,10 @@ def allSubAdmins():
         return output
 
 
+
+
+
+
 @app.route('/totalSubAdmins', methods=['GET'])
 def totalAdmins():
     try:
@@ -382,17 +386,27 @@ def totalAdmins():
 @app.route('/policyMakerPannel', methods=['GET'])
 def policyMakerPannel():
     try:
+        userId=request.args['userId']
         column="count(*) as count"
         startlimit,endlimit="",""
         WhereCondition=" and usertypeId='5'"
+        whereCondition=" and usertypeId='5'and status='1' and  approvedUserId='" + str(userId) + "'"
+        whereCondition2=" and usertypeId='5'and status='2' and  approvedUserId='" + str(userId) + "'"
+
         
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
         data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
+        data3 = databasefile.SelectQueryOrderby("approvedBy",column,whereCondition,""," ",startlimit,endlimit)
+        data4= databasefile.SelectQueryOrderby("approvedBy",column,whereCondition2,""," ",startlimit,endlimit)
         policyMakerMasterCount=data["result"][0]
+        postCounts=data2["result"][0]
+        approvedPosts=data3["result"][0]
+        rejectedPost=data4["result"][0]
+
         
 
         if data:           
-            Data = {"status":"true","message":"","result":policyMakerMasterCount,"postCounts":postCounts}
+            Data = {"status":"true","message":"","result":policyMakerMasterCount,"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedBy":rejectedPost}
             return Data
         else:
             output = {"status":"false","message":"No Data Found","result":""}
@@ -413,6 +427,7 @@ def allpolicyMakers():
         WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId "
         
         data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
+
       
         
         
