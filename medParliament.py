@@ -1595,7 +1595,7 @@ def userProfile():
                 column="um.userName,um.email,cm.countryName,"
                 column=column+"ms.organization,"
                 column=column+" ms.aboutProfile, ms.designation"
-                WhereCondition=" and cm.id=um.countryId  and pm.userId='" + str(userId) + "'"
+                WhereCondition=" and cm.id=um.countryId and um.UserId=ms.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,policyMakerMaster ms,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 if  (data1["status"]!="false"):   
