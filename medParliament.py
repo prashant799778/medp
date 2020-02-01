@@ -1575,7 +1575,7 @@ def userProfile():
             #orderby="pm.id"
             userId=inputdata['userId']
             userTypeId=inputdata['userTypeId']
-            print(userTypeId,'--------')
+            print(userTypeId,'--------',type(userTypeId))
             if userTypeId == 5:
                 column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,"
                 column=column+"pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,"
