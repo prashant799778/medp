@@ -121,7 +121,7 @@ def SignUp():
                     universityAddress = inputdata['universityAddress']
 
 
-                print(Password)
+                print(interestId)
 
 
 
