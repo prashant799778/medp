@@ -447,7 +447,7 @@ def allpolicyMakers():
                 print(data1,"")
                 count=data1["count"]
 
-                i["count"]=count
+                i["noOfPosts"]=count
 
 
             Data = {"status":"true","message":"","result":data["result"]}
