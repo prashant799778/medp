@@ -1593,7 +1593,7 @@ def userProfile():
             print(userTypeId,'--------',type(userTypeId))
             if userTypeId == 5:
                 column="um.userName,um.email,cm.countryName,"
-                column=column+"date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,ms.organization,"
+                column=column+"ms.organization,"
                 column=column+" ms.aboutProfile, ms.designation"
                 WhereCondition=" and cm.id=um.countryId and um.userId=pm.userId and pm.userId=ms.userId and pm.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,policyMakerMaster ms,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
