@@ -1582,7 +1582,7 @@ def userProfile():
                 column=column+"date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,ms.organization,"
                 column=column+" ms.aboutProfile, ms.designation"
                 WhereCondition=" and um.userId=pm.userId and pm.userId=ms.userId and pm.userId='" + str(userId) + "'"
-                data1 = databasefile.SelectQueryOrderby("userPost pm,userMaster um,policyMakerMaster  mm,policyMakerMaster ms",column,WhereCondition,"",startlimit,endlimit,"")
+                data1 = databasefile.SelectQueryOrderby("userPost pm,userMaster um,policyMakerMaster ms",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 if  (data1["status"]!="false"):   
                     Data = {"status":"true","message":"","result":data1["result"]}                  
