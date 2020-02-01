@@ -339,7 +339,7 @@ def allSubAdmins():
 def totalAdmins():
     try:
        
-        startlimit,endlimit="",""
+        startlimit,endlimit="0","5"
         msg="1"
        
         if msg =="1":
