@@ -1393,6 +1393,7 @@ def verifyPost():
             values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
             data = databasefile.InsertQuery("approvedBy",column,values)
             if (statusid == 1):
+                print('1')
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("1") + "'"
                 data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
