@@ -1411,7 +1411,7 @@ def generateOtp():
                 OTP += digits[math.floor(random.random() * 10)]
             message = Mail(
                 from_email = 'abcd@gmail.com',
-                to_emails = str(emailto),
+                to_emails = str(email),
                 subject = "Otp for Reset Password",
                 html_content = '<strong> Otp To Reset Your Password is:' + str(otp) + ' </strong> <br> .<br> Thanks,medParliament Team')
             sg = SendGridAPIClient('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')
