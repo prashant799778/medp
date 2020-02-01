@@ -1603,7 +1603,7 @@ def userProfile():
                 data1 = databasefile.SelectQueryOrderby("userMaster um,policyMakerMaster ms,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 if  data1:                     
-                    return Data
+                    return data1
                 else:
                     return commonfile.Errormessage()
             else:
