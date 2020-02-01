@@ -934,7 +934,7 @@ def allPosts1():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             orderby="pm.id"
-            postId,whereCondition2="",""
+            postId,whereCondition="",""
 
             
             userTypeId=inputdata["userTypeId"]
