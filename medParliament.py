@@ -1393,7 +1393,7 @@ def verifyPost():
             column = "approvedUserId,postId,userTypeId"                
             values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
             data = databasefile.InsertQuery("approvedBy",column,values)
-            if (statusid == 1):
+            if statusid == 1:
                 print('1')
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("1") + "'"
@@ -1401,7 +1401,7 @@ def verifyPost():
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("1") + "'"
                 data = databasefile.UpdateQuery("userPost",column,WhereCondition)
-            if (statusid == 2):
+            if statusid == 2:
                 WhereCondition = " and postId = '" + str(postId) + "'"
                 column = " status = '" + str("2") + "'"
                 data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
@@ -1411,7 +1411,7 @@ def verifyPost():
 
             if data != "0":
                 column = 'approvedUserId,postId,userTypeId'
-                
+                WhereCondition="and postId='" + postId+ "'"
                 data = databasefile.SelectQuery("approvedBy",column,WhereCondition,"",startlimit,endlimit)
                 Data = {"status":"true","message":"","result":data["result"]}                  
                 return Data
