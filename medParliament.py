@@ -1466,7 +1466,7 @@ def updateStatus():
             whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "'  and userId = '" + str(userId)+ "' "
             data=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
             print('AAAA')
-            print(data[0]["Status"],"status")
+            print(data,"status")
             if data[0]["Status"]==0:
                 column="status='1'"
                 whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "' and userId = '" + str(userId)+ "' "
