@@ -758,7 +758,7 @@ def userPost():
         inputdata = json.loads(inputdata)
         print("111111111111111111111111111",inputdata)   
         
-        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag']
+        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag','postId']
         commonfile.writeLog("userPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -769,7 +769,8 @@ def userPost():
             postDescription = inputdata["postDescription"]
             showuserTypeId = inputdata["showuserTypeId"]
             flag = inputdata["flag"]
-            
+            print('====',flag)
+            postId1 = inputdata["postId"]
            
 
             PostId = commonfile.CreateHashKey(postTitle,postDescription)
@@ -789,9 +790,6 @@ def userPost():
                     userTypeId = inputdata['userTypeId']
                 if 'userId' in inputdata:                                    
                     UserId = inputdata['userId']
-                if 'postId' in inputdata:
-                    postId1 = inputdata["postId"]
-            
                 
 
                
@@ -854,7 +852,6 @@ def allPosts():
         commonfile.writeLog("allPosts",inputdata,0)
       
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-
         if msg =="1":
             orderby="pm.id"
             print(orderby)
@@ -864,6 +861,7 @@ def allPosts():
             WhereCondition=" and um.userTypeId=pm.userTypeId and  pm.userId=um.userId and  pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
             
+          
 
             if (data["status"]!="false"): 
                 
@@ -885,7 +883,6 @@ def allPosts():
 @app.route('/allPosts', methods=['POST'])
 def allPosts1():
     try:
-        print('aa')
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
 
@@ -894,7 +891,6 @@ def allPosts1():
         commonfile.writeLog("allPosts",inputdata,0)
       
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        print(msg,'message')
         if msg =="1":
             orderby="pm.id"
             
@@ -903,7 +899,6 @@ def allPosts1():
             WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
             print("11111111111111")
-
 
           
 
@@ -1526,13 +1521,10 @@ def userProfile():
         startlimit,endlimit="",""
         keyarr = ['userId','userTypeId']
         print(inputdata,"B")
-        commonfile.writeLog("userProfile",inputdata,0)
+        commonfile.writeLog("verifyOtp",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
-            userId=str(inputdata['userId'])
-            userTypeId=str(inputdata['userTypeId'])
-
-
+            otp=str(inputdata['otp'])
             column="email"
             whereCondition= " and otp='" + otp+ "' "
             data1=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
