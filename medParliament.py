@@ -1644,7 +1644,7 @@ def userProfile():
                 column="um.userName,um.email,cm.countryName,pcm.name"
                 column=column+"em.designation,"
                 column=column+" em.areaOfActivity"
-                WhereCondition=" and cm.id=um.countryId and pcm.id=em.profileCategoryId and um.UserId=ms.userId and um.userId='" + str(userId) + "'"
+                WhereCondition=" and cm.id=um.countryId and pcm.id=em.profileCategoryId and um.UserId=em.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,enterprenuerMaster em,countryMaster cm,profileCategoryMaster pcm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 if  data1:                     
@@ -1652,11 +1652,11 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 7:
-                column="um.userName,um.email,cm.countryName,un.universityName,"
+                column="um.userName,um.email,cm.countryName,un.universityName,qm.qualificationName"
                 column=column+"sm.address,"
                 column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
-                WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and um.UserId=ms.userId and um.userId='" + str(userId) + "'"
-                data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,countryMaster cm,universityMaster un,",column,WhereCondition,"",startlimit,endlimit,"")
+                WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.UserId=sm.userId and um.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,countryMaster cm,universityMaster un,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 if  data1:                     
                     return data1
