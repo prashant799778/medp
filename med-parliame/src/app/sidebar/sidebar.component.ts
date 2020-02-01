@@ -26,20 +26,22 @@ export class SidebarComponent implements OnInit {
 		
 		if(this.numbers == 0){
 			this.numbers = 1;
-			$(".drop-showw").css({"display":"block"});  
+			$(".drop-showw").css({"display":"none"}); 
+			 
 		}else{
 			this.numbers = 0;
-			$(".drop-showw").css({"display":"none"}); 
+			$(".drop-showw").css({"display":"block"}); 
 		}
 	}
 	showSLiders(event, num){
 		
 		if(this.numberss == 0){
 			this.numberss = 1;
-			$(".drop-show").css({"display":"block"});  
+			$(".drop-show").css({"display":"none"}); 
+			 
 		}else{
 			this.numberss = 0;
-			$(".drop-show").css({"display":"none"}); 
+			$(".drop-show").css({"display":"block"}); 
 		}
 	}
 }
