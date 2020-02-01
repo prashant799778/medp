@@ -480,7 +480,7 @@ def enterprenuerMasterPannel():
         postCounts=data2["result"][0]
         approvedPosts=data3["result"][0]
         rejectedPost=data4["result"][0]
-        data2=[ {"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}]
+        data2=[ {"totalUsers":policyMakerMasterCount,"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}]
         # data2.append({"totalpostCounts":postCounts})
         # data2.append({"approvedPost":approvedPosts})
         # data2.append({"rejectedPost":rejectedPost})
@@ -547,7 +547,7 @@ def studentMasterPannel():
         postCounts=data2["result"][0]
         approvedPosts=data3["result"][0]
         rejectedPost=data4["result"][0]
-        data2=[ {"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}]
+        data2=[ {"totalUsers":policyMakerMasterCount,"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}]
         # data2.append({"totalpostCounts":postCounts})
         # data2.append({"approvedPost":approvedPosts})
         # data2.append({"rejectedPost":rejectedPost})
