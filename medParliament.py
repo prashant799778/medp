@@ -1637,9 +1637,9 @@ def userProfile():
                 data1 = databasefile.SelectQueryOrderby("userMaster um,policyMakerMaster ms,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 orderby="ab.id"
-                column="*"
-                whereCondition="and ab.userId='" + userId+ "'"
-                data = databasefile.SelectQueryOrderby("userPost as ab",column,WhereCondition,"",startlimit,endlimit,orderby)
+                column1="*"
+                whereCondition1="and ab.userId='" + userId+ "'"
+                data = databasefile.SelectQueryOrderby("userPost as ab",column1,WhereCondition1,"",startlimit,endlimit,orderby)
                 data2={"result1":data1,"result2":data}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
@@ -1655,9 +1655,9 @@ def userProfile():
                 data1 = databasefile.SelectQueryOrderby("userMaster um,enterprenuerMaster em,countryMaster cm,profileCategoryMaster pcm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 orderby="ab.id"
-                column="*"
-                whereCondition="and ab.userId='" + userId+ "'"
-                data = databasefile.SelectQueryOrderby("userPost as ab",column,WhereCondition,"",startlimit,endlimit,orderby)
+                column1="*"
+                whereCondition1="and ab.userId='" + userId+ "'"
+                data = databasefile.SelectQueryOrderby("userPost as ab",column1,WhereCondition1,"",startlimit,endlimit,orderby)
                 data2={"result1":data1,"result2":data}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
@@ -1672,9 +1672,9 @@ def userProfile():
                 data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,countryMaster cm,universityMaster un,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 orderby="ab.id"
-                column="*"
-                whereCondition="and ab.userId='" + userId+ "'"
-                data = databasefile.SelectQueryOrderby("userPost as ab",column,WhereCondition,"",startlimit,endlimit,orderby)
+                column1="*"
+                whereCondition1="and ab.userId='" + userId+ "'"
+                data = databasefile.SelectQueryOrderby("userPost as ab",column1,WhereCondition1,"",startlimit,endlimit,orderby)
                 data2={"result1":data1,"result2":data}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
