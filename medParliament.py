@@ -1459,7 +1459,7 @@ def updatePassword():
             password=str(inputdata["password"])
          
             column="password='" + password+ "'"
-            whereCondition= "  and email = '" + str(data["email"])+ "' "
+            whereCondition= "  and email = '" + str(email)+ "' "
             output=databasefile.UpdateQuery("userMaster",column,whereCondition)
                        
             if output!='0':
