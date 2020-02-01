@@ -1459,25 +1459,33 @@ def updateStatus():
         commonfile.writeLog("updateStatus",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
+            userTypeId = inputdata["userTypeId"]
+            userId = inputdata["userId"]
+            email = inputdata["email"]
             column="status"
-            whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "'  and userId = '" + str(data["userId"])+ "' "
+            whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "'  and userId = '" + str(userId)+ "' "
             data=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
             if data1[0]["Status"]==0:
                 column="status='1'"
-                whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' and userId = '" + str(data["userId"])+ "' "
+                whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "' and userId = '" + str(userId)+ "' "
                 output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
+                output=output1
+                if output!='0':
+                    Data = {"status":"true","message":"","result":output["result"]}                  
+                    return Data
+                else:
+                    return commonfile.Errormessage() 
 
             else:
                 column="status='0'"
-                whereCondition= " and userTypeId='" + str(data["userTypeId"])+ "' and email = '" + str(data["email"])+ "' and userId = '" + str(data["userId"])+ "' "
+                whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "' and userId = '" + str(userId)+ "' "
                 output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
                 output=output1    
-           
-            if output!='0':
-                Data = {"status":"true","message":"","result":data["result"]}                  
-                return Data
-            else:
-                return commonfile.Errormessage()
+                if output!='0':
+                    Data = {"status":"true","message":"","result":output["result"]}                  
+                    return Data
+                else:
+                    return commonfile.Errormessage()
         else:
             return msg         
  
