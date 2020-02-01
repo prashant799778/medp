@@ -1462,8 +1462,9 @@ def updatePassword():
             whereCondition= "  and email = '" + str(email)+ "' "
             output=databasefile.UpdateQuery("userMaster",column,whereCondition)
                        
-            if output!='0':                  
-                return commonfile.Successmessage('update')
+            if output!='0':
+                Data = {"status":"true","message":"commonfile.Successmessage('update')","result":""}                   
+                return Data
             else:
                 return commonfile.Errormessage()    
         else:
