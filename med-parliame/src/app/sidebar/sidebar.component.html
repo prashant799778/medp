@@ -51,23 +51,23 @@
 
                 <ul *ngIf="!superLogin">
                     <li><a href="javascript:void(0)" (click)="goTo('dashboard')">Dashboard <img src="../../assets/images/a-dashboard.svg"></a></li>
-                    <li class="dp-down"><a href="javascript:void(0)" (click)="showSLiders($event,0)">User <img src="../../assets/images/d-admin.svg"></a></li>
-                    <div class="inner-dropdown drop-show mr-left">
+                    <li class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/policy')">User <img src="../../assets/images/d-admin.svg"></a></li>
+                    <!-- <div class="inner-dropdown drop-show mr-left">
                         <ul>
-                            <li><a href="javascript:void(0)" (click)="goTo('User/policy')">Policy Maker</a></li>
+                            <li><a href="javascript:void(0)" (click)="goTo('User/policy')">post</a></li>
                             <li><a href="javascript:void(0)" (click)="goTo('User/enterpenure')">Entrepreneur  </a></li>
                             <li><a href="javascript:void(0)" (click)="goTo('User/student')">Student </a></li>
                             
                         </ul>
-                    </div>
-                    <li class="dp-downn"><a href="javascript:void(0)" (click)="showSLider($event)">Policy <img src="../../assets/images/d-users.svg"></a></li>
-                        <div class="inner-dropdown drop-showw mr-left">
+                    </div> -->
+                    <li class="dp-downn"><a href="javascript:void(0)" (click)="showSLider($event)">Post <img src="../../assets/images/d-post.svg"></a></li>
+                        <!-- <div class="inner-dropdown drop-showw mr-left">
 							<ul>
-								<li><a href="javascript:void(0)" (click)="goTo('User/policy')">Policy Maker</a></li>
+								<li><a href="javascript:void(0)" (click)="goTo('User/policy')">Post </a></li>
 								<li><a href="javascript:void(0)" (click)="goTo('User/enterpenure')">Entrepreneur  </a></li>
 								<li><a href="javascript:void(0)" (click)="goTo('User/student')">Student </a></li>
 							</ul>
-						</div>
+						</div> -->
                     
                     <li><a href="javascript:void(0)">Settings <img src="../../assets/images/d-settings.svg"></a></li>
                 </ul>

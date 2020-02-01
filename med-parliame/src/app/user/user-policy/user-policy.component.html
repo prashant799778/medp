@@ -23,20 +23,27 @@
                             <th>Phone Number</th>
                             <th>Gender</th>
                             <th>Address</th>
-                            <th>No. of Policy</th>
+                            <th>No. of Post</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let userPolicy of UserPolicyList">
+                        <tr *ngFor="let userPolicy of UserPolicyList;let i = index">
                             <td>{{userPolicy.userName}}</td>
                             <td>{{userPolicy.email}}</td>
                             <td>{{userPolicy.mobileNo}}</td>
                             <td>{{userPolicy.gender}}</td>
-                            <td>{{userPolicy.countryId}}</td>
-                            <td>{{userPolicy}}</td>
+                            <td>{{userPolicy.city}}</td>
+                            
+                            <td>{{userPolicy.noOfPosts}}</td>
                             <td>
-                                <button type="button" class="acton-btn">
+                                    <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-one border-round-rem">pending</button>
+                                    <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">approved</button>
+                                    <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button>
+                            </td>
+                            <td>
+                                <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">
                                     <img src="../../../assets/images/view.svg" class="action-view">
                                 </button>
                             </td>
