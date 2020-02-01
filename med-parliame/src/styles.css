@@ -98,8 +98,8 @@ align-items: center;
     padding: 2rem;
 }
 .shadow-box{
-      box-shadow: 0 1.5px 3px 0 rgba(157, 206, 255, 0.16);
-        border-radius: 5px;
+    box-shadow: 0 1.5px 3px 0 rgba(157, 206, 255, 0.16);
+    border-radius: 5px;
 }
 .spc-gen{
     margin: 4rem 0;
