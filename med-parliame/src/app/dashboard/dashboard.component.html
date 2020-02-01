@@ -1,7 +1,8 @@
 
 
         <!-- Main Content- box -->
-            <div class="container-fluid">
+        
+            <div class="container-fluid" *ngIf="superLogin">
                 <!-- End Four Box -->
               <div class="row">
                   <div class="col-12 col-sm-12 col-md-12">
@@ -89,7 +90,7 @@
                                           <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">approved</button>
                                           <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button>
                                       </td>
-                                      <td><button type="button" class="acton-btn" (click)="policyDetail(post.Id)">
+                                      <td><button type="button" class="acton-btn" (click)="policyDetail(post.postId, post.userTypeId)">
                                         <img src="../../../assets/images/view.svg" class="action-view">
                                     </button></td>
                                   </tr>
@@ -99,9 +100,139 @@
                       </div>
                   </div>
               </div>
+            </div>
+
+
+            <div class="container-fluid" *ngIf="!superLogin">
+                <!-- End Four Box -->
+              <div class="row">
+                  <div class="col-12 col-sm-12 col-md-12">
+                      <div class="upper-wrap">
+                          <div class="image-section-set bg-color">
+                              <img class="image-set" src="../../assets/images/home.svg">
+                          </div>
+                          <h2 class="main-hading">dashboard</h2>
+                          
+                      </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-12">
+                  <div class="container-wrap-box margin-tp">
+                      <div class="inner-box-card neu-shadow dc-bg-color-one">
+                          <img class="inner-image-set" src="../../assets/images/entrepreneur.svg">
+                          <div class="card-st">
+                               
+                              <h2 class="card-hading-txt">Post</h2>
+                              <h3 class="card-info-txt">{{totalPostCount}}</h3>
+                          </div>
+                          <div class="circle-box-back"></div>
+                          <div class="circle-box-down"></div>
+                      </div>
+                      <div class="inner-box-card neu-shadow dc-bg-color-two">
+                            <img class="inner-image-set" src="../../assets/images/entrepreneur.svg">
+                          <div class="card-st">
+                              <h2 class="card-hading-txt">total User</h2>
+                              <h3 class="card-info-txt">{{totalUsers}}</h3>
+                          </div>
+                            <div class="circle-box-back"></div>
+                          <div class="circle-box-down"></div>
+                      </div>
+                      <div class="inner-box-card neu-shadow dc-bg-color-three">
+                          <img class="inner-image-set" src="../../assets/images/entrepreneur.svg">
+                          <div class="card-st">
+                              <h2 class="card-hading-txt">Approved Post</h2>
+                              <h3 class="card-info-txt">{{totalApprovedCount}}</h3>
+                          </div>
+                            <div class="circle-box-back"></div>
+                          <div class="circle-box-down"></div>
+                      </div>
+                      <div class="inner-box-card neu-shadow dc-bg-color-one">
+                          <img class="inner-image-set" src="../../assets/images/entrepreneur.svg">
+                          <div class="card-st">
+                              <h2 class="card-hading-txt">Reject Post</h2>
+                              <h3 class="card-info-txt">{{totalRejectCount}}</h3>
+                          </div>
+                            <div class="circle-box-back"></div>
+                          <div class="circle-box-down"></div>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+               <!-- End Four Box -->
+
+               <!-- latest Post -->
+
+              <div class="row" >
+                  <div class="col-sm-12 col-md-12 col-lg-12 margin-tp">
+                      <div class="record-box neu-shadow table-responsive bg-white-fff border-round">
+                           <div class="upper-wrap">
+                              <h2 class="main-hading mr-bottom">Latest Policy Request</h2>   
+                          </div>
+                          <table class="table">                               
+                              <thead>
+                                  <tr>
+                                      <th>name</th>
+                                      <th>email</th>
+                                      <th>Posted On</th>
+                                      <th>Post Title</th>
+                                      <th>status</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>mike bhand</td>
+                                      <td>mikebhand@gmail.com</td>
+                                      <td>Date</td>
+                                      <td>Policy maker</td>
+                                      <td class="txt-color-r text-uppercase">--</td>
+                                      <td>
+                                          <button type="button" class="acton-btn">
+                                              <img src="../../assets/images/view.svg" class="action-view">
+                                          </button>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>mike bhand</td>
+                                      <td>mikebhand@gmail.com</td>
+                                      <td>Date</td>
+                                      <td>Policy maker</td>
+                                      <td>
+                                          <button type="button" class="btn ab-btn dc-bg-color-approve border-round-rem">Approved</button>
+                                      </td>
+                                      <td>
+                                          <button type="button" class="acton-btn">
+                                              <img src="../../assets/images/view.svg" class="action-view">
+                                          </button>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>mike bhand</td>
+                                      <td>mikebhand@gmail.com</td>
+                                      <td>Date</td>
+                                      <td>Policy maker</td>
+                                      <td>
+                                          <button type="button" class="btn ab-btn dc-bg-color-three border-round-rem">Reject</button>
+                                      </td>
+                                      <td>
+                                          <button type="button" class="acton-btn">
+                                              <img src="../../assets/images/view.svg" class="action-view">
+                                          </button>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
 
               <!-- End latest Post -->
           </div>
+
+
+
+
+              <!-- End latest Post -->
+          
           <div class="dis-page" >
                 
             <nz-pagination [nzPageIndex]="1" [nzTotal]="totalRecords" (nzPageIndexChange)="nzPageIndexChange($event)" [nzPageSize]="pageSize"></nz-pagination>

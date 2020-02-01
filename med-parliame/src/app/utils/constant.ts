@@ -3,14 +3,19 @@ export class AppSettings {
     // getAPI
     public static AdminPannel = 'adminPannel';
     public static AllPolicyMaker = 'allpolicyMakers';
-    public static AllPosts = 'allUsersPost';
+    public static AllUserPosts = 'allUsersPost';
+    public static AllPosts = 'allPosts';
     public static TotalSubAdmins = 'totalSubAdmins';
     public static AddSubAdmins = 'addSubAdmin';
 
 
+
     // student
     public static AllStudentsList = 'allstudents';
-
+    public static VerifyPost = 'verifyPost';
+    public static PolicyMasterPannel = 'policyMakerPannel';
+    
+    
     
     
     

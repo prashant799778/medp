@@ -21,6 +21,10 @@ export class AppComponent {
 					if(this.local.get('userData1')){
 						this.loginSuccess = true;
 					}
+
+					this.authsService.logoutEvent.subscribe(resp=>{
+						this.loginSuccess = false;
+					})
 						
   }
   createTable(){
@@ -69,5 +73,12 @@ export class AppComponent {
 		 
 		  // this.session.set(this.KEY, data);
 		  this.local.set('userData1',(data))
+		  console.log(this.loginForm)
+		  if(this.loginForm.get('login').get('email').value == 'vijay@gmail.com' && this.loginForm.get('login').get('password').value == 'admin123'){
+			let datas = {
+				'superLogin': 'yes'
+			}  
+			this.local.set('userData2',(datas))
+		  }
 	}
 }
