@@ -9,6 +9,7 @@ import { map, catchError, share } from 'rxjs/operators';
 // import { UserService } from './user.service';
 import { LocalStorageService, SessionStorageService, LocalStorage, SessionStorage } from 'angular-web-storage';
 import { Router } from '@angular/router';
+import { UserServiceService } from './user-service.service';
 // import { LoginComponent } from '../component/account/login.component';
 // import { AuthService } from 'angularx-social-login';
 // import { VotingComponent } from '../../campaigns/voting/voting.component'
@@ -31,6 +32,8 @@ export class AuthsService {
     KEY = 'value';
     online: number;
     isCheckedLogin: any;
+    superAdminLogin: boolean;
+    logoutEvent = new EventEmitter<any>();
     private onSubject = new Subject<{ key: string, value: any }>();
     public changes = this.onSubject.asObservable().pipe(share());
     @Output() authChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -38,6 +41,7 @@ export class AuthsService {
 
   constructor(private http: HttpClient,
               public session: SessionStorageService,
+              public userService: UserServiceService,
               public local: LocalStorageService,
               public router: Router,
               
@@ -98,6 +102,13 @@ export class AuthsService {
                 resp = loggedIn;
                 if(resp.status == 'true'){
                   this.loginCondition(resp)
+                  if(userLogin.email == 'vijay@gmail.com' && userLogin.password == 'admin123'){
+                    this.superAdminLogin = true;
+                    
+                  }else{
+                    this.superAdminLogin = false;
+                  }
+                  // this.userService.setSuperLogin(this.superAdminLogin)
                 
 
                 }
@@ -131,19 +142,9 @@ export class AuthsService {
     this.userAuthChanged(false);
     this.href = this.router.url;
    
-    let charhref = this.href.split('?');
-    console.log(charhref)
-   
-    if(charhref[0] == '/campaign/voting'){
-      let id = charhref[1].split('=')
-     
-      let campId = id[1]
-      console.log(campId[0])
-      // this.userService.getCampaignss(campId[0],null)
-    }
-    if(charhref[0] == '/home'){
-      // this.userService.getCampaigns(null)
-    }
+    this.router.navigateByUrl('/dashboard')
+    this.logoutEvent.emit()
+    
     
     
    

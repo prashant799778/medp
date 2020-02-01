@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'angular-web-storage';
 declare var $: any;
 
 @Component({
@@ -10,13 +11,24 @@ declare var $: any;
 export class SidebarComponent implements OnInit {
 	numbers: number;
 	numberss: number;
-	constructor(public router: Router) { 
+	superLogin: boolean;
+	constructor(public router: Router,
+				public local: LocalStorageService) { 
 		this.numbers = 0;
 		this.numbers = 1;
 			
 	}
 
 	ngOnInit() {
+		
+		if(this.local.get('userData2')){
+			if(this.local.get('userData2').superLogin == 'yes'){
+				this.superLogin = true;
+			
+			}else{
+				this.superLogin = false
+			}
+		}
 	}
 	goTo(routes){
 		this.router.navigateByUrl('/'+routes)

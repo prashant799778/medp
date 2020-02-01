@@ -10,14 +10,34 @@ import { AppSettings } from 'src/app/utils/constant';
 })
 export class PolicyDetaialsComponent implements OnInit {
 	id: any;
+	userTypeId: any;
+	postDetails: any;
 	constructor(private route: ActivatedRoute, private router: Router,
 				public userService: UserServiceService) { }
 
 	ngOnInit() {
 		this.route.queryParams.subscribe(params => {
 			this.id = params['id'];
+			this.userTypeId = params['userTypeId']
 		})
-		// this.userService.dataPostApi(this.id, AppSettings.)
+		let data = {
+			'postId': this.id,
+			'userTypeId': this.userTypeId
+		}
+		this.userService.dataPostApi(data, AppSettings.AllPosts).then(resp =>{
+			this.postDetails = resp['result']['0']
+		})
+	}
+	Approve(){
+		let data = {
+			'postId': this.id,
+			'userTypeId': this.userTypeId,
+			
+
+		}
+		this.userService.dataPostApi(data, AppSettings.VerifyPost).then(resp =>{
+			this.postDetails = resp['result']['0']
+		})
 	}
 
 }

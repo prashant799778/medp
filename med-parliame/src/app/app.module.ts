@@ -20,6 +20,7 @@ import { UserStudentComponent } from './user/user-student/user-student.component
 import { UserEnterpenureComponent } from './user/user-enterpenure/user-enterpenure.component';
 import { AddAdminComponent } from './admin/add-admin/add-admin.component';
 import { PolicyDetaialsComponent } from './Component/policy-detaials/policy-detaials.component';
+import { SubAdminComponent } from './sub-admin/sub-admin.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PolicyDetaialsComponent } from './Component/policy-detaials/policy-deta
     UserStudentComponent,
     UserEnterpenureComponent,
     AddAdminComponent,
-    PolicyDetaialsComponent
+    PolicyDetaialsComponent,
+    SubAdminComponent
   ],
   imports: [
     BrowserModule,
