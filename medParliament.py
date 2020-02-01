@@ -1388,6 +1388,7 @@ def verifyPost():
             postId = inputdata["postId"]
             userTypeId = inputdata["userTypeId"]
             statusid = inputdata["id"]
+            print(statusid,'id')
     
             column = "approvedUserId,postId,userTypeId"                
             values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
