@@ -1577,7 +1577,10 @@ def userProfile():
             userTypeId=inputdata['userTypeId']
             print(userTypeId,'--------')
             if userTypeId == '5':
-                column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,ms.organization, ms.aboutProfile, ms.designation"
+                column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,"
+                column=column+"pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,"
+                column=column+"date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,ms.organization,"
+                column=column+" ms.aboutProfile, ms.designation"
                 WhereCondition=" and um.userId=pm.userId and pm.userId=ms.userId and pm.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userPost pm,userMaster um,policyMakerMaster  mm,policyMakerMaster ms",column,WhereCondition,"",startlimit,endlimit,"")
                 if  (data1["status"]!="false"):   
