@@ -1042,7 +1042,7 @@ def allPosts1():
 def allPosts2():
     try:
         #inputdata =  commonfile.DecodeInputdata(request.get_data())
-        startlimit,endlimit="",""
+        startlimit,endlimit="0","8"
 
         #keyarr = ['']
         #print(inputdata,"B")
