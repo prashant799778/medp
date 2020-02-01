@@ -402,11 +402,15 @@ def policyMakerPannel():
         postCounts=data2["result"][0]
         approvedPosts=data3["result"][0]
         rejectedPost=data4["result"][0]
+        data2=[]
+        data2.append({"totalpostCounts":postCounts})
+        data2.append({"approvedPost":approvedPosts})
+        data2.append({"rejectedPost":rejectedPost})
 
         
 
         if data:           
-            Data = {"status":"true","message":"","totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}
+            Data = {"status":"true","message":"","result":data2}
             return Data
         else:
             output = {"status":"false","message":"No Data Found","result":""}
