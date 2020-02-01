@@ -1561,7 +1561,7 @@ def userProfile():
 
             column="um.userName, um.mobileNo, um.email, um.countryId, um.gender, pm.organization, pm.aboutProfile, pm.designation, up.postTitle, up.postDescription, up.postImage, up.postImagePath, up.dateCreate"
             whereCondition= " and um.userId='" + str(userId)+ "'and um.userTypeId='" + str(userTypeId)+ "'and pm.userId='" + str(userId)+ "'and pm.userTypeId='" + str(userTypeId)+ "'and up.userId='" + str(userId)+ "'and up.userTypeId='" + str(userTypeId)+ "'"
-            data1=databasefile.SelectQuery1("userMaster as um,policyMakerMaster as pm,userPost as up",column,WhereCondition)
+            data1=databasefile.SelectQuery1("userMaster as um,policyMakerMaster as pm,userPost as up",column,whereCondition)
             print(data1,'--data')
             if  (data1["status"]!="false"):   
                 Data = {"status":"true","message":"","result":data1["result"]}                  
