@@ -1593,18 +1593,16 @@ def verifyOtp():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        keyarr = ['otp','email']
+        keyarr = ['otp']
         print(inputdata,"B")
         commonfile.writeLog("verifyOtp",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             otp=str(inputdata['otp'])
-            email=inputdata['email']
             column="email"
-            whereCondition= " and otp='" + otp+ "'and email='" + email+ "' "
+            whereCondition= " and otp='" + otp+ "' "
             data1=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
-            print(data1,'data1')
-            if  (data1['status']!="false"):   
+            if  (data1["status"]!="false"):   
                 Data = {"status":"true","message":"","result":data1["result"]}                  
                 return Data
             else:
@@ -1638,7 +1636,7 @@ def userProfile():
             userTypeId=inputdata['userTypeId']
             print(userTypeId,'--------',type(userTypeId))
             if userTypeId == 5:
-                column="um.userName,um.email,cm.countryName,um.status"
+                column="um.userName,um.email,cm.countryName,um.status,"
                 column=column+"ms.organization,"
                 column=column+" ms.aboutProfile, ms.designation"
                 WhereCondition=" and cm.id=um.countryId and um.userId=ms.userId and um.userId='" + str(userId) + "'"
@@ -1658,7 +1656,7 @@ def userProfile():
                     return commonfile.Errormessage()
             if userTypeId == 6:
                 print('HELLO')
-                column="um.userName,um.email,cm.countryName,pcm.name,um.status"
+                column="um.userName,um.email,cm.countryName,pcm.name,um.status,"
                 column=column+"em.designation,"
                 column=column+" em.areaOfActivity"
                 WhereCondition=" and cm.id=um.countryId and pcm.id=em.profileCategoryId and um.userId=em.userId and um.userId='" + str(userId) + "'"
@@ -1677,7 +1675,7 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 7:
-                column="um.userName,um.email,cm.countryName,un.universityName,qm.qualificationName,um.status"
+                column="um.userName,um.email,cm.countryName,un.universityName,qm.qualificationName,um.status,"
                 column=column+"sm.address,"
                 column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
                 WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId and um.userId='" + str(userId) + "'"
