@@ -758,7 +758,7 @@ def userPost():
         inputdata = json.loads(inputdata)
         print("111111111111111111111111111",inputdata)   
         
-        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag','postId']
+        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag']
         commonfile.writeLog("userPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -769,8 +769,7 @@ def userPost():
             postDescription = inputdata["postDescription"]
             showuserTypeId = inputdata["showuserTypeId"]
             flag = inputdata["flag"]
-            print('====',flag)
-            postId1 = inputdata["postId"]
+            
            
 
             PostId = commonfile.CreateHashKey(postTitle,postDescription)
@@ -790,6 +789,9 @@ def userPost():
                     userTypeId = inputdata['userTypeId']
                 if 'userId' in inputdata:                                    
                     UserId = inputdata['userId']
+                if 'postId' in inputdata:
+                    postId1 = inputdata["postId"]
+            
                 
 
                
@@ -901,6 +903,7 @@ def allPosts1():
             WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
             print("11111111111111")
+
 
           
 
