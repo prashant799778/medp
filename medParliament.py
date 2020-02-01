@@ -1559,28 +1559,44 @@ def verifyOtp():
         output = {"result":"somthing went wrong","status":"false"}
         return output          
 
+@app.route('/userProfile', methods=['POST'])
+def userProfile():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userId','userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("userProfile",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userId=str(inputdata['userId'])
+            userTypeId=str(inputdata['userTypeId'])
+
+            column="um.userName, um.mobileNo, um.email, um.countryId, um.gender, pm.organization, pm.aboutProfile, pm.designation, up.postTitle, up.postDescription, up.postImage, up.postImagePath, up.dateCreate"
+            whereCondition= " and um.userId='" + str(userId)+ "'and um.userTypeId='" + str(userTypeId)+ "'and pm.userId='" + str(userId)+ "'and pm.userTypeId='" + str(userTypeId)+ "'and up.userId='" + str(userId)+ "'and up.userTypeId='" + str(userTypeId)+ "'"
+            data1=databasefile.SelectQuery1("userMaster as um,policyMakerMaster as pm,userPost as up",column,WhereCondition)
+            print(data1,'--data')
+            if  (data1["status"]!="false"):   
+                Data = {"status":"true","message":"","result":data1["result"]}                  
+                return Data
+            else:
+                data = {"status":"false","message":"No Data Found","result":""}
+                return data      
+        else:
+            return msg         
+ 
+    except KeyError :
+        print("Key Exception---->")   
+        output = {"result":"key error","status":"false"}
+        return output  
+
+    except Exception as e :
+        print("Exceptio`121QWAaUJIHUJG n---->" +str(e))    
+        output = {"result":"somthing went wrong","status":"false"}
+        return output          
 
 
-# @app.route('/userProfile', methods=['POST'])
-# def userProfile():
-#     try:
-#         inputdata =  commonfile.DecodeInputdata(request.get_data())
-#         startlimit,endlimit="",""
-#         keyarr = ['userId','userTypeId']
-#         print(inputdata,"B")
-#         commonfile.writeLog("verifyOtp",inputdata,0)
-#         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-#         if msg =="1":
-#             otp=str(inputdata['otp'])
-#             column="email"
-#             whereCondition= " and otp='" + otp+ "' "
-#             data1=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
-#             if  (data1["status"]!="false"):   
-#                 Data = {"status":"true","message":"","result":data1["result"]}                  
-#                 return Data
-#             else:
-#                 data = {"status":"false","message":"No Data Found","result":""}
-#                 return data
+
 
 
 
