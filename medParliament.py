@@ -1596,12 +1596,11 @@ def userProfile():
             userTypeId=inputdata['userTypeId']
             print(userTypeId,'--------',type(userTypeId))
             if userTypeId == 5:
-                column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,"
-                column=column+"pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,"
-                column=column+"date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,ms.organization,"
+                column="um.userName,um.email,cm.countryName,"
+                column=column+"ms.organization,"
                 column=column+" ms.aboutProfile, ms.designation"
-                WhereCondition=" and um.userId=pm.userId and pm.userId=ms.userId and pm.userId='" + str(userId) + "'"
-                data1 = databasefile.SelectQueryOrderby("userPost pm,userMaster um,policyMakerMaster ms",column,WhereCondition,"",startlimit,endlimit,"")
+                WhereCondition=" and cm.id=um.countryId and um.UserId=ms.userId and um.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userMaster um,policyMakerMaster ms,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 if  (data1["status"]!="false"):   
                     Data = {"status":"true","message":"","result":data1["result"]}                  
