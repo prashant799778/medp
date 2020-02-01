@@ -444,7 +444,7 @@ def allpolicyMakers():
                 column="count(*) as count"
                 whereCondition=" and um.usertypeId='5' and pm.userId='" + str(userId) + "' "
                 data1=databasefile.SelectQuery1("userPost",column,whereCondition)
-                print(data11)
+                print(data1)
                 count=data["count"]
 
                 i["count"]=count
