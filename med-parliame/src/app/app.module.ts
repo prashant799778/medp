@@ -21,6 +21,7 @@ import { UserEnterpenureComponent } from './user/user-enterpenure/user-enterpenu
 import { AddAdminComponent } from './admin/add-admin/add-admin.component';
 import { PolicyDetaialsComponent } from './Component/policy-detaials/policy-detaials.component';
 import { SubAdminComponent } from './sub-admin/sub-admin.component';
+import { ProfileComponent } from './Component/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SubAdminComponent } from './sub-admin/sub-admin.component';
     UserEnterpenureComponent,
     AddAdminComponent,
     PolicyDetaialsComponent,
-    SubAdminComponent
+    SubAdminComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

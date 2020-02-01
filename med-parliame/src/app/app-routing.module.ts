@@ -11,6 +11,7 @@ import { UserStudentComponent } from './user/user-student/user-student.component
 import { UserEnterpenureComponent } from './user/user-enterpenure/user-enterpenure.component';
 import { AddAdminComponent } from './admin/add-admin/add-admin.component';
 import { PolicyDetaialsComponent } from './Component/policy-detaials/policy-detaials.component';
+import { ProfileComponent } from './Component/profile/profile.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: '',redirectTo: '/dashboard',pathMatch: 'full'},
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   { path: 'policyDetails', component: PolicyDetaialsComponent, canActivate:[AuthGuard]},
+  { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   
   { path: 'Admin',
   children: [                          //<---- child components declared here
