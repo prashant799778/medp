@@ -1578,18 +1578,16 @@ def userProfile():
             if userTypeId == 5:
                 column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,cm.id as Id,cm.name, ms.organization, ms.aboutProfile, ms.designation"
                 WhereCondition=" and um.userId=pm.userId and um.countryId=cm.id and pm.userId=ms.userId and pm.userId='" + str(userId) + "'"
-                data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um,policyMakerMaster  as mm,countryMaster as cm,policyMakerMaster as ms",column,WhereCondition,"",startlimit,endlimit,orderby)
-
-            # column="um.userName, um.mobileNo, um.email, um.countryId, um.gender, pm.organization, pm.aboutProfile, pm.designation, up.postTitle, up.postDescription, up.postImage, up.postImagePath, up.dateCreate"
-            # whereCondition= " and um.userId='" + str(userId)+ "'and um.userTypeId='" + str(userTypeId)+ "'and pm.userId='" + str(userId)+ "'and pm.userTypeId='" + str(userTypeId)+ "'and up.userId='" + str(userId)+ "'and up.userTypeId='" + str(userTypeId)+ "'"
-            # data1=databasefile.SelectQuery1("userMaster as um,policyMakerMaster as pm,userPost as up",column,whereCondition)
-            print(data1,'--data')
-            if  (data1["status"]!="false"):   
-                Data = {"status":"true","message":"","result":data1["result"]}                  
-                return Data
+                data1 = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um,policyMakerMaster  as mm,countryMaster as cm,policyMakerMaster as ms",column,WhereCondition,"",startlimit,endlimit,orderby)
+                if  (data1["status"]!="false"):   
+                    Data = {"status":"true","message":"","result":data1["result"]}                  
+                    return Data
+                else:
+                    data = {"status":"false","message":"No Data Found","result":""}
+                    return data
             else:
-                data = {"status":"false","message":"No Data Found","result":""}
-                return data      
+                data = {"status":"false","message":"userTypeId is not correct.","result":""}
+                return data 
         else:
             return msg         
  
