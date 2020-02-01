@@ -406,7 +406,7 @@ def policyMakerPannel():
         
 
         if data:           
-            Data = {"status":"true","message":"","result":policyMakerMasterCount,"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedBy":rejectedPost}
+            Data = {"status":"true","message":"","totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedBy":rejectedPost}
             return Data
         else:
             output = {"status":"false","message":"No Data Found","result":""}
