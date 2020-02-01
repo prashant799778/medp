@@ -1463,7 +1463,7 @@ def updatePassword():
             output=databasefile.UpdateQuery("userMaster",column,whereCondition)
                        
             if output!='0':
-                Data = {"status":"true","message":"commonfile.Successmessage('update')","result":""}                   
+                Data = {"status":"true","message":commonfile.Successmessage('update'),"result":""}                   
                 return Data
             else:
                 return commonfile.Errormessage()    
