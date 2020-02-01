@@ -81,4 +81,5 @@ export class AppComponent {
 			this.local.set('userData2',(datas))
 		  }
 	}
+	
 }

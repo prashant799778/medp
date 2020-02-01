@@ -61,8 +61,9 @@ export class UserServiceService {
 		console.log("data value",data)
 		
 		  this.user = data;
+		  
 		  let datas = {
-			  	'superLogin': this.superLogin
+			  	'superLogin': 'no'
 		  }
 		  // this.session.set(this.KEY, data);
 		  this.local.set('userData1',(data))
@@ -71,11 +72,11 @@ export class UserServiceService {
 		
 	  }
 
-	//   setSuperLogin(login){
-	// 		if(login == true){
-	// 			this.superLogin = true;
-	// 		}else{
-	// 			this.superLogin = false;
-	// 		}
-	//   }	
+	  setSuperLogin(login){
+			if(login == true){
+				this.superLogin = true;
+			}else{
+				this.superLogin = false;
+			}
+	  }	
 }

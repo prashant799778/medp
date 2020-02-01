@@ -24,7 +24,7 @@
         </div>
         <div  formGroupName="login" class="form-group pos-rel">
             <label for="exampleInputEmail1">Password</label>
-            <input type="password" class="form-control" formControlName="password" aria-describedby="emailHelp" (keyup.enter)="enterLogin($event)" id="signInPass">
+            <input type="password" class="form-control" formControlName="password" aria-describedby="emailHelp"  id="signInPass">
             <img src="../../assets/images/eye.svg" *ngIf="showPasswords" class="pos-abs" (click)="showPassword('signInPass')">
             <img src="../../assets/images/close-eye.svg" *ngIf="!showPasswords" class="pos-abs" (click)="showPassword('signInPass')">
             <div class="errors" *ngIf="loginForm.get('login').get('password').errors && (loginForm.get('login').get('password').touched || loginForm.get('login').get('password').dirty)">
