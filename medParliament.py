@@ -852,6 +852,7 @@ def allPosts():
         commonfile.writeLog("allPosts",inputdata,0)
       
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+
         if msg =="1":
             orderby="pm.id"
             print(orderby)
@@ -861,7 +862,6 @@ def allPosts():
             WhereCondition=" and um.userTypeId=pm.userTypeId and  pm.userId=um.userId and  pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
             
-          
 
             if (data["status"]!="false"): 
                 
@@ -883,6 +883,7 @@ def allPosts():
 @app.route('/allPosts', methods=['POST'])
 def allPosts1():
     try:
+        print('aa')
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
 
@@ -891,6 +892,7 @@ def allPosts1():
         commonfile.writeLog("allPosts",inputdata,0)
       
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print(msg,'message')
         if msg =="1":
             orderby="pm.id"
             
@@ -1498,13 +1500,7 @@ def verifyOtp():
                 return Data
             else:
                 data = {"status":"false","message":"No Data Found","result":""}
-                return data
-
-
-            
-
-                
-
+                return data      
         else:
             return msg         
  
@@ -1519,6 +1515,30 @@ def verifyOtp():
         return output          
 
 
+
+@app.route('/userProfile', methods=['POST'])
+def userProfile():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userId','userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("userProfile",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userId=str(inputdata['userId'])
+            userTypeId=str(inputdata['userTypeId'])
+
+
+            column="email"
+            whereCondition= " and otp='" + otp+ "' "
+            data1=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
+            if  (data1["status"]!="false"):   
+                Data = {"status":"true","message":"","result":data1["result"]}                  
+                return Data
+            else:
+                data = {"status":"false","message":"No Data Found","result":""}
+                return data
 
 
 
