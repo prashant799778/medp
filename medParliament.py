@@ -1636,6 +1636,8 @@ def userProfile():
                 WhereCondition=" and cm.id=um.countryId and um.UserId=ms.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,policyMakerMaster ms,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
+                column=" "
+                WhereCondition=" "
                 orderby="ab.id"
                 column="*"
                 whereCondition="and ab.userId='" + userId+ "'"
@@ -1654,6 +1656,8 @@ def userProfile():
                 WhereCondition=" and cm.id=um.countryId and pcm.id=em.profileCategoryId and um.UserId=em.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,enterprenuerMaster em,countryMaster cm,profileCategoryMaster pcm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
+                column=" "
+                WhereCondition=" "
                 orderby="ab.id"
                 column="*"
                 whereCondition="and ab.userId='" + userId+ "'"
@@ -1671,6 +1675,8 @@ def userProfile():
                 WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.UserId=sm.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,countryMaster cm,universityMaster un,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
+                column=" "
+                WhereCondition=" "
                 orderby="ab.id"
                 column="*"
                 whereCondition="and ab.userId='" + userId+ "'"
