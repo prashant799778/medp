@@ -1457,24 +1457,16 @@ def updatePassword():
         if msg =="1":
             email=str(inputdata["email"])
             password=str(inputdata["password"])
-
-          
-
-          
+         
             column="password='" + password+ "'"
             whereCondition= "  and email = '" + str(data["email"])+ "' "
             output=databasefile.UpdateQuery("userMaster",column,whereCondition)
-            
-            
+                       
             if output!='0':
-                Data = {"status":"true","message":"","result":data["result"]}                  
+                Data = {"status":"true","message":"","result":output["result"]}                  
                 return Data
             else:
                 return commonfile.Errormessage()    
-
-          
-                
-
         else:
             return msg         
  
