@@ -10,9 +10,11 @@ declare var $: any;
 export class SidebarComponent implements OnInit {
 	numbers: number;
 	numberss: number;
+	number1: number;
 	constructor(public router: Router) { 
 		this.numbers = 0;
-		this.numbers = 1;
+		this.numbers = 0;
+		this.numbers = 0;
 			
 	}
 
@@ -42,6 +44,17 @@ export class SidebarComponent implements OnInit {
 		}else{
 			this.numberss = 0;
 			$(".drop-show").css({"display":"block"}); 
+		}
+	}
+	showSLider1(){
+		
+		if(this.number1 == 0){
+			this.number1 = 1;
+			$(".drop-show1").css({"display":"none"}); 
+			 
+		}else{
+			this.number1 = 0;
+			$(".drop-show1").css({"display":"block"}); 
 		}
 	}
 }
