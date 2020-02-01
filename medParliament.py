@@ -357,7 +357,7 @@ def totalAdmins():
                 for i in y:
                     usertypeId+=i
                     del i["userTypeId"]
-                    i.update("userTypeId":usertypeId)
+                    #i.update("userTypeId":usertypeId)
 
 
 
