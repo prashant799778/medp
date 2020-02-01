@@ -429,6 +429,7 @@ def allpolicyMakers():
         column=column+"pm.aboutProfile,pm.organization,pm.designation,pm.status"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId "
+
         
         data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
 
@@ -437,7 +438,18 @@ def allpolicyMakers():
         
 
 
-        if (data["status"]!="false"):           
+        if (data!=0):
+            for i in data["result"]:
+                userId=i["userId"]
+                column="count(*) as count"
+                whereCondition=" and um.usertypeId='5' and pm.userId='" + str(userId) + "' "
+                data1=databasefile.SelectQuery1("userPost",column,whereCondition)
+                print(data11)
+                count=data["count"]
+
+                i["count"]=count
+
+
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
         else:
