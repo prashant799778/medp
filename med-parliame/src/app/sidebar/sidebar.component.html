@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="side-menu">
-                <ul>
+                <ul *ngIf="superLogin">
                     <li><a href="javascript:void(0)" (click)="goTo('dashboard')" class="active">Dashboard <img src="../../assets/images/a-dashboard.svg" class="img-hdi"><img src="../../assets/images/d-home.svg" class="img-sdi"></a></li>
                     <li class="dp-down"><a href="javascript:void(0)" (click)="showSLiders()">Admin <img src="../../assets/images/a-admin.svg" class="img-hdi"><img src="../../assets/images/d-admin.svg" class="img-sdi"></a> </li>
                     <div class="inner-dropdown drop-show mr-left">
@@ -54,10 +54,10 @@
                     <li class="dp-down"><a href="javascript:void(0)" (click)="showSLiders($event,0)">User <img src="../../assets/images/d-admin.svg"></a></li>
                     <div class="inner-dropdown drop-show mr-left">
                         <ul>
-                            <li><a href="javascript:void(0)" (click)="goTo('Admin/policy')">Policy Maker</a></li>
-                            <li><a href="javascript:void(0)" (click)="goTo('Admin/enterpenure')">Entrepreneur  </a></li>
-                            <li><a href="javascript:void(0)" (click)="goTo('Admin/student')">Student </a></li>
-                            <li><a href="javascript:void(0)" (click)="goTo('Admin/addAdmin')">Add Admin </a></li>
+                            <li><a href="javascript:void(0)" (click)="goTo('User/policy')">Policy Maker</a></li>
+                            <li><a href="javascript:void(0)" (click)="goTo('User/enterpenure')">Entrepreneur  </a></li>
+                            <li><a href="javascript:void(0)" (click)="goTo('User/student')">Student </a></li>
+                            
                         </ul>
                     </div>
                     <li class="dp-downn"><a href="javascript:void(0)" (click)="showSLider($event)">Policy <img src="../../assets/images/d-users.svg"></a></li>

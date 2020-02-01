@@ -11,6 +11,7 @@ declare var $: any;
 export class SidebarComponent implements OnInit {
 	numbers: number;
 	numberss: number;
+	number1: number;
 	superLogin: boolean;
 	constructor(public router: Router,
 				public local: LocalStorageService) { 
@@ -34,7 +35,7 @@ export class SidebarComponent implements OnInit {
 		this.router.navigateByUrl('/'+routes)
 	}
 
-	showSLider(event, num){
+	showSLider(){
 		
 		if(this.numbers == 0){
 			this.numbers = 1;
@@ -45,7 +46,7 @@ export class SidebarComponent implements OnInit {
 			$(".drop-showw").css({"display":"block"}); 
 		}
 	}
-	showSLiders(event, num){
+	showSLiders(){
 		
 		if(this.numberss == 0){
 			this.numberss = 1;
@@ -54,6 +55,17 @@ export class SidebarComponent implements OnInit {
 		}else{
 			this.numberss = 0;
 			$(".drop-show").css({"display":"block"}); 
+		}
+	}
+	showSLider1(){
+		
+		if(this.numberss == 0){
+			this.numberss = 1;
+			$(".drop-show1").css({"display":"none"}); 
+			 
+		}else{
+			this.numberss = 0;
+			$(".drop-show1").css({"display":"block"}); 
 		}
 	}
 }

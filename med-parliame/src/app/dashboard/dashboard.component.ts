@@ -27,6 +27,8 @@ export class DashboardComponent implements OnInit {
 	totalRejectCount: any;
 	totalPostCount: any;
 	totalUsers: any;
+
+	subDashboardAdmin = [];
 	constructor(public userService: UserServiceService,
 				public authsService: AuthsService,
 				public local: LocalStorageService,
@@ -64,8 +66,12 @@ export class DashboardComponent implements OnInit {
 						'userTypeId': 5
 					}
 					this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-					
-					
+						this.subDashboardAdmin = resp['result']
+						console.log(this.subDashboardAdmin)
+						this.subDashboardAdmin.forEach(resp=>{
+							this.getStatus(resp.status)
+						})
+						
 						
 						
 					})

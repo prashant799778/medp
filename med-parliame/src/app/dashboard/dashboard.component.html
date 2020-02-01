@@ -179,46 +179,26 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
-                                      <td>mike bhand</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>Date</td>
-                                      <td>Policy maker</td>
-                                      <td class="txt-color-r text-uppercase">--</td>
-                                      <td>
-                                          <button type="button" class="acton-btn">
-                                              <img src="../../assets/images/view.svg" class="action-view">
-                                          </button>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>mike bhand</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>Date</td>
-                                      <td>Policy maker</td>
-                                      <td>
-                                          <button type="button" class="btn ab-btn dc-bg-color-approve border-round-rem">Approved</button>
-                                      </td>
-                                      <td>
-                                          <button type="button" class="acton-btn">
-                                              <img src="../../assets/images/view.svg" class="action-view">
-                                          </button>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>mike bhand</td>
-                                      <td>mikebhand@gmail.com</td>
-                                      <td>Date</td>
-                                      <td>Policy maker</td>
-                                      <td>
-                                          <button type="button" class="btn ab-btn dc-bg-color-three border-round-rem">Reject</button>
-                                      </td>
-                                      <td>
-                                          <button type="button" class="acton-btn">
-                                              <img src="../../assets/images/view.svg" class="action-view">
-                                          </button>
-                                      </td>
-                                  </tr>
+                                  <ng-container *ngIf="subDashboardAdmin && subDashboardAdmin.length > 0">
+                                        <tr *ngFor="let subAdmin of subDashboardAdmin ; let i =  index">
+                                                <td>{{subAdmin.userName}}</td>
+                                                <td>{{subAdmin.email}}</td>
+                                                <td>{{subAdmin.DateCreate | date}}</td>
+                                                <td>{{subAdmin.postTitle}}</td>
+                                                <td class="txt-color-r text-uppercase">
+                                                        <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-one border-round-rem">pending</button>
+                                                        <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">approved</button>
+                                                        <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="acton-btn">
+                                                        <img src="../../assets/images/view.svg" class="action-view">
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                  </ng-container>
+                                 
+                                 
                               </tbody>
                           </table>
                       </div>
