@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../services/user-service.service';
 import { AppSettings } from '../utils/constant';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +17,8 @@ export class DashboardComponent implements OnInit {
 	postStatus= [];
 	totalRecords: any;
 	pageSize: any;
-	constructor(public userService: UserServiceService) {
+	constructor(public userService: UserServiceService,
+				public router: Router) {
 		// this.postStatus = 0;
 		this.totalRecords= 50;
 		this.pageSize = 10
@@ -63,6 +65,9 @@ export class DashboardComponent implements OnInit {
 		}else{
 			this.postStatus.push(2);
 		}
+	}
+	policyDetail(id){
+		this.router.navigate(['/policyDetails'],{queryParams: {id: id}})
 	}
 
 }

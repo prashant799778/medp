@@ -19,6 +19,7 @@ import { UserPolicyComponent } from './user/user-policy/user-policy.component';
 import { UserStudentComponent } from './user/user-student/user-student.component';
 import { UserEnterpenureComponent } from './user/user-enterpenure/user-enterpenure.component';
 import { AddAdminComponent } from './admin/add-admin/add-admin.component';
+import { PolicyDetaialsComponent } from './Component/policy-detaials/policy-detaials.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AddAdminComponent } from './admin/add-admin/add-admin.component';
     UserPolicyComponent,
     UserStudentComponent,
     UserEnterpenureComponent,
-    AddAdminComponent
+    AddAdminComponent,
+    PolicyDetaialsComponent
   ],
   imports: [
     BrowserModule,
