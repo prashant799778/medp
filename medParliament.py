@@ -2,6 +2,7 @@ from flask import Flask,request,abort
 import uuid
 import json
 import json
+import math, random
 import numpy as np
 import pymysql
 import requests
@@ -1427,11 +1428,7 @@ def generateOtp():
                 Data = {"status":"true","message":"","result":data["result"]}                  
                 return Data
             else:
-                return commonfile.Errormessage()    
-
-          
-                
-
+                return commonfile.Errormessage()
         else:
             return msg         
  
