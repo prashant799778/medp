@@ -50,8 +50,8 @@
                 </ul>
 
                 <ul *ngIf="!superLogin">
-                    <li><a href="javascript:void(0)" (click)="goTo('dashboard')">Dashboard <img src="../../assets/images/a-dashboard.svg"></a></li>
-                    <li class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/policy')">User <img src="../../assets/images/d-admin.svg"></a></li>
+                    <li><a href="javascript:void(0)" (click)="goTo('dashboard')" class="active">Dashboard <img src="../../assets/images/d-home.svg" class="img-sdi"><img class="img-hdi" src="../../assets/images/a-dashboard.svg"></a></li>
+                    <li class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/policy')">User <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
                     <!-- <div class="inner-dropdown drop-show mr-left">
                         <ul>
                             <li><a href="javascript:void(0)" (click)="goTo('User/policy')">post</a></li>
@@ -60,7 +60,7 @@
                             
                         </ul>
                     </div> -->
-                    <li class="dp-downn"><a href="javascript:void(0)" (click)="showSLider($event)">Post <img src="../../assets/images/d-post.svg"></a></li>
+                    <li class="dp-downn"><a href="javascript:void(0)" (click)="showSLider($event)">Post <img src="../../assets/images/d-post.svg" class="img-sdi"><img src="../../assets/images/a-post.svg" class="img-hdi"></a></li>
                         <!-- <div class="inner-dropdown drop-showw mr-left">
 							<ul>
 								<li><a href="javascript:void(0)" (click)="goTo('User/policy')">Post </a></li>
@@ -69,7 +69,7 @@
 							</ul>
 						</div> -->
                     
-                    <li><a href="javascript:void(0)">Settings <img src="../../assets/images/d-settings.svg"></a></li>
+                    <li><a href="javascript:void(0)">Settings <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li>
                 </ul>
 
             </div>
