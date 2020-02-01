@@ -6,6 +6,11 @@ export class AppSettings {
     public static AllPosts = 'allUsersPost';
     public static TotalSubAdmins = 'totalSubAdmins';
     public static AddSubAdmins = 'addSubAdmin';
+
+
+    // student
+    public static AllStudentsList = 'allstudents';
+
     
     
     

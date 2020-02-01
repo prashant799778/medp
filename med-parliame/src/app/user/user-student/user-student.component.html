@@ -1,1 +1,51 @@
-<p>user-student works!</p>
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12">
+      <div class="upper-wrap">
+        <div class="image-section-set bg-color">
+            <img class="image-set" src="image/policies.svg">
+        </div>
+        <ul class="sub-heading d-flex al-item mr-remove">
+            <li>User /</li>
+            <li>Student</li>
+          </ul> 
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12">
+        <div class="record-box table-responsive bg-white-fff border-round same-margin shadow-box">
+               <div class="upper-wrap">
+                  <h2 class="main-hading mr-bottom">Users / Student</h2>   
+              </div>
+                <table class="table">                               
+                    <thead>
+                        <tr >
+                            <th>Name </th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Gender</th>
+                            <th>Institution</th>
+                            <th>Address</th>
+                            <th>Batch</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let userPolicy of UserStudentList">
+                            <td>{{userPolicy.userName}}</td>
+                            <td>{{userPolicy.email}}</td>
+                            <td>{{userPolicy.mobileNo}}</td>
+                            <td>{{userPolicy.gender}}</td>
+                            <td>{{userPolicy.institutionName}}</td>
+                            <td>{{userPolicy.address}}</td>
+                            <td>{{userPolicy.batchofQualification}}</td>
+                            <td>
+                                <button type="button" class="acton-btn">
+                                    <img src="../../../assets/images/view.svg" class="action-view">
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
