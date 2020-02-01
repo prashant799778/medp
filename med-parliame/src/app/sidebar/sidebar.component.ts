@@ -16,7 +16,8 @@ export class SidebarComponent implements OnInit {
 	constructor(public router: Router,
 				public local: LocalStorageService) { 
 		this.numbers = 0;
-		this.numbers = 1;
+		this.numbers = 0;
+		this.numbers = 0;
 			
 	}
 
