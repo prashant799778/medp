@@ -345,10 +345,23 @@ def totalAdmins():
         if msg =="1":
             orderby="um.id"
            
-            column="um.userName as userName,ut.userName as userType,um.usertypeId as userTypeId,um.id,um.email as email"
+            column="um.userName as userName,ut.userName as userType,um.userTypeId as userTypeId,um.id,um.email as email"
             WhereCondition=" and um.userTypeId>'1' and um.userTypeId<'5' and um.userTypeId=ut.id "
             data = databasefile.SelectQueryOrderby("userMaster as um,userTypeMaster as ut",column,WhereCondition,"",startlimit,endlimit,orderby)
             count=len(data["result"])
+            for i in data["result"]:
+                y=i["userTypeId"]
+                y.split("_")
+                print(y,"y")
+                usertypeId=""
+                for i in y:
+                    usertypeId+=i
+                    del i["userTypeId"]
+                    i.update("userTypeId":usertypeId)
+
+
+
+
             print(count)
 
             if (data["status"]!="false"): 
