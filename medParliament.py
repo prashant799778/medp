@@ -1572,12 +1572,16 @@ def userProfile():
         commonfile.writeLog("userProfile",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
+            orderby="pm.id"
             userId=str(inputdata['userId'])
             userTypeId=str(inputdata['userTypeId'])
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'and pm.userId='" + str(userId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
 
-            column="um.userName, um.mobileNo, um.email, um.countryId, um.gender, pm.organization, pm.aboutProfile, pm.designation, up.postTitle, up.postDescription, up.postImage, up.postImagePath, up.dateCreate"
-            whereCondition= " and um.userId='" + str(userId)+ "'and um.userTypeId='" + str(userTypeId)+ "'and pm.userId='" + str(userId)+ "'and pm.userTypeId='" + str(userTypeId)+ "'and up.userId='" + str(userId)+ "'and up.userTypeId='" + str(userTypeId)+ "'"
-            data1=databasefile.SelectQuery1("userMaster as um,policyMakerMaster as pm,userPost as up",column,whereCondition)
+            # column="um.userName, um.mobileNo, um.email, um.countryId, um.gender, pm.organization, pm.aboutProfile, pm.designation, up.postTitle, up.postDescription, up.postImage, up.postImagePath, up.dateCreate"
+            # whereCondition= " and um.userId='" + str(userId)+ "'and um.userTypeId='" + str(userTypeId)+ "'and pm.userId='" + str(userId)+ "'and pm.userTypeId='" + str(userTypeId)+ "'and up.userId='" + str(userId)+ "'and up.userTypeId='" + str(userTypeId)+ "'"
+            # data1=databasefile.SelectQuery1("userMaster as um,policyMakerMaster as pm,userPost as up",column,whereCondition)
             print(data1,'--data')
             if  (data1["status"]!="false"):   
                 Data = {"status":"true","message":"","result":data1["result"]}                  
