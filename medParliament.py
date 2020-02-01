@@ -1572,14 +1572,14 @@ def userProfile():
         commonfile.writeLog("userProfile",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
-            orderby="pm.id"
-            userId=str(inputdata['userId'])
-            userTypeId=str(inputdata['userTypeId'])
+            #orderby="pm.id"
+            userId=inputdata['userId']
+            userTypeId=inputdata['userTypeId']
             print(userTypeId,'--------')
             if userTypeId == '5':
-                column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,ms.organization, ms.aboutProfile, ms.designation"
+                column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,ms.organization, ms.aboutProfile, ms.designation"
                 WhereCondition=" and um.userId=pm.userId and pm.userId=ms.userId and pm.userId='" + str(userId) + "'"
-                data1 = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um,policyMakerMaster  as mm,policyMakerMaster as ms",column,WhereCondition,"",startlimit,endlimit,orderby)
+                data1 = databasefile.SelectQueryOrderby("userPost pm,userMaster um,policyMakerMaster  mm,policyMakerMaster ms",column,WhereCondition,"",startlimit,endlimit,"")
                 if  (data1["status"]!="false"):   
                     Data = {"status":"true","message":"","result":data1["result"]}                  
                     return Data
