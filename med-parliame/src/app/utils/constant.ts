@@ -4,7 +4,9 @@ export class AppSettings {
     public static AdminPannel = 'adminPannel';
     public static AllPolicyMaker = 'allpolicyMakers';
     public static AllPosts = 'allUsersPost';
-    public static AllSubAdmins = 'allSubAdmins';
+    public static TotalSubAdmins = 'totalSubAdmins';
+    public static AddSubAdmins = 'addSubAdmin';
+    
     
     
    

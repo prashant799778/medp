@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { AppSettings } from 'src/app/utils/constant';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-add-admin',
@@ -9,14 +10,30 @@ import { AppSettings } from 'src/app/utils/constant';
 })
 export class AddAdminComponent implements OnInit {
 	recentAdmin= [];
-    constructor(public userService: UserServiceService) { }
+	addAddminForm: FormGroup
+	constructor(public userService: UserServiceService,
+				public fb: FormBuilder) {
+					this.createTable()
+				 }
 
     ngOnInit() {
-		this.userService.dataPostApi(null,AppSettings.AllSubAdmins).then(resp=>{
+		this.userService.getApiData(AppSettings.TotalSubAdmins).then(resp=>{
 			console.log(resp)
 			this.recentAdmin = resp['result']
 			
 		})
-    }
+	}
+	createTable(){
+		this.addAddminForm = this.fb.group({
+			userName: [''],
+			email: [''],
+			adminType: [''],
+			password: [''],
+			confirmPass: ['']	
+		})
+	}
+	resetData(){
+		this.addAddminForm.reset()
+	}
 
 }

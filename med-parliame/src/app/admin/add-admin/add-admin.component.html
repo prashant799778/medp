@@ -15,32 +15,32 @@
         <h2 class="main-hading text-left">Add New Admin</h2>
         <div class="small-space"></div>
         <div class="form-box">
-          <form>
+          <form [formGroup]="addAddminForm">
               <div class="form-group">
                 <label class="form-label">Admin Name</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" formControlName="userName">
               </div>
               <div class="form-group">
                 <label class="form-label">Admin Type</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" formControlName="adminType">
               </div>
               <div class="form-group">
                 <label class="form-label">Email Id</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" formControlName="email">
               </div>
               <div class="form-group">
                 <label class="form-label">Password </label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" formControlName="password">
               </div>
               <div class="form-group">
                 <label class="form-label">Confirm Password</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" formControlName="confirmPass">
               </div>
               <div class="small-space"></div>
               <div class="bottom-section same-margin admin-action">
                 <ul class="group-action-button mr-remove d-flex al-item ">
                   <li class="bg-color-blu"><a href="">Save</a></li>
-                  <li class="bg-color-l-black"><a href="">Reset</a></li>
+                  <li class="bg-color-l-black" (click)="resetData()"><a href="javascript:void(0)">Reset</a></li>
                 </ul>
               </div>
           </form>
@@ -53,66 +53,19 @@
           <div class="small-space"></div>
           <div class="recent-admin-info">
 
-            <div class="inner-admin-box d-flex al-item">
+            <div class="inner-admin-box d-flex al-item" *ngFor="let admin of recentAdmin">
               <div class="image-box-admin">
                 <img src="image/profile.png" class="im-circle">
               </div>
               <div class="admin-description-box">
-                <h2>Fourbrick Manager</h2>
+                <h2>{{admin.userName}}</h2>
                 <ul class="inner-description-box-admin d-flex space-between-flx mr-remove">
                   <li>fourbrick.manager@gmail.com</li>
-                  <li>Policy Maker's  Admin </li>
+                  <li>{{admin.userType}} </li>
                 </ul>
               </div>
             </div>
-            <div class="inner-admin-box d-flex al-item">
-              <div class="image-box-admin">
-                <img src="image/profile.png" class="im-circle">
-              </div>
-              <div class="admin-description-box">
-                <h2>Fourbrick Manager</h2>
-                <ul class="inner-description-box-admin d-flex space-between-flx mr-remove">
-                  <li>fourbrick.manager@gmail.com</li>
-                  <li>Policy Maker's  Admin </li>
-                </ul>
-              </div>
-            </div>
-            <div class="inner-admin-box d-flex al-item">
-              <div class="image-box-admin">
-                <img src="image/profile.png" class="im-circle">
-              </div>
-              <div class="admin-description-box">
-                <h2>Fourbrick Manager</h2>
-                <ul class="inner-description-box-admin d-flex space-between-flx mr-remove">
-                  <li>fourbrick.manager@gmail.com</li>
-                  <li>Policy Maker's  Admin </li>
-                </ul>
-              </div>
-            </div>
-            <div class="inner-admin-box d-flex al-item">
-              <div class="image-box-admin">
-                <img src="image/profile.png" class="im-circle">
-              </div>
-              <div class="admin-description-box">
-                <h2>Fourbrick Manager</h2>
-                <ul class="inner-description-box-admin d-flex space-between-flx mr-remove">
-                  <li>fourbrick.manager@gmail.com</li>
-                  <li>Policy Maker's  Admin </li>
-                </ul>
-              </div>
-            </div>
-            <div class="inner-admin-box d-flex al-item">
-              <div class="image-box-admin">
-                <img src="image/profile.png" class="im-circle">
-              </div>
-              <div class="admin-description-box">
-                <h2>Fourbrick Manager</h2>
-                <ul class="inner-description-box-admin d-flex space-between-flx mr-remove">
-                  <li>fourbrick.manager@gmail.com</li>
-                  <li>Policy Maker's  Admin </li>
-                </ul>
-              </div>
-            </div>
+            
           </div>
        </div>
     </div>
