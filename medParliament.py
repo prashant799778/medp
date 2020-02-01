@@ -1614,12 +1614,10 @@ def userProfile():
                 WhereCondition=" and cm.id=um.countryId and um.UserId=ms.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,policyMakerMaster ms,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
-                if  (data1["status"]!="false"):   
-                    Data = {"status":"true","message":"","result":data1["result"]}                  
-                    return Data
+                if  data1:                     
+                    return data1
                 else:
-                    data = {"status":"false","message":"No Data Found","result":""}
-                    return data
+                    return commonfile.Errormessage()
             else:
                 data = {"status":"false","message":"userTypeId is not correct.","result":""}
                 return data 
