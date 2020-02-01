@@ -903,7 +903,7 @@ def allPosts1():
 
           
 
-            if (data["status"]!="false"):
+            if (data!=0):
                 for i in data["result"]:
                     if (i["status"] == 1):
                         print(i["postId"])
