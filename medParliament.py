@@ -1576,7 +1576,7 @@ def userProfile():
             userId=inputdata['userId']
             userTypeId=inputdata['userTypeId']
             print(userTypeId,'--------')
-            if userTypeId == '5':
+            if userTypeId == 5:
                 column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,"
                 column=column+"pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,"
                 column=column+"date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,ms.organization,"
