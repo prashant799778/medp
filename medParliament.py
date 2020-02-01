@@ -810,8 +810,7 @@ def userPost():
             showuserTypeId = inputdata["showuserTypeId"]
             flag = inputdata["flag"]
             print('====',flag)
-            if 'postId' in inputdata:
-                postId1 = inputdata["postId"]
+            
            
 
             PostId = commonfile.CreateHashKey(postTitle,postDescription)
@@ -824,14 +823,15 @@ def userPost():
                 return commonfile.postTitlepostDescriptionAlreadyExistMsg()
             else:
                 print("qqqqqqqqqqqqqqqqqqqqq")
-                postImage,postFilePath,PicPath,filename="","","",""
+                postImage,postFilePath,PicPath,filename,postId,postId1="","","","","",""
                 
                 
                 if 'userTypeId' in inputdata:                                    
                     userTypeId = inputdata['userTypeId']
                 if 'userId' in inputdata:                                    
                     UserId = inputdata['userId']
-                
+                if 'postId' in inputdata:
+                    postId1 = inputdata["postId"]
 
                
                 if 'postImage' in request.files:
@@ -1577,7 +1577,7 @@ def userProfile():
             userTypeId=str(inputdata['userTypeId'])
             print(userTypeId,'--------')
             if userTypeId == '5':
-                column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,cm.id,cm.name, ms.organization, ms.aboutProfile, ms.designation"
+                column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,cm.id,cm.countryName, ms.organization, ms.aboutProfile, ms.designation"
                 WhereCondition=" and um.userId=pm.userId and um.countryId=cm.id and pm.userId=ms.userId and pm.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um,policyMakerMaster  as mm,countryMaster as cm,policyMakerMaster as ms",column,WhereCondition,"",startlimit,endlimit,orderby)
                 if  (data1["status"]!="false"):   
