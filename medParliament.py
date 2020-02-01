@@ -1599,6 +1599,7 @@ def verifyOtp():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             otp=str(inputdata['otp'])
+            email=inputdata['email']
             column="email"
             whereCondition= " and otp='" + otp+ "'and email='" + email+ "' "
             data1=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
