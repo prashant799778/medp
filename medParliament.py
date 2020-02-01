@@ -335,6 +335,39 @@ def allSubAdmins():
         return output
 
 
+@app.route('/totalSubAdmins', methods=['GET'])
+def totalAdmins():
+    try:
+       
+        startlimit,endlimit="0","5"
+        msg="1"
+       
+        if msg =="1":
+            orderby="um.id"
+           
+            column="um.userName as userName,ut.userName as userType,um.usertypeId as userTypeId,um.id,um.email as email"
+            WhereCondition=" and um.userTypeId>'1' and um.userTypeId<'5' and um.userTypeId=ut.id "
+            data = databasefile.SelectQueryOrderby("userMaster as um,userTypeMaster as ut",column,WhereCondition,"",startlimit,endlimit,orderby)
+            count=len(data["result"])
+            print(count)
+
+            if (data["status"]!="false"): 
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+
                   
 
 
@@ -899,10 +932,11 @@ def allPosts1():
             WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
             print("11111111111111")
+            print("data",data)
 
           
 
-            if (data["status"]!="false"):
+            if (data!=0):
                 for i in data["result"]:
                     if (i["status"] == 1):
                         print(i["postId"])
@@ -958,7 +992,7 @@ def allPosts2():
 
           
 
-            if (data["status"]!="false"):
+            if (data!=0):
                 for i in data["result"]:
                     if (i["status"] == 1):
                         print(i["postId"])
@@ -1049,7 +1083,7 @@ def myPosts1():
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
           
 
-            if (data["status"]!="false"): 
+            if (data!=0): 
                 for i in data["result"]:
                     if (i["status"] == 1):
                         print(i["postId"])
