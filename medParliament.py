@@ -349,14 +349,8 @@ def totalAdmins():
             WhereCondition=" and um.userTypeId>'1' and um.userTypeId<'5' and um.userTypeId=ut.id "
             data = databasefile.SelectQueryOrderby("userMaster as um,userTypeMaster as ut",column,WhereCondition,"",startlimit,endlimit,orderby)
             count=len(data["result"])
-            # for i in data["result"]:
-            #     y=i["userTypeId"]
-            #     y.split("_")
-            #     print(y,"y")
-            #     usertypeId=""
-            #     for i in y:
-            #         usertypeId+=i
-            #         del i["userTypeId"]
+           
+            #        
                     #i.update("userTypeId":usertypeId)
 
 
@@ -804,7 +798,7 @@ def userPost():
         inputdata = json.loads(inputdata)
         print("111111111111111111111111111",inputdata)   
         
-        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag','postId']
+        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag']
         commonfile.writeLog("userPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -816,7 +810,8 @@ def userPost():
             showuserTypeId = inputdata["showuserTypeId"]
             flag = inputdata["flag"]
             print('====',flag)
-            postId1 = inputdata["postId"]
+            if 'postId' in inputdata:
+                postId1 = inputdata["postId"]
            
 
             PostId = commonfile.CreateHashKey(postTitle,postDescription)
