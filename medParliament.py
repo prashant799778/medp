@@ -1419,7 +1419,7 @@ def generateOtp():
 
           
             column="otp='" + str(OTP)+ "'"
-            whereCondition= "  and email = '" + str(data["email"])+ "' "
+            whereCondition= "  and email = '" + str(email)+ "' "
             output=databasefile.UpdateQuery("userMaster",column,whereCondition)
             columns='otp'
             
