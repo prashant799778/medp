@@ -1642,7 +1642,7 @@ def userProfile():
                     return commonfile.Errormessage()
             if userTypeId == 6:
                 print('HELLO')
-                column="um.userName,um.email,cm.countryName,pcm.name"
+                column="um.userName,um.email,cm.countryName,pcm.name,"
                 column=column+"em.designation,"
                 column=column+" em.areaOfActivity"
                 WhereCondition=" and cm.id=um.countryId and pcm.id=em.profileCategoryId and um.UserId=em.userId and um.userId='" + str(userId) + "'"
@@ -1653,7 +1653,7 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 7:
-                column="um.userName,um.email,cm.countryName,un.universityName,qm.qualificationName"
+                column="um.userName,um.email,cm.countryName,un.universityName,qm.qualificationName,"
                 column=column+"sm.address,"
                 column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
                 WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.UserId=sm.userId and um.userId='" + str(userId) + "'"
