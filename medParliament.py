@@ -825,8 +825,7 @@ def userPost():
             showuserTypeId = inputdata["showuserTypeId"]
             flag = inputdata["flag"]
             print('====',flag)
-            if 'postId' in inputdata:
-                postId1 = inputdata["postId"]
+            
            
 
             PostId = commonfile.CreateHashKey(postTitle,postDescription)
@@ -839,14 +838,15 @@ def userPost():
                 return commonfile.postTitlepostDescriptionAlreadyExistMsg()
             else:
                 print("qqqqqqqqqqqqqqqqqqqqq")
-                postImage,postFilePath,PicPath,filename="","","",""
+                postImage,postFilePath,PicPath,filename,postId,postId1="","","","","",""
                 
                 
                 if 'userTypeId' in inputdata:                                    
                     userTypeId = inputdata['userTypeId']
                 if 'userId' in inputdata:                                    
                     UserId = inputdata['userId']
-                
+                if 'postId' in inputdata:
+                    postId1 = inputdata["postId"]
 
                
                 if 'postImage' in request.files:
@@ -1587,23 +1587,27 @@ def userProfile():
         commonfile.writeLog("userProfile",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
-            orderby="pm.id"
-            userId=str(inputdata['userId'])
-            userTypeId=str(inputdata['userTypeId'])
-            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'and pm.userId='" + str(userId) + "'"
-            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
-
-            # column="um.userName, um.mobileNo, um.email, um.countryId, um.gender, pm.organization, pm.aboutProfile, pm.designation, up.postTitle, up.postDescription, up.postImage, up.postImagePath, up.dateCreate"
-            # whereCondition= " and um.userId='" + str(userId)+ "'and um.userTypeId='" + str(userTypeId)+ "'and pm.userId='" + str(userId)+ "'and pm.userTypeId='" + str(userTypeId)+ "'and up.userId='" + str(userId)+ "'and up.userTypeId='" + str(userTypeId)+ "'"
-            # data1=databasefile.SelectQuery1("userMaster as um,policyMakerMaster as pm,userPost as up",column,whereCondition)
-            print(data1,'--data')
-            if  (data1["status"]!="false"):   
-                Data = {"status":"true","message":"","result":data1["result"]}                  
-                return Data
+            #orderby="pm.id"
+            userId=inputdata['userId']
+            userTypeId=inputdata['userTypeId']
+            print(userTypeId,'--------',type(userTypeId))
+            if userTypeId == 5:
+                column="um.userName,um.email,um.countryId,pm.postDescription,pm.postId,pm.userId,"
+                column=column+"pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,"
+                column=column+"date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,ms.organization,"
+                column=column+" ms.aboutProfile, ms.designation"
+                WhereCondition=" and um.userId=pm.userId and pm.userId=ms.userId and pm.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userPost pm,userMaster um,policyMakerMaster ms",column,WhereCondition,"",startlimit,endlimit,"")
+                print(data1)
+                if  (data1["status"]!="false"):   
+                    Data = {"status":"true","message":"","result":data1["result"]}                  
+                    return Data
+                else:
+                    data = {"status":"false","message":"No Data Found","result":""}
+                    return data
             else:
-                data = {"status":"false","message":"No Data Found","result":""}
-                return data      
+                data = {"status":"false","message":"userTypeId is not correct.","result":""}
+                return data 
         else:
             return msg         
  
