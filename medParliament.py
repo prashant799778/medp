@@ -1641,6 +1641,7 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 6:
+                print('HELLO')
                 column="um.userName,um.email,cm.countryName,pcm.name"
                 column=column+"em.designation,"
                 column=column+" em.areaOfActivity"
