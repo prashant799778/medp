@@ -345,7 +345,7 @@ def totalAdmins():
         if msg =="1":
             orderby="um.id"
            
-            column="um.userName as userName,ut.userName as userType,um.usertypeId as userTypeId,um.id"
+            column="um.userName as userName,ut.userName as userType,um.usertypeId as userTypeId,um.id,um.email as email"
             WhereCondition=" and um.userTypeId>'1' and um.userTypeId<'5' and um.userTypeId=ut.id "
             data = databasefile.SelectQueryOrderby("userMaster as um,userTypeMaster as ut",column,WhereCondition,"",startlimit,endlimit,orderby)
             count=len(data["result"])
