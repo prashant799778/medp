@@ -1593,14 +1593,16 @@ def verifyOtp():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        keyarr = ['otp']
+        keyarr = ['otp','email']
         print(inputdata,"B")
         commonfile.writeLog("verifyOtp",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             otp=str(inputdata['otp'])
+            email=str(inputdata['email'])
+
             column="email"
-            whereCondition= " and otp='" + otp+ "' "
+            whereCondition= " and otp='" + otp+ "' and email='" + email+ "'  "
             data1=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
             if  (data1["status"]!="false"):   
                 Data = {"status":"true","message":"","result":data1["result"]}                  
