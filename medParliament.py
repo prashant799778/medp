@@ -1636,7 +1636,7 @@ def userProfile():
             userTypeId=inputdata['userTypeId']
             print(userTypeId,'--------',type(userTypeId))
             if userTypeId == 5:
-                column="um.userName,um.email,cm.countryName,um.status,um.userId"
+                column="um.userName,um.email,cm.countryName,um.status,um.userId,"
                 column=column+"ms.organization,"
                 column=column+" ms.aboutProfile, ms.designation"
                 WhereCondition=" and cm.id=um.countryId and um.userId=ms.userId and um.userId='" + str(userId) + "'"
