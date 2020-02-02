@@ -1646,8 +1646,8 @@ def userProfile():
                 orderby="ab.id"
                 column="*"
                 whereCondition="and ab.userId='" + userId+ "'"
-                data = databasefile.SelectQueryOrderby("userPost as ab",column,WhereCondition,"",startlimit,endlimit,orderby)
-                data2={"result1":data1,"result2":data}
+                data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
+                data2={"userProfile":data1["result"],"userProfile":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
                     return data3
@@ -1661,13 +1661,12 @@ def userProfile():
                 WhereCondition=" and cm.id=um.countryId and pcm.id=em.profileCategoryId and um.userId=em.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,enterprenuerMaster em,countryMaster cm,profileCategoryMaster pcm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
-                column=" "
-                WhereCondition=" "
+               
                 orderby="ab.id"
                 column="*"
                 whereCondition="and ab.userId='" + userId+ "'"
-                data = databasefile.SelectQueryOrderby("userPost as ab",column,WhereCondition,"",startlimit,endlimit,orderby)
-                data2={"result1":data1,"result2":data}
+                data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
+                data2={"userProfile":data1["result"],"userProfile":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
                     return data3
@@ -1680,13 +1679,12 @@ def userProfile():
                 WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,countryMaster cm,universityMaster un,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
-                column=" "
-                WhereCondition=" "
+                
                 orderby="ab.id"
                 column="*"
                 whereCondition="and ab.userId='" + userId+ "'"
-                data = databasefile.SelectQueryOrderby("userPost as ab",column,WhereCondition,"",startlimit,endlimit,orderby)
-                data2={"result1":data1,"result2":data}
+                data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
+                data2={"userProfile":data1["result"],"userProfile":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
                     return data3
