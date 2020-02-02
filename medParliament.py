@@ -1651,7 +1651,7 @@ def userProfile():
                 y=type(data4)
                 print(type(data4))
 
-                if  y!='dict':
+                if  data4==0:
                     print("qqqqqqqqqqqqqqqqqqqqqqqqq")
                     data4={"result":'No Posts till now'}
                    
