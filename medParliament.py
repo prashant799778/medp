@@ -1651,8 +1651,8 @@ def userProfile():
                 print(type(data4))
                 if data4 == 0:
                     data4=[]
-                    for i in data4:
-                        data4['result']='No Posts'
+                    data4.append({"result":'No Posts till now'})
+                   
                 
                 data2={"userProfile":data1["result"],"userPost":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
