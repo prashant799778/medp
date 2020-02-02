@@ -1675,6 +1675,9 @@ def userProfile():
                 column="*"
                 whereCondition="and ab.userId='" + userId+ "'"
                 data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
+                if  data4==0:
+                    print("qqqqqqqqqqqqqqqqqqqqqqqqq")
+                    data4={"result":'No Posts till now'}
                 data2={"userProfile":data1["result"],"userPost":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
@@ -1693,6 +1696,9 @@ def userProfile():
                 column="*"
                 whereCondition="and ab.userId='" + userId+ "'"
                 data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
+                if  data4==0:
+                    print("qqqqqqqqqqqqqqqqqqqqqqqqq")
+                    data4={"result":'No Posts till now'}
                 data2={"userProfile":data1["result"],"userPost":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
