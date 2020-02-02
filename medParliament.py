@@ -1649,7 +1649,9 @@ def userProfile():
                 data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
                 print("++++++++++++++++++++++++++++++++",data4)
                 print(type(data4))
-                if data4 == 0:
+
+                if data4 =='0':
+                    print("qqqqqqqqqqqqqqqqqqqqqqqqq")
                     data4=[]
                     data4.append({"result":'No Posts till now'})
                    
