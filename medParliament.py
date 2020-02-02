@@ -1648,6 +1648,7 @@ def userProfile():
                 whereCondition="and ab.userId='" + str(userId)+ "'"
                 data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
                 print("++++++++++++++++++++++++++++++++",data4)
+                print(type(data4))
                 if data4 == 0:
                     data4=[]
                     for i in data4:
