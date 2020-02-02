@@ -1648,6 +1648,8 @@ def userProfile():
                 whereCondition="and ab.userId='" + str(userId)+ "'"
                 data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
                 print("++++++++++++++++++++++++++++++++",data4)
+                if data4 == 0:
+                    data4['result']='No Posts'
                 
                 data2={"userProfile":data1["result"],"userPost":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
