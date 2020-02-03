@@ -1688,7 +1688,11 @@ def userProfile():
                 WhereCondition=" and cm.id=um.countryId and pcm.id=em.profileCategoryId and um.userId=em.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,enterprenuerMaster em,countryMaster cm,profileCategoryMaster pcm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
-               
+                
+                column=" im.name " 
+                WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                
                 orderby="ab.id"
                 column="*"
                 whereCondition="and ab.userId='" + userId+ "'"
@@ -1696,7 +1700,7 @@ def userProfile():
                 if  data4==0:
                     print("qqqqqqqqqqqqqqqqqqqqqqqqq")
                     data4={"result":'No Posts till now'}
-                data2={"userProfile":data1["result"],"userPost":data4["result"]}
+                data2={"userProfile":data1["result"],"userPost":data4["result"],"userInterest":data5["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
                     return data3
@@ -1720,7 +1724,7 @@ def userProfile():
                 whereCondition="and ab.userId='" + userId+ "'"
                 data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
                 if  data4==0:
-                    print("qqqqqqqqqqqqqqqqqqqqqqqqq")
+                    
                     data4={"result":'No Posts till now'}
                 data2={"userProfile":data1["result"],"userPost":data4["result"],"userInterest":data5["result"]}
                 data3={"status":"true","message":"","result":data2}
