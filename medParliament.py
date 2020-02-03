@@ -509,13 +509,18 @@ def allenterprenuer():
         WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId "
         
         data = databasefile.SelectQueryOrderby("userMaster as um,enterprenuerMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
-     
-        
-        
-        
 
+        if (data!=0):
+            for i in data["result"]:
+                userId=i["userId"]
+                column="count(*) as count"
+                whereCondition=" and pm.usertypeId='6' and pm.userId='" + str(userId) + "' "
+                data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                print(data1,"")
+                count=data1["count"]
 
-        if (data["status"]!="false"):           
+                i["noOfPosts"]=count
+    
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
         else:
@@ -583,7 +588,16 @@ def allstudents():
         
 
 
-        if (data["status"]!="false"):           
+        if (data!=0):
+            for i in data["result"]:
+                userId=i["userId"]
+                column="count(*) as count"
+                whereCondition=" and pm.usertypeId='7' and pm.userId='" + str(userId) + "' "
+                data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                print(data1,"")
+                count=data1["count"]
+
+                i["noOfPosts"]=count       
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
         else:
