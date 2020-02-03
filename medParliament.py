@@ -1328,6 +1328,29 @@ def allUniversities():
         return output 
 
 
+@app.route('/adminDropdown', methods=['GET'])
+def adminDropdown():
+    try:
+        columns=" id,userName  "
+        startlimit,endlimit="",""
+        whereCondition="and id>1 and id<5"
+        
+        data = databasefile.SelectQuery("userTypeMaster",columns,whereCondition,"",startlimit,endlimit)
+       
+
+        if data:           
+            Data = {"status":"true","message":"","result":data["result"]}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output =  {"status":"false","message":"something went wrong","result":""}
+        return output         
+
+
 @app.route('/allCategories', methods=['GET'])
 def allCategories():
     try:
