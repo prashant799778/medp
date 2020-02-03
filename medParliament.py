@@ -1,4 +1,5 @@
 from flask import Flask,request,abort
+from flask import Flask, send_from_directory, abort
 import uuid
 import json
 import json
@@ -1823,7 +1824,60 @@ def userProfile():
     except Exception as e :
         print("Exceptio`121QWAaUJIHUJG n---->" +str(e))    
         output = {"result":"somthing went wrong","status":"false"}
-        return output          
+        return output 
+
+@app.route('/changeProfilePic', methods=['POST'])
+def changeProfilePic():
+
+    try: 
+          
+        inputdata = request.form.get('data')       
+        
+        keyarr = ["userId"]
+      
+        inputdata = json.loads(inputdata)
+        commonfile.writeLog("changeProfilePic",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+       
+        if msg == "1":  
+            PicPath = ""
+         
+            UserId= inputdata["userId"]
+            WhereCondition = " and userId = '" + str(UserId)  + "'"
+            # count = databasefile.SelectCountQuery("UserMaster",WhereCondition,"")
+            
+            
+            if 'ProfilePic' in request.files:  
+                
+                file = request.files.get('ProfilePic')        
+                filename = file.filename or ''  
+                print(filename)               
+                filename= str(UserId)+".png"
+                #filename = filename.replace("'","") 
+
+                #folder path to save campaign image
+                FolderPath = ConstantData.GetProfilePicPath(filename)  
+
+                filepath = '/ProfilePic/' + filename    
+
+                file.save(FolderPath)
+                PicPath = filepath
+
+                
+                column = "ProfilePic = '"  + str(PicPath) + "'"              
+                data = databasefile.UpdateQuery("userMaster",column,WhereCondition)        
+                
+                if data != "0":
+                    data["result"]= ConstantData.GetBaseURL()+PicPath
+                    return data
+                else:
+                    return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()                  
 
 
 
