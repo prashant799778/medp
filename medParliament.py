@@ -1908,7 +1908,7 @@ def changeProfilePic():
                 file = request.files.get('postImage')        
                 filename = file.filename or ''  
                 print(filename)               
-                #filename= str(UserId)+".png"
+                filename= str(UserId)+".png"
                 #filename = filename.replace("'","") 
 
                 #folder path to save campaign image
