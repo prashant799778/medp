@@ -1692,7 +1692,9 @@ def userProfile():
                 column=" im.name " 
                 WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
                 data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
-                
+                data1["result"]["userInterest"]=[]
+                for i in data5["result"]:
+                    data1["result"]["userInterest"].append(i.values())
                 orderby="ab.id"
                 column="*"
                 whereCondition="and ab.userId='" + userId+ "'"
