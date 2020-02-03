@@ -1922,7 +1922,7 @@ def changeProfilePic():
                 data = databasefile.UpdateQuery("userMaster",column,WhereCondition)        
                 
                 if data != "0":
-                    data["result"]= ConstantData.GetBaseURL()+PicPath
+                    #data["result"][]= ConstantData.GetBaseURL()+PicPath
                     return data
                 else:
                     return commonfile.Errormessage()
