@@ -1283,7 +1283,7 @@ def myPosts1():
 
 
 
-@app.route('/userPostsDashboard', methods=['POST'])
+@app.route('/userPostDashboard', methods=['POST'])
 def userPostsDashboard():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
