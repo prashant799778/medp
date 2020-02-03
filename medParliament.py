@@ -1704,7 +1704,7 @@ def userProfile():
                 column="um.userName,um.email,cm.countryName,un.universityName,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,imm.name as interest,"
                 column=column+"sm.address,"
                 column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
-                WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId and um.userId=In.userId  and imm.interestId=1  and um.userId='" + str(userId) + "'"
+                WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId and um.userId=In.userId  and In.interestId=imm.id  and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,countryMaster cm,universityMaster un,qualificationMaster qm,userInterestMapping  as In,interestMaster as imm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 
