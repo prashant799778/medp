@@ -741,7 +741,7 @@ def DeleteUser():
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
 
-            WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userTypeId) + "' "
+            WhereCondition = " and usertypeId='" + str(userTypeId) + "' and  userId = '" + str(userId) + "' "
             data = databasefile.DeleteQuery("userMaster",WhereCondition)
 
             if data != "0":
