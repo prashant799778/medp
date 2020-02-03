@@ -28,9 +28,13 @@
                                               <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button>
                                       </td>
                                       <td>
-                                          <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">
+                                          <!-- <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">
                                               <img src="../../assets/images/view.svg" class="action-view">
-                                          </button>
+                                          </button> -->
+                                          <div class="btn-edit-group">
+                                            <button type="button" class="edit-btn">Edit</button>
+                                            <button type="button" class="delet-btn">Delete</button>
+                                        </div>
                                       </td>
                                   </tr>
                         </ng-container>

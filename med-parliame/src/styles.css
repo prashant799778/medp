@@ -10,6 +10,35 @@ body{
 }
 
 /*All Use*/
+.edit-btn {
+    padding: 8px 22px;
+    border: 0;
+    background: transparent;
+    border: 1px solid #ac67f4;
+    color: #ac67f4;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+.edit-btn:active{
+    transform: translateY(1px);
+    box-shadow: 0 5px 3px -4px #ad68f5;
+}
+.delet-btn {
+    padding: 8px 22px;
+    border: 0;
+    background: transparent;
+    border: 1px solid #d60f0f;
+    color: #d60f0f;
+    border-radius: 4px;
+}
+.delet-btn:active{
+    transform: translateY(1px);
+    box-shadow: 0 5px 3px -4px #d60f0f;
+}
+button:focus {
+
+    outline: 0 !important;
+}
 .cursor{
     cursor: pointer;
 }
@@ -479,7 +508,7 @@ margin: 0;
 font-size: 13px;
 text-transform: capitalize;
 font-weight: 600;
-line-height: 3.75;
+line-height: 1rem;
 color: #707070;
 padding: 10px 5px;
 border: 0px;
@@ -645,6 +674,17 @@ width: 100%;
         padding: 15px 5px;
         font-weight: 300;
         color: #4b4b4b;
+    }
+    .ab-btn {
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1rem;
+        text-align: center;
+        border: 0;
+        width: 80px;
+        height: 28px;
     }
 }
 

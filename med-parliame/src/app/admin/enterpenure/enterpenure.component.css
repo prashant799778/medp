@@ -1,0 +1,25 @@
+.edit-btn {
+    padding: 8px 22px;
+    border: 0;
+    background: transparent;
+    border: 1px solid #ac67f4;
+    color: #ac67f4;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+.edit-btn:active{
+    transform: translateY(1px);
+    box-shadow: 0 5px 3px -4px #ad68f5;
+}
+.delet-btn {
+    padding: 8px 22px;
+    border: 0;
+    background: transparent;
+    border: 1px solid #d60f0f;
+    color: #d60f0f;
+    border-radius: 4px;
+}
+.delet-btn:active{
+    transform: translateY(1px);
+    box-shadow: 0 5px 3px -4px #d60f0f;
+}
