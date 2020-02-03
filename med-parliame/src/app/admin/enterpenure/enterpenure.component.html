@@ -21,7 +21,7 @@
                             <th>name</th>
                             <th>email</th>
                             <th>Mobile</th>
-                            <th>Post Title</th>
+                            <th>Password</th>
                             <th>status</th>
                             <th>Action</th>
                         </tr>
@@ -32,7 +32,7 @@
                                       <td>{{subAdmin.userName}}</td>
                                       <td>{{subAdmin.email}}</td>
                                       <td>{{subAdmin.mobileNo}}</td>
-                                      <td>{{subAdmin.postTitle}}</td>
+                                      <td>{{subAdmin.password}}</td>
                                       <td class="txt-color-r text-uppercase">
                                             <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">ACTIVE</button>
                                             <button *ngIf="postStatus[i]== 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">DEACTIVE</button>
@@ -40,7 +40,7 @@
                                       </td>
                                       <td>
                                           <div class="btn-edit-group">
-                                                <button type="button" class="edit-btn">Edit</button>
+                                                <button type="button" class="edit-btn" (click)="EditDetails(subAdmin.userId,subAdmin.userTypeId)">Edit</button>
                                                 <button type="button" class="delet-btn">Delete</button>
                                             </div>
                                           <!-- <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">

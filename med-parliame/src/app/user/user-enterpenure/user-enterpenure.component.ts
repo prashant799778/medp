@@ -34,7 +34,7 @@ export class UserEnterpenureComponent implements OnInit {
 		}
 	}
 	policyDetail(id){
-		this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: 5}})
+		this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: 6,admins: '6'}})
 	}
 
 }

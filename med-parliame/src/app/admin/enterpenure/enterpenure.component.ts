@@ -41,7 +41,7 @@ policyDetail(id, userTypeId){
   this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: userTypeId,admins: 'Admin/Enterpenure'}})
 }
 EditDetails(id, userTypeId){
-  this.router.navigate(['Admin/addAdmin'],{queryParams: {id: id,userTypeId: userTypeId,admins: 'AdminEnterpenrure'}})
+  this.router.navigate(['Admin/addAdmin'],{queryParams: {id: id,userTypeId: userTypeId,admins: '1'}})
 }
 
 }

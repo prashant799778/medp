@@ -5,8 +5,8 @@
                 <img class="image-set" src="image/home.svg">
             </div>
             <ul class="sub-heading d-flex al-item mr-remove">
-              <li >{{adminlist1}} /</li>
-              <li >{{adminlist2}}/</li>
+              <li >{{adminlist1}} </li>
+              <li >{{adminlist2}}</li>
               <li> Profile Details</li>
             </ul>  
           </div>
@@ -28,7 +28,7 @@
               <p *ngIf="userProfile && userProfile.aboutProfile">
                 {{userProfile.aboutProfile}}
               </p>
-              <div class="bottom-section same-margin admin-action">
+              <div class="bottom-section same-margin admin-action" *ngIf="!superLogin">
                 <ul class="group-action-button mr-remove d-flex al-item " >
                   <li class="bg-color-blu" *ngIf="userProfile.status == 1" (click)="ActiveStudent()"><a href="javascript:void(0)">Active</a></li>
                   <li class="bg-color-l-black" *ngIf="userProfile.status == 0" (click)="ActiveStudent()"><a href="javascript:void(0)">Deactive</a></li>

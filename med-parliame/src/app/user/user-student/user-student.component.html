@@ -38,7 +38,7 @@
                             <td>{{userPolicy.address}}</td>
                             <td>{{userPolicy.batchofQualification}}</td>
                             <td>
-                                <button type="button" class="acton-btn">
+                                <button type="button" class="acton-btn" (click)="policyDetail(userPolicy.userId)">
                                     <img src="../../../assets/images/view.svg" class="action-view">
                                 </button>
                             </td>

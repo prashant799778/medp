@@ -41,12 +41,16 @@
                             
                                 </td>
                               <td>
-                                   <button type="button" class="acton-btn" (click)="policyDetail(policy.userId, policy.userTypeId)">
+                                    <div class="btn-edit-group">
+                                            <button type="button" class="edit-btn" (click)="EditDetails(policy.userId, policy.userTypeId)">Edit</button>
+                                            <button type="button" class="delet-btn">Delete</button>
+                                        </div>
+                                   <!-- <button type="button" class="acton-btn" (click)="policyDetail(policy.userId, policy.userTypeId)">
                                     <img src="../../../assets/images/view.svg" class="action-view">
                                 </button>
                                 <button type="button" class="acton-btn" (click)="EditDetails(policy.userId, policy.userTypeId)">
                                         <img src="../../../assets/images/view.svg" class="action-view">
-                                    </button>
+                                    </button> -->
                               </td>
                           </tr>
                       </tbody>

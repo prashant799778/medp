@@ -49,7 +49,7 @@ export class PolicyComponent implements OnInit {
 		this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: userTypeId,admins: 'AdminPolicy'}})
 	}
 	EditDetails(id, userTypeId){
-		this.router.navigate(['Admin/addAdmin'],{queryParams: {id: id,userTypeId: userTypeId,admins: 'AdminPolicy'}})
+		this.router.navigate(['Admin/addAdmin'],{queryParams: {id: id,userTypeId: userTypeId,admins: '2'}})
 	}
 	
 

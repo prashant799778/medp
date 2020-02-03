@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { Router } from '@angular/router';
 import { AppSettings } from 'src/app/utils/constant';
+import { id_ID } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-student',
@@ -41,7 +42,17 @@ getStatus(status){
 //   this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: userTypeId,admins: 'Admin/Student'}})
 // }
 EditDetails(id, userTypeId){
-  this.router.navigate(['Admin/addAdmin'],{queryParams: {id: id,userTypeId: userTypeId,admins: 'AdminStudent'}})
+  this.router.navigate(['Admin/addAdmin'],{queryParams: {id: id,userTypeId: userTypeId,admins: '0'}})
+}
+deleteAdmin(id, userTypeId){
+  let data ={
+    'userId': id,
+    'userTypeId': userTypeId
+  }
+  console.log(data)
+  this.userService.dataPostApi(data, AppSettings.DeleteSubAdmin).then(resp =>{
+    console.log(resp)
+  })
 }
 
 }

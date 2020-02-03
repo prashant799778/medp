@@ -22,6 +22,8 @@ export class AppSettings {
 
     public static StudentMasterPannel = 'studentMasterPannel';
     public static UpdateStatus = 'updateStatus';
+    public static UpdateUser = 'UpdateUser';
+    public static DeleteSubAdmin = 'DeleteSubAdmin'
     
     // public static AllStudentsList = 'allstudents';
 
