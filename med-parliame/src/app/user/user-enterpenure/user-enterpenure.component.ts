@@ -35,6 +35,15 @@ export class UserEnterpenureComponent implements OnInit {
 	}
 	policyDetail(id){
 		this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: 6,admins: '6'}})
+  }
+  getGender(value){
+		if(value == '1'){
+			return 'Female'
+		}else if(value == '0'){
+			return 'Male'
+		}else{
+			return 'Other'
+		}
 	}
 
 }

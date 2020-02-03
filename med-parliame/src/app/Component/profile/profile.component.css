@@ -6,6 +6,10 @@
     border-radius: 50%;
     margin: auto;
 }
+.circle-box img{
+    width: 100px;
+    height: 10  0px;
+}
 .sub-inner-heading li {
     font-size: 1rem;
     font-weight: 600;

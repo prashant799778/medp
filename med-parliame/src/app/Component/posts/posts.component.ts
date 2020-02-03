@@ -47,7 +47,7 @@ export class PostsComponent implements OnInit {
             this.getStatus(resp.status)
           })
         })
-      }else{
+      }else if(this.id == 7){
         let datas = {
           'userTypeId': 7
         }
@@ -84,16 +84,16 @@ export class PostsComponent implements OnInit {
       })
         
     }else{
-      let datas = {
-        'userTypeId': 7
-      }
-      this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-        this.postList = resp['result']
-        console.log(this.postList)
-        this.postList.forEach(resp=>{
-          this.getStatus(resp.status)
-        })
-      })
+      // let datas = {
+      //   'userTypeId': 7
+      // }
+      // this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+      //   this.postList = resp['result']
+      //   console.log(this.postList)
+      //   this.postList.forEach(resp=>{
+      //     this.getStatus(resp.status)
+      //   })
+      // })
     }
     
       

@@ -42,11 +42,22 @@
                 <label class="form-label">Confirm Password</label>
                 <input type="text" class="form-control" formControlName="confirmPass">
               </div>
+              <div class="form-Group">
+                    <label class="form-label">Admin Type</label>
+                    <select class="form-control" formControlName="userTypeId"   >
+                        <option value='0' >Activate</option>
+                        <option value="1" >Deactivate</option>
+                        <!-- <option value="4" >Student</option> -->
+    
+                    </select>
+              </div>
               <div class="small-space"></div>
               <div class="bottom-section same-margin admin-action">
                 <ul class="group-action-button mr-remove d-flex al-item ">
                   <li class="bg-color-blu" (click)="saveData()"><a href="javascript:void(0)">Save</a></li>
                   <li class="bg-color-l-black" (click)="resetData()"><a href="javascript:void(0)">Reset</a></li>
+                  <!-- <li class="bg-color-l-black" (click)="openModal()" *ngIf="acitvated == 1" ><a href="javascript:void(0)">Activate</a></li>
+                  <li class="bg-color-l-black"  *ngIf="acitvated == 0" (click)="openModal()" ><a href="javascript:void(0)">Deactivate</a></li> -->
                 </ul>
               </div>
           </form>
@@ -86,9 +97,20 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body">
-              <h2>{{modalDescription}}</h2>
+            <div class="modal-body" *ngIf="!acitvatedd1">
+                <span *ngIf="acitvated == 1">Are you sure to active</span>
+                <span *ngIf="acitvated == 0">Are you sure to deactive</span>
+              <h2></h2>
+              <button *ngIf="acitvated == 1" (click)="deactivate()">active</button>
+              <button *ngIf="acitvated == 0" (click)="deactivate()">deactive</button>
             </div>
+            <div class="modal-body" *ngIf="acitvatedd1">
+                    <!-- <span *ngIf="acitvated == 1">Are you sure to active</span>
+                    <span *ngIf="acitvated == 0">Are you sure to deactive</span> -->
+                  <h2> {{modalDescription}}</h2>
+                  <!-- <button *ngIf="acitvated == 1" (click)="deactivate()">active</button>
+                  <button *ngIf="acitvated == 0" (click)="deactivate()">deactive</button> -->
+                </div>
           </div>
         </div>
       </div>

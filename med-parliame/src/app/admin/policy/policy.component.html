@@ -21,8 +21,8 @@
                           <tr>
                               <th>Admin Name</th>
                               <th>email</th>
-                              <th>Phone Number</th>
-                              <th>Gender</th>
+                              <!-- <th>Phone Number</th> -->
+                              <!-- <th>Gender</th> -->
                               <th>Password</th>
                               <th>Status</th>
                               <th>Actions</th>
@@ -32,8 +32,8 @@
                           <tr *ngFor="let policy of PolicyList;let i = index">
                               <td>{{policy.userName}}</td>
                               <td>{{policy.email}}</td>
-                              <td>{{policy.mobileNo}}</td>
-                              <td>{{getGender(policy.gender)}}</td>
+                              <!-- <td>{{policy.mobileNo}}</td> -->
+                              <!-- <td>{{getGender(policy.gender)}}</td> -->
                               <td>{{policy.password}}</td>
                               <td>
                                    <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">ACTIVE</button>

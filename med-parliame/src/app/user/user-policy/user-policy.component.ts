@@ -35,5 +35,14 @@ export class UserPolicyComponent implements OnInit {
 	policyDetail(id){
 		this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: 5,admins: '5'}})
 	}
+	getGender(value){
+		if(value == '1'){
+			return 'Female'
+		}else if(value == '0'){
+			return 'Male'
+		}else{
+			return 'Other'
+		}
+	}
 
 }

@@ -32,10 +32,10 @@
                     <tbody>
                         <tr *ngFor="let userPolicy of UserPolicyList;let i = index">
                             <td>{{userPolicy.userName}}</td>
-                            <td>ddddd</td>
+                            <td>{{userPolicy.designation}}</td>
                             <td>{{userPolicy.email}}</td>
                             <td>{{userPolicy.mobileNo}}</td>
-                            <td>{{userPolicy.gender}}</td>
+                            <td>{{getGender(userPolicy.gender)}}</td>
                             <td>{{userPolicy.city}}</td>
                             
                             <td>{{userPolicy.noOfPosts}}</td>

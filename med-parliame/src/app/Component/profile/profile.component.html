@@ -14,13 +14,13 @@
         <div class="col-12 col-sm-12 col-md-4" >
           <div class="user-show-profile bg-white-fff text-center same-margin same-padding shadow-box">
             <div class="circle-box">
-              <img src="image/profile.png">
+              <img *ngIf="userProfile && userProfile.profilePic" [src]="userProfile.profilePic">
             </div>
             <ul class="sub-inner-heading mr-remove">
               <li *ngIf="userProfile && userProfile.userName">{{userProfile.userName}}</li>
-              <li *ngIf="userProfile && userProfile.designation">{{userProfile.designation}} , +91 99808##**0 </li>
-              <li>mikebhand@email.com</li>
-              <li>Organisation , Country </li>
+              <li *ngIf="userProfile && userProfile.designation">{{userProfile.designation}} , +91 {{userProfile.mobileNo}} </li>
+              <li *ngIf="userProfile && userProfile.email">{{userProfile.email}}</li>
+              <li *ngIf="userProfile && userProfile.organization">{{userProfile.organization}} , {{userProfile.countryName}} </li>
             </ul>
             <div class="spc-gen"></div>
             <h3 class="short-profile mr-remove">Short Profile</h3>

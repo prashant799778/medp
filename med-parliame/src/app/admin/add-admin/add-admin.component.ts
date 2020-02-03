@@ -19,6 +19,8 @@ export class AddAdminComponent implements OnInit {
 	modalDescription: any;
 	UPdateUserss: boolean;
 	tabName: any;
+	acitvated: any;
+	acitvatedd1: boolean;
 	constructor(public userService: UserServiceService,
 		public route: ActivatedRoute,
 		public router: Router,
@@ -39,6 +41,12 @@ export class AddAdminComponent implements OnInit {
 			this.addAddminForm.get('userId').setValue(this.id)
 			this.userService.dataPostApi(data,AppSettings.AllSubAdmins).then(resp=>{
 				console.log(resp['result'][0])
+				if(resp['result'][0].status == 0){
+					this.acitvated = '0'
+
+				}else if(resp['result'][0].status == 1){
+					this.acitvated = '1'
+				}
 				this.addAddminForm.get('adminName').setValue(resp['result'][0].userName)
 				this.addAddminForm.get('emailId').setValue(resp['result'][0].email)
 				this.addAddminForm.get('userTypeId').setValue(resp['result'][0].userTypeId)
@@ -124,6 +132,24 @@ export class AddAdminComponent implements OnInit {
 		}else{
 			this.router.navigateByUrl('Admin/policy')
 		}
+	}
+	deactivate(){
+		console.log(this.addAddminForm.value)
+		let data ={
+			'userTypeId': this.userTypeId,
+			'userId':  this.id,
+			'email': this.addAddminForm.get('emailId').value
+		}
+		this.userService.dataPostApi(data, AppSettings.UpdateStatus).then(resp=>{
+			if(resp['status'] == 'true'){
+			this.acitvatedd1 = true;
+			this.modalDescription = "Successfull"
+				
+			}
+		})
+	}
+	openModal(){
+		jQuery('#addAdmin-pop').modal('show')
 	}
 
 }

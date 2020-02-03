@@ -24,7 +24,7 @@
                             <th>Gender</th>
                             <th>Institution</th>
                             <th>Address</th>
-                            <th>Batch</th>
+                            <th>Password</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -33,10 +33,10 @@
                             <td>{{userPolicy.userName}}</td>
                             <td>{{userPolicy.email}}</td>
                             <td>{{userPolicy.mobileNo}}</td>
-                            <td>{{userPolicy.gender}}</td>
+                            <td>{{getGender(userPolicy.gender)}}</td>
                             <td>{{userPolicy.institutionName}}</td>
                             <td>{{userPolicy.address}}</td>
-                            <td>{{userPolicy.batchofQualification}}</td>
+                            <td>{{userPolicy.password}}</td>
                             <td>
                                 <button type="button" class="acton-btn" (click)="policyDetail(userPolicy.userId)">
                                     <img src="../../../assets/images/view.svg" class="action-view">

@@ -21,8 +21,9 @@
                             <th>Name </th>
                             <th>Designation</th>
                             <th>Email</th>
-                            <th>company Name</th>
+                            <!-- <th>company Name</th> -->
                             <th>Phone Number</th>
+                            <th>Gender</th>
                             <th>No. of Post</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -31,11 +32,11 @@
                     <tbody>
                         <tr *ngFor="let userPolicy of UserEnterpenureList;let i = index">
                             <td>{{userPolicy.userName}}</td>
-                            <td>ddddd</td>
+                            <td>{{userPolicy.designation}}</td>
                             <td>{{userPolicy.email}}</td>
                             <td>{{userPolicy.mobileNo}}</td>
-                            <td>{{userPolicy.gender}}</td>
-                            <td>{{userPolicy.city}}</td>
+                            <td>{{getGender(userPolicy.gender)}}</td>
+                            <!-- <td>{{userPolicy.city}}</td> -->
                             
                             <td>{{userPolicy.noOfPosts}}</td>
                             <td>
