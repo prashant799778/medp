@@ -1652,7 +1652,7 @@ def userProfile():
             userTypeId=int(inputdata['userTypeId'])
             print(userTypeId,'--------',type(userTypeId))
             if userTypeId == 5:
-                column="um.userName,um.email,cm.countryName,um.status,um.userId,um.userTypeId,us.mobileNo,"
+                column="um.userName,um.email,cm.countryName,um.status,um.userId,um.userTypeId,um.mobileNo,"
                 column=column+"ms.organization,"
                 column=column+" ms.aboutProfile, ms.designation"
                 WhereCondition=" and cm.id=um.countryId and um.userId=ms.userId and um.userId='" + str(userId) + "'"
@@ -1680,7 +1680,7 @@ def userProfile():
                     return commonfile.Errormessage()
             if userTypeId == 6:
                 print('HELLO')
-                column="um.userName,um.email,cm.countryName,pcm.name,um.status,um.userId,um.userTypeId,us.mobileNo,"
+                column="um.userName,um.email,cm.countryName,pcm.name,um.status,um.userId,um.userTypeId,um.mobileNo,"
                 column=column+"em.designation,"
                 column=column+" em.areaOfActivity"
                 WhereCondition=" and cm.id=um.countryId and pcm.id=em.profileCategoryId and um.userId=em.userId and um.userId='" + str(userId) + "'"
@@ -1701,7 +1701,7 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 7:
-                column="um.userName,um.email,cm.countryName,un.universityName,qm.qualificationName,um.status,um.userId,um.userTypeId,us.mobileNo,"
+                column="um.userName,um.email,cm.countryName,un.universityName,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,"
                 column=column+"sm.address,"
                 column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
                 WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId and um.userId='" + str(userId) + "'"
