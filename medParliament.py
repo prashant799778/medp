@@ -1847,9 +1847,9 @@ def changeProfilePic():
             # count = databasefile.SelectCountQuery("UserMaster",WhereCondition,"")
             
             
-            if 'ProfilePic' in request.files:  
+            if 'postImage' in request.files:  
                 
-                file = request.files.get('ProfilePic')        
+                file = request.files.get('postImage')        
                 filename = file.filename or ''  
                 print(filename)               
                 filename= str(UserId)+".png"
