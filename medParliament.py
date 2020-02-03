@@ -317,6 +317,45 @@ def allSubAdmins():
         print('C')
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
+            userId,whereCondition="",""
+            userTypeId=inputdata["userTypeId"]
+            if 'userId' in inputdata:
+                userId=inputdata['userId']
+                whereCondition=" and userId='" + str(userId) + "' "
+            
+            column="*"
+            WhereCondition=" and userTypeId='" + str(userTypeId) + "'"+whereCondition
+            data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+            print(data)
+
+            if (data["status"]!="false"): 
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+
+@app.route('/allSubAdmins1', methods=['POST'])
+def allSubAdmins1():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("addAdmin",inputdata,0)
+        print('C')
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
             userTypeId=inputdata["userTypeId"]
             column="*"
             WhereCondition=" and userTypeId='" + str(userTypeId) + "'"
@@ -337,8 +376,6 @@ def allSubAdmins():
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
         return output
-
-
 
 
 
