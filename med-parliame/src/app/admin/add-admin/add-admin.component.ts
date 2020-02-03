@@ -53,6 +53,7 @@ export class AddAdminComponent implements OnInit {
 				this.addAddminForm.get('password').setValue(resp['result'][0].password)
 				this.addAddminForm.get('confirmPass').setValue(resp['result'][0].password)
 				this.addAddminForm.get('flag').setValue('u')
+				this.addAddminForm.get('actionType').setValue(resp['result'][0].status)
 				this.UPdateUserss = true;
 
 			})
@@ -78,8 +79,17 @@ export class AddAdminComponent implements OnInit {
 			password: [''],
 			confirmPass: [''],
 			userTypeId: [''],
-			flag: ['i']	
+			flag: ['i']	,
+			actionType: ['']
 		})
+		this.addAddminForm.get('actionType').valueChanges.subscribe(value => {
+			console.log('name has changed:', value)
+			
+				this.deactivate()
+			
+			
+			
+	  });
 	}
 	resetData(){
 		this.addAddminForm.reset()
@@ -142,8 +152,8 @@ export class AddAdminComponent implements OnInit {
 		}
 		this.userService.dataPostApi(data, AppSettings.UpdateStatus).then(resp=>{
 			if(resp['status'] == 'true'){
-			this.acitvatedd1 = true;
-			this.modalDescription = "Successfull"
+			// this.acitvatedd1 = true;
+			// this.modalDescription = "Successfull"
 				
 			}
 		})
@@ -151,5 +161,14 @@ export class AddAdminComponent implements OnInit {
 	openModal(){
 		jQuery('#addAdmin-pop').modal('show')
 	}
+	activatedType(event){
+		console.log("hello",event.target.value)
+		// if(this.acitvated == '0'){
+		// 	this.deactivate()
+		// }else if(this.acitvated  == '1'){
+		// 	this.deactivate()
+		// }
+	}
+
 
 }
