@@ -243,6 +243,10 @@ def addAdmin():
             Email = inputdata["emailId"]
             password = inputdata["password"]
             flag=inputdata["flag"]
+            
+            if 'userId' in inputdata:
+                UserId=inputdata["userId"]
+
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
