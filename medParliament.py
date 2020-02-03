@@ -1847,7 +1847,7 @@ def userProfile():
                     
                     data4={"result":'No Posts till now'}
                 if data1["result"][0]["profilePic"]==None:
-                    data1["result"][0]["profilePic"]=ConstantData.GetBaseURL+"/profilePic/defaultPic.jpg"
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL)+"/profilePic/defaultPic.jpg"
                 data2={"userProfile":data1["result"],"userPost":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
