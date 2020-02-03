@@ -1721,6 +1721,7 @@ def userProfile():
                 
                 print(data1["result"],"=====================++++++++++++++++")
                 data1["result"]["userInterest"]=[]
+                print(data1["result"],"=====================++++++++++++++++")
                 for i in data5["result"]:
                     data1["result"]["userInterest"].append(i.values())
                 
