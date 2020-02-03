@@ -1713,7 +1713,7 @@ def userProfile():
                
                 column=" im.name " 
                 WhereCondition=" and where im.id=uim.interestId and uim.userId='"+str(userId)+"'"
-                data3 = databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"",startlimit,endlimit,"")
+                data3 = databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
                 print("data333333333333333333333333333333",data3)
                 
                 orderby="ab.id"
