@@ -233,7 +233,7 @@ def addAdmin():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         startlimit,endlimit="",""
-        keyarr = ['adminName','userTypeId','emailId','password']
+        keyarr = ['adminName','userTypeId','emailId','password','flag']
         commonfile.writeLog("addAdmin",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -242,6 +242,7 @@ def addAdmin():
             userTypeId = inputdata["userTypeId"]
             Email = inputdata["emailId"]
             password = inputdata["password"]
+            flag=inputdata["flag"]
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
@@ -251,20 +252,32 @@ def addAdmin():
             if int(count) > 0:
                 return commonfile.EmailMobileAlreadyExistMsg()
             else:
+                if flag =='i':
                 
-                column = "userId,email,userName,password,userTypeId"                
-                values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(password) + "','" + str(userTypeId) + "'"
+                    column = "userId,email,userName,password,userTypeId"                
+                    values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(password) + "','" + str(userTypeId) + "'"
 
-                data = databasefile.InsertQuery("userMaster",column,values)        
-                if data != "0":
-                    column = 'userId,userName,userTypeId'
-                    
-                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)
-                    print(data)
-                    Data = {"status":"true","message":"","result":data["result"]}                  
-                    return Data
-                else:
-                    return commonfile.Errormessage()
+                    data = databasefile.InsertQuery("userMaster",column,values)        
+                    if data != "0":
+                        column = 'userId,userName,userTypeId'
+                        
+                        data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)
+                        print(data)
+                        Data = {"status":"true","message":"","result":data["result"]}                  
+                        return Data
+                    else:
+                        return commonfile.Errormessage()
+                if flag =='u':
+                    columns= "userName='" + str(Name) + "' ,password='" + str(password) + "'"
+                    whereCondition= " and userId='" + str(UserId) + "' and userTypeId='" + str(userTypeId) + "'"
+                    data=databasefile.UpdateQuery("userMaster",columns,whereCondition)
+                    if data !='0':
+                        return data
+                    else:
+                        return commonfile.Errormessage()
+                        
+
+                        
         else:
             return msg 
     except Exception as e :
