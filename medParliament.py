@@ -1713,7 +1713,7 @@ def userProfile():
                
                 column=" im.name " 
                 WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
-                data4= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
                 
                 orderby="ab.id"
                 column="*"
@@ -1722,7 +1722,7 @@ def userProfile():
                 if  data4==0:
                     print("qqqqqqqqqqqqqqqqqqqqqqqqq")
                     data4={"result":'No Posts till now'}
-                data2={"userProfile":data1["result"],"userPost":data4["result"],"userInterest":data4["result"]}
+                data2={"userProfile":data1["result"],"userPost":data4["result"],"userInterest":data5["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
                     return data3
