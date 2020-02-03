@@ -533,7 +533,49 @@ def allenterprenuer():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
+        return output  
+
+
+@app.route('/allenterprenuers1', methods=['GET'])
+def allenterprenuer1():
+    try:
+        column="um.mobileNo as mobileNo,um.email ,um.userName as userName,um.password as password,um.userId,um.gender,um.countryId,um.city,"
+        column=column+"pm.areaOfActivity,pcm.name as profileCategory,pm.designation,um.status"
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId and pcm.id=pm.profileCategoryId"
+        
+        data = databasefile.SelectQueryOrderby("userMaster as um,enterprenuerMaster as pm,profileCategoryMaster as pcm",column,WhereCondition,""," ",startlimit,endlimit)
+
+        if (data!=0):
+            for i in data["result"]:
+                userId=i["userId"]
+                column="count(*) as count"
+                whereCondition=" and pm.usertypeId='6' and pm.userId='" + str(userId) + "' "
+                data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                print(data1,"")
+                count=data1["count"]
+
+                i["noOfPosts"]=count
+                column=" im.name " 
+                WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                
+                i["userInterest"]=[]
+                for j in data5["result"]:
+                    j.append(i["name"])
+    
+            Data = {"status":"true","message":"","result":data["result"]}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
         return output         
+
+
 
 
 @app.route('/studentMasterPannel', methods=['GET'])
