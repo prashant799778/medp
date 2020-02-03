@@ -84,7 +84,7 @@ def GetsecurityCampaignImagePath(filename):
     
 def GetProfilePicPath(filename):
 
-    path = "/var/www/FandomLive/backend/FandomLive/Api/ProfilePic/"+filename
+    path = "/var/www/medParliament/backend/med_parliament/profilePic"+filename
     return path
 
 def GetTeamPicPath(filename):
