@@ -1859,7 +1859,7 @@ def changeProfilePic():
                 FolderPath = ConstantData.GetProfilePicPath(filename)  
 
                 filepath = '/profilePic/' + filename    
-
+                print(file,FolderPath,filepath)
                 file.save(FolderPath)
                 PicPath = filepath
 
