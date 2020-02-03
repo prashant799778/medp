@@ -42,7 +42,7 @@ def SignUp():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":  
-            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City,organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","","","","","","","",""
+            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City,organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","0","","","","","","",""
             address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
             
          
@@ -1701,12 +1701,15 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 7:
-                column="um.userName,um.email,(select im.name from interestMaster im,userInterestMapping uim where im.id=uim.interestId and uim.userId='"+str(userId)+"')interest,cm.countryName,un.universityName,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,"
+                column="um.userName,um.email,cm.countryName,un.universityName,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,"
                 column=column+"sm.address,"
                 column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
                 WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,countryMaster cm,universityMaster un,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
+
+
+
                 
                 orderby="ab.id"
                 column="*"
