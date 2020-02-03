@@ -839,7 +839,7 @@ def UpdateUser():
                 print('3')
                 organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","",""
                 address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
-                Gender,Country,City,MobileNo="","","",""
+                Password,Gender,Country,City,MobileNo="","","","",""
                 UserId = inputdata["userId"]
                 UserName = inputdata["userName"]
                
@@ -847,7 +847,9 @@ def UpdateUser():
                 Gender = inputdata["gender"]
                 # Password = inputdata["password"]
                 
-                UserTypeId= inputdata["userTypeId"] 
+                UserTypeId= inputdata["userTypeId"]
+                if 'password' in inputdata:                    
+                    Password = inputdata["password"]   
                 if 'mobileNo' in inputdata:                    
                     MobileNo = inputdata["mobileNo"]  
 
@@ -910,7 +912,7 @@ def UpdateUser():
                 print('A')
                 WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
                 column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',countryId = '" + str(Country) + "', "
-                column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'"
+                column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "',password= '" + str(password) + "' "
                 data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
                 print(data,'B')
                 if (UserTypeId == 5):
