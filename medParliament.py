@@ -1864,7 +1864,7 @@ def changeProfilePic():
                 PicPath = filepath
 
                 
-                column = "ProfilePic = '"  + str(PicPath) + "'"              
+                column = "profilePic = '"  + str(PicPath) + "'"              
                 data = databasefile.UpdateQuery("userMaster",column,WhereCondition)        
                 
                 if data != "0":
