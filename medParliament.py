@@ -146,7 +146,7 @@ def SignUp():
                 data = databasefile.InsertQuery("userMaster",columns,values) 
 
                 if data != "0":
-                    column = 'userId,userName,userTypeId'
+                    column = 'userId,userName,userTypeId,profilePic'
                     
                     data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)
                     if data["status"]!="false":
@@ -184,7 +184,8 @@ def SignUp():
 
                     else:
                         return commonfile.Errormessage()
-
+                    if data["result"][0]["profilePic"]==None:
+                        data["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
                     return data
                 else:
                     return commonfile.Errormessage()
