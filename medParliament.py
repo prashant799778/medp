@@ -1858,7 +1858,7 @@ def changeProfilePic():
                 #folder path to save campaign image
                 FolderPath = ConstantData.GetProfilePicPath(filename)  
 
-                filepath = '/ProfilePic/' + filename    
+                filepath = '/profilePic/' + filename    
 
                 file.save(FolderPath)
                 PicPath = filepath
