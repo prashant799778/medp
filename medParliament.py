@@ -1682,11 +1682,11 @@ def userProfile():
                     return commonfile.Errormessage()
             if userTypeId == 6:
                 print('HELLO')
-                column="um.userName,um.email,cm.countryName,pcm.name,um.status,um.userId,um.userTypeId,um.mobileNo,"
+                column="um.userName,um.email,pcm.name,um.status,um.userId,um.userTypeId,um.mobileNo,"
                 column=column+"em.designation,"
                 column=column+" em.areaOfActivity"
-                WhereCondition=" and cm.id=um.countryId and pcm.id=em.profileCategoryId and um.userId=em.userId and um.userId='" + str(userId) + "'"
-                data1 = databasefile.SelectQueryOrderby("userMaster um,enterprenuerMaster em,countryMaster cm,profileCategoryMaster pcm",column,WhereCondition,"",startlimit,endlimit,"")
+                WhereCondition=" and pcm.id=em.profileCategoryId and um.userId=em.userId and um.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userMaster um,enterprenuerMaster em,profileCategoryMaster pcm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 
                 column=" im.name " 
@@ -1712,11 +1712,11 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 7:
-                column="um.userName,um.email,cm.countryName,un.universityName,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,"
+                column="um.userName,um.email,un.universityName,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,"
                 column=column+"sm.address,"
                 column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
-                WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId and um.userId='" + str(userId) + "'"
-                data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,countryMaster cm,universityMaster un,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
+                WhereCondition="  and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId and um.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,universityMaster un,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 
                
