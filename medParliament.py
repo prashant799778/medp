@@ -1284,26 +1284,37 @@ def myPosts1():
 
 
 @app.route('/userPostDashboard', methods=['POST'])
-def userPostsDashboard():
+def userPostDashboard():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        keyarr = ['userId','userTypeId']
+
+        keyarr = ['userTypeId']
         print(inputdata,"B")
-        commonfile.writeLog("myPosts",inputdata,0)
+        commonfile.writeLog("userPostDashboard",inputdata,0)
       
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             orderby="pm.id"
+            postId,whereCondition="",""
+
             
             userTypeId=inputdata["userTypeId"]
-            userId=inputdata["userId"]
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition=" and pm.status=1 and upm.postId=pm.postId and upm.showUserTypeId='"+ str(userTypeId) +"' and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
-            data = databasefile.SelectQueryOrderby("userPost as pm,postUserTypeMapping as upm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            if 'postId' in inputdata:
+                postId=inputdata['postId']
+                whereCondition=" and pm.postId='" + str(postId) + "' "
+
+
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and pm.status=1 and upm.postId=pm.postId and upm.showUserTypeId='"+ str(userTypeId) +"' and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'" +whereCondition
+            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um,postUserTypeMapping as upm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            
+            print("11111111111111")
+            print("data",data)
+
           
 
-            if (data!=0): 
+            if (data!=0):
                 for i in data["result"]:
                     if (i["status"] == 1):
                         print(i["postId"])
@@ -1319,7 +1330,7 @@ def userPostsDashboard():
                         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
                         print(data1)
                         i["rejectedBy"]=data1["rejectedBy"]
-
+                        
                 
                 print("111111111111111")          
                 Data = {"status":"true","message":"","result":data["result"]}
@@ -1333,8 +1344,7 @@ def userPostsDashboard():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
-        return output                        
-
+        return output
 
 
 @app.route('/DeletePost', methods=['POST'])
