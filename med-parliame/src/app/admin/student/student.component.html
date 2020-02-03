@@ -39,12 +39,13 @@
                                      
                                       </td>
                                       <td>
-                                          <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">
+                                          <!-- <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">
                                               <img src="../../assets/images/view.svg" class="action-view">
-                                          </button>
-                                          <button type="button" class="acton-btn" (click)="EditDetails(subAdmin.userId, subAdmin.userTypeId)">
-                                                <img src="../../../assets/images/view.svg" class="action-view">
-                                            </button>
+                                          </button> -->
+                                          <div class="btn-edit-group">
+                                            <button type="button" class="edit-btn">Edit</button>
+                                            <button type="button" class="delet-btn">Delete</button>
+                                        </div>
                                       </td>
                                   </tr>
                         </ng-container>
