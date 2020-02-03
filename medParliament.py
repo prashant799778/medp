@@ -1707,9 +1707,12 @@ def userProfile():
                 WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,countryMaster cm,universityMaster un,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
-
-
-
+                
+               
+                column=" im.name " 
+                WhereCondition=" and where im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                data3 = databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"",startlimit,endlimit,"")
+                print("data333333333333333333333333333333",data3)
                 
                 orderby="ab.id"
                 column="*"
