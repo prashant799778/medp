@@ -1649,7 +1649,7 @@ def userProfile():
         if msg =="1":
             #orderby="pm.id"
             userId=inputdata['userId']
-            userTypeId=inputdata['userTypeId']
+            userTypeId=int(inputdata['userTypeId'])
             print(userTypeId,'--------',type(userTypeId))
             if userTypeId == 5:
                 column="um.userName,um.email,cm.countryName,um.status,um.userId,um.userTypeId,"
