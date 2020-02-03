@@ -245,6 +245,10 @@ def addAdmin():
             Email = inputdata["emailId"]
             password = inputdata["password"]
             flag=inputdata["flag"]
+            
+            if 'userId' in inputdata:
+                UserId1=inputdata["userId"]
+
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
@@ -273,7 +277,7 @@ def addAdmin():
                 if flag =="u":
                     print("111111111111111uuuuuuuuuu")
                     columns= "userName='" + str(Name) + "' ,password='" + str(password) + "'"
-                    whereCondition= " and userId='" + str(UserId) + "' and userTypeId='" + str(userTypeId) + "'"
+                    whereCondition= " and userId='" + str(UserId1) + "' and userTypeId='" + str(userTypeId) + "'"
                     data2=databasefile.UpdateQuery("userMaster",columns,whereCondition)
                     if data2 !='0':
                         return data2
