@@ -19,10 +19,11 @@
                     <thead>
                         <tr >
                             <th>Name </th>
+                            <th>Designation</th>
                             <th>Email</th>
                             <th>Phone Number</th>
                             <th>Gender</th>
-                            <th>Address</th>
+                            <th>Country</th>
                             <th>No. of Post</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -31,6 +32,7 @@
                     <tbody>
                         <tr *ngFor="let userPolicy of UserPolicyList;let i = index">
                             <td>{{userPolicy.userName}}</td>
+                            <td>ddddd</td>
                             <td>{{userPolicy.email}}</td>
                             <td>{{userPolicy.mobileNo}}</td>
                             <td>{{userPolicy.gender}}</td>

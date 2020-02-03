@@ -1,1 +1,57 @@
-<p>user-enterpenure works!</p>
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12">
+      <div class="upper-wrap">
+        <div class="image-section-set bg-color">
+            <img class="image-set" src="../../../assets/images/policies.svg">
+        </div>
+        <ul class="sub-heading d-flex al-item mr-remove">
+            <li>User /</li>
+            <li>Entrepreneur</li>
+          </ul> 
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12">
+        <div class="record-box table-responsive bg-white-fff border-round same-margin shadow-box">
+               <div class="upper-wrap">
+                  <h2 class="main-hading mr-bottom">Entrepreneur</h2>   
+              </div>
+                <table class="table">                               
+                    <thead>
+                        <tr >
+                            <th>Name </th>
+                            <th>Designation</th>
+                            <th>Email</th>
+                            <th>company Name</th>
+                            <th>Phone Number</th>
+                            <th>No. of Post</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let userPolicy of UserPolicyList;let i = index">
+                            <td>{{userPolicy.userName}}</td>
+                            <td>ddddd</td>
+                            <td>{{userPolicy.email}}</td>
+                            <td>{{userPolicy.mobileNo}}</td>
+                            <td>{{userPolicy.gender}}</td>
+                            <td>{{userPolicy.city}}</td>
+                            
+                            <td>{{userPolicy.noOfPosts}}</td>
+                            <td>
+                                    <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-one border-round-rem">pending</button>
+                                    <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">approved</button>
+                                    <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button>
+                            </td>
+                            <td>
+                                <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">
+                                    <img src="../../../assets/images/view.svg" class="action-view">
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
