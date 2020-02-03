@@ -426,7 +426,7 @@ def policyMakerPannel():
 def allpolicyMakers():
     try:
         column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
-        column=column+"pm.aboutProfile,pm.organization,pm.designation,pm.status"
+        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId "
 
@@ -504,7 +504,7 @@ def enterprenuerMasterPannel():
 def allenterprenuer():
     try:
         column="um.mobileNo as mobileNo,um.email ,um.userName as userName,um.password as password,um.userId,um.gender,um.country,um.city,"
-        column=column+"pm.areaOfActivity,pm.profileCategoryId,pm.designation,pm.interestId,pm.status"
+        column=column+"pm.areaOfActivity,pm.profileCategoryId,pm.designation,pm.interestId,um.status"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId "
         
@@ -573,7 +573,7 @@ def studentMasterPannel():
 def allstudents():
     try:
         column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
-        column=column+" pm.address,pm.qualificationId,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId,pm.status "
+        column=column+" pm.address,pm.qualificationId,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId,um.status "
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId"
         
