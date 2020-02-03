@@ -65,7 +65,9 @@ def SignUp():
                 print("qqqqqqqqqqqqqqqqqqqqq")
                 
                 if 'country' in inputdata:                    
-                    Country = inputdata["country"]  
+                    Country = inputdata["country"]
+                if Country == "":
+                    Country='0'  
                 if 'city' in inputdata:                    
                     City = inputdata["city"]  
                 if 'userTypeId' in inputdata:                                    
