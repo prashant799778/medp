@@ -87,4 +87,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 			$(".drop-show1").css({"display":"block"}); 
 		}
 	}
+	goToPost(id){
+		this.router.navigate(['/allPosts'],{queryParams: {id: id}})
+	}
 }

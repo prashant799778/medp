@@ -1,8 +1,19 @@
 <div class="row" >
+        <div class="col-12 col-sm-12 col-md-12">
+                <div class="upper-wrap">
+                  <div class="image-section-set bg-color">
+                      <img class="image-set" src="../../../assets/images/entrepreneur.svg">
+                  </div>
+                  <ul class="sub-heading d-flex al-item mr-remove">
+                    <li>Admin /</li>
+                    <li>Student</li>
+                  </ul>  
+                </div>
+              </div>
         <div class="col-sm-12 col-md-12 col-lg-12 margin-tp">
             <div class="record-box neu-shadow table-responsive bg-white-fff border-round">
                  <div class="upper-wrap">
-                    <h2 class="main-hading mr-bottom">Posts</h2>   
+                         
                 </div>
                 <table class="table">                               
                     <thead>
@@ -31,6 +42,9 @@
                                           <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">
                                               <img src="../../assets/images/view.svg" class="action-view">
                                           </button>
+                                          <button type="button" class="acton-btn" (click)="EditDetails(subAdmin.userId, subAdmin.userTypeId)">
+                                                <img src="../../../assets/images/view.svg" class="action-view">
+                                            </button>
                                       </td>
                                   </tr>
                         </ng-container>

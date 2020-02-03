@@ -29,19 +29,23 @@ export class ProfileComponent implements OnInit {
 				this.AdminsDetails = params['admins']
 				console.log(this.AdminsDetails)
 				if(this.AdminsDetails == 'admin/student'){
+					console.log(this.AdminsDetails)
 					this.adminlist1 = 'Admin /'
 					this.adminlist2 = 'Student'
 				}else if(this.AdminsDetails == 'admin/enterpenure'){
+					console.log(this.AdminsDetails)
 					this.adminlist1 = 'Admin /'
 					this.adminlist2 = 'Enterpenure'
 				}else{
+					console.log(this.AdminsDetails)
 					this.adminlist1 = 'Admin /'
 					this.adminlist2 = 'Policy'
 				}
+
 				if(this.userTypeId == '2'){
 					let data = {
 						'userId': this.id,
-						'userTypeId': 5
+						'userTypeId': 2
 					}	
 					this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
 						console.log(resp)
