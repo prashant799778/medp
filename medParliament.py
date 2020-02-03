@@ -1299,7 +1299,7 @@ def myPosts2():
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
             column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition="and upm.postId=pm.postId and upm.showUserTypeId='"+ str(userTypeId) +"' and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
+            WhereCondition=" and pm.status=1 and upm.postId=pm.postId and upm.showUserTypeId='"+ str(userTypeId) +"' and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm,postUserTypeMapping as upm",column,WhereCondition,"",startlimit,endlimit,orderby)
           
 
