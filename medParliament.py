@@ -831,22 +831,25 @@ def UpdateUser():
         if request.data:
             print('2')
             inputdata = commonfile.DecodeInputdata(request.get_data())         
-            keyarr = ['userId','userName','mobileNo','email','gender','country','city','userTypeId']
+            keyarr = ['userId','userName','email','userTypeId']
             commonfile.writeLog("UpdateUser",inputdata,0)
             msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
             if msg == "1":
                 print('3')
                 organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","",""
                 address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
+                Gender,Country,City,MobileNo="","","",""
                 UserId = inputdata["userId"]
                 UserName = inputdata["userName"]
-                MobileNo = inputdata["mobileNo"]
+               
                 Email = inputdata["email"] 
                 Gender = inputdata["gender"]
                 # Password = inputdata["password"]
-                Country = inputdata["country"] 
-                City = inputdata["city"] 
+                
                 UserTypeId= inputdata["userTypeId"] 
+                if 'mobileNo' in inputdata:                    
+                    MobileNo = inputdata["mobileNo"]  
+
                 if 'country' in inputdata:                    
                     Country = inputdata["country"]  
                 if 'city' in inputdata:                    
