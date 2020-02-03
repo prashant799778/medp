@@ -1726,7 +1726,7 @@ def userProfile():
                     print(i)
                     print(i.values())
                     print("lppppppppppppppppppppp")
-                    data1["result"][0]["userInterest"].append(i.values())
+                    data1["result"][0]["userInterest"].append(i["name"])
                 
                 print("======================================")
                 
