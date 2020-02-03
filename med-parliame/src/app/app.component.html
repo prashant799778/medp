@@ -12,33 +12,41 @@
         <app-footer></app-footer>
     </div>
 </div>
-<div  *ngIf="!loginSuccess">
-    <form [formGroup]="loginForm" class="login-form-class" >
-        <div  formGroupName="login" class="form-group">
-            <label for="exampleInputEmail1">Email Address</label>
-            <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp">
-            <div class="errors" *ngIf="loginForm.get('login').get('email').errors && (loginForm.get('login').get('email').touched || loginForm.get('login').get('email').dirty)">
-                <p *ngIf="loginForm.get('login').get('email').errors && loginForm.get('login').get('email').errors.required"> Please Enter  Email</p>  
-                <p *ngIf="loginForm.get('login').get('email').errors && loginForm.get('login').get('email').errors.pattern"> Enter Correct Email</p>
-            </div>
-        </div>
-        <div  formGroupName="login" class="form-group pos-rel">
-            <label for="exampleInputEmail1">Password</label>
-            <input type="password" class="form-control" formControlName="password" aria-describedby="emailHelp"  id="signInPass">
-            <img src="../../assets/images/eye.svg" *ngIf="showPasswords" class="pos-abs" (click)="showPassword('signInPass')">
-            <img src="../../assets/images/close-eye.svg" *ngIf="!showPasswords" class="pos-abs" (click)="showPassword('signInPass')">
-            <div class="errors" *ngIf="loginForm.get('login').get('password').errors && (loginForm.get('login').get('password').touched || loginForm.get('login').get('password').dirty)">
-                <p *ngIf="loginForm.get('login').get('password').errors && loginForm.get('login').get('password').errors.required"> Please Enter  Password</p>  
-                <p *ngIf="loginForm.get('login').get('password').errors && loginForm.get('login').get('password').errors.pattern"> Enter Correct Password</p>
-            </div>
-        </div>
+<div class="main-box-container" *ngIf="!loginSuccess">
+    <div class="wrap-container-box">
+        <div class="right-side"></div>
+    <div class="left-side bg-white-fff same-padding ">
+        <h2 class="sign-in-heading">Sign In</h2>
+        <div  >
+            <form [formGroup]="loginForm" class="login-form-class"  autocomplete="off" >
+                <div  formGroupName="login" class="form-group input-box">
+                    <label>Email Address</label>
+                    <input type="email" class="form-control" formControlName="email" autocomplete="off">
+                    <div class="errors" *ngIf="loginForm.get('login').get('email').errors && (loginForm.get('login').get('email').touched || loginForm.get('login').get('email').dirty)">
+                        <p *ngIf="loginForm.get('login').get('email').errors && loginForm.get('login').get('email').errors.required"> Please Enter  Email</p>  
+                        <p *ngIf="loginForm.get('login').get('email').errors && loginForm.get('login').get('email').errors.pattern"> Enter Correct Email</p>
+                    </div>
+                </div>
+                <div  formGroupName="login" class="form-group pos-rel input-box">
+                    <label>Password</label>
+                    <input type="password" class="form-control" formControlName="password" id="signInPass" autocomplete="off">
+                    <img src="../../assets/images/eye.svg" *ngIf="showPasswords" class="pos-abs" (click)="showPassword('signInPass')">
+                    <img src="../../assets/images/close-eye.svg" *ngIf="!showPasswords" class="pos-abs" (click)="showPassword('signInPass')">
+                    <div class="errors" *ngIf="loginForm.get('login').get('password').errors && (loginForm.get('login').get('password').touched || loginForm.get('login').get('password').dirty)">
+                        <p *ngIf="loginForm.get('login').get('password').errors && loginForm.get('login').get('password').errors.required"> Please Enter  Password</p>  
+                        <p *ngIf="loginForm.get('login').get('password').errors && loginForm.get('login').get('password').errors.pattern"> Enter Correct Password</p>
+                    </div>
+                </div>
 
-        <div class="bottom-titles">
-            
-            <button  (click)="getLogin()" type="submit" id="signInLogin" class="btn btn-info">Sign In</button>
-           
+                <div class="bottom-titles">
+                    
+                    <button  (click)="getLogin()" type="submit" id="signInLogin" class="btn sign-up-btn">Sign In</button>
+                
+                </div>
+                
+                
+            </form>
         </div>
-        
-        
-    </form>
+    </div>
+</div>
 </div>

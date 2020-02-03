@@ -21,31 +21,56 @@
             <div class="side-menu">
                 <ul *ngIf="superLogin">
                     <li><a href="javascript:void(0)" (click)="goTo('dashboard')" class="active">Dashboard <img src="../../assets/images/a-dashboard.svg" class="img-hdi"><img src="../../assets/images/d-home.svg" class="img-sdi"></a></li>
-                    <li class="dp-down"><a href="javascript:void(0)" (click)="showSLiders()">Admin <img src="../../assets/images/a-admin.svg" class="img-hdi"><img src="../../assets/images/d-admin.svg" class="img-sdi"></a> </li>
-                    <div class="inner-dropdown drop-show mr-left">
+                    <li class="dp-down side-menu-down"><a href="javascript:void(0)" (click)="showSLiders()">Admin <img src="../../assets/images/a-admin.svg" class="img-hdi"><img src="../../assets/images/d-admin.svg" class="img-sdi"></a>
+                        <div class="inner-dropdown drop-show mr-left trans">
+                            <ul>
+                                <li><a href="javascript:void(0)" (click)="goTo('Admin/policy')">Policy Maker Admin</a></li>
+                                <li><a href="javascript:void(0)" (click)="goTo('Admin/enterpenure')">Entrepreneur  Admin  </a></li>
+                                <li><a href="javascript:void(0)" (click)="goTo('Admin/student')">Student Admin </a></li>
+                                <li><a href="javascript:void(0)" (click)="goTo('Admin/addAdmin')">Add New Admin </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- <div class="inner-dropdown drop-show mr-left trans">
                         <ul>
                             <li><a href="javascript:void(0)" (click)="goTo('Admin/policy')">Policy Maker Admin</a></li>
                             <li><a href="javascript:void(0)" (click)="goTo('Admin/enterpenure')">Entrepreneur  Admin  </a></li>
                             <li><a href="javascript:void(0)" (click)="goTo('Admin/student')">Student Admin </a></li>
                             <li><a href="javascript:void(0)" (click)="goTo('Admin/addAdmin')">Add New Admin </a></li>
                         </ul>
-                    </div>
-                    <li class="dp-downn"><a href="javascript:void(0)" (click)="showSLider()">Users <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-admin.svg" class="img-hdi"></a></li>
-                        <div class="inner-dropdown drop-showw mr-left">
+                    </div> -->
+                    <li class="dp-downn side-menu-down"><a href="javascript:void(0)" (click)="showSLider()">Users <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-admin.svg" class="img-hdi"></a>
+                        <div class="inner-dropdown drop-showw mr-left trans">
 							<ul>
 								<li><a href="javascript:void(0)" (click)="goTo('User/policy')">Policy Maker</a></li>
 								<li><a href="javascript:void(0)" (click)="goTo('User/enterpenure')">Entrepreneur  </a></li>
 								<li><a href="javascript:void(0)" (click)="goTo('User/student')">Student </a></li>
 							</ul>
 						</div>
-                        <li><a href="javascript:void(0)" (click)="showSLider1()">Post <img src="../../assets/images/d-post.svg" class="img-sdi"><img src="../../assets/images/a-post.svg" class="img-hdi"></a></li>
-                        <div class="inner-dropdown drop-show1 mr-left">
+                    </li>
+                        <!-- <div class="inner-dropdown drop-showw mr-left trans">
 							<ul>
 								<li><a href="javascript:void(0)" (click)="goTo('User/policy')">Policy Maker</a></li>
 								<li><a href="javascript:void(0)" (click)="goTo('User/enterpenure')">Entrepreneur  </a></li>
 								<li><a href="javascript:void(0)" (click)="goTo('User/student')">Student </a></li>
 							</ul>
-						</div>
+						</div> -->
+                        <li class="side-menu-down"><a href="javascript:void(0)" (click)="showSLider1()">Post <img src="../../assets/images/d-post.svg" class="img-sdi"><img src="../../assets/images/a-post.svg" class="img-hdi"></a>
+                            <div class="inner-dropdown drop-show1 mr-left trans">
+                                <ul>
+                                    <li><a href="javascript:void(0)" (click)="goTo('User/policy')">Policy Maker</a></li>
+                                    <li><a href="javascript:void(0)" (click)="goTo('User/enterpenure')">Entrepreneur  </a></li>
+                                    <li><a href="javascript:void(0)" (click)="goTo('User/student')">Student </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- <div class="inner-dropdown drop-show1 mr-left trans">
+							<ul>
+								<li><a href="javascript:void(0)" (click)="goTo('User/policy')">Policy Maker</a></li>
+								<li><a href="javascript:void(0)" (click)="goTo('User/enterpenure')">Entrepreneur  </a></li>
+								<li><a href="javascript:void(0)" (click)="goTo('User/student')">Student </a></li>
+							</ul>
+						</div> -->
                         <li><a href="javascript:void(0)">Settings <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li>
                 </ul>
 

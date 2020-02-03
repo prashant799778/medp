@@ -10,6 +10,9 @@ body{
 }
 
 /*All Use*/
+.cursor{
+    cursor: pointer;
+}
 .mr-left-2r {
     margin-left: 2rem !important;
 }
@@ -133,6 +136,18 @@ align-items: center;
 /*Sidebar Section*/
 
 /* active Side bar */
+.side-menu-down {
+    position: relative;
+}
+.sidebar.active .trans {
+    position: absolute;
+    right: -157px;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #e6e6e6;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
 .drop-showw {
     margin-bottom: 1rem;
 }
