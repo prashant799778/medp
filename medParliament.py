@@ -30,6 +30,7 @@ def postImage(image_name):
     except FileNotFoundError:
         abort(404)
 
+@app.route("/profilePic/<image_name>")
 def profilePic(image_name):
     try:
         return send_from_directory('profilePic', filename=image_name, as_attachment=False)
