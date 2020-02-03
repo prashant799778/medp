@@ -16,6 +16,8 @@ export class AppSettings {
     public static PolicyMasterPannel = 'policyMakerPannel';
 
     public static UserProfile = 'userProfile';
+    public static EnterprenuerMasterPannel = 'enterprenuerMasterPannel';
+    
 
     
     

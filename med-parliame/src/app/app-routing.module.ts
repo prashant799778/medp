@@ -12,6 +12,8 @@ import { UserEnterpenureComponent } from './user/user-enterpenure/user-enterpenu
 import { AddAdminComponent } from './admin/add-admin/add-admin.component';
 import { PolicyDetaialsComponent } from './Component/policy-detaials/policy-detaials.component';
 import { ProfileComponent } from './Component/profile/profile.component';
+import { PostsComponent } from './Component/posts/posts.component';
+import { EnterpenuressComponent } from './Component/enterpenuress/enterpenuress.component';
 
 
 
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   { path: 'policyDetails', component: PolicyDetaialsComponent, canActivate:[AuthGuard]},
   { path: 'profile', component: ProfileComponent, canActivate:[AuthGuard]},
+  { path: 'allPosts', component: PostsComponent, canActivate:[AuthGuard]},
+  { path: 'enterpenure', component: EnterpenuressComponent, canActivate:[AuthGuard]},
   
   { path: 'Admin',
   children: [                          //<---- child components declared here

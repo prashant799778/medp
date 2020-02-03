@@ -32,8 +32,8 @@ export class UserPolicyComponent implements OnInit {
 			this.postStatus.push(1);
 		}
 	}
-	policyDetail(id,userTypeId){
-		this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: userTypeId}})
+	policyDetail(id){
+		this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: 5}})
 	}
 
 }

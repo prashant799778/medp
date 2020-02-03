@@ -13,6 +13,7 @@ export class SidebarComponent implements OnInit {
 	numberss: number;
 	number1: number;
 	superLogin: boolean;
+	enterpernure: boolean;
 	constructor(public router: Router,
 				public local: LocalStorageService) { 
 		this.numbers = 0;
@@ -24,6 +25,8 @@ export class SidebarComponent implements OnInit {
 	ngOnInit() {
 		
 		if(this.local.get('userData2')){
+
+
 			if(this.local.get('userData2').superLogin == 'yes'){
 				this.superLogin = true;
 			
@@ -31,6 +34,18 @@ export class SidebarComponent implements OnInit {
 				this.superLogin = false
 			}
 		}
+
+		if(this.local.get('userData1')){
+console.log(this.local.get('userData1')[0].userTypeId)
+			
+			if(this.local.get('userData1')[0].userTypeId == '3'){
+				this.enterpernure = true;
+			
+			}else{
+				this.enterpernure = false
+			}
+		}
+
 	}
 	goTo(routes){
 		this.router.navigateByUrl('/'+routes)

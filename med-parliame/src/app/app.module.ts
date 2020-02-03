@@ -22,6 +22,8 @@ import { AddAdminComponent } from './admin/add-admin/add-admin.component';
 import { PolicyDetaialsComponent } from './Component/policy-detaials/policy-detaials.component';
 import { SubAdminComponent } from './sub-admin/sub-admin.component';
 import { ProfileComponent } from './Component/profile/profile.component';
+import { PostsComponent } from './Component/posts/posts.component';
+import { EnterpenuressComponent } from './Component/enterpenuress/enterpenuress.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { ProfileComponent } from './Component/profile/profile.component';
     AddAdminComponent,
     PolicyDetaialsComponent,
     SubAdminComponent,
-    ProfileComponent
+    ProfileComponent,
+    PostsComponent,
+    EnterpenuressComponent
   ],
   imports: [
     BrowserModule,
