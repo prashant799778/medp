@@ -519,12 +519,13 @@ padding: 10px 5px;
 border: 0px;
 }
 .record-box tbody tr td {
-vertical-align: middle;
-font-size: 12px;
-line-height: 10px;
-padding: 15px 5px;
-font-weight: 300;
-color: #4b4b4b;
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 10px;
+    padding: 10px 5px;
+    font-weight: 400;
+    color: #969696;
+    width: 100px;
 }
 .ab-btn {
 color: #fff;
