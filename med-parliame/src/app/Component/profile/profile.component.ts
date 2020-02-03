@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { AppSettings } from 'src/app/utils/constant';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,8 @@ export class ProfileComponent implements OnInit {
 	userTypeId: any;
 	userProfile: any;
 	userPost = [];
-	enterpueresss: boolean
+	enterpueresss: boolean;
+	modalDescription: any;
 	constructor(public route: ActivatedRoute,
 				public userService: UserServiceService) { }
 
@@ -57,6 +59,29 @@ export class ProfileComponent implements OnInit {
 				
 			})
 		
+	}
+
+	ActiveStudent(){
+		let data ={
+			'userTypeId': this.userProfile.userTypeId,
+			'userId':  this.userProfile.userId,
+			'email': this.userProfile.email,
+		}
+		this.userService.dataPostApi(data,AppSettings.UpdateStatus).then(resp=>{
+			if(resp['status'] == 'true'){
+				
+				if(this.userProfile.status == '0'){
+					this.userProfile.status = '1'
+					this.modalDescription = 'activate'
+					jQuery('#students-pop').modal('show')
+				}else{
+					jQuery('#students-pop').modal('show')
+					this.modalDescription = 'deactivate'
+					this.userProfile.status = '0'
+				}
+
+			}
+		})
 	}
 
 }

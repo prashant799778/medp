@@ -17,11 +17,16 @@ export class PolicyDetaialsComponent implements OnInit {
 	postDetails: any;
 	modalDescription: any;
 	onlyView: boolean
+	superLogin: boolean;
 	constructor(private route: ActivatedRoute, private router: Router,
 				public local: LocalStorageService,
 				public userService: UserServiceService) { }
 
 	ngOnInit() {
+		console.log(this.local.get('userData2').superLogin)
+		if(this.local.get('userData2').superLogin == 'yes'){
+			this.superLogin = true;
+		}
 		this.route.queryParams.subscribe(params => {
 			this.id = params['id'];
 			this.userTypeId = params['userTypeId']

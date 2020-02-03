@@ -20,7 +20,7 @@
                 {{postDetails.postDescription}}
               </p>
             </div>
-            <div class="bottom-section same-margin">
+            <div class="bottom-section same-margin" *ngIf="!superLogin">
               <ul class="group-action-button mr-remove d-flex al-item " *ngIf="onlyView">
                 <li class="bg-color-blu" ><a href="javascript:void(0)" (click)="Approve(1)" data-toggle="modal" data-target="#approv-pop">Approve</a></li>
                 <li class="bg-color-l-black"><a href="javascript:void(0)" (click)="Approve(3)">On Hold</a></li>

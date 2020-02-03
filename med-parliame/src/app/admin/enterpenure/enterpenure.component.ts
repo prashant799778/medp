@@ -18,7 +18,7 @@ export class EnterpenureComponent implements OnInit {
     let data =  {
         'userTypeId': 3
     }
-    this.userService.dataPostApi(data,AppSettings.AllEnterprenuers).then(resp=>{
+    this.userService.getApiDatawithData(AppSettings.AllEnterprenuers,data).then(resp=>{
       this.studentlist = resp['result']
       this.studentlist.forEach(resp =>{
         this.getStatus(resp.status)
