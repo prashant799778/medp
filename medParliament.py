@@ -251,7 +251,7 @@ def addAdmin():
                     
                     data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)
                     print(data)
-                    Data = {"status":"true","message":"","result":data}                  
+                    Data = {"status":"true","message":"","result":data["result"]}                  
                     return Data
                 else:
                     return commonfile.Errormessage()
