@@ -252,7 +252,8 @@ def addAdmin():
             if int(count) > 0:
                 return commonfile.EmailMobileAlreadyExistMsg()
             else:
-                if flag =='i':
+                if flag =="i":
+                    print("11111111111111111111111")
                 
                     column = "userId,email,userName,password,userTypeId"                
                     values = " '" + str(UserId) + "','" + str(Email) + "','" + str(Name) + "','" + str(password) + "','" + str(userTypeId) + "'"
@@ -267,12 +268,13 @@ def addAdmin():
                         return Data
                     else:
                         return commonfile.Errormessage()
-                if flag =='u':
+                if flag =="u":
+                    print("111111111111111uuuuuuuuuu")
                     columns= "userName='" + str(Name) + "' ,password='" + str(password) + "'"
                     whereCondition= " and userId='" + str(UserId) + "' and userTypeId='" + str(userTypeId) + "'"
-                    data=databasefile.UpdateQuery("userMaster",columns,whereCondition)
-                    if data !='0':
-                        return data
+                    data2=databasefile.UpdateQuery("userMaster",columns,whereCondition)
+                    if data2 !='0':
+                        return data2
                     else:
                         return commonfile.Errormessage()
                         
