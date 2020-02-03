@@ -556,9 +556,9 @@ def allenterprenuer1():
                 count=data1["count"]
 
                 i["noOfPosts"]=count
-                column=" im.name " 
+                columns=" im.name " 
                 WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
-                data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",columns,WhereCondition,"","","","")
                 
                 i["userInterest"]=[]
                 for j in data5["result"]:
