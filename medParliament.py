@@ -1705,7 +1705,7 @@ def userProfile():
                     return commonfile.Errormessage()
             if userTypeId == 6:
                 print('HELLO')
-                column="um.userName,um.email,pcm.name,um.status,um.userId,um.userTypeId,um.mobileNo,"
+                column="um.userName,um.email,pcm.name as profileCategory,um.status,um.userId,um.userTypeId,um.mobileNo,"
                 column=column+"em.designation,"
                 column=column+" em.areaOfActivity"
                 WhereCondition=" and pcm.id=em.profileCategoryId and um.userId=em.userId and um.userId='" + str(userId) + "'"
