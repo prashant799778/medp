@@ -504,7 +504,7 @@ def enterprenuerMasterPannel():
 def allenterprenuer():
     try:
         column="um.mobileNo as mobileNo,um.email ,um.userName as userName,um.password as password,um.userId,um.gender,um.countryId,um.city,"
-        column=column+"pm.areaOfActivity,pm.profileCategoryId,pm.designation,pm.interestId,um.status"
+        column=column+"pm.areaOfActivity,pm.profileCategoryId,pm.designation,um.status"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId "
         
