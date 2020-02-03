@@ -37,5 +37,8 @@ getStatus(status){
     this.postStatus.push(2);
   }
 }
+policyDetail(id, userTypeId){
+  this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: userTypeId,admins: 'Admin/Student'}})
+}
 
 }

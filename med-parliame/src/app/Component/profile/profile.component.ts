@@ -16,6 +16,9 @@ export class ProfileComponent implements OnInit {
 	userPost = [];
 	enterpueresss: boolean;
 	modalDescription: any;
+	AdminsDetails: any;
+	adminlist1: any;
+	adminlist2: any;
 	constructor(public route: ActivatedRoute,
 				public userService: UserServiceService) { }
 
@@ -23,6 +26,18 @@ export class ProfileComponent implements OnInit {
 		this.route.queryParams.subscribe(params => {
 				this.id = params['id'];
 				this.userTypeId = params['userTypeId']
+				this.AdminsDetails = params['admins']
+				console.log(this.AdminsDetails)
+				if(this.AdminsDetails == 'admin/student'){
+					this.adminlist1 = 'Admin /'
+					this.adminlist2 = 'Student'
+				}else if(this.AdminsDetails == 'admin/enterpenure'){
+					this.adminlist1 = 'Admin /'
+					this.adminlist2 = 'Enterpenure'
+				}else{
+					this.adminlist1 = 'Admin /'
+					this.adminlist2 = 'Policy'
+				}
 				if(this.userTypeId == '2'){
 					let data = {
 						'userId': this.id,

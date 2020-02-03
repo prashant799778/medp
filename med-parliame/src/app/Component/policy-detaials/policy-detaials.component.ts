@@ -71,5 +71,10 @@ export class PolicyDetaialsComponent implements OnInit {
 	closeMOdal(){
 		this.router.navigateByUrl('/dashboard')
 	}
+	goto(id){
+		this.router.navigateByUrl(id)
+	}
+		
+	
 
 }

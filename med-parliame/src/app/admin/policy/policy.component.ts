@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { AppSettings } from 'src/app/utils/constant';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-policy',
@@ -9,14 +10,22 @@ import { AppSettings } from 'src/app/utils/constant';
 })
 export class PolicyComponent implements OnInit {
 	PolicyList = []
-  	constructor(public userService: UserServiceService) { }
+	postStatus = []
+	  constructor(public userService: UserServiceService,
+					public router: Router) { }
 
 	ngOnInit() {
-		this.userService.getApiData(AppSettings.AllPolicyMaker).then(resp=>{
-				console.log(resp)
-				this.PolicyList = resp['result']
-				
-			})
+		let data =  {
+			'userTypeId': 2
+		}
+		this.userService.dataPostApi(data,AppSettings.AllSubAdmins ).then(resp=>{
+		  this.PolicyList = resp['result']
+		  this.PolicyList.forEach(resp =>{
+			this.getStatus(resp.status)
+		  })
+		  
+		
+	  })
 	}
 	getGender(value){
 		if(value == '0'){
@@ -27,5 +36,18 @@ export class PolicyComponent implements OnInit {
 			return 'Other'
 		}
 	}
+	getStatus(status){
+
+		if(status == '0'){
+		  this.postStatus.push(0)
+		}else {
+		  this.postStatus.push(1);
+		}
+	  }
+
+	  policyDetail(id, userTypeId){
+		this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: userTypeId,admins: 'Admin/Policy'}})
+	}
+	
 
 }

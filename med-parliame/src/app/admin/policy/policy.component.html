@@ -29,15 +29,21 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr *ngFor="let policy of PolicyList">
+                          <tr *ngFor="let policy of PolicyList;let i = index">
                               <td>{{policy.userName}}</td>
                               <td>{{policy.email}}</td>
                               <td>{{policy.mobileNo}}</td>
                               <td>{{getGender(policy.gender)}}</td>
                               <td>{{policy.password}}</td>
-                              <td> <button type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">INACTIVE</button></td>
                               <td>
-
+                                   <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">ACTIVE</button>
+                                   <button *ngIf="postStatus[i]== 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">DEACTIVE</button>
+                            
+                                </td>
+                              <td>
+                                   <button type="button" class="acton-btn" (click)="policyDetail(policy.userId, policy.userTypeId)">
+                                    <img src="../../../assets/images/view.svg" class="action-view">
+                                </button>
                               </td>
                           </tr>
                       </tbody>
