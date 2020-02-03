@@ -503,7 +503,7 @@ def enterprenuerMasterPannel():
 @app.route('/allenterprenuers', methods=['GET'])
 def allenterprenuer():
     try:
-        column="um.mobileNo as mobileNo,um.email ,um.userName as userName,um.password as password,um.userId,um.gender,um.country,um.city,"
+        column="um.mobileNo as mobileNo,um.email ,um.userName as userName,um.password as password,um.userId,um.gender,um.countryId,um.city,"
         column=column+"pm.areaOfActivity,pm.profileCategoryId,pm.designation,pm.interestId,um.status"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId "
