@@ -30,6 +30,7 @@ def postImage(image_name):
     except FileNotFoundError:
         abort(404)
 
+@app.route("/profilePic/<image_name>")
 def profilePic(image_name):
     try:
         return send_from_directory('profilePic', filename=image_name, as_attachment=False)
@@ -200,14 +201,16 @@ def login():
         password = request.args['password']
        
         mobile = request.args['email']
-        column=  "us.mobileNo,us.userName,us.email,um.id as userTypeId,us.userId as userId"
+        column=  "us.profilePic,us.mobileNo,us.userName,us.email,um.id as userTypeId,us.userId as userId"
         whereCondition= " and us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.userTypeId=um.id"
         groupby,startlimit,endlimit="","",""
         loginuser=databasefile.SelectQuery("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
         
                
       
-        if  (loginuser["status"]!="false"):   
+        if  (loginuser["status"]!="false"): 
+            if loginuser["result"][0]["profilePic"]==None:
+                    loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
             Data = {"status":"true","message":"","result":loginuser["result"]}                  
             return Data
         else:
@@ -1785,7 +1788,8 @@ def userProfile():
                     print("qqqqqqqqqqqqqqqqqqqqqqqqq")
                     data4={"result":'No Posts till now'}
                    
-                
+                if data1["result"][0]["profilePic"]==None:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
                 data2={"userProfile":data1["result"],"userPost":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
@@ -1817,6 +1821,8 @@ def userProfile():
                 if  data4==0:
                     print("qqqqqqqqqqqqqqqqqqqqqqqqq")
                     data4={"result":'No Posts till now'}
+                if data1["result"][0]["profilePic"]==None:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
                 data2={"userProfile":data1["result"],"userPost":data4["result"],"userInterest":data5["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
@@ -1849,6 +1855,8 @@ def userProfile():
                 if  data4==0:
                     
                     data4={"result":'No Posts till now'}
+                if data1["result"][0]["profilePic"]==None:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
                 data2={"userProfile":data1["result"],"userPost":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
