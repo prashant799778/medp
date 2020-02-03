@@ -1227,42 +1227,6 @@ def allPosts2():
         return output                                       
 
 
-@app.route('/myPosts1', methods=['POST'])
-def myPosts():
-    try:
-        inputdata =  commonfile.DecodeInputdata(request.get_data())
-        startlimit,endlimit="",""
-        keyarr = ['userId','userTypeId']
-        print(inputdata,"B")
-        commonfile.writeLog("myPosts",inputdata,0)
-      
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        if msg =="1":
-            orderby="pm.id"
-            
-            userTypeId=inputdata["userTypeId"]
-            userId=inputdata["userId"]
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition=" and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
-            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
-          
-
-            if (data["status"]!="false"):
-                
-                
-                print("111111111111111")          
-                Data = {"status":"true","message":"","result":data["result"]}
-                return Data
-            else:
-                output = {"status":"false","message":"No Data Found","result":""}
-                return output
-        else:
-            return msg         
-
-    except Exception as e :
-        print("Exception---->" + str(e))    
-        output = {"status":"false","message":"something went wrong","result":""}
-        return output
 
 
 @app.route('/myPosts', methods=['POST'])
@@ -1335,8 +1299,8 @@ def myPosts2():
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
             column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition=" and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
-            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            WhereCondition="and upm.postId=pm.postId and upm.showUserTypeId='"+ str(userTypeId) +"' and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost as pm,postUserTypeMapping as upm",column,WhereCondition,"",startlimit,endlimit,orderby)
           
 
             if (data!=0): 
