@@ -84,7 +84,8 @@
                                       <td>{{getUserType(post.userTypeId)}}</td>
                                       <td>{{post.email}}</td>
                                       <td>{{post.DateCreate | date}}</td>
-                                      <td class="txt-color-r text-uppercase">--</td>
+                                      <td *ngIf="post && !post.approvedBy"class="txt-color-r text-uppercase">{{post.rejectedBy}}</td>
+                                      <td *ngIf="post && post.approvedBy"class="txt-color-r text-uppercase">{{post.approvedBy}}</td>
                                       <td (onCreate)="getStatus(post.status,i)">
                                           <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-one border-round-rem">pending</button>
                                           <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">approved</button>

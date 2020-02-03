@@ -16,16 +16,16 @@ export class EnterpenureComponent implements OnInit {
 
   ngOnInit() {
     let data =  {
-        'userTypeId': 3
-    }
-    this.userService.getApiDatawithData(AppSettings.AllEnterprenuers,data).then(resp=>{
-      this.studentlist = resp['result']
-      this.studentlist.forEach(resp =>{
-        this.getStatus(resp.status)
-      })
-      
-    
-  })
+			'userTypeId': 3
+		}
+		this.userService.dataPostApi(data,AppSettings.AllSubAdmins ).then(resp=>{
+		  this.studentlist = resp['result']
+		  this.studentlist.forEach(resp =>{
+			this.getStatus(resp.status)
+		  })
+		  
+		
+	  })
 }
 getStatus(status){
 
@@ -36,6 +36,9 @@ getStatus(status){
   }else{
     this.postStatus.push(2);
   }
+}
+policyDetail(id, userTypeId){
+  this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: userTypeId,admins: 'Admin/Enterpenure'}})
 }
 
 }
