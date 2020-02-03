@@ -186,6 +186,7 @@ def SignUp():
                         return commonfile.Errormessage()
                     if data["result"][0]["profilePic"]==None:
                         data["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                    
                     return data
                 else:
                     return commonfile.Errormessage()
@@ -1869,6 +1870,8 @@ def userProfile():
                    
                 if data1["result"][0]["profilePic"]==None:
                     data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                else:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
                 data2={"userProfile":data1["result"],"userPost":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
@@ -1902,6 +1905,8 @@ def userProfile():
                     data4={"result":'No Posts till now'}
                 if data1["result"][0]["profilePic"]==None:
                     data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                else:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
                 data2={"userProfile":data1["result"],"userPost":data4["result"],"userInterest":data5["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
@@ -1936,6 +1941,8 @@ def userProfile():
                     data4={"result":'No Posts till now'}
                 if data1["result"][0]["profilePic"]==None:
                     data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                else:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
                 data2={"userProfile":data1["result"],"userPost":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
