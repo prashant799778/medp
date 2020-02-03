@@ -1695,6 +1695,8 @@ def userProfile():
                 data1["result"]["userInterest"]=[]
                 for i in data5["result"]:
                     data1["result"]["userInterest"].append(i.values())
+                
+                print("======================================")
                 orderby="ab.id"
                 column="*"
                 whereCondition="and ab.userId='" + userId+ "'"
