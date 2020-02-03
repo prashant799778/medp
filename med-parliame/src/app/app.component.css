@@ -5,6 +5,7 @@
     width: 900px;
     height: 400px;
     transform: translate(-50%,-50%);
+   
 }
 .pos-rel{
     position: relative;
@@ -16,6 +17,7 @@
     right: 10px;
 }
 .wrap-container-box {
+    animation: slideInDown 900ms linear;
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100%;
@@ -58,12 +60,14 @@ button#signInLogin {
     border: none;
     color: #fff;
 }
+
 .alert-msg {
     font-size: 13px;
     line-height: 15px;
     color: red;
     margin: 6px 0;
     font-weight: 500;
+    animation: shake 200ms linear;
 }
 .change-pos {
     position: absolute;
@@ -73,4 +77,74 @@ button#signInLogin {
 .btn-shadw{
     box-shadow: 0px 10px 7px -8px #c7bec1;
     border-radius: 4px;
+}
+
+@-webkit-keyframes slideInDown {
+    from {
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+      visibility: visible;
+    }
+  
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes slideInDown {
+    from {
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+      visibility: visible;
+    }
+  
+    to {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .slideInDown {
+    -webkit-animation-name: slideInDown;
+    animation-name: slideInDown;
+  }
+
+
+@media (min-width:320px) and (max-width:480px){
+    .main-box-container {
+        position: absolute;
+        top:50%;
+        left: 50%;
+        width: 100%;
+        height: 400px;
+        transform: translate(-50%,-50%);
+        padding: 0 1rem;
+    }
+    .wrap-container-box {
+        display: grid;
+        grid-template-columns:1fr;
+        height: 100%;
+        width: 100%;
+    }
+    .right-side{
+        display: none;
+    }
+}
+@media (min-width:481px) and (max-width:786px){
+    .main-box-container {
+        position: absolute;
+        top:50%;
+        left: 50%;
+        width: 100%;
+        height: 400px;
+        transform: translate(-50%,-50%);
+        padding: 0 1rem;
+    }
+    .wrap-container-box {
+        display: grid;
+        grid-template-columns:1fr 1fr;
+        height: 100%;
+        width: 100%;
+    }
 }

@@ -12,8 +12,8 @@
         <app-footer></app-footer>
     </div>
 </div>
-<div class="main-box-container neu-shadow" *ngIf="!loginSuccess">
-    <div class="wrap-container-box">
+<div class="main-box-container" *ngIf="!loginSuccess">
+    <div class="wrap-container-box neu-shadow">
         <div class="right-side"></div>
     <div class="left-side bg-white-fff same-padding pos-rel">
         <h2 class="sign-in-heading">Sign In</h2>
@@ -24,7 +24,7 @@
                     <input type="email" class="form-control" formControlName="email" autocomplete="off">
                     <div class="errors" *ngIf="loginForm.get('login').get('email').errors && (loginForm.get('login').get('email').touched || loginForm.get('login').get('email').dirty)">
                         <p *ngIf="loginForm.get('login').get('email').errors && loginForm.get('login').get('email').errors.required" class="alert-msg"> Please Enter  Email</p>  
-                        <p *ngIf="loginForm.get('login').get('email').errors && loginForm.get('login').get('email').errors.pattern"> Enter Correct Email</p>
+                        <p *ngIf="loginForm.get('login').get('email').errors && loginForm.get('login').get('email').errors.pattern" class="alert-msg"> Enter Correct Email</p>
                     </div>
                 </div>
                 <div  formGroupName="login" class="form-group pos-rel input-box">
@@ -34,7 +34,7 @@
                     <img src="../../assets/images/close-eye.svg" *ngIf="!showPasswords" class="pos-abs" (click)="showPassword('signInPass')">
                     <div class="errors" *ngIf="loginForm.get('login').get('password').errors && (loginForm.get('login').get('password').touched || loginForm.get('login').get('password').dirty)">
                         <p *ngIf="loginForm.get('login').get('password').errors && loginForm.get('login').get('password').errors.required" class="alert-msg"> Please Enter  Password</p>  
-                        <p *ngIf="loginForm.get('login').get('password').errors && loginForm.get('login').get('password').errors.pattern"> Enter Correct Password</p>
+                        <p *ngIf="loginForm.get('login').get('password').errors && loginForm.get('login').get('password').errors.pattern" class="alert-msg"> Enter Correct Password</p>
                     </div>
                 </div>
 

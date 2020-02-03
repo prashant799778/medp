@@ -170,12 +170,17 @@ align-items: center;
 }
 .sidebar.active .trans {
     position: absolute;
-    right: -157px;
+    right: 0;
+    top: 0;
     background: #fff;
     padding: 10px;
     border: 1px solid #e6e6e6;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    transform: translate3d(223px, 0px, 0px);
+    will-change: transform;
+    width: 180px;
+    border-left: 0;
 }
 .drop-showw {
     margin-bottom: 1rem;
@@ -514,12 +519,13 @@ padding: 10px 5px;
 border: 0px;
 }
 .record-box tbody tr td {
-vertical-align: middle;
-font-size: 12px;
-line-height: 10px;
-padding: 15px 5px;
-font-weight: 300;
-color: #4b4b4b;
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 10px;
+    padding: 10px 5px;
+    font-weight: 400;
+    color: #969696;
+    width: 100px;
 }
 .ab-btn {
 color: #fff;
