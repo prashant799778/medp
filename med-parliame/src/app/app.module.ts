@@ -24,6 +24,7 @@ import { SubAdminComponent } from './sub-admin/sub-admin.component';
 import { ProfileComponent } from './Component/profile/profile.component';
 import { PostsComponent } from './Component/posts/posts.component';
 import { EnterpenuressComponent } from './Component/enterpenuress/enterpenuress.component';
+import { StudentListsComponent } from './Component/student-lists/student-lists.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { EnterpenuressComponent } from './Component/enterpenuress/enterpenuress.
     SubAdminComponent,
     ProfileComponent,
     PostsComponent,
-    EnterpenuressComponent
+    EnterpenuressComponent,
+    StudentListsComponent
   ],
   imports: [
     BrowserModule,

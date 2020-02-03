@@ -30,10 +30,19 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
        
        
         this.userService.getSaveCustomer(isuserLoggedIn);
+        let isuserLoggedIn1 = this.local.get('userData2');
+       
+       
+        this.userService.getSaveCustomer1(isuserLoggedIn1);
         return true;
     }else{
       let isuserLoggedIn = this.local.get('userData1');
+      
       this.userService.getSaveCustomer(isuserLoggedIn);
+      let isuserLoggedIn1 = this.local.get('userData2');
+       
+       
+        this.userService.getSaveCustomer1(isuserLoggedIn1);
       
       return true;
     }

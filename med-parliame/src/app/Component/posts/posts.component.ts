@@ -20,19 +20,45 @@ export class PostsComponent implements OnInit {
     public router: Router) { }
 
   ngOnInit() {
-    let datas = {
-      'userTypeId': 5
-    }
-    this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-      this.postList = resp['result']
-      console.log(this.postList)
-      this.postList.forEach(resp=>{
-        this.getStatus(resp.status)
+    if(this.local.get('userData1')[0].userTypeId == '3'){
+      let datas = {
+        'userTypeId': 6
+      }
+      this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+        this.postList = resp['result']
+        console.log(this.postList)
+        this.postList.forEach(resp=>{
+          this.getStatus(resp.status)
+        })
       })
+    }else  if(this.local.get('userData1')[0].userTypeId == '2'){
+      let datas = {
+        'userTypeId': 5
+      }
+      this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+        this.postList = resp['result']
+        console.log(this.postList)
+        this.postList.forEach(resp=>{
+          this.getStatus(resp.status)
+        })
+      })
+        
+    }else{
+      let datas = {
+        'userTypeId': 7
+      }
+      this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+        this.postList = resp['result']
+        console.log(this.postList)
+        this.postList.forEach(resp=>{
+          this.getStatus(resp.status)
+        })
+      })
+    }
+    
       
       
-      
-    })
+    
   }
   getStatus(status){
 

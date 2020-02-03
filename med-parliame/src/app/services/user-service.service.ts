@@ -62,12 +62,24 @@ export class UserServiceService {
 		
 		  this.user = data;
 		  
-		  let datas = {
-			  	'superLogin': 'no'
-		  }
+		 
 		  // this.session.set(this.KEY, data);
 		  this.local.set('userData1',(data))
-		  this.local.set('userData2',(datas))
+		//   this.local.set('userData2',(datas))
+		//   this.session.set(this.KEY,this.local.get('userData1'))
+		
+	  }
+	  getSaveCustomer1(data){
+		console.log("data value",data)
+		
+		  this.user = data;
+		  
+		//   let datas = {
+		// 	  	'superLogin': 'no'
+		//   }
+		  // this.session.set(this.KEY, data);
+		//   this.local.set('userData1',(data))
+		  this.local.set('userData2',(data))
 		//   this.session.set(this.KEY,this.local.get('userData1'))
 		
 	  }
