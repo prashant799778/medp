@@ -1915,9 +1915,9 @@ def changeProfilePic():
             WhereCondition = " and userId = '" + str(UserId)  + "'"
             # count = databasefile.SelectCountQuery("UserMaster",WhereCondition,"")
             
-            
+            print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
             if 'postImage' in request.files:  
-                
+                print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
                 file = request.files.get('postImage')        
                 filename = file.filename or ''  
                 print(filename)               
@@ -1932,12 +1932,12 @@ def changeProfilePic():
                 file.save(FolderPath)
                 PicPath = filepath
 
-                
+                print("sssssssssssssssssssssssssssssssss")
                 column = "profilePic = '"  + str(PicPath) + "'"              
                 data = databasefile.UpdateQuery("userMaster",column,WhereCondition)        
-                
+                print(data,"111111111111111111111111111111111111111111111111111")
                 if data != "0":
-                    data["result"]= ConstantData.GetBaseURL()+PicPath
+                    #data["result"][]= ConstantData.GetBaseURL()+PicPath
                     return data
                 else:
                     return commonfile.Errormessage()
