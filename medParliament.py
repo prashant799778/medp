@@ -212,6 +212,8 @@ def login():
         if  (loginuser["status"]!="false"): 
             if loginuser["result"][0]["profilePic"]==None:
                     loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+            else:
+                loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(loginuser["result"][0]["profilePic"])
             Data = {"status":"true","message":"","result":loginuser["result"]}                  
             return Data
         else:
@@ -1313,6 +1315,61 @@ def myPosts1():
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
         return output                        
+
+
+
+@app.route('/myPosts2', methods=['POST'])
+def myPosts2():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userId','userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("myPosts",inputdata,0)
+      
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="pm.id"
+            
+            userTypeId=inputdata["userTypeId"]
+            userId=inputdata["userId"]
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+          
+
+            if (data!=0): 
+                for i in data["result"]:
+                    if (i["status"] == 1):
+                        print(i["postId"])
+                        column="um.userName as approvedBy"
+                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        print(data1)
+                        i["approvedBy"]=data1["approvedBy"]
+                        print(data1)
+                    if (i["status"]==2):
+                        column="um.userName as rejectedBy"
+                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        print(data1)
+                        i["rejectedBy"]=data1["rejectedBy"]
+
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output                        
+
 
 
 @app.route('/DeletePost', methods=['POST'])
