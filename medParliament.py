@@ -1283,8 +1283,8 @@ def myPosts1():
 
 
 
-@app.route('/myPosts2', methods=['POST'])
-def myPosts2():
+@app.route('/userPostsDashboard', methods=['POST'])
+def userPostsDashboard():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
