@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
 	number1: number;
 	superLogin: boolean;
 	enterpernure: boolean;
+	students: boolean;
 	constructor(public router: Router,
 				public local: LocalStorageService) { 
 		this.numbers = 0;
@@ -40,9 +41,11 @@ console.log(this.local.get('userData1')[0].userTypeId)
 			
 			if(this.local.get('userData1')[0].userTypeId == '3'){
 				this.enterpernure = true;
+				this.students = false;
 			
-			}else{
-				this.enterpernure = false
+			}else if(this.local.get('userData1')[0].userTypeId == '4'){
+				this.enterpernure = false;
+				this.students = true;
 			}
 		}
 
