@@ -35,14 +35,42 @@ export class DashboardComponent implements OnInit {
 				public router: Router) {
 		// this.postStatus = 0;
 		this.totalRecords= 50;
-		this.pageSize = 10
+		this.pageSize = 10;
+		this.superLogin = false;
 	 }
 
 	ngOnInit() {
 		setTimeout(()=>{
+			console.log(this.superLogin)
 			if(this.local.get('userData2')){
+				console.log(this.superLogin)
 				if(this.local.get('userData2').superLogin == 'yes'){
 					this.superLogin = true;
+					if(this.superLogin == true){
+						this.userService.getApiData(AppSettings.AdminPannel).then(resp=>{
+						
+						
+							this.totalEnterprenuer = resp['result']['enterprenuerMasterCount'].count
+							this.totalPolicy = resp['result']['policyMakerMasterCount'].count
+							this.totalStudent = resp['result']['studentMasterCount'].count
+							this.totalAdmins = resp['result']['totalAdmins'].count
+							
+						})
+						console.log(this.totalPolicy)
+						this.userService.dataPostApi(null,AppSettings.AllUserPosts).then(resp=>{
+							console.log(resp)
+							this.PostList = resp['result']
+							this.PostList.forEach(resp =>{
+								this.getStatus(resp.status)
+								// this.postStatus.push(0)
+							})
+							
+							
+						})
+					}else{
+						// console.log(this.userId)
+						
+					}
 				
 				}else{
 					
@@ -151,34 +179,110 @@ export class DashboardComponent implements OnInit {
 					
 
 				}
+			}else{
+				if(this.local.get('userData1')[0].userTypeId == '2'){
+
+
+					this.userId = this.local.get('userData1')[0].userId
+					console.log(this.userId)
+					this.superLogin = false
+					let data = {
+						'userId':this.userId 
+					}
+					this.userService.getApiDatawithData(AppSettings.PolicyMasterPannel,data).then(resp=>{
+					
+					
+						this.totalApprovedCount = resp['result'][0]['approvedPost'].count
+						this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+						this.totalUsers = resp['result'][0]['totalUsers'].count
+						this.totalPostCount = resp['result'][0]['totalpostCounts'].count
+						
+					})
+
+					let datas = {
+						'userTypeId': 5
+					}
+					this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+						this.subDashboardAdmin = resp['result']
+						console.log(this.subDashboardAdmin)
+						this.subDashboardAdmin.forEach(resp=>{
+							this.getStatus(resp.status)
+						})
+						
+						
+						
+					})	
+				}else if(this.local.get('userData1')[0].userTypeId == '3'){
+
+					this.userId = this.local.get('userData1')[0].userId
+				console.log(this.userId)
+				this.superLogin = false
+				let data = {
+					'userId':this.userId 
+				}
+				this.userService.getApiDatawithData(AppSettings.EnterprenuerMasterPannel,data).then(resp=>{
+				
+				
+					this.totalApprovedCount = resp['result'][0]['approvedPost'].count
+					this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+					this.totalUsers = resp['result'][0]['totalUsers'].count
+					this.totalPostCount = resp['result'][0]['totalpostCounts'].count
+					
+				})
+
+					let datas = {
+						'userTypeId': 6
+					}
+					this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+						this.subDashboardAdmin = resp['result']
+						console.log(this.subDashboardAdmin)
+						this.subDashboardAdmin.forEach(resp=>{
+							this.getStatus(resp.status)
+						})
+						
+						
+						
+					})
+
+				}else{
+
+					this.userId = this.local.get('userData1')[0].userId
+				console.log(this.userId)
+				this.superLogin = false
+				let data = {
+					'userId':this.userId 
+				}
+				this.userService.getApiDatawithData(AppSettings.StudentMasterPannel,data).then(resp=>{
+				
+				
+					this.totalApprovedCount = resp['result'][0]['approvedPost'].count
+					this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+					this.totalUsers = resp['result'][0]['totalUsers'].count
+					this.totalPostCount = resp['result'][0]['totalpostCounts'].count
+					
+				})
+
+					let datas = {
+						'userTypeId': 7
+					}
+					this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+						this.subDashboardAdmin = resp['result']
+						console.log(this.subDashboardAdmin)
+						this.subDashboardAdmin.forEach(resp=>{
+							this.getStatus(resp.status)
+						})
+						
+						
+						
+					})
+
+					
+				}
+
 			}
 		},1000)
 		
-		if(this.superLogin == true){
-			this.userService.getApiData(AppSettings.AdminPannel).then(resp=>{
-			
-			
-				this.totalEnterprenuer = resp['result']['enterprenuerMasterCount'].count
-				this.totalPolicy = resp['result']['policyMakerMasterCount'].count
-				this.totalStudent = resp['result']['studentMasterCount'].count
-				this.totalAdmins = resp['result']['totalAdmins'].count
-				
-			})
-			console.log(this.totalPolicy)
-			this.userService.dataPostApi(null,AppSettings.AllUserPosts).then(resp=>{
-				console.log(resp)
-				this.PostList = resp['result']
-				this.PostList.forEach(resp =>{
-					this.getStatus(resp.status)
-					// this.postStatus.push(0)
-				})
-				
-				
-			})
-		}else{
-			// console.log(this.userId)
-			
-		}
+		
 		
 		
 	}
