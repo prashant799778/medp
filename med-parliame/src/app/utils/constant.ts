@@ -14,6 +14,11 @@ export class AppSettings {
     public static AllStudentsList = 'allstudents';
     public static VerifyPost = 'verifyPost';
     public static PolicyMasterPannel = 'policyMakerPannel';
+
+    public static UserProfile = 'userProfile';
+    public static EnterprenuerMasterPannel = 'enterprenuerMasterPannel';
+    
+
     
     
     

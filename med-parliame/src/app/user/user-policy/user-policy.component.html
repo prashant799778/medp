@@ -40,12 +40,12 @@
                             
                             <td>{{userPolicy.noOfPosts}}</td>
                             <td>
-                                    <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-one border-round-rem">pending</button>
-                                    <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">approved</button>
-                                    <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button>
+                                    <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-one border-round-rem">Active</button>
+                                    <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">Deactive</button>
+                                    <!-- <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button> -->
                             </td>
                             <td>
-                                <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">
+                                <button type="button" class="acton-btn" (click)="policyDetail(userPolicy.userId)">
                                     <img src="../../../assets/images/view.svg" class="action-view">
                                 </button>
                             </td>

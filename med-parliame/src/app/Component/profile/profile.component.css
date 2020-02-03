@@ -1,0 +1,72 @@
+
+.circle-box {
+    width: 123px;
+    height: 123px;
+    border: solid 0.5px #707070;
+    border-radius: 50%;
+    margin: auto;
+}
+.sub-inner-heading li {
+    font-size: 1rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    color: #707070;
+}
+.sub-inner-heading li:first-child {
+    margin: 10px 0;
+}
+.sub-inner-heading li:nth-child(3){
+	  font-size: 0.8rem;
+	  font-weight: 300;
+	  line-height: 1.75;
+	  color: #4b4b4b;
+}
+.sub-inner-heading li:nth-child(4){
+	  font-size: 0.8rem;
+	  font-weight: 300;
+	  line-height: 1.75;
+	  color: #4b4b4b;
+}
+.short-profile {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    color: #4b4b4b;
+}
+.short-blog p{
+	  font-size: 1.2rem;
+	  line-height: 1.78;
+	  text-align: left;
+	  color: #4c5264;
+}
+
+.time-show {
+    font-size: 22px;
+    color: #bcc5d3;
+    margin: 0;
+}
+.inner-post-container{
+	justify-content: space-between;
+}
+.blog-title{
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.21;
+  letter-spacing: 0.11px;
+  text-align: left;
+  color: #4c5264;
+  margin-bottom: 1rem;
+}
+.blog-info p{
+  font-size: 18px;
+  line-height: 2;
+  color: #4c5264;
+}
+.post-container {
+    border-bottom: 2px solid #d8d8d8;
+    margin-top: 2rem;
+}
+

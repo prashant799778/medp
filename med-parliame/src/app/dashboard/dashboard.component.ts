@@ -45,14 +45,48 @@ export class DashboardComponent implements OnInit {
 					this.superLogin = true;
 				
 				}else{
-					console.log(this.local.get('userData1')[0].userId)
-					this.userId = this.local.get('userData1')[0].userId
+					
+					if(this.local.get('userData1')[0].userTypeId == '2'){
+
+
+						this.userId = this.local.get('userData1')[0].userId
+						console.log(this.userId)
+						this.superLogin = false
+						let data = {
+							'userId':this.userId 
+						}
+						this.userService.getApiDatawithData(AppSettings.PolicyMasterPannel,data).then(resp=>{
+						
+						
+							this.totalApprovedCount = resp['result'][0]['approvedPost'].count
+							this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+							this.totalUsers = resp['result'][0]['totalUsers'].count
+							this.totalPostCount = resp['result'][0]['totalpostCounts'].count
+							
+						})
+
+						let datas = {
+							'userTypeId': 5
+						}
+						this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+							this.subDashboardAdmin = resp['result']
+							console.log(this.subDashboardAdmin)
+							this.subDashboardAdmin.forEach(resp=>{
+								this.getStatus(resp.status)
+							})
+							
+							
+							
+						})	
+					}else if(this.local.get('userData1')[0].userTypeId == '3'){
+
+						this.userId = this.local.get('userData1')[0].userId
 					console.log(this.userId)
 					this.superLogin = false
 					let data = {
 						'userId':this.userId 
 					}
-					this.userService.getApiDatawithData(AppSettings.PolicyMasterPannel,data).then(resp=>{
+					this.userService.getApiDatawithData(AppSettings.EnterprenuerMasterPannel,data).then(resp=>{
 					
 					
 						this.totalApprovedCount = resp['result'][0]['approvedPost'].count
@@ -62,19 +96,26 @@ export class DashboardComponent implements OnInit {
 						
 					})
 
-					let datas = {
-						'userTypeId': 5
-					}
-					this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-						this.subDashboardAdmin = resp['result']
-						console.log(this.subDashboardAdmin)
-						this.subDashboardAdmin.forEach(resp=>{
-							this.getStatus(resp.status)
+						let datas = {
+							'userTypeId': 6
+						}
+						this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+							this.subDashboardAdmin = resp['result']
+							console.log(this.subDashboardAdmin)
+							this.subDashboardAdmin.forEach(resp=>{
+								this.getStatus(resp.status)
+							})
+							
+							
+							
 						})
-						
-						
-						
-					})
+
+					}
+					console.log(this.local.get('userData1')[0].userId)
+					
+
+					
+					
 
 				}
 			}

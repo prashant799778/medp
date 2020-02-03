@@ -1,0 +1,55 @@
+<div class="row">
+        <div class="col-12 col-sm-12 col-md-12">
+          <div class="upper-wrap">
+            <div class="image-section-set bg-color">
+                <img class="image-set" src="image/home.svg">
+            </div>
+            <ul class="sub-heading d-flex al-item mr-remove">
+              <li>Users /</li>
+              <li>Policy Maker /</li>
+              <li>User Profile</li>
+            </ul>  
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-4" >
+          <div class="user-show-profile bg-white-fff text-center same-margin same-padding shadow-box">
+            <div class="circle-box">
+              <img src="image/profile.png">
+            </div>
+            <ul class="sub-inner-heading mr-remove">
+              <li *ngIf="userProfile && userProfile.userName">{{userProfile.userName}}</li>
+              <li *ngIf="userProfile && userProfile.designation">{{userProfile.designation}} , +91 99808##**0 </li>
+              <li>mikebhand@email.com</li>
+              <li>Organisation , Country </li>
+            </ul>
+            <div class="spc-gen"></div>
+            <h3 class="short-profile mr-remove">Short Profile</h3>
+            <div class="short-blog">
+              <p *ngIf="userProfile && userProfile.aboutProfile">
+                {{userProfile.aboutProfile}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-8">
+          <div class="recent-policy bg-white-fff same-margin same-padding shadow-box" *ngIf="userPost && userPost.length > 0">
+             <h2 class="main-hading">Recent Policy</h2>
+             <div class="post-container" *ngFor="let userPost of userPost">
+               <div class="inner-post-container d-flex">
+                  <h2 class="blog-title">
+                   Absolutely brilliant, highly recommened.
+                 </h2>
+                  <h2 class="time-show">
+                    8 hours ago
+                  </h2>
+               </div>
+               <div class="blog-info">
+                 <p>
+                   First of all, Lucy covers the basics of photography incredibly well. This enabled to better understand how to take awesome photos, even with very little knowledge of the subject. Thank you so much for sharing your knowledge and experience.
+                 </p>
+               </div>
+             </div>
+            
+          </div>
+        </div>
+    </div>
