@@ -1903,7 +1903,7 @@ def changeProfilePic():
         inputdata = request.form.get('data')       
         
         keyarr = ["userId"]
-        print("inputdata")
+        print(inputdata)
         print(type(inputdata))
         inputdata = json.loads(inputdata)
         commonfile.writeLog("changeProfilePic",inputdata,0)
@@ -1929,7 +1929,8 @@ def changeProfilePic():
                 FolderPath = ConstantData.GetProfilePicPath(filename)  
 
                 filepath = '/profilePic/' + filename    
-                print(file,FolderPath,filepath)
+                print(filepath,"filepath================")
+                print(FolderPath,"FolderPathFolderPathFolderPathFolderPath")
                 file.save(FolderPath)
                 PicPath = filepath
 
