@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { AuthsService } from 'src/app/services/auths.service';
 import { LocalStorageService } from 'angular-web-storage';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AppSettings } from 'src/app/utils/constant';
 
 @Component({
@@ -14,12 +14,52 @@ export class PostsComponent implements OnInit {
 
   postList=[];
   postStatus = [];
+  id: any;
+  userTypeId: any;
   constructor(public userService: UserServiceService,
     public authsService: AuthsService,
     public local: LocalStorageService,
+    public route: ActivatedRoute,
     public router: Router) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.id = params['id'];
+      if(this.id == 5){
+        let datas = {
+          'userTypeId': 5
+        }
+        this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+          this.postList = resp['result']
+          console.log(this.postList)
+          this.postList.forEach(resp=>{
+            this.getStatus(resp.status)
+          })
+        })
+      }else if(this.id == 6){
+        let datas = {
+          'userTypeId': 6
+        }
+        this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+          this.postList = resp['result']
+          console.log(this.postList)
+          this.postList.forEach(resp=>{
+            this.getStatus(resp.status)
+          })
+        })
+      }else{
+        let datas = {
+          'userTypeId': 7
+        }
+        this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+          this.postList = resp['result']
+          console.log(this.postList)
+          this.postList.forEach(resp=>{
+            this.getStatus(resp.status)
+          })
+        })
+      }
+    })
     if(this.local.get('userData1')[0].userTypeId == '3'){
       let datas = {
         'userTypeId': 6

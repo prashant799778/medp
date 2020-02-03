@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
 	pageSize: any;
 	superLogin: boolean;
 	userId: any;
+	PageDisplay: boolean;
 
 
 	totalApprovedCount: any;
@@ -60,6 +61,7 @@ export class DashboardComponent implements OnInit {
 						this.userService.dataPostApi(null,AppSettings.AllUserPosts).then(resp=>{
 							console.log(resp)
 							this.PostList = resp['result']
+							// if()
 							this.PostList.forEach(resp =>{
 								this.getStatus(resp.status)
 								// this.postStatus.push(0)
