@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { AppSettings } from 'src/app/utils/constant';
 import { LocalStorageService } from 'angular-web-storage';
+import { $ } from 'protractor';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-policy-detaials',
@@ -13,6 +15,8 @@ export class PolicyDetaialsComponent implements OnInit {
 	id: any;
 	userTypeId: any;
 	postDetails: any;
+	modalDescription: any;
+	onlyView: boolean
 	constructor(private route: ActivatedRoute, private router: Router,
 				public local: LocalStorageService,
 				public userService: UserServiceService) { }
@@ -28,19 +32,39 @@ export class PolicyDetaialsComponent implements OnInit {
 		}
 		this.userService.dataPostApi(data, AppSettings.AllPosts).then(resp =>{
 			this.postDetails = resp['result']['0']
+			if(resp['result']['0'].status == 0){
+				this.onlyView = true;
+			}
 		})
 	}
 	Approve(id){
-		let data = {
-			'postId': this.id,
-			'userTypeId': this.local.get('userData1')[0].userTypeId,
-			'approvedUserId': this.local.get('userData1')[0].userId,
-			'id': id
-
+		if(id != '3'){
+			let data = {
+				'postId': this.id,
+				'userTypeId': this.local.get('userData1')[0].userTypeId,
+				'approvedUserId': this.local.get('userData1')[0].userId,
+				'id': id
+	
+			}
+			this.userService.dataPostApi(data, AppSettings.VerifyPost).then(resp =>{
+				if(resp['status']== 'true'){
+					jQuery('#approv-pop').modal('show')
+					if(id == '1'){
+						this.modalDescription = ' Post Approved Successfully'
+					}else{
+						this.modalDescription = ' Post Rejected Successfully'
+					}
+				}
+			})
+		}else{
+			jQuery('#approv-pop').modal('show')
+			this.modalDescription = 'Post OnHold'
 		}
-		this.userService.dataPostApi(data, AppSettings.VerifyPost).then(resp =>{
-			this.postDetails = resp['result']['0']
-		})
+		
+		
+	}
+	closeMOdal(){
+		this.router.navigateByUrl('/dashboard')
 	}
 
 }

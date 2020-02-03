@@ -7,6 +7,7 @@ export class AppSettings {
     public static AllPosts = 'allPosts';
     public static TotalSubAdmins = 'totalSubAdmins';
     public static AddSubAdmins = 'addSubAdmin';
+    public static AllSubAdmins = 'allSubAdmins';
 
 
 
@@ -17,6 +18,18 @@ export class AppSettings {
 
     public static UserProfile = 'userProfile';
     public static EnterprenuerMasterPannel = 'enterprenuerMasterPannel';
+    public static AllEnterprenuers = 'allenterprenuers';
+
+    public static StudentMasterPannel = 'studentMasterPannel';
+    // public static AllStudentsList = 'allstudents';
+
+    
+
+
+
+
+
+
     
 
     
