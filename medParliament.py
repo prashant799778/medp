@@ -1701,10 +1701,10 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 7:
-                column="um.userName,um.email,cm.countryName,un.universityName,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,imm.name as interest,"
+                column="um.userName,um.email,cm.countryName,un.universityName,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,"
                 column=column+"sm.address,"
                 column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
-                WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId and In.userId=um.userId  and In.interestId=imm.id  and um.userId='" + str(userId) + "'"
+                WhereCondition=" and cm.id=um.countryId and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId   and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,countryMaster cm,universityMaster un,qualificationMaster qm,userInterestMapping  In,interestMaster imm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 
