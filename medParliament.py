@@ -1693,6 +1693,11 @@ def userProfile():
                 WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
                 data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
                 
+                data1["result"][0]["userInterest"]=[]
+                for i in data5["result"]:
+                    data1["result"][0]["userInterest"].append(i["name"])
+                
+                
                 orderby="ab.id"
                 column="*"
                 whereCondition="and ab.userId='" + userId+ "'"
@@ -1718,17 +1723,11 @@ def userProfile():
                 column=" im.name " 
                 WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
                 data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
-                
-                print(data1["result"],"=====================++++++++++++++++")
                 data1["result"][0]["userInterest"]=[]
-                print(data1["result"],"=====================++++++++++++++++")
                 for i in data5["result"]:
-                    print(i)
-                    print(i.values())
-                    print("lppppppppppppppppppppp")
                     data1["result"][0]["userInterest"].append(i["name"])
                 
-                print("======================================")
+                
                 
                 
                 orderby="ab.id"
@@ -1738,7 +1737,7 @@ def userProfile():
                 if  data4==0:
                     
                     data4={"result":'No Posts till now'}
-                data2={"userProfile":data1["result"],"userPost":data4["result"],"userInterest":data5["result"]}
+                data2={"userProfile":data1["result"],"userPost":data4["result"]}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
                     return data3
