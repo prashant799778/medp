@@ -1903,7 +1903,8 @@ def changeProfilePic():
         inputdata = request.form.get('data')       
         
         keyarr = ["userId"]
-      
+        print("inputdata")
+        print(type(inputdata))
         inputdata = json.loads(inputdata)
         commonfile.writeLog("changeProfilePic",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
