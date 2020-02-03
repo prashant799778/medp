@@ -1720,7 +1720,7 @@ def userProfile():
                 data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
                 
                 print(data1["result"],"=====================++++++++++++++++")
-                data1["result"]["userInterest"]=[]
+                data1["result"][0]["userInterest"]=[]
                 print(data1["result"],"=====================++++++++++++++++")
                 for i in data5["result"]:
                     data1["result"]["userInterest"].append(i.values())
