@@ -21,10 +21,13 @@ export class ProfileComponent implements OnInit {
 	adminlist1: any;
 	adminlist2: any;
 	superLogin: boolean;
+	activatedds: boolean;
 	constructor(public route: ActivatedRoute,
 		public local: LocalStorageService,
 		public router: Router,
-				public userService: UserServiceService) { }
+				public userService: UserServiceService) {
+					this.activatedds = false
+				 }
 
 	ngOnInit() {
 		if(this.local.get('userData2') && this.local.get('userData2').superLogin == 'yes'){
@@ -135,14 +138,16 @@ export class ProfileComponent implements OnInit {
 				
 				if(this.userProfile.status == '0'){
 					console.log(this.userTypeId)
-					this.userProfile.status = '1'
+					// this.userProfile.status = '1'
 					this.modalDescription = 'Deactivated'
+					this.activatedds = true;
 					// jQuery('#students-pop').modal('show')
 				}else{
 					console.log(this.userTypeId)
 					// jQuery('#students-pop').modal('show')
 					this.modalDescription = 'activated'
-					this.userProfile.status = '0'
+					this.activatedds = true;
+					// this.userProfile.status = '0'
 					// jQuery('#students-pop').modal('show')
 				}
 
@@ -153,6 +158,7 @@ export class ProfileComponent implements OnInit {
 		jQuery('#students-pop').modal('show')
 	}
 	closeMOdal(){
+		console.log(this.AdminsDetails, this.userTypeId)
 		if(this.AdminsDetails == 6){
 			this.router.navigateByUrl('/User/enterpenure')
 		}else if(this.AdminsDetails == 5){
@@ -161,8 +167,8 @@ export class ProfileComponent implements OnInit {
 		}else if(this.AdminsDetails == 4){
 			this.router.navigateByUrl('/User/student')
 
-		}else{
-			this.router.navigateByUrl('Admin/policy')
+		}else if(this.userTypeId == '7'){
+			this.router.navigateByUrl('/studentsList')
 		}
 	}
 

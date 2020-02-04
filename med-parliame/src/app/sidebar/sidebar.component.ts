@@ -16,6 +16,7 @@ export class SidebarComponent implements OnInit {
 	enterpernure: boolean;
 	students: boolean;
 	userName: any;
+	locations: any;
 	constructor(public router: Router,
 				public local: LocalStorageService) { 
 		this.numbers = 0;
@@ -25,6 +26,9 @@ export class SidebarComponent implements OnInit {
 	}
 
 	ngOnInit() {
+
+		
+
 		
 		if(this.local.get('userData2')){
 
@@ -49,6 +53,27 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				this.enterpernure = false;
 				this.students = true;
 			}
+		}
+
+		this.locations = window.location.href
+		console.log(this.locations)
+		if(this.locations == 'http://localhost:5002/allPosts'){
+			
+			setTimeout(()=>{
+				$(".side-menu ul li a").removeClass("active");
+				$("#postTabs").addClass("active");
+			},100)
+		}else if(this.locations == 'http://localhost:5002/studentsList'){
+			
+			
+			setTimeout(()=>{
+				// var element = document.getElementById("studentTabs")
+				// console.log(element)
+				$(".side-menu ul li a").removeClass("active");
+				$('#studentTabs').addClass('active')
+			},100)
+			
+			// element.classList.addClass("active");
 		}
 
 	}
