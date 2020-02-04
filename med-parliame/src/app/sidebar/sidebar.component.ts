@@ -191,6 +191,19 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				
 			},200)
 		}
+		else if(this.locations == 'http://localhost:5002/allPosts?id=7'){
+			setTimeout(()=>{
+
+
+				$(".drop-show1").css({"display":"block"}); 
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("postStudentss")
+				elem.click();
+				// elem.addClass("active");
+				$("#postStudentss").addClass("active")
+				
+			},200)
+		}
 		
 
 	}
