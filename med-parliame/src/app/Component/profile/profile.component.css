@@ -5,10 +5,11 @@
     border: solid 0.5px #707070;
     border-radius: 50%;
     margin: auto;
+    overflow: hidden;
 }
 .circle-box img{
     width: 100px;
-    height: 10  0px;
+    height: 100px;
 }
 .sub-inner-heading li {
     font-size: 1rem;
@@ -95,5 +96,9 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 1rem;
+}
+.mr-topp {
+    margin-top: 2rem;
+    margin-bottom: 0px;
 }
