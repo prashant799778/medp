@@ -307,7 +307,7 @@ export class DashboardComponent implements OnInit {
 			this.postStatus.push(1);
 		}else{
 			this.postStatus.push(2);
-		}
+		} 
 	}
 	policyDetail(id,userTypeId){
 		this.router.navigate(['/policyDetails'],{queryParams: {id: id,userTypeId: userTypeId,dashboard: 'dashboard'}})
