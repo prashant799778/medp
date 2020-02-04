@@ -56,7 +56,7 @@ export class PolicyDetaialsComponent implements OnInit {
 		this.userService.dataPostApi(data, AppSettings.AllPosts).then(resp =>{
 			this.postDetails = resp['result']['0']
 			if(resp['result']['0'].status == 0 ){
-				// console.log("onluy view")
+				console.log("onluy view")
 				this.onlyView = true;
 			}
 		})
