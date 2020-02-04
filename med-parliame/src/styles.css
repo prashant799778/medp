@@ -322,8 +322,9 @@ button.togg:focus {
     margin-left: 1rem;
 }
 .profile-box {
-    display: block;
+    display: flex;
     width: 100%;
+    align-items: center;
 }
 .image-section {
     width: 40px;
@@ -381,10 +382,8 @@ button.togg:focus {
     display: none;
 }
 
-.user-panel .image {
-    width: 35%;
-    max-width: 75px;
-    margin: 0 auto;
+.user-panel{
+    width: 100%; 
 }
 
 
