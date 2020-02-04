@@ -322,10 +322,8 @@ button.togg:focus {
     margin-left: 1rem;
 }
 .profile-box {
-    display: flex;
+    display: block;
     width: 100%;
-    align-items: center;
-    margin-top: 2rem;
 }
 .image-section {
     width: 40px;
@@ -382,6 +380,14 @@ button.togg:focus {
 .drop-showw{
     display: none;
 }
+
+.user-panel .image {
+    width: 35%;
+    max-width: 75px;
+    margin: 0 auto;
+}
+
+
 /* End Sidebar Section*/
 
 
