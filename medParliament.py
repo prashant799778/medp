@@ -953,7 +953,7 @@ def UpdateUser():
                 print(FolderPath,"FolderPathFolderPathFolderPathFolderPath")
                 file.save(FolderPath)
                 PicPath = filepath 
-                column=" profilePic= '" + str(PicPath) + "'"    
+                column=" profilePic= '" + str(PicPath) + "',"    
             
             print('A')
             WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
