@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { AppSettings } from 'src/app/utils/constant';
 import { LocalStorageService } from 'angular-web-storage';
@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
 	superLogin: boolean;
 	constructor(public route: ActivatedRoute,
 		public local: LocalStorageService,
+		public router: Router,
 				public userService: UserServiceService) { }
 
 	ngOnInit() {
@@ -136,13 +137,13 @@ export class ProfileComponent implements OnInit {
 					console.log(this.userTypeId)
 					this.userProfile.status = '1'
 					this.modalDescription = 'Deactivated'
-					jQuery('#students-pop').modal('show')
+					// jQuery('#students-pop').modal('show')
 				}else{
 					console.log(this.userTypeId)
 					// jQuery('#students-pop').modal('show')
 					this.modalDescription = 'activated'
 					this.userProfile.status = '0'
-					jQuery('#students-pop').modal('show')
+					// jQuery('#students-pop').modal('show')
 				}
 
 			}
@@ -150,6 +151,19 @@ export class ProfileComponent implements OnInit {
 	}
 	activatedStduent(){
 		jQuery('#students-pop').modal('show')
+	}
+	closeMOdal(){
+		if(this.AdminsDetails == 6){
+			this.router.navigateByUrl('/User/enterpenure')
+		}else if(this.AdminsDetails == 5){
+			this.router.navigateByUrl('/User/policy')
+
+		}else if(this.AdminsDetails == 4){
+			this.router.navigateByUrl('/User/student')
+
+		}else{
+			this.router.navigateByUrl('Admin/policy')
+		}
 	}
 
 }

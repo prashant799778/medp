@@ -20,12 +20,16 @@ export class PolicyDetaialsComponent implements OnInit {
 	superLogin: boolean;
 	constructor(private route: ActivatedRoute, private router: Router,
 				public local: LocalStorageService,
-				public userService: UserServiceService) { }
+				public userService: UserServiceService) {
+					
+				 }
 
 	ngOnInit() {
-		console.log(this.local.get('userData2').superLogin)
-		if(this.local.get('userData2').superLogin == 'yes'){
+		// console.log(this.local.get('userData2').superLogin)
+		if(this.local.get('userData2') && this.local.get('userData2').superLogin == 'yes'){
 			this.superLogin = true;
+		}else{
+			this.superLogin = false;
 		}
 		this.route.queryParams.subscribe(params => {
 			this.id = params['id'];
@@ -37,7 +41,8 @@ export class PolicyDetaialsComponent implements OnInit {
 		}
 		this.userService.dataPostApi(data, AppSettings.AllPosts).then(resp =>{
 			this.postDetails = resp['result']['0']
-			if(resp['result']['0'].status == 0){
+			if(resp['result']['0'].status == 0 || resp['result']['0'].status == 1 || resp['result']['0'].status == 2){
+				// console.log("onluy view")
 				this.onlyView = true;
 			}
 		})
