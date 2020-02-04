@@ -81,7 +81,74 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				$(".side-menu ul li a").removeClass("active");
 				$('#enterpenureTabs').addClass('active')
 			},100)
+		}else if(this.locations == 'http://localhost:5002/User/policy'){
+			setTimeout(()=>{
+				// var element = document.getElementById("studentTabs")
+				// console.log(element)
+				$(".drop-showw").css({"display":"block"});
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("userPolicy")
+				elem.click();
+				// elem.addClass("active");
+				$("#userPolicy").addClass("active")
+			},100)
+		}else if(this.locations == 'http://localhost:5002/User/enterpenure'){
+			setTimeout(()=>{
+				// var element = document.getElementById("studentTabs")
+				// console.log(element)
+				$(".drop-showw").css({"display":"block"});
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("userEnterpenure")
+				elem.click();
+				// elem.addClass("active");
+				$("#userEnterpenure").addClass("active")
+			},100)
+		}else if(this.locations == 'http://localhost:5002/User/student'){
+			setTimeout(()=>{
+				// var element = document.getElementById("studentTabs")
+				// console.log(element)
+				$(".drop-showw").css({"display":"block"});
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("userStudents")
+				elem.click();
+				// elem.addClass("active");
+				$("#userStudents").addClass("active")
+			},100)
+		}else if(this.locations == 'http://localhost:5002/Admin/policy'){
+			setTimeout(()=>{
+				// var element = document.getElementById("studentTabs")
+				// console.log(element)
+				$(".drop-showw").css({"display":"block"});
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("admin1Policy")
+				elem.click();
+				// elem.addClass("active");
+				$("#admin1Policy").addClass("active")
+			},100)
+		}else if(this.locations == 'http://localhost:5002/Admin/enterpenure'){
+			setTimeout(()=>{
+				// var element = document.getElementById("studentTabs")
+				// console.log(element)
+				$(".drop-showw").css({"display":"block"});
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("admin1Enterpernure")
+				elem.click();
+				// elem.addClass("active");
+				$("#admin1Enterpernure").addClass("active")
+			},100)
+		}else if(this.locations == 'http://localhost:5002/Admin/student'){
+			setTimeout(()=>{
+				// var element = document.getElementById("studentTabs")
+				// console.log(element)
+				$(".drop-showw").css({"display":"block"});
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("admin1Students")
+				elem.click();
+				// elem.addClass("active");
+				$("#admin1Students").addClass("active")
+			},100)
 		}
+		
 
 	}
 	goTo(routes, event){
