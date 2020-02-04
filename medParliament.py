@@ -861,6 +861,7 @@ def UpdateUser():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg == "1":
             print('3')
+            column2=""
             organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","",""
             address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
             filename,PicPath,Password,Gender,Country,City,MobileNo="","","123","","","",""
@@ -953,7 +954,7 @@ def UpdateUser():
                 print(FolderPath,"FolderPathFolderPathFolderPathFolderPath")
                 file.save(FolderPath)
                 PicPath = filepath 
-                column2=" ,profilePic= '" + str(PicPath) + "' "    
+                column2= column2 +" ,profilePic= '" + str(PicPath) + "' "    
             
             print('A')
             WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
