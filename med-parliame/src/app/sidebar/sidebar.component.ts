@@ -57,6 +57,8 @@ console.log(this.local.get('userData1')[0].userTypeId)
 
 		this.locations = window.location.href
 		console.log(this.locations)
+		this.locations = this.locations.substring(this.locations.lastIndexOf("/") + 1, this.locations.length);
+		console.log(this.locations)
 		if(this.locations == 'http://localhost:5002/allPosts'){
 			
 			setTimeout(()=>{

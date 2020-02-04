@@ -108,7 +108,7 @@ export class AddAdminComponent implements OnInit {
 		this.userService.dataPostApi(data,AppSettings.AddSubAdmins).then(resp =>{
 			console.log(resp)
 			if(resp['status'] == 'true'){
-				jQuery('#addAdmin-pop').modal('show')
+				jQuery('#addAdmin-popSave').modal('show')
 				if(this.addAddminForm.get('flag').value == 'i'){
 					this.modalDescription = " Admin Inserted Successfully "
 				}else{
