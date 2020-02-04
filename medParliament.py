@@ -973,10 +973,12 @@ def UpdateUser1():
                 if interestId!="":
                     WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='6'"
                     output=databasefile.DeleteQuery("userInterestMapping",WhereCondition)
+                    
                     for i in interestId:
-                        WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='6'"
-                        column="interestId='" + str(i) + "'"
-                        output1=databasefile.UpdateQuery("userInterestMapping ",column,WhereCondition)
+                        column="userId,interestId,userTypeId"
+                        values=" '" + str(UserId) + "','" + str(i) + "','" + str('6') + "'"
+                        
+                        output9=databasefile.InsertQuery("userInterestMapping",column,values)  
 
             if (UserTypeId == 7):
                 WhereCondition = " and userId = '" + str(UserId) + "'"
