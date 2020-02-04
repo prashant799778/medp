@@ -389,12 +389,16 @@ button.togg:focus {
     margin: 0;
 }
 .top-wrap-box {
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     margin: 0.5rem 20px;
 }
 .top-bar-option ul li {
     margin-right: 2rem;
+}
+.logout-box img {
+    width: 24px;
+    cursor: pointer;
 }
 /* End Topbar Section*/
 
@@ -664,7 +668,7 @@ width: 100%;
     width: 100%;
 }
 .top-wrap-box {
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     margin: 1.5rem 20px;
     }

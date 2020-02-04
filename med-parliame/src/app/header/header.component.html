@@ -1,11 +1,13 @@
 <div class="container-fluid">
     <div class="row">
                       <div class="col-sm-12 col-md-12">
-    <div class="top-wrap-box d-flex">
+    <div class="top-wrap-box d-flex flx-end">
+        <template>
              <div class="form-group search-box mr-remove d-flex">
                 <img src="../../assets/images/search.svg">
               <input type="email" class="form-control" placeholder="Search Project">
             </div>
+        </template>
         <div class="top-bar-option">
             <ul class="d-flex">
                 <li>
@@ -14,16 +16,23 @@
                             <img src="../../assets/images/man.svg">
                         </div>
                         <div class="user-description">
-                            <h3 (click)="logout()" class="cursor">{{userName}}</h3>
+                            <h3 class="cursor">{{userName}}</h3>
                         </div>
                     </div>
                 </li>
+                <li>
+                    <div class="logout-box">
+                        <img (click)="logout()" src="../../assets/images/logout.svg">
+                    </div>
+                </li>
+                <template>
                 <li>
                     <img src="../../assets/images/notification.svg">
                 </li>
                 <li>
                     <img src="../../assets/images/bell.svg">
                 </li>
+            </template>
             </ul>
         </div>
     </div>
