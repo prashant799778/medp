@@ -54,6 +54,7 @@ export class ProfileComponent implements OnInit {
 				}else if(this.AdminsDetails == '5'){
 					this.adminlist1 = 'User /'
 					this.adminlist2 = 'Policy Maker/'
+					console.log(this.adminlist1)
 				}else if(this.AdminsDetails == '6'){
 					this.adminlist1 = 'User /'
 					this.adminlist2 = 'Enterpenure /'

@@ -20,15 +20,33 @@
               <li *ngIf="userProfile && userProfile.userName">{{userProfile.userName}}</li>
               <li *ngIf="userProfile && userProfile.designation">{{userProfile.designation}} , +91 {{userProfile.mobileNo}} </li>
               <li *ngIf="userProfile && userProfile.email">{{userProfile.email}}</li>
-              <li *ngIf="userProfile && userProfile.organization">{{userProfile.organization}} , {{userProfile.countryName}} </li>
+              <li *ngIf="userProfile && userProfile.organization"> Oragnization{{userProfile.organization}}  </li>
+              <li *ngIf="userProfile && userProfile.qualificationName"> Qualification : {{userProfile.qualificationName}}  </li>
+              <li *ngIf="userProfile && userProfile.universityName">University Name : {{userProfile.universityName}}  </li>
+              <li *ngIf="userProfile && userProfile.universityAddress">University Address : {{userProfile.universityAddress}}  </li>
+              
+              <li *ngIf="userProfile && userProfile.institutionName">Institution : {{userProfile.institutionName}}  </li>
+              <li *ngIf="userProfile && userProfile.batchOfQualification">Batch Year : {{userProfile.batchOfQualification}}  </li>
+              <li *ngIf="userProfile && userProfile.address">Address : {{userProfile.address}}  </li>
+              <li *ngIf="userProfile && userProfile.countryName">Country : {{userProfile.countryName}}  </li>
+              <li *ngIf="userProfile && userProfile.userInterest">
+                 
+                  <span>
+                        Interest : 
+                        <li *ngFor="let interest of userProfile.userInterest; let i =  index"> {{i+1}}. {{interest}}</li>
+                  </span>
+                  
+            </li>
+              
+             
             </ul>
             <div class="spc-gen"></div>
-            <h3 class="short-profile mr-remove">Short Profile</h3>
+            <h3 *ngIf="userProfile && userProfile.aboutProfile" class="short-profile mr-remove">Short Profile</h3>
             <div class="short-blog">
               <p *ngIf="userProfile && userProfile.aboutProfile">
                 {{userProfile.aboutProfile}}
               </p>
-              <div class="bottom-section same-margin admin-action" *ngIf="!superLogin">
+              <div class="bottom-section same-margin admin-action" >
                 <ul class="group-action-button mr-remove d-flex al-item " >
                   <li class="bg-color-blu" *ngIf="userProfile.status == 1" (click)="activatedStduent()"><a href="javascript:void(0)">Active</a></li>
                   <li class="bg-color-l-black" *ngIf="userProfile.status == 0" (click)="activatedStduent()"><a href="javascript:void(0)">Deactive</a></li>
@@ -72,10 +90,10 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                    <span *ngIf="userProfile.status == 1">Are you what to sure Deactivated</span>
-                    <span *ngIf="userProfile.status == 0">Are you what to sure activated</span>
-                    <button *ngIf="userProfile.status == 1" (click)="ActiveStudent()">Deactivated</button>
-                    <button *ngIf="userProfile.status == 0" (click)="ActiveStudent()">Activated</button>
+                    <span *ngIf="userProfile && userProfile.status == 1">Are you what to sure Deactivated</span>
+                    <span *ngIf="userProfile && userProfile.status == 0">Are you what to sure activated</span>
+                    <button *ngIf="userProfile && userProfile.status == 1" (click)="ActiveStudent()">Deactivated</button>
+                    <button *ngIf="userProfile && userProfile.status == 0" (click)="ActiveStudent()">Activated</button>
                   <!-- <h2>{{modalDescription}}</h2> -->
                 </div>
               </div>
