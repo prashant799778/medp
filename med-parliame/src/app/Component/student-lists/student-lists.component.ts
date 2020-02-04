@@ -39,7 +39,7 @@ getStatus(status){
 }
 
 policyDetail(id){
-this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: 5}})
+this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: 7}})
 }
 
 }

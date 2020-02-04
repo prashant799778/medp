@@ -14,6 +14,7 @@ export class AppComponent {
   loginSuccess: boolean;
   showPasswords: boolean;
   loginMedPar: any;
+  errors: any;
   constructor(public fb: FormBuilder,
 				public local: LocalStorageService,
 				public authsService: AuthsService){
@@ -59,10 +60,17 @@ export class AppComponent {
 			this.authsService.login(userData).subscribe(resp =>{
 
 				if(resp['status'] == 'true'){
-					this.loginSuccess= true;
-					this.getSaveCustomer(resp['result'])
+					if(resp['result'][0].userTypeId <= 4){
+						this.loginSuccess= true;
+						this.getSaveCustomer(resp['result'])
+
+					}else{
+						this.errors = 'you are not authorized Admin'
+					}
+					
 				}else{
 					this.loginSuccess = false;
+					this.errors = resp['message']
 				}
 			})
 			

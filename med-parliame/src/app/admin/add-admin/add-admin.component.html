@@ -42,8 +42,8 @@
                 <label class="form-label">Confirm Password</label>
                 <input type="text" class="form-control" formControlName="confirmPass">
               </div>
-              <div class="form-Group" >
-                    <label class="form-label">Admin Type</label>
+              <div class="form-Group" *ngIf="UPdateUserss">
+                    <label class="form-label">Admin Status</label>
                     <select class="form-control" formControlName="actionType"  >
                         <option value='0'   >Activate</option>
                         <option value="1"  >Deactivate</option>
@@ -77,7 +77,7 @@
               <div class="admin-description-box">
                 <h2>{{admin.userName}}</h2>
                 <ul class="inner-description-box-admin d-flex space-between-flx mr-remove">
-                  <li>fourbrick.manager@gmail.com</li>
+                  <li>{{admin.email}}</li>
                   <li>{{admin.userType}} </li>
                 </ul>
               </div>

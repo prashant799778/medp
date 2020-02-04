@@ -21,6 +21,7 @@ export class AddAdminComponent implements OnInit {
 	tabName: any;
 	acitvated: any;
 	acitvatedd1: boolean;
+	statuss: any;
 	constructor(public userService: UserServiceService,
 		public route: ActivatedRoute,
 		public router: Router,
@@ -55,6 +56,8 @@ export class AddAdminComponent implements OnInit {
 				this.addAddminForm.get('flag').setValue('u')
 				this.addAddminForm.get('actionType').setValue(resp['result'][0].status)
 				this.UPdateUserss = true;
+				this.statuss = resp['result'][0].status
+				
 
 			})
 		})
@@ -83,9 +86,14 @@ export class AddAdminComponent implements OnInit {
 			actionType: ['']
 		})
 		this.addAddminForm.get('actionType').valueChanges.subscribe(value => {
-			console.log('name has changed:', value)
-			
-				this.deactivate()
+			console.log('name has changed:', value,this.statuss)
+				if(value != this.statuss && this.statuss != undefined){
+					console.log('name has detactive:', value,this.statuss)
+					// this.deactivate()
+					this.openModal()
+
+				}
+				
 			
 			
 			
@@ -115,23 +123,7 @@ export class AddAdminComponent implements OnInit {
 		console.log(id)
 		this.addAddminForm.get('userTypeId').setValue(id)
 	}
-	// updateUser(){
-	// 	let datas = {
-	// 		userTypeId: this.userTypeId,
-	// 		userId: this.id,
-	// 		email: this.emailId,
-	// 		userName: this.userName,
-	// 	}
-	// 	let data = this.addAddminForm.getRawValue();
-	// 	this.userService.dataPostApi(data,AppSettings.UpdateUser).then(resp =>{
-	// 		console.log(resp)
-	// 		if(resp['status'] == 'true'){
-	// 			jQuery('#addAdmin-pop').modal('show')
-	// 			this.modalDescription = "Student Admin editedd "
-	// 		}
-
-	// 	})	
-	// }
+	
 	closeMOdal(){
 		console.log(this.tabName)
 		if(this.tabName == 0){
@@ -152,8 +144,8 @@ export class AddAdminComponent implements OnInit {
 		}
 		this.userService.dataPostApi(data, AppSettings.UpdateStatus).then(resp=>{
 			if(resp['status'] == 'true'){
-			// this.acitvatedd1 = true;
-			// this.modalDescription = "Successfull"
+			this.acitvatedd1 = true;
+			this.modalDescription = "Successfull"
 				
 			}
 		})

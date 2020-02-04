@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
 				public userService: UserServiceService) { }
 
 	ngOnInit() {
-		if(this.local.get('userData2').superLogin == 'yes'){
+		if(this.local.get('userData2') && this.local.get('userData2').superLogin == 'yes'){
 			this.superLogin = true;
 		}else{
 			this.superLogin = false;
@@ -83,6 +83,7 @@ export class ProfileComponent implements OnInit {
 						this.userPost = resp['result']['userPost']
 					})
 				}else if(this.userTypeId == '5'){
+					console.log("hello check 1")
 					this.enterpueresss = true;
 					let data = {
 						'userId': this.id,
@@ -131,17 +132,23 @@ export class ProfileComponent implements OnInit {
 			if(resp['status'] == 'true'){
 				
 				if(this.userProfile.status == '0'){
+					console.log(this.userTypeId)
 					this.userProfile.status = '1'
-					this.modalDescription = 'activate'
+					this.modalDescription = 'Deactivated'
 					jQuery('#students-pop').modal('show')
 				}else{
-					jQuery('#students-pop').modal('show')
-					this.modalDescription = 'deactivate'
+					console.log(this.userTypeId)
+					// jQuery('#students-pop').modal('show')
+					this.modalDescription = 'activated'
 					this.userProfile.status = '0'
+					jQuery('#students-pop').modal('show')
 				}
 
 			}
 		})
+	}
+	activatedStduent(){
+		jQuery('#students-pop').modal('show')
 	}
 
 }

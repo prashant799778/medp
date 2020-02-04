@@ -18,6 +18,7 @@
     <div class="left-side bg-white-fff same-padding pos-rel">
         <h2 class="sign-in-heading">Sign In</h2>
         <div  >
+            <span *ngIf="errors" class="errorss">{{errors}}</span>
             <form [formGroup]="loginForm" class="login-form-class"  autocomplete="off" >
                 <div  formGroupName="login" class="form-group input-box">
                     <label>Email Address</label>
