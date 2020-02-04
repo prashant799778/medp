@@ -976,7 +976,7 @@ def UpdateUser():
 
             if (UserTypeId == 7):
                 WhereCondition = " and userId = '" + str(UserId) + "'"
-                column=" address='" + str(address) + "',qualificationId  = '" + str(qualification) + "', batchOfQualification ='" + str(batchofQualification) + "', institutionName ='" + str(institutionName) + "',universityId='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "',interestId ='" + str(interestId) + "'"  
+                column=" address='" + str(address) + "',qualificationId  = '" + str(qualification) + "', batchOfQualification ='" + str(batchofQualification) + "', institutionName ='" + str(institutionName) + "',universityId='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "'"  
                 output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)
                 for i in interestId:
                     WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='7'"
