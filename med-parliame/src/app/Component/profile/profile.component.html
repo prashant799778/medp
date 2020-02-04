@@ -2,7 +2,7 @@
         <div class="col-12 col-sm-12 col-md-12">
           <div class="upper-wrap">
             <div class="image-section-set bg-color">
-                <img class="image-set" src="image/home.svg">
+                <img class="image-set" src="../../../assets/images/user-im.svg">
             </div>
             <ul class="sub-heading d-flex al-item mr-remove">
               <li >{{adminlist1}} </li>
@@ -64,7 +64,7 @@
               <p *ngIf="userProfile && userProfile.aboutProfile">
                 {{userProfile.aboutProfile}}
               </p>
-              <div class="bottom-section same-margin admin-action" >
+              <div class="bottom-section same-margin admin-action mr-topp" >
                 <ul class="group-action-button mr-remove d-flex al-item " >
                   <li class="bg-color-blu" *ngIf=" userProfile && userProfile.status == 1" (click)="activatedStduent()"><a href="javascript:void(0)">Active</a></li>
                   <li class="bg-color-l-black" *ngIf="userProfile && userProfile.status == 0" (click)="activatedStduent()"><a href="javascript:void(0)">Deactive</a></li>

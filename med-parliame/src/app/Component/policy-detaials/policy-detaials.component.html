@@ -2,11 +2,11 @@
     <div class="col-12 col-sm-12 col-md-12">
       <div class="upper-wrap">
         <div class="image-section-set bg-color">
-            <img class="image-set" src="../../../assets/images/home.svg">
+            <img class="image-set" src="../../../assets/images/post-im.svg">
         </div>
         <ul class="sub-heading d-flex al-item mr-remove">
                 <li (click)="goto('/dashboard')">Dashboard /</li>
-                <li>Policy Details</li>
+                <li>Post Details</li>
               </ul> 
       </div>
       <div class="policy-container same-margin bg-white-fff all-pading">
@@ -18,7 +18,7 @@
               <h3 class="title-name" *ngIf="postDetails && postDetails.userName">{{postDetails.userName}}</h3>
             </div>
             <div class="information-container">
-              <h2 class="question-heading">What is Lorem Ipsum?</h2>
+              <!-- <h2 class="question-heading">What is Lorem Ipsum?</h2> -->
               <p class="description-p"*ngIf="postDetails && postDetails.postDescription">
                 {{postDetails.postDescription}}
               </p>
