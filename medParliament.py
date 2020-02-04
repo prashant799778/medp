@@ -1882,7 +1882,7 @@ def verifyPost():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         startlimit,endlimit="",""
-        keyarr = ['approvedUserId','postId','userTypeId','id']
+        keyarr = ['approvedUserId','postId','id']
         commonfile.writeLog("verifyPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -1894,7 +1894,7 @@ def verifyPost():
             print(statusid,'id')
     
             column = "approvedUserId,postId,userTypeId"                
-            values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
+            values = " '" + str(approvedUserId) + "','" + str(postId) + "'"
             data = databasefile.InsertQuery("approvedBy",column,values)
             if statusid == 1:
                 print('1')
