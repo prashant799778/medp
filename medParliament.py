@@ -971,7 +971,7 @@ def UpdateUser1():
                 column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaofActivity) + "',profileCategoryId='" + str(profileCategoryId) + "'"
                 output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
                 if interestId!="":
-                    WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='7'"
+                    WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='6'"
                     output=databasefile.DeleteQuery("userInterestMapping",WhereCondition)
                     for i in interestId:
                         WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='6'"
