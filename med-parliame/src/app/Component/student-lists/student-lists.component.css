@@ -1,0 +1,9 @@
+.record-box thead tr th {
+    font-size: 13px;
+    text-transform: unset;
+    font-weight: 600;
+    line-height: 1rem;
+    color: #707070;
+    padding: 10px 5px;
+    border: 0px;
+}
