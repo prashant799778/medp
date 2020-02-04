@@ -13,6 +13,18 @@ body{
     box-shadow: none;
 }
 /*All Use*/
+.bck-approved{
+    background-image: linear-gradient(to bottom, #6aa5e3, #6866e9);
+    color:#fff;
+}
+.bck-padding{
+    background-image: linear-gradient(to bottom, #c694f9, #ab64f4);
+    color:#fff;
+}
+.bck-reject{
+    background-image: linear-gradient(to bottom, #feb683, #ff8993);
+    color:#fff;
+}
 .edit-btn img, .delet-btn img{
     width: 15px;
 }
