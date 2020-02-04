@@ -123,6 +123,10 @@ button:focus {
     border:1px solid #4caf50;
     color:#4caf50;
 }
+.dc-bg-color-panding{
+    border:1px solid #9627b0;
+    color:#9627b0;
+}
 .dc-bg-color-approve{
      background-image: linear-gradient(to bottom, #53fb5e, #1d9e29);
 }
