@@ -308,7 +308,7 @@ export class DashboardComponent implements OnInit {
 		}
 	}
 	policyDetail(id,userTypeId){
-		this.router.navigate(['/policyDetails'],{queryParams: {id: id,userTypeId: userTypeId}})
+		this.router.navigate(['/policyDetails'],{queryParams: {id: id,userTypeId: userTypeId,dashboard: 'dashboard'}})
 	}
 
 }

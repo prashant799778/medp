@@ -74,6 +74,13 @@ console.log(this.local.get('userData1')[0].userTypeId)
 			},100)
 			
 			// element.classList.addClass("active");
+		}else if(this.locations == 'http://localhost:5002/enterpenure'){
+			setTimeout(()=>{
+				// var element = document.getElementById("studentTabs")
+				// console.log(element)
+				$(".side-menu ul li a").removeClass("active");
+				$('#enterpenureTabs').addClass('active')
+			},100)
 		}
 
 	}

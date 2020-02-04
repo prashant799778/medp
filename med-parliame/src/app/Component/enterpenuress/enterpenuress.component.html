@@ -21,8 +21,10 @@
                                 <th>Name </th>
                                 <th>Designation</th>
                                 <th>Email</th>
-                                <th>company Name</th>
+                                <!-- <th>company Name</th> -->
                                 <th>Phone Number</th>
+                                <th>Gender</th>
+                                <th>City</th>
                                 <th>No. of Post</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -34,15 +36,15 @@
                                 <td>{{enter.designation}}</td>
                                 <td>{{enter.email}}</td>
                                 <td>{{enter.mobileNo}}</td>
-                                <td>{{enter.gender}}</td>
+                                <td>{{getGender(enter.gender)}}</td>
                                 <td>{{enter.city}}</td>
                                 
                                 <td>{{enter.noOfPosts}}</td>
                                 <td>
                                         <!--  -->
-                                        <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-one border-round-rem">pending</button>
-                                        <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">approved</button>
-                                        <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button>
+                                        <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Actived</button>
+                                        <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Deactived</button>
+                                        <!-- <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button> -->
                                 </td>
                                 <td>
                                     <button type="button" class="acton-btn" (click)="policyDetail(enter.userId)">
