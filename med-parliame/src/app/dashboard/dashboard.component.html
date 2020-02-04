@@ -1,8 +1,8 @@
 
 
         <!-- Main Content- box -->
-        
-            <div class="container-fluid" *ngIf="superLogin">
+       
+            <div class="container-fluid" *ngIf="superLogin && loaderStatus == true" >
                 <!-- End Four Box -->
               <div class="row">
                   <div class="col-12 col-sm-12 col-md-12">
@@ -73,7 +73,7 @@
                                       <th>user Type</th>
                                       <th>email</th>
                                       <th>Posted On</th>
-                                      <th>Approved By</th>
+                                      <th>Approved By/Rejected By</th>
                                       <th>status</th>
                                       <th>Action</th>
                                   </tr>
@@ -104,7 +104,7 @@
             </div>
 
 
-            <div class="container-fluid" *ngIf="!superLogin">
+            <div class="container-fluid" *ngIf="!superLogin && loaderStatus == true">
                 <!-- End Four Box -->
               <div class="row">
                   <div class="col-12 col-sm-12 col-md-12">

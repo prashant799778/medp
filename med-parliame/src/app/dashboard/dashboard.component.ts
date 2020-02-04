@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
 	totalUsers: any;
 
 	subDashboardAdmin = [];
+	loaderStatus: boolean;
 	constructor(public userService: UserServiceService,
 				public authsService: AuthsService,
 				public local: LocalStorageService,
@@ -38,6 +39,7 @@ export class DashboardComponent implements OnInit {
 		this.totalRecords= 50;
 		this.pageSize = 10;
 		this.superLogin = false;
+		this.loaderStatus = false;
 	 }
 
 	ngOnInit() {
@@ -67,7 +69,7 @@ export class DashboardComponent implements OnInit {
 								// this.postStatus.push(0)
 							})
 							
-							
+							this.loaderStatus = true;
 						})
 					}else{
 						// console.log(this.userId)
@@ -106,7 +108,7 @@ export class DashboardComponent implements OnInit {
 							})
 							
 							
-							
+							this.loaderStatus = true;
 						})	
 					}else if(this.local.get('userData1')[0].userTypeId == '3'){
 
@@ -139,7 +141,7 @@ export class DashboardComponent implements OnInit {
 							
 							
 						})
-
+						this.loaderStatus = true;
 					}else{
 
 						this.userId = this.local.get('userData1')[0].userId
@@ -172,7 +174,7 @@ export class DashboardComponent implements OnInit {
 							
 						})
 
-						
+						this.loaderStatus = true;
 					}
 					console.log(this.local.get('userData1')[0].userId)
 					
@@ -211,7 +213,7 @@ export class DashboardComponent implements OnInit {
 							this.getStatus(resp.status)
 						})
 						
-						
+						this.loaderStatus = true;	
 						
 					})	
 				}else if(this.local.get('userData1')[0].userTypeId == '3'){
@@ -242,7 +244,7 @@ export class DashboardComponent implements OnInit {
 							this.getStatus(resp.status)
 						})
 						
-						
+						this.loaderStatus = true;	
 						
 					})
 
@@ -274,7 +276,7 @@ export class DashboardComponent implements OnInit {
 							this.getStatus(resp.status)
 						})
 						
-						
+						this.loaderStatus = true;
 						
 					})
 
