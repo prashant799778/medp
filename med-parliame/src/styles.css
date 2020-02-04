@@ -25,10 +25,6 @@ body{
     padding: 8px 22px;
     border: 0;
     background: transparent;
-    border: 1px solid #ac67f4;
-    color: #ac67f4;
-    border-radius: 4px;
-    margin-right: 10px;
 }
 .edit-btn:active{
     transform: translateY(1px);
@@ -38,9 +34,6 @@ body{
     padding: 8px 22px;
     border: 0;
     background: transparent;
-    border: 1px solid #d60f0f;
-    color: #d60f0f;
-    border-radius: 4px;
 }
 .delet-btn:active{
     transform: translateY(1px);
