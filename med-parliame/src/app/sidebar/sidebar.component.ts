@@ -118,7 +118,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 			setTimeout(()=>{
 				// var element = document.getElementById("studentTabs")
 				// console.log(element)
-				$(".drop-showw").css({"display":"block"});
+				$(".drop-show").css({"display":"block"}); 
 				$(".side-menu ul li a").removeClass("active");
 				var elem = document.getElementById("admin1Policy")
 				elem.click();
@@ -129,24 +129,67 @@ console.log(this.local.get('userData1')[0].userTypeId)
 			setTimeout(()=>{
 				// var element = document.getElementById("studentTabs")
 				// console.log(element)
-				$(".drop-showw").css({"display":"block"});
+
+
+				$(".drop-show").css({"display":"block"}); 
 				$(".side-menu ul li a").removeClass("active");
 				var elem = document.getElementById("admin1Enterpernure")
 				elem.click();
 				// elem.addClass("active");
 				$("#admin1Enterpernure").addClass("active")
+
+				// $(".drop-showw").css({"display":"block"});
+				// $(".side-menu ul li a").removeClass("active");
+				// var elem = document.getElementById("admin1Enterpernure")
+				// elem.click();
+				// // elem.addClass("active");
+				// $("#admin1Enterpernure").addClass("active")
 			},100)
 		}else if(this.locations == 'http://localhost:5002/Admin/student'){
 			setTimeout(()=>{
-				// var element = document.getElementById("studentTabs")
-				// console.log(element)
-				$(".drop-showw").css({"display":"block"});
+
+
+				$(".drop-show").css({"display":"block"}); 
 				$(".side-menu ul li a").removeClass("active");
 				var elem = document.getElementById("admin1Students")
 				elem.click();
 				// elem.addClass("active");
 				$("#admin1Students").addClass("active")
+				// var element = document.getElementById("studentTabs")
+				// console.log(element)
+				// $(".drop-showw").css({"display":"block"});
+				// $(".side-menu ul li a").removeClass("active");
+				// var elem = document.getElementById("admin1Students")
+				// elem.click();
+				// // elem.addClass("active");
+				// $("#admin1Students").addClass("active")
 			},100)
+		}
+		else if(this.locations == 'http://localhost:5002/allPosts?id=5'){
+			setTimeout(()=>{
+
+
+				$(".drop-show1").css({"display":"block"}); 
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("postPolicy")
+				elem.click();
+				// elem.addClass("active");
+				$("#postPolicy").addClass("active")
+				
+			},200)
+		}
+		else if(this.locations == 'http://localhost:5002/allPosts?id=6'){
+			setTimeout(()=>{
+
+
+				$(".drop-show1").css({"display":"block"}); 
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("postEnterpenure")
+				elem.click();
+				// elem.addClass("active");
+				$("#postEnterpenure").addClass("active")
+				
+			},200)
 		}
 		
 
