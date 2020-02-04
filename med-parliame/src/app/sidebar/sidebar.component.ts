@@ -15,6 +15,7 @@ export class SidebarComponent implements OnInit {
 	superLogin: boolean;
 	enterpernure: boolean;
 	students: boolean;
+	userName: any;
 	constructor(public router: Router,
 				public local: LocalStorageService) { 
 		this.numbers = 0;
@@ -37,6 +38,7 @@ export class SidebarComponent implements OnInit {
 		}
 
 		if(this.local.get('userData1')){
+			this.userName  = this.local.get('userData1')[0].userName
 console.log(this.local.get('userData1')[0].userTypeId)
 			
 			if(this.local.get('userData1')[0].userTypeId == '3'){
@@ -50,7 +52,17 @@ console.log(this.local.get('userData1')[0].userTypeId)
 		}
 
 	}
-	goTo(routes){
+	goTo(routes, event){
+		if(routes == 'dashboard'){
+			console.log("dahsboard")
+			$(".side-menu ul li a").removeClass("active");
+			$("#dashboarId").addClass("active");
+		}
+
+		$(".side-menu ul li a").removeClass("active");
+		console.log(event.target)
+
+      	$(event.target).addClass("active");
 		this.router.navigateByUrl('/'+routes)
 	}
 
@@ -63,6 +75,12 @@ console.log(this.local.get('userData1')[0].userTypeId)
 		}else{
 			this.numbers = 0;
 			$(".drop-showw").css({"display":"block"}); 
+			
+			$(".side-menu ul li a").removeClass("active");
+			var elem = document.getElementById("userPolicy")
+			elem.click();
+			// elem.addClass("active");
+			$("#userPolicy").addClass("active")
 		}
 	}
 	showSLiders(){
@@ -70,10 +88,17 @@ console.log(this.local.get('userData1')[0].userTypeId)
 		if(this.numberss == 0){
 			this.numberss = 1;
 			$(".drop-show").css({"display":"none"}); 
+			
+			
 			 
 		}else{
 			this.numberss = 0;
 			$(".drop-show").css({"display":"block"}); 
+			$(".side-menu ul li a").removeClass("active");
+			var elem = document.getElementById("admin1Policy")
+			elem.click();
+			// elem.addClass("active");
+			$("#admin1Policy").addClass("active")
 		}
 	}
 	showSLider1(){
@@ -85,9 +110,18 @@ console.log(this.local.get('userData1')[0].userTypeId)
 		}else{
 			this.numberss = 0;
 			$(".drop-show1").css({"display":"block"}); 
+			$(".side-menu ul li a").removeClass("active");
+			var elem = document.getElementById("postPolicy")
+			elem.click();
+			// elem.addClass("active");
+			$("#postPolicy").addClass("active")
 		}
 	}
-	goToPost(id){
+	goToPost(id, event){
+		$(".side-menu ul li a").removeClass("active");
+		console.log(event.target)
+
+      	$(event.target).addClass("active");
 		this.router.navigate(['/allPosts'],{queryParams: {id: id}})
 	}
 }
