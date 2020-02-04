@@ -20,10 +20,12 @@ export class PolicyDetaialsComponent implements OnInit {
 	superLogin: boolean;
 	locations: any;
 	dashboardssCheck: any;
+	beforeApproved: boolean;
+	approvedModal: any;
 	constructor(private route: ActivatedRoute, private router: Router,
 				public local: LocalStorageService,
 				public userService: UserServiceService) {
-					
+					this.beforeApproved =false;
 				 }
 
 	ngOnInit() {
@@ -53,7 +55,7 @@ export class PolicyDetaialsComponent implements OnInit {
 		}
 		this.userService.dataPostApi(data, AppSettings.AllPosts).then(resp =>{
 			this.postDetails = resp['result']['0']
-			if(resp['result']['0'].status == 0 || resp['result']['0'].status == 1 || resp['result']['0'].status == 2){
+			if(resp['result']['0'].status == 0 ){
 				// console.log("onluy view")
 				this.onlyView = true;
 			}
@@ -70,12 +72,13 @@ export class PolicyDetaialsComponent implements OnInit {
 			}
 			this.userService.dataPostApi(data, AppSettings.VerifyPost).then(resp =>{
 				if(resp['status']== 'true'){
-					jQuery('#approv-pop').modal('show')
+					
 					if(id == '1'){
 						this.modalDescription = ' Post Approved Successfully'
 					}else{
 						this.modalDescription = ' Post Rejected Successfully'
 					}
+					this.beforeApproved = true;
 				}
 			})
 		}else{
@@ -99,6 +102,10 @@ export class PolicyDetaialsComponent implements OnInit {
 	}
 	goto(id){
 		this.router.navigateByUrl(id)
+	}
+	Approved(id){
+		jQuery('#approv-pop').modal('show')
+		this.approvedModal = id
 	}
 		
 	
