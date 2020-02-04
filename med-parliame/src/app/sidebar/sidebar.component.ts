@@ -17,6 +17,7 @@ export class SidebarComponent implements OnInit {
 	students: boolean;
 	userName: any;
 	locations: any;
+	secondLocation: any;
 	constructor(public router: Router,
 				public local: LocalStorageService) { 
 		this.numbers = 0;
@@ -57,8 +58,11 @@ console.log(this.local.get('userData1')[0].userTypeId)
 
 		this.locations = window.location.href
 		console.log(this.locations)
-		this.locations = this.locations.substring(this.locations.lastIndexOf("/") + 1, this.locations.length);
-		console.log(this.locations)
+		this.secondLocation = this.locations.substring(0, this.locations.lastIndexOf("/") + 1)
+		this.locations = this.locations.substring(this.locations.lastIndexOf("/") + 1, this.locations.length );
+		console.log(this.secondLocation)
+		this.secondLocation = this.secondLocation.substring(this.secondLocation.lastIndexOf("/") + 1, this.secondLocation.length - 5 );
+		console.log(this.secondLocation)
 		if(this.locations == 'http://localhost:5002/allPosts'){
 			
 			setTimeout(()=>{
@@ -83,7 +87,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				$(".side-menu ul li a").removeClass("active");
 				$('#enterpenureTabs').addClass('active')
 			},100)
-		}else if(this.locations == 'http://localhost:5002/User/policy'){
+		}else if(this.locations == 'policy' && this.secondLocation == 'User/'){
 			setTimeout(()=>{
 				// var element = document.getElementById("studentTabs")
 				// console.log(element)
@@ -94,7 +98,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				// elem.addClass("active");
 				$("#userPolicy").addClass("active")
 			},100)
-		}else if(this.locations == 'http://localhost:5002/User/enterpenure'){
+		}else if(this.locations == 'enterpenure' && this.secondLocation == 'User/'){
 			setTimeout(()=>{
 				// var element = document.getElementById("studentTabs")
 				// console.log(element)
@@ -105,7 +109,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				// elem.addClass("active");
 				$("#userEnterpenure").addClass("active")
 			},100)
-		}else if(this.locations == 'http://localhost:5002/User/student'){
+		}else if(this.locations == 'student' && this.secondLocation == 'User/'){
 			setTimeout(()=>{
 				// var element = document.getElementById("studentTabs")
 				// console.log(element)
@@ -116,7 +120,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				// elem.addClass("active");
 				$("#userStudents").addClass("active")
 			},100)
-		}else if(this.locations == 'http://localhost:5002/Admin/policy'){
+		}else if(this.locations == 'policy' && this.secondLocation == 'dmin/'){
 			setTimeout(()=>{
 				// var element = document.getElementById("studentTabs")
 				// console.log(element)
@@ -127,7 +131,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				// elem.addClass("active");
 				$("#admin1Policy").addClass("active")
 			},100)
-		}else if(this.locations == 'http://localhost:5002/Admin/enterpenure'){
+		}else if(this.locations == 'enterpenure' && this.secondLocation == 'dmin/'){
 			setTimeout(()=>{
 				// var element = document.getElementById("studentTabs")
 				// console.log(element)
@@ -147,7 +151,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				// // elem.addClass("active");
 				// $("#admin1Enterpernure").addClass("active")
 			},100)
-		}else if(this.locations == 'http://localhost:5002/Admin/student'){
+		}else if(this.locations == 'student' && this.secondLocation == 'dmin/'){
 			setTimeout(()=>{
 
 
@@ -167,7 +171,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				// $("#admin1Students").addClass("active")
 			},100)
 		}
-		else if(this.locations == 'http://localhost:5002/allPosts?id=5'){
+		else if(this.locations == 'allPosts?id=5'){
 			setTimeout(()=>{
 
 
@@ -180,7 +184,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				
 			},200)
 		}
-		else if(this.locations == 'http://localhost:5002/allPosts?id=6'){
+		else if(this.locations == 'allPosts?id=6'){
 			setTimeout(()=>{
 
 
@@ -193,7 +197,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				
 			},200)
 		}
-		else if(this.locations == 'http://localhost:5002/allPosts?id=7'){
+		else if(this.locations == 'allPosts?id=7'){
 			setTimeout(()=>{
 
 
