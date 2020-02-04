@@ -250,6 +250,16 @@ def addAdmin():
             if 'userId' in inputdata:
                 UserId1=inputdata["userId"]
 
+            if flag =="u":
+                    print("111111111111111uuuuuuuuuu")
+                    columns= "userName='" + str(Name) + "' ,password='" + str(password) + "',email='" + str(Email) + "'"
+                    whereCondition= " and userId='" + str(UserId1) + "' and userTypeId='" + str(userTypeId) + "'"
+                    data2=databasefile.UpdateQuery("userMaster",columns,whereCondition)
+                    if data2 !='0':
+                        return data2
+                    else:
+                        return commonfile.Errormessage()
+
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
@@ -275,15 +285,7 @@ def addAdmin():
                         return Data
                     else:
                         return commonfile.Errormessage()
-                if flag =="u":
-                    print("111111111111111uuuuuuuuuu")
-                    columns= "userName='" + str(Name) + "' ,password='" + str(password) + "'"
-                    whereCondition= " and userId='" + str(UserId1) + "' and userTypeId='" + str(userTypeId) + "'"
-                    data2=databasefile.UpdateQuery("userMaster",columns,whereCondition)
-                    if data2 !='0':
-                        return data2
-                    else:
-                        return commonfile.Errormessage()
+               
                         
 
                         
@@ -843,7 +845,170 @@ def DeleteStudents():
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
-        return commonfile.Errormessage()    
+        return commonfile.Errormessage()
+
+@app.route('/UpdateUser1', methods=['POST'])
+def UpdateUser1():
+    try:
+        print('1')
+        startlimit,endlimit="",""
+        print('2')
+        inputdata = request.form.get('data') 
+        print("===========================",inputdata)      
+        inputdata = json.loads(inputdata)        
+        keyarr = ['userId','userName','email','userTypeId']
+        print(inputdata)
+        commonfile.writeLog("UpdateUser",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg == "1":
+            print('3')
+            column2=""
+            organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","",""
+            address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
+            filename,PicPath,Password,Gender,Country,City,MobileNo="","","123","","","",""
+            UserId = inputdata["userId"]
+            UserName = inputdata["userName"]
+           
+            Email = inputdata["email"] 
+           
+            # Password = inputdata["password"]
+            
+            UserTypeId= int(inputdata["userTypeId"])
+            if 'password' in inputdata:                    
+                Password = inputdata["password"]   
+            if 'mobileNo' in inputdata:               
+
+                MobileNo = inputdata["mobileNo"]
+
+            if Country == "":
+                Country='0'        
+
+            if 'country' in inputdata:                    
+                Country = inputdata["country"]  
+            if 'city' in inputdata:                    
+                City = inputdata["city"]  
+            if 'userTypeId' in inputdata:                                    
+                userTypeId = inputdata['userTypeId']
+            if 'gender' in inputdata:                    
+                Gender = inputdata['gender']                  
+            if 'deviceid' in inputdata:                   
+                DeviceId = inputdata['deviceid'] 
+            if 'deviceType' in inputdata:                    
+                DeviceType = inputdata['deviceType']
+                DeviceType = ConstantData.GetDeviceTypeId(DeviceType)
+            if 'os' in inputdata:                    
+                Os = inputdata['os'] 
+            if 'ImeiNo' in inputdata:                    
+               ImeiNo = inputdata['ImeiNo']
+            if 'ipAddress' in inputdata:                    
+               ipAddress = inputdata['ipAddress']
+            if 'password' in inputdata:                    
+               Password = inputdata['password']
+            if 'organization' in inputdata:                    
+                organization = inputdata['organization']
+            
+            if 'aboutProfile' in inputdata:                    
+                aboutProfile = inputdata['aboutProfile']
+
+            if 'designation' in inputdata:                    
+               designation = inputdata['designation'] 
+
+            if 'areaofActivity' in inputdata:                    
+                areaofActivity = inputdata['areaofActivity']
+
+            if 'profileCategoryId' in inputdata:                    
+                profileCategoryId = inputdata['profileCategoryId']
+
+            if 'interestId' in inputdata:                    
+                interestId = inputdata['interestId']   
+
+            if 'address' in inputdata:                    
+                address = inputdata['address']
+
+            if 'qualification' in inputdata:                    
+                qualification = inputdata['qualification']
+
+            if 'batchofQualification' in inputdata:                    
+                batchofQualification = inputdata['batchofQualification']
+
+            if 'institutionName' in inputdata:                    
+                institutionName = inputdata['institutionName']  
+
+            if 'universityName' in inputdata:                    
+                universityName = inputdata['universityName']
+
+            if 'universityAddress' in inputdata:                    
+                universityAddress = inputdata['universityAddress']
+            if 'postImage' in request.files:  
+                print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
+                file = request.files.get('postImage')        
+                filename = file.filename or ''  
+                print(filename)               
+                filename= str(UserId)+".png"
+                #filename = filename.replace("'","") 
+
+                #folder path to save campaign image
+                FolderPath = ConstantData.GetProfilePicPath(filename)  
+
+                filepath = '/profilePic/' + filename    
+                print(filepath,"filepath================")
+                print(FolderPath,"FolderPathFolderPathFolderPathFolderPath")
+                file.save(FolderPath)
+                PicPath = filepath 
+                column2= column2 +" ,profilePic= '" + str(PicPath) + "' "    
+            
+            print('A')
+            WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+            column = " email = '" + str(Email) + "',countryId = '" + str(Country) + "', "
+            column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'" +column2
+            data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
+            print(data,'B')
+            if (UserTypeId == 5):
+                print('c')
+                WhereCondition = " and userId = '" + str(UserId) + "'"
+                column =" organization = '" + str(organization) + "',aboutProfile='" + str(aboutProfile) + "',designation='" + str(designation) + "'"
+                output=databasefile.UpdateQuery("policyMakerMaster",column,WhereCondition)
+            if (UserTypeId == 6):
+                WhereCondition = " and userId = '" + str(UserId) + "'"
+                column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaofActivity) + "',profileCategoryId='" + str(profileCategoryId) + "'"
+                output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
+                if interestId!="":
+                    WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='6'"
+                    output=databasefile.DeleteQuery("userInterestMapping",WhereCondition)
+                    
+                    for i in interestId:
+                        column="userId,interestId,userTypeId"
+                        values=" '" + str(UserId) + "','" + str(i) + "','" + str('6') + "'"
+                        
+                        output9=databasefile.InsertQuery("userInterestMapping",column,values)  
+
+            if (UserTypeId == 7):
+                WhereCondition = " and userId = '" + str(UserId) + "'"
+                column=" address='" + str(address) + "',qualificationId  = '" + str(qualification) + "', batchOfQualification ='" + str(batchofQualification) + "', institutionName ='" + str(institutionName) + "',universityId='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "'"  
+                output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)
+
+                if interestId!="":
+                    WhereCondition1 = " and userId = '" + str(UserId) + "' and userTypeId='7'"
+                    output8=databasefile.DeleteQuery("userInterestMapping",WhereCondition1)
+
+                    for i in interestId:
+                        column="userId,interestId,userTypeId"
+                        values=" '" + str(UserId) + "','" + str(i) + "','" + str('7') + "'"
+                        
+                        output9=databasefile.InsertQuery("userInterestMapping",column,values)            
+            if data != "0":
+                column = 'userId,userName,userTypeId'
+                data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+       
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()            
 
 
 @app.route('/UpdateUser', methods=['POST'])
@@ -851,144 +1016,149 @@ def UpdateUser():
     try:
         print('1')
         startlimit,endlimit="",""
-        if request.data:
-            print('2')
-            inputdata = request.form.get('data') 
-            print("===========================",inputdata)      
-            inputdata = json.loads(inputdata)        
-            keyarr = ['userId','userName','email','userTypeId']
-            commonfile.writeLog("UpdateUser",inputdata,0)
-            msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-            if msg == "1":
-                print('3')
-                organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","",""
-                address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
-                filename,PicPath,Password,Gender,Country,City,MobileNo="","","123","","","",""
-                UserId = inputdata["userId"]
-                UserName = inputdata["userName"]
-               
-                Email = inputdata["email"] 
-                Gender = inputdata["gender"]
-                # Password = inputdata["password"]
-                
-                UserTypeId= inputdata["userTypeId"]
-                if 'password' in inputdata:                    
-                    Password = inputdata["password"]   
-                if 'mobileNo' in inputdata:               
+        print('2')
+        inputdata = request.form.get('data') 
+        print("===========================",inputdata)      
+        inputdata = json.loads(inputdata)        
+        keyarr = ['userId','userName','email','userTypeId']
+        print(inputdata)
+        commonfile.writeLog("UpdateUser",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg == "1":
+            print('3')
+            column2=""
+            organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","",""
+            address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
+            filename,PicPath,Password,Gender,Country,City,MobileNo="","","123","","","",""
+            UserId = inputdata["userId"]
+            UserName = inputdata["userName"]
+           
+            Email = inputdata["email"] 
+           
+            # Password = inputdata["password"]
+            
+            UserTypeId= int(inputdata["userTypeId"])
+            if 'password' in inputdata:                    
+                Password = inputdata["password"]   
+            if 'mobileNo' in inputdata:               
 
-                    MobileNo = inputdata["mobileNo"]  
+                MobileNo = inputdata["mobileNo"]
 
-                if 'country' in inputdata:                    
-                    Country = inputdata["country"]  
-                if 'city' in inputdata:                    
-                    City = inputdata["city"]  
-                if 'userTypeId' in inputdata:                                    
-                    userTypeId = inputdata['userTypeId']
-                if 'gender' in inputdata:                    
-                    Gender = inputdata['gender']                  
-                if 'deviceid' in inputdata:                   
-                    DeviceId = inputdata['deviceid'] 
-                if 'deviceType' in inputdata:                    
-                    DeviceType = inputdata['deviceType']
-                    DeviceType = ConstantData.GetDeviceTypeId(DeviceType)
-                if 'os' in inputdata:                    
-                    Os = inputdata['os'] 
-                if 'ImeiNo' in inputdata:                    
-                   ImeiNo = inputdata['ImeiNo']
-                if 'ipAddress' in inputdata:                    
-                   ipAddress = inputdata['ipAddress']
-                if 'password' in inputdata:                    
-                   Password = inputdata['password']
-                if 'organization' in inputdata:                    
-                    organization = inputdata['organization']
-                
-                if 'aboutProfile' in inputdata:                    
-                    aboutProfile = inputdata['aboutProfile']
+            if Country == "":
+                Country='0'        
 
-                if 'designation' in inputdata:                    
-                   designation = inputdata['designation'] 
+            if 'country' in inputdata:                    
+                Country = inputdata["country"]  
+            if 'city' in inputdata:                    
+                City = inputdata["city"]  
+            if 'userTypeId' in inputdata:                                    
+                userTypeId = inputdata['userTypeId']
+            if 'gender' in inputdata:                    
+                Gender = inputdata['gender']                  
+            if 'deviceid' in inputdata:                   
+                DeviceId = inputdata['deviceid'] 
+            if 'deviceType' in inputdata:                    
+                DeviceType = inputdata['deviceType']
+                DeviceType = ConstantData.GetDeviceTypeId(DeviceType)
+            if 'os' in inputdata:                    
+                Os = inputdata['os'] 
+            if 'ImeiNo' in inputdata:                    
+               ImeiNo = inputdata['ImeiNo']
+            if 'ipAddress' in inputdata:                    
+               ipAddress = inputdata['ipAddress']
+            if 'password' in inputdata:                    
+               Password = inputdata['password']
+            if 'organization' in inputdata:                    
+                organization = inputdata['organization']
+            
+            if 'aboutProfile' in inputdata:                    
+                aboutProfile = inputdata['aboutProfile']
 
-                if 'areaofActivity' in inputdata:                    
-                    areaofActivity = inputdata['areaofActivity']
+            if 'designation' in inputdata:                    
+               designation = inputdata['designation'] 
 
-                if 'profileCategoryId' in inputdata:                    
-                    profileCategoryId = inputdata['profileCategoryId']
+            if 'areaofActivity' in inputdata:                    
+                areaofActivity = inputdata['areaofActivity']
 
-                if 'interestId' in inputdata:                    
-                    interestId = inputdata['interestId']   
+            if 'profileCategoryId' in inputdata:                    
+                profileCategoryId = inputdata['profileCategoryId']
 
-                if 'address' in inputdata:                    
-                    address = inputdata['address']
+            if 'interestId' in inputdata:                    
+                interestId = inputdata['interestId']   
 
-                if 'qualification' in inputdata:                    
-                    qualification = inputdata['qualification']
+            if 'address' in inputdata:                    
+                address = inputdata['address']
 
-                if 'batchofQualification' in inputdata:                    
-                    batchofQualification = inputdata['batchofQualification']
+            if 'qualification' in inputdata:                    
+                qualification = inputdata['qualification']
 
-                if 'institutionName' in inputdata:                    
-                    institutionName = inputdata['institutionName']  
+            if 'batchofQualification' in inputdata:                    
+                batchofQualification = inputdata['batchofQualification']
 
-                if 'universityName' in inputdata:                    
-                    universityName = inputdata['universityName']
+            if 'institutionName' in inputdata:                    
+                institutionName = inputdata['institutionName']  
 
-                if 'universityAddress' in inputdata:                    
-                    universityAddress = inputdata['universityAddress']
-                if 'postImage' in request.files:  
-                    print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
-                    file = request.files.get('postImage')        
-                    filename = file.filename or ''  
-                    print(filename)               
-                    filename= str(UserId)+".png"
-                    #filename = filename.replace("'","") 
+            if 'universityName' in inputdata:                    
+                universityName = inputdata['universityName']
 
-                    #folder path to save campaign image
-                    FolderPath = ConstantData.GetProfilePicPath(filename)  
+            if 'universityAddress' in inputdata:                    
+                universityAddress = inputdata['universityAddress']
+            if 'postImage' in request.files:  
+                print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
+                file = request.files.get('postImage')        
+                filename = file.filename or ''  
+                print(filename)               
+                filename= str(UserId)+".png"
+                #filename = filename.replace("'","") 
 
-                    filepath = '/profilePic/' + filename    
-                    print(filepath,"filepath================")
-                    print(FolderPath,"FolderPathFolderPathFolderPathFolderPath")
-                    file.save(FolderPath)
-                    PicPath = filepath    
-                
-                print('A')
-                WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
-                column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',countryId = '" + str(Country) + "', "
-                column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "',password= '" + str(password) + "', profilePic= '" + str(PicPath) + "'"
-                data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
-                print(data,'B')
-                if (UserTypeId == 5):
-                    print('c')
-                    WhereCondition = " and userId = '" + str(UserId) + "'"
-                    column =" organization = '" + str(organization) + "',aboutProfile='" + str(aboutProfile) + "',designation='" + str(designation) + "'"
-                    output=databasefile.UpdateQuery("policyMakerMaster",column,WhereCondition)
-                if (UserTypeId == 6):
-                    WhereCondition = " and userId = '" + str(UserId) + "'"
-                    column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaofActivity) + "',profileCategoryId='" + str(profileCategoryId) + "'"
-                    output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
-                    for i in interestId:
-                        WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='6'"
-                        column="interestId='" + str(i) + "'"
-                        output1=databasefile.UpdateQuery("userInterestMapping ",column,WhereCondition)
+                #folder path to save campaign image
+                FolderPath = ConstantData.GetProfilePicPath(filename)  
 
-                if (UserTypeId == 7):
-                    WhereCondition = " and userId = '" + str(UserId) + "'"
-                    column=" address='" + str(address) + "',qualificationId  = '" + str(qualification) + "', batchOfQualification ='" + str(batchofQualification) + "', institutionName ='" + str(institutionName) + "',universityId='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "',interestId ='" + str(interestId) + "'"  
-                    output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)
-                    for i in interestId:
-                        WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='7'"
-                        column="interestId='" + str(i) + "'"
-                        output=databasefile.UpdateQuery("userInterestMapping ",column,WhereCondition)             
-                if data != "0":
-                    column = 'userId,userName,userTypeId'
-                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
-                    return data
-                else:
-                    return commonfile.Errormessage()
+                filepath = '/profilePic/' + filename    
+                print(filepath,"filepath================")
+                print(FolderPath,"FolderPathFolderPathFolderPathFolderPath")
+                file.save(FolderPath)
+                PicPath = filepath 
+                column2= column2 +" ,profilePic= '" + str(PicPath) + "' "    
+            
+            print('A')
+            WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+            column = " email = '" + str(Email) + "',countryId = '" + str(Country) + "', "
+            column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'" +column2
+            data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
+            print(data,'B')
+            if (UserTypeId == 5):
+                print('c')
+                WhereCondition = " and userId = '" + str(UserId) + "'"
+                column =" organization = '" + str(organization) + "',aboutProfile='" + str(aboutProfile) + "',designation='" + str(designation) + "'"
+                output=databasefile.UpdateQuery("policyMakerMaster",column,WhereCondition)
+            if (UserTypeId == 6):
+                WhereCondition = " and userId = '" + str(UserId) + "'"
+                column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaofActivity) + "',profileCategoryId='" + str(profileCategoryId) + "'"
+                output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
+
+                for i in interestId:
+                    WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='6'"
+                    column="interestId='" + str(i) + "'"
+                    output1=databasefile.UpdateQuery("userInterestMapping ",column,WhereCondition)
+
+            if (UserTypeId == 7):
+                WhereCondition = " and userId = '" + str(UserId) + "'"
+                column=" address='" + str(address) + "',qualificationId  = '" + str(qualification) + "', batchOfQualification ='" + str(batchofQualification) + "', institutionName ='" + str(institutionName) + "',universityId='" + str(universityName) + "',universityAddress='" + str(universityAddress) + "'"  
+                output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)
+                for i in interestId:
+                    WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='7'"
+                    column="interestId='" + str(i) + "'"
+                    output=databasefile.UpdateQuery("userInterestMapping ",column,WhereCondition)             
+            if data != "0":
+                column = 'userId,userName,userTypeId'
+                data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
+                return data
             else:
-                return msg
+                return commonfile.Errormessage()
         else:
-            return commonfile.InputKeyNotFoundMsg()
+            return msg
+       
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
@@ -1304,7 +1474,7 @@ def myPosts1():
 
 
 @app.route('/userPostDashboard', methods=['POST'])
-def userPostDashboard():
+def userPostDashboardApproved():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
@@ -1365,6 +1535,134 @@ def userPostDashboard():
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
         return output
+
+
+
+@app.route('/userPostDashboardRejected', methods=['POST'])
+def userPostDashboardRejected():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("userPostDashboard",inputdata,0)
+      
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="pm.id"
+            postId,whereCondition="",""
+
+            
+            userTypeId=inputdata["userTypeId"]
+            if 'postId' in inputdata:
+                postId=inputdata['postId']
+                whereCondition=" and pm.postId='" + str(postId) + "' "
+
+
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and pm.status=2 and upm.postId=pm.postId and upm.showUserTypeId='"+ str(userTypeId) +"' and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'" +whereCondition
+            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um,postUserTypeMapping as upm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            
+            print("11111111111111")
+            print("data",data)
+
+          
+
+            if (data!=0):
+                for i in data["result"]:
+                    if (i["status"] == 1):
+                        print(i["postId"])
+                        column="um.userName as approvedBy"
+                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        print(data1)
+                        i["approvedBy"]=data1["approvedBy"]
+                        print(data1)
+                    if (i["status"]==2):
+                        column="um.userName as rejectedBy"
+                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        print(data1)
+                        i["rejectedBy"]=data1["rejectedBy"]
+                        
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+@app.route('/userPostDashboardPending', methods=['POST'])
+def userPostDashboardPending():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("userPostDashboard",inputdata,0)
+      
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="pm.id"
+            postId,whereCondition="",""
+
+            
+            userTypeId=inputdata["userTypeId"]
+            if 'postId' in inputdata:
+                postId=inputdata['postId']
+                whereCondition=" and pm.postId='" + str(postId) + "' "
+
+
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and pm.status=0 and upm.postId=pm.postId and upm.showUserTypeId='"+ str(userTypeId) +"' and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'" +whereCondition
+            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um,postUserTypeMapping as upm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            
+            print("11111111111111")
+            print("data",data)
+
+          
+
+            if (data!=0):
+                for i in data["result"]:
+                    if (i["status"] == 1):
+                        print(i["postId"])
+                        column="um.userName as approvedBy"
+                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        print(data1)
+                        i["approvedBy"]=data1["approvedBy"]
+                        print(data1)
+                    if (i["status"]==2):
+                        column="um.userName as rejectedBy"
+                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        print(data1)
+                        i["rejectedBy"]=data1["rejectedBy"]
+                        
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output                  
 
 
 @app.route('/DeletePost', methods=['POST'])
