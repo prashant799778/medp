@@ -1894,7 +1894,7 @@ def verifyPost():
             statusid = inputdata["id"]
             print(statusid,'id')
     
-            column = "approvedUserId,postId,userTypeId"                
+            column = "approvedUserId,postId"                
             values = " '" + str(approvedUserId) + "','" + str(postId) + "'"
             data = databasefile.InsertQuery("approvedBy",column,values)
             if statusid == 1:
