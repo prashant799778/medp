@@ -134,7 +134,7 @@ align-items: center;
     padding: 2rem;
 }
 .shadow-box{
-    box-shadow: 0 1.5px 3px 0 rgba(157, 206, 255, 0.16);
+    box-shadow:0 0 10px 0 rgba(183,192,206,.2);
     border-radius: 5px;
 }
 .spc-gen{
@@ -365,6 +365,7 @@ button.togg:focus {
 .inner-top-bar{
     height: 60px;
     width: 100%;
+    box-shadow: 3px 0 10px 0 rgba(183,192,206,.2);
 }
 .search-box .form-control {
     background-color: #fff;
@@ -531,17 +532,7 @@ border: 0px;
     color: #969696;
     width: 100px;
 }
-.ab-btn {
-color: #fff;
-text-transform: uppercase;
-font-size: 14px;
-font-weight: 500;
-line-height: 1rem;
-text-align: center;
-border: 0;
-width: 120px;
-height: 28px;
-}
+
 .record-box {
 padding: 20px;
 }
@@ -693,8 +684,6 @@ width: 100%;
         line-height: 1rem;
         text-align: center;
         border: 0;
-        width: 80px;
-        height: 28px;
     }
 }
 
