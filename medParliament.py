@@ -984,13 +984,14 @@ def UpdateUser1():
                 output=databasefile.UpdateQuery("studentMaster",column,WhereCondition)
 
                 if interestId!="":
-                    WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='7'"
-                    output=databasefile.DeleteQuery("userInterestMapping",WhereCondition)
+                    WhereCondition1 = " and userId = '" + str(UserId) + "' and userTypeId='7'"
+                    output8=databasefile.DeleteQuery("userInterestMapping",WhereCondition1)
 
                     for i in interestId:
-                        WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='7'"
-                        column="interestId='" + str(i) + "'"
-                        output1=databasefile.UpdateQuery("userInterestMapping ",column,WhereCondition)             
+                        column="userId,interestId,userTypeId"
+                        values=" '" + str(UserId) + "','" + str(i) + "','" + str('7') + "'"
+                        
+                        output9=databasefile.InsertQuery("userInterestMapping",column,values)            
             if data != "0":
                 column = 'userId,userName,userTypeId'
                 data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
