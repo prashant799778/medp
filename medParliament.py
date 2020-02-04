@@ -865,7 +865,7 @@ def UpdateUser():
             address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
             filename,PicPath,Password,Gender,Country,City,MobileNo="","","123","","","",""
             UserId = inputdata["userId"]
-            UserName = inputdata["userName"]
+            UserName = int(inputdata["userName"])
            
             Email = inputdata["email"] 
            
