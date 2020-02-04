@@ -13,6 +13,9 @@ body{
     box-shadow: none;
 }
 /*All Use*/
+.border-remo{
+    border: 0px !important;
+}
 .bck-approved{
     background-image: linear-gradient(to bottom, #6aa5e3, #6866e9);
     color:#fff;

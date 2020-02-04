@@ -102,3 +102,42 @@
     margin-top: 2rem;
     margin-bottom: 0px;
 }
+.inner-model-box {
+    width: 100%;
+    padding: 15px;
+}
+.inner-model-box span {
+    font-size: 1rem;
+    font-weight: 500;
+}
+.mod-btn {
+    border-radius: 4px;
+    margin-top: 2rem;
+    width: 48%;
+    height: 50px;
+}
+.mod-btn:first-child {
+    margin-right: 1rem;
+}
+.cl-img img {
+    width: 20px;
+}
+img.altr {
+    width: 100px;
+}
+.dc-act h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+.dc-act {
+    margin-left: 1rem;
+}
+.fill-back{
+    background: #f44336;
+    color: #fff;
+}
+.fill-back-ac{
+    background: #50af50;
+    color: #fff;
+}

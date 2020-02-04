@@ -113,6 +113,7 @@ export class PostsComponent implements OnInit {
 		}
   }
   policyDetail(id,userTypeId){
+    
 		this.router.navigate(['/policyDetails'],{queryParams: {id: id,userTypeId: userTypeId}})
 	}
 
