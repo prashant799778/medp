@@ -20,7 +20,8 @@
               <li *ngIf="userProfile && userProfile.userName">{{userProfile.userName}}</li>
               <li *ngIf="userProfile && userProfile.designation">{{userProfile.designation}} , +91 {{userProfile.mobileNo}} </li>
               <li *ngIf="userProfile && userProfile.email">{{userProfile.email}}</li>
-              <li *ngIf="userProfile && userProfile.organization"> Oragnization{{userProfile.organization}}  </li>
+            </ul>
+              <!-- <li *ngIf="userProfile && userProfile.organization"> Oragnization{{userProfile.organization}}  </li>
               <li *ngIf="userProfile && userProfile.qualificationName"> Qualification : {{userProfile.qualificationName}}  </li>
               <li *ngIf="userProfile && userProfile.universityName">University Name : {{userProfile.universityName}}  </li>
               <li *ngIf="userProfile && userProfile.universityAddress">University Address : {{userProfile.universityAddress}}  </li>
@@ -36,11 +37,28 @@
                         <li *ngFor="let interest of userProfile.userInterest; let i =  index"> {{i+1}}. {{interest}}</li>
                   </span>
                   
-            </li>
-              
-             
-            </ul>
+            </li> -->
             <div class="spc-gen"></div>
+            <div class="more-info">
+              <h3 class="short-profile mr-remove">Additional Information</h3>
+              <ul class="add-infolist">
+                <li *ngIf="userProfile && userProfile.qualificationName">
+                  <h3>Qualification :</h3>
+                  <h4>{{userProfile.qualificationName}}</h4>
+                <li  *ngIf="userProfile && userProfile.batchOfQualification">
+                  <h3>Batch Year :</h3>
+                  <h4>{{userProfile.batchOfQualification}}</h4>
+                </li>
+                <li  *ngIf="userProfile && userProfile.institutionName">
+                  <h3>Name of Institution:</h3>
+                  <h4>{{userProfile.institutionName}}</h4>
+                </li>
+                <li *ngIf="userProfile && userProfile.universityName">
+                  <h3>University:</h3>
+                  <h4>{{userProfile.universityName}}</h4>
+                </li>
+              </ul>
+            </div>
             <h3 *ngIf="userProfile && userProfile.aboutProfile" class="short-profile mr-remove">Short Profile</h3>
             <div class="short-blog">
               <p *ngIf="userProfile && userProfile.aboutProfile">

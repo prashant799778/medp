@@ -8,8 +8,19 @@
 body{
     background: #f5f5f5;
 }
-
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
 /*All Use*/
+.edit-btn img, .delet-btn img{
+    width: 15px;
+}
+
+.btn:hover {
+    color: #fff;
+    text-decoration: none;
+}
 .edit-btn {
     padding: 8px 22px;
     border: 0;

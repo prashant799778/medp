@@ -36,14 +36,18 @@
                               <!-- <td>{{getGender(policy.gender)}}</td> -->
                               <td>{{policy.password}}</td>
                               <td>
-                                   <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">ACTIVE</button>
+                                   <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">ACTIVE</button>
                                    <button *ngIf="postStatus[i]== 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">DEACTIVE</button>
                             
                                 </td>
                               <td>
                                     <div class="btn-edit-group">
-                                            <button type="button" class="edit-btn" (click)="EditDetails(policy.userId, policy.userTypeId)">Edit</button>
-                                            <button type="button" class="delet-btn">Delete</button>
+                                            <button type="button" class="edit-btn" (click)="EditDetails(policy.userId, policy.userTypeId)">
+                                                <img src="../../../assets/images/edit.svg">
+                                            </button>
+                                            <button type="button" class="delet-btn">
+                                                <img src="../../../assets/images/delete.svg">
+                                            </button>
                                         </div>
                                    <!-- <button type="button" class="acton-btn" (click)="policyDetail(policy.userId, policy.userTypeId)">
                                     <img src="../../../assets/images/view.svg" class="action-view">

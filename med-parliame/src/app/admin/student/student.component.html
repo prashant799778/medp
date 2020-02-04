@@ -34,7 +34,7 @@
                                       <!-- <td>{{subAdmin.mobileNo}}</td> -->
                                       <td>{{subAdmin.password}}</td>
                                       <td class="txt-color-r text-uppercase">
-                                            <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">ACTIVE</button>
+                                            <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">ACTIVE</button>
                                             <button *ngIf="postStatus[i]== 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">DEACTIVE</button>
                                      
                                       </td>
@@ -43,8 +43,8 @@
                                               <img src="../../assets/images/view.svg" class="action-view">
                                           </button> -->
                                           <div class="btn-edit-group">
-                                            <button type="button" class="edit-btn" (click)="EditDetails(subAdmin.userId, subAdmin.userTypeId)">Edit</button>
-                                            <button type="button" class="delet-btn" (click)="deleteAdmin(subAdmin.userId, subAdmin.userTypeId)">Delete</button>
+                                            <button type="button" class="edit-btn" (click)="EditDetails(subAdmin.userId, subAdmin.userTypeId)">  <img src="../../../assets/images/edit.svg"></button>
+                                            <button type="button" class="delet-btn" (click)="deleteAdmin(subAdmin.userId, subAdmin.userTypeId)">  <img src="../../../assets/images/delete.svg"></button>
                                         </div>
                                       </td>
                                   </tr>
