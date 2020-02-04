@@ -1,0 +1,22 @@
+.edit-btn {
+    border-radius: 50%;
+    padding: 0px;
+    background-color: #888;
+    padding: 6px!important;
+    height: 30px;
+    width: 30px;
+    margin: 2px;
+    color: #fff;
+    box-shadow: 0 5px 25px 0 rgba(0,0,0,.2)!important;
+}
+.delet-btn{
+    border-radius: 50%;
+    padding: 0px;
+    background-color: #f75353;
+    padding: 6px!important;
+    height: 30px;
+    width: 30px;
+    margin: 2px;
+    color: #fff;
+    box-shadow: 0 5px 25px 0 rgba(0,0,0,.2)!important;
+}
