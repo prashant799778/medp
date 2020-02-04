@@ -853,7 +853,9 @@ def UpdateUser():
         startlimit,endlimit="",""
         if request.data:
             print('2')
-            inputdata = commonfile.DecodeInputdata(request.get_data())         
+            inputdata = request.form.get('data') 
+            print("===========================",inputdata)      
+            inputdata = json.loads(inputdata)        
             keyarr = ['userId','userName','email','userTypeId']
             commonfile.writeLog("UpdateUser",inputdata,0)
             msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
@@ -861,7 +863,7 @@ def UpdateUser():
                 print('3')
                 organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","",""
                 address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
-                Password,Gender,Country,City,MobileNo="","","","",""
+                filename,PicPath,Password,Gender,Country,City,MobileNo="","","123","","","",""
                 UserId = inputdata["userId"]
                 UserName = inputdata["userName"]
                
@@ -872,7 +874,8 @@ def UpdateUser():
                 UserTypeId= inputdata["userTypeId"]
                 if 'password' in inputdata:                    
                     Password = inputdata["password"]   
-                if 'mobileNo' in inputdata:                    
+                if 'mobileNo' in inputdata:               
+
                     MobileNo = inputdata["mobileNo"]  
 
                 if 'country' in inputdata:                    
@@ -931,10 +934,27 @@ def UpdateUser():
 
                 if 'universityAddress' in inputdata:                    
                     universityAddress = inputdata['universityAddress']
+                if 'postImage' in request.files:  
+                    print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
+                    file = request.files.get('postImage')        
+                    filename = file.filename or ''  
+                    print(filename)               
+                    filename= str(UserId)+".png"
+                    #filename = filename.replace("'","") 
+
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.GetProfilePicPath(filename)  
+
+                    filepath = '/profilePic/' + filename    
+                    print(filepath,"filepath================")
+                    print(FolderPath,"FolderPathFolderPathFolderPathFolderPath")
+                    file.save(FolderPath)
+                    PicPath = filepath    
+                
                 print('A')
                 WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
                 column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',countryId = '" + str(Country) + "', "
-                column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "',password= '" + str(password) + "' "
+                column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "',password= '" + str(password) + "', profilePic= '" + str(PicPath) + "'"
                 data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
                 print(data,'B')
                 if (UserTypeId == 5):
