@@ -128,7 +128,7 @@ button:focus {
 }
 .dc-bg-color-panding{
     border:1px solid #9627b0;
-    color:#9627b0;
+    color:#9627b0 !important;
 }
 .dc-bg-color-approve{
      background-image: linear-gradient(to bottom, #53fb5e, #1d9e29);
