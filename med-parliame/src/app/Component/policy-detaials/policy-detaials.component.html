@@ -6,7 +6,7 @@
             <img class="image-set" src="../../../assets/images/post-im.svg">
         </div>
         <ul class="sub-heading d-flex al-item mr-remove">
-                <li (click)="goto('/dashboard')">Dashboard /</li>
+                <li *ngIf="dashboardssCheck == 'dashboard'" (click)="goto('/dashboard')">Dashboard /</li>
                 <li>Post Details</li>
               </ul> 
       </div>
