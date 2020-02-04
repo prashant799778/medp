@@ -953,12 +953,12 @@ def UpdateUser():
                 print(FolderPath,"FolderPathFolderPathFolderPathFolderPath")
                 file.save(FolderPath)
                 PicPath = filepath 
-                column=" profilePic= '" + str(PicPath) + "',"    
+                column2=" ,profilePic= '" + str(PicPath) + "' "    
             
             print('A')
             WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
-            column = column+" email = '" + str(Email) + "',countryId = '" + str(Country) + "', "
-            column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'"
+            column = " email = '" + str(Email) + "',countryId = '" + str(Country) + "', "
+            column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'" +column2
             data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
             print(data,'B')
             if (UserTypeId == 5):
