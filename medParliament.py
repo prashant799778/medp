@@ -1424,7 +1424,7 @@ def myPosts1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        keyarr = ['userId','userTypeId']
+        keyarr = ['userId','userTypeId','status']
         print(inputdata,"B")
         commonfile.writeLog("myPosts",inputdata,0)
       
@@ -1434,8 +1434,9 @@ def myPosts1():
             
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
+            ststus=inputdata["ststus"]
             column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition=" and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
+            WhereCondition=" and pm.status='" + str(status) + "' and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
           
 
