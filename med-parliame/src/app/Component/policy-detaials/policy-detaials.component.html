@@ -25,7 +25,7 @@
               </p>
             </div>
             
-            <div class="bottom-section same-margin" *ngIf="!superLogin">
+            <div class="bottom-section same-margin" >
               <ul class="group-action-button mr-remove d-flex al-item " *ngIf="onlyView">
                 <li class="bg-color-blu" ><a href="javascript:void(0)" (click)="Approved(1)" >Approve</a></li>
                 <li class="bg-color-l-black"><a href="javascript:void(0)" (click)="Approved(3)">On Hold</a></li>
@@ -46,8 +46,8 @@
           </div>
           <div class="modal-body" *ngIf="!beforeApproved">
               
-            <button *ngIf="approvedModal == 0" (click)="Approve(1)"> Approved</button>
-            <button *ngIf="approvedModal == 1" (click)="Approve(3)"> OnHold</button>
+            <button *ngIf="approvedModal == 1" (click)="Approve(1)"> Approved</button>
+            <button *ngIf="approvedModal == 3" (click)="Approve(3)"> OnHold</button>
             <button *ngIf="approvedModal == 2" (click)="Approve(2)"> Rejected</button>
           </div>
           <div class="modal-body" *ngIf="beforeApproved">
