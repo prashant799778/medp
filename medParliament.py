@@ -876,7 +876,10 @@ def UpdateUser():
                 Password = inputdata["password"]   
             if 'mobileNo' in inputdata:               
 
-                MobileNo = inputdata["mobileNo"]  
+                MobileNo = inputdata["mobileNo"]
+
+            if Country == "":
+                Country='0'        
 
             if 'country' in inputdata:                    
                 Country = inputdata["country"]  
