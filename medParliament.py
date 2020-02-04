@@ -1471,7 +1471,7 @@ def myPosts1():
 
 
 
-@app.route('/userPostDashboardApproved', methods=['POST'])
+@app.route('/userPostDashboard', methods=['POST'])
 def userPostDashboardApproved():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
