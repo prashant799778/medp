@@ -865,13 +865,13 @@ def UpdateUser():
             address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
             filename,PicPath,Password,Gender,Country,City,MobileNo="","","123","","","",""
             UserId = inputdata["userId"]
-            UserName = int(inputdata["userName"])
+            UserName = inputdata["userName"]
            
             Email = inputdata["email"] 
            
             # Password = inputdata["password"]
             
-            UserTypeId= inputdata["userTypeId"]
+            UserTypeId= int(inputdata["userTypeId"])
             if 'password' in inputdata:                    
                 Password = inputdata["password"]   
             if 'mobileNo' in inputdata:               
