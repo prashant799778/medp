@@ -954,7 +954,7 @@ def UpdateUser():
                 print('A')
                 WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
                 column = " email = '" + str(Email) + "',gender = '" + str(Gender) + "',countryId = '" + str(Country) + "', "
-                column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "',password= '" + str(password) + "', profilePic= '" + str(PicPath) + "'"
+                column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "', profilePic= '" + str(PicPath) + "'"
                 data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
                 print(data,'B')
                 if (UserTypeId == 5):
