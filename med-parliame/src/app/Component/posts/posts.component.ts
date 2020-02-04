@@ -16,6 +16,7 @@ export class PostsComponent implements OnInit {
   postStatus = [];
   id: any;
   userTypeId: any;
+  dashboardssCheck
   constructor(public userService: UserServiceService,
     public authsService: AuthsService,
     public local: LocalStorageService,
@@ -25,6 +26,7 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
+      this.dashboardssCheck = params['dashboard']
       if(this.id == 5){
         let datas = {
           'userTypeId': 5

@@ -19,6 +19,7 @@ export class PolicyDetaialsComponent implements OnInit {
 	onlyView: boolean
 	superLogin: boolean;
 	locations: any;
+	dashboardssCheck: any;
 	constructor(private route: ActivatedRoute, private router: Router,
 				public local: LocalStorageService,
 				public userService: UserServiceService) {
@@ -26,9 +27,15 @@ export class PolicyDetaialsComponent implements OnInit {
 				 }
 
 	ngOnInit() {
-		this.locations = window.location.href
-			console.log(this.locations)
-		this.locations = this.locations.split('/dashboard')
+		this.route.queryParams.subscribe(params => {
+		
+		
+			this.id = params['id'];
+			this.dashboardssCheck = params['dashboard']
+		})
+		// this.locations = window.location.href
+		// 	console.log(this.locations)
+		// // this.locations = this.locations.split('/dashboard')
 		console.log(this.locations)
 		// console.log(this.local.get('userData2').superLogin)
 		if(this.local.get('userData2') && this.local.get('userData2').superLogin == 'yes'){
@@ -82,7 +89,13 @@ export class PolicyDetaialsComponent implements OnInit {
 		// if(window.location.href == ){
 
 		// }
-		this.router.navigateByUrl('/allPosts')
+		console.log(this.dashboardssCheck)
+		if(this.dashboardssCheck == 'dashboard'){
+			this.router.navigateByUrl('/dashboard')
+		}else{
+			this.router.navigateByUrl('/allPosts')
+		}
+		
 	}
 	goto(id){
 		this.router.navigateByUrl(id)

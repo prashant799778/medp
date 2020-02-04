@@ -66,8 +66,8 @@
               </p>
               <div class="bottom-section same-margin admin-action" >
                 <ul class="group-action-button mr-remove d-flex al-item " >
-                  <li class="bg-color-blu" *ngIf="userProfile.status == 1" (click)="activatedStduent()"><a href="javascript:void(0)">Active</a></li>
-                  <li class="bg-color-l-black" *ngIf="userProfile.status == 0" (click)="activatedStduent()"><a href="javascript:void(0)">Deactive</a></li>
+                  <li class="bg-color-blu" *ngIf=" userProfile && userProfile.status == 1" (click)="activatedStduent()"><a href="javascript:void(0)">Active</a></li>
+                  <li class="bg-color-l-black" *ngIf="userProfile && userProfile.status == 0" (click)="activatedStduent()"><a href="javascript:void(0)">Deactive</a></li>
                 </ul>
               </div>
 

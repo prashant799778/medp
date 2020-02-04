@@ -87,9 +87,9 @@
                                       <td *ngIf="post && !post.approvedBy"class="txt-color-r text-uppercase">{{post.rejectedBy}}</td>
                                       <td *ngIf="post && post.approvedBy"class="txt-color-r text-uppercase">{{post.approvedBy}}</td>
                                       <td (onCreate)="getStatus(post.status,i)">
-                                          <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-one border-round-rem">pending</button>
-                                          <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">approved</button>
-                                          <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button>
+                                          <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-one border-round-rem">Pending</button>
+                                          <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">Approved</button>
+                                          <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">Reject</button>
                                       </td>
                                       <td><button type="button" class="acton-btn" (click)="policyDetail(post.postId, post.userTypeId)">
                                         <img src="../../../assets/images/view.svg" class="action-view">
@@ -187,9 +187,9 @@
                                                 <td>{{subAdmin.DateCreate | date}}</td>
                                                 <td>{{subAdmin.postTitle}}</td>
                                                 <td class="txt-color-r text-uppercase">
-                                                        <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-one border-round-rem">pending</button>
-                                                        <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">approved</button>
-                                                        <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button>
+                                                        <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-one border-round-rem">Pending</button>
+                                                        <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-two border-round-rem">Approved</button>
+                                                        <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">Rejected</button>
                                                 </td>
                                                 <td>
                                                     <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">

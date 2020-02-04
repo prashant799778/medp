@@ -169,6 +169,8 @@ export class ProfileComponent implements OnInit {
 
 		}else if(this.userTypeId == '7'){
 			this.router.navigateByUrl('/studentsList')
+		}else if(this.userTypeId == '6'){
+			this.router.navigateByUrl('/enterpenure')
 		}
 	}
 

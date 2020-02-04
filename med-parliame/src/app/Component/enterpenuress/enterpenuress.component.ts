@@ -27,6 +27,15 @@ export class EnterpenuressComponent implements OnInit {
 		  })
 
 	}
+	getGender(value){
+		if(value == '0'){
+			return 'Male'
+		}else if(value == '1'){
+			return 'Female'
+		}else{
+			return 'Other'
+		}
+	}
 	getStatus(status){
 
 		if(status == '0'){
@@ -39,6 +48,6 @@ export class EnterpenuressComponent implements OnInit {
   }
 
   policyDetail(id){
-	this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: 5}})
+	this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: 6}})
 	}
 }
