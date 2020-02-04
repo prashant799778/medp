@@ -691,12 +691,12 @@ def studentMasterPannel():
 @app.route('/allstudents', methods=['GET'])
 def allstudents():
     try:
-        column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
+        column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,un.universityName,qm.qualificationName,"
         column=column+" pm.address,pm.qualificationId,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId,um.status "
         startlimit,endlimit="",""
-        WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId"
+        WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId  and un.id=pm.universityId and qm.id=pm.qualificationId"
         
-        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm,universityMaster as un,qualificationMaster as qm",column,WhereCondition,""," ",startlimit,endlimit)
       
         
         
