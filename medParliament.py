@@ -857,6 +857,7 @@ def UpdateUser():
             print("===========================",inputdata)      
             inputdata = json.loads(inputdata)        
             keyarr = ['userId','userName','email','userTypeId']
+            print(inputdata)
             commonfile.writeLog("UpdateUser",inputdata,0)
             msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
             if msg == "1":
