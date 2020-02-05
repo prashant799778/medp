@@ -660,8 +660,8 @@ def policyMakerPannel():
         column="count(*) as count"
         startlimit,endlimit="",""
         WhereCondition=" and usertypeId='5'"
-        whereCondition=" and usertypeId='2'and status=1 and  approvedUserId='" + str(userId) + "'"
-        whereCondition2=" and usertypeId='2'and status=2 and  approvedUserId='" + str(userId) + "'"
+        whereCondition=" and status=1 and  approvedUserId='" + str(userId) + "'"
+        whereCondition2=" and status=2 and  approvedUserId='" + str(userId) + "'"
 
         
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
@@ -738,8 +738,8 @@ def enterprenuerMasterPannel():
         column="count(*) as count"
         startlimit,endlimit="",""
         WhereCondition=" and usertypeId='6'"
-        whereCondition=" and usertypeId='3'and status='1' and  approvedUserId='" + str(userId) + "'"
-        whereCondition2=" and usertypeId='3'and status='2' and  approvedUserId='" + str(userId) + "'"
+        whereCondition="and status='1' and  approvedUserId='" + str(userId) + "'"
+        whereCondition2="and status='2' and  approvedUserId='" + str(userId) + "'"
 
         
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
@@ -852,8 +852,8 @@ def studentMasterPannel():
         column="count(*) as count"
         startlimit,endlimit="",""
         WhereCondition=" and usertypeId='7'"
-        whereCondition=" and usertypeId='4'and status='1' and  approvedUserId='" + str(userId) + "'"
-        whereCondition2=" and usertypeId='4'and status='2' and  approvedUserId='" + str(userId) + "'"
+        whereCondition=" and status='1' and  approvedUserId='" + str(userId) + "'"
+        whereCondition2=" and status='2' and  approvedUserId='" + str(userId) + "'"
 
         
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
