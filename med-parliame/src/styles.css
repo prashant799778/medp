@@ -291,12 +291,10 @@ span.line-bar {
 }
 button.togg {
     position: absolute;
-    left: 250px;
     top: 10px;
     border: none;
     background: #fff;
     padding: 10px;
-    z-index: 9;
     transition: all 500ms linear;
 }
 button.togg:focus {
@@ -345,6 +343,8 @@ button.togg:focus {
     font-weight: bold;
     color: #707070;
     margin: 0;
+    margin-top: 10px;
+    margin-bottom: 7px;
 }
 .user-description h3 {
     font-size: 0.9rem;
@@ -382,11 +382,26 @@ button.togg:focus {
     display: none;
 }
 
-.user-panel{
-    width: 100%; 
+.user-panel {
+    width: 100%;
+    display: block;
+    margin-top: 1.6rem;
 }
 
-
+.user-image {
+    width: 35% !important;
+    height: auto !important;
+    max-width: 75px;
+    margin: 0 auto;
+    border-radius: 15% !important;
+    border: 2px solid #dadada !important;
+}
+.user-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 /* End Sidebar Section*/
 
 
@@ -424,9 +439,8 @@ button.togg:focus {
     margin: 0;
 }
 .top-wrap-box {
-    justify-content: flex-end;
     align-items: center;
-    margin: 0.5rem 20px;
+    margin: 0.5rem 0px;
 }
 .top-bar-option ul li {
     margin-right: 2rem;
@@ -439,6 +453,10 @@ button.togg:focus {
 
 
 /* Main Content box*/
+button.btn {
+    cursor: unset !important;
+}
+
 .dashboard-section {
     margin: 2rem 15px;
 }
@@ -693,12 +711,10 @@ width: 100%;
     }
     button.togg {
         position: absolute;
-        left: 400px;
         top: 32px;
         border: none;
         background: #fff;
         padding: 10px;
-        z-index: 9;
         transition: all 500ms linear;
 }
 .top-bar {
@@ -715,9 +731,8 @@ width: 100%;
     width: 100%;
 }
 .top-wrap-box {
-    justify-content: flex-end;
     align-items: center;
-    margin: 1.5rem 20px;
+    margin: 1.5rem 0px;
     }
     .record-box tbody tr td {
         vertical-align: middle;
