@@ -660,8 +660,8 @@ def policyMakerPannel():
         column="count(*) as count"
         startlimit,endlimit="",""
         WhereCondition=" and usertypeId='5'"
-        whereCondition=" and usertypeId='2'and status='1' and  approvedUserId='" + str(userId) + "'"
-        whereCondition2=" and usertypeId='2'and status='2' and  approvedUserId='" + str(userId) + "'"
+        whereCondition=" and usertypeId='2'and status=1 and  approvedUserId='" + str(userId) + "'"
+        whereCondition2=" and usertypeId='2'and status=2 and  approvedUserId='" + str(userId) + "'"
 
         
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
