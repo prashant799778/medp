@@ -35,7 +35,7 @@
         </div> 
     </div>
     <!--  Start Approve pop Modal-->
-    <div class="modal fade" id="approv-pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!-- <div class="modal fade" id="approv-pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -56,10 +56,66 @@
               </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- End Approve pop Modal-->
 </div>
 </div>
+
+
+
+
+<div class="modal fade" id="approv-pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <template>
+                <div class="modal-header border-remo">
+                <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                    <!-- <span aria-hidden="true">&times;</span> -->
+                    <img src="../../../assets/images/close-im.svg">
+                </button>
+                </div>
+            </template>
+            <div class="modal-body" *ngIf="!activatedds">
+                
+                <div class="inner-model-box same-margin" *ngIf="approvedModal == 2">
+                    <div class="d-flex al-item">
+                        <img src="../../../assets/images/caution.svg" class="altr">
+                        <div class="dc-act">
+                            <h3>Reject Account</h3>
+                            <span >Are you want to reject this post ?</span>
+                        </div>
+                    </div>
+                    <div class="grp-btn text-center">
+                        <button *ngIf="approvedModal == 2" (click)="closeMOdal()" class="mod-btn dc-bg-color-gray">Cancel</button>
+                        <button *ngIf="approvedModal == 2" (click)="Approve(2)" class="mod-btn fill-back">Reject</button>
+                    </div>
+                    </div>
+                <div class="inner-model-box" *ngIf="approvedModal == 1">
+                        <div class="d-flex al-item">
+                                <img src="../../../assets/images/caution-ac.svg" class="altr">
+                                <div class="dc-act">
+                                    <h3>Approved Account</h3>
+                                    <span >Are you want to approve this post ?</span>
+                                </div>
+                            </div>
+
+                            <div class="grp-btn text-center">
+                                    <button *ngIf="approvedModal == 1" (click)="closeMOdal()" class="mod-btn dc-bg-color-gray">Cancel</button>
+                                    <button *ngIf="approvedModal == 1" (click)="Approve(1)" class="mod-btn fill-back-ac">Approve</button>
+                            </div>
+                    </div>
+                <!-- <h2>{{modalDescription}}</h2> -->
+            </div>
+            <div class="modal-body" *ngIf="activatedds">
+                    <!-- <span *ngIf="userProfile && userProfile.status == 0">Are you what to sure Deactivated</span>
+                    <span *ngIf="userProfile && userProfile.status == 1">Are you what to sure activated</span>
+                    <button *ngIf="userProfile && userProfile.status == 0" (click)="ActiveStudent()">Deactivated</button>
+                    <button *ngIf="userProfile && userProfile.status == 1" (click)="ActiveStudent()">Activated</button> -->
+                  <h2>Done</h2>
+                </div>
+          </div>
+        </div>
+      </div>
 
 
 
