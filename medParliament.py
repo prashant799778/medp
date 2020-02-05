@@ -1619,8 +1619,7 @@ def allPosts2():
                 return Data
             else:
                 output = {"status":"false","message":"No Data Found","result":""}
-                retur
-                n output
+                return output
         else:
             return msg         
 
