@@ -357,7 +357,7 @@ def allSubAdmins():
                 whereCondition=" and userId='" + str(userId) + "' "
             
             column="*"
-            WhereCondition=" and userTypeId='" + str(userTypeId) + "'"+whereCondition
+            WhereCondition=" and status<>'2' and userTypeId='" + str(userTypeId) + "'"+whereCondition
             data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
             print(data)
 
