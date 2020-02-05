@@ -1399,7 +1399,7 @@ def allPosts2():
                         WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
                         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
                         print(data1)
-                        if data1["message"]=='No Data Found':
+                        if "message" in data1:
                             pass
                         else:
                             i["approvedBy"]=data1["approvedBy"]
@@ -1409,7 +1409,7 @@ def allPosts2():
                         WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
                         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
                         print(data1)
-                        if data1["message"]=='No Data Found':
+                        if "message" in data1:
                             pass
                         else:
                             i["rejectedBy"]=data1["rejectedBy"]
