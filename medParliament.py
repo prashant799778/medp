@@ -696,12 +696,12 @@ def policyMakerPannel():
 def allpolicyMakers():
     try:
         column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
-        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status"
+        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
         startlimit,endlimit="",""
-        WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId "
+        WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId  and um.countryId=cm.id"
 
         
-        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
 
       
         
@@ -1619,7 +1619,8 @@ def allPosts2():
                 return Data
             else:
                 output = {"status":"false","message":"No Data Found","result":""}
-                return output
+                retur
+                n output
         else:
             return msg         
 
