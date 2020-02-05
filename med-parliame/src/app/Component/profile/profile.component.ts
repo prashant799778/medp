@@ -61,7 +61,7 @@ export class ProfileComponent implements OnInit {
 					console.log(this.adminlist1)
 				}else if(this.AdminsDetails == '6'){
 					this.adminlist1 = 'User /'
-					this.adminlist2 = 'Enterpenure /'
+					this.adminlist2 = 'Entrepreneur /'
 				}
 
 				
