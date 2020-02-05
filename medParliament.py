@@ -212,7 +212,7 @@ def login():
       
         if  (loginuser["status"]!="false"): 
             if loginuser["result"][0]["profilePic"]==None:
-                    loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                    loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/profilePic.jpg"
             else:
                 loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(loginuser["result"][0]["profilePic"])
             Data = {"status":"true","message":"","result":loginuser["result"]}                  
@@ -633,7 +633,7 @@ def totalAdmins():
                 print("111111111111111")
                 for i in data['result']:
                     if i["profilePic"]==None:
-                        i["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"          
+                        i["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/profilePic.jpg"          
                 Data = {"status":"true","message":"","result":data["result"]}
                 return Data
             else:
