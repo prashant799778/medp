@@ -617,7 +617,7 @@ def totalAdmins():
             orderby="um.id"
            
             column="um.userName as userName,ut.userName as userType,um.userTypeId as userTypeId,um.id,um.email as email,um.profilePic"
-            WhereCondition=" and um.userTypeId>'1' and um.userTypeId<'5' and um.userTypeId=ut.id "
+            WhereCondition=" and um.userTypeId>'1' and um.userTypeId<'5' and um.userTypeId=ut.id  and um.status<>2"
             data = databasefile.SelectQueryOrderby("userMaster as um,userTypeMaster as ut",column,WhereCondition,"",startlimit,endlimit,orderby)
             count=len(data["result"])
            
@@ -852,8 +852,8 @@ def studentMasterPannel():
         column="count(*) as count"
         startlimit,endlimit="",""
         WhereCondition=" and usertypeId='7'"
-        whereCondition=" and status='1' and  approvedUserId='" + str(userId) + "'"
-        whereCondition2=" and status='2' and  approvedUserId='" + str(userId) + "'"
+        whereCondition="and status='1' and  approvedUserId='" + str(userId) + "'"
+        whereCondition2="and status='2' and  approvedUserId='" + str(userId) + "'"
 
         
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
@@ -1657,7 +1657,7 @@ def myPosts1():
                     if (i["status"] == 1):
                         print(i["postId"])
                         column="um.userName as approvedBy"
-                        WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
                         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
                         print(data1)
                         if "message" in data1:
@@ -1667,7 +1667,7 @@ def myPosts1():
                         print(data1)
                     if (i["status"]==2):
                         column="um.userName as rejectedBy"
-                        WhereCondition="and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
                         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
                         print(data1)
                         if "message" in data1:
