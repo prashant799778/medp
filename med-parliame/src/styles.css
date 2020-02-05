@@ -93,6 +93,14 @@ button:focus {
     width: 100%;
     position: relative;
 }
+.fill-back {
+    background: #f44336;
+    color: #fff;
+}
+.fill-back-ac {
+    background: #50af50;
+    color: #fff;
+}
 .dc-bg-color-one{
     border-image-source:linear-gradient(91deg, #c694f9 0%, #ab64f4 100%) !important;
     border-style: solid !important;
