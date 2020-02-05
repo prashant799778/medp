@@ -616,7 +616,7 @@ def totalAdmins():
         if msg =="1":
             orderby="um.id"
            
-            column="um.userName as userName,ut.userName as userType,um.userTypeId as userTypeId,um.id,um.email as email"
+            column="um.userName as userName,ut.userName as userType,um.userTypeId as userTypeId,um.id,um.email as email,um.profilePic"
             WhereCondition=" and um.userTypeId>'1' and um.userTypeId<'5' and um.userTypeId=ut.id "
             data = databasefile.SelectQueryOrderby("userMaster as um,userTypeMaster as ut",column,WhereCondition,"",startlimit,endlimit,orderby)
             count=len(data["result"])
@@ -630,7 +630,10 @@ def totalAdmins():
             print(count)
 
             if (data["status"]!="false"): 
-                print("111111111111111")          
+                print("111111111111111")
+                for i in data['result']:
+                    if i["profilePic"]==None:
+                        i["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"          
                 Data = {"status":"true","message":"","result":data["result"]}
                 return Data
             else:
