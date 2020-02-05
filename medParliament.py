@@ -1657,7 +1657,7 @@ def myPosts1():
                     if (i["status"] == 1):
                         print(i["postId"])
                         column="um.userName as approvedBy"
-                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
                         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
                         print(data1)
                         if "message" in data1:
@@ -1667,7 +1667,7 @@ def myPosts1():
                         print(data1)
                     if (i["status"]==2):
                         column="um.userName as rejectedBy"
-                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        WhereCondition="and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
                         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
                         print(data1)
                         if "message" in data1:
