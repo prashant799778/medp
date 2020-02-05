@@ -368,12 +368,7 @@ button.togg:focus {
     color: #707070;
     margin: 0;
 }
-.side-bar-menu {
-    margin: 0 1rem;
-}
-.side-menu {
-    padding-top: 2rem;
-}
+
 .side-menu ul li {
     align-items: center;
     margin-bottom: 1.2rem;
@@ -417,6 +412,30 @@ button.togg:focus {
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+.scroll-side{
+    position: relative;
+    padding-top: 1rem;
+}
+.side-menu {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    height: 400px;
+}
+.side-menu::-webkit-scrollbar-thumb {
+    background: #555;
+}
+
+.side-menu::-webkit-scrollbar-track {
+    background: #fff;
+    height: 20px;
+}
+.side-menu::-webkit-scrollbar {
+    width: 4px;
+    height: 30px;
+}
+.side-menu ul {
+    padding: 0 1rem;
 }
 /* End Sidebar Section*/
 
