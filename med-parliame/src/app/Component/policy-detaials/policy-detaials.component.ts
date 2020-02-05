@@ -22,10 +22,12 @@ export class PolicyDetaialsComponent implements OnInit {
 	dashboardssCheck: any;
 	beforeApproved: boolean;
 	approvedModal: any;
+	activatedds: boolean;
 	constructor(private route: ActivatedRoute, private router: Router,
 				public local: LocalStorageService,
 				public userService: UserServiceService) {
 					this.beforeApproved =false;
+					this.activatedds = false
 				 }
 
 	ngOnInit() {
@@ -74,31 +76,37 @@ export class PolicyDetaialsComponent implements OnInit {
 			this.userService.dataPostApi(data, AppSettings.VerifyPost).then(resp =>{
 				if(resp['status']== 'true'){
 					
-					if(id == '1'){
-						this.modalDescription = ' Post Approved Successfully'
-					}else{
-						this.modalDescription = ' Post Rejected Successfully'
-					}
-					this.beforeApproved = true;
+					// if(id == '1'){
+					// 	this.modalDescription = ' Post Approved Successfully'
+					// }else{
+					// 	this.modalDescription = ' Post Rejected Successfully'
+					// }
+					// this.beforeApproved = true;
+					this.onlyView = false;
+					this.activatedds = true;
+					setTimeout(()=>{
+						jQuery('#approv-pop').modal("hide")
+					},2000)
 				}
 			})
 		}else{
-			jQuery('#approv-pop').modal('show')
-			this.modalDescription = 'Post OnHold'
+			// jQuery('#approv-pop').modal('show')
+			// this.modalDescription = 'Post OnHold'
 		}
 		
 		
 	}
 	closeMOdal(){
+		jQuery('#approv-pop').modal('hide')
 		// if(window.location.href == ){
 
 		// }
-		console.log(this.dashboardssCheck)
-		if(this.dashboardssCheck == 'dashboard'){
-			this.router.navigateByUrl('/dashboard')
-		}else{
-			this.router.navigateByUrl('/allPosts')
-		}
+		// console.log(this.dashboardssCheck)
+		// if(this.dashboardssCheck == 'dashboard'){
+		// 	this.router.navigateByUrl('/dashboard')
+		// }else{
+		// 	this.router.navigateByUrl('/allPosts')
+		// }
 		
 	}
 	goto(id){

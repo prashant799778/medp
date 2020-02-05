@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
 				}else if(this.AdminsDetails == '1'){
 					console.log(this.AdminsDetails)
 					this.adminlist1 = 'Admin /'
-					this.adminlist2 = 'Enterpenure /'
+					this.adminlist2 = 'Entrepreneur /'
 				}else if(this.AdminsDetails == '2'){
 					console.log(this.AdminsDetails)
 					this.adminlist1 = 'Admin /'
@@ -61,7 +61,7 @@ export class ProfileComponent implements OnInit {
 					console.log(this.adminlist1)
 				}else if(this.AdminsDetails == '6'){
 					this.adminlist1 = 'User /'
-					this.adminlist2 = 'Enterpenure /'
+					this.adminlist2 = 'Entrepreneur /'
 				}
 
 				

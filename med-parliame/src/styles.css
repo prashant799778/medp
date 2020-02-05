@@ -93,6 +93,14 @@ button:focus {
     width: 100%;
     position: relative;
 }
+.fill-back {
+    background: #f44336;
+    color: #fff;
+}
+.fill-back-ac {
+    background: #50af50;
+    color: #fff;
+}
 .dc-bg-color-one{
     border-image-source:linear-gradient(91deg, #c694f9 0%, #ab64f4 100%) !important;
     border-style: solid !important;
@@ -127,11 +135,15 @@ button:focus {
     color:#4caf50;
 }
 .dc-bg-color-panding:hover{
-    color:#9627b0 !important;
+    color:#bdbf26 !important;
 }
 .dc-bg-color-panding{
-    border:1px solid #9627b0;
-    color:#9627b0 !important;
+    /* border:1px solid #9627b0;
+    color:#9627b0 !important; */
+    
+        border: 1px solid #bdbf26;
+        color: #bdbf26 !important;
+   
 }
 .dc-bg-color-approve{
      background-image: linear-gradient(to bottom, #53fb5e, #1d9e29);
