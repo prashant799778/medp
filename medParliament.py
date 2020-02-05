@@ -1509,16 +1509,16 @@ def userPostDashboardApproved():
                 for i in data["result"]:
                     if (i["status"] == 1):
                         print(i["postId"])
-                        column="um.userName as approvedBy"
-                        WhereCondition="and um.userId=ap.approvedUserId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
-                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        column=" um.userName as approvedBy "
+                        WhereCondition=" and um.userId=ap.approvedUserId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userMaster um,approvedBy ap,userPost  pm",column,WhereCondition)
                         print(data1)
                         i["approvedBy"]=data1["approvedBy"]
                         print(data1)
                     if (i["status"]==2):
-                        column="um.userName as rejectedBy"
-                        WhereCondition="and um.userId=ap.approvedUserId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
-                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        column=" um.userName as rejectedBy "
+                        WhereCondition=" and um.userId=ap.approvedUserId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userMaster  um,approvedBy ap,userPost pm",column,WhereCondition)
                         print(data1)
                         i["rejectedBy"]=data1["rejectedBy"]
                         
