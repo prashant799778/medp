@@ -117,10 +117,13 @@ export class AddAdminComponent implements OnInit {
 			if(resp['status'] == 'true'){
 				jQuery('#addAdmin-popSave').modal('show')
 				if(this.addAddminForm.get('flag').value == 'i'){
-					this.modalDescription = " Admin Inserted Successfully "
+					this.modalDescription = "Inserted Successfully "
 				}else{
-					this.modalDescription = " Admin Updated Successfully "
+					this.modalDescription = "Updated Successfully "
 				}
+				setTimeout(()=>{
+					jQuery('#addAdmin-popSave').modal('hide')
+				},2000)
 				
 			}else{
 				this.errors = true;

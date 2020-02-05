@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { AppSettings } from 'src/app/utils/constant';
 import { Router } from '@angular/router';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-policy',
@@ -11,8 +12,13 @@ import { Router } from '@angular/router';
 export class PolicyComponent implements OnInit {
 	PolicyList = []
 	postStatus = []
+	activatedds: boolean;
+	userTypeId: any;
+	id: any;
 	  constructor(public userService: UserServiceService,
-					public router: Router) { }
+					public router: Router) { 
+						this.activatedds = false;
+					}
 
 	ngOnInit() {
 		let data =  {
@@ -53,27 +59,67 @@ export class PolicyComponent implements OnInit {
 	}
 	
 
-	deleteAdmin(id, userTypeId){
+	// deleteAdmin(id, userTypeId){
+	// 	let data ={
+	// 	  'userId': id,
+	// 	  'userTypeId': userTypeId
+	// 	}
+	// 	console.log(data)
+	// 	this.userService.dataPostApi(data, AppSettings.DeleteSubAdmin).then(resp =>{
+	// 	  if(resp['status'] == 'true'){
+	// 		let data =  {
+	// 			'userTypeId': 2
+	// 		}
+	// 		this.userService.dataPostApi(data,AppSettings.AllSubAdmins ).then(resp=>{
+	// 		  this.PolicyList = resp['result']
+	// 		  this.PolicyList.forEach(resp =>{
+	// 			this.getStatus(resp.status)
+	// 		  })
+			  
+			
+	// 	  }) 
+	// 	  }
+	// 	})
+	//   }
+
+
+
+
+	  deleteAdmin(){
 		let data ={
-		  'userId': id,
-		  'userTypeId': userTypeId
+		  'userId': this.id,
+		  'userTypeId': this.userTypeId
 		}
 		console.log(data)
 		this.userService.dataPostApi(data, AppSettings.DeleteSubAdmin).then(resp =>{
+		  console.log(resp)
 		  if(resp['status'] == 'true'){
+			this.activatedds = true;
 			let data =  {
-				'userTypeId': 2
-			}
-			this.userService.dataPostApi(data,AppSettings.AllSubAdmins ).then(resp=>{
-			  this.PolicyList = resp['result']
-			  this.PolicyList.forEach(resp =>{
-				this.getStatus(resp.status)
-			  })
-			  
+			  'userTypeId': 4
+		  }
+		  this.userService.dataPostApi(data,AppSettings.AllSubAdmins ).then(resp=>{
+			this.PolicyList = resp['result']
+			this.PolicyList.forEach(resp =>{
+			  this.getStatus(resp.status)
+			})
 			
-		  }) 
+			setTimeout(()=>{
+			  jQuery('#policy-admin-delete').modal('hide')
+			},2000)
+			
+		  
+		})
 		  }
 		})
+	  }
+	  deleteAdmins(id, userTypeId){
+		this.id = id;
+		this.userTypeId = userTypeId
+		jQuery('#policy-admin-delete').modal('show')
+	  }
+	  clsoeModal(){
+		jQuery('#policy-admin-delete').modal('hide')
 	  }
 
 }
