@@ -1333,7 +1333,7 @@ def allPosts1():
                     if (i["status"] == 1):
                         print(i["postId"])
                         column="um.userName as approvedBy"
-                        WhereCondition="and um.userTypeId=ap.userTypeId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
                         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
                         print(data1)
                         i["approvedBy"]=data1["approvedBy"]
@@ -1434,7 +1434,7 @@ def myPosts1():
             
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
-            ststus=inputdata["ststus"]
+            status=int(inputdata["status"])
             column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and pm.status='" + str(status) + "' and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
@@ -1894,7 +1894,7 @@ def verifyPost():
             statusid = inputdata["id"]
             print(statusid,'id')
     
-            column = "approvedUserId,postId,userTypeId"                
+            column = "approvedUserId,postId"                
             values = " '" + str(approvedUserId) + "','" + str(postId) + "'"
             data = databasefile.InsertQuery("approvedBy",column,values)
             if statusid == 1:
