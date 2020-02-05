@@ -359,9 +359,7 @@ button.togg:focus {
 .side-bar-menu {
     margin: 0 1rem;
 }
-.side-menu {
-    padding-top: 2rem;
-}
+
 .side-menu ul li {
     align-items: center;
     margin-bottom: 1.2rem;
@@ -405,6 +403,14 @@ button.togg:focus {
     height: 100%;
     object-fit: cover;
     object-position: center;
+}
+.scroll-side{
+    position: relative;
+}
+.side-menu {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    height: 400px;
 }
 /* End Sidebar Section*/
 
