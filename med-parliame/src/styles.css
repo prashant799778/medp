@@ -135,11 +135,15 @@ button:focus {
     color:#4caf50;
 }
 .dc-bg-color-panding:hover{
-    color:#9627b0 !important;
+    color:#bdbf26 !important;
 }
 .dc-bg-color-panding{
-    border:1px solid #9627b0;
-    color:#9627b0 !important;
+    /* border:1px solid #9627b0;
+    color:#9627b0 !important; */
+    
+        border: 1px solid #bdbf26;
+        color: #bdbf26 !important;
+   
 }
 .dc-bg-color-approve{
      background-image: linear-gradient(to bottom, #53fb5e, #1d9e29);
