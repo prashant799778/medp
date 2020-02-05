@@ -106,12 +106,18 @@
                     </div>
                 <!-- <h2>{{modalDescription}}</h2> -->
             </div>
-            <div class="modal-body" *ngIf="activatedds">
+            <div class="modal-body" *ngIf="activatedds" class="successful-modal">
                     <!-- <span *ngIf="userProfile && userProfile.status == 0">Are you what to sure Deactivated</span>
                     <span *ngIf="userProfile && userProfile.status == 1">Are you what to sure activated</span>
                     <button *ngIf="userProfile && userProfile.status == 0" (click)="ActiveStudent()">Deactivated</button>
                     <button *ngIf="userProfile && userProfile.status == 1" (click)="ActiveStudent()">Activated</button> -->
-                  <h2>Done</h2>
+                   <div class="success-parent">
+                       <div class="child-success"><img src="../../../assets/images/correct.svg"></div>
+
+                        
+                       <div class="child-success"><h2>Successful</h2></div> 
+                   </div>
+                    
                 </div>
           </div>
         </div>

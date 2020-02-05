@@ -95,4 +95,16 @@ img.altr {
 .activatedd {
     background: #4caf50!important
 }
+.successful-modal img{
+    width: 80px;
+    height: 44px;
+}
+.success-parent{
+    overflow: hidden;
+    clear: both;
+    padding: 10px 15px
+}
+.child-success{
+    float: left;
+}
     
