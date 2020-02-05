@@ -3,6 +3,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 import { Router } from '@angular/router';
 import { AppSettings } from 'src/app/utils/constant';
 import { id_ID } from 'ng-zorro-antd';
+declare var jQuery: any
 
 @Component({
   selector: 'app-student',
@@ -12,8 +13,13 @@ import { id_ID } from 'ng-zorro-antd';
 export class StudentComponent implements OnInit {
   studentlist = []
   postStatus = [];
+  activatedds: boolean;
+  userTypeId: any;
+  id: any;
   constructor(public userService: UserServiceService,
-    public router: Router) { }
+    public router: Router) { 
+      this.activatedds =false;
+    }
 
   ngOnInit() {
     let data =  {
@@ -44,15 +50,16 @@ getStatus(status){
 EditDetails(id, userTypeId){
   this.router.navigate(['Admin/addAdmin'],{queryParams: {id: id,userTypeId: userTypeId,admins: '0'}})
 }
-deleteAdmin(id, userTypeId){
+deleteAdmin(){
   let data ={
-    'userId': id,
-    'userTypeId': userTypeId
+    'userId': this.id,
+    'userTypeId': this.userTypeId
   }
   console.log(data)
   this.userService.dataPostApi(data, AppSettings.DeleteSubAdmin).then(resp =>{
     console.log(resp)
     if(resp['status'] == 'true'){
+      this.activatedds = true;
       let data =  {
         'userTypeId': 4
     }
@@ -62,10 +69,22 @@ deleteAdmin(id, userTypeId){
         this.getStatus(resp.status)
       })
       
+      setTimeout(()=>{
+        jQuery('#addAdmin-delete').modal('hide')
+      },2000)
+      
     
   })
     }
   })
+}
+deleteAdmins(id, userTypeId){
+  this.id = id;
+  this.userTypeId = userTypeId
+  jQuery('#addAdmin-delete').modal('show')
+}
+clsoeModal(){
+  jQuery('#addAdmin-delete').modal('hide')
 }
 
 }

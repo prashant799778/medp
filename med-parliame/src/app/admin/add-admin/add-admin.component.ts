@@ -23,12 +23,15 @@ export class AddAdminComponent implements OnInit {
 	acitvatedd1: boolean;
 	statuss: any;
 	activatedds: boolean;
+	errorMessage: any;
+	errors: boolean
 	constructor(public userService: UserServiceService,
 		public route: ActivatedRoute,
 		public router: Router,
 				public fb: FormBuilder) {
 					this.createTable()
-					this.activatedds= false
+					this.activatedds= false;
+					this.errors = false;
 				 }
 
     ngOnInit() {
@@ -103,6 +106,8 @@ export class AddAdminComponent implements OnInit {
 	}
 	resetData(){
 		this.addAddminForm.reset()
+		this.errors = false;
+		this.errorMessage = ''
 	}
 	saveData(){
 
@@ -117,6 +122,9 @@ export class AddAdminComponent implements OnInit {
 					this.modalDescription = " Admin Updated Successfully "
 				}
 				
+			}else{
+				this.errors = true;
+				this.errorMessage = resp['message']
 			}
 
 		})
