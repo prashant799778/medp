@@ -633,7 +633,7 @@ def totalAdmins():
                 print("111111111111111")
                 for i in data['result']:
                     if i["profilePic"]==None:
-                        i["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/profilePic.jpg"          
+                        i["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.svg"          
                 Data = {"status":"true","message":"","result":data["result"]}
                 return Data
             else:
