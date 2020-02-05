@@ -89,7 +89,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="addAdmin-pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- <div class="modal fade" id="addAdmin-pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -106,15 +106,13 @@
               <button *ngIf="acitvated == 0" (click)="deactivate()">deactivate</button>
             </div>
             <div class="modal-body" *ngIf="acitvatedd1">
-                    <!-- <span *ngIf="acitvated == 1">Are you sure to active</span>
-                    <span *ngIf="acitvated == 0">Are you sure to deactive</span> -->
+                   
                   <h2> {{modalDescription}}</h2>
-                  <!-- <button *ngIf="acitvated == 1" (click)="deactivate()">active</button>
-                  <button *ngIf="acitvated == 0" (click)="deactivate()">deactive</button> -->
+                 
                 </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
 
       <div class="modal fade" id="addAdmin-popSave" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -138,3 +136,60 @@
             </div>
           </div>
         </div>
+
+
+
+    
+        
+
+        <div class="modal fade" id="addAdmin-pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <template>
+                        <div class="modal-header border-remo">
+                        <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                            <!-- <span aria-hidden="true">&times;</span> -->
+                            <img src="../../../assets/images/close-im.svg">
+                        </button>
+                        </div>
+                    </template>
+                    <div class="modal-body" *ngIf="!activatedds">
+                        <div class="inner-model-box same-margin" *ngIf="statuss == 0">
+                            <div class="d-flex al-item">
+                                <img src="../../../assets/images/caution.svg" class="altr">
+                                <div class="dc-act">
+                                    <h3>Deactivate Account</h3>
+                                    <span >Are you sure you want to deactivate ?</span>
+                                </div>
+                            </div>
+                            <div class="grp-btn text-center">
+                                <button *ngIf="statuss == 0" (click)="deactivate()" class="mod-btn dc-bg-color-gray">Cancel</button>
+                                <button *ngIf="statuss == 0" (click)="deactivate()" class="mod-btn fill-back">Deactivate</button>
+                            </div>
+                            </div>
+                        <div class="inner-model-box" *ngIf="statuss == 1">
+                                <div class="d-flex al-item">
+                                        <img src="../../../assets/images/caution-ac.svg" class="altr">
+                                        <div class="dc-act">
+                                            <h3>Activate Account</h3>
+                                            <span >Are you sure you want to activate ?</span>
+                                        </div>
+                                    </div>
+        
+                                    <div class="grp-btn text-center">
+                                            <button *ngIf="statuss == 1" (click)="deactivate()" class="mod-btn dc-bg-color-gray">Cancel</button>
+                                            <button *ngIf="statuss == 1" (click)="deactivate()" class="mod-btn fill-back-ac">Activate</button>
+                                    </div>
+                            </div>
+                        <!-- <h2>{{modalDescription}}</h2> -->
+                    </div>
+                    <div class="modal-body" *ngIf="activatedds">
+                            <!-- <span *ngIf="userProfile && userProfile.status == 0">Are you what to sure Deactivated</span>
+                            <span *ngIf="userProfile && userProfile.status == 1">Are you what to sure activated</span>
+                            <button *ngIf="userProfile && userProfile.status == 0" (click)="ActiveStudent()">Deactivated</button>
+                            <button *ngIf="userProfile && userProfile.status == 1" (click)="ActiveStudent()">Activated</button> -->
+                          <h2>Done</h2>
+                        </div>
+                  </div>
+                </div>
+              </div>

@@ -43,6 +43,30 @@ policyDetail(id, userTypeId){
 EditDetails(id, userTypeId){
   this.router.navigate(['Admin/addAdmin'],{queryParams: {id: id,userTypeId: userTypeId,admins: '1'}})
 }
+deleteAdmin(id, userTypeId){
+  let data ={
+    'userId': id,
+    'userTypeId': userTypeId
+  }
+  console.log(data)
+  this.userService.dataPostApi(data, AppSettings.DeleteSubAdmin).then(resp =>{
+    console.log(resp)
+    if(resp['status']== 'true'){
+      let data =  {
+        'userTypeId': 3
+      }
+      this.userService.dataPostApi(data,AppSettings.AllSubAdmins ).then(resp=>{
+        this.studentlist = resp['result']
+        this.studentlist.forEach(resp =>{
+        this.getStatus(resp.status)
+        })
+        
+      
+      })
+    }
+    
+  })
+}
 
 }
 

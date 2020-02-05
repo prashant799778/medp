@@ -59,7 +59,7 @@
                             <div class="inner-dropdown drop-show1 mr-left trans">
                                 <ul>
                                     <li><a id="postPolicy" href="javascript:void(0)" (click)="goToPost(5, $event)">Policy Maker</a></li>
-                                    <li><a id="postEnterpenure" href="javascript:void(0)" (click)="goToPost(6, $event)">Entrepreneur  </a></li>
+                                    <li><a id="postEnterpenure" href="javascript:void(0)" (click)="goToPost(6, $event)">Entrepreneur   </a></li>
                                     <li><a id="postStudentss" href="javascript:void(0)" (click)="goToPost(7, $event)">Student </a></li>
                                 </ul>
                             </div>
@@ -78,7 +78,7 @@
                     
                     <li><a href="javascript:void(0)" (click)="goTo('dashboard',$event)" class="active">Dashboard <img src="../../assets/images/d-home.svg" class="img-sdi"><img class="img-hdi" src="../../assets/images/a-dashboard.svg"></a></li>
                     <li *ngIf="!enterpernure && !students" class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/policy', $event)">User <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
-                    <li *ngIf="enterpernure && !students" class="dp-down"><a id="enterpenureTabs" href="javascript:void(0)" (click)="goTo('enterpenure', $event)">Enterpernure <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
+                    <li *ngIf="enterpernure && !students" class="dp-down"><a id="enterpenureTabs" href="javascript:void(0)" (click)="goTo('enterpenure', $event)">Entrepreneur <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
                     <li *ngIf="!enterpernure && students" class="dp-down"><a id="studentTabs" href="javascript:void(0)" (click)="goTo('studentsList', $event)">Student <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
                    
                     <!-- <div class="inner-dropdown drop-show mr-left">

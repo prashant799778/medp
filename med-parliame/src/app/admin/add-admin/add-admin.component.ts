@@ -22,11 +22,13 @@ export class AddAdminComponent implements OnInit {
 	acitvated: any;
 	acitvatedd1: boolean;
 	statuss: any;
+	activatedds: boolean;
 	constructor(public userService: UserServiceService,
 		public route: ActivatedRoute,
 		public router: Router,
 				public fb: FormBuilder) {
 					this.createTable()
+					this.activatedds= false
 				 }
 
     ngOnInit() {
@@ -144,8 +146,10 @@ export class AddAdminComponent implements OnInit {
 		}
 		this.userService.dataPostApi(data, AppSettings.UpdateStatus).then(resp=>{
 			if(resp['status'] == 'true'){
-			this.acitvatedd1 = true;
-			this.modalDescription = "Successfull"
+				this.activatedds = true;
+				setTimeout(()=>{
+					jQuery('#addAdmin-pop').modal("hide")
+				},2000)
 				
 			}
 		})
