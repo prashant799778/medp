@@ -13,6 +13,9 @@ body{
     box-shadow: none;
 }
 /*All Use*/
+.paddign-remove{
+    padding: 0px !important;
+}
 .top-lr-padding{
     padding: 2rem 3rem;
 }
