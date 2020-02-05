@@ -1527,7 +1527,7 @@ def userPostDashboardApproved():
                         WhereCondition=" and um.userId=ap.approvedUserId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"'"
                         data1=databasefile.SelectQuery1("userMaster um,approvedBy ap,userPost  pm",column,WhereCondition)
                         print(data1)
-                        if data1["message"]=="No Data Found":
+                        if "message" in data1:
                             pass
                         else:
                             i["approvedBy"]=data1["approvedBy"]
@@ -1537,7 +1537,7 @@ def userPostDashboardApproved():
                         WhereCondition=" and um.userId=ap.approvedUserId and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"'"
                         data1=databasefile.SelectQuery1("userMaster  um,approvedBy ap,userPost pm",column,WhereCondition)
                         print(data1)
-                        if data1["message"]=="No Data Found":
+                        if "message" in data1:
                             pass
                         else:
                             i["rejectedBy"]=data1["rejectedBy"]
