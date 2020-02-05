@@ -109,4 +109,6 @@ img.altr {
     top: 5px;
     left:1rem;
 }
-
+.image-box-admin img {
+    width: 30px;
+}
