@@ -141,14 +141,19 @@ export class ProfileComponent implements OnInit {
 					// this.userProfile.status = '1'
 					this.modalDescription = 'Deactivated'
 					this.activatedds = true;
-					// jQuery('#students-pop').modal('show')
+					setTimeout(()=>{
+						jQuery('#students-pop').modal("hide")
+					},2000)
+					
 				}else{
 					console.log(this.userTypeId)
 					// jQuery('#students-pop').modal('show')
 					this.modalDescription = 'activated'
 					this.activatedds = true;
 					// this.userProfile.status = '0'
-					// jQuery('#students-pop').modal('show')
+					setTimeout(()=>{
+						jQuery('#students-pop').modal("hide")
+					},2000)
 				}
 
 			}

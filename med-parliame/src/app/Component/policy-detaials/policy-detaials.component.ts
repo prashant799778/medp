@@ -63,6 +63,7 @@ export class PolicyDetaialsComponent implements OnInit {
 	}
 	Approve(id){
 		if(id != '3'){
+			console.log(this.local.get('userData1')[0].userId)
 			let data = {
 				'postId': this.id,
 				'userTypeId': this.local.get('userData1')[0].userTypeId,

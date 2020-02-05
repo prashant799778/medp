@@ -6,7 +6,7 @@
             <img class="image-set" src="../../../assets/images/post-im.svg">
         </div>
         <ul class="sub-heading d-flex al-item mr-remove">
-                <li (click)="goto('/dashboard')">Dashboard /</li>
+                <li *ngIf="dashboardssCheck == 'dashboard'" (click)="goto('/dashboard')">Dashboard /</li>
                 <li>Post Details</li>
               </ul> 
       </div>
@@ -25,7 +25,7 @@
               </p>
             </div>
             
-            <div class="bottom-section same-margin" >
+            <div class="bottom-section same-margin" *ngIf="!superLogin">
               <ul class="group-action-button mr-remove d-flex al-item " *ngIf="onlyView">
                 <li class="bg-color-blu" ><a href="javascript:void(0)" (click)="Approved(1)" >Approve</a></li>
                 <li class="bg-color-l-black"><a href="javascript:void(0)" (click)="Approved(3)">On Hold</a></li>
