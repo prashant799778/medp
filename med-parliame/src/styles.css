@@ -244,16 +244,19 @@ align-items: center;
     .logo-sidee{
         display: none;
     }
-    .sidebar.active .side-bar-menu {
-        margin: 24px 2.7rem;
-    }
+
     .sidebar.active .shw{
         display: block;
         position: relative;
-        left: 130px;
-        border-radius: 50%;
+        left: 166px;
+        border-radius: 15%;
         width: 50px;
         height: 50px;
+        margin-top: 1.6rem;
+    }
+    .sidebar.active .side-menu {
+        position: relative;
+        right: 24px;
     }
     .sidebar.active .hid{
         display: none;
@@ -279,7 +282,7 @@ align-items: center;
 
 .sidebar{
     position: fixed;
-    width: 250px;
+    width: 260px;
     height: 100%;
     left: 0;
     transition: all 500ms linear;
@@ -293,8 +296,6 @@ span.line-bar {
     margin-bottom: 4px;
 }
 button.togg {
-    position: absolute;
-    top: 10px;
     border: none;
     background: #fff;
     padding: 10px;
@@ -307,8 +308,8 @@ button.togg:focus {
     width: 100%;
     height: 60px;
     display: flex;
-    margin-left:1rem;
     align-items: center;
+    justify-content: center;
 }
 .logo-side{
   font-size: 1rem;
@@ -328,8 +329,8 @@ button.togg:focus {
     align-items: center;
 }
 .image-section {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border: 1px solid #c7c7c7;
     border-radius: 50px;
     overflow: hidden;
@@ -443,7 +444,7 @@ button.togg:focus {
 }
 .top-wrap-box {
     align-items: center;
-    margin: 0.5rem 0px;
+    margin: 0.7rem 0px;
 }
 .top-bar-option ul li {
     margin-right: 2rem;
@@ -642,7 +643,7 @@ width: 100%;
 
     .sidebar{
         position: fixed;
-        width: 400px;
+        width: 260px;
         height: 100vh;
         left: 0;
         transition: all 500ms linear;
@@ -653,17 +654,6 @@ width: 100%;
     }
     .logo-sidee{
         display: none;
-    }
-    .sidebar.active .side-bar-menu {
-        margin: 24px 2.7rem;
-    }
-    .sidebar.active .shw{
-        display: block;
-        position: relative;
-        left: 280px;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
     }
     .sidebar.active .hid{
         display: none;
@@ -682,19 +672,12 @@ width: 100%;
         right: 25px;
     }
 .sidebar.active{
-    left: -300px;
+    left: -160px;
     transition: all 500ms linear;
 }
-    .logo-container {
-    width: 100%;
-    height: 104px;
-    display: flex;
-    align-items: center;
-    margin-left: 3.7rem;
-}
     .logo-side{
-      font-size: 2rem;
-      font-weight: 900;
+    font-size: 1.4rem;
+    font-weight: 800;
       font-stretch: normal;
       font-style: normal;
       line-height: 1.71;
@@ -702,41 +685,17 @@ width: 100%;
       text-align: left;
       color: #3b8cf6;
     }
-    .image-section {
-        width: 52px;
-        height: 52px;
-        border: 1px solid #c7c7c7;
-        border-radius: 50px;
-        overflow: hidden;
-    }
-    .side-bar-menu {
-        margin: 0 2.7rem;
-    }
-    button.togg {
-        position: absolute;
-        top: 32px;
-        border: none;
-        background: #fff;
-        padding: 10px;
-        transition: all 500ms linear;
-}
+
 .top-bar {
     width: 100%;
-    margin-left: 400px;
+    margin-left: 260px;
     transition: all 500ms linear;
 }
 .top-bar.active {
     margin-left: 100px;
     transition: all 500ms linear;
 }
-.inner-top-bar{
-    height: 104px;
-    width: 100%;
-}
-.top-wrap-box {
-    align-items: center;
-    margin: 1.5rem 0px;
-    }
+
     .record-box tbody tr td {
         vertical-align: middle;
         font-size: 14px;
