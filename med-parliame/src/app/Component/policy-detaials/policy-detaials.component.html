@@ -3,14 +3,14 @@
     <div class="col-12 col-sm-12 col-md-12">
       <div class="upper-wrap">
         <div class="image-section-set bg-color">
-            <img class="image-set" src="../../../assets/images/post-im.svg">
+            <img class="image-set" src="../../../assets/images/home.svg">
         </div>
         <ul class="sub-heading d-flex al-item mr-remove">
                 <li *ngIf="dashboardssCheck == 'dashboard'" (click)="goto('/dashboard')">Dashboard /</li>
                 <li>Post Details</li>
               </ul> 
       </div>
-      <div class="policy-container same-margin bg-white-fff all-pading">
+      <div class="policy-container same-margin bg-white-fff top-lr-padding">
             <h2 class="main-hading">Policy Detail</h2>
             <h3 class="policy-title" *ngIf="postDetails && postDetails.postTitle">{{postDetails.postTitle}}.</h3>
 

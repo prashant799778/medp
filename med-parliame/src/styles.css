@@ -13,6 +13,12 @@ body{
     box-shadow: none;
 }
 /*All Use*/
+.paddign-remove{
+    padding: 0px !important;
+}
+.top-lr-padding{
+    padding: 2rem 3rem;
+}
 .border-remo{
     border: 0px !important;
 }
@@ -260,7 +266,7 @@ align-items: center;
     .sidebar.active .shw{
         display: block;
         position: relative;
-        left: 166px;
+        left: 183px;
         border-radius: 15%;
         width: 50px;
         height: 50px;
@@ -625,14 +631,14 @@ text-transform: capitalize;
 font-weight: 600;
 line-height: 1rem;
 color: #707070;
-padding: 10px 5px;
+padding: 10px;
 border: 0px;
 }
 .record-box tbody tr td {
     vertical-align: middle;
     font-size: 12px;
     line-height: 10px;
-    padding: 10px 5px;
+    padding: 10px;
     font-weight: 400;
     color: #969696;
 }
@@ -730,8 +736,8 @@ width: 100%;
     .record-box tbody tr td {
         vertical-align: middle;
         font-size: 14px;
-        line-height: 10px;
-        padding: 15px 5px;
+        line-height: 30px;
+        padding: 10px 5px;
         font-weight: 300;
         color: #4b4b4b;
     }
