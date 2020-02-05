@@ -297,6 +297,199 @@ def addAdmin():
         return output
 
 
+@app.route('/addCountry', methods=['POST'])
+def addCountry():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        startlimit,endlimit="",""
+        keyarr = ['countryName','flag']
+        commonfile.writeLog("addCountry",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+       
+        if msg == "1":
+            Name = inputdata["countryName"]
+           
+            flag=inputdata["flag"]
+            
+            if 'id' in inputdata:
+                Id=inputdata["id"]
+
+            if flag =="u":
+                    print("111111111111111uuuuuuuuuu")
+                    columns= "countryName='" + str(Name) + "' "
+                    whereCondition= " and id='" + str(Id) + "' "
+                    data2=databasefile.UpdateQuery("countryMaster",columns,whereCondition)
+                    if data2 !='0':
+                        return data2
+                    else:
+                        return commonfile.Errormessage()
+
+
+           
+            
+            WhereCondition = " and countryName = '" + str(Name) + "' "
+            count = databasefile.SelectCountQuery("countryMaster",WhereCondition,"")
+            
+            if int(count) > 0:
+                return commonfile.EmailMobileAlreadyExistMsg()
+            else:
+                if flag =="i":
+                    print("11111111111111111111111")
+                
+                    column = "countryName"                
+                    values = " '" + str(Name) + "'"
+
+                    data = databasefile.InsertQuery("countryMaster",column,values)        
+                    if data != "0":
+                        column = 'id,countryName'
+                        
+                        data = databasefile.SelectQuery("countryMaster",column,WhereCondition,"",startlimit,endlimit)
+                        print(data)
+                        Data = {"status":"true","message":"","result":data["result"]}                  
+                        return Data
+                    else:
+                        return commonfile.Errormessage()
+               
+                        
+
+                        
+        else:
+            return msg 
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+@app.route('/addUniversity', methods=['POST'])
+def addUniversity():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        startlimit,endlimit="",""
+        keyarr = ['universityName','flag']
+        commonfile.writeLog("addCountry",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+       
+        if msg == "1":
+            Name = inputdata["universityName"]
+           
+            flag=inputdata["flag"]
+            
+            if 'id' in inputdata:
+                Id=inputdata["id"]
+
+            if flag =="u":
+                    print("111111111111111uuuuuuuuuu")
+                    columns= "universityName='" + str(Name) + "' "
+                    whereCondition= " and id='" + str(Id) + "' "
+                    data2=databasefile.UpdateQuery("universityMaster",columns,whereCondition)
+                    if data2 !='0':
+                        return data2
+                    else:
+                        return commonfile.Errormessage()
+
+
+           
+            
+            WhereCondition = " and universityName = '" + str(Name) + "' "
+            count = databasefile.SelectCountQuery("universityMaster",WhereCondition,"")
+            
+            if int(count) > 0:
+                return commonfile.EmailMobileAlreadyExistMsg()
+            else:
+                if flag =="i":
+                    print("11111111111111111111111")
+                
+                    column = "universityName"                
+                    values = " '" + str(Name) + "'"
+
+                    data = databasefile.InsertQuery("universityMaster",column,values)        
+                    if data != "0":
+                        column = 'id,universityName'
+                        
+                        data = databasefile.SelectQuery("universityMaster",column,WhereCondition,"",startlimit,endlimit)
+                        print(data)
+                        Data = {"status":"true","message":"","result":data["result"]}                  
+                        return Data
+                    else:
+                        return commonfile.Errormessage()
+               
+                        
+
+                        
+        else:
+            return msg 
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+
+@app.route('/addQualification', methods=['POST'])
+def addQualification():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        startlimit,endlimit="",""
+        keyarr = ['qualificationName','flag']
+        commonfile.writeLog("addQualification",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+       
+        if msg == "1":
+            Name = inputdata["qualificationName"]
+           
+            flag=inputdata["flag"]
+            
+            if 'id' in inputdata:
+                Id=inputdata["id"]
+
+            if flag =="u":
+                    print("111111111111111uuuuuuuuuu")
+                    columns= "qualificationName='" + str(Name) + "' "
+                    whereCondition= " and id='" + str(Id) + "' "
+                    data2=databasefile.UpdateQuery("qualificationMaster",columns,whereCondition)
+                    if data2 !='0':
+                        return data2
+                    else:
+                        return commonfile.Errormessage()
+
+
+           
+            
+            WhereCondition = " and qualificationName = '" + str(Name) + "' "
+            count = databasefile.SelectCountQuery("qualificationMaster",WhereCondition,"")
+            
+            if int(count) > 0:
+                return commonfile.EmailMobileAlreadyExistMsg()
+            else:
+                if flag =="i":
+                    print("11111111111111111111111")
+                
+                    column = "qualificationName"                
+                    values = " '" + str(Name) + "'"
+
+                    data = databasefile.InsertQuery("qualificationMaster",column,values)        
+                    if data != "0":
+                        column = 'id,qualificationName'
+                        
+                        data = databasefile.SelectQuery("qualificationMaster",column,WhereCondition,"",startlimit,endlimit)
+                        print(data)
+                        Data = {"status":"true","message":"","result":data["result"]}                  
+                        return Data
+                    else:
+                        return commonfile.Errormessage()
+               
+                        
+
+                        
+        else:
+            return msg 
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output                          
+
+
 
 @app.route('/adminPannel', methods=['GET'])
 def adminPannel():
