@@ -46,22 +46,25 @@ export class AddAdminComponent implements OnInit {
 			}
 			this.addAddminForm.get('userId').setValue(this.id)
 			this.userService.dataPostApi(data,AppSettings.AllSubAdmins).then(resp=>{
-				console.log(resp['result'][0])
-				if(resp['result'][0].status == 0){
+			
+				if(resp && resp['result'] && resp['result'][0].status == 0){
 					this.acitvated = '0'
 
-				}else if(resp['result'][0].status == 1){
+				}else if(resp && resp['result'] && resp['result'][0].status == 1){
 					this.acitvated = '1'
 				}
-				this.addAddminForm.get('adminName').setValue(resp['result'][0].userName)
-				this.addAddminForm.get('emailId').setValue(resp['result'][0].email)
-				this.addAddminForm.get('userTypeId').setValue(resp['result'][0].userTypeId)
-				this.addAddminForm.get('password').setValue(resp['result'][0].password)
-				this.addAddminForm.get('confirmPass').setValue(resp['result'][0].password)
-				this.addAddminForm.get('flag').setValue('u')
-				this.addAddminForm.get('actionType').setValue(resp['result'][0].status)
-				this.UPdateUserss = true;
-				this.statuss = resp['result'][0].status
+				if(resp && resp['result']){
+					this.addAddminForm.get('adminName').setValue(resp['result'][0].userName)
+					this.addAddminForm.get('emailId').setValue(resp['result'][0].email)
+					this.addAddminForm.get('userTypeId').setValue(resp['result'][0].userTypeId)
+					this.addAddminForm.get('password').setValue(resp['result'][0].password)
+					this.addAddminForm.get('confirmPass').setValue(resp['result'][0].password)
+					this.addAddminForm.get('flag').setValue('u')
+					this.addAddminForm.get('actionType').setValue(resp['result'][0].status)
+					this.UPdateUserss = true;
+					this.statuss = resp['result'][0].status
+				}
+				
 				
 
 			})
@@ -92,7 +95,7 @@ export class AddAdminComponent implements OnInit {
 		})
 		this.addAddminForm.get('actionType').valueChanges.subscribe(value => {
 			console.log('name has changed:', value,this.statuss)
-				if(value != this.statuss && this.statuss != undefined){
+				if(value != null && value != this.statuss && this.statuss != undefined){
 					console.log('name has detactive:', value,this.statuss)
 					// this.deactivate()
 					this.openModal()
@@ -124,6 +127,15 @@ export class AddAdminComponent implements OnInit {
 				setTimeout(()=>{
 					jQuery('#addAdmin-popSave').modal('hide')
 				},2000)
+				this.addAddminForm.reset();
+				// if(this.tabName == 0){
+				// 	this.router.navigateByUrl('Admin/student')
+				// }else if(this.tabName == 1){
+				// 	this.router.navigateByUrl('Admin/enterpenure')
+		
+				// }else{
+				// 	this.router.navigateByUrl('Admin/policy')
+				// }
 				
 			}else{
 				this.errors = true;
@@ -164,6 +176,9 @@ export class AddAdminComponent implements OnInit {
 				
 			}
 		})
+	}
+	closeModal(){
+		jQuery('#addAdmin-pop').modal('hide')
 	}
 	openModal(){
 		jQuery('#addAdmin-pop').modal('show')
