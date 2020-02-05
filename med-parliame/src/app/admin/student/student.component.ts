@@ -52,6 +52,19 @@ deleteAdmin(id, userTypeId){
   console.log(data)
   this.userService.dataPostApi(data, AppSettings.DeleteSubAdmin).then(resp =>{
     console.log(resp)
+    if(resp['status'] == 'true'){
+      let data =  {
+        'userTypeId': 4
+    }
+    this.userService.dataPostApi(data,AppSettings.AllSubAdmins ).then(resp=>{
+      this.studentlist = resp['result']
+      this.studentlist.forEach(resp =>{
+        this.getStatus(resp.status)
+      })
+      
+    
+  })
+    }
   })
 }
 

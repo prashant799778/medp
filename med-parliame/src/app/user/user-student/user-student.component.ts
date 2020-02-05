@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class UserStudentComponent implements OnInit {
 	UserStudentList= [];
+	postStatus = [];
 	  constructor(public userService: UserServiceService,
 					public router: Router) { }
 
@@ -17,6 +18,9 @@ export class UserStudentComponent implements OnInit {
 		this.userService.getApiData(AppSettings.AllStudentsList).then(resp=>{
 			console.log(resp)
 			this.UserStudentList = resp['result']
+			this.UserStudentList.forEach(element => {
+				this.getStatus(element.status)
+			});
 		
 		})
 	}
@@ -30,6 +34,14 @@ export class UserStudentComponent implements OnInit {
 			return 'Male'
 		}else{
 			return 'Other'
+		}
+	}
+	getStatus(status){
+
+		if(status == '0'){
+			this.postStatus.push(0)
+		}else if(status == '1'){
+			this.postStatus.push(1);
 		}
 	}
 

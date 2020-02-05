@@ -26,11 +26,12 @@
                             <th>Institution</th>
                             <th>Address</th>
                             <th>Password</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let userPolicy of UserStudentList">
+                        <tr *ngFor="let userPolicy of UserStudentList; let i = index">
                             <td>{{userPolicy.userName}}</td>
                             <td>{{userPolicy.email}}</td>
                             <td>{{userPolicy.mobileNo}}</td>
@@ -38,6 +39,10 @@
                             <td>{{userPolicy.institutionName}}</td>
                             <td>{{userPolicy.address}}</td>
                             <td>{{userPolicy.password}}</td>
+                            <td>
+                                    <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>
+                                    <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Inactive</button>
+                            </td>
                             <td>
                                 <button type="button" class="acton-btn" (click)="policyDetail(userPolicy.userId)">
                                     <img src="../../../assets/images/view.svg" class="action-view">

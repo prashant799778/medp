@@ -53,4 +53,27 @@ export class PolicyComponent implements OnInit {
 	}
 	
 
+	deleteAdmin(id, userTypeId){
+		let data ={
+		  'userId': id,
+		  'userTypeId': userTypeId
+		}
+		console.log(data)
+		this.userService.dataPostApi(data, AppSettings.DeleteSubAdmin).then(resp =>{
+		  if(resp['status'] == 'true'){
+			let data =  {
+				'userTypeId': 2
+			}
+			this.userService.dataPostApi(data,AppSettings.AllSubAdmins ).then(resp=>{
+			  this.PolicyList = resp['result']
+			  this.PolicyList.forEach(resp =>{
+				this.getStatus(resp.status)
+			  })
+			  
+			
+		  }) 
+		  }
+		})
+	  }
+
 }
