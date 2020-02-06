@@ -1,22 +1,53 @@
 <div>
-    <div>
-        <label>Country</label>
-        
-        <input type="text">
-        <button>Submit</button>
-
-    </div>
-    <div>
-            <label>University</label>
-            
-            <input type="text">
-            <button>Submit</button>
-    </div>
-    <div>
-            <label>Qualification</label>
-            
-            <input type="text">
-            <button>Submit</button>
-    </div>
+    <form [formGroup]="settingForm">
+        <table>
+            <tr>
+                <td>Country</td>
+                <td> <input type="text" formControlName="country"></td>
+                <td><button class="fill-backs" (click)="addCountry()">Add Country</button></td>
+                <td class="errors" *ngIf="error == 1">{{errorMessage}}</td>
+            </tr>
+            <tr>
+                <td>University</td>
+                <td><input type="text" formControlName="university"></td>
+                <td><button class="fill-backs" (click)="addUniversity()">Add Univeristy</button></td>
+                <td class="errors" *ngIf="error == 2">{{errorMessage}}</td>
+            </tr>
+            <tr>
+                <td>Qualification</td>
+                <td><input type="text" formControlName="qualification"></td>
+                <td><button class="fill-backs" (click)="addQualification()">Add Qualification</button></td>
+                <td class="errors" *ngIf="error == 3">{{errorMessage}}</td>
+            </tr>
+        </table>
+           
+    </form>
+    
 
 </div>
+
+
+<div class="modal fade" id="addCountrySucc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <template>
+                <div class="modal-header border-remo">
+                <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                    <!-- <span aria-hidden="true">&times;</span> -->
+                    <img src="../../../assets/images/close-im.svg">
+                </button>
+                </div>
+            </template>
+            
+            <div class="modal-body" >
+                    
+                    <div class="success-parent">
+                            <div class="child-success"><img src="../../../assets/images/correct.svg"></div>
+     
+                             
+                            <div class="child-success"><h2>Add Successfully</h2></div> 
+                        </div>
+                </div>
+          </div>
+        </div>
+      </div>

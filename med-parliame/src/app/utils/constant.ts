@@ -25,7 +25,11 @@ export class AppSettings {
     public static UpdateUser = 'UpdateUser';
     public static DeleteSubAdmin = 'DeleteSubAdmin'
     
-    // public static AllStudentsList = 'allstudents';
+    public static AddCountry = 'addCountry';
+    public static AddUniversity = 'addUniversity';
+    public static AddQualification = 'addQualification';
+    
+    
 
     
 
