@@ -2739,11 +2739,11 @@ def galleryImages():
 
                 file.save(FolderPath)
                 ImagePath = filepath
-            if "UserId" in inputdata:
+            if "userId" in inputdata:
                 if inputdata['UserId'] != "":
                     UserId =inputdata["UserId"]
                 column = " imagePath,UserCreate"
-                values = " '"+ str(ImagePath)+ "','" + str(UserId) + "'"
+                values = " '"+ str(ImagePath)+ "','" + str(userId) + "'"
                 data = databasefile.InsertQuery("gallery",column,values)        
             else:
                 column = " imagePath "
