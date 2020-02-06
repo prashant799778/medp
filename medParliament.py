@@ -3037,13 +3037,13 @@ def announcements():
                 if inputdata['title'] != "":
                     title =inputdata["title"]
                     column=" title, "
-                    values=" '"+ str(title) +"','"
+                    values=" '"+ str(title) +"',"
 
             if "summary" in inputdata:
                 if inputdata['summary'] != "":
                     summary =inputdata["summary"]
                     column=column+" summary,"
-                    values=values+ str(summary)+"','"
+                    values=values+ "'"+str(summary)+"',"
         
             if "videoLink" in inputdata:
                 if inputdata['videoLink'] != "":
@@ -3052,7 +3052,7 @@ def announcements():
                         return {"message":"Please upload only youtube Link","result":"","status":"False"}
                     else:
                         column=column+" videoLink,"
-                        values=values+ str(videoLink)+"','"
+                        values=values+"'" +str(videoLink)+"',"
             
             if 'postImage' in request.files:      
                     file = request.files.get('postImage')        
@@ -3070,7 +3070,7 @@ def announcements():
                     file.save(FolderPath)
                     ImagePath = filepath
                     column=column+" ImagePath,"
-                    values=values+ str(ImagePath)+"','"
+                    values=values+"'"+ str(ImagePath)+"'"
 
             if "UserId" in inputdata:
                 if inputdata['UserId'] != "":
@@ -3080,7 +3080,7 @@ def announcements():
                 data = databasefile.InsertQuery("announcement",column,values)        
             else:
                 column = column+ " "
-                values = values + "'"
+                
                 data = databasefile.InsertQuery("announcement",column,values)
 
             if data !=0 :                
