@@ -787,7 +787,7 @@ def totalAdmins():
             orderby="um.id"
            
             column="um.userName as userName,ut.userName as userType,um.userTypeId as userTypeId,um.id,um.email as email,um.profilePic"
-            WhereCondition=" and um.userTypeId>'1' and um.userTypeId<'5' and um.userTypeId=ut.id  and um.status<>2"
+            WhereCondition=" and um.userTypeId<>'1' and um.userTypeId<>'5' and um.userTypeId<>'6' and um.userTypeId<>'7' and um.userTypeId<>'8' and um.userTypeId<>'9' and um.userTypeId=ut.id  and um.status<>2"
             data = databasefile.SelectQueryOrderby("userMaster as um,userTypeMaster as ut",column,WhereCondition,"",startlimit,endlimit,orderby)
             count=len(data["result"])
            
