@@ -606,7 +606,7 @@ def addQualification():
 
 
 
-@app.route('/adminPannel', methods=['GET'])
+@app.route('/adminPannel1', methods=['GET'])
 def adminPannel():
     try:
         column="count(*) as count"
@@ -648,7 +648,7 @@ def adminPannel():
 
 
 
-@app.route('/adminPannel1', methods=['GET'])
+@app.route('/adminPannel', methods=['GET'])
 def adminPannel1():
     try:
         column="count(*) as count"
