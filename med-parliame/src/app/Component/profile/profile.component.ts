@@ -245,5 +245,8 @@ export class ProfileComponent implements OnInit {
 			})
 		}
 	}
+	closeModal(){
+		jQuery("#students-pop").modal('hide')
+	}
 
 }
