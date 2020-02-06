@@ -69,11 +69,7 @@
     border: 0;
     color: #46484e;
 }
-button#signInLogin {
-    background: transparent;
-    border: none;
-    color: #fff;
-}
+
 
 .alert-msg {
     font-size: 13px;
@@ -161,6 +157,9 @@ button#signInLogin {
     font-size: 15px;
     line-height: 1.4rem;
     border-radius: 3px;
+    border: 0;
+    color: #fff;
+    margin-top: 0rem;
 }
 .lets {
     margin-bottom: 2rem;
@@ -174,9 +173,23 @@ button#signInLogin {
     font-style: normal;
     color: #4c5264;
     font-family: roboto;
+    position: relative;
+    top: -3px;
 }
 .trm{
     color:#076aab;
+}
+.lock-sg {
+    width: 17px;
+    fill: #707070;
+    margin: 0 10px;
+}
+.input-box-wrap {
+    border: 0.9px solid #b7b7b7;
+    border-radius: 2px;
+}
+.logo-sng-box {
+    margin-top: 5rem;
 }
 @-webkit-keyframes slideInDown {
     from {
@@ -215,7 +228,7 @@ button#signInLogin {
         position: absolute;
         top:50%;
         left: 50%;
-        width: 100%;
+        width: 100% !important;
         height: 400px;
         transform: translate(-50%,-50%);
         padding: 0 1rem;
@@ -250,7 +263,15 @@ button#signInLogin {
 .errorss{
     color: red;
 }
+@media (max-width: 462px){
+    .main-box-container{
+        width:360px !important;
+    }
+}
     @media (max-width:1366px){
+        .sign-btn-bg-color{
+            margin-top: 2rem !important;
+        }
             .main-box-container {
             position: absolute;
             top: 50%;
@@ -323,7 +344,7 @@ button#signInLogin {
             margin: 0 10px;
         }
         .input-box-wrap {
-            border: 1px solid #707070;
+            border: 0.9px solid #b7b7b7;;
             border-radius: 2px;
         }
     }
