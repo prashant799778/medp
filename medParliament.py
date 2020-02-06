@@ -2802,7 +2802,7 @@ def parliamentEvent():
 
     try:
        
-        inputdata = request.form.get('parliamentEvent')    
+        inputdata = request.form.get('data')    
         inputdata = json.loads(inputdata) 
         print("parliamentEvent",inputdata)
         commonfile.writeLog("parliamentEvent",inputdata,0)
@@ -2826,8 +2826,8 @@ def parliamentEvent():
                     eventLocation =inputdata["eventLocation"]
             
             
-            if 'eventBanner' in request.files:      
-                    file = request.files.get('eventBanner')        
+            if 'postImage' in request.files:      
+                    file = request.files.get('postImage')        
                     filename = file.filename or ''                 
                     filename = filename.replace("'","") 
 
