@@ -2716,7 +2716,7 @@ def getNews():
 @app.route('/galleryImages', methods=['POST'])
 def galleryImages():
     try:
-        inputdata = request.form.get('news')    
+        inputdata = request.form.get('data')    
         inputdata = json.loads(inputdata) 
         startlimit,endlimit="",""
         keyarr = ["userId"]
