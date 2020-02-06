@@ -223,20 +223,7 @@ align-items: center;
 .side-menu-down {
     position: relative;
 }
-.sidebar.active .trans {
-    position: absolute;
-    right: 0;
-    top: 0;
-    background: #fff;
-    padding: 10px;
-    border: 1px solid #e6e6e6;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    transform: translate3d(223px, 0px, 0px);
-    will-change: transform;
-    width: 180px;
-    border-left: 0;
-}
+
 .drop-showw {
     margin-bottom: 1rem;
 }
@@ -423,23 +410,7 @@ button.togg:focus {
     position: relative;
     padding-top: 1rem;
 }
-.side-menu {
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    height: 400px;
-}
-.side-menu::-webkit-scrollbar-thumb {
-    background: #555;
-}
 
-.side-menu::-webkit-scrollbar-track {
-    background: #fff;
-    height: 20px;
-}
-.side-menu::-webkit-scrollbar {
-    width: 4px;
-    height: 30px;
-}
 .side-menu ul {
     padding: 0 1rem;
 }
