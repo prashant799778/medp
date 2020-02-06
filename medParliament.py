@@ -1402,6 +1402,10 @@ def UpdateUser1():
             address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
             filename,PicPath,Password,Gender,Country,City,MobileNo="","","123","","","",""
             CompanyName=""
+
+            areaOfExpertise,hospital,hospitalAddress="","",""
+            occcupation,companyAddress="",""
+            
             UserId = inputdata["userId"]
             UserName = inputdata["userName"]
            
@@ -1478,6 +1482,23 @@ def UpdateUser1():
 
             if 'companyName' in inputdata:                    
                 CompanyName = inputdata['companyName']
+
+            if 'areaOfExpertise' in inputdata:                    
+                areaOfExpertise = inputdata['areaOfExpertise']
+
+            if 'hospital' in inputdata:                    
+                hospital = inputdata['hospital']
+
+            if 'hospitalAddress' in inputdata:                    
+                hospitalAddress = inputdata['hospitalAddress']
+            if 'occcupation' in inputdata:                    
+                occcupation = inputdata['occcupation']
+
+            if 'companyAddress' in inputdata:                    
+                companyAddress = inputdata['companyAddress']
+
+
+                
             if 'postImage' in request.files:  
                 print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
                 file = request.files.get('postImage')        
@@ -1534,7 +1555,26 @@ def UpdateUser1():
                         column="userId,interestId,userTypeId"
                         values=" '" + str(UserId) + "','" + str(i) + "','" + str('7') + "'"
                         
-                        output9=databasefile.InsertQuery("userInterestMapping",column,values)            
+                        output9=databasefile.InsertQuery("userInterestMapping",column,values)
+            if (UserTypeId == 8):
+                WhereCondition = " and userId = '" + str(UserId) + "'"
+                column="qualificationId ='" + str(qualification) + "', designation ='" + str(designation) + "',areaOfExpertise='" + str(areaOfExpertise) + "',hospital ='" + str(hospital) + "',hospitalAddress='" + str(hospitalAddress) + "'"
+                output11=databasefile.UpdateQuery("doctorMaster",column,WhereCondition)
+                for i in interestId:
+                    column="userId,interestId,userTypeId"
+                    values=" '" + str(UserId) + "','" + str(i) + "','" + str('8') + "'"
+                    output9=databasefile.InsertQuery("userInterestMapping",column,values)
+
+            if (UserTypeId == 9):
+                WhereCondition = " and userId = '" + str(UserId) + "'"
+                column=" designation='" + str(designation) + "',occcupation='" + str(occcupation) + "',companyName='" + str(companyName) + "',companyAddress= '" + str(companyAddress) + "',address='" + str(address) + "'"
+                output11=databasefile.UpdateQuery("professionalMaster",column,WhereCondition)
+                for i in interestId:
+                    column="userId,interestId,userTypeId"
+                    values=" '" + str(UserId) + "','" + str(i) + "','" + str('9') + "'"
+                    output9=databasefile.InsertQuery("userInterestMapping",column,values)
+
+
             if data != "0":
                 column = 'userId,userName,userTypeId'
                 data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
