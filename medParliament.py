@@ -2787,8 +2787,17 @@ def news():
 @app.route('/getNews', methods=['POST'])
 def getNews():
 
-    try:        
+    try:
         WhereCondition,startlimit,endlimit="","",""
+        inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+        if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =inputdata["startlimit"]
+            
+        if "endlimit" in inputdata:
+            if inputdata['endlimit'] != "":
+                endlimit =inputdata["endlimit"]
         WhereCondition=WhereCondition+" and p.newsType=e.id "
         column = "p.newsTitle,e.category ,p.summary,p.newsDesc, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
         data = databasefile.SelectQuery("news p,newsCategoryMaster e",column,WhereCondition,"",startlimit,endlimit)
