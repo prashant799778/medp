@@ -214,6 +214,33 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				$("#postStudentss").addClass("active")
 				
 			},200)
+		}else if(this.locations == 'setting'){
+			setTimeout(()=>{
+
+
+				// $(".drop-show1").css({"display":"block"}); 
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("settingAdmin")
+				elem.click();
+				// elem.addClass("active");
+				$("#settingAdmin").addClass("active")
+				
+			},200)
+		}
+		if(this.secondLocation == 'dmin/'){
+			this.AdminImage = true
+			this.UserImage = false;
+			this.PostImage = false;
+		}else if(this.secondLocation == 'User/'){
+			this.UserImage = true;
+			this.AdminImage = false
+			this.PostImage = false;
+		}else if(this.locations == 'allPosts?id=7' || this.locations == 'allPosts?id=6' || this.locations == 'allPosts?id=5'){
+			this.PostImage = true;
+			this.AdminImage = false
+			this.UserImage = false;
+		}else if(this.locations == 'setting'){
+			
 		}
 		
 
