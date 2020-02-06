@@ -17,7 +17,6 @@
     right: 10px;
 }
 .wrap-container-box {
-    animation: slideInDown 900ms linear;
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100%;
@@ -77,7 +76,6 @@
     color: red;
     margin: 6px 0;
     font-weight: 500;
-    animation: shake 200ms linear;
 }
 .change-pos {
     position: absolute;
@@ -191,36 +189,7 @@
 .logo-sng-box {
     margin-top: 5rem;
 }
-@-webkit-keyframes slideInDown {
-    from {
-      -webkit-transform: translate3d(0, -100%, 0);
-      transform: translate3d(0, -100%, 0);
-      visibility: visible;
-    }
-  
-    to {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
-  }
-  
-  @keyframes slideInDown {
-    from {
-      -webkit-transform: translate3d(0, -100%, 0);
-      transform: translate3d(0, -100%, 0);
-      visibility: visible;
-    }
-  
-    to {
-      -webkit-transform: translate3d(0, 0, 0);
-      transform: translate3d(0, 0, 0);
-    }
-  }
-  
-  .slideInDown {
-    -webkit-animation-name: slideInDown;
-    animation-name: slideInDown;
-  }
+
 
 
 @media (min-width:320px) and (max-width:480px){

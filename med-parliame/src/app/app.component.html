@@ -19,8 +19,8 @@
         <div class="right-side">
             <div class="logo-sng-box text-center">
                 <img src="../assets/images/logo-sgn.svg">
-                <h2>MED PARLIAMENT</h2>
-                <p class="botom-text">powered by MedParliament.</p>
+                <h2>MEDPARLIAMENT</h2>
+                <p class="botom-text">powered by Made Achiever.</p>
             </div>
         </div>
     <div class="left-side bg-white-fff same-padding pos-rel small-pading">
@@ -89,7 +89,7 @@
                    <g>
                    </g>
                    </svg>
-                    <input type="email" class="form-control" formControlName="email" placeholder="Email Id" autocomplete="off">
+                    <input type="email" class="form-control" formControlName="email" placeholder="Email Id" autocomplete="off" writeOnly>
                 </div>
                     <div class="errors" *ngIf="loginForm.get('login').get('email').errors && (loginForm.get('login').get('email').touched || loginForm.get('login').get('email').dirty)">
                         <p *ngIf="loginForm.get('login').get('email').errors && loginForm.get('login').get('email').errors.required" class="alert-msg"> Please Enter  Email</p>  
@@ -158,7 +158,7 @@
 <g>
 </g>
 </svg>
-        <input type="password" class="form-control" formControlName="password" id="signInPass" placeholder="Password" autocomplete="off">
+        <input type="password" class="form-control" formControlName="password" id="signInPass" placeholder="Password" autocomplete="off" writeOnly>
         <img src="../../assets/images/eye.svg" *ngIf="showPasswords" class="pos-abs" (click)="showPassword('signInPass')">
         <img src="../../assets/images/close-eye.svg" *ngIf="!showPasswords" class="pos-abs" (click)="showPassword('signInPass')">            
     </div>
