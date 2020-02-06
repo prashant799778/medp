@@ -2923,8 +2923,9 @@ def getParliamentEvent():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
-        column = "eventTitle,eventType,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
+        WhereCondition=WhereCondition+" and p.eventType=e.id "
+        column = "p.eventTitle,e.eventName ,p.eventSummary,p.eventLocation,date_format(p.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
+        data = databasefile.SelectQuery("parliamentEvent p,eventMaster e",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
         else:
