@@ -24,6 +24,14 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 
 
+
+@app.route("/announcementsImage/<image_name>")
+def announcementsImage(image_name):
+    try:
+        return send_from_directory('announcementsImage', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
 @app.route("/newsimages/<image_name>")
 def newsimages(image_name):
     try:
