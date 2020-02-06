@@ -82,7 +82,7 @@ export class AppComponent {
 		  // this.session.set(this.KEY, data);
 		  this.local.set('userData1',(data))
 		  console.log(this.loginForm)
-		  if(this.loginForm.get('login').get('email').value == 'vijay@gmail.com' && this.loginForm.get('login').get('password').value == 'admin123'){
+		  if(this.loginForm.get('login').get('email').value == 'vijay@gmail.com' && this.loginForm.get('login').get('password').value == '123'){
 			let datas = {
 				'superLogin': 'yes'
 			}  
