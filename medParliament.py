@@ -2872,36 +2872,19 @@ def parliamentEvent():
 @app.route('/getParliamentEvent', methods=['POST'])
 def getParliamentEvent():
 
-    try:
-        startlimit,endlimit="",""
-        if request.data:
-            inputdata = commonfile.DecodeInputdata(request.get_data())
-            commonfile.writeLog("getParliamentEvent",inputdata,0)
-
-            #arr = ['categoryId']
-
-            #msg = commonfile.CheckKeyNameBlankValue(arr,inputdata)
-            msg="1"
-            if msg == "1":
-                # CategoryId = inputdata["categoryId"]
-                # WhereCondition = " and icm.Id = im.CategoryId and im.CategoryId = " + str(CategoryId)
-                                                    
-                column = "eventTitle,eventType,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-                data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
-            
-                if data != "0":
-                    return data
-                else:
-                    return commonfile.Errormessage()
-            else:
-                return msg
+    try:        
+        WhereCondition,startlimit,endlimit="","",""
+        column = "eventTitle,eventType,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
+        if data != "0":
+            return data
         else:
-            return commonfile.InputKeyNotFoundMsg()
+            return commonfile.Errormessage()
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
-
+ 
 
 
 
