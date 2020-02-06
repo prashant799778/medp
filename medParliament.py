@@ -31,6 +31,13 @@ def newsimages(image_name):
     except FileNotFoundError:
         abort(404)
 
+@app.route("/gallery/<image_name>")
+def gallery(image_name):
+    try:
+        return send_from_directory('gallery', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
 @app.route("/postImage/<image_name>")
 def postImage(image_name):
     try:
