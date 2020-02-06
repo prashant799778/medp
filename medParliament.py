@@ -3052,7 +3052,7 @@ def announcements():
                         return {"message":"Please upload only youtube Link","result":"","status":"False"}
                     else:
                         column=column+" ,videoLink"
-                        values=values+",'" +str(videoLink)+"',"
+                        values=values+",'" +str(videoLink)+"'"
             
             if 'postImage' in request.files:      
                     file = request.files.get('postImage')        
