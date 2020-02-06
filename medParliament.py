@@ -2767,8 +2767,8 @@ def getGalleryImages():
     try:
         startlimit,endlimit="",""
         if request.data:
-            inputdata = commonfile.DecodeInputdata(request.get_data())
-            commonfile.writeLog("getGalleryImages",inputdata,0)
+            
+            commonfile.writeLog("getGalleryImages","inputdata",0)
 
             #arr = ['categoryId']
 
