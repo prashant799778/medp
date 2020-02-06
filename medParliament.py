@@ -2765,7 +2765,7 @@ def galleryImages():
 def getGalleryImages():
 
     try:        
-        startlimit,endlimit="",""
+        WhereCondition,startlimit,endlimit="","",""
         column = " date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath   "
         data = databasefile.SelectQuery("gallery",column,WhereCondition,"",startlimit,endlimit)
         
