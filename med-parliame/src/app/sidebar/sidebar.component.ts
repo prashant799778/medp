@@ -285,7 +285,11 @@ console.log(this.local.get('userData1')[0].userTypeId)
       	$(event.target).addClass("active");
 		this.router.navigate(['/allPosts'],{queryParams: {id: id}})
 	}
-	setting(){
+	setting(event){
+		$(".side-menu ul li a").removeClass("active");
+		console.log(event.target)
+
+      	$(event.target).addClass("active");
 		console.log("hello setting")
 		this.router.navigateByUrl('/setting')
 	}
