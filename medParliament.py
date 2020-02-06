@@ -2808,8 +2808,9 @@ def parliamentEvent():
         commonfile.writeLog("parliamentEvent",inputdata,0)
         keyarr = ["eventTitle","eventSummary","eventLocation"]           
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        
+        print("1111111111111")
         if msg == "1":
+            print("22222222222222")
             if "eventTitle" in inputdata:
                 if inputdata['eventTitle'] != "":
                     eventTitle =inputdata["eventTitle"]
@@ -2841,6 +2842,7 @@ def parliamentEvent():
 
                     file.save(FolderPath)
                     ImagePath = filepath
+            
             if "UserId" in inputdata:
                 if inputdata['UserId'] != "":
                     UserId =inputdata["UserId"]
@@ -2848,6 +2850,7 @@ def parliamentEvent():
                 values = " '"+ str(eventTitle) +"','" + str(eventType)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
                 data = databasefile.InsertQuery("parliamentEvent",column,values)        
             else:
+
                 column = "eventTitle,eventType,imagePath,eventSummary,eventLocation,eventDate"
                 values = " '"+ str(eventTitle) +"','" + str(eventType)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "'"
                 data = databasefile.InsertQuery("parliamentEvent",column,values)
