@@ -102,7 +102,7 @@ export class AuthsService {
                 resp = loggedIn;
                 if(resp.status == 'true'){
                   this.loginCondition(resp)
-                  if(userLogin.email == 'vijay@gmail.com' && userLogin.password == 'admin123'){
+                  if(userLogin.email == 'vijay@gmail.com' && userLogin.password == '123'){
                     this.superAdminLogin = true;
                     
                   }else{

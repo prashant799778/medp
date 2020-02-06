@@ -24,7 +24,8 @@ export class AddAdminComponent implements OnInit {
 	statuss: any;
 	activatedds: boolean;
 	errorMessage: any;
-	errors: boolean
+	errors: boolean;
+	flags: any;
 	constructor(public userService: UserServiceService,
 		public route: ActivatedRoute,
 		public router: Router,
@@ -60,6 +61,7 @@ export class AddAdminComponent implements OnInit {
 					this.addAddminForm.get('password').setValue(resp['result'][0].password)
 					this.addAddminForm.get('confirmPass').setValue(resp['result'][0].password)
 					this.addAddminForm.get('flag').setValue('u')
+					this.flags = 'u';
 					this.addAddminForm.get('actionType').setValue(resp['result'][0].status)
 					this.UPdateUserss = true;
 					this.statuss = resp['result'][0].status
@@ -128,6 +130,11 @@ export class AddAdminComponent implements OnInit {
 					jQuery('#addAdmin-popSave').modal('hide')
 				},2000)
 				this.addAddminForm.reset();
+				if(this.flags == 'u'){
+					this.addAddminForm.get('flag').setValue('u')
+				}else{
+					this.addAddminForm.get('flag').setValue('i')
+				}
 				// if(this.tabName == 0){
 				// 	this.router.navigateByUrl('Admin/student')
 				// }else if(this.tabName == 1){

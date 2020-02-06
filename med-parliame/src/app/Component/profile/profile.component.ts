@@ -64,64 +64,64 @@ export class ProfileComponent implements OnInit {
 					this.adminlist2 = 'Entrepreneur /'
 				}
 
-				
+				this.getData()
 
-				if(this.userTypeId == '2'){
-					let data = {
-						'userId': this.id,
-						'userTypeId': 2
-					}	
-					this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
-						console.log(resp)
-						this.userProfile = resp['result']['userProfile'][0]
-						this.userPost = resp['result']['userPost']
-					})
-				}else if(this.userTypeId == '3'){
-					this.enterpueresss = true;
-					let data = {
-						'userId': this.id,
-						'userTypeId': 6
-					}	
-					this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
-						console.log(resp)
-						this.userProfile = resp['result']['userProfile'][0]
-						this.userPost = resp['result']['userPost']
-					})
-				}else if(this.userTypeId == '5'){
-					console.log("hello check 1")
-					this.enterpueresss = true;
-					let data = {
-						'userId': this.id,
-						'userTypeId': 5
-					}	
-					this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
-						console.log(resp)
-						this.userProfile = resp['result']['userProfile'][0]
-						this.userPost = resp['result']['userPost']
-					})
-				}else if(this.userTypeId == '6'){
-					this.enterpueresss = true;
-					let data = {
-						'userId': this.id,
-						'userTypeId': 6
-					}	
-					this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
-						console.log(resp)
-						this.userProfile = resp['result']['userProfile'][0]
-						this.userPost = resp['result']['userPost']
-					})
-				}else if(this.userTypeId == '7'){
-					this.enterpueresss = true;
-					let data = {
-						'userId': this.id,
-						'userTypeId': 7
-					}	
-					this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
-						console.log(resp)
-						this.userProfile = resp['result']['userProfile'][0]
-						this.userPost = resp['result']['userPost']
-					})
-				}
+				// if(this.userTypeId == '2'){
+				// 	let data = {
+				// 		'userId': this.id,
+				// 		'userTypeId': 2
+				// 	}	
+				// 	this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				// 		console.log(resp)
+				// 		this.userProfile = resp['result']['userProfile'][0]
+				// 		this.userPost = resp['result']['userPost']
+				// 	})
+				// }else if(this.userTypeId == '3'){
+				// 	this.enterpueresss = true;
+				// 	let data = {
+				// 		'userId': this.id,
+				// 		'userTypeId': 6
+				// 	}	
+				// 	this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				// 		console.log(resp)
+				// 		this.userProfile = resp['result']['userProfile'][0]
+				// 		this.userPost = resp['result']['userPost']
+				// 	})
+				// }else if(this.userTypeId == '5'){
+				// 	console.log("hello check 1")
+				// 	this.enterpueresss = true;
+				// 	let data = {
+				// 		'userId': this.id,
+				// 		'userTypeId': 5
+				// 	}	
+				// 	this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				// 		console.log(resp)
+				// 		this.userProfile = resp['result']['userProfile'][0]
+				// 		this.userPost = resp['result']['userPost']
+				// 	})
+				// }else if(this.userTypeId == '6'){
+				// 	this.enterpueresss = true;
+				// 	let data = {
+				// 		'userId': this.id,
+				// 		'userTypeId': 6
+				// 	}	
+				// 	this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				// 		console.log(resp)
+				// 		this.userProfile = resp['result']['userProfile'][0]
+				// 		this.userPost = resp['result']['userPost']
+				// 	})
+				// }else if(this.userTypeId == '7'){
+				// 	this.enterpueresss = true;
+				// 	let data = {
+				// 		'userId': this.id,
+				// 		'userTypeId': 7
+				// 	}	
+				// 	this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				// 		console.log(resp)
+				// 		this.userProfile = resp['result']['userProfile'][0]
+				// 		this.userPost = resp['result']['userPost']
+				// 	})
+				// }
 				
 			})
 		
@@ -139,20 +139,29 @@ export class ProfileComponent implements OnInit {
 				if(this.userProfile.status == '0'){
 					console.log(this.userTypeId)
 					// this.userProfile.status = '1'
+					this.getData()
 					this.modalDescription = 'Deactivated'
 					this.activatedds = true;
 					setTimeout(()=>{
 						jQuery('#students-pop').modal("hide")
+						setTimeout(()=>{
+							this.activatedds = false;
+					},1000)
+						
 					},2000)
 					
 				}else{
 					console.log(this.userTypeId)
+					this.getData()
 					// jQuery('#students-pop').modal('show')
 					this.modalDescription = 'activated'
 					this.activatedds = true;
 					// this.userProfile.status = '0'
 					setTimeout(()=>{
 						jQuery('#students-pop').modal("hide")
+						setTimeout(()=>{
+							this.activatedds = false;
+					},1000)
 					},2000)
 				}
 
@@ -176,6 +185,64 @@ export class ProfileComponent implements OnInit {
 			this.router.navigateByUrl('/studentsList')
 		}else if(this.userTypeId == '6'){
 			this.router.navigateByUrl('/enterpenure')
+		}
+	}
+	getData(){
+		if(this.userTypeId == '2'){
+			let data = {
+				'userId': this.id,
+				'userTypeId': 2
+			}	
+			this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				console.log(resp)
+				this.userProfile = resp['result']['userProfile'][0]
+				this.userPost = resp['result']['userPost']
+			})
+		}else if(this.userTypeId == '3'){
+			this.enterpueresss = true;
+			let data = {
+				'userId': this.id,
+				'userTypeId': 6
+			}	
+			this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				console.log(resp)
+				this.userProfile = resp['result']['userProfile'][0]
+				this.userPost = resp['result']['userPost']
+			})
+		}else if(this.userTypeId == '5'){
+			console.log("hello check 1")
+			this.enterpueresss = true;
+			let data = {
+				'userId': this.id,
+				'userTypeId': 5
+			}	
+			this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				console.log(resp)
+				this.userProfile = resp['result']['userProfile'][0]
+				this.userPost = resp['result']['userPost']
+			})
+		}else if(this.userTypeId == '6'){
+			this.enterpueresss = true;
+			let data = {
+				'userId': this.id,
+				'userTypeId': 6
+			}	
+			this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				console.log(resp)
+				this.userProfile = resp['result']['userProfile'][0]
+				this.userPost = resp['result']['userPost']
+			})
+		}else if(this.userTypeId == '7'){
+			this.enterpueresss = true;
+			let data = {
+				'userId': this.id,
+				'userTypeId': 7
+			}	
+			this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				console.log(resp)
+				this.userProfile = resp['result']['userProfile'][0]
+				this.userPost = resp['result']['userPost']
+			})
 		}
 	}
 

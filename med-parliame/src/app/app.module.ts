@@ -25,6 +25,8 @@ import { ProfileComponent } from './Component/profile/profile.component';
 import { PostsComponent } from './Component/posts/posts.component';
 import { EnterpenuressComponent } from './Component/enterpenuress/enterpenuress.component';
 import { StudentListsComponent } from './Component/student-lists/student-lists.component';
+import { CountryComponent } from './setting/country/country.component';
+import { UniversityComponent } from './setting/university/university.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { StudentListsComponent } from './Component/student-lists/student-lists.c
     ProfileComponent,
     PostsComponent,
     EnterpenuressComponent,
-    StudentListsComponent
+    StudentListsComponent,
+    CountryComponent,
+    UniversityComponent
   ],
   imports: [
     BrowserModule,

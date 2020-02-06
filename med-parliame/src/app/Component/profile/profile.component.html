@@ -144,7 +144,13 @@
                         <span *ngIf="userProfile && userProfile.status == 1">Are you what to sure activated</span>
                         <button *ngIf="userProfile && userProfile.status == 0" (click)="ActiveStudent()">Deactivated</button>
                         <button *ngIf="userProfile && userProfile.status == 1" (click)="ActiveStudent()">Activated</button> -->
-                      <h2>Done</h2>
+                        <div class="success-parent">
+                        <div class="child-success"><img src="../../../assets/images/correct.svg"></div>
+ 
+                         
+                        <div *ngIf="userProfile && userProfile.status == 1" class="child-success"><h2> Deactivated Successfully</h2></div> 
+                        <div *ngIf="userProfile && userProfile.status == 0" class="child-success"><h2> Activated Successfully</h2></div> 
+                    </div>
                     </div>
               </div>
             </div>

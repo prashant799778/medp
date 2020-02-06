@@ -15,6 +15,7 @@ import { ProfileComponent } from './Component/profile/profile.component';
 import { PostsComponent } from './Component/posts/posts.component';
 import { EnterpenuressComponent } from './Component/enterpenuress/enterpenuress.component';
 import { StudentListsComponent } from './Component/student-lists/student-lists.component';
+import { CountryComponent } from './setting/country/country.component';
 
 
 
@@ -26,6 +27,8 @@ const routes: Routes = [
   { path: 'allPosts', component: PostsComponent, canActivate:[AuthGuard]},
   { path: 'enterpenure', component: EnterpenuressComponent, canActivate:[AuthGuard]},
   { path: 'studentsList', component: StudentListsComponent, canActivate:[AuthGuard]},
+  { path: 'setting', component: CountryComponent, canActivate:[AuthGuard]},
+  
   
   { path: 'Admin',
   children: [                          //<---- child components declared here
