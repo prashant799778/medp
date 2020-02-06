@@ -115,7 +115,8 @@
                        <div class="child-success"><img src="../../../assets/images/correct.svg"></div>
 
                         
-                       <div class="child-success"><h2>Successful</h2></div> 
+                       <div *ngIf="approvedModal == 0" class="child-success"><h2> Rejected Successfully</h2></div> 
+                                    <div *ngIf="approvedModal == 1" class="child-success"><h2> Approved Successfully</h2></div> 
                    </div>
                     
                 </div>
