@@ -75,6 +75,8 @@ def SignUp():
             DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City,organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","0","","","","","","",""
             address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
             CompanyName=""
+            areaOfExpertise,hospital,hospitalAddress="","",""
+            occcupation,companyAddress="",""
             
          
             Name = inputdata["userName"]
@@ -157,6 +159,25 @@ def SignUp():
                 if 'companyName' in inputdata:                    
                     CompanyName = inputdata['companyName']
 
+                if 'areaOfExpertise' in inputdata:                    
+                    areaOfExpertise = inputdata['areaOfExpertise']
+
+                if 'hospital' in inputdata:                    
+                    hospital = inputdata['hospital']
+
+                if 'hospitalAddress' in inputdata:                    
+                    hospitalAddress = inputdata['hospitalAddress']
+                if 'occcupation' in inputdata:                    
+                    occcupation = inputdata['occcupation']
+
+                if 'companyAddress' in inputdata:                    
+                    companyAddress = inputdata['companyAddress']
+
+
+
+
+
+
 
 
 
@@ -206,7 +227,27 @@ def SignUp():
                             for i in interestId:
                                 column="userId,userTypeId,interestId"
                                 values=" '" + str(y["userId"]) + "','" + str('7') + "','" + str(i) + "'"
-                                data5=databasefile.InsertQuery("userInterestMapping ",column,values) 
+                                data5=databasefile.InsertQuery("userInterestMapping ",column,values)
+                        
+                        if (y["userTypeId"]== 8):
+                            columns="userId,qualificationId,designation,areaOfExpertise,hospital,hospitalAddress"
+                            values=" '" + str(y["userId"])+ "','" + str(qualification) + "','" + str(designation) + "','" + str(areaOfExpertise) + "','" + str(hospital)+ "','" + str(hospitalAddress) + "'"
+                            data3= databasefile.InsertQuery("doctorMaster",columns,values)
+                            for i in interestId:
+                                column="userId,userTypeId,interestId"
+                                values=" '" + str(y["userId"]) + "','" + str('8') + "','" + str(i) + "'"
+                                data5=databasefile.InsertQuery("userInterestMapping ",column,values)
+                        
+                        if (y["userTypeId"]== 10):
+                            columns="userId,designation,occcupation,companyName,companyAddress,address"
+                            values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occcupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
+                            data6=databasefile.InsertQuery("professionalMaster",column,values)
+                            for i in interestId:
+                                column="userId,userTypeId,interestId"
+                                values=" '" + str(y["userId"]) + "','" + str('10') + "','" + str(i) + "'"
+                                data5=databasefile.InsertQuery("userInterestMapping ",column,values)
+
+
 
                              
 
