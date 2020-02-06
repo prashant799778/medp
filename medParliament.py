@@ -2741,7 +2741,7 @@ def galleryImages():
                 #folder path to save campaign image
                 FolderPath = ConstantData.getGalleryPath(filename)  
 
-                filepath = '/gellery/' + filename    
+                filepath = '/gallery/' + filename    
                 
 
                 file.save(FolderPath)
