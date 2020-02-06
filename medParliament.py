@@ -647,6 +647,53 @@ def adminPannel():
         return output
 
 
+
+@app.route('/adminPannel1', methods=['GET'])
+def adminPannel1():
+    try:
+        column="count(*) as count"
+        startlimit,endlimit="",""
+        WhereCondition=" and userTypeId>'1'  and usertypeId<'5' and status<>2"
+        WhereCondition7=" and userTypeId='9'  and usertypeId ='11' and status<>2"
+       
+        WhereCondition4=" and usertypeId='5'"
+        WhereCondition5=" and usertypeId='6'"
+        WhereCondition6=" and usertypeId='7'"
+
+        
+
+
+        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        totalsubAdmins=data["result"][0]
+
+        data7 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        totalsubAdmins+=data7["result"][0]["count"]
+       
+        data2 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition4,""," ",startlimit,endlimit)
+        subAdmins2=data2["result"][0]
+        data3 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition5,""," ",startlimit,endlimit)
+        subAdmins3=data3["result"][0]
+        data4 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition6,""," ",startlimit,endlimit)
+        subAdmins4=data4["result"][0]
+        
+        
+
+
+        if data:           
+            Data1 = {"totalAdmins":totalsubAdmins,"policyMakerMasterCount":subAdmins2,"enterprenuerMasterCount":subAdmins3,"studentMasterCount":subAdmins4}
+            Data = {"status":"true","message":"","result":Data1}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+
 @app.route('/allSubAdmins', methods=['POST'])
 def allSubAdmins():
     try:
