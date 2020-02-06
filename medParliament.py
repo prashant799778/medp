@@ -666,7 +666,7 @@ def adminPannel1():
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
         totalsubAdmins=data["result"][0]
 
-        data7 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        data7 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition7,""," ",startlimit,endlimit)
         totalsubAdmins["count"]+=data7["result"][0]["count"]
        
         data2 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition4,""," ",startlimit,endlimit)
