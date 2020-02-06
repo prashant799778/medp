@@ -66,6 +66,7 @@ def SignUp():
         if msg == "1":  
             DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City,organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","0","","","","","","",""
             address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
+            CompanyName=""
             
          
             Name = inputdata["userName"]
@@ -145,6 +146,11 @@ def SignUp():
                 if 'universityAddress' in inputdata:                    
                     universityAddress = inputdata['universityAddress']
 
+                if 'companyName' in inputdata:                    
+                    CompanyName = inputdata['companyName']
+
+
+
 
                 print(interestId)
 
@@ -175,8 +181,8 @@ def SignUp():
 
 
                         if (y["userTypeId"] == 6):
-                            columns="userId,areaOfActivity,profileCategoryId,designation"
-                            values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation) + "'"
+                            columns="userId,areaOfActivity,profileCategoryId,designation,companyName"
+                            values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation)+ "','" + str(CompanyName) + "'"
                             data2=databasefile.InsertQuery("enterprenuerMaster",columns,values)
                             for i in interestId:
                                 column="userId,userTypeId,interestId"
@@ -834,7 +840,7 @@ def enterprenuerMasterPannel():
 def allenterprenuer():
     try:
         column="um.mobileNo as mobileNo,um.email ,um.userName as userName,um.password as password,um.userId,um.gender,um.countryId,um.city,"
-        column=column+"pm.areaOfActivity,pm.profileCategoryId,pm.designation,um.status"
+        column=column+"pm.areaOfActivity,pm.profileCategoryId,pm.designation,um.status,pm.companyName"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId "
         
@@ -1124,6 +1130,7 @@ def UpdateUser1():
             organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","",""
             address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
             filename,PicPath,Password,Gender,Country,City,MobileNo="","","123","","","",""
+            CompanyName=""
             UserId = inputdata["userId"]
             UserName = inputdata["userName"]
            
@@ -1197,6 +1204,9 @@ def UpdateUser1():
 
             if 'universityAddress' in inputdata:                    
                 universityAddress = inputdata['universityAddress']
+
+            if 'companyName' in inputdata:                    
+                CompanyName = inputdata['companyName']
             if 'postImage' in request.files:  
                 print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
                 file = request.files.get('postImage')        
@@ -1228,7 +1238,7 @@ def UpdateUser1():
                 output=databasefile.UpdateQuery("policyMakerMaster",column,WhereCondition)
             if (UserTypeId == 6):
                 WhereCondition = " and userId = '" + str(UserId) + "'"
-                column=" designation='" + str(designation) + "' , areaOfActivity ='" + str(areaofActivity) + "',profileCategoryId='" + str(profileCategoryId) + "'"
+                column=" designation='" + str(designation) + "' ,companyName ='" + str(CompanyName) + "', areaOfActivity ='" + str(areaofActivity) + "',profileCategoryId='" + str(profileCategoryId) + "'"
                 output=databasefile.UpdateQuery("enterprenuerMaster",column,WhereCondition)
                 if interestId!="":
                     WhereCondition = " and userId = '" + str(UserId) + "' and userTypeId='6'"
@@ -2459,7 +2469,7 @@ def userProfile():
             if userTypeId == 6:
                 print('HELLO')
                 column="um.userName,um.email,pcm.name as profileCategory,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
-                column=column+"em.designation,"
+                column=column+"em.designation,em.companyName,"
                 column=column+" em.areaOfActivity"
                 WhereCondition=" and pcm.id=em.profileCategoryId and um.userId=em.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,enterprenuerMaster em,profileCategoryMaster pcm",column,WhereCondition,"",startlimit,endlimit,"")
