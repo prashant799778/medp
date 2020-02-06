@@ -18,12 +18,17 @@ export class SidebarComponent implements OnInit {
 	userName: any;
 	locations: any;
 	secondLocation: any;
+	AdminImage: boolean;
+	UserImage: boolean;
+	PostImage: boolean;
 	constructor(public router: Router,
 				public local: LocalStorageService) { 
 		this.numbers = 0;
-		this.numbers = 0;
-		this.numbers = 0;
-			
+		this.numberss = 0;
+		this.number1 = 0;
+		this.AdminImage = false;
+		this.UserImage = false;	
+		this.PostImage = false;
 	}
 
 	ngOnInit() {
@@ -128,7 +133,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				$(".side-menu ul li a").removeClass("active");
 				var elem = document.getElementById("admin1Policy")
 				elem.click();
-				// elem.addClass("active");
+				this.AdminImage = true;
 				$("#admin1Policy").addClass("active")
 			},100)
 		}else if(this.locations == 'enterpenure' && this.secondLocation == 'dmin/'){
@@ -218,6 +223,18 @@ console.log(this.local.get('userData1')[0].userTypeId)
 			console.log("dahsboard")
 			$(".side-menu ul li a").removeClass("active");
 			$("#dashboarId").addClass("active");
+			
+			this.numbers = 1;
+			this.UserImage = false;	
+			$(".drop-showw").css({"display":"none"}); 
+
+			this.numberss = 1;
+			$(".drop-show").css({"display":"none"}); 
+			this.AdminImage = false;
+
+			this.number1 = 1;
+			this.PostImage = false;
+			$(".drop-show1").css({"display":"none"}); 
 		}
 
 		$(".side-menu ul li a").removeClass("active");
@@ -228,28 +245,43 @@ console.log(this.local.get('userData1')[0].userTypeId)
 	}
 
 	showSLider(){
-		
+		this.AdminImage = false;
+		this.PostImage = false;
 		if(this.numbers == 0){
 			this.numbers = 1;
+			this.UserImage = false;	
 			$(".drop-showw").css({"display":"none"}); 
 			 
 		}else{
 			this.numbers = 0;
+			
 			$(".drop-showw").css({"display":"block"}); 
 			
 			$(".side-menu ul li a").removeClass("active");
 			var elem = document.getElementById("userPolicy")
 			elem.click();
+			this.UserImage = true;	
 			// elem.addClass("active");
 			$("#userPolicy").addClass("active")
+
+
+			this.numberss = 1;
+			$(".drop-show").css({"display":"none"}); 
+			this.AdminImage = false;
+
+			this.number1 = 1;
+			this.PostImage = false;
+			$(".drop-show1").css({"display":"none"}); 
+			
 		}
 	}
 	showSLiders(){
-		
+		this.UserImage = false;	
+		this.PostImage = false;
 		if(this.numberss == 0){
 			this.numberss = 1;
 			$(".drop-show").css({"display":"none"}); 
-			
+			this.AdminImage = false;
 			
 			 
 		}else{
@@ -258,24 +290,43 @@ console.log(this.local.get('userData1')[0].userTypeId)
 			$(".side-menu ul li a").removeClass("active");
 			var elem = document.getElementById("admin1Policy")
 			elem.click();
-			// elem.addClass("active");
+			this.AdminImage = true;
 			$("#admin1Policy").addClass("active")
+
+
+			this.numbers = 1;
+			this.UserImage = false;	
+			$(".drop-showw").css({"display":"none"}); 
+
+			this.number1 = 1;
+			this.PostImage = false;
+			$(".drop-show1").css({"display":"none"}); 
 		}
 	}
 	showSLider1(){
-		
-		if(this.numberss == 0){
-			this.numberss = 1;
+		this.AdminImage = false;
+		if(this.number1 == 0){
+			this.number1 = 1;
+			this.PostImage = false;
 			$(".drop-show1").css({"display":"none"}); 
 			 
 		}else{
-			this.numberss = 0;
+			this.number1 = 0;
+			this.PostImage = true;
 			$(".drop-show1").css({"display":"block"}); 
 			$(".side-menu ul li a").removeClass("active");
 			var elem = document.getElementById("postPolicy")
 			elem.click();
 			// elem.addClass("active");
 			$("#postPolicy").addClass("active")
+
+			this.numbers = 1;
+			this.UserImage = false;	
+			$(".drop-showw").css({"display":"none"}); 
+
+			this.numberss = 1;
+			$(".drop-show").css({"display":"none"}); 
+			this.AdminImage = false;
 		}
 	}
 	goToPost(id, event){
@@ -286,6 +337,22 @@ console.log(this.local.get('userData1')[0].userTypeId)
 		this.router.navigate(['/allPosts'],{queryParams: {id: id}})
 	}
 	setting(event){
+		this.AdminImage = false;
+		this.UserImage = false;
+		this.PostImage = false;	
+
+			this.numbers = 1;
+			this.UserImage = false;	
+			$(".drop-showw").css({"display":"none"}); 
+
+			this.numberss = 1;
+			$(".drop-show").css({"display":"none"}); 
+			this.AdminImage = false;
+
+			this.number1 = 1;
+			this.PostImage = false;
+			$(".drop-show1").css({"display":"none"}); 
+
 		$(".side-menu ul li a").removeClass("active");
 		console.log(event.target)
 
