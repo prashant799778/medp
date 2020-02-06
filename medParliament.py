@@ -2734,8 +2734,8 @@ def getNews():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
-        WhereCondition=WhereCondition+" and p.eventType=e.id "
-        column = "p.eventTitle,e.eventName ,p.eventSummary,p.eventLocation,date_format(p.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
+        WhereCondition=WhereCondition+" and p.newsType=e.id "
+        column = "p.newsTitle,e.category ,p.eventSummary,p.summary,p.newsDesc,date_format(p.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
         data = databasefile.SelectQuery("news p,newsCategoryMaster e",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
