@@ -3048,8 +3048,11 @@ def announcements():
             if "videoLink" in inputdata:
                 if inputdata['videoLink'] != "":
                     videoLink =inputdata["videoLink"]
-                    column=column+" videoLink,"
-                    values=values+ str(videoLink)+"','"
+                    if videoLink[0:24]!="https://www.youtube.com/":
+                        return {"message":"Please upload only youtube Link","result":"","status":"False"}
+                    else
+                        column=column+" videoLink,"
+                        values=values+ str(videoLink)+"','"
             
             if 'postImage' in request.files:      
                     file = request.files.get('postImage')        
