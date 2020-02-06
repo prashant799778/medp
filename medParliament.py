@@ -541,7 +541,7 @@ def adminPannel():
     try:
         column="count(*) as count"
         startlimit,endlimit="",""
-        WhereCondition=" and userTypeId>'1'  and usertypeId<'5'"
+        WhereCondition=" and userTypeId>'1'  and usertypeId<'5' and status<>2"
        
         WhereCondition4=" and usertypeId='5'"
         WhereCondition5=" and usertypeId='6'"
