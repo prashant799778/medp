@@ -220,6 +220,9 @@ align-items: center;
 /*Sidebar Section*/
 
 /* active Side bar */
+.sidebar.active .inner-dropdown {
+    display: none !important;
+}
 .side-menu-down {
     position: relative;
 }
