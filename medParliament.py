@@ -2826,7 +2826,9 @@ def parliamentEvent():
                 if inputdata['eventLocation'] != "":
                     eventLocation =inputdata["eventLocation"]
             
-            
+            if "eventDate" in inputdata:
+                if inputdata['eventDate'] != "":
+                    eventDate =inputdata["eventDate"]
             if 'postImage' in request.files:      
                     file = request.files.get('postImage')        
                     filename = file.filename or ''                 
