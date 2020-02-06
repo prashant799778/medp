@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#071930</color>
+    <color name="colorPrimaryDark">#071930</color>
+    <color name="colorAccent">#071930</color>
+    <color name="or_color">#071930</color>
+    <color name="forgotClor">#071930</color>
+    <color name="loginCuttonColor">#0e68a7
+    </color>
+    <color name="white">#ffffff</color>
+    <color name="studycolor">#ffefed</color>
+    <color name="enterColor">#e3ffe6</color>
+    <color name="polocyColor">#ffffe3</color>
+    <color name="tt">#373737</color>
+    <color name="bg">#f8f8f8</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="linecolor">#f8f8f8</color>
+    <color name="red">#ff0000</color>
+    <color name="edithintColor">#c3c5c7</color>
+    <color name="textcolor">#dfa541</color>
+    <color name="editTextcolor">#262625</color>
+    <color name="hintColor">#6B7682</color>
+
+</resources>

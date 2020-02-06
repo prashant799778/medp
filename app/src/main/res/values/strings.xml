@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">MedParliament</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="googleKey">AIzaSyAHeP_-hQvSMWDTi2RKTTszwKSptcml4iI</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_Version">App Version 0.0.1</string>
+    <string name="Login_with_Google">Login with Google</string>
+    <string name="Email__Mobile_No">Email / Mobile No</string>
+    <string name="Login">Login</string>
+    <string name="Forgot_password">Forgot password ?</string>
+    <string name="nopost">No post yet !!</string>
+    <string name="From">From</string>
+    <string name="TO">To</string>
+    <string name="Remember_Me">Remember Me</string>
+    <string name="Password">Password</string>
+    <string name="Get_Started">Get Started</string>
+    <string name="text_Login_SignUp">  the Global Parliament of
+Healthcare Leadership </string>
+    <string name="Signup">Sign up</string>
+    <string name="Title_Here">Title Here</string>
+    <string name="MED_PARLIAMENT">MED PARLIAMENT</string>
+    <string name="selectType">Select Type</string>
+    <string name="done">Done</string>
+    <string name="welcome">Welcome To Med Parliament</string>
+    <string name="PostDetails">Post Details</string>
+    <string name="Write_Your_Post">Write Your Post</string>
+    <string name="Type_Description">Type Description</string>
+    <string name="ttt">Please select the type you
+want to sign up as</string>
+    <string name="Students">Students</string>
+    <string name="Entrepreneur">Entrepreneur</string>
+    <string name="Policy_Maker">Policy Maker</string>
+    <string name="As_Entreprenuer">As Entrepreneur</string>
+    <string name="As_Policy_Maker">As Policy Maker</string>
+    <string name="Name">Name</string>
+    <string name="Mobile_Number">Mobile Number</string>
+    <string name="Country">Country</string>
+    <string name="Designation">Designation</string>
+    <string name="Mobile_No">Mobile No</string>
+    <string name="email">Email Id</string>
+    <string name="Institute_Name">Institute Name</string>
+    <string name="University_name">University name</string>
+    <string name="My_Profile">My Profile</string>
+    <string name="gender">Gender</string>
+    <string name="University_Address">University Address</string>
+    <string name="MEDPARLIAMNET">MED PARLIAMENT</string>
+    <string name="Area_of_Activity">Area of Activity</string>
+    <string name="Confirm_Password">Confirm Password</string>
+    <string name="Profile_Category">Profile Category</string>
+    <string name="OR">OR</string>
+    <string name="Interests">Interests </string>
+    <string name="As_Student">As Student</string>
+    <string name="Address">Address</string>
+    <string name="forwhat">Select For What</string>
+    <string name="Qualification">Qualification</string>
+    <string name="Institution_Name">Institution Name</string>
+    <string name="Batch_of_Qualification">Batch of Qualification</string>
+    <string name="University">University</string>
+
+    <string name="Others">Others</string>
+    <string name="Save">Save</string>
+    <string name="Define_in_200_words">Define in 200 words</string>
+    <string name="Organisation">Organisation</string>
+    <string name="About_Your_Profile">About Your Profile</string>
+    <string name="Home">Home</string>
+    <string name="userName">UserName</string>
+    <string name="AboutUs">About us</string>
+    <string name="Rate_Now">Rate Now</string>
+    <string name="MY_POST">My Posts</string>
+    <string name="yes">Yes</string>
+    <string name="Comapny_Name">Company Name</string>
+    <string name="Dashboard">Dashboard</string>
+    <string name="Global_Leadership">Global Parliament of Healthcare Leadership</string>
+    <string name="title">Title</string>
+    <string name="msg">Message</string>
+    <string name="ok">Ok</string>
+    <string name="No">No</string>
+</resources>

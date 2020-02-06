@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_marginLeft="123dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="123dp"
+            android:id="@+id/mainimg"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/exclamation">
+        </ImageView>
+        <com.example.medparliament.Widget.Segow_UI_Bold_Font
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/title"
+            android:text="@string/title"
+            android:textColor="@color/loginCuttonColor"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/text_Login_SignUp"
+            android:textAlignment="center"
+            android:id="@+id/msg"
+            android:textColor="@color/forgotClor"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/fieldHeight"
+            android:background="@color/white"
+            android:weightSum="2"
+            >
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/yes"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fieldHeight"
+                android:text="@string/yes"
+                android:background="@drawable/popup_btn_border"
+                android:textColor="@color/white"
+                android:layout_margin="10dp"
+                android:textAllCaps="false">
+            </androidx.appcompat.widget.AppCompatButton>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/no"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fieldHeight"
+                android:background="@drawable/popup_btn_border"
+                android:text="@string/No"
+                android:textAllCaps="false"
+                android:layout_margin="10dp"
+                android:textColor="@color/white">
+            </androidx.appcompat.widget.AppCompatButton>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

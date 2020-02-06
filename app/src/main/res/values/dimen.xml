@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fieldHeight">41dp</dimen>
+    <dimen name="leftMargin">34dp</dimen>
+    <dimen name="rightMargin">34dp</dimen>
+    <dimen name="leftpadding">15dp</dimen>
+    <dimen name="radius">5dp</dimen>
+    <dimen name="elevation">2dp</dimen>
+    <dimen name="imagepadding">2dp</dimen>
+    <dimen name="edittextsize">16dp</dimen>
+    <dimen name="edittop">10dp</dimen>
+    <dimen name="top">5dp</dimen>
+</resources>

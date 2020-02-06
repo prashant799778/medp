@@ -1,0 +1,36 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/toolbar_layout_top"
+    android:layout_height="wrap_content">
+    <com.example.medparliament.Widget.Segow_UI_Semi_Font
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Dashboard"
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/white"
+        android:textStyle="bold">
+    </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+    <ImageView
+        android:id="@+id/bell"
+        android:layout_width="18dp"
+        android:layout_alignParentRight="true"
+        android:layout_height="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="20dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_notifications_bell_button" />
+
+    <androidx.appcompat.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+</RelativeLayout>
