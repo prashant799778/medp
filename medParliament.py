@@ -2462,7 +2462,7 @@ def userProfile():
             if userTypeId == 6:
                 print('HELLO')
                 column="um.userName,um.email,pcm.name as profileCategory,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
-                column=column+"em.designation,em.CompanyName,"
+                column=column+"em.designation,em.companyName,"
                 column=column+" em.areaOfActivity"
                 WhereCondition=" and pcm.id=em.profileCategoryId and um.userId=em.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,enterprenuerMaster em,profileCategoryMaster pcm",column,WhereCondition,"",startlimit,endlimit,"")
