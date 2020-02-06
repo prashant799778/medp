@@ -3101,8 +3101,9 @@ def getAnnouncement():
         WhereCondition,startlimit,endlimit="","",""
         column = "title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
         data = databasefile.SelectQuery("announcement",column,WhereCondition,"",startlimit,endlimit)
-        # for i in data["result"]:
-        #     if 
+        for i in data["result"]:
+            if i["imagePath"]!="":
+                i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
         if data != "0":
             return data
         else:
