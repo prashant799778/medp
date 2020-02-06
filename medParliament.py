@@ -23,6 +23,14 @@ from flask import Flask, render_template
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 
+
+@app.route("/newsimages/<image_name>")
+def newsimages(image_name):
+    try:
+        return send_from_directory('newsimages', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
 @app.route("/postImage/<image_name>")
 def postImage(image_name):
     try:
@@ -2587,8 +2595,310 @@ def changeProfilePic():
 
 
 
+# create news by admin
+@app.route('/news', methods=['POST'])
+def news():
 
+    try:
        
+        inputdata = request.form.get('news')    
+        inputdata = json.loads(inputdata) 
+        print("newsdata",inputdata)
+        commonfile.writeLog("news",inputdata,0)
+        keyarr = ["newsTitle","newsType","summary","newsDesc"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            if "newsTitle" in inputdata:
+                if inputdata['newsTitle'] != "":
+                    newsTitle =inputdata["newsTitle"]
+            if "newsType" in inputdata:
+                if inputdata['newsType'] != "":
+                    newsType =inputdata["newsType"]
+        
+            if "summary" in inputdata:
+                if inputdata['summary'] != "":
+                    summary =inputdata["summary"]
+            
+            if "newsDesc" in inputdata:
+                if inputdata['newsDesc'] != "":
+                    newsDesc =inputdata["newsDesc"]
+            
+            
+            if 'NewsBanner' in request.files:      
+                    file = request.files.get('NewsBanner')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getNewsPath(filename)  
+
+                    filepath = '/newsimages/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            if "UserId" in inputdata:
+                if inputdata['UserId'] != "":
+                    UserId =inputdata["UserId"]
+                column = "newsTitle,newsType,imagePath,summary,newsDesc,UserCreate"
+                values = " '"+ str(newsTitle) +"','" + str(newsType)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
+                data = databasefile.InsertQuery("news",column,values)        
+            else:
+                column = "newsTitle,newsType,imagePath,summary,newsDesc"
+                values = " '"+ str(newsTitle) +"','" + str(newsType)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
+                data = databasefile.InsertQuery("news",column,values)
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+
+@app.route('/getNews', methods=['POST'])
+def getNews():
+    try:
+        inputdata = commonfile.DecodeInputdata(request.get_data()) 
+        commonfile.writeLog("getNews",inputdata,0)
+        keyarr = ["newsId"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg == "1":
+            if "newsId" in inputdata:
+                if inputdata['newsId'] != "":
+                    newsId =inputdata["newsId"]
+                    
+            newsLink=ConstantData.getwebBaseurl()+"/news?newsId="+str(newsId)
+            WhereCondition,startlimit,endlimit="","",""
+            print("1111111111111111111")
+            WhereCondition=WhereCondition+" and n.newsType=nc.id and um.UserId=n.UserCreate and n.id= "+str(newsId)
+           
+            column = "(n.newsType)newsTypeId,(um.UserName)writer,n.id,(newsTitle)title,(nc.category)newsType,n.summary,n.newsDesc,date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath  "
+            data= databasefile.SelectQuery("news n,newsCategoryMaster nc,UserMaster um",column,WhereCondition,"",startlimit,endlimit) 
+            print("data==========================>",data)
+            
+            
+            
+            
+            newsTypeId=str(data["result"][0]["newsTypeId"])
+            print("newsTypeId===============>",newsTypeId)
+            WhereCondition,startlimit,endlimit="","",""
+            WhereCondition=WhereCondition+" and n.newsType=nc.id and um.UserId=n.UserCreate and n.newsType= "+str(newsTypeId)+" and n.id<> "+str(newsId)
+            print("2222222222222222222",WhereCondition)
+            column = "(um.UserName)writer,n.id,(newsTitle)title,(nc.category)newsType,n.summary,n.newsDesc,date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath  "
+            data1= databasefile.SelectQuery("news n,newsCategoryMaster nc,UserMaster um",column,WhereCondition,"",'0','3') 
+            print("134567890")
+            data["relatedNews"]=data1
+            data["newsLink"]=newsLink
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+        
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+
+#admin insert gallery images
+@app.route('/galleryImages', methods=['POST'])
+def galleryImages():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ["userId"]
+        
+        commonfile.writeLog("verifyOtp",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+             if 'galleryImades' in request.files:      
+                    file = request.files.get('galleryImases')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getGalleryPath(filename)  
+
+                    filepath = '/gellery/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            if "UserId" in inputdata:
+                if inputdata['UserId'] != "":
+                    UserId =inputdata["UserId"]
+                column = " imagePath,UserCreate"
+                values = " '"+ str(ImagePath)+ "','" + str(UserId) + "'"
+                data = databasefile.InsertQuery("gallery",column,values)        
+            else:
+                column = " imagePath "
+                values = " '"+ str(ImagePath)+  "'"
+                data = databasefile.InsertQuery("gallery",column,values)
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+@app.route('/getGalleryImages', methods=['POST'])
+def getGalleryImages():
+
+    try:
+        startlimit,endlimit="",""
+        if request.data:
+            inputdata = commonfile.DecodeInputdata(request.get_data())
+            commonfile.writeLog("getGalleryImages",inputdata,0)
+
+            #arr = ['categoryId']
+
+            #msg = commonfile.CheckKeyNameBlankValue(arr,inputdata)
+            msg="1"
+            if msg == "1":
+                # CategoryId = inputdata["categoryId"]
+                # WhereCondition = " and icm.Id = im.CategoryId and im.CategoryId = " + str(CategoryId)
+                                                    
+                column = " date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath   "
+                data = databasefile.SelectQuery("gallery",column,WhereCondition,"",startlimit,endlimit)
+            
+                if data != "0":
+                    return data
+                else:
+                    return commonfile.Errormessage()
+            else:
+                return msg
+        else:
+            return commonfile.InputKeyNotFoundMsg()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+ 
+
+# create parliamentEvent by admin
+@app.route('/parliamentEvent', methods=['POST'])
+def parliamentEvent():
+
+    try:
+       
+        inputdata = request.form.get('parliamentEvent')    
+        inputdata = json.loads(inputdata) 
+        print("parliamentEvent",inputdata)
+        commonfile.writeLog("parliamentEvent",inputdata,0)
+        keyarr = ["eventTitle","eventSummary","eventLocation"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            if "eventTitle" in inputdata:
+                if inputdata['eventTitle'] != "":
+                    eventTitle =inputdata["eventTitle"]
+            if "eventType" in inputdata:
+                if inputdata['eventType'] != "":
+                    eventType =inputdata["eventType"]
+        
+            if "eventSummary" in inputdata:
+                if inputdata['eventSummary'] != "":
+                    eventSummary =inputdata["eventSummary"]
+            
+            if "eventLocation" in inputdata:
+                if inputdata['eventLocation'] != "":
+                    eventLocation =inputdata["eventLocation"]
+            
+            
+            if 'eventBanner' in request.files:      
+                    file = request.files.get('eventBanner')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getEventPath(filename)  
+
+                    filepath = '/eventImages/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            if "UserId" in inputdata:
+                if inputdata['UserId'] != "":
+                    UserId =inputdata["UserId"]
+                column = "eventTitle,eventType,imagePath,eventSummary,eventLocation,eventDate,UserCreate"
+                values = " '"+ str(eventTitle) +"','" + str(eventType)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
+                data = databasefile.InsertQuery("parliamentEvent",column,values)        
+            else:
+                column = "eventTitle,eventType,imagePath,eventSummary,eventLocation,eventDate"
+                values = " '"+ str(eventTitle) +"','" + str(eventType)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "'"
+                data = databasefile.InsertQuery("parliamentEvent",column,values)
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+@app.route('/getParliamentEvent', methods=['POST'])
+def getParliamentEvent():
+
+    try:
+        startlimit,endlimit="",""
+        if request.data:
+            inputdata = commonfile.DecodeInputdata(request.get_data())
+            commonfile.writeLog("getParliamentEvent",inputdata,0)
+
+            #arr = ['categoryId']
+
+            #msg = commonfile.CheckKeyNameBlankValue(arr,inputdata)
+            msg="1"
+            if msg == "1":
+                # CategoryId = inputdata["categoryId"]
+                # WhereCondition = " and icm.Id = im.CategoryId and im.CategoryId = " + str(CategoryId)
+                                                    
+                column = "eventTitle,eventType,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+                data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
+            
+                if data != "0":
+                    return data
+                else:
+                    return commonfile.Errormessage()
+            else:
+                return msg
+        else:
+            return commonfile.InputKeyNotFoundMsg()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
     app.run(host='0.0.0.0',port=5031,debug=True)

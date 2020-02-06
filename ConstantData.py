@@ -74,7 +74,18 @@ def getNotificationPath(filename):
 
 def getNewsPath(filename):
 
-    path = "/var/www/FandomLive/backend/FandomLive/Api/newsimages/"+filename
+    path = "/var/www/medParliament/backend/med_parliament/newsimages/"+filename
+    return path
+
+def getGalleryPath(filename):
+
+    path = "/var/www/medParliament/backend/med_parliament/gallery/"+filename
+    return path
+
+
+def getEventPath(filename):
+
+    path = "/var/www/medParliament/backend/med_parliament/eventImages/"+filename
     return path
 
 def GetsecurityCampaignImagePath(filename):
