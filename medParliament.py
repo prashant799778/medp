@@ -254,8 +254,13 @@ def login1():
             if loginuser["result"][0]["status"]== 0:
                 Data = {"status":"true","message":"","result":loginuser["result"]} 
                 return Data
+            if loginuser["result"][0]["status"]== 2:
+                Data = {"status":"false","message":"your account is Deactivated by admin","result":""} 
+                return Data
+                
+
             else:
-                Data = {"status":"true","message":"Till Now your account is not approved By admin","result":""} 
+                Data = {"status":"False","message":"Till Now your account is not approved By admin","result":""} 
                 return Data
         else:
             data = {"status":"false","message":"Please Enter Your correct Password and email","result":""}
