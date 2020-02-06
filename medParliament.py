@@ -2713,52 +2713,52 @@ def getNews():
 
 
 #admin insert gallery images
-# @app.route('/galleryImages', methods=['POST'])
-# def galleryImages():
-#     try:
-#         inputdata =  commonfile.DecodeInputdata(request.get_data())
-#         startlimit,endlimit="",""
-#         keyarr = ["userId"]
+@app.route('/galleryImages', methods=['POST'])
+def galleryImages():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ["userId"]
         
-#         commonfile.writeLog("galleryImages",inputdata,0)
-#         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-#         if msg =="1":
-#              if 'postImage' in request.files:      
-#                     file = request.files.get('postImage')        
-#                     filename = file.filename or ''                 
-#                     filename = filename.replace("'","") 
+        commonfile.writeLog("galleryImages",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            if 'postImage' in request.files:      
+                file = request.files.get('postImage')        
+                filename = file.filename or ''                 
+                filename = filename.replace("'","") 
 
-#                     print(filename)
-#                     # filename = str(campaignId)                    
-#                     #folder path to save campaign image
-#                     FolderPath = ConstantData.getGalleryPath(filename)  
+                print(filename)
+                # filename = str(campaignId)                    
+                #folder path to save campaign image
+                FolderPath = ConstantData.getGalleryPath(filename)  
 
-#                     filepath = '/gellery/' + filename    
-                    
+                filepath = '/gellery/' + filename    
+                
 
-#                     file.save(FolderPath)
-#                     ImagePath = filepath
-#             if "UserId" in inputdata:
-#                 if inputdata['UserId'] != "":
-#                     UserId =inputdata["UserId"]
-#                 column = " imagePath,UserCreate"
-#                 values = " '"+ str(ImagePath)+ "','" + str(UserId) + "'"
-#                 data = databasefile.InsertQuery("gallery",column,values)        
-#             else:
-#                 column = " imagePath "
-#                 values = " '"+ str(ImagePath)+  "'"
-#                 data = databasefile.InsertQuery("gallery",column,values)
+                file.save(FolderPath)
+                ImagePath = filepath
+            if "UserId" in inputdata:
+                if inputdata['UserId'] != "":
+                    UserId =inputdata["UserId"]
+                column = " imagePath,UserCreate"
+                values = " '"+ str(ImagePath)+ "','" + str(UserId) + "'"
+                data = databasefile.InsertQuery("gallery",column,values)        
+            else:
+                column = " imagePath "
+                values = " '"+ str(ImagePath)+  "'"
+                data = databasefile.InsertQuery("gallery",column,values)
 
-#             if data !=0 :                
-#                 return data
-#             else:
-#                 return commonfile.Errormessage()
-#         else:
-#             return msg
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
 
-#     except Exception as e:
-#         print("Exception--->" + str(e))                                  
-#         return commonfile.Errormessage() 
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
 
 @app.route('/getGalleryImages', methods=['POST'])
 def getGalleryImages():
