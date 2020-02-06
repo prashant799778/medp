@@ -2741,7 +2741,7 @@ def galleryImages():
                 ImagePath = filepath
             if "userId" in inputdata:
                 if inputdata['userId'] != "":
-                    UserId =inputdata["UserId"]
+                    userId =inputdata["userId"]
                 column = " imagePath,UserCreate"
                 values = " '"+ str(ImagePath)+ "','" + str(userId) + "'"
                 data = databasefile.InsertQuery("gallery",column,values)        
