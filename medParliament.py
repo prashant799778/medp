@@ -2688,51 +2688,66 @@ def news():
         return commonfile.Errormessage() 
 
 
-
 @app.route('/getNews', methods=['POST'])
 def getNews():
-    try:
-        inputdata = commonfile.DecodeInputdata(request.get_data()) 
-        commonfile.writeLog("getNews",inputdata,0)
-        keyarr = ["newsId"]           
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        if msg == "1":
-            if "newsId" in inputdata:
-                if inputdata['newsId'] != "":
-                    newsId =inputdata["newsId"]
-                    
-            newsLink=ConstantData.getwebBaseurl()+"/news?newsId="+str(newsId)
-            WhereCondition,startlimit,endlimit="","",""
-            print("1111111111111111111")
-            WhereCondition=WhereCondition+" and n.newsType=nc.id and um.UserId=n.UserCreate and n.id= "+str(newsId)
-           
-            column = "(n.newsType)newsTypeId,(um.UserName)writer,n.id,(newsTitle)title,(nc.category)newsType,n.summary,n.newsDesc,date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath  "
-            data= databasefile.SelectQuery("news n,newsCategoryMaster nc,UserMaster um",column,WhereCondition,"",startlimit,endlimit) 
-            print("data==========================>",data)
-            
-            
-            
-            
-            newsTypeId=str(data["result"][0]["newsTypeId"])
-            print("newsTypeId===============>",newsTypeId)
-            WhereCondition,startlimit,endlimit="","",""
-            WhereCondition=WhereCondition+" and n.newsType=nc.id and um.UserId=n.UserCreate and n.newsType= "+str(newsTypeId)+" and n.id<> "+str(newsId)
-            print("2222222222222222222",WhereCondition)
-            column = "(um.UserName)writer,n.id,(newsTitle)title,(nc.category)newsType,n.summary,n.newsDesc,date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath  "
-            data1= databasefile.SelectQuery("news n,newsCategoryMaster nc,UserMaster um",column,WhereCondition,"",'0','3') 
-            print("134567890")
-            data["relatedNews"]=data1
-            data["newsLink"]=newsLink
-            if data !=0 :                
-                return data
-            else:
-                return commonfile.Errormessage()
+
+    try:        
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and p.eventType=e.id "
+        column = "p.eventTitle,e.eventName ,p.eventSummary,p.eventLocation,date_format(p.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
+        data = databasefile.SelectQuery("news p,newsCategoryMaster e",column,WhereCondition,"",startlimit,endlimit)
+        if data != "0":
+            return data
         else:
-            return msg
-        
-    except Exception as e:
+            return commonfile.Errormessage()
+
+    except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
+# @app.route('/getNews', methods=['POST'])
+# def getNews():
+#     try:
+#         inputdata = commonfile.DecodeInputdata(request.get_data()) 
+#         commonfile.writeLog("getNews",inputdata,0)
+#         keyarr = ["newsId"]           
+#         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+#         if msg == "1":
+#             if "newsId" in inputdata:
+#                 if inputdata['newsId'] != "":
+#                     newsId =inputdata["newsId"]
+                    
+#             newsLink=ConstantData.getwebBaseurl()+"/news?newsId="+str(newsId)
+#             WhereCondition,startlimit,endlimit="","",""
+#             print("1111111111111111111")
+#             WhereCondition=WhereCondition+" and n.newsType=nc.id and um.UserId=n.UserCreate and n.id= "+str(newsId)
+           
+#             column = "(n.newsType)newsTypeId,(um.UserName)writer,n.id,(newsTitle)title,(nc.category)newsType,n.summary,n.newsDesc,date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath  "
+#             data= databasefile.SelectQuery("news n,newsCategoryMaster nc,UserMaster um",column,WhereCondition,"",startlimit,endlimit) 
+#             print("data==========================>",data)
+            
+            
+            
+            
+#             newsTypeId=str(data["result"][0]["newsTypeId"])
+#             print("newsTypeId===============>",newsTypeId)
+#             WhereCondition,startlimit,endlimit="","",""
+#             WhereCondition=WhereCondition+" and n.newsType=nc.id and um.UserId=n.UserCreate and n.newsType= "+str(newsTypeId)+" and n.id<> "+str(newsId)
+#             print("2222222222222222222",WhereCondition)
+#             column = "(um.UserName)writer,n.id,(newsTitle)title,(nc.category)newsType,n.summary,n.newsDesc,date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath  "
+#             data1= databasefile.SelectQuery("news n,newsCategoryMaster nc,UserMaster um",column,WhereCondition,"",'0','3') 
+#             print("134567890")
+#             data["relatedNews"]=data1
+#             data["newsLink"]=newsLink
+#             if data !=0 :                
+#                 return data
+#             else:
+#                 return commonfile.Errormessage()
+#         else:
+#             return msg
+        
+#     except Exception as e:
+#         print("Exception--->" + str(e))                                  
+#         return commonfile.Errormessage()
 
 
 
