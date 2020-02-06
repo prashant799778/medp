@@ -31,6 +31,13 @@ def newsimages(image_name):
     except FileNotFoundError:
         abort(404)
 
+@app.route("/gallery/<image_name>")
+def gallery(image_name):
+    try:
+        return send_from_directory('gallery', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
 @app.route("/postImage/<image_name>")
 def postImage(image_name):
     try:
@@ -2751,7 +2758,7 @@ def galleryImages():
                 ImagePath = filepath
             if "userId" in inputdata:
                 if inputdata['userId'] != "":
-                    UserId =inputdata["UserId"]
+                    userId =inputdata["userId"]
                 column = " imagePath,UserCreate"
                 values = " '"+ str(ImagePath)+ "','" + str(userId) + "'"
                 data = databasefile.InsertQuery("gallery",column,values)        
@@ -2774,36 +2781,19 @@ def galleryImages():
 @app.route('/getGalleryImages', methods=['POST'])
 def getGalleryImages():
 
-    try:
-        startlimit,endlimit="",""
-        if request.data:
-            inputdata = commonfile.DecodeInputdata(request.get_data())
-            commonfile.writeLog("getGalleryImages",inputdata,0)
-
-            #arr = ['categoryId']
-
-            #msg = commonfile.CheckKeyNameBlankValue(arr,inputdata)
-            msg="1"
-            if msg == "1":
-                # CategoryId = inputdata["categoryId"]
-                # WhereCondition = " and icm.Id = im.CategoryId and im.CategoryId = " + str(CategoryId)
-                                                    
-                column = " date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath   "
-                data = databasefile.SelectQuery("gallery",column,WhereCondition,"",startlimit,endlimit)
-            
-                if data != "0":
-                    return data
-                else:
-                    return commonfile.Errormessage()
-            else:
-                return msg
+    try:        
+        WhereCondition,startlimit,endlimit="","",""
+        column = " date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        data = databasefile.SelectQuery("gallery",column,WhereCondition,"",startlimit,endlimit)
+        
+        if data != "0":
+            return data
         else:
-            return commonfile.InputKeyNotFoundMsg()
+            return commonfile.Errormessage()
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
-
  
 
 # create parliamentEvent by admin
