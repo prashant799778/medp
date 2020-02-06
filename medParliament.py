@@ -2720,11 +2720,11 @@ def galleryImages():
         startlimit,endlimit="",""
         keyarr = ["userId"]
         
-        commonfile.writeLog("verifyOtp",inputdata,0)
+        commonfile.writeLog("galleryImages",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
-             if 'galleryImades' in request.files:      
-                    file = request.files.get('galleryImases')        
+             if 'postImage' in request.files:      
+                    file = request.files.get('postImage')        
                     filename = file.filename or ''                 
                     filename = filename.replace("'","") 
 
