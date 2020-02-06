@@ -3036,14 +3036,14 @@ def announcements():
             if "title" in inputdata:
                 if inputdata['title'] != "":
                     title =inputdata["title"]
-                    column=" title, "
-                    values=" '"+ str(title) +"',"
+                    column=" title "
+                    values=" '"+ str(title) +"'"
 
             if "summary" in inputdata:
                 if inputdata['summary'] != "":
                     summary =inputdata["summary"]
-                    column=column+" summary,"
-                    values=values+ "'"+str(summary)+"',"
+                    column=column+", summary"
+                    values=values+ ",'"+str(summary)+"'"
         
             if "videoLink" in inputdata:
                 if inputdata['videoLink'] != "":
@@ -3051,8 +3051,8 @@ def announcements():
                     if videoLink[0:24]!="https://www.youtube.com/":
                         return {"message":"Please upload only youtube Link","result":"","status":"False"}
                     else:
-                        column=column+" videoLink,"
-                        values=values+"'" +str(videoLink)+"',"
+                        column=column+" ,videoLink"
+                        values=values+",'" +str(videoLink)+"',"
             
             if 'postImage' in request.files:      
                     file = request.files.get('postImage')        
@@ -3069,8 +3069,8 @@ def announcements():
 
                     file.save(FolderPath)
                     ImagePath = filepath
-                    column=column+" ImagePath,"
-                    values=values+"'"+ str(ImagePath)+"'"
+                    column=column+" ,ImagePath"
+                    values=values+",'"+ str(ImagePath)+"'"
 
             if "UserId" in inputdata:
                 if inputdata['UserId'] != "":
