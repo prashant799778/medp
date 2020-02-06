@@ -2764,36 +2764,19 @@ def galleryImages():
 @app.route('/getGalleryImages', methods=['POST'])
 def getGalleryImages():
 
-    try:
+    try:        
         startlimit,endlimit="",""
-        if request.data:
-            
-            commonfile.writeLog("getGalleryImages","inputdata",0)
-
-            #arr = ['categoryId']
-
-            #msg = commonfile.CheckKeyNameBlankValue(arr,inputdata)
-            msg="1"
-            if msg == "1":
-                # CategoryId = inputdata["categoryId"]
-                # WhereCondition = " and icm.Id = im.CategoryId and im.CategoryId = " + str(CategoryId)
-                                                    
-                column = " date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath   "
-                data = databasefile.SelectQuery("gallery",column,WhereCondition,"",startlimit,endlimit)
-            
-                if data != "0":
-                    return data
-                else:
-                    return commonfile.Errormessage()
-            else:
-                return msg
+        column = " date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath   "
+        data = databasefile.SelectQuery("gallery",column,WhereCondition,"",startlimit,endlimit)
+        
+        if data != "0":
+            return data
         else:
-            return commonfile.InputKeyNotFoundMsg()
+            return commonfile.Errormessage()
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
-
  
 
 # create parliamentEvent by admin
