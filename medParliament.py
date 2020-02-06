@@ -137,8 +137,8 @@ def SignUp():
 
                
 
-                columns = " userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, countryId, city, deviceid, imeiNo "          
-                values = " '" + str(UserId) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Email) + "','" + str(userTypeId) + "','" + str(Gender) + "', "            
+                columns = " status,userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, countryId, city, deviceid, imeiNo "          
+                values = " '" + str(1) + "','"+  str(UserId) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Email) + "','" + str(userTypeId) + "','" + str(Gender) + "', "            
                 values = values + " '" + str(Password) + "','" + str(DeviceType) + "','" + str(Os) + "','" + str(ipAddress) + "','"                 
                 values = values + str(Country) + "','" + str(City) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
 
@@ -197,7 +197,7 @@ def SignUp():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
-@app.route('/Login', methods=['GET'])
+@app.route('/Login1', methods=['GET'])
 def login():
     try:
         password = request.args['password']
@@ -229,7 +229,47 @@ def login():
     except Exception as e :
         print("Exception---->" +str(e))           
         output = {"status":"false","message":"something went wrong","result":""}
-        return output        
+        return output  
+
+
+@app.route('/Login', methods=['GET'])
+def login1():
+    try:
+        password = request.args['password']
+       
+        mobile = request.args['email']
+        column=  "us.profilePic,us.mobileNo,us.userName,us.email,um.id as userTypeId,us.userId as userId,us.status as status"
+        whereCondition= " and us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.userTypeId=um.id "
+        groupby,startlimit,endlimit="","",""
+        loginuser=databasefile.SelectQuery("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
+        
+               
+      
+        if  (loginuser["status"]!="false"): 
+            if loginuser["result"][0]["profilePic"]==None:
+                loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/profilePic.jpg"
+            else:
+                loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(loginuser["result"][0]["profilePic"])
+
+            if loginuser["result"][0]["status"]== 0:
+                Data = {"status":"true","message":"","result":loginuser["result"]} 
+                return Data
+            else:
+                Data = {"status":"true","message":"Till Now your account is not approved By admin","result":""} 
+                return Data
+        else:
+            data = {"status":"false","message":"Please Enter Your correct Password and email","result":""}
+            return data
+
+    except KeyError as e:
+        print("Exception---->" +str(e))        
+        output = {"status":"false","message":"No Data Found","result":""}
+        return output 
+    
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output                
 
 @app.route('/addSubAdmins', methods=['POST'])
 def addAdmin():
