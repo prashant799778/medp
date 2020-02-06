@@ -31,6 +31,14 @@ def newsimages(image_name):
     except FileNotFoundError:
         abort(404)
 
+@app.route("/eventImages/<image_name>")
+def eventImages(image_name):
+    try:
+        return send_from_directory('eventImages', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
+
 @app.route("/gallery/<image_name>")
 def gallery(image_name):
     try:
@@ -2751,7 +2759,7 @@ def galleryImages():
                 #folder path to save campaign image
                 FolderPath = ConstantData.getGalleryPath(filename)  
 
-                filepath = '/gellery/' + filename    
+                filepath = '/gallery/' + filename    
                 
 
                 file.save(FolderPath)
@@ -2802,14 +2810,15 @@ def parliamentEvent():
 
     try:
        
-        inputdata = request.form.get('parliamentEvent')    
+        inputdata = request.form.get('data')    
         inputdata = json.loads(inputdata) 
         print("parliamentEvent",inputdata)
         commonfile.writeLog("parliamentEvent",inputdata,0)
         keyarr = ["eventTitle","eventSummary","eventLocation"]           
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        
+        print("1111111111111")
         if msg == "1":
+            print("22222222222222")
             if "eventTitle" in inputdata:
                 if inputdata['eventTitle'] != "":
                     eventTitle =inputdata["eventTitle"]
@@ -2825,9 +2834,11 @@ def parliamentEvent():
                 if inputdata['eventLocation'] != "":
                     eventLocation =inputdata["eventLocation"]
             
-            
-            if 'eventBanner' in request.files:      
-                    file = request.files.get('eventBanner')        
+            if "eventDate" in inputdata:
+                if inputdata['eventDate'] != "":
+                    eventDate =inputdata["eventDate"]
+            if 'postImage' in request.files:      
+                    file = request.files.get('postImage')        
                     filename = file.filename or ''                 
                     filename = filename.replace("'","") 
 
@@ -2841,6 +2852,7 @@ def parliamentEvent():
 
                     file.save(FolderPath)
                     ImagePath = filepath
+            
             if "UserId" in inputdata:
                 if inputdata['UserId'] != "":
                     UserId =inputdata["UserId"]
@@ -2848,6 +2860,7 @@ def parliamentEvent():
                 values = " '"+ str(eventTitle) +"','" + str(eventType)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
                 data = databasefile.InsertQuery("parliamentEvent",column,values)        
             else:
+
                 column = "eventTitle,eventType,imagePath,eventSummary,eventLocation,eventDate"
                 values = " '"+ str(eventTitle) +"','" + str(eventType)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "'"
                 data = databasefile.InsertQuery("parliamentEvent",column,values)
@@ -2867,36 +2880,19 @@ def parliamentEvent():
 @app.route('/getParliamentEvent', methods=['POST'])
 def getParliamentEvent():
 
-    try:
-        startlimit,endlimit="",""
-        if request.data:
-            inputdata = commonfile.DecodeInputdata(request.get_data())
-            commonfile.writeLog("getParliamentEvent",inputdata,0)
-
-            #arr = ['categoryId']
-
-            #msg = commonfile.CheckKeyNameBlankValue(arr,inputdata)
-            msg="1"
-            if msg == "1":
-                # CategoryId = inputdata["categoryId"]
-                # WhereCondition = " and icm.Id = im.CategoryId and im.CategoryId = " + str(CategoryId)
-                                                    
-                column = "eventTitle,eventType,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-                data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
-            
-                if data != "0":
-                    return data
-                else:
-                    return commonfile.Errormessage()
-            else:
-                return msg
+    try:        
+        WhereCondition,startlimit,endlimit="","",""
+        column = "eventTitle,eventType,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
+        if data != "0":
+            return data
         else:
-            return commonfile.InputKeyNotFoundMsg()
+            return commonfile.Errormessage()
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
-
+ 
 
 
 
