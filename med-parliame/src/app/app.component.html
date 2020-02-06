@@ -12,12 +12,26 @@
         <app-footer></app-footer>
     </div>
 </div>
+<div class="app-component-box">
 <div class="main-box-container" *ngIf="!loginSuccess">
-    <div class="wrap-container-box neu-shadow">
-        <div class="right-side"></div>
+    <div class="wrap-container-box">
+        <img src="../assets/images/watermark.svg" class="water-mrk">
+        <div class="right-side">
+            <div class="logo-sng-box">
+                <img src="../assets/images/logo-sgn.svg">
+                <h2>MED PARLIAMENT</h2>
+                <p class="botom-text">powered by MedParliament.</p>
+            </div>
+        </div>
     <div class="left-side bg-white-fff same-padding pos-rel">
-        <h2 class="sign-in-heading">Sign In</h2>
-        <div  >
+       
+        <div class="wrap-outer-wrap">
+            <img src="../assets/images/logo-right.svg" class="logo-right-side">
+        </div>
+        <div class="wrap-wrap-box">
+          
+            <h2 class="sign-in-heading">Sign In</h2>
+            <p class="lets">Let's get started</p>
             <span *ngIf="errors" class="errorss">{{errors}}</span>
             <form [formGroup]="loginForm" class="login-form-class"  autocomplete="off" >
                 <div  formGroupName="login" class="form-group input-box">
@@ -38,15 +52,9 @@
                         <p *ngIf="loginForm.get('login').get('password').errors && loginForm.get('login').get('password').errors.pattern" class="alert-msg"> Enter Correct Password</p>
                     </div>
                 </div>
-
-                <!-- <div class="bottom-titles">
-                    
-                    <button  (click)="getLogin()" type="submit" id="signInLogin" class="btn sign-up-btn">Sign In</button>
-                
-                </div> -->
-                <div class="bottom-section same-margin admin-action change-pos">
+                <div class="bottom-section up-spc admin-action">
                     <ul class="group-action-button mr-remove d-flex al-item ">
-                      <li class="bg-color-blu btn-shadw">
+                      <li class="sign-btn-bg-color btn-shadw">
                           <button (click)="getLogin()" type="submit" id="signInLogin">Sign In</button>
                       </li>
                     </ul>
@@ -55,5 +63,6 @@
             </form>
         </div>
     </div>
+</div>
 </div>
 </div>
