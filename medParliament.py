@@ -405,7 +405,7 @@ def addCountry():
             count = databasefile.SelectCountQuery("countryMaster",WhereCondition,"")
             
             if int(count) > 0:
-                return commonfile.EmailMobileAlreadyExistMsg()
+                return commonfile.CountryAlreadyExistMsg()
             else:
                 if flag =="i":
                     print("11111111111111111111111")
@@ -469,7 +469,7 @@ def addUniversity():
             count = databasefile.SelectCountQuery("universityMaster",WhereCondition,"")
             
             if int(count) > 0:
-                return commonfile.EmailMobileAlreadyExistMsg()
+                return commonfile.UniversityAlreadyExistMsg()
             else:
                 if flag =="i":
                     print("11111111111111111111111")
@@ -534,7 +534,7 @@ def addQualification():
             count = databasefile.SelectCountQuery("qualificationMaster",WhereCondition,"")
             
             if int(count) > 0:
-                return commonfile.EmailMobileAlreadyExistMsg()
+                return commonfile.QualificationAlreadyExistMsg()
             else:
                 if flag =="i":
                     print("11111111111111111111111")

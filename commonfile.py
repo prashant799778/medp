@@ -8,6 +8,8 @@ import random
 import uuid
  
 #current datetime time zone india
+
+
 def CurrentDatetime():
     ist = pytz.timezone('Asia/Kolkata')
     ist_time = datetime.now(tz=ist)
@@ -37,7 +39,24 @@ def IncorrectUserPasswordMsg():
 
 def EmailAlreadyExistMsg():
     data = {"status":"false","message":"Email Already Exists","result":""}
-    return data   
+    return data
+
+
+def CountryAlreadyExistMsg():
+    data = {"status":"false","message":"Country Already Exists","result":""}
+    return data 
+
+
+def QualificationAlreadyExistMsg():
+    data = {"status":"false","message":"Qualification Already Exists","result":""}
+    return data 
+
+
+def UniversityAlreadyExistMsg():
+    data = {"status":"false","message":"UniversityAlready Exists","result":""}
+    return data        
+
+
 
 def EmailMobileAlreadyExistMsg():
     data = {"status":"false","message":"Email Or MobileNo Already Exists","result":""}
