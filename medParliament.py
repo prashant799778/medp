@@ -654,11 +654,14 @@ def adminPannel1():
         column="count(*) as count"
         startlimit,endlimit="",""
         WhereCondition=" and userTypeId>'1'  and usertypeId<'5' and status<>2"
-        WhereCondition7=" and userTypeId='9'  and usertypeId ='11' and status<>2"
+        WhereCondition7=" and userTypeId>'9'  and status<>2"
        
         WhereCondition4=" and usertypeId='5'"
         WhereCondition5=" and usertypeId='6'"
         WhereCondition6=" and usertypeId='7'"
+        WhereCondition8=" and usertypeId='8'"
+        WhereCondition9=" and usertypeId='9'"
+
 
         
 
@@ -676,12 +679,16 @@ def adminPannel1():
         subAdmins3=data3["result"][0]
         data4 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition6,""," ",startlimit,endlimit)
         subAdmins4=data4["result"][0]
+        data5=databasefile.SelectQueryOrderby("userMaster",column,WhereCondition8,""," ",startlimit,endlimit)
+        s1=data5["result"][0]
+        data6=databasefile.SelectQueryOrderby("userMaster",column,WhereCondition9,""," ",startlimit,endlimit)
+        s2=data6["result"][0]
         
         
 
 
         if data:           
-            Data1 = {"totalAdmins":totalsubAdmins,"policyMakerMasterCount":subAdmins2,"enterprenuerMasterCount":subAdmins3,"studentMasterCount":subAdmins4}
+            Data1 = {"totalAdmins":totalsubAdmins,"policyMakerMasterCount":subAdmins2,"enterprenuerMasterCount":subAdmins3,"studentMasterCount":subAdmins4,"professionalMasterCount":s1,"doctorMasterCount":s2}
             Data = {"status":"true","message":"","result":Data1}
             return Data
         else:
