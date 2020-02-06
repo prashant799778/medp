@@ -2740,7 +2740,7 @@ def galleryImages():
                 file.save(FolderPath)
                 ImagePath = filepath
             if "userId" in inputdata:
-                if inputdata['UserId'] != "":
+                if inputdata['userId'] != "":
                     UserId =inputdata["UserId"]
                 column = " imagePath,UserCreate"
                 values = " '"+ str(ImagePath)+ "','" + str(userId) + "'"
