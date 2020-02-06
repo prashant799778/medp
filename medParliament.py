@@ -2802,6 +2802,82 @@ def getNews():
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
+
+
+
+
+@app.route('/announcements', methods=['POST'])
+def announcements():
+
+    try:
+       
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        print("newsdata",inputdata)
+        commonfile.writeLog("announcements",inputdata,0)
+        keyarr = ["title"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            if "title" in inputdata:
+                if inputdata['title'] != "":
+                    title =inputdata["title"]
+                    column=" title, "
+                    values=" '"+ str(title) +"','"
+
+            if "summary" in inputdata:
+                if inputdata['summary'] != "":
+                    summary =inputdata["summary"]
+                    column=column+" summary,"
+                    values=values+ str(summary)+"','"
+        
+            if "videoLink" in inputdata:
+                if inputdata['videoLink'] != "":
+                    videoLink =inputdata["videoLink"]
+                    column=column+" videoLink,"
+                    values=values+ str(videoLink)+"','"
+            
+            if 'postImage' in request.files:      
+                    file = request.files.get('postImage')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getAnnouncementsPath(filename)  
+
+                    filepath = '/announcementsImage/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+                    column=column+" ImagePath,"
+                    values=values+ str(ImagePath)+"','"
+
+            if "UserId" in inputdata:
+                if inputdata['UserId'] != "":
+                    UserId =inputdata["UserId"]
+                column =column + ",UserCreate"
+                values =   values + str(UserId) + "'"
+                data = databasefile.InsertQuery("announcement",column,values)        
+            else:
+                column = column+ " "
+                values = values + "'"
+                data = databasefile.InsertQuery("announcement",column,values)
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
 # @app.route('/getNews', methods=['POST'])
 # def getNews():
 #     try:
