@@ -606,7 +606,7 @@ def addQualification():
 
 
 
-@app.route('/adminPannel', methods=['GET'])
+@app.route('/adminPannel1', methods=['GET'])
 def adminPannel():
     try:
         column="count(*) as count"
@@ -648,17 +648,20 @@ def adminPannel():
 
 
 
-@app.route('/adminPannel1', methods=['GET'])
+@app.route('/adminPannel', methods=['GET'])
 def adminPannel1():
     try:
         column="count(*) as count"
         startlimit,endlimit="",""
         WhereCondition=" and userTypeId>'1'  and usertypeId<'5' and status<>2"
-        WhereCondition7=" and userTypeId='9'  and usertypeId ='11' and status<>2"
+        WhereCondition7=" and userTypeId>'9'  and status<>2"
        
         WhereCondition4=" and usertypeId='5'"
         WhereCondition5=" and usertypeId='6'"
         WhereCondition6=" and usertypeId='7'"
+        WhereCondition8=" and usertypeId='8'"
+        WhereCondition9=" and usertypeId='9'"
+
 
         
 
@@ -676,12 +679,16 @@ def adminPannel1():
         subAdmins3=data3["result"][0]
         data4 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition6,""," ",startlimit,endlimit)
         subAdmins4=data4["result"][0]
+        data5=databasefile.SelectQueryOrderby("userMaster",column,WhereCondition8,""," ",startlimit,endlimit)
+        s1=data5["result"][0]
+        data6=databasefile.SelectQueryOrderby("userMaster",column,WhereCondition9,""," ",startlimit,endlimit)
+        s2=data6["result"][0]
         
         
 
 
         if data:           
-            Data1 = {"totalAdmins":totalsubAdmins,"policyMakerMasterCount":subAdmins2,"enterprenuerMasterCount":subAdmins3,"studentMasterCount":subAdmins4}
+            Data1 = {"totalAdmins":totalsubAdmins,"policyMakerMasterCount":subAdmins2,"enterprenuerMasterCount":subAdmins3,"studentMasterCount":subAdmins4,"professionalMasterCount":s2,"doctorMasterCount":s1}
             Data = {"status":"true","message":"","result":Data1}
             return Data
         else:
@@ -780,7 +787,7 @@ def totalAdmins():
             orderby="um.id"
            
             column="um.userName as userName,ut.userName as userType,um.userTypeId as userTypeId,um.id,um.email as email,um.profilePic"
-            WhereCondition=" and um.userTypeId>'1' and um.userTypeId<'5' and um.userTypeId=ut.id  and um.status<>2"
+            WhereCondition=" and um.userTypeId<>'1' and um.userTypeId<>'5' and um.userTypeId<>'6' and um.userTypeId<>'7' and um.userTypeId<>'8' and um.userTypeId<>'9' and um.userTypeId=ut.id  and um.status<>2"
             data = databasefile.SelectQueryOrderby("userMaster as um,userTypeMaster as ut",column,WhereCondition,"",startlimit,endlimit,orderby)
             count=len(data["result"])
            
@@ -852,7 +859,92 @@ def policyMakerPannel():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+
+@app.route('/doctorMasterPannel', methods=['GET'])
+def doctorMasterPannel():
+    try:
+        userId=request.args['userId']
+        column="count(*) as count"
+        startlimit,endlimit="",""
+        WhereCondition=" and usertypeId='8'"
+        whereCondition=" and status=1 and  approvedUserId='" + str(userId) + "'"
+        whereCondition2=" and status=2 and  approvedUserId='" + str(userId) + "'"
+
+        
+        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
+        data3 = databasefile.SelectQueryOrderby("approvedBy",column,whereCondition,""," ",startlimit,endlimit)
+        data4= databasefile.SelectQueryOrderby("approvedBy",column,whereCondition2,""," ",startlimit,endlimit)
+        policyMakerMasterCount=data["result"][0]
+        postCounts=data2["result"][0]
+        approvedPosts=data3["result"][0]
+        rejectedPost=data4["result"][0]
+        data2=[ {"totalUsers":policyMakerMasterCount,"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}]
+        # data2.append({"totalpostCounts":postCounts})
+        # data2.append({"approvedPost":approvedPosts})
+        # data2.append({"rejectedPost":rejectedPost})
+
+        
+
+        if data:           
+            Data = {"status":"true","message":"","result":data2}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
         return output 
+
+
+@app.route('/professionalsMasterPannel', methods=['GET'])
+def  professionalsMasterPannel():
+    try:
+        userId=request.args['userId']
+        column="count(*) as count"
+        startlimit,endlimit="",""
+        WhereCondition=" and usertypeId='9'"
+        whereCondition=" and status=1 and  approvedUserId='" + str(userId) + "'"
+        whereCondition2=" and status=2 and  approvedUserId='" + str(userId) + "'"
+
+        
+        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+        data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
+        data3 = databasefile.SelectQueryOrderby("approvedBy",column,whereCondition,""," ",startlimit,endlimit)
+        data4= databasefile.SelectQueryOrderby("approvedBy",column,whereCondition2,""," ",startlimit,endlimit)
+        policyMakerMasterCount=data["result"][0]
+        postCounts=data2["result"][0]
+        approvedPosts=data3["result"][0]
+        rejectedPost=data4["result"][0]
+        data2=[ {"totalUsers":policyMakerMasterCount,"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}]
+        # data2.append({"totalpostCounts":postCounts})
+        # data2.append({"approvedPost":approvedPosts})
+        # data2.append({"rejectedPost":rejectedPost})
+
+        
+
+        if data:           
+            Data = {"status":"true","message":"","result":data2}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+       
+
+
+
 
 
 @app.route('/allpolicyMakers', methods=['GET'])
@@ -892,7 +984,89 @@ def allpolicyMakers():
     except Exception as e :
         print("Exception---->" + str(e))    
         output =  {"status":"false","message":"something went wrong","result":""}
-        return output                 
+        return output
+
+
+
+@app.route('/allDoctorMaster', methods=['GET'])
+def allDoctorMaster():
+    try:
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
+        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='8' and pm.userId=um.userId  and um.countryId=cm.id"
+
+        
+        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+
+      
+        
+        
+
+
+        if (data!=0):
+            for i in data["result"]:
+                userId=i["userId"]
+                column="count(*) as count"
+                whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
+                data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                print(data1,"")
+                count=data1["count"]
+
+                i["noOfPosts"]=count
+
+
+            Data = {"status":"true","message":"","result":data["result"]}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output =  {"status":"false","message":"something went wrong","result":""}
+        return output 
+
+
+@app.route('/allprofessionalsMaster', methods=['GET'])
+def allprofessionalsMaster():
+    try:
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
+        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='9' and pm.userId=um.userId  and um.countryId=cm.id"
+
+        
+        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+
+      
+        
+        
+
+
+        if (data!=0):
+            for i in data["result"]:
+                userId=i["userId"]
+                column="count(*) as count"
+                whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
+                data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                print(data1,"")
+                count=data1["count"]
+
+                i["noOfPosts"]=count
+
+
+            Data = {"status":"true","message":"","result":data["result"]}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output =  {"status":"false","message":"something went wrong","result":""}
+        return output                            
+
 
 @app.route('/enterprenuerMasterPannel', methods=['GET'])
 def enterprenuerMasterPannel():
@@ -1228,6 +1402,10 @@ def UpdateUser1():
             address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
             filename,PicPath,Password,Gender,Country,City,MobileNo="","","123","","","",""
             CompanyName=""
+
+            areaOfExpertise,hospital,hospitalAddress="","",""
+            occcupation,companyAddress="",""
+            
             UserId = inputdata["userId"]
             UserName = inputdata["userName"]
            
@@ -1304,6 +1482,23 @@ def UpdateUser1():
 
             if 'companyName' in inputdata:                    
                 CompanyName = inputdata['companyName']
+
+            if 'areaOfExpertise' in inputdata:                    
+                areaOfExpertise = inputdata['areaOfExpertise']
+
+            if 'hospital' in inputdata:                    
+                hospital = inputdata['hospital']
+
+            if 'hospitalAddress' in inputdata:                    
+                hospitalAddress = inputdata['hospitalAddress']
+            if 'occcupation' in inputdata:                    
+                occcupation = inputdata['occcupation']
+
+            if 'companyAddress' in inputdata:                    
+                companyAddress = inputdata['companyAddress']
+
+
+                
             if 'postImage' in request.files:  
                 print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
                 file = request.files.get('postImage')        
@@ -1360,7 +1555,26 @@ def UpdateUser1():
                         column="userId,interestId,userTypeId"
                         values=" '" + str(UserId) + "','" + str(i) + "','" + str('7') + "'"
                         
-                        output9=databasefile.InsertQuery("userInterestMapping",column,values)            
+                        output9=databasefile.InsertQuery("userInterestMapping",column,values)
+            if (UserTypeId == 8):
+                WhereCondition = " and userId = '" + str(UserId) + "'"
+                column="qualificationId ='" + str(qualification) + "', designation ='" + str(designation) + "',areaOfExpertise='" + str(areaOfExpertise) + "',hospital ='" + str(hospital) + "',hospitalAddress='" + str(hospitalAddress) + "'"
+                output11=databasefile.UpdateQuery("doctorMaster",column,WhereCondition)
+                for i in interestId:
+                    column="userId,interestId,userTypeId"
+                    values=" '" + str(UserId) + "','" + str(i) + "','" + str('8') + "'"
+                    output9=databasefile.InsertQuery("userInterestMapping",column,values)
+
+            if (UserTypeId == 9):
+                WhereCondition = " and userId = '" + str(UserId) + "'"
+                column=" designation='" + str(designation) + "',occcupation='" + str(occcupation) + "',companyName='" + str(companyName) + "',companyAddress= '" + str(companyAddress) + "',address='" + str(address) + "'"
+                output11=databasefile.UpdateQuery("professionalMaster",column,WhereCondition)
+                for i in interestId:
+                    column="userId,interestId,userTypeId"
+                    values=" '" + str(UserId) + "','" + str(i) + "','" + str('9') + "'"
+                    output9=databasefile.InsertQuery("userInterestMapping",column,values)
+
+
             if data != "0":
                 column = 'userId,userName,userTypeId'
                 data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)                  
