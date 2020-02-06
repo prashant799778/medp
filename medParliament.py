@@ -3094,7 +3094,22 @@ def announcements():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
+@app.route('/getAnnouncement', methods=['POST'])
+def getAnnouncement():
 
+    try:        
+        WhereCondition,startlimit,endlimit="","",""
+        column = "title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        data = databasefile.SelectQuery("announcement",column,WhereCondition,"",startlimit,endlimit)
+        
+        if data != "0":
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
 # @app.route('/getNews', methods=['POST'])
 # def getNews():
 #     try:
