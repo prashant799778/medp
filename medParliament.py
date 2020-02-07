@@ -3294,12 +3294,15 @@ def news1():
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status =inputdata["status"]
                 if "UserId" in inputdata:
                     if inputdata['UserId'] != "":
                         UserId =inputdata["userId"]
                       
                     whereCondition= " and id= '"+ str(Id) +"' and UserCreate='"+ str(UserId) +"'" 
-                    column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"'"
+                    column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
                     data=databasefile.UpdateQuery("news",column,whereCondition)
                 else:
                     whereCondition=" and id= '"+ str(Id) +"'"
@@ -3762,6 +3765,7 @@ def parliamentEvent():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         print("1111111111111")
         if msg == "1":
+
             print("22222222222222")
             if "eventTitle" in inputdata:
                 if inputdata['eventTitle'] != "":
