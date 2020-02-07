@@ -4002,7 +4002,7 @@ def parliamentEvent1():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         whereCondition= " and id='" + str(Id) + "' "
-                        column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(imagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
+                        column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
                         data=databasefile.UpdateQuery('parliamentEvent',column,whereCondition)
                 
 
