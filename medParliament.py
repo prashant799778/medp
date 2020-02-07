@@ -3161,7 +3161,7 @@ def changeProfilePic():
 
 
 # create news by admin
-@app.route('/news', methods=['POST'])
+@app.route('/news1', methods=['POST'])
 def news():
 
     try:
@@ -3227,7 +3227,7 @@ def news():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
-@app.route('/news1', methods=['POST'])
+@app.route('/news', methods=['POST'])
 def news1():
 
     try:
