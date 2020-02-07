@@ -3990,6 +3990,128 @@ def userDropdown():
  
 
 
+@app.route('/deleteNews', methods=['POST'])
+def deleteNews():
+    try: 
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteNews",inputdata,0)
+
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("news",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+@app.route('/deleteGallery', methods=['POST'])
+def deleteGallery():
+    try: 
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteGallery",inputdata,0)
+        
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("gallery",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+@app.route('/deleteEvent', methods=['POST'])
+def deleteEvent():
+    try: 
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteEvent",inputdata,0)
+        
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("parliamentEvent",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+announcement
+
+@app.route('/deleteAnnouncement', methods=['POST'])
+def deleteAnnouncement():
+    try: 
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteEvent",inputdata,0)
+        
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("announcement",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
 
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
