@@ -1790,7 +1790,7 @@ def userPost():
         inputdata = json.loads(inputdata)
         print("111111111111111111111111111",inputdata)   
         
-        keyarr = ['userTypeId','userId','postTitle','postDescription','flag']
+        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag']
         commonfile.writeLog("userPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -2525,7 +2525,7 @@ def verifyPost1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         startlimit,endlimit="",""
-        keyarr = ['approvedUserId','postId','id',userTypeId]
+        keyarr = ['approvedUserId','postId','id','userTypeId','flag']
         commonfile.writeLog("verifyPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -2534,31 +2534,24 @@ def verifyPost1():
             postId = inputdata["postId"]
             userTypeId = inputdata["userTypeId"]
             statusid = inputdata["id"]
+            flag=inputdata['flag']
             commentDescription=inputdata['commentDescription']
             print(statusid,'id')
     
-            column = "approvedUserId,postId"                
-            values = " '" + str(approvedUserId) + "','" + str(postId) + "'"
-            data = databasefile.InsertQuery("approvedBy",column,values)
-            if statusid == 1:
+            
+            if flag == 'i':
                 print('1')
-                WhereCondition = " and postId = '" + str(postId) + "'"
-                column = " status = '" + str("1") + "'"
+                column = "approvedUserId,postId,userTypeId,commentDescription"                
+                values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId), + "','" + str(commentDescription) + "'"
+                data = databasefile.InsertQuery("approvedBy",column,values)
+                if data!="0":
+                    return data
+            if flag == 'u':
+                WhereCondition = " and postId = '" + str(postId) + "' and approvedUserId='" + str(postId) + "' "
+                column = " commentDescription = '" + str(commentDescription) + "'"
                 data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
-                WhereCondition = " and postId = '" + str(postId) + "'"
-                column = " status = '" + str("1") + "'"
-                data1 = databasefile.UpdateQuery("userPost",column,WhereCondition)
-                if data1!="0":
-                    return data1
-            if statusid == 2:
-                WhereCondition = " and postId = '" + str(postId) + "'"
-                column = " status = '" + str("2") + "'"
-                data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
-                WhereCondition = " and postId = '" + str(postId) + "'"
-                column = " status = '" + str("2") + "'"
-                data2 = databasefile.UpdateQuery("userPost",column,WhereCondition)            
-                if data2!="0":
-                    return data2
+                if data!="0":
+                    return data
             else:
                 return commonfile.Errormessage()
         else:
@@ -2582,7 +2575,7 @@ def verifyPost():
         if msg == "1":
             approvedUserId = inputdata["approvedUserId"]
             postId = inputdata["postId"]
-            userTypeId = inputdata["userTypeId"]
+           
             statusid = inputdata["id"]
             commentDescription=inputdata['commentDescription']
             print(statusid,'id')
