@@ -3546,6 +3546,7 @@ def userDropdown():
        
 
         if data:
+            data.append({"id":0,"userName":"all"})
             #data["result"][0]["id"]=0           
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
