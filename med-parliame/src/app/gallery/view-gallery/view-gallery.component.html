@@ -1,0 +1,56 @@
+<div class="animated fadeIn">
+        <div class="card card-default">
+          <div class="card-header">
+            <i class="fa fa-list"></i>Create Gallery Data
+            <div class="card-header-actions">
+              <a [routerLink]="['/gallery/editGallery']" class="btn btn-block btn-outline-dark" target="_self">View Gallery</a>
+           </div>
+        </div>
+         <div class="card-body">
+            <div class="row">
+                  <div class="col-lg-12">
+                    <div class="card-body p-4">
+                        <form [formGroup]="frmNews" autocomplete="off">
+                          <div class="form-group">
+                           <!-- <label for="newsType">Gallery category</label>
+                            <select formControlName="userTypeId">
+                                <option *ngFor="let userType of userTypeDetails" [value]="userType.id">{{userType.userName}}</option>
+                            </select> -->
+                            <!--  <ng-select 
+                                     [items]="categoryList"
+                                     bindLabel="category"
+                                     bindValue="id"
+                                     labelForId="newsType"
+                                     placeholder="Please select News Category"
+                                     clearAllText="Clear"
+                                     formControlName="newsType">
+                            </ng-select> -->
+                            <br>
+                            <!-- <label for="newsTitle">Gallery Title</label>
+                                <input type="text" class="form-control" formControlName="newsTitle">
+                            <br> -->
+                            <label for="banner">Gallery Banner</label>
+                                <input id="file12" type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
+                                <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
+                                    <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
+                               </div>
+                               <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
+                                <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
+                           </div>
+                            <br>
+                            <!-- <label for="summary">Gallery Shots</label>
+                                <textarea type="text" class="form-control" formControlName="summary" placeholder="Enter Gallery Summary..." rows="4"></textarea>
+                            <br>
+                            <label for="newsDesc">Gallery Description</label>
+                            <angular-editor formControlName="newsDesc" [config]="config"></angular-editor> -->
+                          </div>
+                          <button *ngIf="!updateCheck" type="submit" class="btn btn-success pull-right" (click)="submitNews()">Submit</button>
+                          <button *ngIf="updateCheck" type="submit" class="btn btn-success pull-right" (click)="UpdateNews()">Update</button>
+                        </form>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          

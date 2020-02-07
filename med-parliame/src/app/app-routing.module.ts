@@ -16,6 +16,22 @@ import { PostsComponent } from './Component/posts/posts.component';
 import { EnterpenuressComponent } from './Component/enterpenuress/enterpenuress.component';
 import { StudentListsComponent } from './Component/student-lists/student-lists.component';
 import { CountryComponent } from './setting/country/country.component';
+import { DoctorComponent } from './admin/doctor/doctor.component';
+import { ProfessionalComponent } from './admin/professional/professional.component';
+import { UserDoctorComponent } from './user/user-doctor/user-doctor.component';
+import { UserProfessionalComponent } from './user/user-professional/user-professional.component';
+import { NewsComponent } from './setting/news/news.component';
+import { AnnouncementComponent } from './setting/announcement/announcement.component';
+import { EventsComponent } from './setting/events/events.component';
+import { GalleryComponent } from './setting/gallery/gallery.component';
+import { CreateNewsComponent } from './news/create-news/create-news.component';
+import { EditNewsComponent } from './news/edit-news/edit-news.component';
+import { ViewGalleryComponent } from './gallery/view-gallery/view-gallery.component';
+import { CreateEventComponent } from './event/create-event/create-event.component';
+import { EditEventComponent } from './event/edit-event/edit-event.component';
+import { ViewAnnocementComponent } from './annocement/view-annocement/view-annocement.component';
+import { EditAnnocementComponent } from './annocement/edit-annocement/edit-annocement.component';
+import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.component';
 
 
 
@@ -27,9 +43,130 @@ const routes: Routes = [
   { path: 'allPosts', component: PostsComponent, canActivate:[AuthGuard]},
   { path: 'enterpenure', component: EnterpenuressComponent, canActivate:[AuthGuard]},
   { path: 'studentsList', component: StudentListsComponent, canActivate:[AuthGuard]},
-  { path: 'setting', component: CountryComponent, canActivate:[AuthGuard]},
+  { path: 'setting', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/Setting/add',pathMatch:'full'}, 
+   
+       {
+          path:'add',
+          component: CountryComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'news',
+        component: NewsComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+      path:'annocement',
+      component: AnnouncementComponent,
+      canActivate: [AuthGuard],
+  },
+  {
+    path:'event',
+    component: EventsComponent,
+    canActivate: [AuthGuard],
+},
+{
+  path:'gallery',
+  component: GalleryComponent,
+  canActivate: [AuthGuard],
+},
+  
+    
+      
+  ]
+  },
   
   
+
+
+  { path: 'news', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/news/createNews',pathMatch:'full'}, 
+   
+       {
+          path:'createNews',
+          component: CreateNewsComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editNews',
+        component: EditNewsComponent,
+        canActivate: [AuthGuard],
+    },
+    
+  
+    
+      
+  ]
+  },
+
+  { path: 'gallery', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/gallery/createGallery',pathMatch:'full'}, 
+   
+       {
+          path:'createGallery',
+          component: ViewGalleryComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editGallery',
+        component: EditGalleryComponent,
+        canActivate: [AuthGuard],
+    },
+    
+  
+    
+      
+  ]
+  },
+
+  { path: 'event', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/event/createEvent',pathMatch:'full'}, 
+   
+       {
+          path:'createEvent',
+          component: CreateEventComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editEvent',
+        component: EditEventComponent,
+        canActivate: [AuthGuard],
+    },
+    
+  
+    
+      
+  ]
+  },
+
+  { path: 'announcement', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/announcement/createAnnouncement',pathMatch:'full'}, 
+   
+       {
+          path:'createAnnouncement',
+          component: ViewAnnocementComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editAnnouncement',
+        component: EditAnnocementComponent,
+        canActivate: [AuthGuard],
+    },
+    
+  
+    
+      
+  ]
+  },
+  
+
+
   { path: 'Admin',
   children: [                          //<---- child components declared here
     { path: '',redirectTo: '/Admin/policy',pathMatch:'full'}, 
@@ -49,6 +186,16 @@ const routes: Routes = [
       component: EnterpenureComponent,
       canActivate: [AuthGuard],
   },
+  {
+    path:'doctor',
+    component: DoctorComponent,
+    canActivate: [AuthGuard],
+},
+{
+  path:'professional',
+  component: ProfessionalComponent,
+  canActivate: [AuthGuard],
+},
   {
     path:'addAdmin',
     component: AddAdminComponent,
@@ -76,8 +223,16 @@ const routes: Routes = [
       path:'enterpenure',
       component: UserEnterpenureComponent,
       canActivate: [AuthGuard],
-  }
-    
+  },
+  {
+    path:'doctor',
+    component: UserDoctorComponent,
+    canActivate: [AuthGuard],
+},{
+  path:'professional',
+  component: UserProfessionalComponent,
+  canActivate: [AuthGuard],
+},
       
   ]
   },

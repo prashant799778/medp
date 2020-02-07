@@ -1,0 +1,58 @@
+<div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12">
+              <div class="upper-wrap">
+                <div class="image-section-set bg-color">
+                    <img class="image-set" src="../../../assets/images/user-im.svg">
+                </div>
+                <ul class="sub-heading d-flex al-item mr-remove">
+                    <li>User /</li>
+                    <li>Professional</li>
+                  </ul> 
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12">
+                <div class="record-box table-responsive bg-white-fff border-round same-margin shadow-box">
+                       <div class="upper-wrap">
+                          <h2 class="main-hading mr-bottom">User Professional List</h2>   
+                      </div>
+                        <table class="table">                               
+                            <thead>
+                                <tr >
+                                    <th>Name </th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Gender</th>
+                                    <th>Institution</th>
+                                    <th>Address</th>
+                                    <th>Password</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let userPolicy of UserStudentList; let i = index">
+                                    <td>{{userPolicy.userName}}</td>
+                                    <td>{{userPolicy.email}}</td>
+                                    <td>{{userPolicy.mobileNo}}</td>
+                                    <td>{{getGender(userPolicy.gender)}}</td>
+                                    <td>{{userPolicy.institutionName}}</td>
+                                    <td>{{userPolicy.address}}</td>
+                                    <td>{{userPolicy.password}}</td>
+                                    <td>
+                                            <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>
+                                            <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Inactive</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="acton-btn" (click)="policyDetail(userPolicy.userId)">
+                                            <img src="../../../assets/images/view.svg" class="action-view">
+                                        </button>
+                                    </td>
+                                </tr>
+        
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+        </div>
