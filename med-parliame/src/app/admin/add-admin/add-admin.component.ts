@@ -175,11 +175,12 @@ export class AddAdminComponent implements OnInit {
 			'email': this.addAddminForm.get('emailId').value
 		}
 		this.userService.dataPostApi(data, AppSettings.UpdateStatus).then(resp=>{
+			
 			if(resp['status'] == 'true'){
 				this.activatedds = true;
 				setTimeout(()=>{
 					jQuery('#addAdmin-pop').modal("hide")
-				},2000)
+				},2000000000)
 				
 			}
 		})

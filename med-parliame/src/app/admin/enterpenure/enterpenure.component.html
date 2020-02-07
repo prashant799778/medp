@@ -12,7 +12,7 @@
                 </div>
               </div>
         <div class="col-sm-12 col-md-12 col-lg-12 margin-tp">
-            <div class="record-box neu-shadow table-responsive bg-white-fff border-round">
+            <div class="record-box shadow-box table-responsive bg-white-fff border-round">
                  <div class="upper-wrap">
                            
                 </div>
@@ -21,7 +21,6 @@
                         <tr>
                             <th>name</th>
                             <th>email</th>
-                            <!-- <th>Mobile</th> -->
                             <th>Password</th>
                             <th>status</th>
                             <th>Action</th>
@@ -32,7 +31,6 @@
                               <tr *ngFor="let subAdmin of studentlist ; let i =  index">
                                       <td>{{subAdmin.userName}}</td>
                                       <td>{{subAdmin.email}}</td>
-                                      <!-- <td>{{subAdmin.mobileNo}}</td> -->
                                       <td>{{subAdmin.password}}</td>
                                       <td class="txt-color-r text-uppercase">
                                             <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">ACTIVE</button>
@@ -63,9 +61,8 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
               <template>
-                <div class="modal-header border-remo">
+                <div class="modal-header border-remo paddign-remove">
                 <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
-                    <!-- <span aria-hidden="true">&times;</span> -->
                     <img src="../../../assets/images/close-im.svg">
                 </button>
                 </div>
@@ -84,14 +81,8 @@
                         <button  (click)="deleteAdmin()" class="mod-btn fill-back">Delete</button>
                     </div>
                     </div>
-                
-                <!-- <h2>{{modalDescription}}</h2> -->
             </div>
             <div class="modal-body" *ngIf="activatedds">
-                    <!-- <span *ngIf="userProfile && userProfile.status == 0">Are you what to sure Deactivated</span>
-                    <span *ngIf="userProfile && userProfile.status == 1">Are you what to sure activated</span>
-                    <button *ngIf="userProfile && userProfile.status == 0" (click)="ActiveStudent()">Deactivated</button>
-                    <button *ngIf="userProfile && userProfile.status == 1" (click)="ActiveStudent()">Activated</button> -->
                     <div class="success-parent">
                             <div class="child-success"><img src="../../../assets/images/correct.svg"></div>
      

@@ -21,7 +21,7 @@
           <form [formGroup]="addAddminForm">
               <div class="form-group">
                 <label class="form-label">Admin Name</label>
-                <input type="text" class="form-control" formControlName="adminName">
+                <input type="text" class="form-control" formControlName="adminName" required="required">
               </div>
               <div class="form-group">
                 <label class="form-label">Admin Type</label>
@@ -36,32 +36,29 @@
               </div>
               <div class="form-group">
                 <label class="form-label">Email Id</label>
-                <input type="text" class="form-control" formControlName="emailId">
+                <input type="text" class="form-control" formControlName="emailId" required="required">
               </div>
               <div class="form-group">
                 <label class="form-label">Password </label>
-                <input type="text" class="form-control" formControlName="password">
+                <input type="text" class="form-control" formControlName="password" required="required">
               </div>
               <div class="form-group">
                 <label class="form-label">Confirm Password</label>
-                <input type="text" class="form-control" formControlName="confirmPass">
+                <input type="text" class="form-control" formControlName="confirmPass" required="required">
               </div>
               <div class="form-Group" *ngIf="UPdateUserss">
                     <label class="form-label">Admin Status</label>
-                    <select class="form-control" formControlName="actionType"  >
+                    <select class="form-control" formControlName="actionType" required="required" >
                         <option value='0'   >Activate</option>
-                        <option value="1"  >Deactivate</option>
-                        <!-- <option value="4" >Student</option> -->
-    
+                        <option value="1"  >Deactivate</option>   
                     </select>
               </div>
               <div class="small-space"></div>
               <div class="bottom-section same-margin admin-action">
                 <ul class="group-action-button mr-remove d-flex al-item ">
-                  <li class="bg-color-blu" (click)="saveData()"><a href="javascript:void(0)">Save</a></li>
+                  <li class="bg-color-blu" (click)="saveData()">
+                    <a href="javascript:void(0)">Save</a></li>
                   <li class="bg-color-l-black" (click)="resetData()"><a href="javascript:void(0)">Reset</a></li>
-                  <!-- <li class="bg-color-l-black" (click)="openModal()" *ngIf="acitvated == 1" ><a href="javascript:void(0)">Activate</a></li>
-                  <li class="bg-color-l-black"  *ngIf="acitvated == 0" (click)="openModal()" ><a href="javascript:void(0)">Deactivate</a></li> -->
                 </ul>
               </div>
           </form>
@@ -92,53 +89,17 @@
     </div>
 </div>
 
-<!-- <div class="modal fade" id="addAdmin-pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body" *ngIf="!acitvatedd1">
-                <span *ngIf="acitvated == 1">Are you sure to activate</span>
-                <span *ngIf="acitvated == 0">Are you sure to deactivate</span>
-              <h2></h2>
-              <button *ngIf="acitvated == 1" (click)="deactivate()">activate</button>
-              <button *ngIf="acitvated == 0" (click)="deactivate()">deactivate</button>
-            </div>
-            <div class="modal-body" *ngIf="acitvatedd1">
-                   
-                  <h2> {{modalDescription}}</h2>
-                 
-                </div>
-          </div>
-        </div>
-      </div> -->
-
-
-      <div class="modal fade" id="addAdmin-popSave" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="addAdmin-popSave" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
-                <div class="modal-header border-remo" >
-                 
-                  <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
-                    <span aria-hidden="true">&times;</span>
-                  </button> -->
+                <div class="modal-header border-remo paddign-remove" >
                 </div>
                 
                 <div class="modal-body" >
-                        <!-- <span *ngIf="acitvated == 1">Are you sure to active</span>
-                        <span *ngIf="acitvated == 0">Are you sure to deactive</span> -->
                         <div class="success-parent">
                                 <div class="child-success"><img src="../../../assets/images/correct.svg"></div>
-         
-                                 
                                 <div class="child-success"><h2>{{modalDescription}}</h2></div> 
                             </div>
-                      <!-- <button *ngIf="acitvated == 1" (click)="deactivate()">active</button>
-                      <button *ngIf="acitvated == 0" (click)="deactivate()">deactive</button> -->
                     </div>
               </div>
             </div>
@@ -154,9 +115,8 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                       <template>
-                        <div class="modal-header border-remo">
+                        <div class="modal-header border-remo paddign-remove">
                         <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
-                            <!-- <span aria-hidden="true">&times;</span> -->
                             <img src="../../../assets/images/close-im.svg">
                         </button>
                         </div>
@@ -189,7 +149,6 @@
                                             <button *ngIf="statuss == 1" (click)="deactivate()" class="mod-btn fill-back-ac">Activate</button>
                                     </div>
                             </div>
-                        <!-- <h2>{{modalDescription}}</h2> -->
                     </div>
                     <div class="modal-body" *ngIf="activatedds">
                            
