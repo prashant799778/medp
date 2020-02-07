@@ -4025,7 +4025,7 @@ def getParliamentEvent():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
-        WhereCondition=WhereCondition+" and Status=0 and Status=1 "
+        WhereCondition=WhereCondition+" and Status=0 or Status=1 "
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
