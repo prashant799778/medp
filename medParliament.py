@@ -3212,11 +3212,11 @@ def landingPageDashboard():
         column2 = " date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
         data2 = databasefile.SelectQuery("gallery",column2,"","",startlimit,endlimit)
         
-        column = "eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data = databasefile.SelectQuery("parliamentEvent ",column,WhereCondition,"",startlimit,endlimit)
+        column3 = "eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data4 = databasefile.SelectQuery("parliamentEvent ",column3,WhereCondition,"",startlimit,endlimit)
         
         if data != "0":
-            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"]}
+            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"]}
         else:
             return commonfile.Errormessage()
 
