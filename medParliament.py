@@ -1898,7 +1898,7 @@ def allPosts1():
                 whereCondition=" and pm.postId='" + str(postId) + "' "
                 column1="pm.id,um.userName,um.email,pm.commentDescription,(pm.approvedUserId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
                 WhereCondition1="  and pm.approvedUserId=um.userId and pm.postId='" + str(postId) + "'" 
-                orderby=orderby+" id "
+                orderby=" id "
                 data1 = databasefile.SelectQueryOrderby("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",startlimit,endlimit,orderby)
             
             whereCondition=""
