@@ -3177,6 +3177,40 @@ def getNews():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
+
+
+
+
+@app.route('/landingPageDashboard', methods=['POST'])
+def landingPageDashboard():
+
+    try:
+        WhereCondition,startlimit,endlimit="","",""
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                    if inputdata['startlimit'] != "":
+                        startlimit =inputdata["startlimit"]
+            if "userTypeId" in inputdata:
+                    if inputdata['userTypeId'] != "":
+                        userTypeId =inputdata["userTypeId"]
+                        WhereCondition=WhereCondition+" and userTypeId='"+str(userTypeId)+"'"
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =inputdata["endlimit"]
+        
+        column = "newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
+        if data != "0":
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
 # @app.route('/getNewsCategory', methods=['POST'])
 # def getNewsCategoryMaster():
 
