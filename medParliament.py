@@ -2535,7 +2535,7 @@ def verifyPost():
             postId = inputdata["postId"]
             userTypeId = inputdata["userTypeId"]
             statusid = inputdata["id"]
-            commentDescription=
+            commentDescription=inputdata['commentDescription']
             print(statusid,'id')
     
             column = "approvedUserId,postId"                
