@@ -3800,13 +3800,13 @@ def galleryImages1():
 
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
-                        whereCondition=" UserCreate='" + str(userId) + "'"
+                        whereCondition=" and UserCreate='" + str(userId) + "'"
                         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
                         data=databasefile.UpdateQuery("gallery",column,whereCondition)
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
-                        whereCondition=" id='" + str(Id) + "'"
+                        whereCondition=" and  id='" + str(Id) + "'"
                         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
                         data=databasefile.UpdateQuery("gallery",column,whereCondition)
 
