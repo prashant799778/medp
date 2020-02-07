@@ -3462,7 +3462,9 @@ def userDropdown():
         data = databasefile.SelectQuery("userTypeMaster",columns,whereCondition,"",startlimit,endlimit)
        
 
-        if data:           
+        if data:
+            for i in data["result"]:
+                i.append({"id":0,"userName":"all"})           
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
         else:
