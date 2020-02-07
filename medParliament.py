@@ -724,7 +724,7 @@ def allSubAdmins():
             data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
             print(data)
 
-            if (data["status"]!="false"): 
+            if (data["status"]!=0): 
                 print("111111111111111")          
                 Data = {"status":"true","message":"","result":data["result"]}
                 return Data
@@ -2404,7 +2404,7 @@ def adminDropdown():
     try:
         columns=" id,userName  "
         startlimit,endlimit="",""
-        whereCondition="and id>1 and id<5"
+        whereCondition="and id<>1 and id<>5 and id<>6 and id<>7 and id<>8 and id<>9"
         
         data = databasefile.SelectQuery("userTypeMaster",columns,whereCondition,"",startlimit,endlimit)
        
@@ -2848,6 +2848,79 @@ def userProfile():
                     return data3
                 else:
                     return commonfile.Errormessage()
+            if userTypeId == 8:
+                column="um.userName,um.email,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
+                column=column+"dm.userId,dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
+               
+                WhereCondition="   and qm.id=dm.qualificationId and um.userId=dm.userId and um.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userMaster um,doctorMaster dm,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
+                print(data1)
+                
+               
+                column=" im.name " 
+                WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                data1["result"][0]["userInterest"]=[]
+                for i in data5["result"]:
+                    data1["result"][0]["userInterest"].append(i["name"])
+                
+                
+                
+                
+                orderby="ab.id"
+                column="*"
+                whereCondition="and ab.userId='" + userId+ "'"
+                data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
+                if  data4==0:
+                    
+                    data4={"result":'No Posts till now'}
+                if data1["result"][0]["profilePic"]==None:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                else:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
+                data2={"userProfile":data1["result"],"userPost":data4["result"]}
+                data3={"status":"true","message":"","result":data2}
+                if  data3:                     
+                    return data3
+                else:
+                    return commonfile.Errormessage()
+            if userTypeId == 9:
+                column="um.userName,um.email,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
+                column=column+"pm.userId,pm.designation,pm.occcupation,pm.companyName,pm.companyAddress,pm.address"
+               
+                WhereCondition="   and um.userId=pm.userId and um.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userMaster um,professionalMaster pm",column,WhereCondition,"",startlimit,endlimit,"")
+                print(data1)
+                
+               
+                column=" im.name " 
+                WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                data1["result"][0]["userInterest"]=[]
+                for i in data5["result"]:
+                    data1["result"][0]["userInterest"].append(i["name"])
+                
+                
+                
+                
+                orderby="ab.id"
+                column="*"
+                whereCondition="and ab.userId='" + userId+ "'"
+                data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
+                if  data4==0:
+                    
+                    data4={"result":'No Posts till now'}
+                if data1["result"][0]["profilePic"]==None:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                else:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
+                data2={"userProfile":data1["result"],"userPost":data4["result"]}
+                data3={"status":"true","message":"","result":data2}
+                if  data3:                     
+                    return data3
+                else:
+                    return commonfile.Errormessage()
+
             else:
                 data = {"status":"false","message":"userTypeId is not correct.","result":""}
                 return data 
