@@ -3233,16 +3233,20 @@ def getNews():
 
     try:
         WhereCondition,startlimit,endlimit="","",""
-        inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-        if "startlimit" in inputdata:
-                if inputdata['startlimit'] != "":
-                    startlimit =inputdata["startlimit"]
-            
-        if "endlimit" in inputdata:
-            if inputdata['endlimit'] != "":
-                endlimit =inputdata["endlimit"]
-        WhereCondition=WhereCondition+" and p.newsType=e.id "
+            if "startlimit" in inputdata:
+                    if inputdata['startlimit'] != "":
+                        startlimit =inputdata["startlimit"]
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =inputdata["endlimit"]
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
         column = "newsTitle,category ,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
@@ -3406,6 +3410,20 @@ def getAnnouncement():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                    if inputdata['startlimit'] != "":
+                        startlimit =inputdata["startlimit"]
+            if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =inputdata["endlimit"]
+        
         column = "title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
         data = databasefile.SelectQuery("announcement",column,WhereCondition,"",startlimit,endlimit)
         for i in data["result"]:
@@ -3521,8 +3539,24 @@ def getGalleryImages():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                    if inputdata['startlimit'] != "":
+                        startlimit =inputdata["startlimit"]
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =inputdata["endlimit"]
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+        
         column = " date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
-        data = databasefile.SelectQuery("gallery",column,WhereCondition,"",startlimit,endlimit)
+        data = databasefile.SelectQuery(" gallery ",column,WhereCondition,"",startlimit,endlimit)
         
         if data != "0":
             return data
@@ -3612,9 +3646,24 @@ def getParliamentEvent():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
-        #WhereCondition=WhereCondition+" and p.eventType=e.id "
-        column = "p.eventTitle ,p.eventSummary,p.eventLocation,date_format(p.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
-        data = databasefile.SelectQuery("parliamentEvent p,eventMaster e",column,WhereCondition,"",startlimit,endlimit)
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                    if inputdata['startlimit'] != "":
+                        startlimit =inputdata["startlimit"]
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =inputdata["endlimit"]
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+        
+        column = "eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data = databasefile.SelectQuery(" parliamentEvent ",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
         else:
