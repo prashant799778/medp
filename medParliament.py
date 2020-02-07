@@ -3284,13 +3284,13 @@ def news1():
                 if "status" in inputdata:
                     if inputdata['status'] != "":
                         status =inputdata["status"]
-                if "UserId" in inputdata:
-                    if inputdata['UserId'] != "":
-                        UserId =inputdata["UserId"]
+                # if "UserId" in inputdata:
+                #     if inputdata['UserId'] != "":
+                #         UserId =inputdata["UserId"]
                       
-                    whereCondition= " and id= '"+ str(Id) +"' and UserCreate='"+ str(UserId) +"'" 
-                    column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
-                    data=databasefile.UpdateQuery("news",column,whereCondition)
+                #     whereCondition= " and id= '"+ str(Id) +"' and UserCreate='"+ str(UserId) +"'" 
+                #     column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
+                #     data=databasefile.UpdateQuery("news",column,whereCondition)
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
@@ -3586,12 +3586,12 @@ def announcements1():
                     if inputdata['status'] != "":
                         status =inputdata["status"]
 
-                if "UserId" in inputdata:
-                    if inputdata['UserId'] != "":
-                        UserId =inputdata["UserId"]
-                        whereCondition=" UserCreate= '"+ str(UserId)+"'"
-                        column="title='"+ str(title)+"',summary='"+ str(summary)+"',userTypeId='"+ str(userTypeId)+"',videoLink='"+ str(userTypeId)+"',ImagePath='"+ str(ImagePath)+"',Status='"+ str(status)+"'"
-                        data=databasefile.UpdateQuery("announcement",column,whereCondition)
+                # if "UserId" in inputdata:
+                #     if inputdata['UserId'] != "":
+                #         UserId =inputdata["UserId"]
+                #         whereCondition=" UserCreate= '"+ str(UserId)+"'"
+                #         column="title='"+ str(title)+"',summary='"+ str(summary)+"',userTypeId='"+ str(userTypeId)+"',videoLink='"+ str(userTypeId)+"',ImagePath='"+ str(ImagePath)+"',Status='"+ str(status)+"'"
+                #         data=databasefile.UpdateQuery("announcement",column,whereCondition)
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
@@ -3785,13 +3785,13 @@ def galleryImages1():
                 if "status" in inputdata:
                     if inputdata['status'] != "":
                         status =inputdata["status"]
-                if "userId" in inputdata:
+                # if "userId" in inputdata:
 
-                    if inputdata['userId'] != "":
-                        userId =inputdata["userId"]
-                        whereCondition=" and UserCreate='" + str(userId) + "'"
-                        column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
-                        data=databasefile.UpdateQuery("gallery",column,whereCondition)
+                #     if inputdata['userId'] != "":
+                #         userId =inputdata["userId"]
+                #         whereCondition=" and UserCreate='" + str(userId) + "'"
+                #         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
+                #         data=databasefile.UpdateQuery("gallery",column,whereCondition)
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
@@ -3992,12 +3992,12 @@ def parliamentEvent1():
                     if inputdata['status'] != "":
                         status=inputdata["status"]
 
-                if "UserId" in inputdata:
-                    if inputdata['UserId'] != "":
-                        UserId =inputdata["UserId"]
-                        whereCondition= " and UserCreate='" + str(UserId) + "' "
-                        column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
-                        data=databasefile.UpdateQuery('parliamentEvent',column,whereCondition)
+                # if "UserId" in inputdata:
+                #     if inputdata['UserId'] != "":
+                #         UserId =inputdata["UserId"]
+                #         whereCondition= " and UserCreate='" + str(UserId) + "' "
+                #         column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
+                #         data=databasefile.UpdateQuery('parliamentEvent',column,whereCondition)
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
