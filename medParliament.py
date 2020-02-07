@@ -3343,7 +3343,7 @@ def getNews():
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
-        column = "id,Status,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,UserCreate "
+        column = "id,Status,newsTitle,userTypeId,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,UserCreate "
         data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
@@ -3874,6 +3874,7 @@ def parliamentEvent():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         print("1111111111111")
         if msg == "1":
+            ImagePath=""
 
             print("22222222222222")
             if "eventTitle" in inputdata:
@@ -3942,10 +3943,11 @@ def parliamentEvent1():
         inputdata = json.loads(inputdata) 
         print("parliamentEvent",inputdata)
         commonfile.writeLog("parliamentEvent",inputdata,0)
-        keyarr = ["eventTitle","eventSummary","eventLocation"]           
+        keyarr = ["eventTitle","eventSummary","eventLocation",'flag']           
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         print("1111111111111")
         if msg == "1":
+            flag=inputdata['flag']
 
             print("22222222222222")
             if "eventTitle" in inputdata:
@@ -3981,18 +3983,38 @@ def parliamentEvent1():
 
                     file.save(FolderPath)
                     ImagePath = filepath
+            if flag =="i":
             
-            if "UserId" in inputdata:
-                if inputdata['UserId'] != "":
-                    UserId =inputdata["UserId"]
-                column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate,UserCreate"
-                values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
-                data = databasefile.InsertQuery("parliamentEvent",column,values)        
-            else:
+                if "UserId" in inputdata:
+                    if inputdata['UserId'] != "":
+                        UserId =inputdata["UserId"]
+                    column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate,UserCreate"
+                    values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
+                    data = databasefile.InsertQuery("parliamentEvent",column,values)        
+                else:
 
-                column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate"
-                values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "'"
-                data = databasefile.InsertQuery("parliamentEvent",column,values)
+                    column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate"
+                    values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "'"
+                    data = databasefile.InsertQuery("parliamentEvent",column,values)
+            if flag =="u":
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status=inputdata["status"]
+
+                if "UserId" in inputdata:
+                    if inputdata['UserId'] != "":
+                        UserId =inputdata["UserId"]
+                        whereCondition= " and UserCreate='" + str(UserId) + "' "
+                        column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(imagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
+                        data=databasefile.UpdateQuery('parliamentEvent,column,whereCondition')
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        whereCondition= " and id='" + str(Id) + "' "
+                        column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(imagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
+                        data=databasefile.UpdateQuery('parliamentEvent,column,whereCondition')
+                
+
 
             if data !=0 :                
                 return data
