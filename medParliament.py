@@ -1069,7 +1069,7 @@ def allprofessionalsMaster():
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
             column=column+"pm.userId,pm.designation,pm.occcupation,pm.companyName,pm.companyAddress,pm.address"
             startlimit,endlimit="",""
-            WhereCondition=" and um.usertypeId='9' and pm.userId=um.userId  and um.countryId=cm.id"
+            WhereCondition=" and um.usertypeId='9' and pm.userId=um.userId  "
 
             
             data = databasefile.SelectQueryOrderby("userMaster as um,professionalMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
