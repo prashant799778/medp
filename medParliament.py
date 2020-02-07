@@ -3083,11 +3083,11 @@ def news():
                 if inputdata['UserId'] != "":
                     UserId =inputdata["UserId"]
                 column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
-                values = " '"+ str(newsTitle) +"','" + str(newsType)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
+                values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
                 data = databasefile.InsertQuery("news",column,values)        
             else:
                 column = "newsTitle,userTypeId,imagePath,summary,newsDesc"
-                values = " '"+ str(newsTitle) +"','" + str(newsType)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
+                values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
                 data = databasefile.InsertQuery("news",column,values)
 
             if data !=0 :                
