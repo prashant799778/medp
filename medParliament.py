@@ -3227,6 +3227,97 @@ def news():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
+@app.route('/news1', methods=['POST'])
+def news1():
+
+    try:
+       
+        inputdata = request.form.get('news')    
+        inputdata = json.loads(inputdata) 
+        print("newsdata",inputdata)
+        commonfile.writeLog("news",inputdata,0)
+        keyarr = ["newsTitle","userTypeId","summary","newsDesc","flag"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            flag=inputdata['flag']
+            if "newsTitle" in inputdata:
+                if inputdata['newsTitle'] != "":
+                    newsTitle =inputdata["newsTitle"]
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+        
+            if "summary" in inputdata:
+                if inputdata['summary'] != "":
+                    summary =inputdata["summary"]
+            
+            if "newsDesc" in inputdata:
+                if inputdata['newsDesc'] != "":
+                    newsDesc =inputdata["newsDesc"]
+
+             
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"]        
+            
+            
+            if 'NewsBanner' in request.files:      
+                    file = request.files.get('NewsBanner')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getNewsPath(filename)  
+
+                    filepath = '/newsimages/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            if flag =='i':      
+                if "UserId" in inputdata:
+                    if inputdata['UserId'] != "":
+                        UserId =inputdata["UserId"]
+                      
+                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
+                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
+                    data = databasefile.InsertQuery("news",column,values)        
+                else:
+                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc"
+                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
+                    data = databasefile.InsertQuery("news",column,values)
+            if flag =='u':
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                if "UserId" in inputdata:
+                    if inputdata['UserId'] != "":
+                        UserId =inputdata["userId"]
+                      
+                    whereCondition= " and id= '"+ str(Id) +"' and UserCreate='"+ str(UserId) +"'" 
+                    column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"'"
+                    data=databasefile.UpdateQuery("news",column,whereCondition)
+                else:
+                    whereCondition=" and id= '"+ str(Id) +"'"
+                    column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"'"
+                    data=databasefile.UpdateQuery("news",column,whereCondition)
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
 
 @app.route('/getNews', methods=['POST'])
 def getNews():
