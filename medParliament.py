@@ -3127,22 +3127,22 @@ def getNews():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
-@app.route('/getNewsCategory', methods=['POST'])
-def getNewsCategoryMaster():
+# @app.route('/getNewsCategory', methods=['POST'])
+# def getNewsCategoryMaster():
 
-    try:
-        WhereCondition,startlimit,endlimit="","",""
+#     try:
+#         WhereCondition,startlimit,endlimit="","",""
        
-        column = " id,category  "
-        data = databasefile.SelectQuery("newsCategoryMaster",column,WhereCondition,"",startlimit,endlimit)
-        if data != "0":
-            return data
-        else:
-            return commonfile.Errormessage()
+#         column = " id,category  "
+#         data = databasefile.SelectQuery("newsCategoryMaster",column,WhereCondition,"",startlimit,endlimit)
+#         if data != "0":
+#             return data
+#         else:
+#             return commonfile.Errormessage()
 
-    except Exception as e :
-        print("Exception--->" + str(e))                                  
-        return commonfile.Errormessage()
+#     except Exception as e :
+#         print("Exception--->" + str(e))                                  
+#         return commonfile.Errormessage()
 
 
 @app.route('/announcements', methods=['POST'])
