@@ -1,0 +1,95 @@
+<div class="container-fluid">
+        <div class="row" >
+                <div class="col-12 col-sm-12 col-md-12">
+                        <div class="upper-wrap">
+                          <div class="image-section-set bg-color">
+                              <img class="image-set" src="../../../assets/images/entrepreneur.svg">
+                          </div>
+                          <ul class="sub-heading d-flex al-item mr-remove">
+                            <li>Admin /</li>
+                            <li>Operation</li>
+                          </ul>  
+                        </div>
+                      </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 margin-tp">
+                    <div class="record-box shadow-box table-responsive bg-white-fff border-round">
+                         <div class="upper-wrap">
+                                 
+                        </div>
+                        <table class="table">                               
+                            <thead>
+                                <tr>
+                                    <th>name</th>
+                                    <th>email</th>
+                                    <th>Password</th>
+                                    <th>status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngIf="studentlist && studentlist.length > 0">
+                                      <tr *ngFor="let subAdmin of studentlist ; let i =  index">
+                                              <td>{{subAdmin.userName}}</td>
+                                              <td>{{subAdmin.email}}</td>
+                                              <!-- <td>{{subAdmin.mobileNo}}</td> -->
+                                              <td>{{subAdmin.password}}</td>
+                                              <td class="txt-color-r text-uppercase">
+                                                    <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">ACTIVE</button>
+                                                    <button *ngIf="postStatus[i]== 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">INACTIVE</button>
+                                             
+                                              </td>
+                                              <td>
+                                                  <!-- <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">
+                                                      <img src="../../assets/images/view.svg" class="action-view">
+                                                  </button> -->
+                                                  <div class="btn-edit-group">
+                                                    <button type="button" class="edit-btn" (click)="EditDetails(subAdmin.userId, subAdmin.userTypeId)">  <img src="../../../assets/images/edit-im.svg"></button>
+                                                    <button type="button" class="delet-btn" (click)="deleteAdmins(subAdmin.userId, subAdmin.userTypeId)">  <img src="../../../assets/images/bin.svg"></button>
+                                                </div>
+                                              </td>
+                                          </tr>
+                                </ng-container>
+                               
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="modal fade" id="addAdmin-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <template>
+                        <div class="modal-header border-remo paddign-remove">
+                        <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                            <img src="../../../assets/images/close-im.svg">
+                        </button>
+                        </div>
+                    </template>
+                    <div class="modal-body" *ngIf="!activatedds">
+                        <div class="inner-model-box same-margin" >
+                            <div class="d-flex al-item">
+                                <img src="../../../assets/images/caution.svg" class="altr">
+                                <div class="dc-act">
+                                    <h3>Delete Account</h3>
+                                    <span >Are you sure you want to delete ?</span>
+                                </div>
+                            </div>
+                            <div class="grp-btn text-center">
+                                <button  (click)="clsoeModal()" class="mod-btn dc-bg-color-gray">Cancel</button>
+                                <button  (click)="deleteAdmin()" class="mod-btn fill-back">Delete</button>
+                            </div>
+                            </div>
+                    </div>
+                    <div class="modal-body" *ngIf="activatedds">
+                            <div class="success-parent">
+                                    <div class="child-success"><img src="../../../assets/images/correct.svg"></div>                           
+                                    <div class="child-success"><h2>Deleted Successfully</h2></div> 
+                                </div>
+                        </div>
+                  </div>
+                </div>
+              </div>

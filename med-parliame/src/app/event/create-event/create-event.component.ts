@@ -25,6 +25,7 @@ export class CreateEventComponent implements OnInit {
   file: any;
   imageShow: any= '';
   showBanner: number;
+  updateCheck: boolean;
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd.mm.yyyy',
@@ -58,6 +59,7 @@ export class CreateEventComponent implements OnInit {
   constructor(public fb: FormBuilder, private apiService: UserServiceService, private route: ActivatedRoute,public local:LocalStorageService, private router: Router) {
     console.log('constructor');
     this.initializeForm();
+    this.updateCheck= false;
    }
 
    ngOnInit() {
@@ -66,6 +68,9 @@ export class CreateEventComponent implements OnInit {
       console.log(params);
       this.newsId = params['NewsId'];
       console.log(this.newsId);
+      if(this.newsId){
+        this.updateCheck= true;
+      }
     });
     if (this.newsId !== undefined) {
       // this.getCategoryList();
@@ -90,7 +95,7 @@ export class CreateEventComponent implements OnInit {
       banner: [''],
       summary: [''],
       userTypeId: [''],
-      // eventLocation: [''],
+      id: [''],
       userCreate: [''],
       eventLocation: ['']
     });
@@ -121,6 +126,46 @@ export class CreateEventComponent implements OnInit {
  
   }
 
+  UpdateNews(){
+    this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
+    const newsData = {
+      eventLocation : this.frmNews.get('eventLocation').value,
+      eventTitle: this.frmNews.get('newsTitle').value,
+      eventSummary: this.frmNews.get('summary').value,
+      
+      eventDate: this.frmNews.get('eventDate').value,
+      UserId : this.frmNews.get('userCreate').value,
+      userTypeId: this.frmNews.get('userTypeId').value,
+      
+      flag: 'u',
+      id: this.frmNews.get('id').value,
+      status: 1
+    };
+
+    const formData = new FormData();
+    formData.append('postImage', this.frmNews.get('banner').value);
+    formData.append('data', JSON.stringify(newsData));
+
+    console.log(formData);
+    this.apiService.dataPostApi(formData, AppSettings.parliamentEvent).then((data: any[]) => {
+      console.log(data);
+      if(data['status'] == 'true'){
+        this.frmNews.reset();
+        this.imageShow = '';
+        console.log(this.file)
+        this.file = '';
+        var elemsss = (<HTMLInputElement>document.getElementById('file12'))
+        
+        elemsss.value = '';
+
+        // document.getElementById('filesss').val('');
+
+
+      }
+    });
+  }
+
+
   submitNews() {
     console.log(this.frmNews.get('eventDate').value.formatted)
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
@@ -130,7 +175,8 @@ export class CreateEventComponent implements OnInit {
       eventSummary: this.frmNews.get('summary').value,
       eventDate: this.getDate(this.frmNews.get('eventDate').value.formatted),
       UserId : this.frmNews.get('userCreate').value,
-      userTypeId: this.frmNews.get('userTypeId').value
+      userTypeId: this.frmNews.get('userTypeId').value,
+      flag: 'i'
     };
 
     const formData = new FormData();
@@ -184,6 +230,9 @@ export class CreateEventComponent implements OnInit {
       console.log(afterDate+" "+currenttime.getHours()+':'+currenttime.getMinutes()+':'+currenttime.getSeconds() )
       return afterDate+" "+currenttime.getHours()+':'+currenttime.getMinutes()+':'+currenttime.getSeconds()
     }
+    else{
+      return date
+    }
   }
 
   // getCategoryList(){
@@ -194,8 +243,8 @@ export class CreateEventComponent implements OnInit {
   // }
 
   getNewsData(newsId){
-    const params = { NewsId: newsId};
-      this.apiService.dataPostApi(params,AppSettings.SHOW_ADMIN_NEWS).then((data: any[]) => {
+    const params = { id: newsId};
+      this.apiService.dataPostApi(params,AppSettings.getParliamentEvent).then((data: any[]) => {
         console.log(data['result']);
         if (data['status'] === 'true') {
           this.newsDetails = data['result'];
@@ -215,10 +264,12 @@ export class CreateEventComponent implements OnInit {
       this.showBanner = 1;
       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
     }
-    this.frmNews.get('newsType').setValue(this.newsDetails[0]['newsType']);
-    this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['newsTitle']);
-    this.frmNews.get('summary').setValue(this.newsDetails[0]['summary']);
-    this.frmNews.get('newsDesc').setValue(this.newsDetails[0]['newsDesc']);
+    this.frmNews.get('eventDate').setValue(this.newsDetails[0]['eventDate']);
+    this.frmNews.get('id').setValue(this.newsDetails[0]['id']);
+    this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['eventTitle']);
+    this.frmNews.get('summary').setValue(this.newsDetails[0]['eventSummary']);
+    this.frmNews.get('eventLocation').setValue(this.newsDetails[0]['eventLocation']);
+    this.frmNews.get('userTypeId').setValue(this.newsDetails[0]['userTypeId'])
   }
   getUsertype(){
     this.apiService.dataPostApi(null,AppSettings.userDropDown).then(resp=>{

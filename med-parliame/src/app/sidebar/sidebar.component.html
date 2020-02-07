@@ -13,8 +13,8 @@
                     <img src="../../assets/images/adminImage.jpg" class="img-show-pr">                                          
                 </div>
                 <div class="user-description text-center">
-                    <h2>Admin Name</h2>
-                    <h3>{{userName}}</h3>
+                    <!-- <h2>Admin Name</h2> -->
+                    <h2>{{userName}}</h2>
                 </div>
             </div>
             <div class="scroll-side">
@@ -29,6 +29,7 @@
                                 <li><a id="admin1Students" href="javascript:void(0)" (click)="goTo('Admin/student', $event)">Student Admin </a></li>
                                 <li><a id="admin1Doctor" href="javascript:void(0)" (click)="goTo('Admin/doctor', $event)">Doctor Admin </a></li>
                                 <li><a id="admin1Professional" href="javascript:void(0)" (click)="goTo('Admin/professional', $event)">Professionals Admin </a></li>
+                                <li><a id="admin1Professional" href="javascript:void(0)" (click)="goTo('Admin/operation', $event)">Operation Admin </a></li>
                                 <li><a href="javascript:void(0)" (click)="goTo('Admin/addAdmin',$event)">Add New Admin </a></li>
                             </ul>
                         </div>
@@ -83,47 +84,16 @@
                         </div> -->
                         
                         
-                        <li><a (click)="news($event)"  id="newsId1" href="javascript:void(0)">News <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li>
-                        <div class="inner-dropdown drop-show2 mr-left trans">
-							<ul>
-								<li><a href="javascript:void(0)" (click)="goTo('news/createNews', $event)">Create News</a></li>
-								<li><a href="javascript:void(0)" (click)="goTo('news/editNews',$event)">Edit News  </a></li>
-                               
-							</ul>
-                        </div>
-                        <li><a (click)="gallery($event)"  id="galleryId1" href="javascript:void(0)">Gallery <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li>
-                        <div class="inner-dropdown drop-show2 mr-left trans">
-							<ul>
-								<li><a href="javascript:void(0)" (click)="goTo('gallery/createGallery', $event)">Create Gallery</a></li>
-								<li><a href="javascript:void(0)" (click)="goTo('gallery/editGallery',$event)">Edit Gallery  </a></li>
-                               
-							</ul>
-                        </div>
-                        <li><a (click)="gallery($event)"  id="eventId1" href="javascript:void(0)">Event <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li>
-                        <div class="inner-dropdown drop-show2 mr-left trans">
-							<ul>
-								<li><a href="javascript:void(0)" (click)="goTo('event/createEvent', $event)">Create Event</a></li>
-								<li><a href="javascript:void(0)" (click)="goTo('event/editEvent',$event)">Edit Event  </a></li>
-                               
-							</ul>
-                        </div>
-                        <li><a (click)="gallery($event)"  id="eventId1" href="javascript:void(0)">Announcement <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li>
-                        <div class="inner-dropdown drop-show2 mr-left trans">
-							<ul>
-								<li><a href="javascript:void(0)" (click)="goTo('announcement/createAnnouncement', $event)">Create Announcement</a></li>
-								<li><a href="javascript:void(0)" (click)="goTo('announcement/editAnnouncement',$event)">Edit Announcement  </a></li>
-                               
-							</ul>
-						</div>
+                       
                         <!-- <li><a href="javascript:void(0)">Settings <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li> -->
                 </ul>
 
                 <ul *ngIf="!superLogin">
                     
-                    <li><a href="javascript:void(0)" (click)="goTo('dashboard',$event)" class="active">Dashboard <img src="../../assets/images/d-home.svg" class="img-sdi"><img class="img-hdi" src="../../assets/images/a-dashboard.svg"></a></li>
-                    <li *ngIf="!enterpernure && !students" class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/policy', $event)">User <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
-                    <li *ngIf="enterpernure && !students" class="dp-down"><a id="enterpenureTabs" href="javascript:void(0)" (click)="goTo('enterpenure', $event)">Entrepreneur <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
-                    <li *ngIf="!enterpernure && students" class="dp-down"><a id="studentTabs" href="javascript:void(0)" (click)="goTo('studentsList', $event)">Student <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
+                    <li *ngIf="!operations"><a href="javascript:void(0)" (click)="goTo('dashboard',$event)" class="active">Dashboard <img src="../../assets/images/d-home.svg" class="img-sdi"><img class="img-hdi" src="../../assets/images/a-dashboard.svg"></a></li>
+                    <li *ngIf="!enterpernure && !students && !operations" class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/policy', $event)">User <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
+                    <li *ngIf="enterpernure && !students && !operations" class="dp-down"><a id="enterpenureTabs" href="javascript:void(0)" (click)="goTo('enterpenure', $event)">Entrepreneur <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
+                    <li *ngIf="!enterpernure && students && !operations" class="dp-down"><a id="studentTabs" href="javascript:void(0)" (click)="goTo('studentsList', $event)">Student <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
                    
                     <!-- <div class="inner-dropdown drop-show mr-left">
                         <ul>
@@ -133,7 +103,7 @@
                             
                         </ul>
                     </div> -->
-                    <li class="dp-downn" ><a id="postTabs" href="javascript:void(0)" (click)="goTo('allPosts', $event)">Post <img src="../../assets/images/d-post.svg" class="img-sdi"><img src="../../assets/images/a-post.svg" class="img-hdi"></a></li>
+                    <li class="dp-downn"  *ngIf="!operations" ><a id="postTabs" href="javascript:void(0)" (click)="goTo('allPosts', $event)">Post <img src="../../assets/images/d-post.svg" class="img-sdi"><img src="../../assets/images/a-post.svg" class="img-hdi"></a></li>
                         <!-- <div class="inner-dropdown drop-showw mr-left">
 							<ul>
 								<li><a href="javascript:void(0)" (click)="goTo('User/policy')">Post </a></li>
@@ -142,7 +112,40 @@
 							</ul>
 						</div> -->
                     
-                    <!-- <li><a href="javascript:void(0)">Settings <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li> -->
+                    <!-- <li *ngIf="operations"><a href="javascript:void(0)">Operation <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li> -->
+                    <li *ngIf="operations"><a  (click)="goTo('news/editNews',$event)" id="newsId1" href="javascript:void(0)">News <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li>
+                    <!-- <div *ngIf="operations" class="inner-dropdown drop-show2 mr-left trans">
+                        <ul>
+                            <li><a href="javascript:void(0)" (click)="goTo('news/createNews', $event)">Create News</a></li>
+                            <li><a href="javascript:void(0)" (click)="goTo('news/editNews',$event)">Edit News  </a></li>
+                           
+                        </ul>
+                    </div> -->
+                    <li *ngIf="operations"><a (click)="goTo('gallery/editGallery',$event)"  id="galleryId1" href="javascript:void(0)">Gallery <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li>
+                    <!-- <div *ngIf="operations" class="inner-dropdown drop-show2 mr-left trans">
+                        <ul>
+                            <li><a href="javascript:void(0)" (click)="goTo('gallery/createGallery', $event)">Create Gallery</a></li>
+                            <li><a href="javascript:void(0)" (click)="goTo('gallery/editGallery',$event)">Edit Gallery  </a></li>
+                           
+                        </ul>
+                    </div> -->
+                    <li *ngIf="operations"><a (click)="goTo('event/editEvent',$event)" id="eventId1" href="javascript:void(0)">Event <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li>
+                    <!-- <div *ngIf="operations"class="inner-dropdown drop-show2 mr-left trans">
+                        <ul>
+                            <li><a href="javascript:void(0)" (click)="goTo('event/createEvent', $event)">Create Event</a></li>
+                            <li><a href="javascript:void(0)" (click)="goTo('event/editEvent',$event)">Edit Event  </a></li>
+                           
+                        </ul>
+                    </div> -->
+                    <li *ngIf="operations"><a (click)="goTo('announcement/editAnnouncement',$event)"  id="eventId1" href="javascript:void(0)">Announcement <img src="../../assets/images/d-settings.svg" class="img-sdi"><img src="../../assets/images/a-settings.svg" class="img-hdi"></a></li>
+                    <!-- <div *ngIf="operations"class="inner-dropdown drop-show2 mr-left trans">
+                        <ul>
+                            <li><a href="javascript:void(0)" (click)="goTo('announcement/createAnnouncement', $event)">Create Announcement</a></li>
+                            <li><a href="javascript:void(0)" (click)="goTo('announcement/editAnnouncement',$event)">Edit Announcement  </a></li>
+                           
+                        </ul>
+                    </div> -->
+
                 </ul>
 
             </div>

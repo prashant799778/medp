@@ -1,1 +1,84 @@
-<p>edit-annocement works!</p>
+<div class="animated fadeIn">
+        <div class="card card-default">
+          <div class="card-header">
+            <i class="fa fa-list"></i> Announcment Master
+            <div class="card-header-actions d-flex crd-bnt">
+                    
+                    
+                    <a [routerLink]="['/announcement/createAnnouncement']" class="btn btn-block btn-outline-dark" target="_self">Create Announcment</a>
+                    <a  class="btn btn-block btn-outline-dark" target="_self">View Announcment</a>
+                </div>
+            <!-- <div class="card-header-actions">
+              <a [routerLink]="['/announcement/createAnnouncement']" class="btn btn-block btn-outline-dark" target="_self">Create Announcment</a>
+            </div> -->
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                
+                       <div class="tab-container-body mrtop-spc">
+                   <div class="bg-white">
+              
+              <!-- list html -->
+                <!-- <ul id="myTab2" role="tablist" class="nav nav-tabs nav-pills with-arrow lined flex-column flex-sm-row text-center list-tab-ul">
+                  <li class="nav-item flex-sm-fill"  *ngFor="let cm of CategoryName; let i = index; let f = first" (click)="changeTabs(i,cm.id)">
+                    <a attr.id="home2-tab{{i}}" data-toggle="tab" attr.href="#general-information{{i}}" role="tab" aria-controls="home2" aria-selected="true" class="nav-link nav-rem-padding text-uppercase font-weight-bold mr-sm-3 rounded-0 " [ngClass]="{'active' : f}">
+                        {{cm.category | uppercase}}
+                    </a>
+                  </li>
+                  
+                </ul> -->
+              <!-- End list html -->
+              <div  class="tab-content border-remo ">
+                <ng-container >
+                    <div  role="tabpanel" aria-labelledby="home-tab" class="mr-top-spc tab-pane fade show active">
+                      <ng-container >
+                          <table class="table table-bordered table-striped ch-tabl table-responsive-sm ">
+                                  
+                              <thead> 
+                                      <th>Announcment Title</th> 
+                                      <th>News Shots</th>
+                                      <!-- <th>News Description</th> --> 
+                                      <th>Gallery Image</th>
+                                      <th>Date of Creation</th>
+                                      <!-- <th>Created By</th> -->
+                                      <th>Action</th>
+                                </thead>
+                                  <tbody> 
+                                    <ng-container *ngFor="let news of allnews">
+                                         <tr >
+                                      <td> {{news.title}} </td> 
+                                      <td> {{news.summary}} </td>                                       
+                                      <!-- <td> <p [innerHtml]="news.newsDesc "></p> </td> --> 
+                                      <td> <img src="{{news.imagePath}}" style="height: 100px; width: 100px;"> </td>
+                                      <td>  {{news.DateCreate}} </td>
+                                      <!-- <td>  {{news.UserName}} </td> -->
+                                      <td>
+                                            <div class="btn-edit-group">
+                                                    <button type="button" class="edit-btn" (click)="editNews(news.id)" >  <img src="../../../assets/images/edit-im.svg"></button>
+                                                    <button type="button" class="delet-btn" (click)="deleteNews(news.id)">  <img src="../../../assets/images/bin.svg"></button>
+                                                </div>
+                                          <!-- <a role="button" (click)="editNews(news.id)" class="card-header-action" target="_blank"><i class="fa fa-pencil-square-o"></i> </a>
+                                          <a role="button" (click)="deleteNews(news.id)" class="card-header-action" target="_blank"><i class="fa fa-trash-o"></i> </a> -->
+                                      </td>
+                                    </tr>
+                                    </ng-container>
+                                    </tbody>
+                              </table>
+                              <div class="card-footer pb-0 pt-3" *ngIf = "paginationDisplay">
+                                <nz-pagination [nzPageIndex]="1" [nzTotal]="totalRecords" (nzPageIndexChange)="pageChanged($event)" [nzPageSize]="pageSize"></nz-pagination>
+                              </div>
+                      </ng-container>  
+                      
+                  </div>
+                </ng-container>
+                
+          
+                
+                </div>
+                 </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    

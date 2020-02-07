@@ -2,9 +2,13 @@
         <div class="card card-default">
           <div class="card-header">
             <i class="fa fa-list"></i> Event Master
-            <div class="card-header-actions">
-              <a [routerLink]="['/gallery/createGallery']" class="btn btn-block btn-outline-dark" target="_self">Create Event</a>
-            </div>
+            <div class="card-header-actions d-flex crd-bnt">
+                    <a [routerLink]="['/event/createEvent']" class="btn btn-block btn-outline-dark" target="_self">Create Event</a>
+                    <a  class="btn btn-block btn-outline-dark" target="_self">View Event</a>
+                  </div>
+            <!-- <div class="card-header-actions">
+              <a [routerLink]="['/event/createEvent']" class="btn btn-block btn-outline-dark" target="_self">Create Event</a>
+            </div> -->
           </div>
           <div class="container">
             <div class="row">
@@ -31,19 +35,19 @@
                                   
                               <thead> 
                                       <th>Event Title</th>
-                                      <th>News Shots</th>
-                                      <th>News Description</th>
-                                      <th>News Image</th>
+                                      <th>Event Shots</th>
+                                      <th>Event Location</th>
+                                      <th>Event Image</th>
                                       <th>Date of Creation</th>
-                                      <th>Created By</th>
+                                      <!-- <th>Created By</th> -->
                                       <th>Action</th>
                                 </thead>
                                   <tbody> 
                                     <ng-container *ngFor="let news of allnews">
                                          <tr >
-                                      <td> {{news.newsTitle}} </td> 
-                                      <td> {{news.summary}} </td>                                       
-                                      <td> <p [innerHtml]="news.newsDesc "></p> </td>
+                                      <td> {{news.eventTitle}} </td> 
+                                      <td> {{news.eventSummary}} </td>                                       
+                                      <td> {{news.eventLocation}} </td>
                                       <td> <img src="{{news.imagePath}}" style="height: 100px; width: 100px;"> </td>
                                       <td>  {{news.DateCreate}} </td>
                                       <!-- <td>  {{news.UserName}} </td> -->

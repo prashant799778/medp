@@ -48,6 +48,7 @@ import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.compon
 import { ViewGalleryComponent } from './gallery/view-gallery/view-gallery.component';
 import { ViewAnnocementComponent } from './annocement/view-annocement/view-annocement.component';
 import { EditAnnocementComponent } from './annocement/edit-annocement/edit-annocement.component';
+import { OperationComponent } from './admin/operation/operation.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { EditAnnocementComponent } from './annocement/edit-annocement/edit-annoc
     EditGalleryComponent,
     ViewGalleryComponent,
     ViewAnnocementComponent,
-    EditAnnocementComponent
+    EditAnnocementComponent,
+    OperationComponent
   ],
   imports: [
     BrowserModule,

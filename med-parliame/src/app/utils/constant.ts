@@ -36,11 +36,12 @@ export class AppSettings {
     public static userDropDown = 'userDropDown';
     public static DELETE_ADMIN_NEWS = 'deleteNews';
     public static galleryImages = 'galleryImages1';
-    public static parliamentEvent = 'parliamentEvent';
+    public static parliamentEvent = 'parliamentEvent1';
     public static announcements1 = 'announcements1';
     public static getGalleryImages = 'getGalleryImages';
+    public static getAnnouncement = 'getAnnouncement';
+    public static getParliamentEvent = 'getParliamentEvent';
     
-
 
 
 

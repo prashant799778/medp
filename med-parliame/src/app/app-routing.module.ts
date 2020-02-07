@@ -32,6 +32,7 @@ import { EditEventComponent } from './event/edit-event/edit-event.component';
 import { ViewAnnocementComponent } from './annocement/view-annocement/view-annocement.component';
 import { EditAnnocementComponent } from './annocement/edit-annocement/edit-annocement.component';
 import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.component';
+import { OperationComponent } from './admin/operation/operation.component';
 
 
 
@@ -181,6 +182,12 @@ const routes: Routes = [
         component: StudentComponent,
         canActivate: [AuthGuard],
     },
+
+    {
+      path:'operation',
+      component: OperationComponent,
+      canActivate: [AuthGuard],
+  },
     {
       path:'enterpenure',
       component: EnterpenureComponent,

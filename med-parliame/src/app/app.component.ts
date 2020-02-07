@@ -60,7 +60,7 @@ export class AppComponent {
 			this.authsService.login(userData).subscribe(resp =>{
 
 				if(resp['status'] == 'true'){
-					if(resp['result'][0].userTypeId <= 4){
+					if(resp['result'][0].userTypeId <= 4 || resp['result'][0].userTypeId == 12){
 						this.loginSuccess= true;
 						this.getSaveCustomer(resp['result'])
 

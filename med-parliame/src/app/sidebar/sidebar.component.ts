@@ -21,6 +21,7 @@ export class SidebarComponent implements OnInit {
 	AdminImage: boolean;
 	UserImage: boolean;
 	PostImage: boolean;
+	operations: boolean;
 	constructor(public router: Router,
 				public local: LocalStorageService) { 
 		this.numbers = 0;
@@ -29,6 +30,7 @@ export class SidebarComponent implements OnInit {
 		this.AdminImage = false;
 		this.UserImage = false;	
 		this.PostImage = false;
+		this.operations = false;
 	}
 
 	ngOnInit() {
@@ -58,6 +60,13 @@ console.log(this.local.get('userData1')[0].userTypeId)
 			}else if(this.local.get('userData1')[0].userTypeId == '4'){
 				this.enterpernure = false;
 				this.students = true;
+			}
+
+			else if(this.local.get('userData1')[0].userTypeId == '12'){
+				this.enterpernure = false;
+				this.students = false;
+				this.operations = true;
+				
 			}
 		}
 

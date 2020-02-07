@@ -75,7 +75,7 @@ export class EditEventComponent implements OnInit {
     // this.frmShowNews.get('CategoryId').setValue(this.CategoryId)
     let data = this.frmShowNews.getRawValue();
     
-    this.apiService.dataPostApi(data,AppSettings.SHOW_ADMIN_NEWS).then((data: any[]) => {
+    this.apiService.dataPostApi(data,AppSettings.getParliamentEvent).then((data: any[]) => {
       this.totalRecords = data['totalnewscategorywise']
       console.log(this.totalRecords)
       if(this.totalRecords > this.pageSize){
@@ -104,7 +104,7 @@ export class EditEventComponent implements OnInit {
       endlimit: this.pageSize,
       // UserCreate: AppSettings.getLoggedInUser()                
     };
-      this.apiService.dataPostApi(params,AppSettings.getGalleryImages).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.getParliamentEvent).then((data: any[]) => {
         this.totalRecords = data['totalnewscategorywise']
 
         if(this.totalRecords > this.pageSize){
@@ -123,7 +123,7 @@ export class EditEventComponent implements OnInit {
       startlimit: 0,
       endlimit: this.pageSize
     };    
-      this.apiService.dataPostApi(params,AppSettings.getGalleryImages).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.getParliamentEvent).then((data: any[]) => {
         this.totalRecords = data['totalnewscategorywise']
 
         if(this.totalRecords > this.pageSize){
@@ -141,7 +141,7 @@ export class EditEventComponent implements OnInit {
 
   editNews(NewsId) {
     console.log(NewsId);
-    this.router.navigate(['/gallery/createGallery'], { queryParams: {NewsId: NewsId}});
+    this.router.navigate(['/event/createEvent'], { queryParams: {NewsId: NewsId}});
   }
 
   deleteNews(id){

@@ -118,6 +118,7 @@ export class CreateNewsComponent implements OnInit {
  
   }
   UpdateNews(){
+    console.log(this.frmNews.value)
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
       // newsType : this.frmNews.get('newsType').value,

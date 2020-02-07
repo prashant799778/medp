@@ -2,9 +2,14 @@
         <div class="card card-default">
           <div class="card-header">
             <i class="fa fa-list"></i>Create Gallery Data
-            <div class="card-header-actions">
+            <div class="card-header-actions d-flex">
+                   
+                    <a  class="btn btn-block btn-outline-dark" target="_self">Create Gallery</a>
+                    <a [routerLink]="['/gallery/editGallery']" class="btn btn-block btn-outline-dark" target="_self">View Gallery</a>
+                 </div>
+            <!-- <div class="card-header-actions">
               <a [routerLink]="['/gallery/editGallery']" class="btn btn-block btn-outline-dark" target="_self">View Gallery</a>
-           </div>
+           </div> -->
         </div>
          <div class="card-body">
             <div class="row">
