@@ -3140,16 +3140,16 @@ def landingPageDashboard():
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-        if "startlimit" in inputdata:
-                if inputdata['startlimit'] != "":
-                    startlimit =inputdata["startlimit"]
-        if "userTypeId" in inputdata:
-                if inputdata['userTypeId'] != "":
-                    userTypeId =inputdata["userTypeId"]
-                    WhereCondition=WhereCondition+" and userTypeId='"+str(userTypeId)+"'"
-        if "endlimit" in inputdata:
-            if inputdata['endlimit'] != "":
-                endlimit =inputdata["endlimit"]
+            if "startlimit" in inputdata:
+                    if inputdata['startlimit'] != "":
+                        startlimit =inputdata["startlimit"]
+            if "userTypeId" in inputdata:
+                    if inputdata['userTypeId'] != "":
+                        userTypeId =inputdata["userTypeId"]
+                        WhereCondition=WhereCondition+" and userTypeId='"+str(userTypeId)+"'"
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =inputdata["endlimit"]
         
         column = "newsTitle,,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
