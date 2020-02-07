@@ -84,7 +84,7 @@ def SignUp():
             address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
             CompanyName=""
             areaOfExpertise,hospital,hospitalAddress="","",""
-            occcupation,companyAddress="",""
+            occupation,companyAddress="",""
             
          
             Name = inputdata["userName"]
@@ -175,8 +175,8 @@ def SignUp():
 
                 if 'hospitalAddress' in inputdata:                    
                     hospitalAddress = inputdata['hospitalAddress']
-                if 'occcupation' in inputdata:                    
-                    occcupation = inputdata['occcupation']
+                if 'occupation' in inputdata:                    
+                    occupation = inputdata['occupation']
 
                 if 'companyAddress' in inputdata:                    
                     companyAddress = inputdata['companyAddress']
@@ -247,8 +247,8 @@ def SignUp():
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
                         
                         if (y["userTypeId"]== 9):
-                            columns="userId,designation,occcupation,companyName,companyAddress,address"
-                            values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occcupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
+                            columns="userId,designation,occupation,companyName,companyAddress,address"
+                            values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
                             data6=databasefile.InsertQuery("professionalMaster",column,values)
                             for i in interestId:
                                 column="userId,userTypeId,interestId"
@@ -1067,7 +1067,7 @@ def allprofessionalsMaster():
         msg="1"
         if msg =="1":
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
-            column=column+"pm.userId,pm.designation,pm.occcupation,pm.companyName,pm.companyAddress,pm.address"
+            column=column+"pm.userId,pm.designation,pm.occupation,pm.companyName,pm.companyAddress,pm.address"
             startlimit,endlimit="",""
             WhereCondition=" and um.usertypeId='9' and pm.userId=um.userId  "
 
@@ -1441,7 +1441,7 @@ def UpdateUser1():
             CompanyName=""
 
             areaOfExpertise,hospital,hospitalAddress="","",""
-            occcupation,companyAddress="",""
+            occupation,companyAddress="",""
             
             UserId = inputdata["userId"]
             UserName = inputdata["userName"]
@@ -1528,8 +1528,8 @@ def UpdateUser1():
 
             if 'hospitalAddress' in inputdata:                    
                 hospitalAddress = inputdata['hospitalAddress']
-            if 'occcupation' in inputdata:                    
-                occcupation = inputdata['occcupation']
+            if 'occupation' in inputdata:                    
+                occupation = inputdata['occupation']
 
             if 'companyAddress' in inputdata:                    
                 companyAddress = inputdata['companyAddress']
@@ -1604,7 +1604,7 @@ def UpdateUser1():
 
             if (UserTypeId == 9):
                 WhereCondition = " and userId = '" + str(UserId) + "'"
-                column=" designation='" + str(designation) + "',occcupation='" + str(occcupation) + "',companyName='" + str(companyName) + "',companyAddress= '" + str(companyAddress) + "',address='" + str(address) + "'"
+                column=" designation='" + str(designation) + "',occupation='" + str(occupation) + "',companyName='" + str(companyName) + "',companyAddress= '" + str(companyAddress) + "',address='" + str(address) + "'"
                 output11=databasefile.UpdateQuery("professionalMaster",column,WhereCondition)
                 for i in interestId:
                     column="userId,interestId,userTypeId"
@@ -2923,7 +2923,7 @@ def userProfile():
                     return commonfile.Errormessage()
             if userTypeId == 9:
                 column="um.userName,um.email,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
-                column=column+"pm.userId,pm.designation,pm.occcupation,pm.companyName,pm.companyAddress,pm.address"
+                column=column+"pm.userId,pm.designation,pm.occupation,pm.companyName,pm.companyAddress,pm.address"
                
                 WhereCondition="   and um.userId=pm.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,professionalMaster pm",column,WhereCondition,"",startlimit,endlimit,"")
