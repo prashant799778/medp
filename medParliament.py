@@ -3642,7 +3642,7 @@ def getAnnouncement():
                 if inputdata['endlimit'] != "":
                     endlimit =str(inputdata["endlimit"])
         
-        column = "id,Status,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,UserCreate  "
+        column = "id,Status,userTypeId,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,UserCreate  "
         data = databasefile.SelectQuery("announcement",column,WhereCondition,"",startlimit,endlimit)
         for i in data["result"]:
             if i["imagePath"]!="":
