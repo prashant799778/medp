@@ -3517,6 +3517,10 @@ def announcements1():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         
         if msg == "1":
+            ImagePath=""
+            summary=""
+            videoLink=""
+            flag=inputdata['flag']
             if "title" in inputdata:
                 if inputdata['title'] != "":
                     title =inputdata["title"]
@@ -3563,17 +3567,36 @@ def announcements1():
                     ImagePath = filepath
                     column=column+" ,ImagePath"
                     values=values+",'"+ str(ImagePath)+"'"
+            if flag =="i":
+                if "UserId" in inputdata:
+                    if inputdata['UserId'] != "":
+                        UserId =inputdata["UserId"]
+                    column =column + ",UserCreate"
+                    values =   values + str(UserId) + "'"
+                    data = databasefile.InsertQuery("announcement",column,values)        
+                else:
+                    column = column+ " "
+                    
+                    data = databasefile.InsertQuery("announcement",column,values)
+            if flag =='u':
 
-            if "UserId" in inputdata:
-                if inputdata['UserId'] != "":
-                    UserId =inputdata["UserId"]
-                column =column + ",UserCreate"
-                values =   values + str(UserId) + "'"
-                data = databasefile.InsertQuery("announcement",column,values)        
-            else:
-                column = column+ " "
-                
-                data = databasefile.InsertQuery("announcement",column,values)
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status =inputdata["status"]
+
+                if "UserId" in inputdata:
+                    if inputdata['UserId'] != "":
+                        UserId =inputdata["UserId"]
+                        whereCondition=" UserCreate= '"+ str(UserId)+"'"
+                        column="title='"+ str(title)+"',summary='"+ str(summary)+"',userTypeId='"+ str(userTypeId)+"',videoLink='"+ str(userTypeId)+"',ImagePath='"+ str(ImagePath)+"',status='"+ str(status)+"'"
+                        data=databasefile.UpdateQuery("announcement",column,whereCondition)
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        whereCondition=" id= '"+ str(Id)+"'"
+                        column="title='"+ str(title)+"',summary='"+ str(summary)+"',userTypeId='"+ str(userTypeId)+"',videoLink='"+ str(userTypeId)+"',ImagePath='"+ str(ImagePath)+"',status='"+ str(status)+"'"
+                        data=databasefile.UpdateQuery("announcement",column,whereCondition)
+
 
             if data !=0 :                
                 return data
