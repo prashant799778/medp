@@ -26,6 +26,8 @@ export class PolicyDetaialsComponent implements OnInit {
 	activatedds: boolean;
 	frmPost: FormGroup;
 	userType: any;
+	comment = [];
+
 	constructor(public fb: FormBuilder,private route: ActivatedRoute, private router: Router,
 				public local: LocalStorageService,
 				public userService: UserServiceService) {
@@ -61,8 +63,9 @@ export class PolicyDetaialsComponent implements OnInit {
 			'commentDescription': this.frmPost.get('commentDescription').value 
 		}
 		this.userService.dataPostApi(data, AppSettings.AllPosts).then(resp =>{
-			this.postDetails = resp['result']['0']
-			if(resp['result']['0'].status == 0 ){
+			this.postDetails = resp['result']['1']['0']
+			this.comment = resp['result']['0']
+			if(resp['result']['1'].status == 0 ){
 				console.log("onluy view")
 				this.onlyView = true;
 			}
@@ -74,12 +77,27 @@ export class PolicyDetaialsComponent implements OnInit {
 	replyPost(){
 		let data = {
 			'postId': this.id,
-			'userTypeId': this.userTypeId,
+			'userTypeId': this.local.get('userData1')[0].userTypeId,
 			'approvedUserId': this.local.get('userData1')[0].userId,
 			'commentDescription': this.frmPost.get('commentDescription').value 
 		}
 		this.userService.dataPostApi(data, AppSettings.VerifyPost1).then(resp =>{
-			this.postDetails = resp['result']
+			// this.postDetails = resp['result']
+			if(resp['status'] == 'true'){
+				let data = {
+					'postId': this.id,
+					'userTypeId': this.userTypeId,
+					'commentDescription': this.frmPost.get('commentDescription').value 
+				}
+				this.userService.dataPostApi(data, AppSettings.AllPosts).then(resp =>{
+					this.postDetails = resp['result']['1']['0']
+					this.comment = resp['result']['0']
+					if(resp['result']['1'].status == 0 ){
+						console.log("onluy view")
+						this.onlyView = true;
+					}
+				})
+			}
 		})
 	}
 	Approve(id){

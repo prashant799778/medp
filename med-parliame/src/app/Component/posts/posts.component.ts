@@ -33,7 +33,7 @@ export class PostsComponent implements OnInit {
           'userTypeId': this.id
         }
         this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-          this.postList = resp['result']
+          this.postList = resp['result']['1']
           console.log(this.postList)
           this.postList.forEach(resp=>{
             this.getStatus(resp.status)
@@ -45,7 +45,7 @@ export class PostsComponent implements OnInit {
           //   'userTypeId': 5
           // }
           // this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-          //   this.postList = resp['result']
+          //   this.postList = resp['result']['1']
           //   console.log(this.postList)
           //   this.postList.forEach(resp=>{
           //     this.getStatus(resp.status)
@@ -57,7 +57,7 @@ export class PostsComponent implements OnInit {
           //   'userTypeId': 6
           // }
           // this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-          //   this.postList = resp['result']
+          //   this.postList = resp['result']['1']
           //   console.log(this.postList)
           //   this.postList.forEach(resp=>{
           //     this.getStatus(resp.status)
@@ -69,7 +69,7 @@ export class PostsComponent implements OnInit {
           //   'userTypeId': 7
           // }
           // this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-          //   this.postList = resp['result']
+          //   this.postList = resp['result']['1']
           //   console.log(this.postList)
           //   this.postList.forEach(resp=>{
           //     this.getStatus(resp.status)
@@ -81,7 +81,7 @@ export class PostsComponent implements OnInit {
           //   'userTypeId': 8
           // }
           // this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-          //   this.postList = resp['result']
+          //   this.postList = resp['result']['1']
           //   console.log(this.postList)
           //   this.postList.forEach(resp=>{
           //     this.getStatus(resp.status)
@@ -93,7 +93,7 @@ export class PostsComponent implements OnInit {
           //   'userTypeId': 9
           // }
           // this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-          //   this.postList = resp['result']
+          //   this.postList = resp['result']['1']
           //   console.log(this.postList)
           //   this.postList.forEach(resp=>{
           //     this.getStatus(resp.status)
@@ -109,7 +109,7 @@ export class PostsComponent implements OnInit {
         'userTypeId': 6
       }
       this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-        this.postList = resp['result']
+        this.postList = resp['result']['1']
         console.log(this.postList)
         this.postList.forEach(resp=>{
           this.getStatus(resp.status)
@@ -120,7 +120,7 @@ export class PostsComponent implements OnInit {
         'userTypeId': 5
       }
       this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-        this.postList = resp['result']
+        this.postList = resp['result']['1']
         console.log(this.postList)
         this.postList.forEach(resp=>{
           this.getStatus(resp.status)
@@ -132,7 +132,7 @@ export class PostsComponent implements OnInit {
         'userTypeId': 7
       }
       this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-        this.postList = resp['result']
+        this.postList = resp['result']['1']
         console.log(this.postList)
         this.postList.forEach(resp=>{
           this.getStatus(resp.status)

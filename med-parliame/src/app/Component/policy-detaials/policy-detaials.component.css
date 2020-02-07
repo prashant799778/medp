@@ -107,4 +107,7 @@ img.altr {
 .child-success{
     float: left;
 }
+.comment{
+    border: 1px solid grey;
+}
     
