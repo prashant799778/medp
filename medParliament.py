@@ -2616,12 +2616,12 @@ def verifyPost1():
         if msg == "1":
             approvedUserId = inputdata["approvedUserId"]
             postId = inputdata["postId"]
-            userTypeId = inputdata["userTypeId"]
+            userTypeId = int(inputdata["userTypeId"])
            
          
             commentDescription=inputdata['commentDescription']
             column = "approvedUserId,postId,userTypeId,commentDescription"                
-            values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId), + "','" + str(commentDescription) + "'"
+            values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription) + "'"
             data = databasefile.InsertQuery("approvedBy",column,values)
             if data!="0":
                 return data
