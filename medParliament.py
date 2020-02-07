@@ -3306,7 +3306,7 @@ def news1():
                     data=databasefile.UpdateQuery("news",column,whereCondition)
                 else:
                     whereCondition=" and id= '"+ str(Id) +"'"
-                    column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"'"
+                    column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
                     data=databasefile.UpdateQuery("news",column,whereCondition)
 
 
