@@ -3596,7 +3596,7 @@ def announcements1():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         whereCondition=" id= '"+ str(Id)+"'"
-                        column="title='"+ str(title)+"',summary='"+ str(summary)+"',userTypeId='"+ str(userTypeId)+"',videoLink='"+ str(userTypeId)+"',ImagePath='"+ str(ImagePath)+"',Status='"+ str(status)+"'"
+                        column="title='"+ str(title)+"',summary='"+ str(summary)+"',userTypeId='"+ str(userTypeId)+"',videoLink='"+ str(userTypeId)+"',imagePath='"+ str(ImagePath)+"',Status='"+ str(status)+"'"
                         data=databasefile.UpdateQuery("announcement",column,whereCondition)
 
 
