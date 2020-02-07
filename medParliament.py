@@ -3044,16 +3044,16 @@ def news():
         inputdata = json.loads(inputdata) 
         print("newsdata",inputdata)
         commonfile.writeLog("news",inputdata,0)
-        keyarr = ["newsTitle","newsType","summary","newsDesc"]           
+        keyarr = ["newsTitle","userTypeId","summary","newsDesc"]           
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         
         if msg == "1":
             if "newsTitle" in inputdata:
                 if inputdata['newsTitle'] != "":
                     newsTitle =inputdata["newsTitle"]
-            if "newsType" in inputdata:
-                if inputdata['newsType'] != "":
-                    newsType =inputdata["newsType"]
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
         
             if "summary" in inputdata:
                 if inputdata['summary'] != "":
@@ -3082,12 +3082,12 @@ def news():
             if "UserId" in inputdata:
                 if inputdata['UserId'] != "":
                     UserId =inputdata["UserId"]
-                column = "newsTitle,newsType,imagePath,summary,newsDesc,UserCreate"
-                values = " '"+ str(newsTitle) +"','" + str(newsType)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
+                column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
+                values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
                 data = databasefile.InsertQuery("news",column,values)        
             else:
-                column = "newsTitle,newsType,imagePath,summary,newsDesc"
-                values = " '"+ str(newsTitle) +"','" + str(newsType)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
+                column = "newsTitle,userTypeId,imagePath,summary,newsDesc"
+                values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
                 data = databasefile.InsertQuery("news",column,values)
 
             if data !=0 :                
