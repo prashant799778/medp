@@ -3209,10 +3209,12 @@ def landingPageDashboard():
             if i["imagePath"]!="":
                 i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
 
-
+        column2 = " date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        data2 = databasefile.SelectQuery("gallery",column2,"","",startlimit,endlimit)
+        
 
         if data != "0":
-            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"]}
+            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"]}
         else:
             return commonfile.Errormessage()
 
