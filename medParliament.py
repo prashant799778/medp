@@ -2856,7 +2856,7 @@ def verifyOtp():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        keyarr = ['otp','email']
+        keyarr = ['ostp','email']
         print(inputdata,"B")
         commonfile.writeLog("verifyOtp",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
@@ -4041,7 +4041,7 @@ def getParliamentEvent():
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
         
-        column = "id,Status,UserCreate,eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery(" parliamentEvent ",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
