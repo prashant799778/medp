@@ -1905,8 +1905,7 @@ def allPosts1():
             print("11111111111111")
             print("data",data)
 
-            select commentDescription,approvedUserId, userTypeId from approvedBy where postId="fb82b57e-48e1-11ea-93d3-9ebd4d0189fc";
-
+            
             column1="um.userName,um.email,pm.commentDescription,(pm.approvedUserId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition1="  and pm.userId=um.userId and pm.postId='" + str(postId) + "'" +
             data1 = databasefile.SelectQueryOrderby("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",startlimit,endlimit,orderby)
