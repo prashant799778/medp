@@ -1790,7 +1790,7 @@ def userPost():
         inputdata = json.loads(inputdata)
         print("111111111111111111111111111",inputdata)   
         
-        keyarr = ['userTypeId','userId','postTitle','postDescription','flag']
+        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag']
         commonfile.writeLog("userPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -1874,43 +1874,6 @@ def userPost():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
-@app.route('/allPosts1', methods=['POST'])
-def allPosts():
-    try:
-        inputdata =  commonfile.DecodeInputdata(request.get_data())
-        startlimit,endlimit="",""
-       
-        keyarr = ['userTypeId']
-        print(inputdata,"B")
-        commonfile.writeLog("allPosts",inputdata,0)
-      
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        if msg =="1":
-            orderby="pm.id"
-            print(orderby)
-            
-            userTypeId=inputdata["userTypeId"]
-            column="um.userName,um.email,um.country,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition=" and um.userTypeId=pm.userTypeId and  pm.userId=um.userId and  pm.userTypeId='" + str(userTypeId) + "'"
-            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
-            
-          
-
-            if (data["status"]!="false"): 
-                
-                print("111111111111111")          
-                Data = {"status":"true","message":"","result":data["result"]}
-                return Data
-            else:
-                output = {"status":"false","message":"No Data Found","result":""}
-                return output
-        else:
-            return msg         
-
-    except Exception as e :
-        print("Exception---->" + str(e))    
-        output = {"status":"false","message":"something went wrong","result":""}
-        return output   
 
 
 @app.route('/allPosts', methods=['POST'])
@@ -1981,7 +1944,71 @@ def allPosts1():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
-        return output  
+        return output 
+
+
+@app.route('/allPostss1', methods=['POST'])
+def allPosts11():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("allPosts",inputdata,0)
+      
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="pm.id"
+            postId,whereCondition="",""
+
+            
+            userTypeId=inputdata["userTypeId"]
+            if 'postId' in inputdata:
+                postId=inputdata['postId']
+                whereCondition=" and pm.postId='" + str(postId) + "' "
+
+
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'" +whereCondition
+            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
+            
+            print("11111111111111")
+            print("data",data)
+
+          
+
+            if (data!=0):
+                for i in data["result"]:
+                    if (i["status"] == 0):
+                        print(i["postId"])
+                        column="um.userName as commentedBy,ap.commentDescription"
+                        WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        print(data1)
+                        if "message" in data1:
+                            pass
+                        else:
+                            i["commentedBy"]=data1["commentedBy"]
+                            i["commentDescription"]=data1["commentDescription"]
+                        print(data1)
+                   
+                        
+                        
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output           
 
 
 @app.route('/allUsersPost', methods=['POST'])
@@ -2106,7 +2133,64 @@ def myPosts():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
+        return output 
+
+
+
+
+@app.route('/myPosts1', methods=['POST'])
+def myPosts1():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userId','userTypeId','status']
+        print(inputdata,"B")
+        commonfile.writeLog("myPosts",inputdata,0)
+      
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="pm.id"
+            
+            userTypeId=inputdata["userTypeId"]
+            userId=inputdata["userId"]
+            status=int(inputdata["status"])
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and pm.status='" + str(status) + "' and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+          
+
+            if (data!=0): 
+                for i in data["result"]:
+                    if (i["status"] == 0):
+                        print(i["postId"])
+                        column="um.userName as commentedBy,ap.commentDescription"
+                        WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                        print(data1)
+                        if "message" in data1:
+                            pass
+                        else:
+                            i["commentedBy"]=data1["commentedBy"]
+                            i["commentDescription"]=data1["commentDescription"]
+                        print(data1)
+                   
+                   
+
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
         return output                        
+
 
 
 
@@ -2525,7 +2609,7 @@ def verifyPost1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         startlimit,endlimit="",""
-        keyarr = ['approvedUserId','postId','id',userTypeId]
+        keyarr = ['approvedUserId','postId','id','userTypeId','flag']
         commonfile.writeLog("verifyPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -2534,31 +2618,24 @@ def verifyPost1():
             postId = inputdata["postId"]
             userTypeId = inputdata["userTypeId"]
             statusid = inputdata["id"]
+            flag=inputdata['flag']
             commentDescription=inputdata['commentDescription']
             print(statusid,'id')
     
-            column = "approvedUserId,postId"                
-            values = " '" + str(approvedUserId) + "','" + str(postId) + "'"
-            data = databasefile.InsertQuery("approvedBy",column,values)
-            if statusid == 1:
+            
+            if flag == 'i':
                 print('1')
-                WhereCondition = " and postId = '" + str(postId) + "'"
-                column = " status = '" + str("1") + "'"
+                column = "approvedUserId,postId,userTypeId,commentDescription"                
+                values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId), + "','" + str(commentDescription) + "'"
+                data = databasefile.InsertQuery("approvedBy",column,values)
+                if data!="0":
+                    return data
+            if flag == 'u':
+                WhereCondition = " and postId = '" + str(postId) + "' and approvedUserId='" + str(postId) + "' "
+                column = " commentDescription = '" + str(commentDescription) + "'"
                 data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
-                WhereCondition = " and postId = '" + str(postId) + "'"
-                column = " status = '" + str("1") + "'"
-                data1 = databasefile.UpdateQuery("userPost",column,WhereCondition)
-                if data1!="0":
-                    return data1
-            if statusid == 2:
-                WhereCondition = " and postId = '" + str(postId) + "'"
-                column = " status = '" + str("2") + "'"
-                data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
-                WhereCondition = " and postId = '" + str(postId) + "'"
-                column = " status = '" + str("2") + "'"
-                data2 = databasefile.UpdateQuery("userPost",column,WhereCondition)            
-                if data2!="0":
-                    return data2
+                if data!="0":
+                    return data
             else:
                 return commonfile.Errormessage()
         else:
@@ -2582,7 +2659,7 @@ def verifyPost():
         if msg == "1":
             approvedUserId = inputdata["approvedUserId"]
             postId = inputdata["postId"]
-            userTypeId = inputdata["userTypeId"]
+           
             statusid = inputdata["id"]
             commentDescription=inputdata['commentDescription']
             print(statusid,'id')
