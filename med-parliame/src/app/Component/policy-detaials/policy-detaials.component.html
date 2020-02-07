@@ -1,5 +1,6 @@
 <div class="container-fluid">
 <div class="row">
+  <form [formGroup]="frmPost" autocomplete="off">
     <div class="col-12 col-sm-12 col-md-12">
       <div class="upper-wrap">
         <div class="image-section-set bg-color">
@@ -24,7 +25,6 @@
                 {{postDetails.postDescription}}
               </p>
             </div>
-            
             <div class="bottom-section same-margin" *ngIf="!superLogin">
               <ul class="group-action-button mr-remove d-flex al-item " *ngIf="onlyView">
                 <li class="fill-back-ac" ><a href="javascript:void(0)" (click)="Approved(1)" >Approve</a></li>
@@ -33,7 +33,14 @@
               </ul>
             </div>
         </div> 
+        <div class="policy-container same-margin bg-white-fff top-lr-padding">
+          <!-- <label for="newsDesc">Reply Post</label> -->
+          <textarea type="text" class="form-control" formControlName="commentDescription" placeholder="reply the post..." rows="7"></textarea>
+          <br>  
+          <button type="submit" class="btn btn-success pull-right" (click)="replyPost()">reply</button>
+        </div>
     </div>
+  </form>
     <!--  Start Approve pop Modal-->
     <!-- <div class="modal fade" id="approv-pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
