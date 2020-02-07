@@ -2526,7 +2526,7 @@ def verifyPost():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         startlimit,endlimit="",""
-        keyarr = ['approvedUserId','postId','id']
+        keyarr = ['approvedUserId','postId','id','commentDescription']
         commonfile.writeLog("verifyPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -2535,6 +2535,7 @@ def verifyPost():
             postId = inputdata["postId"]
             userTypeId = inputdata["userTypeId"]
             statusid = inputdata["id"]
+            commentDescription=inputdata['commentDescription']
             print(statusid,'id')
     
             column = "approvedUserId,postId"                
@@ -3449,6 +3450,29 @@ def getParliamentEvent():
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
+
+
+@app.route('/userDropDown', methods=['POST'])
+def userDropdown():
+    try:
+        columns=" id,userName  "
+        startlimit,endlimit="",""
+        whereCondition=" and id>4 and id<10"
+        
+        data = databasefile.SelectQuery("userTypeMaster",columns,whereCondition,"",startlimit,endlimit)
+       
+
+        if data:           
+            Data = {"status":"true","message":"","result":data["result"]}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output =  {"status":"false","message":"something went wrong","result":""}
+        return output           
  
 
 
