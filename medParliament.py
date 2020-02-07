@@ -871,38 +871,48 @@ def policyMakerPannel():
 
 
 
-@app.route('/doctorMasterPannel', methods=['GET'])
+@app.route('/doctorMasterPannel', methods=['POST'])
 def doctorMasterPannel():
     try:
-        userId=request.args['userId']
-        column="count(*) as count"
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        WhereCondition=" and usertypeId='8'"
-        whereCondition=" and status=1 and  approvedUserId='" + str(userId) + "'"
-        whereCondition2=" and status=2 and  approvedUserId='" + str(userId) + "'"
+        keyarr = ['userId']
+        print(inputdata,"B")
+        commonfile.writeLog("addAdmin",inputdata,0)
+        print('C')
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userId=inputdata['userId']
+            column="count(*) as count"
+            startlimit,endlimit="",""
+            WhereCondition=" and usertypeId='8'"
+            whereCondition=" and status=1 and  approvedUserId='" + str(userId) + "'"
+            whereCondition2=" and status=2 and  approvedUserId='" + str(userId) + "'"
 
         
-        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
-        data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
-        data3 = databasefile.SelectQueryOrderby("approvedBy",column,whereCondition,""," ",startlimit,endlimit)
-        data4= databasefile.SelectQueryOrderby("approvedBy",column,whereCondition2,""," ",startlimit,endlimit)
-        policyMakerMasterCount=data["result"][0]
-        postCounts=data2["result"][0]
-        approvedPosts=data3["result"][0]
-        rejectedPost=data4["result"][0]
-        data2=[ {"totalUsers":policyMakerMasterCount,"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}]
-        # data2.append({"totalpostCounts":postCounts})
-        # data2.append({"approvedPost":approvedPosts})
-        # data2.append({"rejectedPost":rejectedPost})
+            data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+            data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
+            data3 = databasefile.SelectQueryOrderby("approvedBy",column,whereCondition,""," ",startlimit,endlimit)
+            data4= databasefile.SelectQueryOrderby("approvedBy",column,whereCondition2,""," ",startlimit,endlimit)
+            policyMakerMasterCount=data["result"][0]
+            postCounts=data2["result"][0]
+            approvedPosts=data3["result"][0]
+            rejectedPost=data4["result"][0]
+            data2=[ {"totalUsers":policyMakerMasterCount,"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}]
+            # data2.append({"totalpostCounts":postCounts})
+            # data2.append({"approvedPost":approvedPosts})
+            # data2.append({"rejectedPost":rejectedPost})
 
-        
 
-        if data:           
-            Data = {"status":"true","message":"","result":data2}
-            return Data
+
+            if data:           
+                Data = {"status":"true","message":"","result":data2}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
         else:
-            output = {"status":"false","message":"No Data Found","result":""}
-            return output
+            return msg  
 
     except Exception as e :
         print("Exception---->" + str(e))    
@@ -910,38 +920,48 @@ def doctorMasterPannel():
         return output 
 
 
-@app.route('/professionalsMasterPannel', methods=['GET'])
+@app.route('/professionalsMasterPannel', methods=['POST'])
 def  professionalsMasterPannel():
     try:
-        userId=request.args['userId']
-        column="count(*) as count"
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        WhereCondition=" and usertypeId='9'"
-        whereCondition=" and status=1 and  approvedUserId='" + str(userId) + "'"
-        whereCondition2=" and status=2 and  approvedUserId='" + str(userId) + "'"
+        keyarr = ['userId']
+        print(inputdata,"B")
+        commonfile.writeLog("addAdmin",inputdata,0)
+        print('C')
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userId=inputdata['userId']
+            column="count(*) as count"
+            startlimit,endlimit="",""
+            WhereCondition=" and usertypeId='9'"
+            whereCondition=" and status=1 and  approvedUserId='" + str(userId) + "'"
+            whereCondition2=" and status=2 and  approvedUserId='" + str(userId) + "'"
 
-        
-        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
-        data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
-        data3 = databasefile.SelectQueryOrderby("approvedBy",column,whereCondition,""," ",startlimit,endlimit)
-        data4= databasefile.SelectQueryOrderby("approvedBy",column,whereCondition2,""," ",startlimit,endlimit)
-        policyMakerMasterCount=data["result"][0]
-        postCounts=data2["result"][0]
-        approvedPosts=data3["result"][0]
-        rejectedPost=data4["result"][0]
-        data2=[ {"totalUsers":policyMakerMasterCount,"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}]
-        # data2.append({"totalpostCounts":postCounts})
-        # data2.append({"approvedPost":approvedPosts})
-        # data2.append({"rejectedPost":rejectedPost})
+            
+            data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+            data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
+            data3 = databasefile.SelectQueryOrderby("approvedBy",column,whereCondition,""," ",startlimit,endlimit)
+            data4= databasefile.SelectQueryOrderby("approvedBy",column,whereCondition2,""," ",startlimit,endlimit)
+            policyMakerMasterCount=data["result"][0]
+            postCounts=data2["result"][0]
+            approvedPosts=data3["result"][0]
+            rejectedPost=data4["result"][0]
+            data2=[ {"totalUsers":policyMakerMasterCount,"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}]
+            # data2.append({"totalpostCounts":postCounts})
+            # data2.append({"approvedPost":approvedPosts})
+            # data2.append({"rejectedPost":rejectedPost})
 
-        
+            
 
-        if data:           
-            Data = {"status":"true","message":"","result":data2}
-            return Data
+            if data:           
+                Data = {"status":"true","message":"","result":data2}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
         else:
-            output = {"status":"false","message":"No Data Found","result":""}
-            return output
+            return msg
 
     except Exception as e :
         print("Exception---->" + str(e))    
@@ -996,39 +1016,43 @@ def allpolicyMakers():
 
 
 
-@app.route('/allDoctorMaster', methods=['GET'])
+@app.route('/allDoctorMaster', methods=['POST'])
 def allDoctorMaster():
     try:
-        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
-        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
-        startlimit,endlimit="",""
-        WhereCondition=" and um.usertypeId='8' and pm.userId=um.userId  and um.countryId=cm.id"
+        msg="1"
+        if msg =="1":
+            column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
+            column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
+            startlimit,endlimit="",""
+            WhereCondition=" and um.usertypeId='8' and pm.userId=um.userId  and um.countryId=cm.id"
 
-        
-        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+            
+            data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
 
-      
-        
-        
-
-
-        if (data!=0):
-            for i in data["result"]:
-                userId=i["userId"]
-                column="count(*) as count"
-                whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
-                data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
-                print(data1,"")
-                count=data1["count"]
-
-                i["noOfPosts"]=count
+          
+            
+            
 
 
-            Data = {"status":"true","message":"","result":data["result"]}
-            return Data
+            if (data!=0):
+                for i in data["result"]:
+                    userId=i["userId"]
+                    column="count(*) as count"
+                    whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
+                    data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                    print(data1,"")
+                    count=data1["count"]
+
+                    i["noOfPosts"]=count
+
+
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
         else:
-            output = {"status":"false","message":"No Data Found","result":""}
-            return output
+            return msg
 
     except Exception as e :
         print("Exception---->" + str(e))    
@@ -1039,36 +1063,40 @@ def allDoctorMaster():
 @app.route('/allprofessionalsMaster', methods=['GET'])
 def allprofessionalsMaster():
     try:
-        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
-        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
-        startlimit,endlimit="",""
-        WhereCondition=" and um.usertypeId='9' and pm.userId=um.userId  and um.countryId=cm.id"
+        msg="1"
+        if msg =="1":
+            column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
+            column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
+            startlimit,endlimit="",""
+            WhereCondition=" and um.usertypeId='9' and pm.userId=um.userId  and um.countryId=cm.id"
 
-        
-        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+            
+            data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
 
-      
-        
-        
-
-
-        if (data!=0):
-            for i in data["result"]:
-                userId=i["userId"]
-                column="count(*) as count"
-                whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
-                data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
-                print(data1,"")
-                count=data1["count"]
-
-                i["noOfPosts"]=count
+          
+            
+            
 
 
-            Data = {"status":"true","message":"","result":data["result"]}
-            return Data
+            if (data!=0):
+                for i in data["result"]:
+                    userId=i["userId"]
+                    column="count(*) as count"
+                    whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
+                    data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                    print(data1,"")
+                    count=data1["count"]
+
+                    i["noOfPosts"]=count
+
+
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
         else:
-            output = {"status":"false","message":"No Data Found","result":""}
-            return output
+            return msg
 
     except Exception as e :
         print("Exception---->" + str(e))    
