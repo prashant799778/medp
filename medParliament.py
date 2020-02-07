@@ -3166,8 +3166,8 @@ def getNews():
             if inputdata['endlimit'] != "":
                 endlimit =inputdata["endlimit"]
         WhereCondition=WhereCondition+" and p.newsType=e.id "
-        column = "p.newsTitle,e.category ,p.summary,p.newsDesc, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
-        data = databasefile.SelectQuery("news p,newsCategoryMaster e",column,WhereCondition,"",startlimit,endlimit)
+        column = "newsTitle,category ,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
         else:
