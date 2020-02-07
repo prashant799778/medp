@@ -3127,7 +3127,22 @@ def getNews():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
+# @app.route('/getNewsCategory', methods=['POST'])
+# def getNewsCategoryMaster():
 
+#     try:
+#         WhereCondition,startlimit,endlimit="","",""
+       
+#         column = " id,category  "
+#         data = databasefile.SelectQuery("newsCategoryMaster",column,WhereCondition,"",startlimit,endlimit)
+#         if data != "0":
+#             return data
+#         else:
+#             return commonfile.Errormessage()
+
+#     except Exception as e :
+#         print("Exception--->" + str(e))                                  
+#         return commonfile.Errormessage()
 
 
 @app.route('/announcements', methods=['POST'])
@@ -3137,7 +3152,7 @@ def announcements():
        
         inputdata = request.form.get('data')    
         inputdata = json.loads(inputdata) 
-        print("newsdata",inputdata)
+        print("announcements",inputdata)
         commonfile.writeLog("announcements",inputdata,0)
         keyarr = ["title","userTypeId"]           
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
@@ -3152,8 +3167,8 @@ def announcements():
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
-                    column=" ,userTypeId "
-                    values=" ,'"+ str(userTypeId) +"'"
+                    column=column+" ,userTypeId "
+                    values=values+" ,'"+ str(userTypeId) +"'"
 
 
             if "summary" in inputdata:
