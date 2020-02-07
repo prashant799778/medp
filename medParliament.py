@@ -1891,7 +1891,7 @@ def allPosts1():
             orderby="pm.id"
             postId,whereCondition="",""
 
-            
+            data1["result"]=[]
             userTypeId=inputdata["userTypeId"]
             if 'postId' in inputdata:
                 postId=inputdata['postId']
