@@ -2609,7 +2609,7 @@ def verifyPost1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         startlimit,endlimit="",""
-        keyarr = ['approvedUserId','postId','id','userTypeId','flag']
+        keyarr = ['approvedUserId','postId','userTypeId','flag']
         commonfile.writeLog("verifyPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -2617,25 +2617,14 @@ def verifyPost1():
             approvedUserId = inputdata["approvedUserId"]
             postId = inputdata["postId"]
             userTypeId = inputdata["userTypeId"]
-            statusid = inputdata["id"]
-            flag=inputdata['flag']
+           
+         
             commentDescription=inputdata['commentDescription']
-            print(statusid,'id')
-    
-            
-            if flag == 'i':
-                print('1')
-                column = "approvedUserId,postId,userTypeId,commentDescription"                
-                values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId), + "','" + str(commentDescription) + "'"
-                data = databasefile.InsertQuery("approvedBy",column,values)
-                if data!="0":
-                    return data
-            if flag == 'u':
-                WhereCondition = " and postId = '" + str(postId) + "' and approvedUserId='" + str(postId) + "' "
-                column = " commentDescription = '" + str(commentDescription) + "'"
-                data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
-                if data!="0":
-                    return data
+            column = "approvedUserId,postId,userTypeId,commentDescription"                
+            values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId), + "','" + str(commentDescription) + "'"
+            data = databasefile.InsertQuery("approvedBy",column,values)
+            if data!="0":
+                return data
             else:
                 return commonfile.Errormessage()
         else:
