@@ -1022,7 +1022,7 @@ def allDoctorMaster():
         msg="1"
        
         if msg =="1":
-            column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,"
+            column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
             column=column+" dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress,qm.qualificationName"
             startlimit,endlimit="",""
             WhereCondition=" and um.usertypeId='8' and dm.userId=um.userId and dm.qualificationId=qm.id "
