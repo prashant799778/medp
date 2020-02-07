@@ -1020,6 +1020,7 @@ def allpolicyMakers():
 def allDoctorMaster():
     try:
         msg="1"
+       
         if msg =="1":
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
             column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
