@@ -3139,7 +3139,7 @@ def announcements():
         inputdata = json.loads(inputdata) 
         print("newsdata",inputdata)
         commonfile.writeLog("announcements",inputdata,0)
-        keyarr = ["title"]           
+        keyarr = ["title","userTypeId"]           
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         
         if msg == "1":
@@ -3148,6 +3148,13 @@ def announcements():
                     title =inputdata["title"]
                     column=" title "
                     values=" '"+ str(title) +"'"
+
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+                    column=" ,userTypeId "
+                    values=" ,'"+ str(userTypeId) +"'"
+
 
             if "summary" in inputdata:
                 if inputdata['summary'] != "":
@@ -3163,6 +3170,7 @@ def announcements():
                     else:
                         column=column+" ,videoLink"
                         values=values+",'" +str(videoLink)+"'"
+            
             
             if 'postImage' in request.files:      
                     file = request.files.get('postImage')        
