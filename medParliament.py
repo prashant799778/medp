@@ -3159,8 +3159,8 @@ def getNews():
             if inputdata['endlimit'] != "":
                 endlimit =inputdata["endlimit"]
         WhereCondition=WhereCondition+" and p.newsType=e.id "
-        column = "p.newsTitle,e.category ,p.summary,p.newsDesc, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
-        data = databasefile.SelectQuery("news p,newsCategoryMaster e",column,WhereCondition,"",startlimit,endlimit)
+        column = "newsTitle,category ,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
         else:
@@ -3195,8 +3195,21 @@ def landingPageDashboard():
         
         column = "newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
+        
+        column1 = "title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
+        data1 = databasefile.SelectQuery("announcement",column1,WhereCondition,"",startlimit,endlimit)
+        for i in data1["result"]:
+            if i["imagePath"]!="":
+                i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
+
+        column2 = " date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        data2 = databasefile.SelectQuery("gallery",column2,"","",startlimit,endlimit)
+        
+        column3 = "eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data3 = databasefile.SelectQuery("parliamentEvent ",column3,WhereCondition,"",startlimit,endlimit)
+        
         if data != "0":
-            return data
+            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"]}
         else:
             return commonfile.Errormessage()
 
@@ -3515,8 +3528,8 @@ def getParliamentEvent():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
-        WhereCondition=WhereCondition+" and p.eventType=e.id "
-        column = "p.eventTitle,e.eventName ,p.eventSummary,p.eventLocation,date_format(p.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
+        #WhereCondition=WhereCondition+" and p.eventType=e.id "
+        column = "p.eventTitle ,p.eventSummary,p.eventLocation,date_format(p.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
         data = databasefile.SelectQuery("parliamentEvent p,eventMaster e",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
