@@ -3368,24 +3368,24 @@ def landingPageDashboard():
             if "userTypeId" in inputdata:
                     if inputdata['userTypeId'] != "":
                         userTypeId =inputdata["userTypeId"]
-                        WhereCondition=WhereCondition+" and userTypeId='"+str(userTypeId)+"'"
+                        WhereCondition=WhereCondition+" and Status=0 and userTypeId='"+str(userTypeId)+"'"
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
                     endlimit =inputdata["endlimit"]
         
-        column = "newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        column = "id,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
         
-        column1 = "title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
+        column1 = "id,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
         data1 = databasefile.SelectQuery("announcement",column1,WhereCondition,"",startlimit,endlimit)
         for i in data1["result"]:
             if i["imagePath"]!="":
                 i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
 
-        column2 = " date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        column2 = "id,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
         data2 = databasefile.SelectQuery("gallery",column2,"","",startlimit,endlimit)
         
-        column3 = "eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        column3 = "id,UserCreate,eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data3 = databasefile.SelectQuery("parliamentEvent ",column3,WhereCondition,"",startlimit,endlimit)
         
         if data != "0":
@@ -3595,7 +3595,7 @@ def getAnnouncement():
             if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
-                        WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+                        WhereCondition=WhereCondition+" and Status=0 and id='"+str(Id)+"'"
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
                     endlimit =inputdata["endlimit"]
@@ -3729,7 +3729,7 @@ def getGalleryImages():
             if "id" in inputdata:
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
-                    WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+                    WhereCondition=WhereCondition+" and Status=0 and id='"+str(Id)+"'"
         
         column = "id, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,UserCreate  "
         data = databasefile.SelectQuery(" gallery ",column,WhereCondition,"",startlimit,endlimit)
@@ -3836,7 +3836,7 @@ def getParliamentEvent():
             if "id" in inputdata:
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
-                    WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+                    WhereCondition=WhereCondition+" and Status=0 and id='"+str(Id)+"'"
         
         column = "id,UserCreate,eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery(" parliamentEvent ",column,WhereCondition,"",startlimit,endlimit)
