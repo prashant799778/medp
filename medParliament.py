@@ -4041,11 +4041,11 @@ def getParliamentEvent():
         
             if "startlimit" in inputdata:
                 if inputdata['startlimit'] != "":
-                    startlimit =inputdata["startlimit"]
+                    startlimit =str(inputdata["startlimit"])
                 
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
-                    endlimit =inputdata["endlimit"]
+                    endlimit =str(inputdata["endlimit"])
             
             if "id" in inputdata:
                 if inputdata['id'] != "":
