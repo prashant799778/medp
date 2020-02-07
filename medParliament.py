@@ -1790,7 +1790,7 @@ def userPost():
         inputdata = json.loads(inputdata)
         print("111111111111111111111111111",inputdata)   
         
-        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag']
+        keyarr = ['userTypeId','userId','postTitle','postDescription','flag']
         commonfile.writeLog("userPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -1851,13 +1851,13 @@ def userPost():
                         WhereCondition = " and postTitle = '" + str(postTitle) + "' and postDescription = '" + str(postDescription) + "'"
                         
                         data11 = databasefile.SelectQuery("userPost",column,WhereCondition,"",startlimit,endlimit)
-                        if data11["status"]!="false":
-                            y=data11["result"][0]
-                            column="userId,showuserTypeId,postId"
-                            values= " '" + str(y["userId"]) + "','" + str(showuserTypeId) + "','" + str(y["postId"]) + "'"
-                            data2 = databasefile.InsertQuery("postUserTypeMapping",column,values)
-                        else:
-                            return commonfile.Errormessage()
+                        # if data11["status"]!="false":
+                        #     y=data11["result"][0]
+                        #     column="userId,showuserTypeId,postId"
+                        #     values= " '" + str(y["userId"]) + "','" + str(showuserTypeId) + "','" + str(y["postId"]) + "'"
+                        #     data2 = databasefile.InsertQuery("postUserTypeMapping",column,values)
+                        # else:
+                        #     return commonfile.Errormessage()
                         return data11
                 if flag == 'u':
                     WhereCondition = " and postId = '" + str(postId1) + "' and  userTypeId = '" + str(userTypeId) + " '"
@@ -2520,13 +2520,62 @@ def allStatus():
         return output 
 
 
+@app.route('/verifyPost1', methods=['POST'])
+def verifyPost1():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        startlimit,endlimit="",""
+        keyarr = ['approvedUserId','postId','id',userTypeId]
+        commonfile.writeLog("verifyPost",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+       
+        if msg == "1":
+            approvedUserId = inputdata["approvedUserId"]
+            postId = inputdata["postId"]
+            userTypeId = inputdata["userTypeId"]
+            statusid = inputdata["id"]
+            commentDescription=inputdata['commentDescription']
+            print(statusid,'id')
+    
+            column = "approvedUserId,postId"                
+            values = " '" + str(approvedUserId) + "','" + str(postId) + "'"
+            data = databasefile.InsertQuery("approvedBy",column,values)
+            if statusid == 1:
+                print('1')
+                WhereCondition = " and postId = '" + str(postId) + "'"
+                column = " status = '" + str("1") + "'"
+                data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
+                WhereCondition = " and postId = '" + str(postId) + "'"
+                column = " status = '" + str("1") + "'"
+                data1 = databasefile.UpdateQuery("userPost",column,WhereCondition)
+                if data1!="0":
+                    return data1
+            if statusid == 2:
+                WhereCondition = " and postId = '" + str(postId) + "'"
+                column = " status = '" + str("2") + "'"
+                data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
+                WhereCondition = " and postId = '" + str(postId) + "'"
+                column = " status = '" + str("2") + "'"
+                data2 = databasefile.UpdateQuery("userPost",column,WhereCondition)            
+                if data2!="0":
+                    return data2
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg 
+
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
 
 @app.route('/verifyPost', methods=['POST'])
 def verifyPost():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         startlimit,endlimit="",""
-        keyarr = ['approvedUserId','postId','id','commentDescription']
+        keyarr = ['approvedUserId','postId','id']
         commonfile.writeLog("verifyPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -3506,8 +3555,8 @@ def userDropdown():
        
 
         if data:
-            for i in data["result"]:
-                i.append({"id":0,"userName":"all"})           
+            data['result'].append({"id":0,"userName":"all"})
+            #data["result"][0]["id"]=0           
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
         else:
