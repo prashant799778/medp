@@ -3452,7 +3452,7 @@ def getParliamentEvent():
         return commonfile.Errormessage()
 
 
-@app.route('/userDropdown', methods=['POST'])
+@app.route('/userDropDown', methods=['POST'])
 def userDropdown():
     try:
         columns=" id,userName  "
