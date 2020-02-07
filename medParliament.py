@@ -1885,13 +1885,13 @@ def allPosts1():
         keyarr = ['userTypeId']
         print(inputdata,"B")
         commonfile.writeLog("allPosts",inputdata,0)
-      
+        data1={"status":"true","message":"","result":[]}
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             orderby="pm.id"
             postId,whereCondition="",""
 
-            data1["result"]=[]
+            data1
             userTypeId=inputdata["userTypeId"]
             if 'postId' in inputdata:
                 postId=inputdata['postId']
