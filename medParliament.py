@@ -3128,7 +3128,7 @@ def getNews():
         return commonfile.Errormessage()
 
 @app.route('/getNewsCategoryMaster', methods=['POST'])
-def getNews():
+def getNewsCategoryMaster():
 
     try:
         WhereCondition,startlimit,endlimit="","",""
