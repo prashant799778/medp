@@ -3212,7 +3212,9 @@ def landingPageDashboard():
         column2 = " date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
         data2 = databasefile.SelectQuery("gallery",column2,"","",startlimit,endlimit)
         
-
+        column = "eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data = databasefile.SelectQuery("parliamentEvent ",column,WhereCondition,"",startlimit,endlimit)
+        
         if data != "0":
             return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"]}
         else:
@@ -3533,8 +3535,8 @@ def getParliamentEvent():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
-        WhereCondition=WhereCondition+" and p.eventType=e.id "
-        column = "p.eventTitle,e.eventName ,p.eventSummary,p.eventLocation,date_format(p.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
+        #WhereCondition=WhereCondition+" and p.eventType=e.id "
+        column = "p.eventTitle ,p.eventSummary,p.eventLocation,date_format(p.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
         data = databasefile.SelectQuery("parliamentEvent p,eventMaster e",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
