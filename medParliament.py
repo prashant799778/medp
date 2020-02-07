@@ -3291,9 +3291,7 @@ def news1():
                     values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
                     data = databasefile.InsertQuery("news",column,values)
             if flag =='u':
-                if "id" in inputdata:
-                    if inputdata['id'] != "":
-                        Id =inputdata["id"]
+                
                 if "status" in inputdata:
                     if inputdata['status'] != "":
                         status =inputdata["status"]
@@ -3304,10 +3302,12 @@ def news1():
                     whereCondition= " and id= '"+ str(Id) +"' and UserCreate='"+ str(UserId) +"'" 
                     column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
                     data=databasefile.UpdateQuery("news",column,whereCondition)
-                else:
-                    whereCondition=" and id= '"+ str(Id) +"'"
-                    column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
-                    data=databasefile.UpdateQuery("news",column,whereCondition)
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        whereCondition=" and id= '"+ str(Id) +"'"
+                        column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
+                        data=databasefile.UpdateQuery("news",column,whereCondition)
 
 
             if data !=0 :                
