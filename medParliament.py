@@ -2609,7 +2609,7 @@ def verifyPost1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         startlimit,endlimit="",""
-        keyarr = ['approvedUserId','postId','id','userTypeId','flag']
+        keyarr = ['approvedUserId','postId','userTypeId','commentDescription']
         commonfile.writeLog("verifyPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -2617,25 +2617,14 @@ def verifyPost1():
             approvedUserId = inputdata["approvedUserId"]
             postId = inputdata["postId"]
             userTypeId = inputdata["userTypeId"]
-            statusid = inputdata["id"]
-            flag=inputdata['flag']
+           
+         
             commentDescription=inputdata['commentDescription']
-            print(statusid,'id')
-    
-            
-            if flag == 'i':
-                print('1')
-                column = "approvedUserId,postId,userTypeId,commentDescription"                
-                values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId), + "','" + str(commentDescription) + "'"
-                data = databasefile.InsertQuery("approvedBy",column,values)
-                if data!="0":
-                    return data
-            if flag == 'u':
-                WhereCondition = " and postId = '" + str(postId) + "' and approvedUserId='" + str(postId) + "' "
-                column = " commentDescription = '" + str(commentDescription) + "'"
-                data = databasefile.UpdateQuery("approvedBy",column,WhereCondition)
-                if data!="0":
-                    return data
+            column = "approvedUserId,postId,userTypeId,commentDescription"                
+            values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId), + "','" + str(commentDescription) + "'"
+            data = databasefile.InsertQuery("approvedBy",column,values)
+            if data!="0":
+                return data
             else:
                 return commonfile.Errormessage()
         else:
@@ -2867,7 +2856,7 @@ def verifyOtp():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        keyarr = ['otp','email']
+        keyarr = ['ostp','email']
         print(inputdata,"B")
         commonfile.writeLog("verifyOtp",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
@@ -3291,23 +3280,23 @@ def news1():
                     values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
                     data = databasefile.InsertQuery("news",column,values)
             if flag =='u':
-                if "id" in inputdata:
-                    if inputdata['id'] != "":
-                        Id =inputdata["id"]
+                
                 if "status" in inputdata:
                     if inputdata['status'] != "":
                         status =inputdata["status"]
                 if "UserId" in inputdata:
                     if inputdata['UserId'] != "":
-                        UserId =inputdata["userId"]
+                        UserId =inputdata["UserId"]
                       
                     whereCondition= " and id= '"+ str(Id) +"' and UserCreate='"+ str(UserId) +"'" 
                     column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
                     data=databasefile.UpdateQuery("news",column,whereCondition)
-                else:
-                    whereCondition=" and id= '"+ str(Id) +"'"
-                    column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
-                    data=databasefile.UpdateQuery("news",column,whereCondition)
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        whereCondition=" and id= '"+ str(Id) +"'"
+                        column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
+                        data=databasefile.UpdateQuery("news",column,whereCondition)
 
 
             if data !=0 :                
@@ -3343,7 +3332,7 @@ def getNews():
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
-        column = "id,Status,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,UserCreate "
+        column = "id,Status,newsTitle,userTypeId,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,UserCreate "
         data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
@@ -3633,16 +3622,16 @@ def getAnnouncement():
         
             if "startlimit" in inputdata:
                 if inputdata['startlimit'] != "":
-                    startlimit =inputdata["startlimit"]
+                    startlimit =str(inputdata["startlimit"])
             if "id" in inputdata:
                 if inputdata['id'] != "":
                     Id =inputdata["id"]
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
-                    endlimit =inputdata["endlimit"]
+                    endlimit =str(inputdata["endlimit"])
         
-        column = "id,Status,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,UserCreate  "
+        column = "id,Status,userTypeId,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,UserCreate  "
         data = databasefile.SelectQuery("announcement",column,WhereCondition,"",startlimit,endlimit)
         for i in data["result"]:
             if i["imagePath"]!="":
@@ -3751,6 +3740,8 @@ def galleryImages():
     except Exception as e:
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
+
+
 @app.route('/galleryImages1', methods=['POST'])
 def galleryImages1():
     try:
@@ -3763,6 +3754,7 @@ def galleryImages1():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             ImagePath=""
+            flag=inputdata['flag']
             if 'postImage' in request.files:      
                 file = request.files.get('postImage')        
                 filename = file.filename or ''                 
@@ -3797,13 +3789,13 @@ def galleryImages1():
 
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
-                        whereCondition=" UserCreate='" + str(userId) + "'"
+                        whereCondition=" and UserCreate='" + str(userId) + "'"
                         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
                         data=databasefile.UpdateQuery("gallery",column,whereCondition)
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
-                        whereCondition=" id='" + str(Id) + "'"
+                        whereCondition=" and  id='" + str(Id) + "'"
                         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
                         data=databasefile.UpdateQuery("gallery",column,whereCondition)
 
@@ -3821,6 +3813,7 @@ def galleryImages1():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
+
 @app.route('/getGalleryImages', methods=['POST'])
 def getGalleryImages():
 
@@ -3832,11 +3825,11 @@ def getGalleryImages():
         
             if "startlimit" in inputdata:
                 if inputdata['startlimit'] != "":
-                    startlimit =inputdata["startlimit"]
+                    startlimit =str(inputdata["startlimit"])
                 
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
-                    endlimit =inputdata["endlimit"]
+                    endlimit =str(inputdata["endlimit"])
             
             if "id" in inputdata:
                 if inputdata['id'] != "":
@@ -3857,6 +3850,7 @@ def getGalleryImages():
  
 
 # create parliamentEvent by admin
+
 @app.route('/parliamentEvent', methods=['POST'])
 def parliamentEvent():
 
@@ -3870,6 +3864,7 @@ def parliamentEvent():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         print("1111111111111")
         if msg == "1":
+            ImagePath=""
 
             print("22222222222222")
             if "eventTitle" in inputdata:
@@ -3929,6 +3924,101 @@ def parliamentEvent():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
+@app.route('/parliamentEvent1', methods=['POST'])
+def parliamentEvent1():
+
+    try:
+       
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        print("parliamentEvent",inputdata)
+        commonfile.writeLog("parliamentEvent",inputdata,0)
+        keyarr = ["eventTitle","eventSummary","eventLocation",'flag']           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print("1111111111111")
+        if msg == "1":
+            flag=inputdata['flag']
+            imagePath=""
+
+            print("22222222222222")
+            if "eventTitle" in inputdata:
+                if inputdata['eventTitle'] != "":
+                    eventTitle =inputdata["eventTitle"]
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+        
+            if "eventSummary" in inputdata:
+                if inputdata['eventSummary'] != "":
+                    eventSummary =inputdata["eventSummary"]
+            
+            if "eventLocation" in inputdata:
+                if inputdata['eventLocation'] != "":
+                    eventLocation =inputdata["eventLocation"]
+            
+            if "eventDate" in inputdata:
+                if inputdata['eventDate'] != "":
+                    eventDate =inputdata["eventDate"]
+            if 'postImage' in request.files:      
+                    file = request.files.get('postImage')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getEventPath(filename)  
+
+                    filepath = '/eventImages/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            if flag =="i":
+            
+                if "UserId" in inputdata:
+                    if inputdata['UserId'] != "":
+                        UserId =inputdata["UserId"]
+                    column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate,UserCreate"
+                    values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
+                    data = databasefile.InsertQuery("parliamentEvent",column,values)        
+                else:
+
+                    column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate"
+                    values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "'"
+                    data = databasefile.InsertQuery("parliamentEvent",column,values)
+            if flag =="u":
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status=inputdata["status"]
+
+                if "UserId" in inputdata:
+                    if inputdata['UserId'] != "":
+                        UserId =inputdata["UserId"]
+                        whereCondition= " and UserCreate='" + str(UserId) + "' "
+                        column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(imagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
+                        data=databasefile.UpdateQuery('parliamentEvent',column,whereCondition)
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        whereCondition= " and id='" + str(Id) + "' "
+                        column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(imagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
+                        data=databasefile.UpdateQuery('parliamentEvent',column,whereCondition)
+                
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
 
 @app.route('/getParliamentEvent', methods=['POST'])
 def getParliamentEvent():
@@ -3941,18 +4031,18 @@ def getParliamentEvent():
         
             if "startlimit" in inputdata:
                 if inputdata['startlimit'] != "":
-                    startlimit =inputdata["startlimit"]
+                    startlimit =str(inputdata["startlimit"])
                 
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
-                    endlimit =inputdata["endlimit"]
+                    endlimit =str(inputdata["endlimit"])
             
             if "id" in inputdata:
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
         
-        column = "id,Status,UserCreate,eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery(" parliamentEvent ",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data

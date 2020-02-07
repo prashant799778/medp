@@ -384,10 +384,10 @@ def DeleteQuery(table,whereCondition):
 def SendEmail(emailto,subject,message):
        
     message = Mail(
-    from_email = config.EmailFrom,
-    to_emails = emailto,
-    subject = "Fandom email Varification",
-    html_content = '<strong>Thank you for visiting FandomLive </strong> <br> . <br> Thanks, FandomLive Team')
+    from_email = 'abcd@gmail.com',
+    to_emails = str(emailto),
+    subject = "Otp",
+    html_content = '<strong> Otp To Reset Your Password is:' + str(otp) + ' </strong> <br> .<br> Thanks, FandomLive Team')
     print(message)
 
     try:
