@@ -63,9 +63,8 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
               <template>
-                <div class="modal-header border-remo">
+                <div class="modal-header border-remo paddign-remove">
                 <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
-                    <!-- <span aria-hidden="true">&times;</span> -->
                     <img src="../../../assets/images/close-im.svg">
                 </button>
                 </div>
@@ -84,18 +83,10 @@
                         <button  (click)="deleteAdmin()" class="mod-btn fill-back">Delete</button>
                     </div>
                     </div>
-                
-                <!-- <h2>{{modalDescription}}</h2> -->
             </div>
             <div class="modal-body" *ngIf="activatedds">
-                    <!-- <span *ngIf="userProfile && userProfile.status == 0">Are you what to sure Deactivated</span>
-                    <span *ngIf="userProfile && userProfile.status == 1">Are you what to sure activated</span>
-                    <button *ngIf="userProfile && userProfile.status == 0" (click)="ActiveStudent()">Deactivated</button>
-                    <button *ngIf="userProfile && userProfile.status == 1" (click)="ActiveStudent()">Activated</button> -->
                     <div class="success-parent">
-                            <div class="child-success"><img src="../../../assets/images/correct.svg"></div>
-     
-                             
+                            <div class="child-success"><img src="../../../assets/images/correct.svg"></div>                           
                             <div class="child-success"><h2>Deleted Successfully</h2></div> 
                         </div>
                 </div>
