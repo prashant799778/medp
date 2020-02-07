@@ -2050,7 +2050,7 @@ def allPosts2():
 
 
 @app.route('/myPosts', methods=['POST'])
-def myPosts1():
+def myPosts():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
