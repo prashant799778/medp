@@ -1907,9 +1907,9 @@ def allPosts1():
 
             select commentDescription,approvedUserId, userTypeId from approvedBy where postId="fb82b57e-48e1-11ea-93d3-9ebd4d0189fc";
 
-            column="um.userName,um.email,pm.commentDescription,(pm.approvedUserId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition="  and pm.userId=um.userId and pm.postId='" + str(postId) + "'" +
-            data = databasefile.SelectQueryOrderby("approvedBy as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
+            column1="um.userName,um.email,pm.commentDescription,(pm.approvedUserId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition1="  and pm.userId=um.userId and pm.postId='" + str(postId) + "'" +
+            data1 = databasefile.SelectQueryOrderby("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",startlimit,endlimit,orderby)
             
             # if (data!=0):
             #     for i in data["result"]:
@@ -1937,7 +1937,7 @@ def allPosts1():
                         
                 
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":data["result"]}
+                Data = {"status":"true","message":"","result":[data1["result"],data["result"]]}
                 return Data
             else:
                 output = {"status":"false","message":"No Data Found","result":""}
