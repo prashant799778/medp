@@ -77,6 +77,16 @@ def getNewsPath(filename):
     path = "/var/www/medParliament/backend/med_parliament/newsimages/"+filename
     return path
 
+def getAnnouncementsPath(filename):
+
+    path = "/var/www/medParliament/backend/med_parliament/announcementsImage/"+filename
+    return path
+
+def getAnnouncementsVideoPath(filename):
+
+    path = "/var/www/medParliament/backend/med_parliament/announcementsVideoLink/"+filename
+    return path
+
 def getGalleryPath(filename):
 
     path = "/var/www/medParliament/backend/med_parliament/gallery/"+filename

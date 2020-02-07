@@ -24,6 +24,14 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
 
 
+
+@app.route("/announcementsImage/<image_name>")
+def announcementsImage(image_name):
+    try:
+        return send_from_directory('announcementsImage', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
 @app.route("/newsimages/<image_name>")
 def newsimages(image_name):
     try:
@@ -3081,6 +3089,102 @@ def getNews():
         WhereCondition=WhereCondition+" and p.newsType=e.id "
         column = "p.newsTitle,e.category ,p.summary,p.newsDesc, date_format(p.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',p.imagePath)imagePath   "
         data = databasefile.SelectQuery("news p,newsCategoryMaster e",column,WhereCondition,"",startlimit,endlimit)
+        if data != "0":
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+
+@app.route('/announcements', methods=['POST'])
+def announcements():
+
+    try:
+       
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        print("newsdata",inputdata)
+        commonfile.writeLog("announcements",inputdata,0)
+        keyarr = ["title"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            if "title" in inputdata:
+                if inputdata['title'] != "":
+                    title =inputdata["title"]
+                    column=" title "
+                    values=" '"+ str(title) +"'"
+
+            if "summary" in inputdata:
+                if inputdata['summary'] != "":
+                    summary =inputdata["summary"]
+                    column=column+", summary"
+                    values=values+ ",'"+str(summary)+"'"
+        
+            if "videoLink" in inputdata:
+                if inputdata['videoLink'] != "":
+                    videoLink =inputdata["videoLink"]
+                    if videoLink[0:24]!="https://www.youtube.com/":
+                        return {"message":"Please upload only youtube Link","result":"","status":"False"}
+                    else:
+                        column=column+" ,videoLink"
+                        values=values+",'" +str(videoLink)+"'"
+            
+            if 'postImage' in request.files:      
+                    file = request.files.get('postImage')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getAnnouncementsPath(filename)  
+
+                    filepath = '/announcementsImage/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+                    column=column+" ,ImagePath"
+                    values=values+",'"+ str(ImagePath)+"'"
+
+            if "UserId" in inputdata:
+                if inputdata['UserId'] != "":
+                    UserId =inputdata["UserId"]
+                column =column + ",UserCreate"
+                values =   values + str(UserId) + "'"
+                data = databasefile.InsertQuery("announcement",column,values)        
+            else:
+                column = column+ " "
+                
+                data = databasefile.InsertQuery("announcement",column,values)
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+@app.route('/getAnnouncement', methods=['POST'])
+def getAnnouncement():
+
+    try:        
+        WhereCondition,startlimit,endlimit="","",""
+        column = "title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
+        data = databasefile.SelectQuery("announcement",column,WhereCondition,"",startlimit,endlimit)
+        for i in data["result"]:
+            if i["imagePath"]!="":
+                i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
         if data != "0":
             return data
         else:
