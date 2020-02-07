@@ -3380,19 +3380,32 @@ def landingPageDashboard():
         
         column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
-        
+        if data["result"]=="":
+            data["result"]=[]
+
         column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
         data1 = databasefile.SelectQuery("announcement",column1,WhereCondition,"",startlimit,endlimit)
-        for i in data1["result"]:
-            if i["imagePath"]!="":
-                i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
+        
+        if data1["result"]=="":
+            data1["result"]=[]
+        else:
+            for i in data1["result"]:
+                if i["imagePath"]!="":
+                    i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
 
         column2 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
         data2 = databasefile.SelectQuery("gallery",column2,"","",startlimit,endlimit)
         
+        if data2["result"]=="":
+            data2["result"]=[]
+
+
         column3 = "id,Status,UserCreate,eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data3 = databasefile.SelectQuery("parliamentEvent ",column3,WhereCondition,"",startlimit,endlimit)
         
+        if data3["result"]=="":
+            data3["result"]=[]
+
         if data != "0":
             return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"]}
         else:
