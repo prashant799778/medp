@@ -1965,8 +1965,7 @@ def allPostsThread():
             orderby="pm.id"
             postId,whereCondition="",""
 
-            data1
-            userTypeId=inputdata["userTypeId"]
+            
             if 'postId' in inputdata:
                 postId=inputdata['postId']
                 whereCondition=" and pm.postId='" + str(postId) + "' "
