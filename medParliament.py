@@ -3161,7 +3161,7 @@ def changeProfilePic():
 
 
 # create news by admin
-@app.route('/news', methods=['POST'])
+@app.route('/news1', methods=['POST'])
 def news():
 
     try:
@@ -3227,7 +3227,7 @@ def news():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
-@app.route('/news1', methods=['POST'])
+@app.route('/news', methods=['POST'])
 def news1():
 
     try:
@@ -3340,7 +3340,7 @@ def getNews():
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
-        column = "id,Status,newsTitle,category ,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,UserCreate "
+        column = "id,Status,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,UserCreate "
         data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
