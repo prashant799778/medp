@@ -4170,7 +4170,7 @@ def deleteEvent():
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
-announcement
+
 
 @app.route('/deleteAnnouncement', methods=['POST'])
 def deleteAnnouncement():
