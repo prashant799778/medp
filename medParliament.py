@@ -2616,7 +2616,7 @@ def verifyPost1():
         if msg == "1":
             approvedUserId = inputdata["approvedUserId"]
             postId = inputdata["postId"]
-            userTypeId = inputdata["userTypeId"]
+            userTypeId = int(inputdata["userTypeId"])
            
          
             commentDescription=inputdata['commentDescription']
