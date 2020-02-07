@@ -1891,7 +1891,7 @@ def allPosts1():
             orderby="pm.id"
             postId,whereCondition="",""
 
-            data1
+            
             userTypeId=inputdata["userTypeId"]
             if 'postId' in inputdata:
                 postId=inputdata['postId']
@@ -1956,7 +1956,7 @@ def allPostsThread():
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
 
-        keyarr = ['userTypeId']
+        keyarr = ['postId']
         print(inputdata,"B")
         commonfile.writeLog("allPosts",inputdata,0)
         data1={"status":"true","message":"","result":[]}
