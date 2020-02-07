@@ -3997,13 +3997,13 @@ def parliamentEvent1():
                         UserId =inputdata["UserId"]
                         whereCondition= " and UserCreate='" + str(UserId) + "' "
                         column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(imagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
-                        data=databasefile.UpdateQuery('parliamentEvent,column,whereCondition')
+                        data=databasefile.UpdateQuery('parliamentEvent',column,whereCondition)
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         whereCondition= " and id='" + str(Id) + "' "
                         column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(imagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
-                        data=databasefile.UpdateQuery('parliamentEvent,column,whereCondition')
+                        data=databasefile.UpdateQuery('parliamentEvent',column,whereCondition)
                 
 
 
