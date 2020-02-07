@@ -5,6 +5,7 @@ export class AppSettings {
     public static AllPolicyMaker = 'allpolicyMakers';
     public static AllUserPosts = 'allUsersPost';
     public static AllPosts = 'allPosts';
+    public static AllPostsThread = 'allPostsThread';
     public static TotalSubAdmins = 'totalSubAdmins';
     public static AddSubAdmins = 'addSubAdmins';
     public static AllSubAdmins = 'allSubAdmins';

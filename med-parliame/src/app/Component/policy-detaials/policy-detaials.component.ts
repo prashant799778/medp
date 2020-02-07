@@ -59,10 +59,10 @@ export class PolicyDetaialsComponent implements OnInit {
 		})
 		let data = {
 			'postId': this.id,
-			'userTypeId': this.userTypeId,
+			// 'userTypeId': this.userTypeId,
 			'commentDescription': this.frmPost.get('commentDescription').value 
 		}
-		this.userService.dataPostApi(data, AppSettings.AllPosts).then(resp =>{
+		this.userService.dataPostApi(data, AppSettings.AllPostsThread).then(resp =>{
 			this.postDetails = resp['result']['1']['0']
 			this.comment = resp['result']['0']
 			if(resp['result']['1'].status == 0 ){
@@ -84,12 +84,13 @@ export class PolicyDetaialsComponent implements OnInit {
 		this.userService.dataPostApi(data, AppSettings.VerifyPost1).then(resp =>{
 			// this.postDetails = resp['result']
 			if(resp['status'] == 'true'){
+				this.frmPost.get('commentDescription').reset()
 				let data = {
 					'postId': this.id,
-					'userTypeId': this.userTypeId,
+					// 'userTypeId': this.userTypeId,
 					'commentDescription': this.frmPost.get('commentDescription').value 
 				}
-				this.userService.dataPostApi(data, AppSettings.AllPosts).then(resp =>{
+				this.userService.dataPostApi(data, AppSettings.AllPostsThread).then(resp =>{
 					this.postDetails = resp['result']['1']['0']
 					this.comment = resp['result']['0']
 					if(resp['result']['1'].status == 0 ){
