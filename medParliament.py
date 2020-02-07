@@ -3153,8 +3153,17 @@ def landingPageDashboard():
         
         column = "newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
+        
+        column1 = "title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
+        data1 = databasefile.SelectQuery("announcement",column1,WhereCondition,"",startlimit,endlimit)
+        for i in data1["result"]:
+            if i["imagePath"]!="":
+                i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
+
+
+
         if data != "0":
-            return data
+            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"]}
         else:
             return commonfile.Errormessage()
 
