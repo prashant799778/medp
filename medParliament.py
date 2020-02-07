@@ -246,7 +246,7 @@ def SignUp():
                                 values=" '" + str(y["userId"]) + "','" + str('8') + "','" + str(i) + "'"
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
                         
-                        if (y["userTypeId"]== 10):
+                        if (y["userTypeId"]== 9):
                             columns="userId,designation,occcupation,companyName,companyAddress,address"
                             values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occcupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
                             data6=databasefile.InsertQuery("professionalMaster",column,values)
@@ -1066,13 +1066,13 @@ def allprofessionalsMaster():
     try:
         msg="1"
         if msg =="1":
-            column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
-            column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
+            column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
+            column=column+"pm.userId,pm.designation,pm.occcupation,pm.companyName,pm.companyAddress,pm.address"
             startlimit,endlimit="",""
             WhereCondition=" and um.usertypeId='9' and pm.userId=um.userId  and um.countryId=cm.id"
 
             
-            data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+            data = databasefile.SelectQueryOrderby("userMaster as um,professionalMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
 
           
             
