@@ -3297,7 +3297,7 @@ def news1():
                         status =inputdata["status"]
                 if "UserId" in inputdata:
                     if inputdata['UserId'] != "":
-                        UserId =inputdata["userId"]
+                        UserId =inputdata["UserId"]
                       
                     whereCondition= " and id= '"+ str(Id) +"' and UserCreate='"+ str(UserId) +"'" 
                     column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
