@@ -1060,7 +1060,7 @@ def allDoctorMaster():
         return output 
 
 
-@app.route('/allprofessionalsMaster', methods=['GET'])
+@app.route('/allprofessionalsMaster', methods=['POST'])
 def allprofessionalsMaster():
     try:
         msg="1"
