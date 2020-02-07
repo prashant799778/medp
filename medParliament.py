@@ -1910,7 +1910,7 @@ def allPosts1():
             WhereCondition1="  and pm.userId=um.userId and pm.postId='" + str(postId) + "'" 
             data1 = databasefile.SelectQueryOrderby("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",startlimit,endlimit,orderby)
             
-            # if (data!=0):
+            if (data!=0):
             #     for i in data["result"]:
             #         if (i["status"] == 1):
             #             print(i["postId"])
