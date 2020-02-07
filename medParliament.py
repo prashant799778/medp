@@ -3751,6 +3751,8 @@ def galleryImages():
     except Exception as e:
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
+
+
 @app.route('/galleryImages1', methods=['POST'])
 def galleryImages1():
     try:
@@ -3821,6 +3823,7 @@ def galleryImages1():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
+
 @app.route('/getGalleryImages', methods=['POST'])
 def getGalleryImages():
 
@@ -3857,6 +3860,7 @@ def getGalleryImages():
  
 
 # create parliamentEvent by admin
+
 @app.route('/parliamentEvent', methods=['POST'])
 def parliamentEvent():
 
@@ -3928,6 +3932,79 @@ def parliamentEvent():
     except Exception as e:
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
+
+@app.route('/parliamentEvent1', methods=['POST'])
+def parliamentEvent1():
+
+    try:
+       
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        print("parliamentEvent",inputdata)
+        commonfile.writeLog("parliamentEvent",inputdata,0)
+        keyarr = ["eventTitle","eventSummary","eventLocation"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print("1111111111111")
+        if msg == "1":
+
+            print("22222222222222")
+            if "eventTitle" in inputdata:
+                if inputdata['eventTitle'] != "":
+                    eventTitle =inputdata["eventTitle"]
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+        
+            if "eventSummary" in inputdata:
+                if inputdata['eventSummary'] != "":
+                    eventSummary =inputdata["eventSummary"]
+            
+            if "eventLocation" in inputdata:
+                if inputdata['eventLocation'] != "":
+                    eventLocation =inputdata["eventLocation"]
+            
+            if "eventDate" in inputdata:
+                if inputdata['eventDate'] != "":
+                    eventDate =inputdata["eventDate"]
+            if 'postImage' in request.files:      
+                    file = request.files.get('postImage')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getEventPath(filename)  
+
+                    filepath = '/eventImages/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            
+            if "UserId" in inputdata:
+                if inputdata['UserId'] != "":
+                    UserId =inputdata["UserId"]
+                column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate,UserCreate"
+                values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
+                data = databasefile.InsertQuery("parliamentEvent",column,values)        
+            else:
+
+                column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate"
+                values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "'"
+                data = databasefile.InsertQuery("parliamentEvent",column,values)
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
 
 
 @app.route('/getParliamentEvent', methods=['POST'])
