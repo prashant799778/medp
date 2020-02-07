@@ -3368,7 +3368,7 @@ def landingPageDashboard():
             if "userTypeId" in inputdata:
                     if inputdata['userTypeId'] != "":
                         userTypeId =inputdata["userTypeId"]
-                        WhereCondition=WhereCondition+" and userTypeId='"+str(userTypeId)+"'"
+                        WhereCondition=WhereCondition+" and Status=0 and userTypeId='"+str(userTypeId)+"'"
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
                     endlimit =inputdata["endlimit"]
@@ -3595,7 +3595,7 @@ def getAnnouncement():
             if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
-                        WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+                        WhereCondition=WhereCondition+" and Status=0 and id='"+str(Id)+"'"
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
                     endlimit =inputdata["endlimit"]
@@ -3729,7 +3729,7 @@ def getGalleryImages():
             if "id" in inputdata:
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
-                    WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+                    WhereCondition=WhereCondition+" and Status=0 and id='"+str(Id)+"'"
         
         column = "id, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,UserCreate  "
         data = databasefile.SelectQuery(" gallery ",column,WhereCondition,"",startlimit,endlimit)
@@ -3836,7 +3836,7 @@ def getParliamentEvent():
             if "id" in inputdata:
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
-                    WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+                    WhereCondition=WhereCondition+" and Status=0 and id='"+str(Id)+"'"
         
         column = "id,UserCreate,eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery(" parliamentEvent ",column,WhereCondition,"",startlimit,endlimit)
