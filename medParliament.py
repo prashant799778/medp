@@ -3766,9 +3766,9 @@ def parliamentEvent():
             if "eventTitle" in inputdata:
                 if inputdata['eventTitle'] != "":
                     eventTitle =inputdata["eventTitle"]
-            if "eventType" in inputdata:
-                if inputdata['eventType'] != "":
-                    eventType =inputdata["eventType"]
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
         
             if "eventSummary" in inputdata:
                 if inputdata['eventSummary'] != "":
@@ -3800,12 +3800,12 @@ def parliamentEvent():
             if "UserId" in inputdata:
                 if inputdata['UserId'] != "":
                     UserId =inputdata["UserId"]
-                column = "eventTitle,eventType,imagePath,eventSummary,eventLocation,eventDate,UserCreate"
+                column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate,UserCreate"
                 values = " '"+ str(eventTitle) +"','" + str(eventType)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
                 data = databasefile.InsertQuery("parliamentEvent",column,values)        
             else:
 
-                column = "eventTitle,eventType,imagePath,eventSummary,eventLocation,eventDate"
+                column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate"
                 values = " '"+ str(eventTitle) +"','" + str(eventType)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "'"
                 data = databasefile.InsertQuery("parliamentEvent",column,values)
 
