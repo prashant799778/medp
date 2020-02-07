@@ -3765,6 +3765,7 @@ def galleryImages1():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             ImagePath=""
+            flag=inputdata['flag']
             if 'postImage' in request.files:      
                 file = request.files.get('postImage')        
                 filename = file.filename or ''                 
