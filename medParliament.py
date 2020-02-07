@@ -3996,7 +3996,7 @@ def parliamentEvent1():
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
                         whereCondition= " and UserCreate='" + str(UserId) + "' "
-                        column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(imagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
+                        column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
                         data=databasefile.UpdateQuery('parliamentEvent',column,whereCondition)
                 if "id" in inputdata:
                     if inputdata['id'] != "":
@@ -4043,7 +4043,7 @@ def getParliamentEvent():
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
         
         column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data = databasefile.SelectQuery(" parliamentEvent ",column,WhereCondition,"",startlimit,endlimit)
+        data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
         else:
