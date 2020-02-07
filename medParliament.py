@@ -3801,12 +3801,12 @@ def parliamentEvent():
                 if inputdata['UserId'] != "":
                     UserId =inputdata["UserId"]
                 column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate,UserCreate"
-                values = " '"+ str(eventTitle) +"','" + str(eventType)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
+                values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
                 data = databasefile.InsertQuery("parliamentEvent",column,values)        
             else:
 
                 column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate"
-                values = " '"+ str(eventTitle) +"','" + str(eventType)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "'"
+                values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "'"
                 data = databasefile.InsertQuery("parliamentEvent",column,values)
 
             if data !=0 :                
