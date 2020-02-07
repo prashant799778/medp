@@ -5,7 +5,11 @@
             <div class="image-section-set bg-color">
                 <img class="image-set" src="../../assets/images/post-im.svg">
             </div>
-            <h2 class="main-hading">Post</h2>
+            <!-- <h2 class="main-hading">Post {{titleHeading}}</h2> -->
+            <ul class="sub-heading d-flex al-item mr-remove">
+                    <li>Post /</li>
+                    <li>{{titleHeading}}</li>
+                  </ul> 
         </div>
     </div>
         <div class="col-sm-12 col-md-12 col-lg-12 margin-tp">
@@ -26,22 +30,22 @@
                     </thead>
                     <tbody>
                         <ng-container *ngIf="postList && postList.length > 0">
-                              <tr *ngFor="let subAdmin of postList ; let i =  index">
-                                      <td>{{subAdmin.userName}}</td>
-                                      <td>{{subAdmin.email}}</td>
-                                      <td>{{subAdmin.DateCreate | date}}</td>
-                                      <td>{{subAdmin.postTitle}}</td>
-                                      <td class="txt-color-r text-uppercase">
-                                              <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-panding border-round-rem">Pending</button>
-                                              <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Approved</button>
-                                              <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Rejected</button>
-                                      </td>
-                                      <td>
-                                          <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">
-                                              <img src="../../assets/images/view.svg" class="action-view">
-                                          </button>
-                                      </td>
-                                  </tr>
+                            <tr *ngFor="let subAdmin of postList ; let i =  index">
+                                <td>{{subAdmin.userName}}</td>
+                                <td>{{subAdmin.email}}</td>
+                                <td>{{subAdmin.DateCreate | date}}</td>
+                                <td>{{subAdmin.postTitle}}</td>
+                                <td class="txt-color-r text-uppercase">
+                                    <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-panding border-round-rem">Pending</button>
+                                    <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Approved</button>
+                                    <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Rejected</button>
+                                </td>
+                                <td>
+                                    <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.postId, subAdmin.userTypeId)">
+                                        <img src="../../assets/images/view.svg" class="action-view">
+                                    </button>
+                                </td>
+                            </tr>
                         </ng-container>
                        
                        

@@ -16,7 +16,8 @@ export class PostsComponent implements OnInit {
   postStatus = [];
   id: any;
   userTypeId: any;
-  dashboardssCheck
+  dashboardssCheck: any;
+  titleHeading: any;
   constructor(public userService: UserServiceService,
     public authsService: AuthsService,
     public local: LocalStorageService,
@@ -27,9 +28,9 @@ export class PostsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
       this.dashboardssCheck = params['dashboard']
-      if(this.id == 5){
+      if(this.id){
         let datas = {
-          'userTypeId': 5
+          'userTypeId': this.id
         }
         this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
           this.postList = resp['result']
@@ -38,29 +39,70 @@ export class PostsComponent implements OnInit {
             this.getStatus(resp.status)
           })
         })
-      }else if(this.id == 6){
-        let datas = {
-          'userTypeId': 6
+        if(this.id == 5){
+          this.titleHeading = 'Policy Maker'
+          // let datas = {
+          //   'userTypeId': 5
+          // }
+          // this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+          //   this.postList = resp['result']
+          //   console.log(this.postList)
+          //   this.postList.forEach(resp=>{
+          //     this.getStatus(resp.status)
+          //   })
+          // })
+        }else if(this.id == 6){
+          this.titleHeading = 'Entrepreneur'
+          // let datas = {
+          //   'userTypeId': 6
+          // }
+          // this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+          //   this.postList = resp['result']
+          //   console.log(this.postList)
+          //   this.postList.forEach(resp=>{
+          //     this.getStatus(resp.status)
+          //   })
+          // })
+        }else if(this.id == 7){
+          this.titleHeading = 'Student'
+          // let datas = {
+          //   'userTypeId': 7
+          // }
+          // this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+          //   this.postList = resp['result']
+          //   console.log(this.postList)
+          //   this.postList.forEach(resp=>{
+          //     this.getStatus(resp.status)
+          //   })
+          // })
+        }else if(this.id == 8){
+          this.titleHeading = 'Doctor'
+          // let datas = {
+          //   'userTypeId': 8
+          // }
+          // this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+          //   this.postList = resp['result']
+          //   console.log(this.postList)
+          //   this.postList.forEach(resp=>{
+          //     this.getStatus(resp.status)
+          //   })
+          // })
+        }else if(this.id == 9){
+          this.titleHeading = 'Professional'
+          // let datas = {
+          //   'userTypeId': 9
+          // }
+          // this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+          //   this.postList = resp['result']
+          //   console.log(this.postList)
+          //   this.postList.forEach(resp=>{
+          //     this.getStatus(resp.status)
+          //   })
+          // })
         }
-        this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-          this.postList = resp['result']
-          console.log(this.postList)
-          this.postList.forEach(resp=>{
-            this.getStatus(resp.status)
-          })
-        })
-      }else if(this.id == 7){
-        let datas = {
-          'userTypeId': 7
-        }
-        this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-          this.postList = resp['result']
-          console.log(this.postList)
-          this.postList.forEach(resp=>{
-            this.getStatus(resp.status)
-          })
-        })
       }
+      
+     
     })
     if(this.local.get('userData1')[0].userTypeId == '3'){
       let datas = {

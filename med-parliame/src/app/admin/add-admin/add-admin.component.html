@@ -26,9 +26,10 @@
               <div class="form-group">
                 <label class="form-label">Admin Type</label>
                 <select class="form-control" formControlName="userTypeId"   >
-                    <option value='2' >Policy</option>
-                    <option value="3" >Entrepreneur</option>
-                    <option value="4" >Student</option>
+                    <option  *ngFor="let admin of adminDropDown" [value]='admin.id'>{{admin.userName}}</option>
+                    <!-- <option value="3" >Entrepreneur</option>
+                    <option value="4" >Student</option> -->
+
 
                 </select>
                 <!-- <input type="text" class="form-control" formControlName="adminType"> -->

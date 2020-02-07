@@ -28,11 +28,18 @@ export class AppSettings {
     public static AddCountry = 'addCountry';
     public static AddUniversity = 'addUniversity';
     public static AddQualification = 'addQualification';
+    public static AllDoctorList = 'allDoctorMaster';
+    public static AllProfessionalList = 'allProfessionalMaster';
+    public static GET_NEWS_CATEGORY = 'getNewsCategory';
+    public static SHOW_ADMIN_NEWS = 'getNews';
+    public static CREATE_ADMIN_NEWS = 'news';
+    public static userDropDown = 'userDropDown';
+    public static DELETE_ADMIN_NEWS = 'deleteNews';
+    public static galleryImages = 'galleryImages1';
+    public static parliamentEvent = 'parliamentEvent';
+    public static announcements1 = 'announcements1';
+    public static getGalleryImages = 'getGalleryImages';
     
-    
-
-    
-
 
 
 
