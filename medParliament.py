@@ -2609,7 +2609,7 @@ def verifyPost1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         startlimit,endlimit="",""
-        keyarr = ['approvedUserId','postId','userTypeId','flag']
+        keyarr = ['approvedUserId','postId','userTypeId','commentDescription']
         commonfile.writeLog("verifyPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
