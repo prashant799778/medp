@@ -3317,7 +3317,7 @@ def getNews():
 
     try:
         WhereCondition,startlimit,endlimit="","",""
-        WhereCondition=WhereCondition+" and Status=0 or Status=1 "
+        WhereCondition=WhereCondition+" and Status<2 "
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
@@ -3352,7 +3352,7 @@ def landingPageDashboard():
 
     try:
         WhereCondition,startlimit,endlimit="","",""
-        WhereCondition=WhereCondition+" and Status=0 or Status=1"
+        WhereCondition=WhereCondition+" and Status<2"
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
@@ -3616,7 +3616,7 @@ def getAnnouncement():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
-        WhereCondition=WhereCondition+" and Status=0 or Status=1"
+        WhereCondition=WhereCondition+" and Status<2"
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
@@ -3819,7 +3819,7 @@ def getGalleryImages():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
-        WhereCondition=WhereCondition+" and Status=0 or Status=1"
+        WhereCondition=WhereCondition+" and Status<2"
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
@@ -4025,7 +4025,7 @@ def getParliamentEvent():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
-        WhereCondition=WhereCondition+" and Status=0 or Status=1 "
+        WhereCondition=WhereCondition+" and Status<2"
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
