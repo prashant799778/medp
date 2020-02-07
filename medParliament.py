@@ -3127,7 +3127,7 @@ def getNews():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
-@app.route('/getNewsCategoryMaster', methods=['POST'])
+@app.route('/getNewsCategory', methods=['POST'])
 def getNewsCategoryMaster():
 
     try:
