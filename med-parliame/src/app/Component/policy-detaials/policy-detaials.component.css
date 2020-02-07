@@ -21,6 +21,11 @@
   text-align: left;
   color: #707070;
 }
+
+.pull-right {
+    float: right;
+}
+
 .title-name{
 font-size: 0.9rem;
 font-weight: 300;

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { AppSettings } from 'src/app/utils/constant';
 import { LocalStorageService } from 'angular-web-storage';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { $ } from 'protractor';
 declare var jQuery: any;
 
@@ -23,7 +24,9 @@ export class PolicyDetaialsComponent implements OnInit {
 	beforeApproved: boolean;
 	approvedModal: any;
 	activatedds: boolean;
-	constructor(private route: ActivatedRoute, private router: Router,
+	frmPost: FormGroup;
+	userType: any;
+	constructor(public fb: FormBuilder,private route: ActivatedRoute, private router: Router,
 				public local: LocalStorageService,
 				public userService: UserServiceService) {
 					this.beforeApproved =false;
@@ -32,11 +35,12 @@ export class PolicyDetaialsComponent implements OnInit {
 
 	ngOnInit() {
 		this.route.queryParams.subscribe(params => {
-		
-		
 			this.id = params['id'];
 			this.dashboardssCheck = params['dashboard']
 		})
+		this.frmPost = this.fb.group({
+			commentDescription: ['']
+		  });
 		// this.locations = window.location.href
 		// 	console.log(this.locations)
 		// // this.locations = this.locations.split('/dashboard')
@@ -53,7 +57,8 @@ export class PolicyDetaialsComponent implements OnInit {
 		})
 		let data = {
 			'postId': this.id,
-			'userTypeId': this.userTypeId
+			'userTypeId': this.userTypeId,
+			'commentDescription': this.frmPost.get('commentDescription').value 
 		}
 		this.userService.dataPostApi(data, AppSettings.AllPosts).then(resp =>{
 			this.postDetails = resp['result']['0']
@@ -61,6 +66,20 @@ export class PolicyDetaialsComponent implements OnInit {
 				console.log("onluy view")
 				this.onlyView = true;
 			}
+		})
+		
+
+	}
+
+	replyPost(){
+		let data = {
+			'postId': this.id,
+			'userTypeId': this.userTypeId,
+			'approvedUserId': this.local.get('userData1')[0].userId,
+			'commentDescription': this.frmPost.get('commentDescription').value 
+		}
+		this.userService.dataPostApi(data, AppSettings.VerifyPost1).then(resp =>{
+			this.postDetails = resp['result']
 		})
 	}
 	Approve(id){
