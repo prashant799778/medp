@@ -3137,7 +3137,7 @@ def announcements():
        
         inputdata = request.form.get('data')    
         inputdata = json.loads(inputdata) 
-        print("newsdata",inputdata)
+        print("announcements",inputdata)
         commonfile.writeLog("announcements",inputdata,0)
         keyarr = ["title","userTypeId"]           
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
@@ -3152,8 +3152,8 @@ def announcements():
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
-                    column=" ,userTypeId "
-                    values=" ,'"+ str(userTypeId) +"'"
+                    column=column+" ,userTypeId "
+                    values=values+" ,'"+ str(userTypeId) +"'"
 
 
             if "summary" in inputdata:
