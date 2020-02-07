@@ -2526,7 +2526,7 @@ def verifyPost():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         startlimit,endlimit="",""
-        keyarr = ['approvedUserId','postId','id']
+        keyarr = ['approvedUserId','postId','id','commentDescription']
         commonfile.writeLog("verifyPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -2535,6 +2535,7 @@ def verifyPost():
             postId = inputdata["postId"]
             userTypeId = inputdata["userTypeId"]
             statusid = inputdata["id"]
+            commentDescription=
             print(statusid,'id')
     
             column = "approvedUserId,postId"                
@@ -3456,7 +3457,7 @@ def userDropdown():
     try:
         columns=" id,userName  "
         startlimit,endlimit="",""
-        whereCondition="and id>4 and id<10"
+        whereCondition=" and id>4 and id<10"
         
         data = databasefile.SelectQuery("userTypeMaster",columns,whereCondition,"",startlimit,endlimit)
        
