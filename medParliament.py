@@ -1020,14 +1020,15 @@ def allpolicyMakers():
 def allDoctorMaster():
     try:
         msg="1"
+       
         if msg =="1":
-            column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
-            column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
+            column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
+            column=column+" dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress,qm.qualificationName"
             startlimit,endlimit="",""
-            WhereCondition=" and um.usertypeId='8' and pm.userId=um.userId  and um.countryId=cm.id"
+            WhereCondition=" and um.usertypeId='8' and dm.userId=um.userId and dm.qualificationId=qm.id "
 
             
-            data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+            data = databasefile.SelectQueryOrderby("userMaster as um,doctorMaster as dm,qualificationMaster as qm",column,WhereCondition,""," ",startlimit,endlimit)
 
           
             
@@ -1038,7 +1039,7 @@ def allDoctorMaster():
                 for i in data["result"]:
                     userId=i["userId"]
                     column="count(*) as count"
-                    whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
+                    whereCondition=" and pm.usertypeId='8' and pm.userId='" + str(userId) + "' "
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                     print(data1,"")
                     count=data1["count"]
