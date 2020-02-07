@@ -3567,7 +3567,7 @@ def announcements1():
 
                     file.save(FolderPath)
                     ImagePath = filepath
-                    column=column+" ,ImagePath"
+                    column=column+" ,imagePath"
                     values=values+",'"+ str(ImagePath)+"'"
             if flag =="i":
                 if "UserId" in inputdata:
