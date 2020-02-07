@@ -3588,13 +3588,13 @@ def announcements1():
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
                         whereCondition=" UserCreate= '"+ str(UserId)+"'"
-                        column="title='"+ str(title)+"',summary='"+ str(summary)+"',userTypeId='"+ str(userTypeId)+"',videoLink='"+ str(userTypeId)+"',ImagePath='"+ str(ImagePath)+"',status='"+ str(status)+"'"
+                        column="title='"+ str(title)+"',summary='"+ str(summary)+"',userTypeId='"+ str(userTypeId)+"',videoLink='"+ str(userTypeId)+"',ImagePath='"+ str(ImagePath)+"',Status='"+ str(status)+"'"
                         data=databasefile.UpdateQuery("announcement",column,whereCondition)
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         whereCondition=" id= '"+ str(Id)+"'"
-                        column="title='"+ str(title)+"',summary='"+ str(summary)+"',userTypeId='"+ str(userTypeId)+"',videoLink='"+ str(userTypeId)+"',ImagePath='"+ str(ImagePath)+"',status='"+ str(status)+"'"
+                        column="title='"+ str(title)+"',summary='"+ str(summary)+"',userTypeId='"+ str(userTypeId)+"',videoLink='"+ str(userTypeId)+"',ImagePath='"+ str(ImagePath)+"',Status='"+ str(status)+"'"
                         data=databasefile.UpdateQuery("announcement",column,whereCondition)
 
 
@@ -3727,6 +3727,75 @@ def galleryImages():
                 column = " imagePath "
                 values = " '"+ str(ImagePath)+  "'"
                 data = databasefile.InsertQuery("gallery",column,values)
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+@app.route('/galleryImages1', methods=['POST'])
+def galleryImages1():
+    try:
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        startlimit,endlimit="",""
+        keyarr = ["userId","flag"]
+        
+        commonfile.writeLog("galleryImages",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            ImagePath=""
+            if 'postImage' in request.files:      
+                file = request.files.get('postImage')        
+                filename = file.filename or ''                 
+                filename = filename.replace("'","") 
+
+                print(filename)
+                # filename = str(campaignId)                    
+                #folder path to save campaign image
+                FolderPath = ConstantData.getGalleryPath(filename)  
+
+                filepath = '/gallery/' + filename    
+                
+
+                file.save(FolderPath)
+                ImagePath = filepath
+            if flag =="i":
+                if "userId" in inputdata:
+                    if inputdata['userId'] != "":
+                        userId =inputdata["userId"]
+                    column = " imagePath,UserCreate"
+                    values = " '"+ str(ImagePath)+ "','" + str(userId) + "'"
+                    data = databasefile.InsertQuery("gallery",column,values)        
+                else:
+                    column = " imagePath "
+                    values = " '"+ str(ImagePath)+  "'"
+                    data = databasefile.InsertQuery("gallery",column,values)
+            if flag =="u":
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status =inputdata["status"]
+                if "userId" in inputdata:
+
+                    if inputdata['userId'] != "":
+                        userId =inputdata["userId"]
+                        whereCondition=" UserCreate='" + str(userId) + "'"
+                        column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
+                        data=databasefile.UpdateQuery("gallery",column,whereCondition)
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        whereCondition=" id='" + str(Id) + "'"
+                        column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
+                        data=databasefile.UpdateQuery("gallery",column,whereCondition)
+
+
+
 
             if data !=0 :                
                 return data
