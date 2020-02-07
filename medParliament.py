@@ -3434,6 +3434,29 @@ def getParliamentEvent():
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
+
+
+@app.route('/userDropdown', methods=['POST'])
+def userDropdown():
+    try:
+        columns=" id,userName  "
+        startlimit,endlimit="",""
+        whereCondition="and id>4 and id<10"
+        
+        data = databasefile.SelectQuery("userTypeMaster",columns,whereCondition,"",startlimit,endlimit)
+       
+
+        if data:           
+            Data = {"status":"true","message":"","result":data["result"]}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output =  {"status":"false","message":"something went wrong","result":""}
+        return output           
  
 
 
