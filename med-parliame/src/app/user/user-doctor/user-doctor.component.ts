@@ -25,7 +25,7 @@ export class UserDoctorComponent implements OnInit {
 		})
 	}
 	policyDetail(id){
-		this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: 8,admins: '7'}})
+		this.router.navigate(['/profile'],{queryParams: {id: id,userTypeId: 8,admins: '10'}})
 	}
 	getGender(value){
 		if(value == '1'){

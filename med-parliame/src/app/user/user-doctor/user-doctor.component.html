@@ -21,11 +21,12 @@
                                 <tr >
                                     <th>Name </th>
                                     <th>Email</th>
+									<th>Password</th>
                                     <th>Phone</th>
                                     <th>Gender</th>
-                                    <th>Institution</th>
-                                    <th>Address</th>
-                                    <th>Password</th>
+                                    <!-- <th>Institution</th> -->
+                                    <!-- <th>Address</th> -->
+                                    
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -34,11 +35,12 @@
                                 <tr *ngFor="let userPolicy of UserStudentList; let i = index">
                                     <td>{{userPolicy.userName}}</td>
                                     <td>{{userPolicy.email}}</td>
+									<td>{{userPolicy.password}}</td>
                                     <td>{{userPolicy.mobileNo}}</td>
                                     <td>{{getGender(userPolicy.gender)}}</td>
-                                    <td>{{userPolicy.institutionName}}</td>
-                                    <td>{{userPolicy.address}}</td>
-                                    <td>{{userPolicy.password}}</td>
+                                    <!-- <td>{{userPolicy.institutionName}}</td> -->
+                                    <!-- <td>{{userPolicy.address}}</td> -->
+                                    
                                     <td>
                                             <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>
                                             <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Inactive</button>
