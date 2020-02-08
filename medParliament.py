@@ -3459,7 +3459,7 @@ def announcements():
                     values=" '"+ str(title) +"'"
 
             if "userTypeId" in inputdata:
-                if inputdata['userTypeId'] != "":
+                if inputdata['userTypeId'] != "" :
                     userTypeId =inputdata["userTypeId"]
                     column=column+" ,userTypeId "
                     values=values+" ,'"+ str(userTypeId) +"'"
@@ -3472,7 +3472,7 @@ def announcements():
                     values=values+ ",'"+str(summary)+"'"
         
             if "videoLink" in inputdata:
-                if inputdata['videoLink'] != "":
+                if (inputdata['videoLink']) != "" or (inputdata['videoLink'] != None) :
                     videoLink =inputdata["videoLink"]
                     if videoLink[0:24]!="https://www.youtube.com/":
                         return {"message":"Please upload only youtube Link","result":"","status":"False"}
