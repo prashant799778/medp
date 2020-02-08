@@ -3363,6 +3363,7 @@ def landingPageDashboard():
     try:
         WhereCondition,startlimit,endlimit="","",""
         WhereCondition=WhereCondition+" and Status<2"
+        data1={"message":"","status":"true","result":[]}
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
@@ -3408,12 +3409,9 @@ def landingPageDashboard():
             data3["result"]=[]
 
         if data != "0":
-            if "userTypeId" in inputdata:
-                    if inputdata['userTypeId'] != "":
-                        return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"]}
-            else:
-        
-                return {"message":"","status":"true","news":data["result"],"gallery":data2["result"],"event":data3["result"]}
+            
+            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"]}
+            
         else:
             return commonfile.Errormessage()
 
