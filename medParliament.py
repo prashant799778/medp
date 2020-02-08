@@ -207,6 +207,7 @@ def SignUp():
                     column = 'userId,userName,userTypeId,profilePic'
                     
                     data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)
+                    
                     if data["status"]!="false":
                         y=data["result"][0]
                         if (y["userTypeId"] == 5):
@@ -249,7 +250,7 @@ def SignUp():
                         if (y["userTypeId"]== 9):
                             columns="userId,designation,occupation,companyName,companyAddress,address"
                             values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
-                            data6=databasefile.InsertQuery("professionalMaster",column,values)
+                            data6=databasefile.InsertQuery("professionalMaster",columns,values)
                             for i in interestId:
                                 column="userId,userTypeId,interestId"
                                 values=" '" + str(y["userId"]) + "','" + str('10') + "','" + str(i) + "'"
@@ -3093,7 +3094,7 @@ def userProfile():
                 
                 orderby="ab.id"
                 column="*"
-                whereCondition="and ab.userId='" + userId+ "'"
+                whereCondition=" and ab.userId='" + userId+ "'"
                 data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
                 if  data4==0:
                     
