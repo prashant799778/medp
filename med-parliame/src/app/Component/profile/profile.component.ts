@@ -244,6 +244,30 @@ export class ProfileComponent implements OnInit {
 				this.userPost = resp['result']['userPost']
 			})
 		}
+		else if(this.userTypeId == '8'){
+			this.enterpueresss = true;
+			let data = {
+				'userId': this.id,
+				'userTypeId': 8
+			}	
+			this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				console.log(resp)
+				this.userProfile = resp['result']['userProfile'][0]
+				this.userPost = resp['result']['userPost']
+			})
+		}
+		else if(this.userTypeId == '9'){
+			this.enterpueresss = true;
+			let data = {
+				'userId': this.id,
+				'userTypeId': 9
+			}	
+			this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				console.log(resp)
+				this.userProfile = resp['result']['userProfile'][0]
+				this.userPost = resp['result']['userPost']
+			})
+		}
 	}
 	closeModal(){
 		jQuery("#students-pop").modal('hide')
