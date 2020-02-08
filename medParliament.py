@@ -3372,6 +3372,16 @@ def landingPageDashboard():
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
                     WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
+                    column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
+                    data1 = databasefile.SelectQuery("announcement",column1,WhereCondition,"",startlimit,endlimit)
+                    
+                    if data1["result"]=="":
+                        data1["result"]=[]
+                    else:
+                        for i in data1["result"]:
+                            if i["imagePath"]!="":
+                                i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
+
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
                     endlimit =str(inputdata["endlimit"])
@@ -3381,15 +3391,7 @@ def landingPageDashboard():
         if data["result"]=="":
             data["result"]=[]
 
-        column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
-        data1 = databasefile.SelectQuery("announcement",column1,WhereCondition,"",startlimit,endlimit)
         
-        if data1["result"]=="":
-            data1["result"]=[]
-        else:
-            for i in data1["result"]:
-                if i["imagePath"]!="":
-                    i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
 
         column2 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
         data2 = databasefile.SelectQuery("gallery",column2,"","",startlimit,endlimit)
