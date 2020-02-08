@@ -3561,7 +3561,7 @@ def announcements1():
         
             if "videoLink" in inputdata:
                 print("1111111111111111111")
-                if (inputdata['videoLink'] != "" ) or (inputdata['videoLink'] != None) :
+                if (inputdata['videoLink'] != None) :
                     print("2222222222222222")
                     videoLink =inputdata["videoLink"]
                     if videoLink[0:24]!="https://www.youtube.com/":
