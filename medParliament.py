@@ -3369,7 +3369,7 @@ def landingPageDashboard():
             if "startlimit" in inputdata:
                 if inputdata['startlimit'] != "":
                     startlimit =str(inputdata["startlimit"])
-            if "userTypeId" in inputdata:,"announcement":data1["result"]
+            if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
                     WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
