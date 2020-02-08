@@ -37,8 +37,8 @@
                                   
                               <thead> 
                                       <th>Announcment Title</th> 
-                                      <th>News Shots</th>
-                                      <!-- <th>News Description</th> --> 
+                                      <th>Announcment Description</th>
+                                      <th>Youtube Link</th> 
                                       <th>Gallery Image</th>
                                       <th>Date of Creation</th>
                                       <!-- <th>Created By</th> -->
@@ -48,7 +48,8 @@
                                     <ng-container *ngFor="let news of allnews">
                                          <tr >
                                       <td> {{news.title}} </td> 
-                                      <td> {{news.summary}} </td>                                       
+                                      <td> {{news.summary}} </td> 
+                                      <td> {{news.videoLink}} </td> 
                                       <!-- <td> <p [innerHtml]="news.newsDesc "></p> </td> --> 
                                       <td> <img src="{{news.imagePath}}" style="height: 100px; width: 100px;"> </td>
                                       <td>  {{news.DateCreate}} </td>
