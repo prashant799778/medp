@@ -2675,7 +2675,9 @@ def allStatus():
 @app.route('/verifyPost1', methods=['POST'])
 def verifyPost1():
     try:
+        print("nnnnnnnnnnnn")
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        print("mmmmmmmmmmm")
         startlimit,endlimit="",""
         print("111111111111111111111111")
         keyarr = ['approvedUserId','postId','userTypeId','commentDescription']
