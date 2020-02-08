@@ -3472,7 +3472,7 @@ def announcements():
                     values=values+ ",'"+str(summary)+"'"
         
             if "videoLink" in inputdata:
-                if (inputdata['videoLink']) != "" or (inputdata['videoLink'] != None) :
+                if (inputdata['videoLink'] != "") or (inputdata['videoLink'] != None) :
                     videoLink =inputdata["videoLink"]
                     if videoLink[0:24]!="https://www.youtube.com/":
                         return {"message":"Please upload only youtube Link","result":"","status":"False"}
@@ -3560,7 +3560,7 @@ def announcements1():
                     values=values+ ",'"+str(summary)+"'"
         
             if "videoLink" in inputdata:
-                if inputdata['videoLink'] != "":
+                if (inputdata['videoLink'] != "" ) or (inputdata['videoLink'] != None) :
                     videoLink =inputdata["videoLink"]
                     if videoLink[0:24]!="https://www.youtube.com/":
                         return {"message":"Please upload only youtube Link","result":"","status":"False"}
