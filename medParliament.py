@@ -2211,13 +2211,13 @@ def myPosts1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        keyarr = ['userId','userTypeId','status']
+        keyarr = ['userId','userTypeId']
         print(inputdata,"B")
         commonfile.writeLog("myPosts",inputdata,0)
       
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
-            orderby="pm.id"
+            orderby=" pm.id "
             
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
