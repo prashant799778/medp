@@ -3408,7 +3408,7 @@ def landingPageDashboard():
             data3["result"]=[]
 
         if data != "0":
-            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"]}
+            return {"message":"","status":"true","news":data["result"],"gallery":data2["result"],"event":data3["result"]}
         else:
             return commonfile.Errormessage()
 
