@@ -3341,8 +3341,9 @@ def getNews():
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
-        column = "id,Status,newsTitle,userTypeId,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,UserCreate "
-        data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
+        WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
+        column = "n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+        data = databasefile.SelectQuery("news n,userMaster um",column,WhereCondition,"",startlimit,endlimit)
         if data != "0":
             return data
         else:
