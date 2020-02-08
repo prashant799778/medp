@@ -3321,7 +3321,7 @@ def getNews():
 
     try:
         WhereCondition,startlimit,endlimit="","",""
-        WhereCondition=WhereCondition+" and Status<2 "
+        WhereCondition=WhereCondition+" and n.Status<2 "
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
