@@ -2149,7 +2149,7 @@ def myPosts():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        keyarr = ['userId','userTypeId','status']
+        keyarr = ['userId','userTypeId']
         print(inputdata,"B")
         commonfile.writeLog("myPosts",inputdata,0)
       
@@ -2166,27 +2166,27 @@ def myPosts():
           
 
             if (data!=0): 
-                for i in data["result"]:
-                    if (i["status"] == 1):
-                        print(i["postId"])
-                        column="um.userName as approvedBy"
-                        WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
-                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
-                        print(data1)
-                        if "message" in data1:
-                            pass
-                        else:
-                            i["approvedBy"]=data1["approvedBy"]
-                        print(data1)
-                    if (i["status"]==2):
-                        column="um.userName as rejectedBy"
-                        WhereCondition="and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
-                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
-                        print(data1)
-                        if "message" in data1:
-                            pass
-                        else:
-                            i["rejectedBy"]=data1["rejectedBy"]
+                # for i in data["result"]:
+                #     if (i["status"] == 1):
+                #         print(i["postId"])
+                #         column="um.userName as approvedBy"
+                #         WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                #         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                #         print(data1)
+                #         if "message" in data1:
+                #             pass
+                #         else:
+                #             i["approvedBy"]=data1["approvedBy"]
+                #         print(data1)
+                #     if (i["status"]==2):
+                #         column="um.userName as rejectedBy"
+                #         WhereCondition="and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+                #         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+                #         print(data1)
+                #         if "message" in data1:
+                #             pass
+                #         else:
+                #             i["rejectedBy"]=data1["rejectedBy"]
 
                 
                 print("111111111111111")          
