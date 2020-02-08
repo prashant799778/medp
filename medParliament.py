@@ -3369,7 +3369,7 @@ def landingPageDashboard():
             if "startlimit" in inputdata:
                 if inputdata['startlimit'] != "":
                     startlimit =str(inputdata["startlimit"])
-            if "userTypeId" in inputdata:
+            if "userTypeId" in inputdata:,"announcement":data1["result"]
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
                     WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
@@ -3408,7 +3408,12 @@ def landingPageDashboard():
             data3["result"]=[]
 
         if data != "0":
-            return {"message":"","status":"true","news":data["result"],"gallery":data2["result"],"event":data3["result"]}
+            if "userTypeId" in inputdata:
+                    if inputdata['userTypeId'] != "":
+                        return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"]}
+            else:
+        
+                return {"message":"","status":"true","news":data["result"],"gallery":data2["result"],"event":data3["result"]}
         else:
             return commonfile.Errormessage()
 
