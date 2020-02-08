@@ -3560,9 +3560,12 @@ def announcements1():
                     values=values+ ",'"+str(summary)+"'"
         
             if "videoLink" in inputdata:
+                print("1111111111111111111")
                 if (inputdata['videoLink'] != "" ) or (inputdata['videoLink'] != None) :
+                    print("2222222222222222")
                     videoLink =inputdata["videoLink"]
                     if videoLink[0:24]!="https://www.youtube.com/":
+                        print("3333333333333333333")
                         return {"message":"Please upload only youtube Link","result":"","status":"False"}
                     else:
                         column=column+" ,videoLink"
