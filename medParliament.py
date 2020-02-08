@@ -2677,15 +2677,16 @@ def verifyPost1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         startlimit,endlimit="",""
+        print("111111111111111111111111")
         keyarr = ['approvedUserId','postId','userTypeId','commentDescription']
         commonfile.writeLog("verifyPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-       
+        print("22222222222222222222222")
         if msg == "1":
             approvedUserId = inputdata["approvedUserId"]
             postId = inputdata["postId"]
             userTypeId = int(inputdata["userTypeId"])
-           
+            print("333333333333333333333")
          
             commentDescription=inputdata['commentDescription']
             column = "approvedUserId,postId,userTypeId,commentDescription"                
