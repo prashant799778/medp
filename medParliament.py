@@ -2675,7 +2675,7 @@ def allStatus():
 @app.route('/verifyPost1', methods=['POST'])
 def verifyPost1():
     try:
-        print("nnnnnnnnnnnn")
+        print("nnnnnnnnnnnn",request.get_data(),"===================",type(request.get_data()))
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
         print("mmmmmmmmmmm")
         startlimit,endlimit="",""
