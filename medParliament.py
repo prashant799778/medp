@@ -1885,7 +1885,7 @@ def allPosts1():
         keyarr = ['userTypeId']
         print(inputdata,"B")
         commonfile.writeLog("allPosts",inputdata,0)
-      
+        data1={"status":"true","message":"","result":[]}
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             orderby="pm.id"
@@ -1893,11 +1893,7 @@ def allPosts1():
 
             
             userTypeId=inputdata["userTypeId"]
-            if 'postId' in inputdata:
-                postId=inputdata['postId']
-                whereCondition=" and pm.postId='" + str(postId) + "' "
-
-
+            
             column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'" +whereCondition
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
@@ -1905,35 +1901,35 @@ def allPosts1():
             print("11111111111111")
             print("data",data)
 
-          
-
+            
+            
             if (data!=0):
-                for i in data["result"]:
-                    if (i["status"] == 1):
-                        print(i["postId"])
-                        column="um.userName as approvedBy"
-                        WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
-                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
-                        print(data1)
-                        if "message" in data1:
-                            pass
-                        else:
-                            i["approvedBy"]=data1["approvedBy"]
-                        print(data1)
-                    if (i["status"]==2):
-                        column="um.userName as rejectedBy"
-                        WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
-                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
-                        print(data1)
-                        if "message" in data1:
-                            pass
-                        else:
-                            i["rejectedBy"]=data1["rejectedBy"]
+            #     for i in data["result"]:
+            #         if (i["status"] == 1):
+            #             print(i["postId"])
+            #             column="um.userName as approvedBy"
+            #             WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+            #             data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+            #             print(data1)
+            #             if "message" in data1:
+            #                 pass
+            #             else:
+            #                 i["approvedBy"]=data1["approvedBy"]
+            #             print(data1)
+            #         if (i["status"]==2):
+            #             column="um.userName as rejectedBy"
+            #             WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+            #             data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+            #             print(data1)
+            #             if "message" in data1:
+            #                 pass
+            #             else:
+            #                 i["rejectedBy"]=data1["rejectedBy"]
                         
                         
                 
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":data["result"]}
+                Data = {"status":"true","message":"","result":[data1["result"],data["result"]]}
                 return Data
             else:
                 output = {"status":"false","message":"No Data Found","result":""}
@@ -1946,6 +1942,78 @@ def allPosts1():
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
 
+@app.route('/allPostsThread', methods=['POST'])
+def allPostsThread():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        keyarr = ['postId']
+        print(inputdata,"B")
+        commonfile.writeLog("allPosts",inputdata,0)
+        data1={"status":"true","message":"","result":[]}
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="pm.id"
+            postId,whereCondition="",""
+
+            
+            if 'postId' in inputdata:
+                postId=inputdata['postId']
+                whereCondition=" and pm.postId='" + str(postId) + "' "
+                column1="pm.id,um.userName,um.email,pm.commentDescription,(pm.approvedUserId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+                WhereCondition1="  and pm.approvedUserId=um.userId and pm.postId='" + str(postId) + "'" 
+                orderby=" id "
+                data1 = databasefile.SelectQueryOrderbyAsc("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",startlimit,endlimit,orderby)
+            
+            whereCondition=""
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.postId='" + str(postId) + "'" 
+            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",orderby,startlimit,endlimit)
+            
+            print("11111111111111")
+            print("data",data)
+
+            
+            
+            if (data!=0):
+            #     for i in data["result"]:
+            #         if (i["status"] == 1):
+            #             print(i["postId"])
+            #             column="um.userName as approvedBy"
+            #             WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+            #             data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+            #             print(data1)
+            #             if "message" in data1:
+            #                 pass
+            #             else:
+            #                 i["approvedBy"]=data1["approvedBy"]
+            #             print(data1)
+            #         if (i["status"]==2):
+            #             column="um.userName as rejectedBy"
+            #             WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+            #             data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+            #             print(data1)
+            #             if "message" in data1:
+            #                 pass
+            #             else:
+            #                 i["rejectedBy"]=data1["rejectedBy"]
+                        
+                        
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":[data1["result"],data["result"]]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output 
 
 @app.route('/allPostss1', methods=['POST'])
 def allPosts11():
@@ -2087,7 +2155,7 @@ def myPosts():
       
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
-            orderby="pm.id"
+            orderby=" pm.id "
             
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
@@ -3150,71 +3218,7 @@ def changeProfilePic():
 
 
 # create news by admin
-@app.route('/news1', methods=['POST'])
-def news():
 
-    try:
-       
-        inputdata = request.form.get('news')    
-        inputdata = json.loads(inputdata) 
-        print("newsdata",inputdata)
-        commonfile.writeLog("news",inputdata,0)
-        keyarr = ["newsTitle","userTypeId","summary","newsDesc"]           
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        
-        if msg == "1":
-            if "newsTitle" in inputdata:
-                if inputdata['newsTitle'] != "":
-                    newsTitle =inputdata["newsTitle"]
-            if "userTypeId" in inputdata:
-                if inputdata['userTypeId'] != "":
-                    userTypeId =inputdata["userTypeId"]
-        
-            if "summary" in inputdata:
-                if inputdata['summary'] != "":
-                    summary =inputdata["summary"]
-            
-            if "newsDesc" in inputdata:
-                if inputdata['newsDesc'] != "":
-                    newsDesc =inputdata["newsDesc"]
-            
-            
-            if 'NewsBanner' in request.files:      
-                    file = request.files.get('NewsBanner')        
-                    filename = file.filename or ''                 
-                    filename = filename.replace("'","") 
-
-                    print(filename)
-                    # filename = str(campaignId)                    
-                    #folder path to save campaign image
-                    FolderPath = ConstantData.getNewsPath(filename)  
-
-                    filepath = '/newsimages/' + filename    
-                    
-
-                    file.save(FolderPath)
-                    ImagePath = filepath
-            if "UserId" in inputdata:
-                if inputdata['UserId'] != "":
-                    UserId =inputdata["UserId"]
-                column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
-                values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
-                data = databasefile.InsertQuery("news",column,values)        
-            else:
-                column = "newsTitle,userTypeId,imagePath,summary,newsDesc"
-                values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
-                data = databasefile.InsertQuery("news",column,values)
-
-            if data !=0 :                
-                return data
-            else:
-                return commonfile.Errormessage()
-        else:
-            return msg
-
-    except Exception as e:
-        print("Exception--->" + str(e))                                  
-        return commonfile.Errormessage() 
 
 @app.route('/news', methods=['POST'])
 def news1():
@@ -3328,6 +3332,11 @@ def getNews():
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
                     endlimit =str(inputdata["endlimit"])
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+                    WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
+
             if "id" in inputdata:
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
@@ -3358,14 +3367,14 @@ def landingPageDashboard():
         
             if "startlimit" in inputdata:
                 if inputdata['startlimit'] != "":
-                    startlimit =inputdata["startlimit"]
+                    startlimit =str(inputdata["startlimit"])
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
                     WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
-                    endlimit =inputdata["endlimit"]
+                    endlimit =str(inputdata["endlimit"])
         
         column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
