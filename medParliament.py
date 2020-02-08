@@ -2155,7 +2155,7 @@ def myPosts():
       
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
-            orderby="pm.id"
+            orderby=" pm.id "
             
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
@@ -3218,71 +3218,7 @@ def changeProfilePic():
 
 
 # create news by admin
-@app.route('/news1', methods=['POST'])
-def news():
 
-    try:
-       
-        inputdata = request.form.get('news')    
-        inputdata = json.loads(inputdata) 
-        print("newsdata",inputdata)
-        commonfile.writeLog("news",inputdata,0)
-        keyarr = ["newsTitle","userTypeId","summary","newsDesc"]           
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        
-        if msg == "1":
-            if "newsTitle" in inputdata:
-                if inputdata['newsTitle'] != "":
-                    newsTitle =inputdata["newsTitle"]
-            if "userTypeId" in inputdata:
-                if inputdata['userTypeId'] != "":
-                    userTypeId =inputdata["userTypeId"]
-        
-            if "summary" in inputdata:
-                if inputdata['summary'] != "":
-                    summary =inputdata["summary"]
-            
-            if "newsDesc" in inputdata:
-                if inputdata['newsDesc'] != "":
-                    newsDesc =inputdata["newsDesc"]
-            
-            
-            if 'NewsBanner' in request.files:      
-                    file = request.files.get('NewsBanner')        
-                    filename = file.filename or ''                 
-                    filename = filename.replace("'","") 
-
-                    print(filename)
-                    # filename = str(campaignId)                    
-                    #folder path to save campaign image
-                    FolderPath = ConstantData.getNewsPath(filename)  
-
-                    filepath = '/newsimages/' + filename    
-                    
-
-                    file.save(FolderPath)
-                    ImagePath = filepath
-            if "UserId" in inputdata:
-                if inputdata['UserId'] != "":
-                    UserId =inputdata["UserId"]
-                column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
-                values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
-                data = databasefile.InsertQuery("news",column,values)        
-            else:
-                column = "newsTitle,userTypeId,imagePath,summary,newsDesc"
-                values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
-                data = databasefile.InsertQuery("news",column,values)
-
-            if data !=0 :                
-                return data
-            else:
-                return commonfile.Errormessage()
-        else:
-            return msg
-
-    except Exception as e:
-        print("Exception--->" + str(e))                                  
-        return commonfile.Errormessage() 
 
 @app.route('/news', methods=['POST'])
 def news1():
