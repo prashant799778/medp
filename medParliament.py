@@ -3339,7 +3339,7 @@ def getNews():
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
-                    WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
+                    WhereCondition=WhereCondition+"  and n.userTypeId='"+str(userTypeId)+"'"
 
             if "id" in inputdata:
                 if inputdata['id'] != "":
