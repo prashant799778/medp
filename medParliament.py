@@ -3368,7 +3368,9 @@ def landingPageDashboard():
     try:
         WhereCondition,startlimit,endlimit="","",""
         WhereCondition=WhereCondition+" and Status<2"
+        
         data1={"message":"","status":"true","result":[]}
+        orderby=" id "
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
@@ -3380,7 +3382,7 @@ def landingPageDashboard():
                     userTypeId =inputdata["userTypeId"]
                     WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
                     column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
-                    data1 = databasefile.SelectQuery("announcement",column1,WhereCondition,"",startlimit,endlimit)
+                    data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"",startlimit,endlimit,orderby)
                     
                     if data1["result"]=="":
                         data1["result"]=[]
@@ -3394,21 +3396,21 @@ def landingPageDashboard():
                     endlimit =str(inputdata["endlimit"])
         
         column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"",startlimit,endlimit,orderby)
         if data["result"]=="":
             data["result"]=[]
 
         
 
         column2 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
-        data2 = databasefile.SelectQuery("gallery",column2,"","",startlimit,endlimit)
+        data2 = databasefile.SelectQueryOrderby("gallery",column2,"","",startlimit,endlimit,orderby)
         
         if data2["result"]=="":
             data2["result"]=[]
 
 
         column3 = "id,Status,UserCreate,eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data3 = databasefile.SelectQuery("parliamentEvent ",column3,WhereCondition,"",startlimit,endlimit)
+        data3 = databasefile.SelectQueryOrderby("parliamentEvent ",column3,WhereCondition,"",startlimit,endlimit,orderby)
         
         if data3["result"]=="":
             data3["result"]=[]
