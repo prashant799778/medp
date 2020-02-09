@@ -142,9 +142,73 @@ export class DashboardComponent implements OnInit {
 							
 						})
 						this.loaderStatus = true;
-					}else{
+					}else if(this.local.get('userData1')[0].userTypeId == '10'){
 
 						this.userId = this.local.get('userData1')[0].userId
+					console.log(this.userId)
+					this.superLogin = false
+					let data = {
+						'userId':this.userId 
+					}
+					this.userService.dataPostApi(data,AppSettings.DoctorMasterPannel).then(resp=>{
+					
+					
+						this.totalApprovedCount = resp['result'][0]['approvedPost'].count
+						this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+						this.totalUsers = resp['result'][0]['totalUsers'].count
+						this.totalPostCount = resp['result'][0]['totalpostCounts'].count
+						
+					})
+	
+						let datas = {
+							'userTypeId': 8
+						}
+						this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+							this.subDashboardAdmin = resp['result']['1']
+							console.log(this.subDashboardAdmin)
+							this.subDashboardAdmin.forEach(resp=>{
+								this.getStatus(resp.status)
+							})
+							
+							this.loaderStatus = true;	
+							
+						})
+	
+					}else if(this.local.get('userData1')[0].userTypeId == '11'){
+	
+						this.userId = this.local.get('userData1')[0].userId
+					console.log(this.userId)
+					this.superLogin = false
+					let data = {
+						'userId':this.userId 
+					}
+					this.userService.dataPostApi(data,AppSettings.ProfessionalMasterPannel).then(resp=>{
+					
+					
+						this.totalApprovedCount = resp['result'][0]['approvedPost'].count
+						this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+						this.totalUsers = resp['result'][0]['totalUsers'].count
+						this.totalPostCount = resp['result'][0]['totalpostCounts'].count
+						
+					})
+	
+						let datas = {
+							'userTypeId': 9
+						}
+						this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+							this.subDashboardAdmin = resp['result']['1']
+							console.log(this.subDashboardAdmin)
+							this.subDashboardAdmin.forEach(resp=>{
+								this.getStatus(resp.status)
+							})
+							
+							this.loaderStatus = true;	
+							
+						})
+	
+					}else{
+
+					this.userId = this.local.get('userData1')[0].userId
 					console.log(this.userId)
 					this.superLogin = false
 					let data = {
@@ -236,6 +300,70 @@ export class DashboardComponent implements OnInit {
 
 					let datas = {
 						'userTypeId': 6
+					}
+					this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+						this.subDashboardAdmin = resp['result']['1']
+						console.log(this.subDashboardAdmin)
+						this.subDashboardAdmin.forEach(resp=>{
+							this.getStatus(resp.status)
+						})
+						
+						this.loaderStatus = true;	
+						
+					})
+
+				}else if(this.local.get('userData1')[0].userTypeId == '10'){
+
+					this.userId = this.local.get('userData1')[0].userId
+				console.log(this.userId)
+				this.superLogin = false
+				let data = {
+					'userId':this.userId 
+				}
+				this.userService.dataPostApi(data,AppSettings.DoctorMasterPannel).then(resp=>{
+				
+				
+					this.totalApprovedCount = resp['result'][0]['approvedPost'].count
+					this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+					this.totalUsers = resp['result'][0]['totalUsers'].count
+					this.totalPostCount = resp['result'][0]['totalpostCounts'].count
+					
+				})
+
+					let datas = {
+						'userTypeId': 8
+					}
+					this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+						this.subDashboardAdmin = resp['result']['1']
+						console.log(this.subDashboardAdmin)
+						this.subDashboardAdmin.forEach(resp=>{
+							this.getStatus(resp.status)
+						})
+						
+						this.loaderStatus = true;	
+						
+					})
+
+				}else if(this.local.get('userData1')[0].userTypeId == '11'){
+
+					this.userId = this.local.get('userData1')[0].userId
+				console.log(this.userId)
+				this.superLogin = false
+				let data = {
+					'userId':this.userId 
+				}
+				this.userService.dataPostApi(data,AppSettings.ProfessionalMasterPannel).then(resp=>{
+				
+				
+					this.totalApprovedCount = resp['result'][0]['approvedPost'].count
+					this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+					this.totalUsers = resp['result'][0]['totalUsers'].count
+					this.totalPostCount = resp['result'][0]['totalpostCounts'].count
+					
+				})
+
+					let datas = {
+						'userTypeId': 9
 					}
 					this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
 						this.subDashboardAdmin = resp['result']['1']
