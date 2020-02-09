@@ -1791,7 +1791,7 @@ def userPost():
         inputdata = json.loads(inputdata)
         print("111111111111111111111111111",inputdata)   
         
-        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag']
+        keyarr = ['userTypeId','userId','postTitle','postDescription','flag']
         commonfile.writeLog("userPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
