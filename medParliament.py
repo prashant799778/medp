@@ -1451,7 +1451,7 @@ def UpdateUser1():
            
             # Password = inputdata["password"]
             
-            UserTypeId= int(inputdata["userTypeId"])
+            #UserTypeId= int(inputdata["userTypeId"])
             if 'password' in inputdata:                    
                 Password = inputdata["password"]   
             if 'mobileNo' in inputdata:               
@@ -1556,7 +1556,7 @@ def UpdateUser1():
                 column2= column2 +" ,profilePic= '" + str(PicPath) + "' "    
             
             print('A')
-            WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+            WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(userTypeId) + " '"
             column = " email = '" + str(Email) + "',countryId = '" + str(Country) + "', "
             column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'" +column2
             data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
