@@ -1466,7 +1466,7 @@ def UpdateUser1():
             if 'city' in inputdata:                    
                 City = inputdata["city"]  
             if 'userTypeId' in inputdata:                                    
-                userTypeId = inputdata['userTypeId']
+                userTypeId = int(inputdata['userTypeId'])
             if 'gender' in inputdata:                    
                 Gender = inputdata['gender']                  
             if 'deviceid' in inputdata:                   
