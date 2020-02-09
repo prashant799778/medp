@@ -101,7 +101,7 @@ export class DashboardComponent implements OnInit {
 							'userTypeId': 5
 						}
 						this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-							this.subDashboardAdmin = resp['result']
+							this.subDashboardAdmin = resp['result']['1']
 							console.log(this.subDashboardAdmin)
 							this.subDashboardAdmin.forEach(resp=>{
 								this.getStatus(resp.status)
@@ -132,7 +132,7 @@ export class DashboardComponent implements OnInit {
 							'userTypeId': 6
 						}
 						this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-							this.subDashboardAdmin = resp['result']
+							this.subDashboardAdmin = resp['result']['1']
 							console.log(this.subDashboardAdmin)
 							this.subDashboardAdmin.forEach(resp=>{
 								this.getStatus(resp.status)
@@ -164,7 +164,7 @@ export class DashboardComponent implements OnInit {
 							'userTypeId': 7
 						}
 						this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-							this.subDashboardAdmin = resp['result']
+							this.subDashboardAdmin = resp['result']['1']
 							console.log(this.subDashboardAdmin)
 							this.subDashboardAdmin.forEach(resp=>{
 								this.getStatus(resp.status)
@@ -207,7 +207,7 @@ export class DashboardComponent implements OnInit {
 						'userTypeId': 5
 					}
 					this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-						this.subDashboardAdmin = resp['result']
+						this.subDashboardAdmin = resp['result']['1']
 						console.log(this.subDashboardAdmin)
 						this.subDashboardAdmin.forEach(resp=>{
 							this.getStatus(resp.status)
@@ -238,7 +238,7 @@ export class DashboardComponent implements OnInit {
 						'userTypeId': 6
 					}
 					this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-						this.subDashboardAdmin = resp['result']
+						this.subDashboardAdmin = resp['result']['1']
 						console.log(this.subDashboardAdmin)
 						this.subDashboardAdmin.forEach(resp=>{
 							this.getStatus(resp.status)
@@ -270,7 +270,7 @@ export class DashboardComponent implements OnInit {
 						'userTypeId': 7
 					}
 					this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
-						this.subDashboardAdmin = resp['result']
+						this.subDashboardAdmin = resp['result']['1']
 						console.log(this.subDashboardAdmin)
 						this.subDashboardAdmin.forEach(resp=>{
 							this.getStatus(resp.status)
