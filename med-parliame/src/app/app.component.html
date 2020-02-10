@@ -93,7 +93,7 @@
                    <g>
                    </g>
                    </svg>
-                    <input type="email" class="form-control" formControlName="email" placeholder="Email Id" autocomplete="off" writeOnly>
+                    <input type="email" class="form-control  wdt-s" formControlName="email" placeholder="Email Id" autocomplete="off" writeOnly>
                 </div>
                     <div class="errors" *ngIf="loginForm.get('login').get('email').errors && (loginForm.get('login').get('email').touched || loginForm.get('login').get('email').dirty)">
                         <p *ngIf="loginForm.get('login').get('email').errors && loginForm.get('login').get('email').errors.required" class="alert-msg"> Please Enter  Email</p>  
@@ -162,7 +162,7 @@
 <g>
 </g>
 </svg>
-        <input type="password" class="form-control" formControlName="password" id="signInPass" placeholder="Password" autocomplete="off" writeOnly>
+        <input type="password" class="form-control wdt-s" formControlName="password" id="signInPass" placeholder="Password" autocomplete="off" writeOnly>
         <img src="../../assets/images/eye.svg" *ngIf="showPasswords" class="pos-abs" (click)="showPassword('signInPass')">
         <img src="../../assets/images/close-eye.svg" *ngIf="!showPasswords" class="pos-abs" (click)="showPassword('signInPass')">            
     </div>
