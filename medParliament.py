@@ -26,7 +26,7 @@ app.config['SECRET_KEY'] = 'secret!'
 
 
 
-@app.route("")
+@app.route("/")
 def userId():
     try:
         userId=request.args['userId']
