@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder,Validators } from '@angular/forms';
 import { AuthsService } from './services/auths.service';
 import { LocalStorageService } from 'angular-web-storage';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,8 @@ export class AppComponent {
   constructor(public fb: FormBuilder,
 				public local: LocalStorageService,
 				public authsService: AuthsService){
+
+						
 				this.createTable()
 					if(this.local.get('userData1')){
 						this.loginSuccess = true;
@@ -26,6 +29,16 @@ export class AppComponent {
 					this.authsService.logoutEvent.subscribe(resp=>{
 						this.loginSuccess = false;
 					})
+
+					// jQuery('input[type="checkbox"]'). click(function(){
+					// 	if(jQuery(this). prop("checked") == true){
+					// 	alert("Checkbox is checked." );
+					// 	}
+					// 	else if(jQuery(this). prop("checked") == false){
+					// 	alert("Checkbox is unchecked." );
+					// 	}
+					// })	
+					
 						
   }
   createTable(){
@@ -33,9 +46,16 @@ export class AppComponent {
 			login: this.fb.group({
 				email: ['',[Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
 				password: ['',Validators.required],
+				terms: ['']
 				
       }),
-    })
+	})
+	this.loginForm.get('login').get('terms').valueChanges.subscribe(value =>{
+		console.log(value)
+		if(value == true){
+			this.errors = ''
+		}
+	})
   }
 	showPassword(id){
 		if(this.showPasswords == true){
@@ -56,7 +76,11 @@ export class AppComponent {
 		}
 	}
 	getLogin(){
-		let userData = this.loginForm.get('login').value;
+		
+		if(this.loginForm.get('login').get('terms').value == false){
+			this.errors = 'Please select the terms and conditions'
+		}else{
+			let userData = this.loginForm.get('login').value;
 			this.authsService.login(userData).subscribe(resp =>{
 
 				if(resp['status'] == 'true'){
@@ -73,6 +97,9 @@ export class AppComponent {
 					this.errors = resp['message']
 				}
 			})
+		}
+
+		
 			
 	}
 	getSaveCustomer(data){
@@ -88,6 +115,12 @@ export class AppComponent {
 			}  
 			this.local.set('userData2',(datas))
 		  }
+	}
+	logout(){
+		this.authsService.logout()
+	}
+	closeModal(){
+		jQuery("#logout-pop").modal('hide')
 	}
 	
 }

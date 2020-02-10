@@ -10,6 +10,7 @@ import { map, catchError, share } from 'rxjs/operators';
 import { LocalStorageService, SessionStorageService, LocalStorage, SessionStorage } from 'angular-web-storage';
 import { Router } from '@angular/router';
 import { UserServiceService } from './user-service.service';
+declare var jQuery: any
 // import { LoginComponent } from '../component/account/login.component';
 // import { AuthService } from 'angularx-social-login';
 // import { VotingComponent } from '../../campaigns/voting/voting.component'
@@ -143,7 +144,7 @@ export class AuthsService {
     
     this.userAuthChanged(false);
     this.href = this.router.url;
-   
+    jQuery("#logout-pop").modal('hide')
     this.router.navigateByUrl('/dashboard')
     this.logoutEvent.emit()
     

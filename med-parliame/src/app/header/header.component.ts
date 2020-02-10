@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthsService } from '../services/auths.service';
 import { LocalStorageService } from 'angular-web-storage';
+declare var jQuery: any
 
 @Component({
   selector: 'app-header',
@@ -9,15 +10,22 @@ import { LocalStorageService } from 'angular-web-storage';
 })
 export class HeaderComponent implements OnInit {
   userName: any;
+  activatedds: boolean;
   constructor(public authsService: AuthsService,
-             public local: LocalStorageService) { }
+             public local: LocalStorageService) {
+                this.activatedds = false
+              }
 
   ngOnInit() {
     console.log(this.local.get('userData1')[0].userName)
     this.userName = this.local.get('userData1')[0].userName
   }
   logout(){
+   
     this.authsService.logout()
+  }
+  logouts(){
+    jQuery('#logout-pop').modal('show')
   }
 
 }
