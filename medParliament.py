@@ -26,19 +26,19 @@ app.config['SECRET_KEY'] = 'secret!'
 
 
 
-# @app.route("/")
-# def userId():
-#     try:
-#         userId=request.args['userId']
-#         column=" status='0' "
-#         whereCondition=" and userId="+ str(userId)  +" "
-#         data=databasefile.UpdateQuery('userMaster',column,whereCondition)
-#         if dat !="0":
-#             return data
-#         else:
-#             return {"status":"false","message":"Not a valid user","result":""}
-#     except FileNotFoundError:
-#         abort(404)
+@app.route("/AccountVerification",methods=['GET'])
+def userId():
+    try:
+        userId=request.args['userId']
+        column=" status='0' "
+        whereCondition=" and userId="+ str(userId)  +" "
+        data=databasefile.UpdateQuery('userMaster',column,whereCondition)
+        if dat !="0":
+            return data
+        else:
+            return {"status":"false","message":"Not a valid user","result":""}
+    except FileNotFoundError:
+        abort(404)
 
 
 
@@ -457,7 +457,7 @@ def SignUp1():
                         if (y["userTypeId"]== 7):
 
                             Y=ConstantData.GetBaseURL()
-                            Y=Y+"?userId=" + str(y["userId"]) + " "
+                            Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
                                             from_email = 'medParliament@gmail.com',
                                             to_emails = str(y["email"]),
