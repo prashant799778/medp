@@ -93,8 +93,8 @@ export class DashboardComponent implements OnInit {
 						this.userService.getApiDatawithData(AppSettings.PolicyMasterPannel,data).then(resp=>{
 						
 						
-							this.totalApprovedCount = resp['result'][0]['approvedPost'].count
-							this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+							this.totalApprovedCount = resp['result'][0]['approvedUser'].count
+							this.totalRejectCount = resp['result'][0]['rejectedUser'].count
 							this.totalUsers = resp['result'][0]['totalUsers'].count
 							this.totalPostCount = resp['result'][0]['totalpostCounts'].count
 							
@@ -124,8 +124,8 @@ export class DashboardComponent implements OnInit {
 					this.userService.getApiDatawithData(AppSettings.EnterprenuerMasterPannel,data).then(resp=>{
 					
 					
-						this.totalApprovedCount = resp['result'][0]['approvedPost'].count
-						this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+						this.totalApprovedCount = resp['result'][0]['approvedUser'].count
+						this.totalRejectCount = resp['result'][0]['rejectedUser'].count
 						this.totalUsers = resp['result'][0]['totalUsers'].count
 						this.totalPostCount = resp['result'][0]['totalpostCounts'].count
 						
@@ -156,8 +156,8 @@ export class DashboardComponent implements OnInit {
 					this.userService.dataPostApi(data,AppSettings.DoctorMasterPannel).then(resp=>{
 					
 					
-						this.totalApprovedCount = resp['result'][0]['approvedPost'].count
-						this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+						this.totalApprovedCount = resp['result'][0]['approvedUser'].count
+						this.totalRejectCount = resp['result'][0]['rejectedUser'].count
 						this.totalUsers = resp['result'][0]['totalUsers'].count
 						this.totalPostCount = resp['result'][0]['totalpostCounts'].count
 						
@@ -188,8 +188,8 @@ export class DashboardComponent implements OnInit {
 					this.userService.dataPostApi(data,AppSettings.ProfessionalMasterPannel).then(resp=>{
 					
 					
-						this.totalApprovedCount = resp['result'][0]['approvedPost'].count
-						this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+						this.totalApprovedCount = resp['result'][0]['approvedUser'].count
+						this.totalRejectCount = resp['result'][0]['rejectedUser'].count
 						this.totalUsers = resp['result'][0]['totalUsers'].count
 						this.totalPostCount = resp['result'][0]['totalpostCounts'].count
 						
@@ -220,8 +220,8 @@ export class DashboardComponent implements OnInit {
 					this.userService.getApiDatawithData(AppSettings.StudentMasterPannel,data).then(resp=>{
 					
 					
-						this.totalApprovedCount = resp['result'][0]['approvedPost'].count
-						this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+						this.totalApprovedCount = resp['result'][0]['approvedUser'].count
+						this.totalRejectCount = resp['result'][0]['rejectedUser'].count
 						this.totalUsers = resp['result'][0]['totalUsers'].count
 						this.totalPostCount = resp['result'][0]['totalpostCounts'].count
 						
@@ -263,8 +263,8 @@ export class DashboardComponent implements OnInit {
 					this.userService.getApiDatawithData(AppSettings.PolicyMasterPannel,data).then(resp=>{
 					
 					
-						this.totalApprovedCount = resp['result'][0]['approvedPost'].count
-						this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+						this.totalApprovedCount = resp['result'][0]['approvedUser'].count
+						this.totalRejectCount = resp['result'][0]['rejectedUser'].count
 						this.totalUsers = resp['result'][0]['totalUsers'].count
 						this.totalPostCount = resp['result'][0]['totalpostCounts'].count
 						
@@ -294,8 +294,8 @@ export class DashboardComponent implements OnInit {
 				this.userService.getApiDatawithData(AppSettings.EnterprenuerMasterPannel,data).then(resp=>{
 				
 				
-					this.totalApprovedCount = resp['result'][0]['approvedPost'].count
-					this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+					this.totalApprovedCount = resp['result'][0]['approvedUser'].count
+					this.totalRejectCount = resp['result'][0]['rejectedUser'].count
 					this.totalUsers = resp['result'][0]['totalUsers'].count
 					this.totalPostCount = resp['result'][0]['totalpostCounts'].count
 					
@@ -326,8 +326,8 @@ export class DashboardComponent implements OnInit {
 				this.userService.dataPostApi(data,AppSettings.DoctorMasterPannel).then(resp=>{
 				
 				
-					this.totalApprovedCount = resp['result'][0]['approvedPost'].count
-					this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+					this.totalApprovedCount = resp['result'][0]['approvedUser'].count
+					this.totalRejectCount = resp['result'][0]['rejectedUser'].count
 					this.totalUsers = resp['result'][0]['totalUsers'].count
 					this.totalPostCount = resp['result'][0]['totalpostCounts'].count
 					
@@ -358,8 +358,8 @@ export class DashboardComponent implements OnInit {
 				this.userService.dataPostApi(data,AppSettings.ProfessionalMasterPannel).then(resp=>{
 				
 				
-					this.totalApprovedCount = resp['result'][0]['approvedPost'].count
-					this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+					this.totalApprovedCount = resp['result'][0]['approvedUser'].count
+					this.totalRejectCount = resp['result'][0]['rejectedUser'].count
 					this.totalUsers = resp['result'][0]['totalUsers'].count
 					this.totalPostCount = resp['result'][0]['totalpostCounts'].count
 					
@@ -390,8 +390,8 @@ export class DashboardComponent implements OnInit {
 				this.userService.getApiDatawithData(AppSettings.StudentMasterPannel,data).then(resp=>{
 				
 				
-					this.totalApprovedCount = resp['result'][0]['approvedPost'].count
-					this.totalRejectCount = resp['result'][0]['rejectedPost'].count
+					this.totalApprovedCount = resp['result'][0]['approvedUser'].count
+					this.totalRejectCount = resp['result'][0]['rejectedUser'].count
 					this.totalUsers = resp['result'][0]['totalUsers'].count
 					this.totalPostCount = resp['result'][0]['totalpostCounts'].count
 					

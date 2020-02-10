@@ -128,6 +128,7 @@ export class PostsComponent implements OnInit {
       })
         
     }else if(this.local.get('userData1')[0].userTypeId == '4'){
+      this.titleHeading = 'Student'
       let datas = {
         'userTypeId': 7
       }
