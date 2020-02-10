@@ -3618,7 +3618,7 @@ def news1():
             
             if "newsDesc" in inputdata:
                 if inputdata['newsDesc'] != "":
-                    newsDesc =inputdata["newsDesc"]
+                    newsDesc =commonfile.EscapeSpecialChar(inputdata["newsDesc"]) 
 
              
             if "id" in inputdata:
@@ -3705,7 +3705,7 @@ def getNews():
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
-                    WhereCondition=WhereCondition+"  and n.userTypeId='"+str(userTypeId)+"'"
+                    WhereCondition=WhereCondition+"  and n.userTypeId IN(0,'"+str(userTypeId)+"')"
 
             if "id" in inputdata:
                 if inputdata['id'] != "":
