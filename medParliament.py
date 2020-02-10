@@ -440,7 +440,7 @@ def SignUp1():
                         if (y["userTypeId"]== 7):
 
                             Y=ConstantData.GetBaseURL()
-                            Y=Y+"?userId='" + str(y["userId"]) + "'"
+                            Y=Y+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
                                             from_email = 'abcd@gmail.com',
                                             to_emails = str(y["email"]),
