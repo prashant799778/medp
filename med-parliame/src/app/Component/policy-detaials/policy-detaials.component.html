@@ -53,7 +53,7 @@
         </div> 
         <div class="policy-container same-margin bg-white-fff top-lr-padding">
           <!-- <label for="newsDesc">Reply Post</label> -->
-          <textarea type="text" class="form-control" formControlName="commentDescription" placeholder="reply the post..." rows="7"></textarea>
+          <textarea type="text" class="form-control" formControlName="commentDescription" (keydown)="keyCodeCheck($event)" placeholder="reply the post..." rows="7"></textarea>
           <br>  
           <button type="submit" class="btn btn-success pull-right" (click)="replyPost()">reply</button>
         </div>
