@@ -56,7 +56,20 @@ export class UserServiceService {
 				});
 			})
 	}
-
+	getApiDataacountVerfication(endpoint, data){
+		return  new Promise((resolve, reject) => {
+			console.log(this.baseUrl, endpoint)
+				let url = this.baseUrl+''+endpoint+'?userId='+data.userId;
+				console.log(url)
+				this.http.get(url).toPromise().then(res =>{
+					if(res ){
+						resolve(res);
+					}else{
+						reject('error')
+					}
+				});
+			})
+	}
 	getSaveCustomer(data){
 		console.log("data value",data)
 		

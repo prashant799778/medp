@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../services/user-service.service';
 import { AppSettings } from '../utils/constant';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-account-verification',
@@ -8,11 +9,26 @@ import { AppSettings } from '../utils/constant';
   styleUrls: ['./account-verification.component.css']
 })
 export class AccountVerificationComponent implements OnInit {
-
-	constructor(public userService: UserServiceService) { }
+	message: any;
+	userId: any;
+	constructor(public userService: UserServiceService,
+				public route: ActivatedRoute) { }
 
 	ngOnInit() {
-		this.userService.dataPostApi(null,AppSettings)
+		this.route.queryParams.subscribe(params => {
+			this.userId = params['userId'];
+			let data = {
+				'userId': this.userId
+			}
+			this.userService.getApiDataacountVerfication(AppSettings.AccountVerification,data).then(resp=>{
+				console.log(resp)
+				if(resp['status'] == 'true'){
+					this.message = resp['message']
+				}
+			})
+		})
+
+		
 	}
 
 }
