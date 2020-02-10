@@ -28,6 +28,8 @@ export class DashboardComponent implements OnInit {
 	totalRejectCount: any;
 	totalPostCount: any;
 	totalUsers: any;
+	totalDoctor: any;
+	totalProfessional: any;
 
 	subDashboardAdmin = [];
 	loaderStatus: boolean;
@@ -57,7 +59,8 @@ export class DashboardComponent implements OnInit {
 							this.totalPolicy = resp['result']['policyMakerMasterCount'].count
 							this.totalStudent = resp['result']['studentMasterCount'].count
 							this.totalAdmins = resp['result']['totalAdmins'].count
-							
+							this.totalDoctor = resp['result']['doctorMasterCount'].count
+							this.totalProfessional = resp['result']['professionalMasterCount'].count
 						})
 						console.log(this.totalPolicy)
 						this.userService.dataPostApi(null,AppSettings.AllUserPosts).then(resp=>{
