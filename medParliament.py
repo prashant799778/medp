@@ -25,6 +25,23 @@ app.config['SECRET_KEY'] = 'secret!'
 
 
 
+
+@app.route("")
+def userId():
+    try:
+        userId=request.args['userId']
+        column=" status='0' "
+        whereCondition=" and userId="+ str(userId)  +" "
+        data=databasefile.UpdateQuery('userMaster',column,whereCondition)
+        if dat !="0":
+            return data
+        else:
+            return {"status":"false","message":"Not a valid user","result":""}
+    except FileNotFoundError:
+        abort(404)
+
+
+
 @app.route("/announcementsImage/<image_name>")
 def announcementsImage(image_name):
     try:
@@ -442,7 +459,7 @@ def SignUp1():
                             Y=ConstantData.GetBaseURL()
                             Y=Y+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                            from_email = 'abcd@gmail.com',
+                                            from_email = 'medParliament@gmail.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content = '<strong> Click on Link:' + str(Y) + ' </strong> <br> .<br> Thanks,medParliament Team')
@@ -451,8 +468,8 @@ def SignUp1():
                             print(response,'------------------')
                             print(message)
 
-                            column="status='0'"
-                            dat=databasefile.UpdateQuery('userMaster',column,WhereCondition)
+                            # column="status='0'"
+                            # dat=databasefile.UpdateQuery('userMaster',column,WhereCondition)
 
 
                             columns="userId,address,qualificationId,batchOfQualification,institutionName,universityAddress,universityId"
