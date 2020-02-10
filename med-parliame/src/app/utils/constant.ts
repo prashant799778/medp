@@ -22,6 +22,9 @@ export class AppSettings {
     public static EnterprenuerMasterPannel = 'enterprenuerMasterPannel';
     public static AllEnterprenuers = 'allenterprenuers';
 
+    public static DoctorMasterPannel = 'doctorMasterPannel';
+    public static ProfessionalMasterPannel = 'professionalsMasterPannel';
+
     public static StudentMasterPannel = 'studentMasterPannel';
     public static UpdateStatus = 'updateStatus';
     public static UpdateUser = 'UpdateUser';
