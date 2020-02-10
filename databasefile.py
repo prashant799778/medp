@@ -211,7 +211,7 @@ def SelectQueryOrderby(table,columns,whereCondition,groupby,startlimit,endlimit,
             data = {"status":"true","message":"","result":data}
             return data
         else:
-            data ={"status":"true","message":"","result":""}
+            data ={"status":"true","message":"No data Found","result":""}
             return data
 
     except Exception as e:
