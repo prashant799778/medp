@@ -464,7 +464,7 @@ def SignUp1():
                                             from_email = 'medParliament@gmail.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = '<strong> Click on Link:' + str(Y) + ' </strong> <br> .<br> Thanks,medParliament Team')
+                                            html_content = '<strong> Click on Link <br> .<br> :' + str(Y) + ' </strong> <br> .<br> Thanks,medParliament Team')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             print(response,'------------------')
