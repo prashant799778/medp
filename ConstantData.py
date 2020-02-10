@@ -6,8 +6,9 @@ def GetBaseURL():
 
 def getwebBaseurl():
  
-    path = "https://fandomlive.fourbrick.in"
+    path = "http://134.209.153.34:4200"
     return path
+
 
 def GetdefaultNotificationImage():
  
