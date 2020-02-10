@@ -43,6 +43,9 @@ export class PolicyDetaialsComponent implements OnInit {
 		this.frmPost = this.fb.group({
 			commentDescription: ['']
 		  });
+		//   this.frmPost.get('commentDescription').valueChanges.subscribe(value =>{
+		// 	  console.log(0
+		//   })
 		// this.locations = window.location.href
 		// 	console.log(this.locations)
 		// // this.locations = this.locations.split('/dashboard')
@@ -72,6 +75,12 @@ export class PolicyDetaialsComponent implements OnInit {
 		})
 		
 
+	}
+	keyCodeCheck(event){
+		console.log(event.keyCode)
+		if(event.keyCode == 13){
+			this.replyPost()
+		}
 	}
 
 	replyPost(){

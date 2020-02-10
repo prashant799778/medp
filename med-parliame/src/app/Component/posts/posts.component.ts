@@ -138,7 +138,33 @@ export class PostsComponent implements OnInit {
           this.getStatus(resp.status)
         })
       })
+    }else if(this.local.get('userData1')[0].userTypeId == '10'){
+      this.titleHeading = 'Doctor'
+      let datas = {
+        'userTypeId': 8
+      }
+      this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+        this.postList = resp['result']['1']
+        console.log(this.postList)
+        this.postList.forEach(resp=>{
+          this.getStatus(resp.status)
+        })
+      })
     }
+    else if(this.local.get('userData1')[0].userTypeId == '11'){
+      this.titleHeading = 'Professional'
+      let datas = {
+        'userTypeId': 9
+      }
+      this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+        this.postList = resp['result']['1']
+        console.log(this.postList)
+        this.postList.forEach(resp=>{
+          this.getStatus(resp.status)
+        })
+      })
+    }
+
     
       
       
