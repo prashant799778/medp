@@ -34,7 +34,7 @@ def userId():
         whereCondition=" and userId='"+ str(userId)  +"' "
         data=databasefile.UpdateQuery('userMaster',column,whereCondition)
         if data !="0":
-            return {"status":"true","message":"Your Account is Approved SuccessFully","result":""}
+            return {"status":"true","message":"Congratulation! Your account has been activated succesfull","result":""}
         else:
             return {"status":"false","message":"Not a valid user","result":""}
     except FileNotFoundError:
@@ -3101,6 +3101,13 @@ def updateStatus1():
             print('AAAA')
             print(data['result'][0]['status'],"status")
             if data['result'][0]['status']==0:
+                message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(email),
+                                subject = "Account D",
+                                html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> .<br> Thanks,medParliament Team')
+                sg = SendGridAPIClient('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')
+                response = sg.send(message)
                 column="status='1'"
                 whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "' and userId = '" + str(userId)+ "' "
                 output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
