@@ -1,6 +1,6 @@
 .gr-t {
     display: grid;
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
     grid-gap: 2rem;
 }
 .gr-t .card-st {
@@ -15,15 +15,9 @@
     height: 60px;
 }
 .gr-t .inner-box-card {
-    padding: 3rem;
+    padding: 2rem;
 }
-.gr-t .card-hading-txt {
-    font-size: 1.6rem;
-}
-.gr-t .card-info-txt {
-    font-size: 1.5rem;
-    line-height: 3rem;
-}
+
 @media screen and (max-width:982px){
     .gr-t {
         display: grid;

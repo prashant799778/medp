@@ -110,4 +110,6 @@ img.altr {
 .comment{
     border: 1px solid grey;
 }
-    
+.full-wd {
+    width: 100%;
+}
