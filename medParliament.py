@@ -3081,6 +3081,60 @@ def updateStatus():
         return output
 
 
+
+@app.route('/updateStatustest', methods=['POST'])
+def updateStatus1():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userTypeId','email','userId']
+        print(inputdata,"B")
+        commonfile.writeLog("updateStatus",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userTypeId = inputdata["userTypeId"]
+            userId = inputdata["userId"]
+            email = inputdata["email"]
+            column="status"
+            whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "'  and userId = '" + str(userId)+ "' "
+            data=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
+            print('AAAA')
+            print(data['result'][0]['status'],"status")
+            if data['result'][0]['status']==0:
+                column="status='1'"
+                whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "' and userId = '" + str(userId)+ "' "
+                output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
+                output=output1
+                if output!='0':
+                    Data = {"status":"true","message":"","result":output["result"]}                  
+                    return Data
+                else:
+                    return commonfile.Errormessage() 
+
+            else:
+                column="status='0'"
+                whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "' and userId = '" + str(userId)+ "' "
+                output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
+                output=output1    
+                if output!='0':
+                    Data = {"status":"true","message":"","result":output["result"]}                  
+                    return Data
+                else:
+                    return commonfile.Errormessage()
+        else:
+            return msg         
+ 
+    except KeyError :
+        print("Key Exception---->")   
+        output = {"result":"key error","status":"false"}
+        return output  
+
+    except Exception as e :
+        print("Exceptio`121QWAaUJIHUJG n---->" +str(e))    
+        output = {"result":"somthing went wrong","status":"false"}
+        return output
+
+
 @app.route('/generateOtp', methods=['POST'])
 def generateOtp():
     try:
