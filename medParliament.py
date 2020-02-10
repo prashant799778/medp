@@ -3749,8 +3749,9 @@ def landingPageDashboard():
                     WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
                     column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
                     data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"",startlimit,endlimit,orderby)
+                    print("")
                     
-                    if data1["result"]=="":
+                    if data1["status"]=="false":
                         data1["result"]=[]
                     else:
                         for i in data1["result"]:
