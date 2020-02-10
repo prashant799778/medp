@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
+
 declare var $: any;
 
 @Component({
@@ -36,7 +37,7 @@ export class SidebarComponent implements OnInit {
 	ngOnInit() {
 
 		
-
+		
 		
 		if(this.local.get('userData2')){
 
@@ -71,12 +72,22 @@ console.log(this.local.get('userData1')[0].userTypeId)
 		}
 
 		this.locations = window.location.href
-		console.log(this.locations)
+		
 		this.secondLocation = this.locations.substring(0, this.locations.lastIndexOf("/") + 1)
 		this.locations = this.locations.substring(this.locations.lastIndexOf("/") + 1, this.locations.length );
-		console.log(this.secondLocation)
+		
 		this.secondLocation = this.secondLocation.substring(this.secondLocation.lastIndexOf("/") + 1, this.secondLocation.length - 5 );
-		console.log(this.secondLocation)
+		
+
+		if(this.local.get('userData1')[0].userTypeId == 12 || this.local.get('userData1')[0].userTypeId == 11){
+			console.log(this.locations)
+			console.log(this.secondLocation)
+			if(this.secondLocation != 'vent/' && this.secondLocation != 'lery/' && this.secondLocation != 'ment/'){
+				this.router.navigateByUrl('/news/editNews')
+			}
+			
+		}
+
 		if(this.locations == 'http://localhost:5002/allPosts'){
 			
 			setTimeout(()=>{
