@@ -49,6 +49,7 @@ import { ViewGalleryComponent } from './gallery/view-gallery/view-gallery.compon
 import { ViewAnnocementComponent } from './annocement/view-annocement/view-annocement.component';
 import { EditAnnocementComponent } from './annocement/edit-annocement/edit-annocement.component';
 import { OperationComponent } from './admin/operation/operation.component';
+import { AccountVerificationComponent } from './account-verification/account-verification.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { OperationComponent } from './admin/operation/operation.component';
     ViewGalleryComponent,
     ViewAnnocementComponent,
     EditAnnocementComponent,
-    OperationComponent
+    OperationComponent,
+    AccountVerificationComponent
   ],
   imports: [
     BrowserModule,
