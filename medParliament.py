@@ -2952,6 +2952,60 @@ def verifyPost1():
         return output
 
 
+
+@app.route('/likePost', methods=['POST'])
+def verifyPost1():
+    try:
+        print("nnnnnnnnnnnn",request.get_data(),"===================",type(request.get_data()))
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        print("mmmmmmmmmmm")
+        startlimit,endlimit="",""
+        print("111111111111111111111111")
+        keyarr = ['userId','postId','userTypeId']
+        commonfile.writeLog("verifyPost",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print("22222222222222222222222")
+        if msg == "1":
+            approvedUserId = inputdata["userId"]
+            postId = inputdata["postId"]
+            userTypeId = int(inputdata["userTypeId"])
+
+            WhereCondition = " and postId = '" + str(postId) + "' and userId = '" + str(approvedUserId) + "'"
+            count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
+            
+            if int(count) > 0:
+                print('F')         
+                return commonfile.EmailMobileAlreadyExistMsg()
+            else:
+                print("333333333333333333333")
+             
+               
+                column = "userId,postId,userTypeId"                
+                values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
+                data = databasefile.InsertQuery("likeMaster",column,values)
+                if data!="0":
+                    column="count(*) as like"
+                    whereCondition="and postId ='" + str(postId) + "'"
+                    data1=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
+                    if (data1["status"]!="false"):
+                        y=data["result"][0]
+                        data1={"status":"true","result":y,"message":""}
+                        return data1
+                    else:
+                        data1={"status":"true","result":"","message":"No Data Found"}
+                        return data1
+
+                else:
+                    return commonfile.Errormessage()
+        else:
+            return msg 
+
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
 @app.route('/verifyPost', methods=['POST'])
 def verifyPost():
     try:
