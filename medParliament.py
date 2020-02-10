@@ -293,6 +293,8 @@ def SignUp():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
+# For testing        
+
 @app.route('/SignUp1', methods=['POST'])
 def SignUp1():
 
