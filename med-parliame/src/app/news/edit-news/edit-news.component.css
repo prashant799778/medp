@@ -36,3 +36,6 @@
 .new-tbls {
     margin: 0;
 }
+.tab-shadow {
+    box-shadow: 0 5px 15px 0 rgba(105,103,103,.5);
+}

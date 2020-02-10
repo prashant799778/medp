@@ -43,7 +43,7 @@ body{
     border:0px;
 }
 .crd-box .card-header {
-    background: #fff;
+    background: #fff !important;
 }
 .new-tbls .table td, .table th {
     border: 0px;
@@ -53,7 +53,17 @@ body{
 .new-tbls {
     margin: 0;
 }
-
+.crd-bnt .btn:hover {
+    color: #005ed8;
+}
+.hash-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 15%;
+    border: 2px solid #ffffff;
+    object-fit: cover;
+    object-position: center;
+}
 /* End News Section */
 
 /*All Use*/
