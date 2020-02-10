@@ -79,6 +79,13 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				this.operationProfessional = true;
 				
 			}
+			else if(this.local.get('userData1')[0].userTypeId == '12'){
+				this.enterpernure = false;
+				this.students = false;
+				this.operations = true;
+				this.operationProfessional = false;
+				
+			}
 		}
 
 		this.locations = window.location.href
@@ -89,14 +96,14 @@ console.log(this.local.get('userData1')[0].userTypeId)
 		this.secondLocation = this.secondLocation.substring(this.secondLocation.lastIndexOf("/") + 1, this.secondLocation.length - 5 );
 		
 
-		// if(this.local.get('userData1')[0].userTypeId == 12 || this.local.get('userData1')[0].userTypeId == 11){
-		// 	console.log(this.locations)
-		// 	console.log(this.secondLocation)
-		// 	if(this.secondLocation != 'vent/' && this.secondLocation != 'lery/' && this.secondLocation != 'ment/'){
-		// 		this.router.navigateByUrl('/news/editNews')
-		// 	}
+		if(this.local.get('userData1')[0].userTypeId == 12){
+			console.log(this.locations)
+			console.log(this.secondLocation)
+			if(this.secondLocation != 'vent/' && this.secondLocation != 'lery/' && this.secondLocation != 'ment/'){
+				this.router.navigateByUrl('/news/editNews')
+			}
 			
-		// }
+		}
 
 		if(this.locations == 'http://localhost:5002/allPosts'){
 			
