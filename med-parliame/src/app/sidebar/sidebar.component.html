@@ -91,10 +91,11 @@
                 <ul *ngIf="!superLogin">
                     
                     <li *ngIf="!operations"><a href="javascript:void(0)" (click)="goTo('dashboard',$event)" class="active">Dashboard <img src="../../assets/images/d-home.svg" class="img-sdi"><img class="img-hdi" src="../../assets/images/a-dashboard.svg"></a></li>
-                    <li *ngIf="!enterpernure && !students && !operations && !operationsDoctor" class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/policy', $event)">User <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
+                    <li *ngIf="!enterpernure && !students && !operations && !operationsDoctor && !operationProfessional" class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/policy', $event)">User <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
                     <li *ngIf="enterpernure && !students && !operations" class="dp-down"><a id="enterpenureTabs" href="javascript:void(0)" (click)="goTo('enterpenure', $event)">Entrepreneur <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
                     <li *ngIf="!enterpernure && students && !operations" class="dp-down"><a id="studentTabs" href="javascript:void(0)" (click)="goTo('studentsList', $event)">Student <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
-                    <li *ngIf="operationsDoctor && !operation" class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/doctor', $event)">Doctor <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
+                    <li *ngIf="operationsDoctor && !operation && !operationProfessional" class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/doctor', $event)">Doctor <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
+                    <li *ngIf="!operationsDoctor && !operation && operationProfessional" class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/professional', $event)">Professional <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
                     <!-- <div class="inner-dropdown drop-show mr-left">
                         <ul>
                             <li><a href="javascript:void(0)" (click)="goTo('User/policy')">post</a></li>onlyView
