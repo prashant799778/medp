@@ -34,7 +34,7 @@ def userId():
         whereCondition=" and userId='"+ str(userId)  +"' "
         data=databasefile.UpdateQuery('userMaster',column,whereCondition)
         if data !="0":
-            return {"status":"true","message":"Congratulation! Your account has been activated succesfull","result":""}
+            return {"status":"true","message":"Congratulation! Your account has been activated successfully","result":""}
         else:
             return {"status":"false","message":"Not a valid user","result":""}
     except FileNotFoundError:
