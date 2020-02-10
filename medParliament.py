@@ -31,7 +31,7 @@ def userId():
     try:
         userId=request.args['userId']
         column=" status='0' "
-        whereCondition=" and userId="+ str(userId)  +" "
+        whereCondition=" and userId='"+ str(userId)  +"' "
         data=databasefile.UpdateQuery('userMaster',column,whereCondition)
         if data !="0":
             return data
