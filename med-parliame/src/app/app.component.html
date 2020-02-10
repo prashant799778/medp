@@ -171,12 +171,16 @@
                         <p *ngIf="loginForm.get('login').get('password').errors && loginForm.get('login').get('password').errors.pattern" class="alert-msg"> Enter Correct Password</p>
                     </div>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        I read and agree to the <span class="trm">Terms of Use.</span> 
-                    </label>
-                  </div>
+                <div  formGroupName="login" class="form-group pos-rel input-box">
+                    <div class="form-check">
+                        <input class="form-check-input form-control" type="checkbox" value="" id="defaultCheck1" formControlName="terms">
+                        <label class="form-check-label" for="defaultCheck1">
+                            I read and agree to the <span class="trm">Terms of Use.</span> 
+                        </label>
+                      </div>
+                </div>
+
+                
                 <div class="bottom-section up-spc admin-action">
                     <button (click)="getLogin()" type="submit" id="signInLogin" class="sign-btn-bg-color">Sign In</button>
                   </div>
@@ -187,3 +191,58 @@
 </div>
 </div>
 </div>
+
+
+
+<div class="modal fade" id="logout-pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <template>
+            <div class="modal-header border-remo paddign-remove">
+            <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                <img src="../../../assets/images/close-im.svg">
+            </button>
+            </div>
+        </template>
+        <div class="modal-body" *ngIf="!activatedds">
+            <div class="inner-model-box same-margin" >
+                <div class="d-flex al-item">
+                    <img src="../../../assets/images/caution.svg" class="altr">
+                    <div class="dc-act">
+                        <h3>Logout Account</h3>
+                        <span >Are you sure you want to Logout ?</span>
+                    </div>
+                </div>
+                <div class="grp-btn text-center">
+                    <button  (click)="closeModal()" class="mod-btn dc-bg-color-gray">Cancel</button>
+                    <button  (click)="logout()" class="mod-btn fill-back">Logout</button>
+                </div>
+                </div>
+            <!-- <div class="inner-model-box" *ngIf="statuss == 1">
+                    <div class="d-flex al-item">
+                            <img src="../../../assets/images/caution-ac.svg" class="altr">
+                            <div class="dc-act">
+                                <h3>Activate Account</h3>
+                                <span >Are you sure you want to activate ?</span>
+                            </div>
+                        </div>
+
+                        <div class="grp-btn text-center">
+                                <button *ngIf="statuss == 1" (click)="deactivate()" class="mod-btn dc-bg-color-gray">Cancel</button>
+                                <button *ngIf="statuss == 1" (click)="deactivate()" class="mod-btn fill-back-ac">Activate</button>
+                        </div>
+                </div> -->
+        </div>
+        <!-- <div class="modal-body" *ngIf="activatedds">
+               
+                <div class="success-parent">
+                        <div class="child-success"><img src="../../../assets/images/correct.svg"></div>
+ 
+                        
+                        <div  class="child-success"><h2> Logout Successfully</h2></div> 
+                        
+                    </div>
+            </div>
+      </div> -->
+    </div>
+  </div>

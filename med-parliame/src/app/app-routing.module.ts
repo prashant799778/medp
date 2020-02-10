@@ -33,6 +33,7 @@ import { ViewAnnocementComponent } from './annocement/view-annocement/view-annoc
 import { EditAnnocementComponent } from './annocement/edit-annocement/edit-annocement.component';
 import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.component';
 import { OperationComponent } from './admin/operation/operation.component';
+import { AccountVerificationComponent } from './account-verification/account-verification.component';
 
 
 
@@ -44,6 +45,8 @@ const routes: Routes = [
   { path: 'allPosts', component: PostsComponent, canActivate:[AuthGuard]},
   { path: 'enterpenure', component: EnterpenuressComponent, canActivate:[AuthGuard]},
   { path: 'studentsList', component: StudentListsComponent, canActivate:[AuthGuard]},
+  { path: 'AccountVerification', component: AccountVerificationComponent, canActivate:[AuthGuard]},
+  
   { path: 'setting', 
   children: [                          //<---- child components declared here
     { path: '',redirectTo: '/Setting/add',pathMatch:'full'}, 

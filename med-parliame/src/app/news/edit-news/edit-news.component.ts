@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppSettings } from 'src/app/utils/constant';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { LocalStorageService } from 'angular-web-storage';
+declare var jQuery: any
 
 @Component({
   selector: 'app-edit-news',
@@ -26,8 +27,10 @@ export class EditNewsComponent implements OnInit {
   totalRecords: number;
   paginationDisplay: boolean;
   frmShowNews: FormGroup;
+  newsId: any;
+  activatedds: boolean;
   constructor(public fb: FormBuilder,public local: LocalStorageService, private apiService: UserServiceService, private route: ActivatedRoute, private router: Router) { 
-      
+        this.activatedds = false;
         this.tabsIndex = 0;
         this.frmShowNews = this.fb.group({
           startlimit: [''],
@@ -142,11 +145,28 @@ export class EditNewsComponent implements OnInit {
   }
 
   deleteNews(id){
+    this.newsId = id
+    jQuery('#addAdmin-news').modal('show')
     console.log("Id of News",id);
-    this.apiService.dataPostApi(id, AppSettings.DELETE_ADMIN_NEWS).then((data: any[]) => {
+    
+  }
+  deletedNewss(){
+    let data ={
+      'id': this.newsId
+    }
+    this.apiService.dataPostApi(data, AppSettings.DELETE_ADMIN_NEWS).then((data: any[]) => {
       console.log(data);
+      if(data['status'] == 'true'){
+        this.activatedds = true;
+        setTimeout(()=>{
+          jQuery('#addAdmin-news').modal('hide')
+        },2000)
+      }
       this.getNews();
     });
+  }
+  clsoeModal(){
+    jQuery('#addAdmin-news').modal('hide')
   }
 
   checkStatus(data) {
