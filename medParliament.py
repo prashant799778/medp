@@ -440,7 +440,7 @@ def SignUp1():
                         if (y["userTypeId"]== 7):
 
                             Y=ConstantData.GetBaseURL()
-                            Y=Y+"?email='" + str(y["email"]) + "'"
+                            Y=Y+"?userId='" + str(y["userId"]) + "'"
                             message = Mail(
                                             from_email = 'abcd@gmail.com',
                                             to_emails = str(y["email"]),
@@ -448,8 +448,9 @@ def SignUp1():
                                             html_content = '<strong> Click on Link:' + str(Y) + ' </strong> <br> .<br> Thanks,medParliament Team')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
-                            print(response)
+                            print(response,'------------------')
                             print(message)
+
                             column="status='0'"
                             dat=databasefile.UpdateQuery('userMaster',column,WhereCondition)
 
