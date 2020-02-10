@@ -834,9 +834,3 @@ ul.ant-pagination li {
         position: relative;
         top: -3px;
     }
-
-    .crd-bnt {
-        height: 100%;
-        align-items: baseline;
-        width: 100%;
-    }
