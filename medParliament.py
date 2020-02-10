@@ -458,7 +458,7 @@ def SignUp1():
 
                         if (y["userTypeId"]== 7):
 
-                            Y=ConstantData.GetBaseURL()
+                            Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
                                             from_email = 'medParliament@gmail.com',
