@@ -207,6 +207,7 @@ def SignUp():
                     column = 'userId,userName,userTypeId,profilePic'
                     
                     data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)
+                    
                     if data["status"]!="false":
                         y=data["result"][0]
                         if (y["userTypeId"] == 5):
@@ -249,7 +250,7 @@ def SignUp():
                         if (y["userTypeId"]== 9):
                             columns="userId,designation,occupation,companyName,companyAddress,address"
                             values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
-                            data6=databasefile.InsertQuery("professionalMaster",column,values)
+                            data6=databasefile.InsertQuery("professionalMaster",columns,values)
                             for i in interestId:
                                 column="userId,userTypeId,interestId"
                                 values=" '" + str(y["userId"]) + "','" + str('10') + "','" + str(i) + "'"
@@ -1686,7 +1687,7 @@ def UpdateUser1():
             if 'city' in inputdata:                    
                 City = inputdata["city"]  
             if 'userTypeId' in inputdata:                                    
-                userTypeId = inputdata['userTypeId']
+                userTypeId = int(inputdata['userTypeId'])
             if 'gender' in inputdata:                    
                 Gender = inputdata['gender']                  
             if 'deviceid' in inputdata:                   
@@ -1776,7 +1777,7 @@ def UpdateUser1():
                 column2= column2 +" ,profilePic= '" + str(PicPath) + "' "    
             
             print('A')
-            WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(UserTypeId) + " '"
+            WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(userTypeId) + "'"
             column = " email = '" + str(Email) + "',countryId = '" + str(Country) + "', "
             column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'" +column2
             data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
@@ -2011,7 +2012,7 @@ def userPost():
         inputdata = json.loads(inputdata)
         print("111111111111111111111111111",inputdata)   
         
-        keyarr = ['userTypeId','userId','postTitle','postDescription','showuserTypeId','flag']
+        keyarr = ['userTypeId','userId','postTitle','postDescription','flag']
         commonfile.writeLog("userPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
@@ -2185,12 +2186,12 @@ def allPostsThread():
                 column1="pm.id,um.userName,um.email,pm.commentDescription,(pm.approvedUserId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
                 WhereCondition1="  and pm.approvedUserId=um.userId and pm.postId='" + str(postId) + "'" 
                 orderby=" id "
-                data1 = databasefile.SelectQueryOrderbyAsc("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",startlimit,endlimit,orderby)
+                data1 = databasefile.SelectQueryOrderbyAsc("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
             
             whereCondition=""
             column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.postId='" + str(postId) + "'" 
-            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",orderby,startlimit,endlimit)
+            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
             
             print("11111111111111")
             print("data",data)
@@ -3314,7 +3315,7 @@ def userProfile():
                 
                 orderby="ab.id"
                 column="*"
-                whereCondition="and ab.userId='" + userId+ "'"
+                whereCondition=" and ab.userId='" + userId+ "'"
                 data4 = databasefile.SelectQueryOrderby("userPost as ab",column,whereCondition,"",startlimit,endlimit,orderby)
                 if  data4==0:
                     
@@ -3559,15 +3560,16 @@ def getNews():
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
-                    WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
+                    WhereCondition=WhereCondition+"  and n.userTypeId='"+str(userTypeId)+"'"
 
             if "id" in inputdata:
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+        orderby=" id "
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = "n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
-        data = databasefile.SelectQuery("news n,userMaster um",column,WhereCondition,"",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("news n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
         if data != "0":
             return data
         else:
@@ -3587,7 +3589,9 @@ def landingPageDashboard():
     try:
         WhereCondition,startlimit,endlimit="","",""
         WhereCondition=WhereCondition+" and Status<2"
+        
         data1={"message":"","status":"true","result":[]}
+        orderby=" id "
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
@@ -3599,7 +3603,7 @@ def landingPageDashboard():
                     userTypeId =inputdata["userTypeId"]
                     WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
                     column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
-                    data1 = databasefile.SelectQuery("announcement",column1,WhereCondition,"",startlimit,endlimit)
+                    data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"",startlimit,endlimit,orderby)
                     
                     if data1["result"]=="":
                         data1["result"]=[]
@@ -3613,21 +3617,21 @@ def landingPageDashboard():
                     endlimit =str(inputdata["endlimit"])
         
         column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data = databasefile.SelectQuery("news ",column,WhereCondition,"",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"",startlimit,endlimit,orderby)
         if data["result"]=="":
             data["result"]=[]
 
         
 
         column2 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
-        data2 = databasefile.SelectQuery("gallery",column2,"","",startlimit,endlimit)
+        data2 = databasefile.SelectQueryOrderby("gallery",column2,"","",startlimit,endlimit,orderby)
         
         if data2["result"]=="":
             data2["result"]=[]
 
 
         column3 = "id,Status,UserCreate,eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data3 = databasefile.SelectQuery("parliamentEvent ",column3,WhereCondition,"",startlimit,endlimit)
+        data3 = databasefile.SelectQueryOrderby("parliamentEvent ",column3,WhereCondition,"",startlimit,endlimit,orderby)
         
         if data3["result"]=="":
             data3["result"]=[]
