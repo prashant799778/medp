@@ -46,10 +46,10 @@ export class AppSettings {
     public static getGalleryImages = 'getGalleryImages';
     public static getAnnouncement = 'getAnnouncement';
     public static getParliamentEvent = 'getParliamentEvent';
+    public static AccountVerification = 'AccountVerification';
+
+
     
-
-
-
 
     
 
