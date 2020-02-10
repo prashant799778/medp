@@ -12,6 +12,50 @@ body{
     outline: 0;
     box-shadow: none;
 }
+
+/* News Section */
+
+.flx-ed {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.crd-bnt a {
+    border: 1px solid #0062e3;
+    color: #0062e3;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+.image-set {
+    width: 24px;
+    height: 24px;
+    -o-object-fit: contain;
+    object-fit: contain;
+    -o-object-position: center;
+    object-position: center;
+    margin: 6px;
+    fill: #fff;
+}
+.crd-box{
+    border:0px;
+}
+.crd-box .card-header {
+    background: #fff;
+}
+.new-tbls .table td, .table th {
+    border: 0px;
+    padding: 0px !important;
+    vertical-align: middle;
+}
+.new-tbls {
+    margin: 0;
+}
+
+/* End News Section */
+
 /*All Use*/
 .edit-btn {
     border-radius: 50%;
