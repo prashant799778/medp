@@ -4421,7 +4421,8 @@ def userDropdown():
 def deleteNews():
     try: 
 
-        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        WhereCondition="" 
   
         if len(inputdata) > 0:           
             commonfile.writeLog("deleteNews",inputdata,0)
@@ -4452,6 +4453,7 @@ def deleteGallery():
     try: 
 
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        WhereCondition=""
   
         if len(inputdata) > 0:           
             commonfile.writeLog("deleteGallery",inputdata,0)
@@ -4482,7 +4484,8 @@ def deleteGallery():
 def deleteEvent():
     try: 
 
-        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        WhereCondition="" 
   
         if len(inputdata) > 0:           
             commonfile.writeLog("deleteEvent",inputdata,0)
@@ -4511,9 +4514,12 @@ def deleteEvent():
 
 @app.route('/deleteAnnouncement', methods=['POST'])
 def deleteAnnouncement():
-    try: 
+    try:
+
 
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+
+        WhereCondition=""
   
         if len(inputdata) > 0:           
             commonfile.writeLog("deleteEvent",inputdata,0)
