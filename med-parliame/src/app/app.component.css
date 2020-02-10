@@ -76,6 +76,7 @@ img.rt-banner {
     box-shadow: none;
 }
 .input-box input {
+    width: fit-content;
     font-size: 12px;
     line-height: 1.69;
     font-weight: normal;
