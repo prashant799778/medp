@@ -211,7 +211,7 @@ def SelectQueryOrderby(table,columns,whereCondition,groupby,startlimit,endlimit,
             data = {"status":"true","message":"","result":data}
             return data
         else:
-            data =0
+            data ={"status":"true","message":"","result":""}
             return data
 
     except Exception as e:
@@ -385,9 +385,9 @@ def SendEmail(emailto,subject,message):
        
     message = Mail(
     from_email = 'abcd@gmail.com',
-    to_emails = str(emailto),
-    subject = "Otp",
-    html_content = '<strong> Otp To Reset Your Password is:' + str(otp) + ' </strong> <br> .<br> Thanks, FandomLive Team')
+    to_emails = str(email),
+    subject = "Account Verification",
+    html_content = '<strong> Click on the Link Given:' +  + ' </strong> <br> .<br> Thanks, FandomLive Team')
     print(message)
 
     try:
