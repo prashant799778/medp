@@ -30,7 +30,7 @@
               </p>
               <ng-container *ngIf="comment.length">
                   <span *ngFor="let comment of comment" >
-                      
+                      <div class="wrap-inr-bx border-rd">
                       <div class="wrap-box d-flex al-item mr-bottom">
                           <img src="../../../assets/images/profile.png" class="image-section">
                           <h3 class="title-name" >{{comment.userName}}</h3>
@@ -38,7 +38,7 @@
                         </div>
                       
                       <span>{{comment.commentDescription}}</span>
-                       
+                    </div>
                         <!-- <span>Posted on {{comment.DateCreate}}</span> -->
                   </span>
               </ng-container>
@@ -55,7 +55,9 @@
           <!-- <label for="newsDesc">Reply Post</label> -->
           <textarea type="text" class="form-control" formControlName="commentDescription" (keydown)="keyCodeCheck($event)" placeholder="reply the post..." rows="7"></textarea>
           <br>  
-          <button type="submit" class="btn btn-success pull-right" (click)="replyPost()">reply</button>
+        <div class="post-box-btnn">
+          <button type="submit" class="btn btn-success " (click)="replyPost()">reply</button>
+        </div>
         </div>
     </div>
   </form>

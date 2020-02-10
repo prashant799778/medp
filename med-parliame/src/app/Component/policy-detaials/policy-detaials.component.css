@@ -113,3 +113,10 @@ img.altr {
 .full-wd {
     width: 100%;
 }
+.wrap-inr-bx {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.post-box-btnn {
+    text-align: end;
+}

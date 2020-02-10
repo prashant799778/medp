@@ -1,0 +1,7 @@
+.clr-wid {
+    width: 15px;
+    fill: #707070;
+}
+.side-menu ul li a.active .clr-wid {
+    fill: #3b8cf6;
+}
