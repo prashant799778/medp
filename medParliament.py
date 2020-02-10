@@ -33,7 +33,7 @@ def userId():
         column=" status='0' "
         whereCondition=" and userId="+ str(userId)  +" "
         data=databasefile.UpdateQuery('userMaster',column,whereCondition)
-        if dat !="0":
+        if data !="0":
             return data
         else:
             return {"status":"false","message":"Not a valid user","result":""}
