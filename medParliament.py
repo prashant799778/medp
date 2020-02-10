@@ -2954,7 +2954,7 @@ def verifyPost1():
 
 
 @app.route('/likePost', methods=['POST'])
-def verifyPost1():
+def verifyPost12():
     try:
         print("nnnnnnnnnnnn",request.get_data(),"===================",type(request.get_data()))
         inputdata =  commonfile.DecodeInputdata(request.get_data()) 
