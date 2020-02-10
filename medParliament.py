@@ -26,19 +26,19 @@ app.config['SECRET_KEY'] = 'secret!'
 
 
 
-@app.route("/")
-def userId():
-    try:
-        userId=request.args['userId']
-        column=" status='0' "
-        whereCondition=" and userId="+ str(userId)  +" "
-        data=databasefile.UpdateQuery('userMaster',column,whereCondition)
-        if dat !="0":
-            return data
-        else:
-            return {"status":"false","message":"Not a valid user","result":""}
-    except FileNotFoundError:
-        abort(404)
+# @app.route("/")
+# def userId():
+#     try:
+#         userId=request.args['userId']
+#         column=" status='0' "
+#         whereCondition=" and userId="+ str(userId)  +" "
+#         data=databasefile.UpdateQuery('userMaster',column,whereCondition)
+#         if dat !="0":
+#             return data
+#         else:
+#             return {"status":"false","message":"Not a valid user","result":""}
+#     except FileNotFoundError:
+#         abort(404)
 
 
 
