@@ -20,7 +20,7 @@ export class AccountVerificationComponent implements OnInit {
 			let data = {
 				'userId': this.userId
 			}
-			this.userService.dataPostApi(data,AppSettings.AccountVerification).then(resp=>{
+			this.userService.getApiDataacountVerfication(AppSettings.AccountVerification,data).then(resp=>{
 				console.log(resp)
 				if(resp['status'] == 'true'){
 					this.message = resp['message']
