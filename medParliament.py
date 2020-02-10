@@ -3656,7 +3656,7 @@ def getNews():
             if "id" in inputdata:
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
-                    WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+                    WhereCondition=WhereCondition+" and n.id='"+str(Id)+"'"
         orderby=" n.id "
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = "n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
