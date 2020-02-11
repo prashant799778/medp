@@ -3608,18 +3608,18 @@ def news1():
             flag=inputdata['flag']
             if "newsTitle" in inputdata:
                 if inputdata['newsTitle'] != "":
-                    newsTitle =inputdata["newsTitle"]
+                    newsTitle =commonfile.EscapeSpecialChar(inputdata["newsTitle"])
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
         
             if "summary" in inputdata:
                 if inputdata['summary'] != "":
-                    summary =inputdata["summary"]
+                    summary =commonfile.EscapeSpecialChar(inputdata["summary"])
             
             if "newsDesc" in inputdata:
                 if inputdata['newsDesc'] != "":
-                    newsDesc =inputdata["newsDesc"]
+                    newsDesc =commonfile.EscapeSpecialChar(inputdata["newsDesc"]) 
 
              
             if "id" in inputdata:
@@ -3706,7 +3706,7 @@ def getNews():
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
-                    WhereCondition=WhereCondition+"  and n.userTypeId='"+str(userTypeId)+"'"
+                    WhereCondition=WhereCondition+"  and n.userTypeId IN(0,'"+str(userTypeId)+"')"
 
             if "id" in inputdata:
                 if inputdata['id'] != "":
