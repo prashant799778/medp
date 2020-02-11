@@ -410,6 +410,15 @@ def SignUp1():
                     companyAddress = inputdata['companyAddress']
 
 
+                message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(Email),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong> Your account is created successfully,you will be notified soon when your is activated </strong> <br> .<br> Thanks,medParliament Team')
+                sg = SendGridAPIClient('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')
+                response = sg.send(message)
+
+
 
 
 
@@ -2165,7 +2174,7 @@ def allPosts1():
                     if (data22["result"]!=""):
                         y78=data22['result'][0]
                         if y78['status'] == 0:
-                            i['likeStatus']='is liked'
+                            i['likeStatus']=1
 
                     # print(data2)
                     # i['like']=data2['like']
@@ -3026,7 +3035,7 @@ def verifyPost12():
                     data1=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
                     if (data1["status"]!="false"):
                         y=data1["result"][0]
-                        y2=y1['like']
+                        y2=y['like']
                         data1={"status":"true","result":data1["result"],"message":""}
                         return data1
                     else:
