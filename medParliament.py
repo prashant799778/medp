@@ -3004,7 +3004,7 @@ def verifyPost12():
                     if (data1["status"]!="false"):
                         y=data1["result"][0]
                         y2=y1['like']
-                        data1={"status":"true","result":y,"message":""}
+                        data1={"status":"true","result":y2,"message":""}
                         return data1
                     else:
                         data1={"status":"true","result":"","message":"No Data Found"}
