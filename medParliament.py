@@ -468,7 +468,7 @@ def SignUp1():
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             print(response,'------------------')
-                            print(status)
+                            
                             print(message)
 
                             # column="status='0'"
