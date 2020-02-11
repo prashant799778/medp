@@ -2985,7 +2985,7 @@ def verifyPost12():
             userTypeId = int(inputdata["userTypeId"])
 
             WhereCondition = " and postId = '" + str(postId) + "' and userId = '" + str(approvedUserId) + "'"
-            count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
+            count = databasefile.SelectCountQuery("likeMaster",WhereCondition,"")
             
             if int(count) > 0:
                 print('F')         
