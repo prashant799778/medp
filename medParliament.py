@@ -3068,7 +3068,7 @@ def verifyPost12():
 
                       
                        
-                        data1={"status":"true","result":"","message":""}
+                        data1={"status":"true","result":y2,"message":""}
                         return data1
                     else:
                         data1={"status":"true","result":"","message":"No Data Found"}
