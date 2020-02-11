@@ -2152,9 +2152,10 @@ def allPosts1():
             if (data['result']!=""):
                 for i in data["result"]:
                     Y=i["postId"]
-                    # column="count(*) as like"
-                    # whereCondition="and postId ='" + str(Y) + "'"
-                    # data2=databasefile.SelectQuery1("likeMaster",column,whereCondition)
+                    column="count(*) as like"
+                    whereCondition="and postId ='" + str(Y) + "'"
+                    data2=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
+                    print(data2,'++++++++++++')
                     # print(data2)
                     # i['like']=data2['like']
             #     for i in data["result"]:
