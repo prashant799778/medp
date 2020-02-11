@@ -2152,11 +2152,20 @@ def allPosts1():
             if (data['result']!=""):
                 for i in data["result"]:
                     Y=i["postId"]
+                    y2=i['userId']
                     column="*"
                     whereCondition=" and postId ='" + str(Y) + "'"
                     data2=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
                     i['like']=len(data2['result'])
                     print(data2,'++++++++++++')
+                    columns="status"
+                    whereCondition1= " and userId='" + str(y2) + "' and postId= '" + str(Y) + "'"
+                    data22= databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
+                    if (data22["result"]!=""):
+                        y78=data22['result'][0]
+                        if y78['status'] == 0:
+                            i['likeStatus']=1
+
                     # print(data2)
                     # i['like']=data2['like']
             #     for i in data["result"]:
