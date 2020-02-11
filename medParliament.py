@@ -2530,7 +2530,7 @@ def myPostsTest():
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
             #status=int(inputdata["status"])
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,convert_tz(date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,,'+00:00','-05:30')"
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','-05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition= " and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
             print(data)
