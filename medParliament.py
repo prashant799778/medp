@@ -4734,8 +4734,8 @@ def promisingEvent():
                     values = " '"+ str(ImagePath)+ "','" + str(userId) + "','" + str(text) + "'"
                     data = databasefile.InsertQuery("promisingEvent",column,values)        
                 else:
-                    column = " imagePath,text"
-                    values = " '"+ str(ImagePath)+  "','" + str(text) + "'"
+                    column = " videoPath,text"
+                    values = " '"+ str(videoPath)+  "','" + str(text) + "'"
                     data = databasefile.InsertQuery("promisingEvent",column,values)
             if flag =="u":
                 if "status" in inputdata:
@@ -4752,7 +4752,7 @@ def promisingEvent():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         whereCondition=" and  id='" + str(Id) + "'"
-                        column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "',text='" + str(text) + "'"
+                        column="videoPath='"+ str(videoPath)+  "',status='"+ str(status)+  "',text='" + str(text) + "'"
                         data=databasefile.UpdateQuery("promisingEvent",column,whereCondition)
 
 
