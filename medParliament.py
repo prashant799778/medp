@@ -3062,7 +3062,7 @@ def verifyPost12():
                     data1=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
                     if (data1["status"]!="false"):
                         y=data1["result"][0]
-                        y2=y['like']
+                       
                         data1={"status":"true","result":data1["result"],"message":""}
                         return data1
                     else:
