@@ -3308,6 +3308,8 @@ def generateOtp():
                 html_content = '<strong> Otp To Reset Your Password is:' + str(OTP) + ' </strong> <br> <br> Thanks<br> <br> MedParliament Team')
             sg = SendGridAPIClient('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')
             response = sg.send(message)
+           
+
 
           
             column="otp='" + str(OTP)+ "'"
@@ -3320,7 +3322,7 @@ def generateOtp():
                 Data = {"status":"true","message":"","result":data["result"]}                  
                 return Data
             else:
-                return {"status":"true","message":"Invalid Email","result":""}  
+                return {"status":"false","message":"Invalid Email","result":""}  
         else:
             return msg         
  
@@ -4601,7 +4603,7 @@ def deleteGallery():
             commonfile.writeLog("deleteGallery",inputdata,0)
         
         keyarr = ['id']
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if "id" in inputdata:
             if inputdata['id'] != "":
                 Id =inputdata["id"] 
@@ -4633,7 +4635,7 @@ def deleteEvent():
             commonfile.writeLog("deleteEvent",inputdata,0)
         
         keyarr = ['id']
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if "id" in inputdata:
             if inputdata['id'] != "":
                 Id =inputdata["id"] 
@@ -4667,7 +4669,7 @@ def deleteAnnouncement():
             commonfile.writeLog("deleteEvent",inputdata,0)
         
         keyarr = ['id']
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if "id" in inputdata:
             if inputdata['id'] != "":
                 Id =inputdata["id"] 
