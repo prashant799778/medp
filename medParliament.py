@@ -84,7 +84,7 @@ def profilePic(image_name):
         return send_from_directory('profilePic', filename=image_name, as_attachment=False)
     except FileNotFoundError:
         abort(404)
-@app.route('/SignUp', methods=['POST'])
+@app.route('/SignUp1', methods=['POST'])
 def SignUp():
 
     try: 
@@ -295,7 +295,7 @@ def SignUp():
 
 # For testing        
 
-@app.route('/SignUp1', methods=['POST'])
+@app.route('/SignUp', methods=['POST'])
 def SignUp1():
 
     try: 
