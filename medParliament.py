@@ -468,6 +468,7 @@ def SignUp1():
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             print(response,'------------------')
+                            print(status)
                             print(message)
 
                             # column="status='0'"
@@ -1268,12 +1269,12 @@ def allDoctorMaster():
        
         if msg =="1":
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
-            column=column+" dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress,qm.qualificationName"
+            column=column+" dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
             startlimit,endlimit="",""
-            WhereCondition=" and um.usertypeId='8' and dm.userId=um.userId and dm.qualificationId=qm.id "
+            WhereCondition=" and um.usertypeId='8' and dm.userId=um.userId  "
 
             
-            data = databasefile.SelectQueryOrderby("userMaster as um,doctorMaster as dm,qualificationMaster as qm",column,WhereCondition,""," ",startlimit,endlimit)
+            data = databasefile.SelectQueryOrderby("userMaster as um,doctorMaster as dm",column,WhereCondition,""," ",startlimit,endlimit)
 
           
             
@@ -1328,7 +1329,7 @@ def allprofessionalsMaster():
                 for i in data["result"]:
                     userId=i["userId"]
                     column="count(*) as count"
-                    whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
+                    whereCondition=" and pm.usertypeId='9' and pm.userId='" + str(userId) + "' "
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                     print(data1,"")
                     count=data1["count"]
@@ -1508,12 +1509,12 @@ def studentMasterPannel():
 @app.route('/allstudents', methods=['GET'])
 def allstudents():
     try:
-        column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,un.universityName,qm.qualificationName,"
+        column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
         column=column+" pm.address,pm.qualificationId,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId,um.status "
         startlimit,endlimit="",""
-        WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId  and un.id=pm.universityId and qm.id=pm.qualificationId"
+        WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId  "
         
-        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm,universityMaster as un,qualificationMaster as qm",column,WhereCondition,""," ",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
       
         
         
@@ -2145,10 +2146,29 @@ def allPosts1():
             
             print("11111111111111")
             print("data",data)
+           
 
             
             
-            if (data!=0):
+            if (data['result']!=""):
+                for i in data["result"]:
+                    Y=i["postId"]
+                    y2=i['userId']
+                    column="*"
+                    whereCondition=" and postId ='" + str(Y) + "'"
+                    data2=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
+                    i['like']=len(data2['result'])
+                    print(data2,'++++++++++++')
+                    columns="status"
+                    whereCondition1= " and userId='" + str(y2) + "' and postId= '" + str(Y) + "'"
+                    data22= databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
+                    if (data22["result"]!=""):
+                        y78=data22['result'][0]
+                        if y78['status'] == 0:
+                            i['likeStatus']='is liked'
+
+                    # print(data2)
+                    # i['like']=data2['like']
             #     for i in data["result"]:
             #         if (i["status"] == 1):
             #             print(i["postId"])
@@ -2408,9 +2428,12 @@ def myPosts():
             column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition= " and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            print(data)
           
 
-            if (data!=0): 
+            if (data['result']!=""):
+               
+
                 # for i in data["result"]:
                 #     if (i["status"] == 1):
                 #         print(i["postId"])
@@ -2435,11 +2458,14 @@ def myPosts():
 
                 
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":data["result"]}
-                return Data
+               
+                return data
             else:
-                output = {"status":"false","message":"No Data Found","result":""}
-                return output
+                data["result"]=[]
+                data['message']='No Data Found'
+
+                
+                return data
         else:
             return msg         
 
@@ -2971,7 +2997,7 @@ def verifyPost12():
             userTypeId = int(inputdata["userTypeId"])
 
             WhereCondition = " and postId = '" + str(postId) + "' and userId = '" + str(approvedUserId) + "'"
-            count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
+            count = databasefile.SelectCountQuery("likeMaster",WhereCondition,"")
             
             if int(count) > 0:
                 print('F')         
@@ -2984,12 +3010,13 @@ def verifyPost12():
                 values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
                 data = databasefile.InsertQuery("likeMaster",column,values)
                 if data!="0":
-                    column="count(*) as like"
-                    whereCondition="and postId ='" + str(postId) + "'"
-                    data1=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
+                    column="*"
+                    whereCondition=" and postId ='" + str(postId) + "'"
+                    data1=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
                     if (data1["status"]!="false"):
-                        y=data["result"][0]
-                        data1={"status":"true","result":y,"message":""}
+                        y=data1["result"][0]
+                        y2=y1['like']
+                        data1={"status":"true","result":data1["result"],"message":""}
                         return data1
                     else:
                         data1={"status":"true","result":"","message":"No Data Found"}
@@ -3082,7 +3109,7 @@ def updatePost():
         return commonfile.Errormessage()
 
 
-@app.route('/updateStatus', methods=['POST'])
+@app.route('/updateStatustest', methods=['POST'])
 def updateStatus():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -3136,7 +3163,7 @@ def updateStatus():
 
 
 
-@app.route('/updateStatustest', methods=['POST'])
+@app.route('/updateStatus', methods=['POST'])
 def updateStatus1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -3159,7 +3186,7 @@ def updateStatus1():
                                 from_email = 'medParliament@gmail.com',
                                 to_emails = str(email),
                                 subject = "Account DeActivated",
-                                html_content = '<strong> Your account is DeActivated </strong> <br> .<br> Thanks,medParliament Team')
+                                html_content = '<strong> Your account has been DeActivated </strong> <br> .<br> Thanks,medParliament Team')
                 sg = SendGridAPIClient('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')
                 response = sg.send(message)
                 column="status='1'"
@@ -3404,11 +3431,11 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 7:
-                column="um.userName,um.email,un.universityName,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
+                column="um.userName,um.email,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
                 column=column+"sm.address,"
                 column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
-                WhereCondition="  and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId and um.userId='" + str(userId) + "'"
-                data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,universityMaster un,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
+                WhereCondition="   and um.userId=sm.userId and um.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 
                
@@ -3440,11 +3467,11 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 8:
-                column="um.userName,um.email,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
+                column="um.userName,um.email,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
                 column=column+"dm.userId,dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
                
-                WhereCondition="   and qm.id=dm.qualificationId and um.userId=dm.userId and um.userId='" + str(userId) + "'"
-                data1 = databasefile.SelectQueryOrderby("userMaster um,doctorMaster dm,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
+                WhereCondition="    and um.userId=dm.userId and um.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userMaster um,doctorMaster dm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 
                
