@@ -2145,10 +2145,18 @@ def allPosts1():
             
             print("11111111111111")
             print("data",data)
+           
 
             
             
-            if (data!=0):
+            if (data['result']!=""):
+                for i in data["result"]:
+                    Y=i["postId"]
+                    column="count(*) as like"
+                    whereCondition="and postId ='" + str(Y) + "'"
+                    data2=databasefile.SelectQuery1("likeMaster",column,whereCondition)
+                    print(data2)
+                    i['like']=data2['like']
             #     for i in data["result"]:
             #         if (i["status"] == 1):
             #             print(i["postId"])
