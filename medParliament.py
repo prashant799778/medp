@@ -3316,11 +3316,11 @@ def generateOtp():
             columns='otp'
             
             data=databasefile.SelectQuery("userMaster",columns,whereCondition,"",startlimit,endlimit)
-            if output!='0':
+            if data['result']!="":
                 Data = {"status":"true","message":"","result":data["result"]}                  
                 return Data
             else:
-                return commonfile.Errormessage()
+                return {"status":"true","message":"Invalid Email","result":""}  
         else:
             return msg         
  
