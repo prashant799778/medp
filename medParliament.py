@@ -2202,6 +2202,9 @@ def allPosts1():
                         y78=data22['result'][0]
                         if y78['status'] == 0:
                             i['likeStatus']=1
+                    if i['like'] ==0:
+                        i['likeStatus']=0
+
 
                     # print(data2)
                     # i['like']=data2['like']
