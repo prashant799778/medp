@@ -2467,7 +2467,7 @@ def myPosts1():
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
             status=int(inputdata["status"])
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,convert_tz(date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,,'+00:00','-05:30')"
             WhereCondition=" and pm.status='" + str(status) + "' and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
           
