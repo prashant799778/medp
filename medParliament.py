@@ -2425,7 +2425,7 @@ def myPosts():
             userTypeId=inputdata["userTypeId"]
             userId=inputdata["userId"]
             #status=int(inputdata["status"])
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,convert_tz(date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,,'+00:00','-05:30')"
             WhereCondition= " and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
             print(data)
@@ -2477,58 +2477,6 @@ def myPosts():
 
 
 
-@app.route('/myPosts1', methods=['POST'])
-def myPosts1():
-    try:
-        inputdata =  commonfile.DecodeInputdata(request.get_data())
-        startlimit,endlimit="",""
-        keyarr = ['userId','userTypeId']
-        print(inputdata,"B")
-        commonfile.writeLog("myPosts",inputdata,0)
-      
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        if msg =="1":
-            orderby=" pm.id "
-            
-            userTypeId=inputdata["userTypeId"]
-            userId=inputdata["userId"]
-            status=int(inputdata["status"])
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,convert_tz(date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,,'+00:00','-05:30')"
-            WhereCondition=" and pm.status='" + str(status) + "' and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
-            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
-          
-
-            if (data!=0): 
-                for i in data["result"]:
-                    if (i["status"] == 0):
-                        print(i["postId"])
-                        column="um.userName as commentedBy,ap.commentDescription"
-                        WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
-                        data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
-                        print(data1)
-                        if "message" in data1:
-                            pass
-                        else:
-                            i["commentedBy"]=data1["commentedBy"]
-                            i["commentDescription"]=data1["commentDescription"]
-                        print(data1)
-                   
-                   
-
-                
-                print("111111111111111")          
-                Data = {"status":"true","message":"","result":data["result"]}
-                return Data
-            else:
-                output = {"status":"false","message":"No Data Found","result":""}
-                return output
-        else:
-            return msg         
-
-    except Exception as e :
-        print("Exception---->" + str(e))    
-        output = {"status":"false","message":"something went wrong","result":""}
-        return output                        
 
 
 
