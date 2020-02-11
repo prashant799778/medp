@@ -1305,7 +1305,7 @@ def allDoctorMaster():
        
         if msg =="1":
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
-            column=column+" dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
+            column=column+" dm.qualificationId as qualificationName,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
             startlimit,endlimit="",""
             WhereCondition=" and um.usertypeId='8' and dm.userId=um.userId  "
 
@@ -1546,7 +1546,7 @@ def studentMasterPannel():
 def allstudents():
     try:
         column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
-        column=column+" pm.address,pm.qualificationId,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId,um.status "
+        column=column+" pm.address,pm.qualificationId as qualificationName,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId as universityName,um.status "
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId  "
         
