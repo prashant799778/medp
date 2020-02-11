@@ -42,6 +42,12 @@ def EmailAlreadyExistMsg():
     return data
 
 
+def likeAlreadyExistMsg():
+    data = {"status":"false","message":"You have  Already liked","result":""}
+    return data
+
+
+
 def CountryAlreadyExistMsg():
     data = {"status":"false","message":"Country Already Exists","result":""}
     return data 
