@@ -4690,6 +4690,124 @@ def deleteAnnouncement():
         return commonfile.Errormessage()
 
 
+
+
+
+
+@app.route('/promisingEvent', methods=['POST'])
+def promisingEvent():
+    try:
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        startlimit,endlimit="",""
+        keyarr = ["userId","flag"]
+        
+        commonfile.writeLog("galleryImages",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            ImagePath=""
+            flag=inputdata['flag']
+            if "text" in inputdata:
+                if inputdata['text'] != "":
+                    text =inputdata["text"]
+
+            if 'postImage' in request.files:      
+                file = request.files.get('postImage')        
+                filename = file.filename or ''                 
+                filename = filename.replace("'","") 
+
+                print(filename)
+                # filename = str(campaignId)                    
+                #folder path to save campaign image
+                FolderPath = ConstantData.getpromisingEvent(filename)  
+
+                filepath = '/promisingEvent/' + filename    
+                
+
+                file.save(FolderPath)
+                ImagePath = filepath
+            if flag =="i":
+                if "userId" in inputdata:
+                    if inputdata['userId'] != "":
+                        userId =inputdata["userId"]
+                    column = " imagePath,UserCreate,text"
+                    values = " '"+ str(ImagePath)+ "','" + str(userId) + "','" + str(text) + "'"
+                    data = databasefile.InsertQuery("promisingEvent`",column,values)        
+                else:
+                    column = " imagePath,text"
+                    values = " '"+ str(ImagePath)+  "','" + str(text) + "'"
+                    data = databasefile.InsertQuery("promisingEvent`",column,values)
+            if flag =="u":
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status =inputdata["status"]
+                # if "userId" in inputdata:
+
+                #     if inputdata['userId'] != "":
+                #         userId =inputdata["userId"]
+                #         whereCondition=" and UserCreate='" + str(userId) + "'"
+                #         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
+                #         data=databasefile.UpdateQuery("gallery",column,whereCondition)
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        whereCondition=" and  id='" + str(Id) + "'"
+                        column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "',text='" + str(text) + "'"
+                        data=databasefile.UpdateQuery("promisingEvent`",column,whereCondition)
+
+
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+
+
+@app.route('/getpromisingEvent', methods=['POST'])
+def getpromisingEvent():
+
+    try:        
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and Status<2"
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
+        
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',videoPath)videoPath,text,UserCreate  "
+        data = databasefile.SelectQuery(" promisingEvent ",column,WhereCondition,"",startlimit,endlimit)
+        
+        if data != "0":
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+        
+
+
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
     app.run(host='0.0.0.0',port=5031,debug=True)
