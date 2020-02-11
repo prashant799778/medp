@@ -2411,7 +2411,9 @@ def myPosts():
             print(data)
           
 
-            if (data!=0): 
+            if (data['result']!=""):
+               
+
                 # for i in data["result"]:
                 #     if (i["status"] == 1):
                 #         print(i["postId"])
@@ -2436,11 +2438,14 @@ def myPosts():
 
                 
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":data["result"]}
-                return Data
+               
+                return data
             else:
-                output = {"status":"false","message":"No Data Found","result":""}
-                return output
+                data["result"]=[]
+                data['message']='No Data Found'
+
+                
+                return data
         else:
             return msg         
 
