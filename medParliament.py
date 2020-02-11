@@ -26,7 +26,7 @@ app.config['SECRET_KEY'] = 'secret!'
 
 
 
-@app.route("/AccountVerification",methods=['POST'])
+@app.route("/AccountVerification",methods=['GET'])
 def userId():
     try:
         userId=request.args['userId']
