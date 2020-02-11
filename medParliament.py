@@ -557,39 +557,39 @@ def SignUp1():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
-@app.route('/Login1', methods=['GET'])
-def login():
-    try:
-        password = request.args['password']
+# @app.route('/Login1', methods=['GET'])
+# def login():
+#     try:
+#         password = request.args['password']
        
-        mobile = request.args['email']
-        column=  "us.profilePic,us.mobileNo,us.userName,us.email,um.id as userTypeId,us.userId as userId"
-        whereCondition= " and us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.userTypeId=um.id"
-        groupby,startlimit,endlimit="","",""
-        loginuser=databasefile.SelectQuery("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
+#         mobile = request.args['email']
+#         column=  "us.profilePic,us.mobileNo,us.userName,us.email,um.id as userTypeId,us.userId as userId"
+#         whereCondition= " and us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.userTypeId=um.id"
+#         groupby,startlimit,endlimit="","",""
+#         loginuser=databasefile.SelectQuery("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
         
                
       
-        if  (loginuser["status"]!="false"): 
-            if loginuser["result"][0]["profilePic"]==None:
-                    loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/profilePic.jpg"
-            else:
-                loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(loginuser["result"][0]["profilePic"])
-            Data = {"status":"true","message":"","result":loginuser["result"]}                  
-            return Data
-        else:
-            data = {"status":"false","message":"Please Enter Your correct Password and email","result":""}
-            return data
+#         if  (loginuser["status"]!="false"): 
+#             if loginuser["result"][0]["profilePic"]==None:
+#                     loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/profilePic.jpg"
+#             else:
+#                 loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(loginuser["result"][0]["profilePic"])
+#             Data = {"status":"true","message":"","result":loginuser["result"]}                  
+#             return Data
+#         else:
+#             data = {"status":"false","message":"Please Enter Your correct Password and email","result":""}
+#             return data
 
-    except KeyError as e:
-        print("Exception---->" +str(e))        
-        output = {"status":"false","message":"No Data Found","result":""}
-        return output 
+#     except KeyError as e:
+#         print("Exception---->" +str(e))        
+#         output = {"status":"false","message":"No Data Found","result":""}
+#         return output 
     
-    except Exception as e :
-        print("Exception---->" +str(e))           
-        output = {"status":"false","message":"something went wrong","result":""}
-        return output  
+#     except Exception as e :
+#         print("Exception---->" +str(e))           
+#         output = {"status":"false","message":"something went wrong","result":""}
+#         return output  
 
 
 @app.route('/Login', methods=['GET'])
@@ -896,45 +896,45 @@ def addQualification():
 
 
 
-@app.route('/adminPannel1', methods=['GET'])
-def adminPannel():
-    try:
-        column="count(*) as count"
-        startlimit,endlimit="",""
-        WhereCondition=" and userTypeId>'1'  and usertypeId<'5' and status<>2"
+# @app.route('/adminPannel1', methods=['GET'])
+# def adminPannel():
+#     try:
+#         column="count(*) as count"
+#         startlimit,endlimit="",""
+#         WhereCondition=" and userTypeId>'1'  and usertypeId<'5' and status<>2"
        
-        WhereCondition4=" and usertypeId='5'"
-        WhereCondition5=" and usertypeId='6'"
-        WhereCondition6=" and usertypeId='7'"
+#         WhereCondition4=" and usertypeId='5'"
+#         WhereCondition5=" and usertypeId='6'"
+#         WhereCondition6=" and usertypeId='7'"
 
         
 
 
-        data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
-        totalsubAdmins=data["result"][0]
+#         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+#         totalsubAdmins=data["result"][0]
        
-        data2 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition4,""," ",startlimit,endlimit)
-        subAdmins2=data2["result"][0]
-        data3 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition5,""," ",startlimit,endlimit)
-        subAdmins3=data3["result"][0]
-        data4 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition6,""," ",startlimit,endlimit)
-        subAdmins4=data4["result"][0]
+#         data2 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition4,""," ",startlimit,endlimit)
+#         subAdmins2=data2["result"][0]
+#         data3 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition5,""," ",startlimit,endlimit)
+#         subAdmins3=data3["result"][0]
+#         data4 = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition6,""," ",startlimit,endlimit)
+#         subAdmins4=data4["result"][0]
         
         
 
 
-        if data:           
-            Data1 = {"totalAdmins":totalsubAdmins,"policyMakerMasterCount":subAdmins2,"enterprenuerMasterCount":subAdmins3,"studentMasterCount":subAdmins4}
-            Data = {"status":"true","message":"","result":Data1}
-            return Data
-        else:
-            output = {"status":"false","message":"No Data Found","result":""}
-            return output
+#         if data:           
+#             Data1 = {"totalAdmins":totalsubAdmins,"policyMakerMasterCount":subAdmins2,"enterprenuerMasterCount":subAdmins3,"studentMasterCount":subAdmins4}
+#             Data = {"status":"true","message":"","result":Data1}
+#             return Data
+#         else:
+#             output = {"status":"false","message":"No Data Found","result":""}
+#             return output
 
-    except Exception as e :
-        print("Exception---->" + str(e))    
-        output = {"status":"false","message":"something went wrong","result":""}
-        return output
+#     except Exception as e :
+#         print("Exception---->" + str(e))    
+#         output = {"status":"false","message":"something went wrong","result":""}
+#         return output
 
 
 
@@ -1031,37 +1031,37 @@ def allSubAdmins():
 
 
 
-@app.route('/allSubAdmins1', methods=['POST'])
-def allSubAdmins1():
-    try:
-        inputdata =  commonfile.DecodeInputdata(request.get_data())
-        startlimit,endlimit="",""
-        keyarr = ['userTypeId']
-        print(inputdata,"B")
-        commonfile.writeLog("addAdmin",inputdata,0)
-        print('C')
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        if msg =="1":
-            userTypeId=inputdata["userTypeId"]
-            column="*"
-            WhereCondition=" and userTypeId='" + str(userTypeId) + "'"
-            data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
-            print(data)
+# @app.route('/allSubAdmins1', methods=['POST'])
+# def allSubAdmins1():
+#     try:
+#         inputdata =  commonfile.DecodeInputdata(request.get_data())
+#         startlimit,endlimit="",""
+#         keyarr = ['userTypeId']
+#         print(inputdata,"B")
+#         commonfile.writeLog("addAdmin",inputdata,0)
+#         print('C')
+#         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+#         if msg =="1":
+#             userTypeId=inputdata["userTypeId"]
+#             column="*"
+#             WhereCondition=" and userTypeId='" + str(userTypeId) + "'"
+#             data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
+#             print(data)
 
-            if (data["status"]!="false"): 
-                print("111111111111111")          
-                Data = {"status":"true","message":"","result":data["result"]}
-                return Data
-            else:
-                output = {"status":"false","message":"No Data Found","result":""}
-                return output
-        else:
-            return msg         
+#             if (data["status"]!="false"): 
+#                 print("111111111111111")          
+#                 Data = {"status":"true","message":"","result":data["result"]}
+#                 return Data
+#             else:
+#                 output = {"status":"false","message":"No Data Found","result":""}
+#                 return output
+#         else:
+#             return msg         
 
-    except Exception as e :
-        print("Exception---->" + str(e))    
-        output = {"status":"false","message":"something went wrong","result":""}
-        return output
+#     except Exception as e :
+#         print("Exception---->" + str(e))    
+#         output = {"status":"false","message":"something went wrong","result":""}
+#         return output
 
 
 
@@ -1459,44 +1459,44 @@ def allenterprenuer():
         return output  
 
 
-@app.route('/allenterprenuers1', methods=['GET'])
-def allenterprenuer1():
-    try:
-        column="um.mobileNo as mobileNo,um.email ,um.userName as userName,um.password as password,um.userId,um.gender,um.countryId,um.city,"
-        column=column+"pm.areaOfActivity,pcm.name as profileCategory,pm.designation,um.status"
-        startlimit,endlimit="",""
-        WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId and pcm.id=pm.profileCategoryId"
+# @app.route('/allenterprenuers1', methods=['GET'])
+# def allenterprenuer1():
+#     try:
+#         column="um.mobileNo as mobileNo,um.email ,um.userName as userName,um.password as password,um.userId,um.gender,um.countryId,um.city,"
+#         column=column+"pm.areaOfActivity,pcm.name as profileCategory,pm.designation,um.status"
+#         startlimit,endlimit="",""
+#         WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId and pcm.id=pm.profileCategoryId"
         
-        data = databasefile.SelectQueryOrderby("userMaster as um,enterprenuerMaster as pm,profileCategoryMaster as pcm",column,WhereCondition,""," ",startlimit,endlimit)
+#         data = databasefile.SelectQueryOrderby("userMaster as um,enterprenuerMaster as pm,profileCategoryMaster as pcm",column,WhereCondition,""," ",startlimit,endlimit)
 
-        if (data!=0):
-            for i in data["result"]:
-                userId=i["userId"]
-                column="count(*) as count"
-                whereCondition=" and pm.usertypeId='6' and pm.userId='" + str(userId) + "' "
-                data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
-                print(data1,"")
-                count=data1["count"]
+#         if (data!=0):
+#             for i in data["result"]:
+#                 userId=i["userId"]
+#                 column="count(*) as count"
+#                 whereCondition=" and pm.usertypeId='6' and pm.userId='" + str(userId) + "' "
+#                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+#                 print(data1,"")
+#                 count=data1["count"]
 
-                i["noOfPosts"]=count
-                columns=" im.name " 
-                WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
-                data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",columns,WhereCondition,"","","","")
+#                 i["noOfPosts"]=count
+#                 columns=" im.name " 
+#                 WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+#                 data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",columns,WhereCondition,"","","","")
                 
-                i["userInterest"]=[]
-                for j in data5["result"]:
-                    j.append(i["name"])
+#                 i["userInterest"]=[]
+#                 for j in data5["result"]:
+#                     j.append(i["name"])
     
-            Data = {"status":"true","message":"","result":data["result"]}
-            return Data
-        else:
-            output = {"status":"false","message":"No Data Found","result":""}
-            return output
+#             Data = {"status":"true","message":"","result":data["result"]}
+#             return Data
+#         else:
+#             output = {"status":"false","message":"No Data Found","result":""}
+#             return output
 
-    except Exception as e :
-        print("Exception---->" + str(e))    
-        output = {"status":"false","message":"something went wrong","result":""}
-        return output         
+#     except Exception as e :
+#         print("Exception---->" + str(e))    
+#         output = {"status":"false","message":"something went wrong","result":""}
+#         return output         
 
 
 
