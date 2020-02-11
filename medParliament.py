@@ -3064,7 +3064,7 @@ def verifyPost12():
                         y=data1["result"][0]
                       
                        
-                        data1={"status":"true","result":["status":1],"message":""}
+                        data1={"status":"true","result":"","message":""}
                         return data1
                     else:
                         data1={"status":"true","result":"","message":"No Data Found"}
