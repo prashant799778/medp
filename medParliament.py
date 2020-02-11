@@ -2152,9 +2152,9 @@ def allPosts1():
             if (data['result']!=""):
                 for i in data["result"]:
                     Y=i["postId"]
-                    column="count(*) as like"
-                    whereCondition="and postId ='" + str(Y) + "'"
-                    data2=databasefile.SelectQuery1("likeMaster",column,whereCondition)
+                    # column="count(*) as like"
+                    # whereCondition="and postId ='" + str(Y) + "'"
+                    # data2=databasefile.SelectQuery1("likeMaster",column,whereCondition)
                     # print(data2)
                     # i['like']=data2['like']
             #     for i in data["result"]:
@@ -3003,6 +3003,7 @@ def verifyPost12():
                     data1=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
                     if (data1["status"]!="false"):
                         y=data1["result"][0]
+                        y2=y1['like']
                         data1={"status":"true","result":y,"message":""}
                         return data1
                     else:
