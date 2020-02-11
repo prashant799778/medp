@@ -1268,12 +1268,12 @@ def allDoctorMaster():
        
         if msg =="1":
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
-            column=column+" dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress,qm.qualificationName"
+            column=column+" dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
             startlimit,endlimit="",""
-            WhereCondition=" and um.usertypeId='8' and dm.userId=um.userId and dm.qualificationId=qm.id "
+            WhereCondition=" and um.usertypeId='8' and dm.userId=um.userId  "
 
             
-            data = databasefile.SelectQueryOrderby("userMaster as um,doctorMaster as dm,qualificationMaster as qm",column,WhereCondition,""," ",startlimit,endlimit)
+            data = databasefile.SelectQueryOrderby("userMaster as um,doctorMaster as dm",column,WhereCondition,""," ",startlimit,endlimit)
 
           
             
@@ -1328,7 +1328,7 @@ def allprofessionalsMaster():
                 for i in data["result"]:
                     userId=i["userId"]
                     column="count(*) as count"
-                    whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
+                    whereCondition=" and pm.usertypeId='9' and pm.userId='" + str(userId) + "' "
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                     print(data1,"")
                     count=data1["count"]
@@ -1508,12 +1508,12 @@ def studentMasterPannel():
 @app.route('/allstudents', methods=['GET'])
 def allstudents():
     try:
-        column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,un.universityName,qm.qualificationName,"
+        column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
         column=column+" pm.address,pm.qualificationId,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId,um.status "
         startlimit,endlimit="",""
-        WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId  and un.id=pm.universityId and qm.id=pm.qualificationId"
+        WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId  "
         
-        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm,universityMaster as un,qualificationMaster as qm",column,WhereCondition,""," ",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
       
         
         
@@ -2164,7 +2164,7 @@ def allPosts1():
                     if (data22["result"]!=""):
                         y78=data22['result'][0]
                         if y78['status'] == 0:
-                            i['likeStatus']=1
+                            i['likeStatus']='is liked'
 
                     # print(data2)
                     # i['like']=data2['like']
