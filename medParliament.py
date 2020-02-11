@@ -3393,7 +3393,7 @@ def verifyOtp():
                 Data = {"status":"true","message":"","result":data1["result"]}                  
                 return Data
             else:
-                data = {"status":"false","message":"No Data Found","result":""}
+                data = {"status":"false","message":"Invalid OTP","result":""}
                 return data      
         else:
             return msg         
