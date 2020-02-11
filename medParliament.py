@@ -4559,13 +4559,14 @@ def deleteNews():
     try: 
 
         inputdata =  commonfile.DecodeInputdata(request.get_data())
+
         WhereCondition="" 
   
         if len(inputdata) > 0:           
             commonfile.writeLog("deleteNews",inputdata,0)
 
         keyarr = ['id']
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if "id" in inputdata:
             if inputdata['id'] != "":
                 Id =inputdata["id"] 
