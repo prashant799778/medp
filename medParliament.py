@@ -2998,13 +2998,13 @@ def verifyPost12():
                 values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
                 data = databasefile.InsertQuery("likeMaster",column,values)
                 if data!="0":
-                    column="count(*) as like"
+                    column="*"
                     whereCondition=" and postId ='" + str(postId) + "'"
                     data1=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
                     if (data1["status"]!="false"):
                         y=data1["result"][0]
                         y2=y1['like']
-                        data1={"status":"true","result":y2,"message":""}
+                        data1={"status":"true","result":data1["result"],"message":""}
                         return data1
                     else:
                         data1={"status":"true","result":"","message":"No Data Found"}
