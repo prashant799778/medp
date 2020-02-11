@@ -3062,8 +3062,9 @@ def verifyPost12():
                     data1=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
                     if (data1["status"]!="false"):
                         y=data1["result"][0]
+                      
                        
-                        data1={"status":"true","result":data1["result"],"message":""}
+                        data1={"status":"true","result":["status":1],"message":""}
                         return data1
                     else:
                         data1={"status":"true","result":"","message":"No Data Found"}
