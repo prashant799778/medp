@@ -3487,7 +3487,7 @@ def userProfile():
                     return commonfile.Errormessage()
             if userTypeId == 7:
                 column="um.userName,um.email,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
-                column=column+"sm.address,"
+                column=column+"sm.address,sm.qualificationId as qualificationName,sm.universityId as universityName,"
                 column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
                 WhereCondition="   and um.userId=sm.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm",column,WhereCondition,"",startlimit,endlimit,"")
