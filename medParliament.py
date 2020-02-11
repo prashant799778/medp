@@ -417,6 +417,7 @@ def SignUp1():
 
 
 
+
                 print(interestId)
 
 
@@ -438,6 +439,15 @@ def SignUp1():
                     if data["status"]!="false":
                         y=data["result"][0]
                         if (y["userTypeId"] == 5):
+                            
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong> Your account is created successfully,you will be notified soon when your is activated </strong> <br> .<br> Thanks,medParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+
                             columns="userId,aboutProfile,organization,designation"
                             values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
                             data1=databasefile.InsertQuery("policyMakerMaster",columns,values)
@@ -446,6 +456,15 @@ def SignUp1():
 
 
                         if (y["userTypeId"] == 6):
+                            
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong> Your account is created successfully,you will be notified soon when your is activated </strong> <br> .<br> Thanks,medParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+
                             columns="userId,areaOfActivity,profileCategoryId,designation,companyName"
                             values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation)+ "','" + str(CompanyName) + "'"
                             data2=databasefile.InsertQuery("enterprenuerMaster",columns,values)
@@ -467,7 +486,7 @@ def SignUp1():
                                             html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> .<br> Thanks,medParliament Team')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
-                            print(response,'------------------')
+                            print(response.status_code,'------------------',response.body,"============",response.headers)
                             
                             print(message)
 
@@ -484,6 +503,15 @@ def SignUp1():
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
                         
                         if (y["userTypeId"]== 8):
+
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong> Your account is created successfully,you will be notified soon when your is activated </strong> <br> .<br> Thanks,medParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+                            
                             columns="userId,qualificationId,designation,areaOfExpertise,hospital,hospitalAddress"
                             values=" '" + str(y["userId"])+ "','" + str(qualification) + "','" + str(designation) + "','" + str(areaOfExpertise) + "','" + str(hospital)+ "','" + str(hospitalAddress) + "'"
                             data3= databasefile.InsertQuery("doctorMaster",columns,values)
@@ -493,6 +521,13 @@ def SignUp1():
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
                         
                         if (y["userTypeId"]== 9):
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong> Your account is created successfully,you will be notified soon when your is activated </strong> <br> .<br> Thanks,medParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
                             columns="userId,designation,occupation,companyName,companyAddress,address"
                             values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
                             data6=databasefile.InsertQuery("professionalMaster",column,values)
@@ -510,7 +545,8 @@ def SignUp1():
                         return commonfile.Errormessage()
                     if data["result"][0]["profilePic"]==None:
                         data["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
-                    
+
+                    data['message']='email has been sent successfully on your email'
                     return data
                 else:
                     return commonfile.Errormessage()
@@ -2165,7 +2201,10 @@ def allPosts1():
                     if (data22["result"]!=""):
                         y78=data22['result'][0]
                         if y78['status'] == 0:
-                            i['likeStatus']='is liked'
+                            i['likeStatus']=1
+                    if i['like'] ==0:
+                        i['likeStatus']=0
+
 
                     # print(data2)
                     # i['like']=data2['like']
@@ -3026,8 +3065,13 @@ def verifyPost12():
                     data1=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
                     if (data1["status"]!="false"):
                         y=data1["result"][0]
-                        y2=y1['like']
-                        data1={"status":"true","result":data1["result"],"message":""}
+                        for i in data1['result']:
+                            i['likeStatus']=1
+                        y2=i['likeStatus']
+
+                      
+                       
+                        data1={"status":"true","result":y2,"message":""}
                         return data1
                     else:
                         data1={"status":"true","result":"","message":"No Data Found"}
