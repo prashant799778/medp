@@ -3523,7 +3523,7 @@ def userProfile():
                     return commonfile.Errormessage()
             if userTypeId == 8:
                 column="um.userName,um.email,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
-                column=column+"dm.userId,dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
+                column=column+"dm.userId,dm.qualificationId as qualificationName,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
                
                 WhereCondition="    and um.userId=dm.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,doctorMaster dm",column,WhereCondition,"",startlimit,endlimit,"")
