@@ -3430,11 +3430,11 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 7:
-                column="um.userName,um.email,un.universityName,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
+                column="um.userName,um.email,,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
                 column=column+"sm.address,"
                 column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
-                WhereCondition="  and un.id=sm.universityId and qm.id=sm.qualificationId and um.userId=sm.userId and um.userId='" + str(userId) + "'"
-                data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm,universityMaster un,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
+                WhereCondition="   and um.userId=sm.userId and um.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 
                
@@ -3466,11 +3466,11 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId == 8:
-                column="um.userName,um.email,qm.qualificationName,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
+                column="um.userName,um.email,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
                 column=column+"dm.userId,dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
                
-                WhereCondition="   and qm.id=dm.qualificationId and um.userId=dm.userId and um.userId='" + str(userId) + "'"
-                data1 = databasefile.SelectQueryOrderby("userMaster um,doctorMaster dm,qualificationMaster qm",column,WhereCondition,"",startlimit,endlimit,"")
+                WhereCondition="    and um.userId=dm.userId and um.userId='" + str(userId) + "'"
+                data1 = databasefile.SelectQueryOrderby("userMaster um,doctorMaster dm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 
                
