@@ -3749,6 +3749,24 @@ def userProfile():
                     return data3
                 else:
                     return commonfile.Errormessage()
+            if userTypeId==13:
+                column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
+                column=column+"um.countryId,cm.countryName"
+                startlimit,endlimit="",""
+                WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId  "
+                data1 = databasefile.SelectQueryOrderby("userMaster um,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
+                if data1["result"][0]["profilePic"]==None:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                else:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
+                data2={"userProfile":data1["result"],"userPost":""}
+                data3={"status":"true","message":"","result":data2}
+                if  data3:                     
+                    return data3
+                else:
+                    return commonfile.Errormessage()
+
+
 
             else:
                 data = {"status":"false","message":"userTypeId is not correct.","result":""}
