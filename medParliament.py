@@ -3810,7 +3810,7 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId==13:
-                column="um.mobileNo as mobileNo, um.userName as userName,um.password as password, um.profilePic as profilePic, um.userId,um.gender,um.email,um.status,"
+                column="um.mobileNo as mobileNo, um.userName as userName, um.userTypeId,um.password as password, um.profilePic as profilePic, um.userId,um.gender,um.email,um.status,"
                 column=column+"um.countryId,cm.countryName"
                 startlimit,endlimit="",""
                 WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId "
