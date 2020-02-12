@@ -1372,7 +1372,7 @@ def testallpolicyMakers():
 
         if (data!=0):
             for i in data["result"]:
-                print(i,'i')
+                print(i,'iiiiiiiiiiiiiiiiii')
                 userId=i["userId"]
                 column="count(*) as count"
                 whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
