@@ -5017,6 +5017,7 @@ def signUpVideo():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             column=""
+            values=""
             text=""
             ImagePath=""
             videoLink=""
