@@ -5306,7 +5306,7 @@ def deleteAboutUs():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
-@app.route('/allaboutUs', methods=['GET'])
+@app.route('/allaboutUs', methods=['POST'])
 def allaboutUs():
     try:
         columns=" * "
