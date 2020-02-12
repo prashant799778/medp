@@ -183,7 +183,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
             msg.setText(announcedModel.getSummary());
            title.setText(announcedModel.getTitle());
 
-            Comman.setRectangleImage(getApplicationContext(),img,pm.getImagePath());
+            Comman.setRectangleImage(getApplicationContext(),img,announcedModel.getImagePath());
 
             date.setText(PrettyTimeClass.PrettyTime(Comman.timeInms(announcedModel.getDateCreate())));
 

@@ -70,14 +70,14 @@ public class Dashboard_annoncement_adapter_new  extends LoopingPagerAdapter<Dash
             Comman.log("ImagePath",""+pm.getImagePath());
             Comman.setRectangleImage(context,mainimg,pm.getImagePath());
 
-            //        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(context, NewsDetails_Activity.class);
-//                intent.putExtra("ann",pm);
-//                context.startActivity(intent);
-//            }
-//        });
+            convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, NewsDetails_Activity.class);
+                intent.putExtra("ann",pm);
+                context.startActivity(intent);
+            }
+        });
 
 
 
