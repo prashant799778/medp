@@ -5147,6 +5147,8 @@ def getSignUpVideo():
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                y=i['videoLink'].split('=')
+                i['videoId']=y[1]
             return data
         else:
             return commonfile.Errormessage()
