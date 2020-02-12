@@ -3824,6 +3824,7 @@ def userProfile():
                     print(">>>>>>>>>>>>>4<<<<<<<<<<<<<<")
                 else:
                     # data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
+                    print(">>>>>>>>>>>>>3<<<<<<<<<<<<<<")
                     data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
                     print(">>>>>>>>>>>>>5<<<<<<<<<<<<<<")
                 data2={"userProfile":data1["result"],"userPost":""}
