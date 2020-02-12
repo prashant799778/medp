@@ -1380,8 +1380,8 @@ def testallpolicyMakers():
                 print(data1,"")
                 count=data1["count"]
                 print(i,'iiii11111111111111111111111')
-
                 i["noOfPosts"]=count
+                print( i["noOfPosts"], '====no of posts')
 
 
             Data = {"status":"true","message":"","result":data["result"]}
