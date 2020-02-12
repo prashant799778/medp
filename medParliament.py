@@ -4837,15 +4837,15 @@ def deleteAnnouncement():
 
 
 
-@app.route('/promisingEvent', methods=['POST'])
-def promisingEvent():
+@app.route('/promisingInitiatives', methods=['POST'])
+def promisingInitiatives():
     try:
         inputdata = request.form.get('data')    
         inputdata = json.loads(inputdata) 
         startlimit,endlimit="",""
         keyarr = ["userId","flag"]
         
-        commonfile.writeLog("galleryImages",inputdata,0)
+        commonfile.writeLog("promisingInitiatives",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             ImagePath=""
@@ -4871,11 +4871,11 @@ def promisingEvent():
                         userId =inputdata["userId"]
                     column = column+"UserCreate,text"
                     values = values+ "','" + str(userId) + "','" + str(text) + "'"
-                    data = databasefile.InsertQuery("promisingEvent",column,values)        
+                    data = databasefile.InsertQuery("promisingInitiatives",column,values)        
                 else:
                     column = column+" text"
                     values = values+  "','" + str(text) + "'"
-                    data = databasefile.InsertQuery("promisingEvent",column,values)
+                    data = databasefile.InsertQuery("promisingInitiatives",column,values)
             if flag =="u":
                 if "status" in inputdata:
                     if inputdata['status'] != "":
@@ -4886,7 +4886,7 @@ def promisingEvent():
                         Id =inputdata["id"]
                         whereCondition=" and  id='" + str(Id) + "'"
                         column="videoPath='"+ str(videoPath)+  "',status='"+ str(status)+  "',text='" + str(text) + "'"
-                        data=databasefile.UpdateQuery("promisingEvent",column,whereCondition)
+                        data=databasefile.UpdateQuery("promisingInitiatives",column,whereCondition)
 
             if data !=0 :                
                 return data
@@ -4902,8 +4902,8 @@ def promisingEvent():
 
 
 
-@app.route('/getpromisingEvent', methods=['POST'])
-def getpromisingEvent():
+@app.route('/getpromisingInitiatives', methods=['POST'])
+def getpromisingInitiatives():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
@@ -4925,7 +4925,7 @@ def getpromisingEvent():
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
         
         column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoPath,text,UserCreate  "
-        data = databasefile.SelectQuery(" promisingEvent ",column,WhereCondition,"",startlimit,endlimit)
+        data = databasefile.SelectQuery("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit)
         
         if data != "0":
             return data
