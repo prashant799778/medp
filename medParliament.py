@@ -1372,16 +1372,14 @@ def testallpolicyMakers():
 
         if (data!=0):
             for i in data["result"]:
-                print(i,'iiiiiiiiiiiiiiiiii')
                 userId=i["userId"]
                 column="count(*) as count"
                 whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                 print(data1,"")
                 count=data1["count"]
-                print(i["noOfPosts"],'iiii11111111111111111111111')
+
                 i["noOfPosts"]=count
-                print( i["noOfPosts"], '====no of posts')
 
 
             Data = {"status":"true","message":"","result":data["result"]}
