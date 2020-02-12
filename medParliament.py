@@ -5306,7 +5306,25 @@ def deleteAboutUs():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
+@app.route('/allaboutUs', methods=['GET'])
+def allaboutUs():
+    try:
+        columns=" * "
+        
+        data = databasefile.SelectQueryMaxId("aboutUs",columns)
+       
 
+        if data:           
+            Data = {"status":"true","message":"","result":data["result"]}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output 
 
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
