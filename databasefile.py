@@ -232,7 +232,7 @@ def SelectQueryOrderby(table,columns,whereCondition,groupby,startlimit,endlimit,
     try:
         limitCondition= ""
                      
-        if whereCondition != "" and startlimit != "0":
+        if whereCondition != "":
             whereCondition = " where 1=1 " + whereCondition
         if startlimit != "" and endlimit != "":
             limitCondition = "  limit "+startlimit+","+endlimit
