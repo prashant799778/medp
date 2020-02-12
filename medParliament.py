@@ -5156,6 +5156,58 @@ def deleteSignUpVideo():
         return commonfile.Errormessage()
 
 
+@app.route('/aboutUs', methods=['POST'])
+def aboutUs():
+
+    try: 
+        startlimit,endlimit="",""   
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        
+        keyarr = ['description','contactNo','flag','id']
+        commonfile.writeLog("aboutUs",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+       
+        if msg == "1":      
+            description = inputdata["description"]
+            contactNo = inputdata["contactNo"]
+            aboutId = inputdata["id"]
+            flag = inputdata["flag"]
+            print('====',flag)
+        
+            WhereCondition = " and contactNo = '" + str(contactNo) + "'"
+            count = databasefile.SelectCountQuery("aboutUs",WhereCondition,"")
+            
+            if int(count) > 0:
+                print('F')         
+                return commonfile.aboutUsDescriptionAlreadyExistMsg()
+            else:
+
+                if flag == 'n':
+                    columns = " description,contactNo "          
+                    values = " '" + str(description) + "','" + str(contactNo) + "'"       
+                    data = databasefile.InsertQuery("aboutUs",columns,values)
+                    if data != "0":
+                        column = '*'
+                        WhereCondition = " and contactNo = '" + str(contactNo) + "' and description = '" + str(description) + "'"
+                        
+                        data11 = databasefile.SelectQuery("aboutUs",column,WhereCondition,"",startlimit,endlimit)
+                        return data11
+                if flag == 'u':
+                    WhereCondition = " and id = '" + str(aboutId) + "'"
+                    column = " contactNo = '" + str(contactNo) + "',description = '" + str(description) + "'"
+                    data = databasefile.UpdateQuery("aboutUs",column,WhereCondition)
+                    return data
+                else:
+                    return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+
 
 
 if __name__ == "__main__":
