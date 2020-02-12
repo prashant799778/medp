@@ -45,6 +45,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     implementation 'com.fxn769:pix:1.4.4'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+    implementation 'com.asksira.android:loopingviewpager:1.2.0'
 
 
 }

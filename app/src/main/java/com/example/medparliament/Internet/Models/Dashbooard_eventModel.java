@@ -3,12 +3,21 @@ package com.example.medparliament.Internet.Models;
 import java.io.Serializable;
 
 public class Dashbooard_eventModel implements Serializable {
+    String id;
     String DateCreate;
     String eventDate;
     String eventLocation;
     String eventTitle;
     String eventSummary;
     String imagePath;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getDateCreate() {
         return DateCreate;

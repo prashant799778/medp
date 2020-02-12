@@ -45,6 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:id="@+id/top1"
             android:layout_height="match_parent">
@@ -121,13 +122,26 @@
                     android:textSize="16dp"
                     android:textStyle="bold"
                     android:paddingLeft="20dp"
+                    android:layout_marginBottom="20dp"
                     android:text="@string/Annoucements"
                     android:layout_height="wrap_content">
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+                    <com.asksira.loopingviewpager.LoopingViewPager
+                        android:id="@+id/viewpager_announced"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        app:isInfinite="true"
+                        app:autoScroll="true"
+                        app:scrollInterval="5000"
+                        android:clipToPadding="false"
+                        app:viewpagerAspectRatio="1.78"
+                        app:itemAspectRatio="1.33"/>
                     <androidx.recyclerview.widget.RecyclerView
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:id="@+id/recycle_announced"
                         android:layout_marginTop="10dp"
@@ -144,10 +158,12 @@
                 </RelativeLayout>
             </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_below="@+id/cover"
                 android:id="@+id/news"
+
                 android:visibility="gone"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
@@ -165,11 +181,24 @@
                     android:layout_weight="1"
                     android:textStyle="bold"
                     android:paddingLeft="20dp"
+                    android:layout_marginBottom="20dp"
                     android:text="@string/Latest_News"
                     android:layout_height="wrap_content">
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
                 </LinearLayout>
+                <com.asksira.loopingviewpager.LoopingViewPager
+                    android:id="@+id/viewpager_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    app:isInfinite="true"
+                    app:autoScroll="true"
+                    app:scrollInterval="5000"
+                    android:clipToPadding="false"
+                    app:viewpagerAspectRatio="1.78"
+                    app:itemAspectRatio="1.33"/>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:id="@+id/recycle_news"
                     android:layout_marginTop="10dp"
@@ -189,9 +218,10 @@
                     android:layout_height="wrap_content">
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_below="@+id/cover"
+                android:layout_below="@+id/news"
                 android:id="@+id/video_layout"
                 android:visibility="gone"
                 android:layout_marginTop="20dp"
@@ -210,7 +240,8 @@
                         android:layout_weight="1"
                         android:textStyle="bold"
                         android:paddingLeft="20dp"
-                        android:text="@string/Latest_News"
+                        android:layout_marginBottom="20dp"
+                        android:text="@string/Latest_Video"
                         android:layout_height="wrap_content">
                     </com.example.medparliament.Widget.Segow_UI_Semi_Font>
 <!--                    <com.example.medparliament.Widget.Segow_UI_Semi_Font-->
@@ -226,7 +257,22 @@
 <!--                        android:layout_height="wrap_content">-->
 <!--                    </com.example.medparliament.Widget.Segow_UI_Semi_Font>-->
                 </LinearLayout>
+
+                <com.asksira.loopingviewpager.LoopingViewPager
+                    android:id="@+id/viewpager_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isInfinite="true"
+                    app:autoScroll="false"
+                    app:scrollInterval="5000"
+                    android:clipToPadding="false"
+                    app:viewpagerAspectRatio="1.78"
+                    app:itemAspectRatio="1.33"/>
+
+
+
                 <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:id="@+id/recycle_video"
                     android:layout_marginTop="10dp"
@@ -236,7 +282,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_below="@+id/news"
+                android:layout_below="@+id/video_layout"
                 android:id="@+id/Event"
                 android:visibility="gone"
                 android:layout_marginTop="20dp"
@@ -249,9 +295,22 @@
                     android:textStyle="bold"
                     android:paddingLeft="20dp"
                     android:text="@string/Event"
+                    android:layout_marginBottom="20dp"
                     android:layout_height="wrap_content">
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                <com.asksira.loopingviewpager.LoopingViewPager
+                    android:layout_marginHorizontal="20dp"
+                    android:id="@+id/viewpager_events"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isInfinite="true"
+                    app:autoScroll="true"
+                    app:scrollInterval="5000"
+                    android:clipToPadding="false"
+                    app:viewpagerAspectRatio="1.78"
+                    app:itemAspectRatio="1.33"/>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:id="@+id/recycle_event"
                     android:layout_marginTop="10dp"
@@ -263,6 +322,7 @@
                 android:layout_width="match_parent"
                 android:layout_below="@+id/Event"
                 android:id="@+id/gallery"
+
                 android:visibility="gone"
                 android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
@@ -275,9 +335,22 @@
                     android:textStyle="bold"
                     android:paddingLeft="20dp"
                     android:text="@string/Gallery"
+                    android:layout_marginBottom="20dp"
                     android:layout_height="wrap_content">
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                <com.asksira.loopingviewpager.LoopingViewPager
+                    android:id="@+id/viewpager_gallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:isInfinite="true"
+                    app:autoScroll="false"
+                    app:scrollInterval="5000"
+                    android:layout_marginHorizontal="20dp"
+                    android:clipToPadding="false"
+                    app:viewpagerAspectRatio="1.78"
+                    app:itemAspectRatio="1.33"/>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:id="@+id/recycle_gallery"
                     android:layout_marginTop="10dp"

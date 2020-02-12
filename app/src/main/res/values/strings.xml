@@ -8,6 +8,7 @@
     <string name="Login_with_Google">Login with Google</string>
     <string name="Email__Mobile_No">Email / Mobile No</string>
     <string name="Login">Login</string>
+    <string name="interest"> I Am Interested</string>
     <string name="Forgot_password">Forgot password ?</string>
     <string name="nopost">No post yet !!</string>
     <string name="nothread">No Thread yet !!</string>
@@ -68,7 +69,8 @@ want to sign up as</string>
     <string name="AnInitiativeOf">An Initiative Of </string>
     <string name="Others">Others</string>
     <string name="Save">Save</string>
-    <string name="Latest_News">Latest News</string>
+    <string name="Latest_News">Market Insight</string>
+    <string name="Latest_Video">Promising Initiatives</string>
     <string name="Define_in_200_words">Define in 200 words</string>
     <string name="Annoucements">Annoucements</string>
     <string name="Organisation">Organisation</string>

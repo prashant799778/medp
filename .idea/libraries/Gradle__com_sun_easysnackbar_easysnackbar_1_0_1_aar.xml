@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.sun.easysnackbar:easysnackbar:1.0.1@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8162e6a69fd34b62a1fd6bd25494662b/jetified-easysnackbar-1.0.1/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/aad9308f05cad793c3000c20e48dea7d/jetified-easysnackbar-1.0.1/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8162e6a69fd34b62a1fd6bd25494662b/jetified-easysnackbar-1.0.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8162e6a69fd34b62a1fd6bd25494662b/jetified-easysnackbar-1.0.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/aad9308f05cad793c3000c20e48dea7d/jetified-easysnackbar-1.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/aad9308f05cad793c3000c20e48dea7d/jetified-easysnackbar-1.0.1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sun.easysnackbar/easysnackbar/1.0.1/bb4bcd72aad71da692c472c6ee9526385890204c/easysnackbar-1.0.1-javadoc.jar!/" />

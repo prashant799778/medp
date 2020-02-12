@@ -136,6 +136,7 @@ attr arrowHeadLength
 attr arrowShaftLength
 attr autoCompleteTextViewStyle
 attr autoPlay
+attr autoScroll
 attr autoSizeMaxTextSize
 attr autoSizeMinTextSize
 attr autoSizePresetSizes
@@ -408,8 +409,10 @@ attr imageButtonStyle
 attr indeterminateProgressStyle
 attr initialActivityCount
 attr insetForeground
+attr isInfinite
 attr isLightTheme
 attr isMaterialTheme
+attr itemAspectRatio
 attr itemBackground
 attr itemHorizontalPadding
 attr itemHorizontalTranslationEnabled
@@ -571,6 +574,7 @@ attr scopeUris
 attr scrimAnimationDuration
 attr scrimBackground
 attr scrimVisibleHeightTrigger
+attr scrollInterval
 attr searchHintIcon
 attr searchIcon
 attr searchViewStyle
@@ -729,6 +733,7 @@ attr useMaterialThemeColors
 attr useWebUi
 attr videoId
 attr viewInflaterClass
+attr viewpagerAspectRatio
 attr voiceIcon
 attr windowActionBar
 attr windowActionBarOverlay
@@ -740,6 +745,7 @@ attr windowFixedWidthMinor
 attr windowMinWidthMajor
 attr windowMinWidthMinor
 attr windowNoTitle
+attr wrap_content
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
@@ -1517,6 +1523,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable placeholder
 drawable policybgbg
 drawable popup_btn_border
 drawable post
@@ -1868,6 +1875,7 @@ id on
 id oqualifiaction
 id organization
 id outline
+id over_lay
 id packed
 id pager_indicator
 id panel
@@ -2051,6 +2059,11 @@ id video_layout
 id video_title
 id view_offset_helper
 id viewpager
+id viewpager_announced
+id viewpager_events
+id viewpager_gallery
+id viewpager_news
+id viewpager_video
 id visible
 id vp_slider_layout
 id wide
@@ -2228,6 +2241,7 @@ layout test_layout
 layout test_reflow_chipgroup
 layout toolbar_layout
 layout top_snakbar
+layout video_item_layout
 menu dropdown
 mipmap ic_launcher
 mipmap ic_launcher_round
@@ -2279,6 +2293,7 @@ string Institution_Name
 string Interests
 string Know_Med
 string Latest_News
+string Latest_Video
 string Letgestarted
 string Login
 string Login_signup
@@ -2407,6 +2422,7 @@ string hide_bottom_view_on_scroll_behavior
 string hos_add
 string icon_content_description
 string institute
+string interest
 string message_to_drag_up
 string msg
 string mtrl_chip_close_icon_content_description
@@ -3075,6 +3091,7 @@ styleable LinearLayoutCompat android_gravity android_orientation android_baselin
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
+styleable LoopingViewPager autoScroll isInfinite itemAspectRatio scrollInterval viewpagerAspectRatio wrap_content
 styleable MaterialAlertDialog backgroundInsetBottom backgroundInsetEnd backgroundInsetStart backgroundInsetTop
 styleable MaterialButton android_insetLeft android_insetRight android_insetTop android_insetBottom backgroundTint backgroundTintMode cornerRadius icon iconGravity iconPadding iconSize iconTint iconTintMode rippleColor shapeAppearance shapeAppearanceOverlay strokeColor strokeWidth
 styleable MaterialCardView shapeAppearance shapeAppearanceOverlay strokeColor strokeWidth

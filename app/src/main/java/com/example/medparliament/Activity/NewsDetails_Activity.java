@@ -1,6 +1,7 @@
 package com.example.medparliament.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -30,6 +31,8 @@ import com.example.medparliament.Widget.Segow_UI_Semi_Font;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import io.fotoapparat.parameter.Flash;
+
 public class NewsDetails_Activity extends AppCompatActivity implements onResult {
     onResult onResult;
     String postId = "";
@@ -43,6 +46,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
     Dashbooard_eventModel eventModel;
     DashboardAnnouncedModel announcedModel;
     ImageView img;
+    AppCompatButton  ab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +56,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
 //        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 //        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         this.onResult = this;
+        ab=findViewById(R.id.interest);
         title = findViewById(R.id.title);
         date = findViewById(R.id.date);
         loc = findViewById(R.id.loc);
@@ -117,6 +122,31 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
 
  }
  if(eventModel != null){
+
+     ab.setVisibility(View.VISIBLE );
+     ab.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+              if(Comman.Check_Login(getApplicationContext())) {
+
+                  progressDialog = new ProgressDialog(NewsDetails_Activity.this);
+                  progressDialog.setMessage("Loading...");
+                  progressDialog.setCancelable(true);
+                  progressDialog.show();
+                  Api_Calling.postMethodCall_NO_MSG(getApplicationContext(), getWindow().getDecorView().getRootView(), onResult, URLS.seteventInterest, myPostJson(), "eventinterest");
+              }else{
+                  startActivity(new Intent(NewsDetails_Activity.this,Login_Signup_Activity.class));
+              finish();
+
+              }
+
+
+
+         }
+     });
+
+
+
      header.setText("EventDetails");
      if(eventModel.getImagePath()!=null && !eventModel.getImagePath().equalsIgnoreCase(""))
             img.setVisibility(View.VISIBLE);
@@ -184,5 +214,23 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
     public void onBackPressed() {
         super.onBackPressed();
         Animatoo.animateSwipeRight(NewsDetails_Activity.this);
+    }
+
+
+    public JSONObject myPostJson()
+    {
+        JSONObject jsonObject=new JSONObject();
+        try {
+            if(Comman.Check_Login(NewsDetails_Activity.this)){
+                jsonObject.put("userTypeId",m.getUserTypeId());
+                jsonObject.put("userId",m.getUserId());
+                jsonObject.put("eventId",eventModel.getId());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Comman.log("MyPOSTJSON",""+jsonObject);
+        return jsonObject;
+
     }
 }
