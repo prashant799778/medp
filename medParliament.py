@@ -5016,6 +5016,7 @@ def signUpVideo():
         commonfile.writeLog("galleryImages",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
+            column=""
             text=""
             ImagePath=""
             videoLink=""
@@ -5076,6 +5077,7 @@ def signUpVideo():
                     column = column+"text,userTypeId,imagePath"
                     values =values+   ",'" + str(text) + "','" + str(userTypeId) + "','" + str(ImagePath) + "'"
                     data = databasefile.InsertQuery("signUpVideo",column,values)
+            
             if flag =="u":
                 if "status" in inputdata:
                     if inputdata['status'] != "":
