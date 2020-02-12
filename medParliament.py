@@ -5089,9 +5089,6 @@ def signUpVideo():
                         column="videoLink='"+ str(videoLink)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',userTypeId='" + str(userTypeId) + "'"
                         data=databasefile.UpdateQuery("signUpVideo",column,whereCondition)
 
-
-
-
             if data !=0 :                
                 return data
             else:
