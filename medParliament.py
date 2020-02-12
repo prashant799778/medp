@@ -5055,7 +5055,8 @@ def signUpVideo():
                     #folder path to save campaign image
                     FolderPath = ConstantData.getSignUpVideo(filename)  
 
-                    filepath = '/signUpImage/' + filename    
+                    filepath = '/signUpImage/' + filename 
+                       
                     
 
                     file.save(FolderPath)
