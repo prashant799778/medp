@@ -10,6 +10,15 @@ public class Dashbooard_eventModel implements Serializable {
     String eventTitle;
     String eventSummary;
     String imagePath;
+    String likedId;
+
+    public String getLikedId() {
+        return likedId;
+    }
+
+    public void setLikedId(String likedId) {
+        this.likedId = likedId;
+    }
 
     public String getId() {
         return id;

@@ -55,6 +55,7 @@ public class Dashboard_video_adapter_new  extends LoopingPagerAdapter<Video_Mode
             final Video_Model pm = itemList.get(listPosition);
 
             YouTubePlayerView youTubePlayerView= convertView.findViewById(R.id.video);
+
             ImageView imageView=convertView.findViewById(R.id.image);
              final View over_lay = convertView.findViewById(R.id.over_lay);
              over_lay.setVisibility(View.GONE);
@@ -118,6 +119,8 @@ public class Dashboard_video_adapter_new  extends LoopingPagerAdapter<Video_Mode
 
                     @Override
                     public void onVideoId(@NotNull YouTubePlayer youTubePlayer, @NotNull String s) {
+
+
 
                     }
 

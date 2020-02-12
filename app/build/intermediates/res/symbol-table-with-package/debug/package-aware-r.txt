@@ -1630,6 +1630,7 @@ id async
 id auto
 id bach
 id back_and_forth
+id backgroundView
 id barrier
 id batch
 id bck
@@ -1705,6 +1706,7 @@ id dialog_button
 id dimensions
 id direct
 id disableHome
+id dismissView
 id doctor
 id done
 id drawerlayut
@@ -1877,6 +1879,7 @@ id organization
 id outline
 id over_lay
 id packed
+id pager
 id pager_indicator
 id panel
 id parallax
@@ -2204,6 +2207,7 @@ layout fragment_pending_
 layout fragment_rejected_
 layout gallery_layout
 layout header_row
+layout image_viewer
 layout inital_image
 layout items_view
 layout layout_custom

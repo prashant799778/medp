@@ -130,7 +130,7 @@ public class User_profile_Activity extends Base_Activity implements onResult {
 
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {
-        Log.d("user",jsonObject.toString());
+
 
 
         if(progressDialog!=null &&  progressDialog.isShowing())

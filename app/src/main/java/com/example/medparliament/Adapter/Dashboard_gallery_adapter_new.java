@@ -20,6 +20,7 @@ package com.example.medparliament.Adapter;
         import com.example.medparliament.Utility.PrettyTimeClass;
         import com.example.medparliament.Widget.Open_Sans_Regular_Font;
         import com.example.medparliament.Widget.Segow_UI_Semi_Font;
+        import com.stfalcon.frescoimageviewer.ImageViewer;
 
         import java.util.ArrayList;
 
@@ -40,7 +41,10 @@ public class Dashboard_gallery_adapter_new  extends LoopingPagerAdapter<Dashboar
     //You can assume convertView will not be null here.
     //You may also consider using a ViewHolder pattern.
     @Override
-    protected void bindView(View convertView, int listPosition, int viewType) {
+    protected void bindView(View convertView, final int listPosition, int viewType) {
+
+        final String[] st=new String[itemList.size()];
+
         if(convertView!=null) {
 
             ImageView imageView;
@@ -49,6 +53,17 @@ public class Dashboard_gallery_adapter_new  extends LoopingPagerAdapter<Dashboar
 
             final DashboardGalleryModel pm= itemList.get(listPosition);
             Comman.setRectangleImage(context,imageView,pm.getImagePath());
+
+
+            st[listPosition]=pm.getImagePath();
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    new ImageViewer.Builder(context,st)
+//                            .setStartPosition(listPosition)
+//                            .show();
+                }
+            });
 
 
         }

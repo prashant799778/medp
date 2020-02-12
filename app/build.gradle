@@ -46,6 +46,7 @@ dependencies {
     implementation 'com.fxn769:pix:1.4.4'
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
     implementation 'com.asksira.android:loopingviewpager:1.2.0'
+    implementation  'com.github.stfalcon:frescoimageviewer:0.5.0'
 
 
 }

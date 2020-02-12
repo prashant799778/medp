@@ -173,5 +173,6 @@
     <orderEntry type="library" name="Gradle: com.github.MdFarhanRaja:SearchableSpinner:2.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: io.fotoapparat:fotoapparat:2.7.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.asksira.android:loopingviewpager:1.2.0@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.stfalcon:frescoimageviewer:0.5.0@aar" level="project" />
   </component>
 </module>

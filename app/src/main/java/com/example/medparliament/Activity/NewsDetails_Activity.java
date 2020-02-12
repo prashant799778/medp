@@ -93,6 +93,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {
         progressDialog.dismiss();
+        ab.setText("Already Intrested");
 //        if (jsonObject != null && status) {
 //            try {
 //                JSONObject jo = jsonObject.getJSONArray("result").getJSONObject(0);
@@ -122,28 +123,35 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
 
  }
  if(eventModel != null){
-
+       Log.d("AAAAAAA",eventModel.toString());
      ab.setVisibility(View.VISIBLE );
-     ab.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-              if(Comman.Check_Login(getApplicationContext())) {
-
-                  progressDialog = new ProgressDialog(NewsDetails_Activity.this);
-                  progressDialog.setMessage("Loading...");
-                  progressDialog.setCancelable(true);
-                  progressDialog.show();
-                  Api_Calling.postMethodCall_NO_MSG(getApplicationContext(), getWindow().getDecorView().getRootView(), onResult, URLS.seteventInterest, myPostJson(), "eventinterest");
-              }else{
-                  startActivity(new Intent(NewsDetails_Activity.this,Login_Signup_Activity.class));
-              finish();
-
-              }
+     if(eventModel.getLikedId()!=null &&  Integer.valueOf(eventModel.getLikedId())>0){
+         ab.setText("Already Intrested");
+      }else{
 
 
+         ab.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 if(Comman.Check_Login(getApplicationContext())) {
 
-         }
-     });
+                     progressDialog = new ProgressDialog(NewsDetails_Activity.this);
+                     progressDialog.setMessage("Loading...");
+                     progressDialog.setCancelable(true);
+                     progressDialog.show();
+                     Api_Calling.postMethodCall_NO_MSG(getApplicationContext(), getWindow().getDecorView().getRootView(), onResult, URLS.seteventInterest, myPostJson(), "eventinterest");
+                 }else{
+                     startActivity(new Intent(NewsDetails_Activity.this,Login_Signup_Activity.class));
+                     finish();
+
+                 }
+
+
+
+             }
+         });
+     }
+
 
 
 
