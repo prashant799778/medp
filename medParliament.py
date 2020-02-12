@@ -3251,7 +3251,7 @@ def verifyPost123():
         print("mmmmmmmmmmm")
         startlimit,endlimit="",""
         print("111111111111111111111111")
-        keyarr = ['userId','postId','userTypeId']
+        keyarr = ['userId','eventId','userTypeId']
         commonfile.writeLog("verifyPost",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         print("22222222222222222222222")
