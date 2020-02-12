@@ -4859,6 +4859,7 @@ def promisingInitiatives():
         if msg =="1":
             text=""
             videoLink=""
+            ImagePath=""
             flag=inputdata['flag']
             if "text" in inputdata:
                 if inputdata['text'] != "":
