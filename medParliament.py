@@ -4010,7 +4010,8 @@ def landingPageDashboard():
             data3["result"]=[]
 
         column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,videoPath,text,UserCreate  "
-        data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition,"",startlimit,endlimit)
+        WhereCondition2= " and Status<2"
+        data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"",startlimit,endlimit)
         print(data4)
 
         if data4["result"]=="":
