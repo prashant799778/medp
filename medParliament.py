@@ -336,7 +336,7 @@ def SignUp():
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
 
                         
-                        if (y["userTypeId"]== 12):
+                        if (y["userTypeId"]== 13):
                             message = Mail(
                                 from_email = 'medParliament@gmail.com',
                                 to_emails = str(y['email']),
@@ -609,6 +609,16 @@ def SignUp1():
                                 column="userId,userTypeId,interestId"
                                 values=" '" + str(y["userId"]) + "','" + str('9') + "','" + str(i) + "'"
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
+
+                        if (y["userTypeId"]== 13):
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+                            
 
 
 
