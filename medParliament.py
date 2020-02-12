@@ -3984,6 +3984,9 @@ def landingPageDashboard():
 
         if data4["result"]=="":
             data4["result"]=[]
+            for i in data4['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
 
 
         if data != "0":
