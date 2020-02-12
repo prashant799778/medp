@@ -47,6 +47,11 @@ def likeAlreadyExistMsg():
     return data
 
 
+def EventInterstAlreadyExistMsg():
+    data = {"status":"false","message":"You have  Already Interested Event","result":""}
+    return data
+
+
 
 def CountryAlreadyExistMsg():
     data = {"status":"false","message":"Country Already Exists","result":""}
