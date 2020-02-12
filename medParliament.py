@@ -4872,7 +4872,7 @@ def promisingInitiatives():
         inputdata = request.form.get('data')    
         inputdata = json.loads(inputdata) 
         startlimit,endlimit="",""
-        keyarr = ["userId","flag"]
+        keyarr = ["flag"]
         
         commonfile.writeLog("promisingInitiatives",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
