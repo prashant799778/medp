@@ -3810,23 +3810,21 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId==13:
-                print(">>>>>>>>>>>>>1<<<<<<<<<<<<<<")
-                column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
+                column="um.mobileNo as mobileNo, um.userName as userName,um.password as password, um.profilePic as profilePic, um.userId,um.gender,um.email,um.status,"
                 column=column+"um.countryId,cm.countryName"
                 startlimit,endlimit="",""
                 WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId "
                 data1 = databasefile.SelectQueryOrderby("userMaster um,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
-                print(">>>>>>>>>>>>>2<<<<<<<<<<<<<<")
                 print(data1)
-                # if data1["result"][0]["profilePic"]==None:
-                #     print(">>>>>>>>>>>>>3<<<<<<<<<<<<<<")
-                #     data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
-                #     print(">>>>>>>>>>>>>4<<<<<<<<<<<<<<")
-                # else:
-                #     # data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
-                #     print(">>>>>>>>>>>>>3<<<<<<<<<<<<<<")
-                #     data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
-                #     print(">>>>>>>>>>>>>5<<<<<<<<<<<<<<")
+                if data1["result"][0]["profilePic"]==None:
+                    print(">>>>>>>>>>>>>3<<<<<<<<<<<<<<")
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                    print(">>>>>>>>>>>>>4<<<<<<<<<<<<<<")
+                else:
+                    # data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
+                    print(">>>>>>>>>>>>>3<<<<<<<<<<<<<<")
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                    print(">>>>>>>>>>>>>5<<<<<<<<<<<<<<")
                 data2={"userProfile":data1["result"],"userPost":""}
                 print(">>>>>>>>>>>>>6<<<<<<<<<<<<<<")
                 data3={"status":"true","message":"","result":data2}
