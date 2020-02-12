@@ -49,6 +49,26 @@ def announcementsImage(image_name):
     except FileNotFoundError:
         abort(404)
 
+
+
+@app.route("/promisingEvent/<image_name>")
+def promisingEvent(image_name):
+    try:
+        return send_from_directory('promisingEvent', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
+
+
+
+@app.route("/signUpVideo/<image_name>")
+def signUpVideo(image_name):
+    try:
+        return send_from_directory('signUpVideo', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
+
 @app.route("/newsimages/<image_name>")
 def newsimages(image_name):
     try:
@@ -4924,7 +4944,7 @@ def promisingInitiatives():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         whereCondition=" and  id='" + str(Id) + "'"
-                        column="videoPath='"+ str(videoPath)+  "',status='"+ str(status)+  "',text='" + str(text) + "',imagePath='" + str(ImagePath) + "'"
+                        column="videoPath='"+ str(videoPath)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',imagePath='" + str(ImagePath) + "'"
                         data=databasefile.UpdateQuery("promisingInitiatives",column,whereCondition)
 
             if data !=0 :                
@@ -4945,8 +4965,10 @@ def promisingInitiatives():
 def getpromisingInitiatives():
 
     try:        
+        
         WhereCondition,startlimit,endlimit="","",""
         WhereCondition=WhereCondition+" and Status<2"
+        
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
@@ -4962,6 +4984,7 @@ def getpromisingInitiatives():
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
+        
         
         column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,videoPath,text,UserCreate  "
         data = databasefile.SelectQuery("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit)
@@ -4988,11 +5011,14 @@ def signUpVideo():
         commonfile.writeLog("galleryImages",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
+            text=""
+            ImagePath=""
             videoLink=""
             flag=inputdata['flag']
             if "text" in inputdata:
                 if inputdata['text'] != "":
                     text =inputdata["text"]
+            
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
@@ -5003,22 +5029,47 @@ def signUpVideo():
                     print("2222222222222222")
                     videoLink =inputdata["videoLink"]
                     if videoLink[0:24]!="https://www.youtube.com/":
-                        print("3333333333333333333")
-                        return {"message":"Please upload only youtube Link","result":"","status":"False"}
-                    else:
+                        videoLink=""
                         column=" videoLink,"
                         values="'" +str(videoLink)+"'"
             
+                      
+                    else:
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"'"
+
+            if 'postImage' in request.files:      
+                    file = request.files.get('postImage')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getSignUpVideo(filename)  
+
+                    filepath = '/signUpVideo/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            
+            
+            
             if flag =="i":
                 if "userId" in inputdata:
+                    column='Status=2'
+                    whereCondition=" and userTypeId='" + str(userTypeId) + "'"
+                    data5=databasefile.UpdateQuery('signUpVideo',column,whereCondition)
+                    
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
-                    column = column+"UserCreate,text,userTypeId"
-                    values =values+ ",'" + str(userId) + "','" + str(text) + "','" + str(userTypeId) + "'"
+                    column = column+"UserCreate,text,userTypeId,imagePath"
+                    values =values+ ",'" + str(userId) + "','" + str(text) + "','" + str(userTypeId) + "','" + str(ImagePath) + "'"
                     data = databasefile.InsertQuery("signUpVideo",column,values)        
                 else:
-                    column = column+"text,userTypeId"
-                    values =values+   ",'" + str(text) + "','" + str(userTypeId) + "'"
+                    column = column+"text,userTypeId,imagePath"
+                    values =values+   ",'" + str(text) + "','" + str(userTypeId) + "','" + str(ImagePath) + "'"
                     data = databasefile.InsertQuery("signUpVideo",column,values)
             if flag =="u":
                 if "status" in inputdata:
@@ -5035,7 +5086,7 @@ def signUpVideo():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         whereCondition=" and  id='" + str(Id) + "'"
-                        column="videoLink='"+ str(videoLink)+  "',status='"+ str(status)+  "',text='" + str(text) + "',userTypeId='" + str(userTypeId) + "'"
+                        column="videoLink='"+ str(videoLink)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',userTypeId='" + str(userTypeId) + "'"
                         data=databasefile.UpdateQuery("signUpVideo",column,whereCondition)
 
 
