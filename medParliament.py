@@ -4870,7 +4870,11 @@ def promisingInitiatives():
                     videoLink =inputdata["videoLink"]
                     if videoLink[0:24]!="https://www.youtube.com/":
                         print("3333333333333333333")
-                        return {"message":"Please upload only youtube Link","result":"","status":"False"}
+                        videoLink=""
+                        column=" videoPath,"
+                        values="'" +str(videoLink)+"'"
+
+                        
                     else:
                         column=" videoPath,"
                         values="'" +str(videoLink)+"'"
@@ -4891,6 +4895,10 @@ def promisingInitiatives():
                     file.save(FolderPath)
                     ImagePath = filepath
             
+            
+
+
+
             if flag =="i":
                 if "userId" in inputdata:
                     if inputdata['userId'] != "":
