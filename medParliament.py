@@ -5069,7 +5069,7 @@ def deletePromisingInitiatives():
                 WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
         if msg == "1":                        
             
-            data = databasefile.DeleteQuery("parliamentEvent",WhereCondition)
+            data = databasefile.DeleteQuery("promisingInitiatives",WhereCondition)
 
             if data != "0":
                 return data
