@@ -5037,12 +5037,12 @@ def signUpVideo():
                     videoLink =inputdata["videoLink"]
                     if videoLink[0:24]!="https://www.youtube.com/":
                         videoLink=""
-                        column=" videoLink,"
+                        column=" videoLink"
                         values="'" +str(videoLink)+"'"
             
                       
                     else:
-                        column=" videoLink,"
+                        column=" videoLink"
                         values="'" +str(videoLink)+"'"
 
             if 'postImage' in request.files:      
@@ -5071,11 +5071,11 @@ def signUpVideo():
                     
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
-                    column = column+"UserCreate,text,userTypeId,imagePath"
+                    column = column+",UserCreate,text,userTypeId,imagePath"
                     values =values+ ",'" + str(userId) + "','" + str(text) + "','" + str(userTypeId) + "','" + str(ImagePath) + "'"
                     data = databasefile.InsertQuery("signUpVideo",column,values)        
                 else:
-                    column = column+"text,userTypeId,imagePath"
+                    column = column+",text,userTypeId,imagePath"
                     values =values+   ",'" + str(text) + "','" + str(userTypeId) + "','" + str(ImagePath) + "'"
                     data = databasefile.InsertQuery("signUpVideo",column,values)
             
