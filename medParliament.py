@@ -3470,13 +3470,16 @@ def updateStatus1():
 
             else:
                 column="status='0'"
+                print("iiiiiiiiiiiiiiiiiiiiiiii")
                 message = Mail(
                                 from_email = 'medParliament@gmail.com',
                                 to_emails = str(email),
                                 subject = "Account Activated",
                                 html_content = '<strong>Congratulations! Your account has been activated successfully </strong> <br> .<br> Thanks,medParliament Team')
                 sg = SendGridAPIClient('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')
+                print("iiiiiiiiiiiiiijjjjjjjjiiiiiiiiii")
                 response = sg.send(message)
+                print("iiiiiiiiiiiiiiiiiiiiiiiikkkkkkkk")
                 whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "' and userId = '" + str(userId)+ "' "
                 output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
                 output=output1    
