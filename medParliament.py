@@ -4967,7 +4967,7 @@ def signUpVideo():
                         print("3333333333333333333")
                         return {"message":"Please upload only youtube Link","result":"","status":"False"}
                     else:
-                        column=" videoLink"
+                        column=" videoLink,"
                         values="'" +str(videoLink)+"'"
             
             if flag =="i":
