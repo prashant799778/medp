@@ -5035,7 +5035,7 @@ def signUpVideo():
                 if (inputdata['videoLink'] != None) :
                     print("2222222222222222")
                     videoLink =inputdata["videoLink"]
-                    if videoLink[0:24]!="https://www.youtube.com/":
+                    if videoLink=="":
                         videoLink=""
                         column=" videoLink,"
                         values="'" +str(videoLink)+"',"
