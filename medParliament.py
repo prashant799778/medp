@@ -4091,9 +4091,9 @@ def landingPageDashboard():
             data2["result"]=[]
 
         print("1111----")
-        WhereCondition1 = " on ev.eventId = pm.id " 
-        column3 = "id,Status,UserCreate,eventTitle, eventSummary, pm.id as likedId, eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data3 = databasefile.SelectQueryOrderby("parliamentEvent pm left outer join eventInterest ev",column3,WhereCondition1,"",startlimit,endlimit,orderby)
+        WhereCondition1 = " on pm.eventId = ev.id " 
+        column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary, pm.id as likedId,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data3 = databasefile.SelectQueryOrderby("parliamentEvent ev left outer join eventInterest pm",column3,WhereCondition1,"",startlimit,endlimit,orderby)
         
         if data3["result"]=="":
             data3["result"]=[]
