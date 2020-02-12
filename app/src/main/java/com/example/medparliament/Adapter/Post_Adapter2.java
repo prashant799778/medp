@@ -84,12 +84,12 @@ public class Post_Adapter2  extends RecyclerView.Adapter<Post_Adapter2.Notificat
                 context.startActivity(i);
             }
         });
-        holder.likleCount.setText("Endorse "+pm.getLike()+"  (Students)");
+        holder.likleCount.setText("("+pm.getLike()+")");
 //        setRed(holder.likleCount,pm.getLike().toString()," Indorse");
         if(pm.getLikeStatus()!=null) {
             if (Integer.parseInt(pm.getLikeStatus())==1){
                 holder.like.setEnabled(false);
-            holder.like.setImageResource(R.drawable.ic_after_like);
+            holder.like.setImageResource(R.drawable.after);
             }
         }
         Comman.log("DDD","ddddd"+pm.getLikeStatus());

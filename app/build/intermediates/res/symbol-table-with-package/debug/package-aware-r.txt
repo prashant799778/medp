@@ -1354,6 +1354,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable after
 drawable alpha
 drawable avd_hide_password
 drawable avd_show_password
@@ -1482,6 +1483,7 @@ drawable ic_phone
 drawable ic_photo_camera
 drawable ic_pin
 drawable ic_qualification
+drawable ic_question
 drawable ic_red1
 drawable ic_school_1
 drawable ic_school__1
@@ -1517,6 +1519,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable placeholder
 drawable policybgbg
 drawable popup_btn_border
 drawable post
@@ -1550,6 +1553,7 @@ id FUNCTION
 id META
 id SHIFT
 id SYM
+id about
 id about_profile
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -1766,6 +1770,7 @@ id imageViewIcon
 id imageViewplaces
 id img
 id img1
+id img11
 id img_count
 id info
 id instantRecyclerView
@@ -1915,6 +1920,7 @@ id save
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
+id scalableVideoView
 id scale
 id scale_down
 id screen
@@ -1952,6 +1958,7 @@ id showTitle
 id signup
 id sim_txt
 id simple_text
+id skip
 id slide
 id smallLabel
 id snackbar_action
@@ -2232,6 +2239,7 @@ menu dropdown
 mipmap ic_launcher
 mipmap ic_launcher_round
 raw ayp_youtube_player
+raw video
 string AboutUs
 string About_Your_Profile
 string Address
@@ -2320,6 +2328,7 @@ string Type_Description
 string University
 string University_Address
 string University_name
+string Write
 string Write_Your_Post
 string Write_Your_Reply
 string abc_action_bar_home_description
@@ -2431,6 +2440,7 @@ string pix_tap_to_select
 string search_menu_title
 string selectType
 string selection_limiter_pix
+string skip
 string status_bar_notification_info_overflow
 string text_Login_SignUp
 string title

@@ -15,6 +15,7 @@
     <string name="Enter_Med">Enter MedParliament</string>
     <string name="From">From</string>
     <string name="TO">To</string>
+    <string name="Write">Write To MedParliament</string>
     <string name="Remember_Me">Remember Me</string>
     <string name="Password">Password</string>
     <string name="Get_Started">Get Started</string>
@@ -96,6 +97,7 @@ want to sign up as</string>
     <string name="Rate_Now">Rate Now</string>
     <string name="MY_POST">My Posts</string>
     <string name="yes">Yes</string>
+    <string name="skip">Skip</string>
     <string name="News">News</string>
     <string name="Comapny_Name">Company Name</string>
     <string name="Dashboard">Dashboard</string>

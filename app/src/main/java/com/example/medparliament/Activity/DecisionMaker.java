@@ -1,5 +1,6 @@
 package com.example.medparliament.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -10,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
@@ -24,6 +27,10 @@ import com.example.medparliament.Utility.Constant;
 import com.example.medparliament.Utility.MySharedPrefrence;
 import com.example.medparliament.Widget.Segow_UI_EditText;
 import com.example.medparliament.Widget.Segow_UI_Font;
+import com.example.medparliament.Widget.Segow_UI_Semi_Font;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,6 +53,16 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
     ImageButton bck;
     MySharedPrefrence m;
     ArrayList<String> genderList=new ArrayList<>();
+
+
+    VideoListener videoListener;
+    ImageView image;
+    YouTubePlayerView videoView;
+    LinearLayout ll;
+    Segow_UI_Semi_Font title;
+    JSONObject jsonObject1 = new JSONObject();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +93,14 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
         genderList.add("Male");
         genderList.add("Female");
         genderList.add("Other");
+
+
+        this.videoListener=this;
+        image=findViewById(R.id.image);
+        ll=findViewById(R.id.ll);
+        videoView = (YouTubePlayerView) findViewById(R.id.video);
+        title = findViewById(R.id.videoTitle);
+
         Api_Calling.getALLCountry(DecisionMaker.this,getWindow().getDecorView().getRootView(), URLS.ALL_COUNTRY);
         Comman.setMandatory(name,DecisionMaker.this.getResources().getString(R.string.Name));
         Comman.setMandatory(designation,DecisionMaker.this.getResources().getString(R.string.Designation));
@@ -96,12 +121,15 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
 
         Comman.setMandatoryTextView(country,DecisionMaker.this.getResources().getString(R.string.Country));
         Comman.setMandatoryTextView(gender,DecisionMaker.this.getResources().getString(R.string.gender));
+        Api_Calling.videoApiCalling(DecisionMaker.this, getWindow().getDecorView().getRootView(), URLS.getSignUpVideo, videoJson(), videoListener);
+
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         Animatoo.animateSwipeRight(DecisionMaker.this);
+        videoView.release();
     }
     @Override
     public void onClick(View v) {
@@ -203,6 +231,7 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
 //                m.setUserTypeId(Comman.getValueFromJsonObject(jsonObject1, "userTypeId"));
 //                m.setUserProfile(Comman.getValueFromJsonObject(jsonObject1, "profilePic"));
                 Comman.log("USername", "dsfa" + m.getUserName());
+                videoView.release();
                 Intent i = new Intent(DecisionMaker.this, Login_Activity.class);
                 i.putExtra("username", "" + Comman.getValueFromJsonObject(jsonObject1, "userName"));
                 startActivity(i);
@@ -255,5 +284,60 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
     @Override
     public void onVideoResult(JSONObject jsonObject, Boolean status) {
 
+
+        if (status && jsonObject != null) {
+            try {
+                jsonObject1 = jsonObject.getJSONArray("result").getJSONObject(0);
+                if (Comman.getValueFromJsonObject(jsonObject1, "text").equalsIgnoreCase("")) {
+                    title.setVisibility(View.GONE);
+                } else {
+                    title.setVisibility(View.VISIBLE);
+                    title.setText(Comman.getValueFromJsonObject(jsonObject1, "text"));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Comman.log("llllltext",""+Comman.getValueFromJsonObject(jsonObject1,"text"));
+            Comman.log("lllll",""+Comman.getValueFromJsonObject(jsonObject1,"imagePath"));
+            if(Comman.getValueFromJsonObject(jsonObject1,"imagePath").equalsIgnoreCase(""))
+            {
+                image.setVisibility(View.GONE);
+            }else {
+                image.setVisibility(View.VISIBLE);
+                Comman.setRectangleImage(DecisionMaker.this,image,Comman.getValueFromJsonObject(jsonObject1,"imagePath"));
+            }
+            if(Comman.getValueFromJsonObject(jsonObject1,"videoId").equalsIgnoreCase(""))
+            {
+                Comman.log("ffffIFFFFFF",""+Comman.getValueFromJsonObject(jsonObject1,"videoId"));
+                videoView.setVisibility(View.GONE);
+            }else {
+                videoView.setVisibility(View.VISIBLE);
+                videoView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+                    @Override
+                    public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+//                        youTubePlayer.cueVideo("fGleUo_95zk", 0);
+                        youTubePlayer.cueVideo(Comman.getValueFromJsonObject(jsonObject1,"videoId"),0);
+                    }
+                });
+            }
+            if(Comman.getValueFromJsonObject(jsonObject1,"videoId").equalsIgnoreCase("") && Comman.getValueFromJsonObject(jsonObject1,"imagePath").equalsIgnoreCase(""))
+            {
+                ll.setVisibility(View.GONE);
+            }else {
+                ll.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    public JSONObject videoJson()
+    {
+        JSONObject jsonObject=new JSONObject();
+        try {
+            jsonObject.put("userTypeId","0");
+            Comman.log("Video",""+jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
     }
 }

@@ -31,4 +31,5 @@ public class URLS {
     public static String verifyOtp=BASE_URL+"verifyOtp";
     public static String updatePassword=BASE_URL+"updatePassword";
     public static String getSignUpVideo=BASE_URL+"getSignUpVideo";
+    public static String aboutUs=BASE_URL+"allaboutUs";
 }

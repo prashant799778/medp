@@ -1,5 +1,6 @@
 package  com.example.medparliament.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -10,12 +11,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
 import com.example.medparliament.Internet.Api_Calling;
 import com.example.medparliament.Internet.URLS;
+import com.example.medparliament.Internet.VideoListener;
 import com.example.medparliament.Internet.onResult;
 import com.example.medparliament.R;
 import com.example.medparliament.Utility.Comman;
@@ -23,6 +27,10 @@ import com.example.medparliament.Utility.Constant;
 import com.example.medparliament.Utility.MySharedPrefrence;
 import com.example.medparliament.Widget.Segow_UI_EditText;
 import com.example.medparliament.Widget.Segow_UI_Font;
+import com.example.medparliament.Widget.Segow_UI_Semi_Font;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +41,7 @@ import java.util.ArrayList;
 import in.galaxyofandroid.spinerdialog.OnSpinerItemClick;
 import in.galaxyofandroid.spinerdialog.SpinnerDialog;
 
-public class Professonal_signup_Activity extends AppCompatActivity implements View.OnClickListener, onResult {
+public class Professonal_signup_Activity extends AppCompatActivity implements View.OnClickListener, onResult, VideoListener {
     Segow_UI_EditText name,address,designation,mobile,email,pwd,cnf_pwd,area_of_activity,define,companyName,expertise;
     Button signUp;
     ArrayList<String>genderList=new ArrayList<>();
@@ -44,6 +52,14 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
     JSONArray doctorIdArray;
     SpinnerDialog spinnerDialog;
     ImageButton bck;
+
+    VideoListener videoListener;
+    ImageView image;
+    YouTubePlayerView videoView;
+    LinearLayout ll;
+    Segow_UI_Semi_Font title;
+    JSONObject jsonObject1 = new JSONObject();
+
     MySharedPrefrence m;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +92,14 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
         googleLogin.setOnClickListener(this);
         gender.setOnClickListener(this);
         profile_category.setOnClickListener(this);
+
+        this.videoListener=this;
+        image=findViewById(R.id.image);
+        ll=findViewById(R.id.ll);
+        videoView = (YouTubePlayerView) findViewById(R.id.video);
+        title = findViewById(R.id.videoTitle);
+
+
         bck=findViewById(R.id.bck);
         bck.setOnClickListener(this);
         genderList.add("Male");
@@ -112,6 +136,7 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
         if(Api_Calling.QualificationList.size()==0)
             Api_Calling.getQualificationListData(Professonal_signup_Activity.this,getWindow().getDecorView().getRootView(), URLS.ALL_QUALIFICATION);
         Api_Calling.getALLCountry(Professonal_signup_Activity.this,getWindow().getDecorView().getRootView(),URLS.ALL_COUNTRY);
+        Api_Calling.videoApiCalling(Professonal_signup_Activity.this, getWindow().getDecorView().getRootView(), URLS.getSignUpVideo, videoJson(), videoListener);
 
 
     }
@@ -251,8 +276,8 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
     public void onBackPressed() {
         super.onBackPressed();
         Animatoo.animateSwipeRight(Professonal_signup_Activity.this);
+        videoView.release();
     }
-
     @Override
     public void onResult(JSONObject jsonObject,Boolean status) {
         progressDialog.dismiss();
@@ -271,6 +296,7 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
 //                m.setUserTypeId(Comman.getValueFromJsonObject(jsonObject1, "userTypeId"));
 //                m.setUserProfile(Comman.getValueFromJsonObject(jsonObject1, "profilePic"));
                 Comman.log("USername", "dsfa" + m.getUserName());
+                videoView.release();
                 Intent i = new Intent(Professonal_signup_Activity.this, Login_Activity.class);
                 i.putExtra("username", "" + Comman.getValueFromJsonObject(jsonObject1, "userName"));
                 startActivity(i);
@@ -313,4 +339,60 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
         return jsonObject;
     }
 
+    @Override
+    public void onVideoResult(JSONObject jsonObject, Boolean status) {
+        if (status && jsonObject != null) {
+            try {
+                jsonObject1 = jsonObject.getJSONArray("result").getJSONObject(0);
+                if (Comman.getValueFromJsonObject(jsonObject1, "text").equalsIgnoreCase("")) {
+                    title.setVisibility(View.GONE);
+                } else {
+                    title.setVisibility(View.VISIBLE);
+                    title.setText(Comman.getValueFromJsonObject(jsonObject1, "text"));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Comman.log("llllltext",""+Comman.getValueFromJsonObject(jsonObject1,"text"));
+            Comman.log("lllll",""+Comman.getValueFromJsonObject(jsonObject1,"imagePath"));
+            if(Comman.getValueFromJsonObject(jsonObject1,"imagePath").equalsIgnoreCase(""))
+            {
+                image.setVisibility(View.GONE);
+            }else {
+                image.setVisibility(View.VISIBLE);
+                Comman.setRectangleImage(Professonal_signup_Activity.this,image,Comman.getValueFromJsonObject(jsonObject1,"imagePath"));
+            }
+            if(Comman.getValueFromJsonObject(jsonObject1,"videoId").equalsIgnoreCase(""))
+            {
+                Comman.log("ffffIFFFFFF",""+Comman.getValueFromJsonObject(jsonObject1,"videoId"));
+                videoView.setVisibility(View.GONE);
+            }else {
+                videoView.setVisibility(View.VISIBLE);
+                videoView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+                    @Override
+                    public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+//                        youTubePlayer.cueVideo("fGleUo_95zk", 0);
+                        youTubePlayer.cueVideo(Comman.getValueFromJsonObject(jsonObject1,"videoId"),0);
+                    }
+                });
+            }
+            if(Comman.getValueFromJsonObject(jsonObject1,"videoId").equalsIgnoreCase("") && Comman.getValueFromJsonObject(jsonObject1,"imagePath").equalsIgnoreCase(""))
+            {
+                ll.setVisibility(View.GONE);
+            }else {
+                ll.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+    public JSONObject videoJson()
+    {
+        JSONObject jsonObject=new JSONObject();
+        try {
+            jsonObject.put("userTypeId","9");
+            Comman.log("Video",""+jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
 }

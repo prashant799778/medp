@@ -71,7 +71,44 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_below="@+id/cup"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:id="@+id/ll"
+                android:layout_marginHorizontal="34dp"
+                android:layout_height="220dp">
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/video"
+                    android:layout_height="match_parent"
+                    app:autoPlay="false"
+                    android:visibility="gone"
+                    android:background="@color/white"
+                    app:showYouTubeButton="true">
+                </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:id="@+id/image"
+                    android:visibility="gone"
+                    android:scaleType="centerCrop"
+                    android:layout_height="match_parent">
+                </ImageView>
+            </LinearLayout>
+            <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:visibility="gone"
+                android:id="@+id/videoTitle"
+                android:layout_marginHorizontal="34dp"
+                android:layout_below="@+id/ll"
+                android:textColor="@color/white"
+                android:textSize="20dp">
+            </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/ll"
                 android:layout_marginTop="10dp"
+                android:visibility="visible"
                 android:orientation="vertical"
                 android:layout_marginHorizontal="@dimen/rightMargin"
                 android:layout_height="wrap_content">

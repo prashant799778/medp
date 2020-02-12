@@ -65,6 +65,7 @@ import io.fotoapparat.parameter.Flash;
 
 public class DashBoard_Activity extends AppCompatActivity implements onResult {
     ListView listView;
+    RelativeLayout about;
     ImageView arrow;
     Segow_UI_Semi_Font moreNews;
     LinearLayout news,announce,event,gallery;
@@ -87,7 +88,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
     ImageView setting;
     CircleImageView profile;
     ProgressDialog progressDialog;
-    FloatingActionButton cmnt;
+    RelativeLayout cmnt;
     Dashboard_News_Adapter dashboard_news_adapter;
     LinearLayoutManager news_manager,gallery_Manager,announced_manage,event_manager;
     GalleryAdapter galleryAdapter;
@@ -104,6 +105,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
         login_signup=findViewById(R.id.login_signup);
         cmnt=findViewById(R.id.cmnt);
         logout=findViewById(R.id.logout);
+        about=findViewById(R.id.about);
         setting=findViewById(R.id.setting);
         arrow=findViewById(R.id.arrow);
         if(Comman.Check_Login(DashBoard_Activity.this)){
@@ -112,6 +114,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
            logout.setVisibility(View.VISIBLE);
             setting.setVisibility(View.VISIBLE);
             login_signup.setVisibility(View.GONE);
+            about.setVisibility(View.GONE);
         }else{
             setting.setVisibility(View.VISIBLE);
             cmnt.setVisibility(View.GONE);
@@ -401,12 +404,12 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
                 break;
 
             case 3:
-                if(Comman.Check_Login(DashBoard_Activity.this)) {
+//                if(Comman.Check_Login(DashBoard_Activity.this)) {
+                    startActivity(new Intent(DashBoard_Activity.this, AboutUsActivity.class));
 
-                }else{
-                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
-                }
-
+//                }else{
+//                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
+//                }
                 drawerLayout.closeDrawers();
                 break;
             case 4:

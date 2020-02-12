@@ -6,9 +6,52 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     tools:context=".Activity.AboutUsActivity">
+    <RelativeLayout
+        android:id="@+id/top"
+        android:background="@color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="52dp">
+        <ImageView
+            android:id="@+id/bckii"
+            android:layout_width="50dp"
+            android:padding="15dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:background="@color/transparent"
+            android:src="@drawable/ic_back"></ImageView>
+        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="18dp"
+            android:lineHeight="17dp"
+            android:text="@string/AboutUs">
+        </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+            android:id="@+id/save"
+            android:layout_alignParentRight="true"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingRight="15dp"
+            android:padding="16dp"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:text="@string/Save"
+            android:textSize="14dp">
+        </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+    </RelativeLayout>
     <com.example.medparliament.Widget.Segow_UI_Semi_Font
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_below="@+id/top"
+        android:layout_marginTop="10dp"
+        android:lineHeight="20dp"
+        android:paddingHorizontal="20dp"
         android:layout_above="@+id/enter"
         android:id="@+id/msg">
     </com.example.medparliament.Widget.Segow_UI_Semi_Font>
@@ -22,7 +65,7 @@
         android:layout_marginHorizontal="34dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/transparent"
+        android:background="@drawable/rounded_btn_bodr"
         android:textColor="@color/white"
         android:textAllCaps="false">
     </androidx.appcompat.widget.AppCompatButton>

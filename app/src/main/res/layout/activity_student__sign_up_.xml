@@ -59,6 +59,7 @@
                 android:layout_below="@+id/cup"
                 android:orientation="vertical"
                 android:id="@+id/ll"
+                android:visibility="gone"
                 android:layout_marginHorizontal="34dp"
                 android:layout_height="220dp">
                 <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -67,7 +68,6 @@
                     android:layout_height="match_parent"
                     app:autoPlay="false"
                     android:background="@color/white"
-                    app:enableAutomaticInitialization="false"
                     app:showYouTubeButton="true">
                 </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
                 <ImageView
@@ -81,6 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:visibility="gone"
                 android:id="@+id/videoTitle"
                 android:layout_marginHorizontal="34dp"
                 android:layout_below="@+id/ll"

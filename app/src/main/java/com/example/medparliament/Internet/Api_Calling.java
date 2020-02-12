@@ -409,9 +409,9 @@ public class Api_Calling {
                 Comman.log("Result",""+response);
                 try {
                     if(response.getString("status").equalsIgnoreCase("true")) {
-                        textView.setText("Endorse " + response.getString("result") + "  (Students)");
+                        textView.setText("("+ response.getString("result")+")");
                         imageView.setEnabled(false);
-                        imageView.setImageResource(R.drawable.ic_after_like);
+                        imageView.setImageResource(R.drawable.after);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
