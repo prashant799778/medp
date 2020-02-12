@@ -5053,7 +5053,7 @@ def signUpVideo():
                     #folder path to save campaign image
                     FolderPath = ConstantData.getSignUpVideo(filename)  
 
-                    filepath = '/signUpVideo/' + filename    
+                    filepath = '/signUpImage/' + filename    
                     
 
                     file.save(FolderPath)
@@ -5063,9 +5063,9 @@ def signUpVideo():
             
             if flag =="i":
                 if "userId" in inputdata:
-                    column='Status=2'
+                    column1='Status=2'
                     whereCondition=" and userTypeId='" + str(userTypeId) + "'"
-                    data5=databasefile.UpdateQuery('signUpVideo',column,whereCondition)
+                    data5=databasefile.UpdateQuery('signUpVideo',column1,whereCondition)
                     
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
