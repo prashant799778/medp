@@ -4870,11 +4870,11 @@ def promisingInitiatives():
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
                     column = column+"UserCreate,text"
-                    values = values+ "','" + str(userId) + "','" + str(text) + "'"
+                    values = values+ ",'" + str(userId) + "','" + str(text) + "'"
                     data = databasefile.InsertQuery("promisingInitiatives",column,values)        
                 else:
                     column = column+" text"
-                    values = values+  "','" + str(text) + "'"
+                    values = values+  ",'" + str(text) + "'"
                     data = databasefile.InsertQuery("promisingInitiatives",column,values)
             if flag =="u":
                 if "status" in inputdata:
@@ -4975,11 +4975,11 @@ def signUpVideo():
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
                     column = column+"UserCreate,text,userTypeId"
-                    values =values+ " '"+ str(videoLink)+ "','" + str(userId) + "','" + str(text) + "','" + str(userTypeId) + "'"
+                    values =values+ ",'" + str(userId) + "','" + str(text) + "','" + str(userTypeId) + "'"
                     data = databasefile.InsertQuery("signUpVideo",column,values)        
                 else:
                     column = column+"text,userTypeId"
-                    values =values+ " '"+ str(ImagePath)+  "','" + str(text) + "','" + str(userTypeId) + "'"
+                    values =values+   ",'" + str(text) + "','" + str(userTypeId) + "'"
                     data = databasefile.InsertQuery("signUpVideo",column,values)
             if flag =="u":
                 if "status" in inputdata:
