@@ -4098,7 +4098,7 @@ def landingPageDashboard():
         if data3["result"]=="":
             data3["result"]=[]
 
-        column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,videoPath,text,UserCreate  "
+        column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
         WhereCondition2= " and Status<2"
         data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"",startlimit,endlimit)
         print(data4)
@@ -4107,7 +4107,8 @@ def landingPageDashboard():
             data4["result"]=[]
 
         for m in data4['result']:
-               
+                if m['imagePath']!='':
+                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
                 if  m['videoPath']!="":
                     y=m['videoPath'].split('=')
                     print(y,'++++++')
