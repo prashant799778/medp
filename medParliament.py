@@ -5163,14 +5163,13 @@ def aboutUs():
         startlimit,endlimit="",""   
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         
-        keyarr = ['description','contactNo','flag','id']
+        keyarr = ['description','contactNo','flag']
         commonfile.writeLog("aboutUs",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":      
             description = inputdata["description"]
             contactNo = inputdata["contactNo"]
-            aboutId = inputdata["id"]
             flag = inputdata["flag"]
             print('====',flag)
         
@@ -5181,6 +5180,8 @@ def aboutUs():
                 print('F')         
                 return commonfile.aboutUsDescriptionAlreadyExistMsg()
             else:
+                if 'id' in inputdata:
+                    aboutId = inputdata["id"]
 
                 if flag == 'n':
                     columns = " description,contactNo "          
