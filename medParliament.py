@@ -5005,6 +5005,51 @@ def getpromisingInitiatives():
 
 
 
+
+@app.route('/getpromisingInitiativesAdmin', methods=['POST'])
+def getpromisingInitiatives1():
+
+    try:        
+        
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and Status<3"
+        
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
+        
+        
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
+        data = databasefile.SelectQuery("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit)
+        
+         
+        if data['result'] != "":
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+            return data
+
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
 @app.route('/signUpVideo', methods=['POST'])
 def signUpVideo():
     try:
@@ -5153,6 +5198,51 @@ def getSignUpVideo():
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
+
+
+
+@app.route('/getSignUpVideoAdmin', methods=['POST'])
+def getSignUpVideo1():
+
+    try:        
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and Status<3"
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
+
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"] 
+                    WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
+        
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,text,UserCreate,userTypeId,imagePath"
+        data = databasefile.SelectQuery("signUpVideo",column,WhereCondition,"",startlimit,endlimit)
+        
+        if data['result'] != "":
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
 
 
 @app.route('/deletePromisingInitiatives', methods=['POST'])
