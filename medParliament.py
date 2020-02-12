@@ -4772,7 +4772,17 @@ def getParliamentEvent():
         
         column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(CONVERT_TZ(eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
-        if data != "0":
+        if data['result'] != "":
+            for i in data['result']:
+                y=i['id']
+                column="userId"
+                whereCondition=" and eventId='"+str(y)+"'"
+                dat=databasefile.SelectQuery('eventInterest',column,whereCondition)
+                print(dat)
+                if dat['result'] !="":
+                    i['eventCount']=len(dat['result'])
+
+
             return data
         else:
             return commonfile.Errormessage()
