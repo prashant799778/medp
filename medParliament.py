@@ -5318,17 +5318,16 @@ def aboutUs():
         startlimit,endlimit="",""   
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         
-        keyarr = ['description','contactNo','flag']
+        keyarr = ['description','flag']
         commonfile.writeLog("aboutUs",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":      
             description = inputdata["description"]
-            contactNo = inputdata["contactNo"]
             flag = inputdata["flag"]
             print('====',flag)
         
-            WhereCondition = " and contactNo = '" + str(contactNo) + "'"
+            WhereCondition = " and description = '" + str(description) + "'"
             count = databasefile.SelectCountQuery("aboutUs",WhereCondition,"")
             
             if int(count) > 0 and flag == 'n':
@@ -5339,18 +5338,18 @@ def aboutUs():
                     aboutId = inputdata["id"]
 
                 if flag == 'n':
-                    columns = " description,contactNo "          
-                    values = " '" + str(description) + "','" + str(contactNo) + "'"       
+                    columns = " description"          
+                    values = " '" + str(description) + "'"       
                     data = databasefile.InsertQuery("aboutUs",columns,values)
                     if data != "0":
                         column = '*'
-                        WhereCondition = " and contactNo = '" + str(contactNo) + "' and description = '" + str(description) + "'"
+                        WhereCondition = " and description = '" + str(description) + "'"
                         
                         data11 = databasefile.SelectQuery("aboutUs",column,WhereCondition,"",startlimit,endlimit)
                         return data11
                 if flag == 'u':
                     WhereCondition = " and id = '" + str(aboutId) + "'"
-                    column = " contactNo = '" + str(contactNo) + "',description = '" + str(description) + "'"
+                    column = " description = '" + str(description) + "'"
                     data = databasefile.UpdateQuery("aboutUs",column,WhereCondition)
                     return data
                 else:
