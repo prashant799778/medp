@@ -337,67 +337,15 @@ def SignUp():
 
                         
                         if (y["userTypeId"]== 12):
-                            for i in multiUserTypeId:
-
-                                message = Mail(
-                                    from_email = 'medParliament@gmail.com',
-                                    to_emails = str(y['email']),
-                                    subject = "Welcome to medParliament",
-                                    html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-                                sg = SendGridAPIClient('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')
-                                response = sg.send(message)
-                                
-                                columns="userId,userTypeId"
-                                values=" '" + str(y["userId"])+ "','" + str(i) + "'"
-                                data6=databasefile.InsertQuery("signupUserTypeMapping",column,values)
-
-
-
-                                if (i ==5):
-
-                                    columns="userId,aboutProfile,organization,designation"
-                                    values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
-                                    data1=databasefile.InsertQuery("policyMakerMaster",columns,values)
-
-
-                                
-
-                                if (i==6):
-                                    columns="userId,areaOfActivity,profileCategoryId,designation,companyName"
-                                    values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation)+ "','" + str(CompanyName) + "'"
-                                    data2=databasefile.InsertQuery("enterprenuerMaster",columns,values)
-                                   
-                                
-                                
-                                if (i==7):
-                                    columns="userId,address,qualificationId,batchOfQualification,institutionName,universityAddress,universityId"
-                                    values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "'"
-                                    data3 = databasefile.InsertQuery("studentMaster",columns,values) 
-                                   
-
-                                
-                                
-                                
-                                if (i==8):
-                                    columns="userId,qualificationId,designation,areaOfExpertise,hospital,hospitalAddress"
-                                    values=" '" + str(y["userId"])+ "','" + str(qualification) + "','" + str(designation) + "','" + str(areaOfExpertise) + "','" + str(hospital)+ "','" + str(hospitalAddress) + "'"
-                                    data3= databasefile.InsertQuery("doctorMaster",columns,values)
-
-
-                                
-
-                                if (i==9):
-                                    columns="userId,designation,occupation,companyName,companyAddress,address"
-                                    values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
-                                    data6=databasefile.InsertQuery("professionalMaster",column,values)
-
-                                
-                                for j in interestId:
-                                    column="userId,userTypeId,interestId"
-                                    values=" '" + str(y["userId"]) + "','" + str('12') + "','" + str(j) + "'"
-                                    data5=databasefile.InsertQuery("userInterestMapping ",column,values)
-
-
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+                            
+                               
 
                              
 
@@ -4036,6 +3984,9 @@ def landingPageDashboard():
 
         if data4["result"]=="":
             data4["result"]=[]
+            for i in data4['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
 
 
         if data != "0":
@@ -5129,6 +5080,11 @@ def signUpVideo():
                 if "status" in inputdata:
                     if inputdata['status'] != "":
                         status =inputdata["status"]
+                column1='Status=2'
+                whereCondition=" and userTypeId='" + str(userTypeId) + "'"
+                data5=databasefile.UpdateQuery('signUpVideo',column1,whereCondition)
+
+
                 # if "userId" in inputdata:
 
                 #     if inputdata['userId'] != "":
