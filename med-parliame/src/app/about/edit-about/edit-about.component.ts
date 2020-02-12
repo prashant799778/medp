@@ -6,11 +6,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppSettings } from 'src/app/utils/constant';
 declare var jQuery: any;
 @Component({
-  selector: 'app-edit-event',
-  templateUrl: './edit-event.component.html',
-  styleUrls: ['./edit-event.component.css']
+  selector: 'app-edit-about',
+  templateUrl: './edit-about.component.html',
+  styleUrls: ['./edit-about.component.css']
 })
-export class EditEventComponent implements OnInit {
+export class EditAboutComponent implements OnInit {
 
   allnews = [];
   httpError: boolean;
@@ -26,10 +26,10 @@ export class EditEventComponent implements OnInit {
   totalRecords: number;
   paginationDisplay: boolean;
   frmShowNews: FormGroup;
-  activatedds: boolean;
   newsId: any;
+  activatedds: boolean;
   constructor(public fb: FormBuilder,public local: LocalStorageService, private apiService: UserServiceService, private route: ActivatedRoute, private router: Router) { 
-    this.activatedds = false;
+        this.activatedds = false;
         this.tabsIndex = 0;
         this.frmShowNews = this.fb.group({
           startlimit: [''],
@@ -77,7 +77,7 @@ export class EditEventComponent implements OnInit {
     // this.frmShowNews.get('CategoryId').setValue(this.CategoryId)
     let data = this.frmShowNews.getRawValue();
     
-    this.apiService.dataPostApi(data,AppSettings.getParliamentEvent).then((data: any[]) => {
+    this.apiService.dataPostApi(data,AppSettings.allaboutUs).then((data: any[]) => {
       this.totalRecords = data['totalnewscategorywise']
       console.log(this.totalRecords)
       if(this.totalRecords > this.pageSize){
@@ -92,9 +92,6 @@ export class EditEventComponent implements OnInit {
     });
     }
 
-
-    
-
   getNews() {
     const userData = this.local.get('userData1');
     const userType = userData[0]['userTypeId'];
@@ -106,7 +103,7 @@ export class EditEventComponent implements OnInit {
       endlimit: this.pageSize,
       // UserCreate: AppSettings.getLoggedInUser()                
     };
-      this.apiService.dataPostApi(params,AppSettings.getParliamentEvent).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.allaboutUs).then((data: any[]) => {
         this.totalRecords = data['totalnewscategorywise']
 
         if(this.totalRecords > this.pageSize){
@@ -125,7 +122,7 @@ export class EditEventComponent implements OnInit {
       startlimit: 0,
       endlimit: this.pageSize
     };    
-      this.apiService.dataPostApi(params,AppSettings.getParliamentEvent).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.allaboutUs).then((data: any[]) => {
         this.totalRecords = data['totalnewscategorywise']
 
         if(this.totalRecords > this.pageSize){
@@ -143,12 +140,12 @@ export class EditEventComponent implements OnInit {
 
   editNews(NewsId) {
     console.log(NewsId);
-    this.router.navigate(['/event/createEvent'], { queryParams: {NewsId: NewsId}});
+    this.router.navigate(['/about/createAbout'], { queryParams: {NewsId: NewsId}});
   }
 
   deleteNews(id){
     this.newsId = id
-    jQuery('#addAdmin-event2').modal('show')
+    jQuery('#addAdmin-news').modal('show')
     console.log("Id of News",id);
     
   }
@@ -156,19 +153,21 @@ export class EditEventComponent implements OnInit {
     let data ={
       'id': this.newsId
     }
-    this.apiService.dataPostApi(data, AppSettings.deleteEvent).then((data: any[]) => {
+    this.apiService.dataPostApi(data, AppSettings.DELETE_ADMIN_NEWS).then((data: any[]) => {
       console.log(data);
       if(data['status'] == 'true'){
         this.activatedds = true;
         setTimeout(()=>{
-          jQuery('#addAdmin-event2').modal('hide')
-        },2000)
+          jQuery('#addAdmin-news').modal('hide')
+          this.activatedds = false;
+        },1000)
       }
       this.getNews();
+      this.newsId = '';
     });
   }
-  clsoeModal(){
-    jQuery('#addAdmin-event2').modal('hide')
+  closeModal(){
+    jQuery('#addAdmin-news').modal('hide')
   }
 
   checkStatus(data) {

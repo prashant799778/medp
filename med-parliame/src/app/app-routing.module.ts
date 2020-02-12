@@ -34,6 +34,12 @@ import { EditAnnocementComponent } from './annocement/edit-annocement/edit-annoc
 import { EditGalleryComponent } from './gallery/edit-gallery/edit-gallery.component';
 import { OperationComponent } from './admin/operation/operation.component';
 import { AccountVerificationComponent } from './account-verification/account-verification.component';
+import { CreateMediaComponent } from './media/create-media/create-media.component';
+import { EditMediaComponent } from './media/edit-media/edit-media.component';
+import { CreateInfoComponent } from './info/create-info/create-info.component';
+import { EditInfoComponent } from './info/edit-info/edit-info.component';
+import { CreateAboutComponent } from './about/create-about/create-about.component';
+import { EditAboutComponent } from './about/edit-about/edit-about.component';
 
 
 
@@ -106,6 +112,50 @@ const routes: Routes = [
   ]
   },
 
+
+  { path: 'media', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/media/createMedia',pathMatch:'full'}, 
+   
+       {
+          path:'createMedia',
+          component: CreateMediaComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editMedia',
+        component: EditMediaComponent,
+        canActivate: [AuthGuard],
+    },
+    
+  
+    
+      
+  ]
+  },
+
+
+  { path: 'info', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/info/createInfo',pathMatch:'full'}, 
+   
+       {
+          path:'createInfo',
+          component: CreateInfoComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editInfo',
+        component: EditInfoComponent,
+        canActivate: [AuthGuard],
+    },
+    
+  
+    
+      
+  ]
+  },
+
   { path: 'gallery', 
   children: [                          //<---- child components declared here
     { path: '',redirectTo: '/gallery/createGallery',pathMatch:'full'}, 
@@ -120,6 +170,27 @@ const routes: Routes = [
         component: EditGalleryComponent,
         canActivate: [AuthGuard],
     },
+    
+  
+    
+      
+  ]
+  },
+
+  { path: 'about', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/about/createAbout',pathMatch:'full'}, 
+   
+       {
+          path:'createAbout',
+          component: CreateAboutComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editAbout',
+        component: EditAboutComponent,
+        canActivate: [AuthGuard],
+       },
     
   
     

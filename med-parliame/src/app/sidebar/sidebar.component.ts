@@ -99,10 +99,64 @@ console.log(this.local.get('userData1')[0].userTypeId)
 		if(this.local.get('userData1')[0].userTypeId == 12){
 			console.log(this.locations)
 			console.log(this.secondLocation)
-			if(this.secondLocation != 'vent/' && this.secondLocation != 'lery/' && this.secondLocation != 'ment/'){
+			if(this.secondLocation != 'vent/' && this.secondLocation != 'lery/' && this.secondLocation != 'ment/'  && this.secondLocation != 'info/'  && this.secondLocation != 'edia/' && this.secondLocation != 'bout/'){
+				console.log("changed routing")
 				this.router.navigateByUrl('/news/editNews')
+				setTimeout(()=>{
+					$(".side-menu ul li a").removeClass("active");
+					var elem = document.getElementById("newsIdnew")
+					console.log(elem)
+					elem.click();
+					$("#newsIdnew").addClass("active")
+				},100)
+				
 			}
 			
+		}
+		if(this.secondLocation == 'vent/'){
+			setTimeout(()=>{
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("eventId1")
+				console.log(elem)
+				elem.click();
+				$("#eventId1").addClass("active")
+			},100)
+		}
+		if(this.secondLocation == 'lery/'){
+			setTimeout(()=>{
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("galleryId1")
+				console.log(elem)
+				elem.click();
+				$("#galleryId1").addClass("active")
+			},100)
+		}
+		if(this.secondLocation == 'ment/'){
+			setTimeout(()=>{
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("anncouId")
+				console.log(elem)
+				elem.click();
+				$("#anncouId").addClass("active")
+			},100)
+		}
+		if(this.secondLocation == 'info/'){
+			setTimeout(()=>{
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("infoId")
+				console.log(elem)
+				elem.click();
+				$("#infoId").addClass("active")
+			},100)
+		}
+		if(this.secondLocation == 'edia/'){
+			setTimeout(()=>{
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("mediaId")
+				console.log(elem)
+				elem.click();
+				$("#mediaId").addClass("active")
+			},100)
 		}
 
 		if(this.locations == 'http://localhost:5002/allPosts'){
@@ -212,8 +266,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				// // elem.addClass("active");
 				// $("#admin1Students").addClass("active")
 			},100)
-		}
-		else if(this.locations == 'allPosts?id=5'){
+		}else if(this.locations == 'allPosts?id=5'){
 			setTimeout(()=>{
 
 
@@ -225,8 +278,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				$("#postPolicy").addClass("active")
 				
 			},200)
-		}
-		else if(this.locations == 'allPosts?id=6'){
+		}else if(this.locations == 'allPosts?id=6'){
 			setTimeout(()=>{
 
 
@@ -238,8 +290,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				$("#postEnterpenure").addClass("active")
 				
 			},200)
-		}
-		else if(this.locations == 'allPosts?id=7'){
+		}else if(this.locations == 'allPosts?id=7'){
 			setTimeout(()=>{
 
 
@@ -264,6 +315,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				
 			},200)
 		}
+
 		if(this.secondLocation == 'dmin/'){
 			this.AdminImage = true
 			this.UserImage = false;

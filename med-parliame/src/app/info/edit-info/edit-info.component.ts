@@ -5,13 +5,13 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppSettings } from 'src/app/utils/constant';
 declare var jQuery: any;
-@Component({
-  selector: 'app-edit-event',
-  templateUrl: './edit-event.component.html',
-  styleUrls: ['./edit-event.component.css']
-})
-export class EditEventComponent implements OnInit {
 
+@Component({
+  selector: 'app-edit-info',
+  templateUrl: './edit-info.component.html',
+  styleUrls: ['./edit-info.component.css']
+})
+export class EditInfoComponent implements OnInit {
   allnews = [];
   httpError: boolean;
   errorMsg: any;
@@ -26,10 +26,11 @@ export class EditEventComponent implements OnInit {
   totalRecords: number;
   paginationDisplay: boolean;
   frmShowNews: FormGroup;
-  activatedds: boolean;
   newsId: any;
+  activatedds: boolean;
+  status = [];
   constructor(public fb: FormBuilder,public local: LocalStorageService, private apiService: UserServiceService, private route: ActivatedRoute, private router: Router) { 
-    this.activatedds = false;
+        this.activatedds = false
         this.tabsIndex = 0;
         this.frmShowNews = this.fb.group({
           startlimit: [''],
@@ -77,7 +78,7 @@ export class EditEventComponent implements OnInit {
     // this.frmShowNews.get('CategoryId').setValue(this.CategoryId)
     let data = this.frmShowNews.getRawValue();
     
-    this.apiService.dataPostApi(data,AppSettings.getParliamentEvent).then((data: any[]) => {
+    this.apiService.dataPostApi(data,AppSettings.getSignUpVideo).then((data: any[]) => {
       this.totalRecords = data['totalnewscategorywise']
       console.log(this.totalRecords)
       if(this.totalRecords > this.pageSize){
@@ -106,7 +107,7 @@ export class EditEventComponent implements OnInit {
       endlimit: this.pageSize,
       // UserCreate: AppSettings.getLoggedInUser()                
     };
-      this.apiService.dataPostApi(params,AppSettings.getParliamentEvent).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.getSignUpVideo).then((data: any[]) => {
         this.totalRecords = data['totalnewscategorywise']
 
         if(this.totalRecords > this.pageSize){
@@ -117,6 +118,9 @@ export class EditEventComponent implements OnInit {
           this.paginationDisplay = false;
           }
         this.allnews = data['result'];
+        this.allnews.forEach(resp =>{
+          this.getStatus(resp.Status)
+        })
         console.log(this.allnews)
       });
     } else {
@@ -125,7 +129,7 @@ export class EditEventComponent implements OnInit {
       startlimit: 0,
       endlimit: this.pageSize
     };    
-      this.apiService.dataPostApi(params,AppSettings.getParliamentEvent).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.getSignUpVideo).then((data: any[]) => {
         this.totalRecords = data['totalnewscategorywise']
 
         if(this.totalRecords > this.pageSize){
@@ -136,40 +140,35 @@ export class EditEventComponent implements OnInit {
           this.paginationDisplay = false;
           }
         this.allnews = data['result'];
+        this.allnews.forEach(resp =>{
+          this.getStatus(resp.Status)
+        })
         console.log(this.allnews)
       });
+    }
+  }
+  getStatus(stat){
+    if(stat == 0){
+      this.status.push('Activated')
+    }else if(stat == 1){
+      this.status.push('Updated')
+    }else if(stat == 2){
+      this.status.push('Deactivated')
     }
   }
 
   editNews(NewsId) {
     console.log(NewsId);
-    this.router.navigate(['/event/createEvent'], { queryParams: {NewsId: NewsId}});
+    this.router.navigate(['/info/createInfo'], { queryParams: {NewsId: NewsId}});
   }
 
-  deleteNews(id){
-    this.newsId = id
-    jQuery('#addAdmin-event2').modal('show')
-    console.log("Id of News",id);
-    
-  }
-  deletedNewss(){
-    let data ={
-      'id': this.newsId
-    }
-    this.apiService.dataPostApi(data, AppSettings.deleteEvent).then((data: any[]) => {
-      console.log(data);
-      if(data['status'] == 'true'){
-        this.activatedds = true;
-        setTimeout(()=>{
-          jQuery('#addAdmin-event2').modal('hide')
-        },2000)
-      }
-      this.getNews();
-    });
-  }
-  clsoeModal(){
-    jQuery('#addAdmin-event2').modal('hide')
-  }
+  // deleteNews(id){
+  //   console.log("Id of News",id);
+  //   this.apiService.dataPostApi(id, AppSettings.DELETE_ADMIN_NEWS).then((data: any[]) => {
+  //     console.log(data);
+  //     this.getNews();
+  //   });
+  // }
 
   checkStatus(data) {
     if (data['status'] === 'true') {
@@ -191,6 +190,44 @@ export class EditEventComponent implements OnInit {
     this.frmShowNews.get('CategoryId').setValue(this.CategoryId);
     this.getNews()
   }
+
+  deleteNews(id){
+    this.newsId = id
+    jQuery('#addAdmin-info').modal('show')
+    console.log("Id of News",id);
+    
+  }
+  deletedNewss(){
+    let data ={
+      'id': this.newsId
+    }
+    this.apiService.dataPostApi(data, AppSettings.deleteSignUpVideo).then((data: any[]) => {
+      console.log(data);
+      if(data['status'] == 'true'){
+        this.activatedds = true;
+        setTimeout(()=>{
+          jQuery('#addAdmin-info').modal('hide')
+        },2000)
+      }
+      this.getNews();
+    });
+  }
+  clsoeModal(){
+    jQuery('#addAdmin-info').modal('hide')
+  }
+  getUserType(type){
+    console.log(type)
+    let userNames 
+    this.userTypeDetails.forEach(resp =>{
+     
+      if(type == resp.id){
+        console.log(resp.userName)
+        userNames =  resp.userName
+      }
+  })
+  return userNames;
+  
+}
 
   
 

@@ -178,7 +178,7 @@ export class EditGalleryComponent implements OnInit {
 
   deleteNews(id){
     this.newsId = id
-    jQuery('#addAdmin-news').modal('show')
+    jQuery('#addAdmin-gallery2').modal('show')
     console.log("Id of News",id);
     
   }
@@ -186,19 +186,19 @@ export class EditGalleryComponent implements OnInit {
     let data ={
       'id': this.newsId
     }
-    this.apiService.dataPostApi(data, AppSettings.DELETE_ADMIN_NEWS).then((data: any[]) => {
+    this.apiService.dataPostApi(data, AppSettings.deleteGallery).then((data: any[]) => {
       console.log(data);
       if(data['status'] == 'true'){
         this.activatedds = true;
         setTimeout(()=>{
-          jQuery('#addAdmin-news').modal('hide')
+          jQuery('#addAdmin-gallery2').modal('hide')
         },2000)
       }
       this.getNews();
     });
   }
   clsoeModal(){
-    jQuery('#addAdmin-news').modal('hide')
+    jQuery('#addAdmin-gallery2').modal('hide')
   }
 
   

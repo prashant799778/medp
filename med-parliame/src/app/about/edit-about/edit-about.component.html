@@ -23,10 +23,10 @@
                   </g>
             </svg>
               </div>
-              <h2 class="main-hading">Market Insights Master</h2>
+              <h2 class="main-hading">About Master</h2>
           </div>
             <div class="card-header-actions crd-bnt">
-              <a [routerLink]="['/news/createNews']" class="btn" target="_self">Create Market Insights</a>
+              <!-- <a [routerLink]="['/about/createAbout']" class="btn" target="_self">Create News</a> -->
               <!-- <a  class="btn btn-block btn-outline-dark" target="_self">View News</a> -->
             </div>
           </div>
@@ -46,28 +46,28 @@
                                   
                               <thead>
                                 <tr>
-                                  <th>Market Insights Image</th>
-                                  <th>Market Insights Title</th>
-                                  <th>Market Insights Summary</th>
-                                  <th>News Description</th>
-                                  <th>Market Insights of Creation</th>
-                                  <th>Created By</th>
+                                  <!-- <th>News Image</th> -->
+                                  <!-- <th>News Title</th> -->
+                                  <!-- <th>News Summary</th> -->
+                                  <th>About Description</th>
+                                  <th>Date of Creation</th>
+                                  <!-- <th>Created By</th> -->
                                   <th>Action</th>
                                 </tr>
                               </thead>
                                   <tbody> 
                                     <ng-container *ngFor="let news of allnews">
                                          <tr >
-                                      <td> <img src="{{news.imagePath}}" class="hash-img tab-shadow"> </td>
-                                      <td> <p>{{news.newsTitle}} </p></td> 
-                                      <td> <p>{{news.summary}} </p></td>                                       
-                                      <td> <p [innerHtml]="news.newsDesc " class="inline-blk"></p> </td>
-                                      <td> {{news.DateCreate}}</td>
-                                      <td>  <p>{{news.userName}} </p></td> 
+                                      <!-- <td> <img src="{{news.imagePath}}" class="hash-img tab-shadow"> </td> -->
+                                      <!-- <td> <p>{{news.newsTitle}} </p></td>  -->
+                                      <!-- <td> <p>{{news.summary}} </p></td>                                        -->
+                                      <td> <p [innerHtml]="news.description " class="inline-blk"></p> </td>
+                                      <td> {{news.dateCreate}}</td>
+                                      <!-- <td>  <p>{{news.userName}} </p></td>  -->
                                       <td>
                                             <div class="btn-edit-group">
                                                     <button type="button" class="edit-btn" (click)="editNews(news.id)" >  <img src="../../../assets/images/edit-im.svg"></button>
-                                                    <button type="button" class="delet-btn" (click)="deleteNews(news.id)">  <img src="../../../assets/images/bin.svg"></button>
+                                                    <!-- <button type="button" class="delet-btn" (click)="deleteNews(news.id)">  <img src="../../../assets/images/bin.svg"></button> -->
                                                 </div>
                                           <!-- <a role="button" (click)="editNews(news.id)" class="card-header-action" target="_blank"><i class="fa fa-pencil-square-o"></i> </a>
                                           <a role="button" (click)="deleteNews(news.id)" class="card-header-action" target="_blank"><i class="fa fa-trash-o"></i> </a> -->

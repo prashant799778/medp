@@ -50,6 +50,13 @@ import { ViewAnnocementComponent } from './annocement/view-annocement/view-annoc
 import { EditAnnocementComponent } from './annocement/edit-annocement/edit-annocement.component';
 import { OperationComponent } from './admin/operation/operation.component';
 import { AccountVerificationComponent } from './account-verification/account-verification.component';
+// import { MediaComponent } from './media/media.component';
+import { CreateMediaComponent } from './media/create-media/create-media.component';
+import { EditMediaComponent } from './media/edit-media/edit-media.component';
+import { EditInfoComponent } from './info/edit-info/edit-info.component';
+import { CreateInfoComponent } from './info/create-info/create-info.component';
+import { CreateAboutComponent } from './about/create-about/create-about.component';
+import { EditAboutComponent } from './about/edit-about/edit-about.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +101,14 @@ import { AccountVerificationComponent } from './account-verification/account-ver
     ViewAnnocementComponent,
     EditAnnocementComponent,
     OperationComponent,
-    AccountVerificationComponent
+    AccountVerificationComponent,
+    // MediaComponent,
+    CreateMediaComponent,
+    EditMediaComponent,
+    EditInfoComponent,
+    CreateInfoComponent,
+    CreateAboutComponent,
+    EditAboutComponent
   ],
   imports: [
     BrowserModule,

@@ -5,13 +5,13 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppSettings } from 'src/app/utils/constant';
 declare var jQuery: any;
-@Component({
-  selector: 'app-edit-event',
-  templateUrl: './edit-event.component.html',
-  styleUrls: ['./edit-event.component.css']
-})
-export class EditEventComponent implements OnInit {
 
+@Component({
+  selector: 'app-edit-media',
+  templateUrl: './edit-media.component.html',
+  styleUrls: ['./edit-media.component.css']
+})
+export class EditMediaComponent implements OnInit {
   allnews = [];
   httpError: boolean;
   errorMsg: any;
@@ -26,10 +26,10 @@ export class EditEventComponent implements OnInit {
   totalRecords: number;
   paginationDisplay: boolean;
   frmShowNews: FormGroup;
-  activatedds: boolean;
   newsId: any;
+  activatedds: boolean;
   constructor(public fb: FormBuilder,public local: LocalStorageService, private apiService: UserServiceService, private route: ActivatedRoute, private router: Router) { 
-    this.activatedds = false;
+        this.activatedds = false
         this.tabsIndex = 0;
         this.frmShowNews = this.fb.group({
           startlimit: [''],
@@ -46,7 +46,7 @@ export class EditEventComponent implements OnInit {
   ngOnInit() {
     // this.route.queryParams.subscribe(x => this.loadPage(x.page || 1));
     //       console.log("Page")
-    this.getUsertype();
+    // this.getUsertype();
     this.getNews();
   }
 
@@ -77,7 +77,7 @@ export class EditEventComponent implements OnInit {
     // this.frmShowNews.get('CategoryId').setValue(this.CategoryId)
     let data = this.frmShowNews.getRawValue();
     
-    this.apiService.dataPostApi(data,AppSettings.getParliamentEvent).then((data: any[]) => {
+    this.apiService.dataPostApi(data,AppSettings.getpromisingInitiatives).then((data: any[]) => {
       this.totalRecords = data['totalnewscategorywise']
       console.log(this.totalRecords)
       if(this.totalRecords > this.pageSize){
@@ -106,7 +106,7 @@ export class EditEventComponent implements OnInit {
       endlimit: this.pageSize,
       // UserCreate: AppSettings.getLoggedInUser()                
     };
-      this.apiService.dataPostApi(params,AppSettings.getParliamentEvent).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.getpromisingInitiatives).then((data: any[]) => {
         this.totalRecords = data['totalnewscategorywise']
 
         if(this.totalRecords > this.pageSize){
@@ -125,7 +125,7 @@ export class EditEventComponent implements OnInit {
       startlimit: 0,
       endlimit: this.pageSize
     };    
-      this.apiService.dataPostApi(params,AppSettings.getParliamentEvent).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.getpromisingInitiatives).then((data: any[]) => {
         this.totalRecords = data['totalnewscategorywise']
 
         if(this.totalRecords > this.pageSize){
@@ -143,33 +143,16 @@ export class EditEventComponent implements OnInit {
 
   editNews(NewsId) {
     console.log(NewsId);
-    this.router.navigate(['/event/createEvent'], { queryParams: {NewsId: NewsId}});
+    this.router.navigate(['/media/createMedia'], { queryParams: {NewsId: NewsId}});
   }
 
-  deleteNews(id){
-    this.newsId = id
-    jQuery('#addAdmin-event2').modal('show')
-    console.log("Id of News",id);
-    
-  }
-  deletedNewss(){
-    let data ={
-      'id': this.newsId
-    }
-    this.apiService.dataPostApi(data, AppSettings.deleteEvent).then((data: any[]) => {
-      console.log(data);
-      if(data['status'] == 'true'){
-        this.activatedds = true;
-        setTimeout(()=>{
-          jQuery('#addAdmin-event2').modal('hide')
-        },2000)
-      }
-      this.getNews();
-    });
-  }
-  clsoeModal(){
-    jQuery('#addAdmin-event2').modal('hide')
-  }
+  // deleteNews(id){
+  //   console.log("Id of News",id);
+  //   this.apiService.dataPostApi(id, AppSettings.DELETE_ADMIN_NEWS).then((data: any[]) => {
+  //     console.log(data);
+  //     this.getNews();
+  //   });
+  // }
 
   checkStatus(data) {
     if (data['status'] === 'true') {
@@ -190,6 +173,31 @@ export class EditEventComponent implements OnInit {
     this.CategoryId = CategoryId;
     this.frmShowNews.get('CategoryId').setValue(this.CategoryId);
     this.getNews()
+  }
+
+  deleteNews(id){
+    this.newsId = id
+    jQuery('#addAdmin-promising').modal('show')
+    console.log("Id of News",id);
+    
+  }
+  deletedNewss(){
+    let data ={
+      'id': this.newsId
+    }
+    this.apiService.dataPostApi(data, AppSettings.deletePromisingInitiatives).then((data: any[]) => {
+      console.log(data);
+      if(data['status'] == 'true'){
+        this.activatedds = true;
+        setTimeout(()=>{
+          jQuery('#addAdmin-promising').modal('hide')
+        },2000)
+      }
+      this.getNews();
+    });
+  }
+  clsoeModal(){
+    jQuery('#addAdmin-promising').modal('hide')
   }
 
   

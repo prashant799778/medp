@@ -47,8 +47,20 @@ export class AppSettings {
     public static getAnnouncement = 'getAnnouncement';
     public static getParliamentEvent = 'getParliamentEvent';
     public static AccountVerification = 'AccountVerification';
-
-
+    public static promisingInitiatives = 'promisingInitiatives';
+    public static getpromisingInitiatives = 'getpromisingInitiativesAdmin';
+    public static getSignUpVideo = 'getSignUpVideoAdmin';
+    public static signUpVideo = 'signUpVideo';
+    public static deleteSignUpVideo = 'deleteSignUpVideo';
+    public static deletePromisingInitiatives = 'deletePromisingInitiatives';
+    public static deleteGallery = 'deleteGallery';
+    public static deleteEvent = 'deleteEvent';
+    public static deleteAnnouncement = 'deleteAnnouncement';
+    public static allaboutUs = 'allaboutUs';
+    public static aboutUs = 'aboutUs';
+    
+    
+    
     
 
     
