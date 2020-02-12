@@ -5209,7 +5209,7 @@ def getSignUpVideo():
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
                 if i['videoLink']!='':
-                    y=i['videoLink'].split('_')
+                    y=i['videoLink'].split('=')
                     print(y)
                     i['videoId']=y[1]
             return data
