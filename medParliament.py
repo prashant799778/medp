@@ -4783,6 +4783,8 @@ def getParliamentEvent():
                 print(dat,'++++++++++++++++++++++++++++')
                 if dat['result'] !="":
                     i['eventCount']=len(dat['result'])
+                else:
+                    i['eventCount']=0
 
 
             return data
