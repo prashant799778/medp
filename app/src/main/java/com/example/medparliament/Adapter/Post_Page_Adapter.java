@@ -12,9 +12,9 @@ import com.example.medparliament.Fragments.Rejected_Fragment;
 
 
 public   class Post_Page_Adapter extends FragmentPagerAdapter {
-    private static int NUM_ITEMS = 3;
-    private static  String title[]= new String[]{"Pending","Accepted","Rejected"};
-
+    private static int NUM_ITEMS = 1;
+//    private static  String title[]= new String[]{"Pending","Accepted","Rejected"};
+private static  String title[]= new String[]{""};
     public Post_Page_Adapter(FragmentManager fragmentManager, Context context) {
         super(fragmentManager);
 //        title=new String[]{context.getResources().getString(R.string.Voting_Campaigns),context.getResources().getString(R.string.Rewards_Campaigns),context.getResources().getString(R.string.Fan_Launchpad),context.getResources().getString(R.string.Favorites)};

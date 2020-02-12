@@ -23,14 +23,23 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
+import com.example.medparliament.Adapter.AnnoucementsAdapter;
+import com.example.medparliament.Adapter.Dashboard_News_Adapter;
 import com.example.medparliament.Adapter.DrawerI_Adapter;
+import com.example.medparliament.Adapter.Event_Adapter;
+import com.example.medparliament.Adapter.GalleryAdapter;
 import com.example.medparliament.Adapter.Post_Adapter;
 import com.example.medparliament.Internet.Api_Calling;
+import com.example.medparliament.Internet.Models.DashboardAnnouncedModel;
+import com.example.medparliament.Internet.Models.DashboardGalleryModel;
+import com.example.medparliament.Internet.Models.Dashboard_News_Model;
+import com.example.medparliament.Internet.Models.Dashbooard_eventModel;
 import com.example.medparliament.Internet.Models.DrawerModel;
 import com.example.medparliament.Internet.Models.Post_Modle;
 import com.example.medparliament.Internet.URLS;
@@ -52,9 +61,14 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.fotoapparat.parameter.Flash;
 
 public class DashBoard_Activity extends AppCompatActivity implements onResult {
     ListView listView;
+    ImageView arrow;
+    Segow_UI_Semi_Font moreNews;
+    LinearLayout news,announce,event,gallery;
+    Button login_signup;
     ActionBarDrawerToggle actionBarDrawerToggle;
     DrawerLayout drawerLayout;
     Segow_UI_Semi_Font userName;
@@ -63,65 +77,144 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
     onResult onResult;
     RelativeLayout nodata;
     Post_Adapter adapterpost;
-    RecyclerView recyclerView;
-    ArrayList<Post_Modle> arrayList;
-    LinearLayoutManager manager;
+    ArrayList<Dashboard_News_Model> newslist;
+    ArrayList<DashboardAnnouncedModel> announcedlist;
+    ArrayList<DashboardGalleryModel>gallerylsit;
+    ArrayList<Dashbooard_eventModel>eventlist;
     MySharedPrefrence m;
+    RecyclerView recycle_gallery,recyclerView_news,recyclerView_announced,recyclerView_event;
     String name;
     ImageView setting;
     CircleImageView profile;
     ProgressDialog progressDialog;
     FloatingActionButton cmnt;
+    Dashboard_News_Adapter dashboard_news_adapter;
+    LinearLayoutManager news_manager,gallery_Manager,announced_manage,event_manager;
+    GalleryAdapter galleryAdapter;
+    AnnoucementsAdapter annoucementsAdapter;
+    Event_Adapter event_adapter;
     int counter=0;
+    ImageView bell,user_login;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board_);
-        Window window = getWindow();
-//        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-//        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-//        window.setNavigationBarColor(Color.WHITE);
+         bell=findViewById(R.id.bell);
+         user_login=findViewById(R.id.user_login);
+        login_signup=findViewById(R.id.login_signup);
+        cmnt=findViewById(R.id.cmnt);
+        logout=findViewById(R.id.logout);
+        setting=findViewById(R.id.setting);
+        arrow=findViewById(R.id.arrow);
+        if(Comman.Check_Login(DashBoard_Activity.this)){
+            bell.setVisibility(View.VISIBLE);
+            cmnt.setVisibility(View.VISIBLE);
+           logout.setVisibility(View.VISIBLE);
+            setting.setVisibility(View.VISIBLE);
+            login_signup.setVisibility(View.GONE);
+        }else{
+            setting.setVisibility(View.VISIBLE);
+            cmnt.setVisibility(View.GONE);
+            user_login.setVisibility(View.VISIBLE);
+            login_signup.setVisibility(View.VISIBLE);
+        }
         Animatoo.animateSwipeLeft(DashBoard_Activity.this);
         this.onResult=this;
         Intent i=getIntent();
         if(i!=null)
             name=i.getStringExtra("username");
         listView = findViewById(R.id.left_drawer);
+
+        announcedlist=new ArrayList<>();
+        newslist=new ArrayList<>();
+        eventlist=new ArrayList<>();
+        gallerylsit=new ArrayList<>();
+
         nodata=findViewById(R.id.nodata);
-        setting=findViewById(R.id.setting);
+
         m=MySharedPrefrence.instanceOf(DashBoard_Activity.this);
         View stub = (View) findViewById(R.id.toolbar);
-        logout=findViewById(R.id.logout);
+
+
+        announce=findViewById(R.id.anouced);
+        news=findViewById(R.id.news);
+        event=findViewById(R.id.Event);
+        gallery=findViewById(R.id.gallery);
+
         toolbar=stub.findViewById(R.id.toolbar_actionbar);
         drawerLayout = findViewById(R.id.drawerlayut);
         userName=findViewById(R.id.username);
-        cmnt=findViewById(R.id.cmnt);
+
         profile=findViewById(R.id.profile);
+        moreNews=findViewById(R.id.morenews);
         userName.setText(m.getUserName());
         Comman.setRoundedImage(DashBoard_Activity.this,profile,m.getUserProfile());
-//        Glide.with(DashBoard_Activity.this).load(m.getUserProfile()).into(profile);
         progressDialog = new ProgressDialog(DashBoard_Activity.this);
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(true);
         progressDialog.show();
         Comman.log("UserName","jkdsf"+m.getUserName());
-        DrawerModel[] drawerItem = new DrawerModel[4];
-        drawerItem[0] = new DrawerModel(R.drawable.ic_home, "Home");
-        drawerItem[1] = new DrawerModel(R.drawable.post, "My Posts");
-        drawerItem[2] = new DrawerModel(R.drawable.ic_info, "About us");
-        drawerItem[3] = new DrawerModel(R.drawable.ic_star, "Rate Now");
+
+
+           DrawerModel[] drawerItem = new DrawerModel[5];
+           drawerItem[0] = new DrawerModel(R.drawable.ic_home, "Home");
+            drawerItem[1] = new DrawerModel(R.drawable.post, "My Posts");
+            drawerItem[2] = new DrawerModel(R.drawable.post,"All Post");
+            drawerItem[3] = new DrawerModel(R.drawable.ic_info, "About us");
+            drawerItem[4] = new DrawerModel(R.drawable.ic_star, "Rate Now");
+
+
+
+
+
         DrawerI_Adapter adapter = new DrawerI_Adapter(this, R.layout.drawer_item_layout, drawerItem);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new DrawerItemClickListener());
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         setupDrawerToggle();
-        recyclerView=findViewById(R.id.recycle);
-        arrayList=new ArrayList<>();
-        manager=new LinearLayoutManager(DashBoard_Activity.this);
-        recyclerView.setLayoutManager(manager);
-        adapterpost=new Post_Adapter(DashBoard_Activity.this,arrayList,m.getUserName(),2);
-        recyclerView.setAdapter(adapterpost);
+        recyclerView_announced=findViewById(R.id.recycle_announced);
+        recyclerView_news=findViewById(R.id.recycle_news);
+        recyclerView_event=findViewById(R.id.recycle_event);
+        recycle_gallery=findViewById(R.id.recycle_gallery);
+
+        announced_manage=new LinearLayoutManager(DashBoard_Activity.this);
+        news_manager=new LinearLayoutManager(DashBoard_Activity.this);
+        event_manager=new LinearLayoutManager(DashBoard_Activity.this);
+        gallery_Manager=new LinearLayoutManager(DashBoard_Activity.this);
+
+
+        annoucementsAdapter=new AnnoucementsAdapter(DashBoard_Activity.this,announcedlist);
+        dashboard_news_adapter=new Dashboard_News_Adapter(DashBoard_Activity.this,newslist);
+        event_adapter=new Event_Adapter(DashBoard_Activity.this,eventlist);
+        galleryAdapter=new GalleryAdapter(DashBoard_Activity.this,gallerylsit);
+        announced_manage.setOrientation(RecyclerView.HORIZONTAL);
+        news_manager.setOrientation(RecyclerView.HORIZONTAL);
+        event_manager.setOrientation(RecyclerView.HORIZONTAL);
+        gallery_Manager.setOrientation(RecyclerView.HORIZONTAL);
+
+        recyclerView_announced.setLayoutManager(announced_manage);
+        recyclerView_news.setLayoutManager(news_manager);
+        recyclerView_event.setLayoutManager(event_manager);
+        recycle_gallery.setLayoutManager(gallery_Manager);
+
+        recyclerView_announced.setAdapter(annoucementsAdapter);
+        recyclerView_news.setAdapter(dashboard_news_adapter);
+        recyclerView_event.setAdapter(event_adapter);
+        recycle_gallery.setAdapter(galleryAdapter);
         setupToolbar();
+        moreNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashBoard_Activity.this,All_News_Activity.class));
+//                if(Comman.Check_Login(DashBoard_Activity.this)){
+//
+//                    startActivity(new Intent(DashBoard_Activity.this,All_News_Activity.class));
+//                }else {
+//                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
+//                }
+
+            }
+        });
         cmnt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,8 +230,42 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashBoard_Activity.this,User_profile_Activity.class));
-                drawerLayout.closeDrawers();
+                if(Comman.Check_Login(DashBoard_Activity.this)) {
+                    startActivity(new Intent(DashBoard_Activity.this, User_profile_Activity.class));
+                }else{
+                    startActivity(new Intent(DashBoard_Activity.this,Login_Signup_Activity.class));
+                }drawerLayout.closeDrawers();
+            }
+        });
+
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Comman.Check_Login(DashBoard_Activity.this)) {
+                    //startActivity(new Intent(DashBoard_Activity.this, User_profile_Activity.class));
+                }else{
+                    startActivity(new Intent(DashBoard_Activity.this,Login_Signup_Activity.class));
+                }drawerLayout.closeDrawers();
+            }
+        });
+        login_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashBoard_Activity.this,AboutUsActivity.class));
+            }
+        });
+        user_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DashBoard_Activity.this,Login_Signup_Activity.class));
+            }
+        });
+         arrow.setVisibility(View.GONE);
+        arrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                recyclerView_announced.getLayoutManager().scrollToPosition(announced_manage.findLastVisibleItemPosition() + 1);
+                Comman.log("asdfdsafdfsdas",":adsffadsdasf");
             }
         });
     }
@@ -150,12 +277,54 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
         if(jsonObject!=null && status) {
             Gson gson = new GsonBuilder().create();
             try {
+                Comman.log("DashBoarding",""+jsonObject);
                 nodata.setVisibility(View.GONE);
-                ArrayList<Post_Modle> rm = gson.fromJson(jsonObject.getString("result"), new TypeToken<ArrayList<Post_Modle>>() {
-                }.getType());
-                arrayList.clear();
-                arrayList.addAll(rm);
-                adapterpost.notifyDataSetChanged();
+
+                if(jsonObject.getJSONArray("announcement").length()>0) {
+                    ArrayList<DashboardAnnouncedModel> dash_anounc_list = gson.fromJson(jsonObject.getString("announcement"), new TypeToken<ArrayList<DashboardAnnouncedModel>>() {
+                    }.getType());
+                    if(dash_anounc_list!=null){
+                        announcedlist.clear();
+                        announcedlist.addAll(dash_anounc_list);
+                        if(Comman.Check_Login(DashBoard_Activity.this)){
+                        announce.setVisibility(View.VISIBLE);}}
+                }
+                if(jsonObject.getJSONArray("news").length()>0){
+                ArrayList<Dashboard_News_Model> dash_news_list = gson.fromJson(jsonObject.getString("news"), new TypeToken<ArrayList<Dashboard_News_Model>>() {}.getType());
+                    if(newslist!=null){
+                        newslist.clear();
+                        newslist.addAll(dash_news_list);
+                    news.setVisibility(View.VISIBLE);
+                    }
+                }
+                if((jsonObject.getJSONArray("event").length()>0)){
+                ArrayList<Dashbooard_eventModel> dash_event_list = gson.fromJson(jsonObject.getString("event"), new TypeToken<ArrayList<Dashbooard_eventModel>>() {}.getType());
+                    if(eventlist!=null){
+                        eventlist.clear();
+                        eventlist.addAll(dash_event_list);
+                       event.setVisibility(View.VISIBLE);
+                    }
+                }
+                if((jsonObject.getJSONArray("gallery").length()>0)){
+                ArrayList<DashboardGalleryModel> dash_gallery_list = gson.fromJson(jsonObject.getString("gallery"), new TypeToken<ArrayList<DashboardGalleryModel>>() {}.getType());
+                    if(gallerylsit!=null){
+                        gallerylsit.clear();
+                        gallerylsit.addAll(dash_gallery_list);
+                    gallery.setVisibility(View.VISIBLE);}
+                }
+
+
+
+
+                Comman.log("SizeAAA",""+announcedlist.size());
+                Comman.log("SizeNNN",""+newslist.size());
+                Comman.log("SizeEEE",""+eventlist.size());
+                Comman.log("SizeGGG",""+gallerylsit.size());
+
+                annoucementsAdapter.notifyDataSetChanged();
+                dashboard_news_adapter.notifyDataSetChanged();
+                event_adapter.notifyDataSetChanged();
+                galleryAdapter.notifyDataSetChanged();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -175,7 +344,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
     @Override
     protected void onStart() {
         super.onStart();
-        Api_Calling.postMethodCall_NO_MSG(DashBoard_Activity.this,getWindow().getDecorView().getRootView(),onResult, URLS.userDashBoardPost,myPostJson(),"MY_POST_LIST");
+        Api_Calling.postMethodCall_NO_MSG(DashBoard_Activity.this,getWindow().getDecorView().getRootView(),onResult, URLS.landingPageDashboard,myPostJson(),"MY_POST_LIST");
     }
 
     @Override
@@ -206,11 +375,50 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
     }
     private void selectItem(int position) {
         switch (position)
-        {
+        {     case 0:
+            startActivity(new Intent(DashBoard_Activity.this, DashBoard_Activity.class));
+
+            drawerLayout.closeDrawers();
+            break;
             case 1:
-                startActivity(new Intent(DashBoard_Activity.this,My_Post_Activity.class));
+                if(Comman.Check_Login(DashBoard_Activity.this)) {
+                    startActivity(new Intent(DashBoard_Activity.this, My_Post_Activity.class));
+                }else{
+                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
+                }
+
                 drawerLayout.closeDrawers();
                 break;
+
+            case 2:
+                if(Comman.Check_Login(DashBoard_Activity.this)){
+                    startActivity(new Intent(DashBoard_Activity.this, All_Post_Activity.class));
+                }else {
+                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
+
+                }
+                drawerLayout.closeDrawers();
+                break;
+
+            case 3:
+                if(Comman.Check_Login(DashBoard_Activity.this)) {
+
+                }else{
+                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
+                }
+
+                drawerLayout.closeDrawers();
+                break;
+            case 4:
+                if(Comman.Check_Login(DashBoard_Activity.this)) {
+
+                }else{
+                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
+                }
+
+                drawerLayout.closeDrawers();
+                break;
+
         }
 
     }
@@ -256,7 +464,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
             public void onClick(View v) {
                 alertDialog.dismiss();
                 m.clearData();
-                startActivity(new Intent(DashBoard_Activity.this,Login_Activity.class));
+                startActivity(new Intent(DashBoard_Activity.this,DashBoard_Activity.class));
                 finish();
             }
         });
@@ -280,7 +488,9 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
     {
         JSONObject jsonObject=new JSONObject();
         try {
-            jsonObject.put("userTypeId",""+m.getUserTypeId());
+            if(Comman.Check_Login(DashBoard_Activity.this)){
+           jsonObject.put("userTypeId",m.getUserTypeId());
+            jsonObject.put("userId",m.getUserId());}
         } catch (JSONException e) {
             e.printStackTrace();
         }

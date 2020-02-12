@@ -69,7 +69,7 @@ public class Pending_Fragment extends Base_Fragement implements onResult{
     {
         JSONObject jsonObject=new JSONObject();
         try {
-            jsonObject.put("userTypeId",""+m.getUserTypeId()).put("userId",""+m.getUserId()).put("status","0");
+            jsonObject.put("userTypeId",""+m.getUserTypeId()).put("userId",""+m.getUserId());
         } catch (JSONException e) {
             e.printStackTrace();
         }

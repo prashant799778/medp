@@ -1,6 +1,8 @@
 package com.example.medparliament.Internet.Models;
 
-public class Post_Modle {
+import java.io.Serializable;
+
+public class Post_Modle implements Serializable {
     String id;
     String postTitle;
     String userName;
@@ -50,6 +52,24 @@ public class Post_Modle {
 
 
     String postId;
+    String like;
+    String likeStatus;
+
+    public String getLike() {
+        return like;
+    }
+
+    public void setLike(String like) {
+        this.like = like;
+    }
+
+    public String getLikeStatus() {
+        return likeStatus;
+    }
+
+    public void setLikeStatus(String likeStatus) {
+        this.likeStatus = likeStatus;
+    }
 
     public String getDateCreate() {
         return DateCreate;

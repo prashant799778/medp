@@ -1,5 +1,6 @@
 package com.example.medparliament.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
 import com.example.medparliament.Internet.Api_Calling;
 import com.example.medparliament.Internet.URLS;
+import com.example.medparliament.Internet.VideoListener;
 import com.example.medparliament.Internet.onResult;
 import com.example.medparliament.R;
 import com.example.medparliament.Utility.Comman;
@@ -34,7 +37,11 @@ import com.example.medparliament.Widget.Segow_UI_Bold_Font;
 import com.example.medparliament.Widget.Segow_UI_EditText;
 import com.example.medparliament.Widget.Segow_UI_Font;
 import com.example.medparliament.Widget.Segow_UI_Semi_Font;
+import com.google.android.gms.common.api.Api;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,7 +52,7 @@ import java.util.ArrayList;
 import in.galaxyofandroid.spinerdialog.OnSpinerItemClick;
 import in.galaxyofandroid.spinerdialog.SpinnerDialog;
 
-public class Student_SignUp_Activity extends Base_Activity implements View.OnClickListener, onResult {
+public class Student_SignUp_Activity extends Base_Activity implements View.OnClickListener, onResult, VideoListener {
     Button signup;
     JSONArray doctorIdArray;
     RelativeLayout googleLogin;
@@ -53,13 +60,18 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
     ArrayList<String>genderList=new ArrayList<>();
     SpinnerDialog spinnerDialog;
     onResult onResult;
+    VideoListener videoListener;
+    ImageView image;
+    YouTubePlayerView videoView;
+    Segow_UI_Semi_Font title;
     MySharedPrefrence m;
     String s1="";
     String s2="";
     private ProgressDialog progressDialog;
-    Segow_UI_Font qualifiaction,university,gender,interest,bacth;
-    Segow_UI_EditText name,mobile,email,pwd,cnfpwd,address,instuteName,universityaddress,define;
+    Segow_UI_Font gender,interest,bacth,country;
+    Segow_UI_EditText name,mobile,email,pwd,cnfpwd,address,instuteName,universityaddress,define,qualifiaction,university;
     ImageButton bck;
+    String userTypeId="";
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +79,13 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
         setContentView(R.layout.activity_student__sign_up_);
         Animatoo.animateSwipeLeft(Student_SignUp_Activity.this);
         this.onResult=this;
+        this.videoListener=this;
         m=MySharedPrefrence.instanceOf(Student_SignUp_Activity.this);
+        title=findViewById(R.id.videoTitle);
+        Intent i=getIntent();
+        if(i!=null)
+            userTypeId=i.getStringExtra("userType");
+        videoView = (YouTubePlayerView)findViewById(R.id.video);
         name=findViewById(R.id.name);
         mobile=findViewById(R.id.mobile);
         interest=findViewById(R.id.interest);
@@ -83,6 +101,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
         universityaddress=findViewById(R.id.universityAddress);
         define=findViewById(R.id.define);
         signup=findViewById(R.id.signup);
+        country=findViewById(R.id.country);
         googleLogin=findViewById(R.id.googleLogin);
         qualifiaction.setOnClickListener(this);
         university.setOnClickListener(this);
@@ -92,14 +111,17 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
         bacth.setOnClickListener(this);
         bck=findViewById(R.id.bck);
         bck.setOnClickListener(this);
+        country.setOnClickListener(this);
         genderList.add("Male");
         genderList.add("Female");
         genderList.add("Other");
         doctorIdArray=new JSONArray();
-        if(Api_Calling.QualificationList.size()==0)
-            Api_Calling.getQualificationListData(Student_SignUp_Activity.this,getWindow().getDecorView().getRootView(), URLS.ALL_QUALIFICATION);
-        if(Api_Calling.UniversityList.size()==0)
-            Api_Calling.getUniversityListData(Student_SignUp_Activity.this,getWindow().getDecorView().getRootView(), URLS.ALL_UNIVERSITY);
+        Api_Calling.getALLCountry(Student_SignUp_Activity.this,getWindow().getDecorView().getRootView(),URLS.ALL_COUNTRY);
+//        Api_Calling.videoApiCalling(Student_SignUp_Activity.this,getWindow().getDecorView().getRootView(),URLS.getSignUpVideo,videoJson(),videoListener);
+//        if(Api_Calling.QualificationList.size()==0)
+//            Api_Calling.getQualificationListData(Student_SignUp_Activity.this,getWindow().getDecorView().getRootView(), URLS.ALL_QUALIFICATION);
+//        if(Api_Calling.UniversityList.size()==0)
+//            Api_Calling.getUniversityListData(Student_SignUp_Activity.this,getWindow().getDecorView().getRootView(), URLS.ALL_UNIVERSITY);
         Api_Calling.getStudentIntrestList(Student_SignUp_Activity.this,getWindow().getDecorView().getRootView(),URLS.INTEREST,interestJSon());
         Comman.setMandatory(name,Student_SignUp_Activity.this.getResources().getString(R.string.Name));
         Comman.setMandatory(mobile,Student_SignUp_Activity.this.getResources().getString(R.string.Mobile_No));
@@ -111,10 +133,11 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
         Comman.setMandatory(define,Student_SignUp_Activity.this.getResources().getString(R.string.Define_in_200_words));
         Comman.setMandatory(email,Student_SignUp_Activity.this.getResources().getString(R.string.email));
         Comman.setMandatoryTextView(gender,Student_SignUp_Activity.this.getResources().getString(R.string.gender));
-        Comman.setMandatoryTextView(qualifiaction,Student_SignUp_Activity.this.getResources().getString(R.string.Qualification));
+        Comman.setMandatory(qualifiaction,Student_SignUp_Activity.this.getResources().getString(R.string.Qualification));
         Comman.setMandatoryTextView(bacth,Student_SignUp_Activity.this.getResources().getString(R.string.Batch_of_Qualification));
         Comman.setMandatoryTextView(interest,Student_SignUp_Activity.this.getResources().getString(R.string.Interests));
-        Comman.setMandatoryTextView(university,Student_SignUp_Activity.this.getResources().getString(R.string.University));
+        Comman.setMandatory(university,Student_SignUp_Activity.this.getResources().getString(R.string.University));
+        Comman.setMandatoryTextView(country,Student_SignUp_Activity.this.getResources().getString(R.string.Country));
         Comman.ChangeFocus(name);
         Comman.ChangeFocus(mobile);
         Comman.ChangeFocus(pwd);
@@ -124,6 +147,8 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
         Comman.ChangeFocus(universityaddress);
         Comman.ChangeFocus(define);
         Comman.ChangeFocus(email);
+        Comman.ChangeFocus(qualifiaction);
+        Comman.ChangeFocus(university);
 
 
 //        email.addTextChangedListener(new TextWatcher() {
@@ -165,13 +190,13 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
                     put("userTypeId","7")
                     .put("gender",""+id)
                     .put("password",""+pwd.getText().toString()).put("deviceType","").
-                    put("os","").put("ipAddress","").put("country","")
+                    put("os","").put("ipAddress","").put("country",""+Api_Calling.CountryHash.get(country.getText().toString()))
                     .put("city","").put("deviceid",""+Comman.uniqueId(Student_SignUp_Activity.this))
                     .put("ImeiNo",""+Comman.getIMEI(Student_SignUp_Activity.this))
                     .put("address",""+address.getText().toString())
-                    .put("qualification",""+ Api_Calling.QualifiactionHashMap.get(qualifiaction.getText().toString()))
+                    .put("qualification",""+qualifiaction.getText().toString())
                     .put("batchofQualification",""+bacth.getText().toString()).put("institutionName",""+instuteName.getText().toString())
-                    .put("universityName",""+Api_Calling.UniversityHashMap.get(university.getText().toString())).put("universityAddress",""+universityaddress.getText().toString())
+                    .put("universityName",""+university.getText().toString()).put("universityAddress",""+universityaddress.getText().toString())
                     .put("interestId",doctorIdArray)
                     .put("aboutProfile",""+define.getText().toString()).put("designation","");
         } catch (JSONException e) {
@@ -184,16 +209,12 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.qualificatin:
-                showPopup(Api_Calling.QualificationList,"Select Qualification",qualifiaction);
+            case R.id.country:
+                showPopup(Api_Calling.CountrytList,"Select Country",country);
                 spinnerDialog.showSpinerDialog();
                 break;
             case R.id.bach:
                 setBatch(bacth);
-                break;
-            case R.id.universityname:
-                showPopup(Api_Calling.UniversityList,"Select University Name",university);
-                spinnerDialog.showSpinerDialog();
                 break;
             case R.id.gender:
                 showPopup(genderList,"Select Gender",gender);
@@ -271,12 +292,12 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                m.setLoggedIn(true);
-                m.setUserName(Comman.getValueFromJsonObject(jsonObject1, "userName"));
-                m.setUserId(Comman.getValueFromJsonObject(jsonObject1, "userId"));
-                m.setUserTypeId(Comman.getValueFromJsonObject(jsonObject1, "userTypeId"));
-                m.setUserProfile(Comman.getValueFromJsonObject(jsonObject1, "profilePic"));
-                Intent i = new Intent(Student_SignUp_Activity.this, DashBoard_Activity.class);
+                m.setLoggedIn(false);
+//                m.setUserName(Comman.getValueFromJsonObject(jsonObject1, "userName"));
+//                m.setUserId(Comman.getValueFromJsonObject(jsonObject1, "userId"));
+//                m.setUserTypeId(Comman.getValueFromJsonObject(jsonObject1, "userTypeId"));
+//                m.setUserProfile(Comman.getValueFromJsonObject(jsonObject1, "profilePic"));
+                Intent i = new Intent(Student_SignUp_Activity.this, Login_Activity.class);
                 i.putExtra("username", "" + Comman.getValueFromJsonObject(jsonObject1, "userName"));
                 startActivity(i);
                 finish();
@@ -383,5 +404,45 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
                 alertDialog.dismiss();
             }
         });
+    }
+
+    @Override
+    public void onVideoResult(final JSONObject jsonObject, Boolean status) {
+        if(status && jsonObject!=null)
+        {
+            videoView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+                @Override
+                public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                    String []videoId = null;
+                    try {
+                        videoId = jsonObject.getString("youtubeLink").split("\\=");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+//                                        try {
+////                                            videoId = json.getString("S0Q4gqBUs7c");
+                    if(videoId!=null)
+                        youTubePlayer.cueVideo(videoId[1], 0);
+//                                        } catch (JSONException e) {
+//                                            e.printStackTrace();
+//                                        }
+                }
+            });
+        }
+    }
+
+
+
+
+    public JSONObject videoJson()
+    {
+        JSONObject jsonObject=new JSONObject();
+        try {
+            jsonObject.put("userTypeId","8");
+            Comman.log("Video",""+jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
     }
 }

@@ -66,6 +66,7 @@ public class Post_Adapter extends RecyclerView.Adapter<Post_Adapter.Notification
                 Intent i=new Intent(context, Post_Details_Activity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 i.putExtra("postId",""+pm.getPostId());
+
                 context.startActivity(i);
             }
         });

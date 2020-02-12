@@ -34,6 +34,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.medparliament.R;
 
 import com.example.medparliament.Widget.Segow_UI_Semi_Font;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.sun.easysnackbar.EasySnackBar;
 
@@ -55,6 +56,37 @@ public class Comman {
             return true;
         }
         return false;
+    }
+
+
+
+
+    public static void setImageWithCondition(Context context, ImageView imageView, String path)
+    {
+        Comman.log("path",""+path);
+        if(path!=null && path.isEmpty())
+        {
+            Comman.log("path","iii");
+            imageView.setVisibility(View.GONE);
+        }else {
+            Comman.log("path","eee");
+            if(context!=null && imageView!=null && path!=null){
+                Comman.log("path","iiii22");
+                Glide.with(context).load(path).into(imageView);
+            imageView.setVisibility(View.VISIBLE);
+            }
+        }
+
+    }
+
+
+
+    public static void setRectangleImage(Context context, ImageView circleImageView,String path)
+    {
+        if(context!=null && circleImageView!=null && path!=null)
+            Glide.with(context).load(path).into(circleImageView);
+//                apply(RequestOptions.skipMemoryCacheOf(true)).apply(RequestOptions.encodeQualityOf(70))
+//                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE)).into(circleImageView);
     }
 
     public static boolean isConnectedToInternet(Context context) {

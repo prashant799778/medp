@@ -20,5 +20,6 @@
     <color name="textcolor">#dfa541</color>
     <color name="editTextcolor">#262625</color>
     <color name="hintColor">#6B7682</color>
+    <color name="bbb">#373948</color>
 
 </resources>

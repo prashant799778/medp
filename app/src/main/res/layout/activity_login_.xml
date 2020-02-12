@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
     tools:context=".Activity.Login_Activity">
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:id="@+id/scroll"-->
-<!--        android:layout_height="match_parent">-->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/bg1"
         android:scaleType="centerCrop">
     </ImageView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/scroll"
+        android:layout_height="match_parent">
         <RelativeLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -24,6 +24,7 @@
                 android:background="@color/transparent"
                 android:layout_width="match_parent"
                 android:id="@+id/tt"
+                android:visibility="gone"
                 android:layout_height="52dp">
                 <ImageButton
                     android:id="@+id/bck"
@@ -60,46 +61,55 @@
             </RelativeLayout>
             <ImageView
                 android:layout_weight=".5"
-                android:layout_width="150dp"
-                android:src="@drawable/cup"
+                android:layout_width="250dp"
+                android:src="@drawable/group_"
                 android:padding="8dp"
                 android:layout_below="@+id/tt"
                 android:id="@+id/cup"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="0dp"
                 android:layout_centerHorizontal="true"
-                android:layout_height="150dp">
+                android:layout_height="250dp">
             </ImageView>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_below="@+id/cup"
+                android:layout_below="@id/cup"
+                android:id="@+id/lets"
+                android:layout_marginHorizontal="@dimen/leftMargin"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <com.example.medparliament.Widget.Segow_UI_Font
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/Login"
+                    android:textColor="@color/white"
+                    android:layout_gravity="bottom"
+                    android:textSize="18dp"
+                    android:layout_weight=".5"
+                    android:clickable="true"
+                    android:gravity="left|bottom">
+                </com.example.medparliament.Widget.Segow_UI_Font>
+                <com.example.medparliament.Widget.Segow_UI_Font
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/Letgestarted"
+                    android:textColor="@color/white"
+                    android:layout_gravity="bottom"
+                    android:textSize="14dp"
+                    android:layout_weight="1"
+                    android:paddingLeft="2dp"
+                    android:clickable="true"
+                    android:paddingBottom="7dp"
+                    android:gravity="left|bottom">
+                </com.example.medparliament.Widget.Segow_UI_Font>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/lets"
                 android:orientation="vertical"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginLeft="@dimen/leftMargin"
                 android:layout_marginRight="@dimen/rightMargin"
                 android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:id="@+id/googleLogin"
-                    android:visibility="gone"
-                    android:background="@drawable/edit_text_boarder"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_width="@dimen/fieldHeight"
-                        android:id="@+id/img"
-                        android:src="@drawable/google"
-                        android:padding="10dp"
-                        android:layout_height="@dimen/fieldHeight">
-                    </ImageView>
-                <com.example.medparliament.Widget.Segow_UI_Font
-                    android:layout_width="match_parent"
-                    android:layout_toRightOf="@+id/img"
-                    android:text="@string/Login_with_Google"
-                    android:textAlignment="gravity"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="10dp"
-                    android:layout_height="@dimen/fieldHeight"
-                    android:textSize="14dp" />
-                </RelativeLayout>
                 <com.example.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
                     android:layout_marginVertical="18dp"
@@ -123,7 +133,7 @@
                     android:layout_height="@dimen/fieldHeight"/>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_marginTop="34dp"
+                    android:layout_marginTop="20dp"
                     android:id="@+id/t_password"
                     android:layout_height="@dimen/fieldHeight"
                     app:passwordToggleEnabled="true"
@@ -207,7 +217,39 @@
                     android:id="@+id/forgot">
                 </com.example.medparliament.Widget.Segow_UI_Font>
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <com.example.medparliament.Widget.Segow_UI_Font
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/Donthaveanaccount"
+                        android:textColor="@color/white"
+                        android:layout_gravity="bottom"
+                        android:textSize="14dp"
+                        android:layout_weight=".5"
+                        android:clickable="true"
+                        android:paddingBottom="7dp"
+                        android:gravity="right|bottom">
+                    </com.example.medparliament.Widget.Segow_UI_Font>
+                    <com.example.medparliament.Widget.Segow_UI_Font
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/Signup"
+                        android:textColor="@color/textcolor"
+                        android:layout_gravity="bottom"
+                        android:textSize="14dp"
+                        android:layout_weight="1"
+                        android:paddingLeft="2dp"
+                        android:id="@+id/l_signup"
+                        android:clickable="true"
+                        android:paddingBottom="7dp"
+                        android:gravity="left|bottom">
+                    </com.example.medparliament.Widget.Segow_UI_Font>
+                </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
-<!--    </ScrollView>-->
+    </ScrollView>
 </RelativeLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.MedParliament"
+    package="com.example.medparliament"
     android:targetSandboxVersion="2"
     android:versionCode="1"
     android:versionName="1.0" >
@@ -10,8 +10,11 @@
         android:targetSdkVersion="29" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -29,28 +32,38 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.example.MedParliament.Activity.About_us_Activity" />
-        <activity
-            android:name="com.example.MedParliament.Activity.Edit_Profile_Activity"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name="com.example.MedParliament.Activity.User_profile_Activity" />
-        <activity android:name="com.example.MedParliament.Activity.Post_Details_Activity" />
-        <activity android:name="com.example.MedParliament.Activity.My_Post_Activity" />
-        <activity android:name="com.example.MedParliament.Activity.Comment_Activity" />
+        <activity android:name="com.example.medparliament.Activity.AboutUsActivity" />
+        <activity android:name="com.example.medparliament.Activity.DecisionMaker" />
+        <activity android:name="com.example.medparliament.Activity.Forgot_Password_Activity" />
+        <activity android:name="com.example.medparliament.Activity.OTP_Activity" />
+        <activity android:name="com.example.medparliament.Activity.All_Post_Details" />
+        <activity android:name="com.example.medparliament.Activity.All_Post_Activity" />
+        <activity android:name="com.example.medparliament.Activity.ReplyActivity" />
+        <activity android:name="com.example.medparliament.Activity.Professonal_signup_Activity" />
+        <activity android:name="com.example.medparliament.Activity.DoctorSignupActivity" />
+        <activity android:name="com.example.medparliament.Activity.NewsDetails_Activity" />
+        <activity android:name="com.example.medparliament.Activity.All_News_Activity" />
+        <activity android:name="com.example.medparliament.Activity.ChangePassword_Activity" />
+        <activity android:name="com.example.medparliament.Activity.About_us_Activity" />
+        <activity android:name="com.example.medparliament.Activity.Edit_Profile_Activity" />
+        <activity android:name="com.example.medparliament.Activity.User_profile_Activity" />
+        <activity android:name="com.example.medparliament.Activity.Post_Details_Activity" />
+        <activity android:name="com.example.medparliament.Activity.My_Post_Activity" />
+        <activity android:name="com.example.medparliament.Activity.Comment_Activity" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name="com.example.MedParliament.Activity.DashBoard_Activity" />
-        <activity android:name="com.example.MedParliament.Activity.Entrepreneur_SignUp_Activity" />
-        <activity android:name="com.example.MedParliament.Activity.Policy_Maker_SignUp_Activity" />
-        <activity android:name="com.example.MedParliament.Activity.Student_SignUp_Activity" />
-        <activity android:name="com.example.MedParliament.Activity.SignUp_type_Activity" />
-        <activity android:name="com.example.MedParliament.Activity.Login_Activity" />
-        <activity android:name="com.example.MedParliament.Activity.Login_Signup_Activity" />
-        <activity android:name="com.example.MedParliament.Activity.Base_Activity" />
-        <activity android:name="com.example.MedParliament.Activity.Splace" >
+        <activity android:name="com.example.medparliament.Activity.DashBoard_Activity" />
+        <activity android:name="com.example.medparliament.Activity.Entrepreneur_SignUp_Activity" />
+        <activity android:name="com.example.medparliament.Activity.Policy_Maker_SignUp_Activity" />
+        <activity android:name="com.example.medparliament.Activity.Student_SignUp_Activity" />
+        <activity android:name="com.example.medparliament.Activity.SignUp_type_Activity" />
+        <activity android:name="com.example.medparliament.Activity.Login_Activity" />
+        <activity android:name="com.example.medparliament.Activity.Login_Signup_Activity" />
+        <activity android:name="com.example.medparliament.Activity.Base_Activity" />
+        <activity android:name="com.example.medparliament.Activity.Splace" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

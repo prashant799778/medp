@@ -3,17 +3,30 @@
     android:layout_width="match_parent"
     android:id="@+id/toolbar_layout_top"
     android:layout_height="wrap_content">
-    <com.example.medparliament.Widget.Segow_UI_Semi_Font
+    <com.example.medparliament.Widget.Segow_UI_Bold_Font
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Dashboard"
+        android:text="@string/MedParliament"
         android:layout_centerHorizontal="true"
         android:textSize="18dp"
         android:layout_marginTop="15dp"
         android:textColor="@color/white"
         android:textStyle="bold">
-    </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+    </com.example.medparliament.Widget.Segow_UI_Bold_Font>
+
     <ImageView
+        android:visibility="gone"
+        android:id="@+id/user_login"
+        android:layout_width="18dp"
+        android:layout_alignParentRight="true"
+        android:layout_height="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="20dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/login" />
+
+    <ImageView
+        android:visibility="gone"
         android:id="@+id/bell"
         android:layout_width="18dp"
         android:layout_alignParentRight="true"

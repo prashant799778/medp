@@ -12,7 +12,8 @@
         android:src="@drawable/signbgbg"
         android:scaleType="centerCrop">
     </ImageView>
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
@@ -58,6 +59,7 @@
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
             </RelativeLayout>
             <LinearLayout
+                android:id="@+id/second"
                 android:layout_width="match_parent"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="40dp"
@@ -106,6 +108,69 @@
                     android:layout_height="wrap_content">
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
             </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_below="@id/second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <View
+                    android:id="@+id/borderline"
+                    android:layout_below="@id/second"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white"
+                    >
+
+                </View>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:id="@+id/recycle"
+                    android:layout_below="@id/borderline"
+                    android:layout_above="@+id/nodata"
+                    android:layout_height="wrap_content">
+                </androidx.recyclerview.widget.RecyclerView>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/recycle"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/nodata"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    ><ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/nodata">
+                </ImageView>
+                    <com.example.medparliament.Widget.Segow_UI_Font
+                        android:layout_width="wrap_content"
+                        android:text="@string/nothread"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="150dp"
+                        android:layout_height="wrap_content">
+                    </com.example.medparliament.Widget.Segow_UI_Font>
+                </RelativeLayout>
+            </LinearLayout>
+
         </RelativeLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/cmnt"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:scaleType="centerCrop"
+        android:layout_marginRight="30dp"
+        app:backgroundTint="@color/white"
+        app:rippleColor="@color/colorAccent"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/new_post"
+        app:tint="@null"
+        android:layout_height="wrap_content">
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
 </RelativeLayout>

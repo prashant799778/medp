@@ -37,7 +37,7 @@ public class Entrepreneur_SignUp_Activity extends AppCompatActivity implements V
     Segow_UI_EditText name,designation,mobile,email,pwd,cnf_pwd,area_of_activity,define,companyName;
     Button signUp;
     ArrayList<String>genderList=new ArrayList<>();
-    Segow_UI_Font interest,gender,profile_category;
+    Segow_UI_Font interest,gender,profile_category,country;
     onResult onResult;
     RelativeLayout googleLogin;
     private ProgressDialog progressDialog;
@@ -68,6 +68,8 @@ public class Entrepreneur_SignUp_Activity extends AppCompatActivity implements V
         gender=findViewById(R.id.gender);
         interest=findViewById(R.id.interest);
         interest.setOnClickListener(this);
+        country=findViewById(R.id.country);
+        country.setOnClickListener(this);
         signUp.setOnClickListener(this);
         googleLogin.setOnClickListener(this);
         gender.setOnClickListener(this);
@@ -98,8 +100,11 @@ public class Entrepreneur_SignUp_Activity extends AppCompatActivity implements V
         Comman.setMandatoryTextView(gender,Entrepreneur_SignUp_Activity.this.getResources().getString(R.string.gender));
         Comman.setMandatoryTextView(interest,Entrepreneur_SignUp_Activity.this.getResources().getString(R.string.Interests));
         Comman.setMandatoryTextView(profile_category,Entrepreneur_SignUp_Activity.this.getResources().getString(R.string.Profile_Category));
+        Comman.setMandatoryTextView(country,Entrepreneur_SignUp_Activity.this.getResources().getString(R.string.Country));
         Api_Calling.getStudentIntrestList(Entrepreneur_SignUp_Activity.this, getWindow().getDecorView().getRootView(),URLS.INTEREST,interestJSon());
         Api_Calling.getALLCATEGORY(Entrepreneur_SignUp_Activity.this,getWindow().getDecorView().getRootView(),URLS.ALL_CATEGORY);
+        Api_Calling.getALLCountry(Entrepreneur_SignUp_Activity.this,getWindow().getDecorView().getRootView(),URLS.ALL_COUNTRY);
+
     }
     @Override
     public void onClick(View v) {
@@ -107,6 +112,10 @@ public class Entrepreneur_SignUp_Activity extends AppCompatActivity implements V
         {
             case R.id.interest:
                 setMultiChoice();
+                break;
+            case R.id.country:
+                showPopup(Api_Calling.CountrytList,"Select Country",country);
+                spinnerDialog.showSpinerDialog();
                 break;
             case R.id.bck:
                 onBackPressed();
@@ -218,10 +227,10 @@ public class Entrepreneur_SignUp_Activity extends AppCompatActivity implements V
                     put("userTypeId","6")
                     .put("gender",""+id).put("companyName",""+companyName.getText().toString())
                     .put("password",""+pwd.getText().toString()).put("deviceType","").
-                    put("os","").put("ipAddress","").put("country","")
+                    put("os","").put("ipAddress","").put("country",""+Api_Calling.CountryHash.get(country.getText().toString()))
                     .put("city","").put("deviceid",""+Comman.uniqueId(Entrepreneur_SignUp_Activity.this))
                     .put("ImeiNo",""+Comman.getIMEI(Entrepreneur_SignUp_Activity.this))
-                    .put("interestId",""+doctorIdArray).put("profileCategoryId",""+Api_Calling.ProfileHash.get(profile_category.getText().toString()))
+                    .put("interestId",doctorIdArray).put("profileCategoryId",""+Api_Calling.ProfileHash.get(profile_category.getText().toString()))
                     .put("aboutProfile",""+define.getText().toString()).put("designation",""+designation.getText().toString()).put("areaofActivity",""+area_of_activity.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -247,13 +256,13 @@ public class Entrepreneur_SignUp_Activity extends AppCompatActivity implements V
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                m.setLoggedIn(true);
-                m.setUserName(Comman.getValueFromJsonObject(jsonObject1, "userName"));
-                m.setUserId(Comman.getValueFromJsonObject(jsonObject1, "userId"));
-                m.setUserTypeId(Comman.getValueFromJsonObject(jsonObject1, "userTypeId"));
-                m.setUserProfile(Comman.getValueFromJsonObject(jsonObject1, "profilePic"));
+                m.setLoggedIn(false);
+//                m.setUserName(Comman.getValueFromJsonObject(jsonObject1, "userName"));
+//                m.setUserId(Comman.getValueFromJsonObject(jsonObject1, "userId"));
+//                m.setUserTypeId(Comman.getValueFromJsonObject(jsonObject1, "userTypeId"));
+//                m.setUserProfile(Comman.getValueFromJsonObject(jsonObject1, "profilePic"));
                 Comman.log("USername", "dsfa" + m.getUserName());
-                Intent i = new Intent(Entrepreneur_SignUp_Activity.this, DashBoard_Activity.class);
+                Intent i = new Intent(Entrepreneur_SignUp_Activity.this, Login_Activity.class);
                 i.putExtra("username", "" + Comman.getValueFromJsonObject(jsonObject1, "userName"));
                 startActivity(i);
                 finish();

@@ -6,9 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
@@ -19,12 +17,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.About_us_Activity"></activity>
+        <activity android:name=".Activity.AboutUsActivity"></activity>
+        <activity android:name=".Activity.DecisionMaker" />
+        <activity android:name=".Activity.Forgot_Password_Activity" />
+        <activity android:name=".Activity.OTP_Activity" />
+        <activity android:name=".Activity.All_Post_Details" />
+        <activity android:name=".Activity.All_Post_Activity" />
+        <activity android:name=".Activity.ReplyActivity" />
+        <activity android:name=".Activity.Professonal_signup_Activity" />
+        <activity android:name=".Activity.DoctorSignupActivity" />
+        <activity android:name=".Activity.NewsDetails_Activity" />
+        <activity android:name=".Activity.All_News_Activity" />
+        <activity android:name=".Activity.ChangePassword_Activity" />
+        <activity android:name=".Activity.About_us_Activity" />
         <activity android:name=".Activity.Edit_Profile_Activity" />
         <activity android:name=".Activity.User_profile_Activity" />
         <activity android:name=".Activity.Post_Details_Activity" />
         <activity android:name=".Activity.My_Post_Activity" />
         <activity android:name=".Activity.Comment_Activity" />
+
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
@@ -40,6 +51,7 @@
         <activity android:name=".Activity.Splace">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

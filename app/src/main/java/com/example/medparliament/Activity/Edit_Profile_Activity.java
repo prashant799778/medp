@@ -97,18 +97,26 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         institute_name=findViewById(R.id.institute_name);
         l_university_name=findViewById(R.id.l_unversity_name);
         university_name=findViewById(R.id.university_name);
+//        university_name.setFocusable(false);
+//        university_name.setFocusableInTouchMode(false);
         l_mobile=findViewById(R.id.l_mobile);
         mobile=findViewById(R.id.mobile);
         l_university_address=findViewById(R.id.l_University_address);
         university_address=findViewById(R.id.university_address);
         l_qulafication=findViewById(R.id.l_qualification);
         qualfication=findViewById(R.id.qualificatin);
+//        qualfication.setFocusable(false);
+//       qualfication.setFocusableInTouchMode(false);
         l_batch=findViewById(R.id.l_bach_of_qualification);
         batch=findViewById(R.id.bach);
+       batch.setFocusable(false);
+       batch.setFocusableInTouchMode(false);
         l_name=findViewById(R.id.l_name);
         name=findViewById(R.id.name);
         l_address=findViewById(R.id.l_personal);
         address=findViewById(R.id.address);
+        address.setFocusable(false);
+        address.setFocusableInTouchMode(false);
         l_iterest=findViewById(R.id.l_interest);
         interest=findViewById(R.id.interest);
         profile_image=findViewById(R.id.profile_image);
@@ -144,38 +152,51 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                 {
                     Api_Calling.multiPartCall1(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(),URLS.UpdateUser,setPolicyMakerJson(),onResult,"Student",array1);
 
-                }
-            }
-        });
-        qualfication.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(m.getUserTypeId().equalsIgnoreCase("7"))
+                }else if(m.getUserTypeId().equalsIgnoreCase("8"))
                 {
-                    showPopup(Api_Calling.QualificationList,"Select Qualification",qualfication);
-                    spinnerDialog.showSpinerDialog();
+                    Api_Calling.multiPartCall1(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(),URLS.UpdateUser,setDoctor(),onResult,"Student",array1);
 
-                }else if(m.getUserTypeId().equalsIgnoreCase("6"))
+                }else if(m.getUserTypeId().equalsIgnoreCase("9"))
                 {
-
-                }else if(m.getUserTypeId().equalsIgnoreCase("5"))
-                {
+                    Api_Calling.multiPartCall1(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(),URLS.UpdateUser,setProfessional(),onResult,"Student",array1);
 
                 }
             }
         });
+//        qualfication.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(m.getUserTypeId().equalsIgnoreCase("7"))
+//                {
+//                    showPopup(Api_Calling.QualificationList,"Select Qualification",qualfication);
+//                    spinnerDialog.showSpinerDialog();
+//
+//                } if(m.getUserTypeId().equalsIgnoreCase("8"))
+//                {
+//                    showPopup(Api_Calling.QualificationList,"Select Qualification",qualfication);
+//                    spinnerDialog.showSpinerDialog();
+//
+//                }else if(m.getUserTypeId().equalsIgnoreCase("6"))
+//                {
+//
+//                }else if(m.getUserTypeId().equalsIgnoreCase("5"))
+//                {
+//
+//                }
+//            }
+//        });
         university_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(m.getUserTypeId().equalsIgnoreCase("7"))
                 {
-                    showPopup(Api_Calling.UniversityList,"Select University Name",university_name);
-                    spinnerDialog.showSpinerDialog();
+//                    showPopup(Api_Calling.UniversityList,"Select University Name",university_name);
+//                    spinnerDialog.showSpinerDialog();
 
                 }else if(m.getUserTypeId().equalsIgnoreCase("6"))
                 {
-                    showPopup(Api_Calling.ProfileList,"Select Profile Category",university_name);
-                    spinnerDialog.showSpinerDialog();
+//                    showPopup(Api_Calling.ProfileList,"Select Profile Category",university_name);
+//                    spinnerDialog.showSpinerDialog();
                 }else if(m.getUserTypeId().equalsIgnoreCase("5"))
                 {
 
@@ -206,6 +227,12 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                     setMultiChoice();
 
                 }else if(m.getUserTypeId().equalsIgnoreCase("6"))
+                {
+                    setMultiChoice();
+                }else if(m.getUserTypeId().equalsIgnoreCase("8"))
+                {
+                    setMultiChoice();
+                }else if(m.getUserTypeId().equalsIgnoreCase("9"))
                 {
                     setMultiChoice();
                 }else if(m.getUserTypeId().equalsIgnoreCase("5"))
@@ -266,6 +293,12 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
             case "7":
                 student(userId);
                 break;
+            case "8":
+                doctor(userId);
+                break;
+            case "9":
+                professional(userId);
+                break;
         }
     }
 
@@ -273,10 +306,10 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
     {
         l9.setVisibility(View.GONE);
         lll.setVisibility(View.GONE);
-        if(Api_Calling.QualificationList.size()==0)
-            Api_Calling.getQualificationListData(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(), URLS.ALL_QUALIFICATION);
-        if(Api_Calling.UniversityList.size()==0)
-            Api_Calling.getUniversityListData(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(), URLS.ALL_UNIVERSITY);
+//        if(Api_Calling.QualificationList.size()==0)
+//            Api_Calling.getQualificationListData(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(), URLS.ALL_QUALIFICATION);
+//        if(Api_Calling.UniversityList.size()==0)
+//            Api_Calling.getUniversityListData(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(), URLS.ALL_UNIVERSITY);
         Api_Calling.getStudentIntrestList(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(),URLS.INTEREST,interestJSon("1"));
         l_name.setText(getResources().getString(R.string.Name));
         l_email.setText(getResources().getString(R.string.email));
@@ -292,6 +325,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         email.setText(m.getUserEmail());
         institute_name.setText(m.getInstituteName());
         university_name.setText(m.getUniversityName());
+        university_name.setClickable(false);
         mobile.setText(m.getMobile());
         university_address.setText(m.getUniversityAddress());
         qualfication.setText(m.getQualification());
@@ -343,6 +377,110 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         mobile.setText(m.getMobile());
         interest.setText(m.getInterest());
         newE.setText(m.getDasignation());
+    }
+    public void  doctor(String key)
+    {
+        Api_Calling.getStudentIntrestList(Edit_Profile_Activity.this, getWindow().getDecorView().getRootView(),URLS.INTEREST,interestJSon("2"));
+//        Api_Calling.getALLCATEGORY(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(),URLS.ALL_CATEGORY);
+        l4.setVisibility(View.VISIBLE);
+        l3.setVisibility(View.GONE);
+        l6.setVisibility(View.VISIBLE);
+        l7.setVisibility(View.VISIBLE);
+        l8.setVisibility(View.VISIBLE);
+        l9.setVisibility(View.VISIBLE);
+        lll.setVisibility(View.GONE);
+        l_name.setText(getResources().getString(R.string.Name));
+        l_email.setText(getResources().getString(R.string.email));
+        name.setText(m.getUserName());
+        email.setText(m.getUserEmail());
+        l_mobile.setText(getResources().getString(R.string.Mobile_No));
+        mobile.setText(m.getMobile());
+        l_university_name.setText(getResources().getString(R.string.institute));
+        university_name.setText(m.getCompanyNAame());
+        university_name.setFocusable(true);
+       university_name.setFocusableInTouchMode(true);
+       university_name.setClickable(true);
+        l_university_address.setText(getResources().getString(R.string.hos_add));
+        university_address.setText(m.getUniversityAddress());
+
+        l_qulafication.setText(getResources().getString(R.string.Qualification));
+        qualfication.setText(m.getQualification());
+        l_batch.setText(getResources().getString(R.string.Designation));
+        batch.setText(m.getDasignation());
+
+        batch.setFocusable(true);
+        batch.setFocusableInTouchMode(true);
+        batch.setClickable(true);
+
+        l_address.setText(getResources().getString(R.string.AreaofExperites));
+        address.setText(m.getUserPersonalAddress());
+        address.setFocusable(true);
+        address.setFocusableInTouchMode(true);
+        address.setClickable(true);
+
+
+
+
+
+
+        l_iterest.setText(getResources().getString(R.string.Interests));
+
+
+        interest.setText(m.getInterest());
+    }
+    public void professional(String key)
+    {
+        Api_Calling.getStudentIntrestList(Edit_Profile_Activity.this, getWindow().getDecorView().getRootView(),URLS.INTEREST,interestJSon("2"));
+//        Api_Calling.getALLCATEGORY(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(),URLS.ALL_CATEGORY);
+        l4.setVisibility(View.VISIBLE);
+        l3.setVisibility(View.GONE);
+        l6.setVisibility(View.VISIBLE);
+        l7.setVisibility(View.VISIBLE);
+        l8.setVisibility(View.VISIBLE);
+        l9.setVisibility(View.VISIBLE);
+        lll.setVisibility(View.GONE);
+        l_name.setText(getResources().getString(R.string.Name));
+        l_email.setText(getResources().getString(R.string.email));
+        name.setText(m.getUserName());
+        email.setText(m.getUserEmail());
+        l_mobile.setText(getResources().getString(R.string.Mobile_No));
+        mobile.setText(m.getMobile());
+        l_university_name.setText(getResources().getString(R.string.Comapny_Name));
+        university_name.setText(m.getCompanyNAame());
+       university_name.setFocusable(true);
+       university_name.setFocusableInTouchMode(true);
+       university_name.setClickable(true);
+        l_university_address.setText(getResources().getString(R.string.CompanyAddress));
+        university_address.setText(m.getUniversityAddress());
+
+        l_qulafication.setText(getResources().getString(R.string.Occupation));
+        qualfication.setText(m.getQualification());
+       qualfication.setFocusable(true);
+        qualfication.setFocusableInTouchMode(true);
+        qualfication.setClickable(true);
+        l_batch.setText(getResources().getString(R.string.Designation));
+        batch.setText(m.getDasignation());
+        batch.setFocusable(true);
+        batch.setFocusableInTouchMode(true);
+        batch.setClickable(true);
+        l_address.setText(getResources().getString(R.string.Address));
+        address.setText(m.getUserPersonalAddress());
+        address.setFocusable(true);
+        address.setFocusableInTouchMode(true);
+        address.setClickable(true);
+
+
+
+
+
+
+
+        l_iterest.setText(getResources().getString(R.string.Interests));
+
+
+        interest.setText(m.getInterest());
+
+
     }
     public JSONObject interestJSon(String id)
     {
@@ -467,9 +605,9 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                     put("userTypeId","7")
                     .put("userId",""+m.getUserId())
                     .put("address",""+address.getText().toString())
-                    .put("qualification",""+ Api_Calling.QualifiactionHashMap.get(qualfication.getText().toString()))
+                    .put("qualification",""+qualfication.getText().toString())
                     .put("batchofQualification",""+batch.getText().toString()).put("institutionName",""+institute_name.getText().toString())
-                    .put("universityName",""+Api_Calling.UniversityHashMap.get(university_name.getText().toString())).put("universityAddress",""+university_address.getText().toString())
+                    .put("universityName",""+university_name.getText().toString()).put("universityAddress",""+university_address.getText().toString())
                     .put("interestId",doctorIdArray);}else {
                 jsonObject.put("userName",""+name.getText().toString())
                         .put("mobileNo",""+mobile.getText().toString())
@@ -477,9 +615,9 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                         put("userTypeId","7")
                         .put("userId",""+m.getUserId())
                         .put("address",""+address.getText().toString())
-                        .put("qualification",""+ Api_Calling.QualifiactionHashMap.get(qualfication.getText().toString()))
+                        .put("qualification",""+ qualfication.getText().toString())
                         .put("batchofQualification",""+batch.getText().toString()).put("institutionName",""+institute_name.getText().toString())
-                        .put("universityName",""+Api_Calling.UniversityHashMap.get(university_name.getText().toString())).put("universityAddress",""+university_address.getText().toString())
+                        .put("universityName",""+university_name.getText().toString()).put("universityAddress",""+university_address.getText().toString())
                         .put("interestId","");
             }
         } catch (JSONException e) {
@@ -526,6 +664,59 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                         put("userTypeId","6").put("userId",""+m.getUserId())
                         .put("interestId","").put("profileCategoryId",""+Api_Calling.ProfileHash.get(university_name.getText().toString()))
                         .put("areaofActivity",""+institute_name.getText().toString()).put("designation",""+newE.getText().toString());
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Comman.log("SignIpJSon",""+jsonObject);
+        return jsonObject;
+    }
+
+
+    public JSONObject setDoctor()
+    {
+        JSONObject jsonObject=new JSONObject();
+        try {
+            if(doctorIdArray!=null && doctorIdArray.length()!=0){
+                jsonObject.put("userName",""+name.getText().toString())
+                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("email",""+email.getText().toString()).put("hospital",""+university_name.getText().toString())
+                        .put("hospitalAddress",""+university_address.getText().toString()). put("userTypeId","8").put("userId",""+m.getUserId())
+                        .put("interestId",doctorIdArray) .put("qualfication", Api_Calling.QualifiactionHashMap.get(qualfication.getText().toString()))
+                        .put("areaOfExpertise",""+address.getText().toString()).put("designation",""+batch.getText().toString());}else {
+                jsonObject.put("userName",""+name.getText().toString())
+                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("email",""+email.getText().toString()).put("hospital",""+university_name.getText().toString())
+                        .put("hospitalAddress",""+university_address.getText().toString()). put("userTypeId","8").put("userId",""+m.getUserId())
+                        .put("interestId","") .put("qualfication",Api_Calling.QualifiactionHashMap.get(qualfication.getText().toString()))
+                        .put("areaOfExpertise",""+address.getText().toString()).put("designation",""+batch.getText().toString());
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Comman.log("SignIpJSon",""+jsonObject);
+        return jsonObject;
+    }
+
+    public JSONObject setProfessional()
+    {
+        JSONObject jsonObject=new JSONObject();
+        try {
+            if(doctorIdArray!=null && doctorIdArray.length()!=0){
+                jsonObject.put("userName",""+name.getText().toString())
+                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("email",""+email.getText().toString()).put("companyName",""+university_name.getText().toString())
+                        .put("companyAddress",""+university_address.getText().toString()). put("userTypeId","9").put("userId",""+m.getUserId())
+                        .put("interestId",doctorIdArray) .put("occupation", qualfication.getText().toString())
+                        .put("address",""+address.getText().toString()).put("designation",""+batch.getText().toString());}else {
+                jsonObject.put("userName",""+name.getText().toString())
+                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("email",""+email.getText().toString()).put("companyName",""+university_name.getText().toString())
+                        .put("companyAddress",""+university_address.getText().toString()). put("userTypeId","9").put("userId",""+m.getUserId())
+                        .put("interestId","") .put("occupation", qualfication.getText().toString())
+                        .put("address",""+address.getText().toString()).put("designation",""+batch.getText().toString());
 
             }
         } catch (JSONException e) {

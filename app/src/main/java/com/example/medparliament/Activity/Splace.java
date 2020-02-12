@@ -26,7 +26,7 @@ import com.example.medparliament.Utility.MySharedPrefrence;
             public void run() {
                 if(Comman.Check_Login(Splace.this)){
                 startActivity(new Intent(Splace.this,DashBoard_Activity.class));}else {
-                    startActivity(new Intent(Splace.this,Login_Signup_Activity.class));
+                    startActivity(new Intent(Splace.this,DashBoard_Activity.class));
                 }
             }
         },3000);

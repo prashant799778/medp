@@ -12,6 +12,12 @@
         android:src="@drawable/bg1"
         android:scaleType="centerCrop">
     </ImageView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -27,7 +33,9 @@
                     android:layout_height="match_parent"
                     android:scaleType="fitCenter"
                     android:background="@color/transparent"
-                    android:src="@drawable/ic_back"></ImageButton>
+                    android:src="@drawable/ic_back">
+
+                </ImageButton>
                 <com.example.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_toRightOf="@+id/bck"
                     android:layout_width="wrap_content"
@@ -42,6 +50,7 @@
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
             </RelativeLayout>
             <LinearLayout
+                android:id="@+id/simple_text"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_marginTop="50dp"
@@ -69,126 +78,321 @@
                     android:paddingLeft="@dimen/fieldHeight">
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
             </LinearLayout>
-        </RelativeLayout>
+
+
     <LinearLayout
+        android:layout_below="@+id/simple_text"
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_height="140dp"
-        android:orientation="horizontal"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginBottom="70dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="34dp"
         android:background="@color/transparent"
-        android:weightSum="3">
+        android:weightSum="5">
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="53dp"
             android:layout_weight="1"
             android:layout_margin="5dp"
-            android:layout_marginBottom="10dp"
             android:id="@+id/student"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/transparent"
+            app:cardCornerRadius="10dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/studentbgbg">
+                </ImageView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/student_icon"
+                        android:layout_toLeftOf="@+id/ss"
+                        android:layout_marginRight="10dp"
+                        android:layout_height="20dp">
+                    </ImageView>
+                <com.example.medparliament.Widget.Segow_UI_Font
+                    android:textColor="@color/white"
+                    android:text="@string/Students"
+                    android:textAlignment="gravity"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/ss"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content">
+                </com.example.medparliament.Widget.Segow_UI_Font>
+                </LinearLayout>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="40dp"
+            android:id="@+id/enterPr"
             android:layout_marginRight="10dp"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/transparent"
-            app:cardCornerRadius="@dimen/radius">
-            <LinearLayout
+            app:cardCornerRadius="10dp">
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:background="@color/transparent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="2">
-                <com.example.medparliament.Widget.Segow_UI_Font
-                    android:layout_weight="1.5"
-                    android:textColor="@color/white"
-                    android:text="@string/Students"
-                    android:background="@color/transparent"
-                    android:textAlignment="gravity"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/entreprenuerbgbg">
+                </ImageView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <ImageView
-                    android:layout_weight=".5"
-                    android:layout_width="match_parent"
-                    android:src="@drawable/ic_study"
-                    android:padding="8dp"
-                    android:layout_height="match_parent">
-                </ImageView>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/enterPr"
-            app:cardBackgroundColor="@color/transparent"
-            android:layout_marginLeft="10dp"
-            app:cardElevation="0dp"
-            app:cardCornerRadius="@dimen/radius">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:background="@color/transparent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="2">
-                <ImageView
-                    android:layout_weight=".5"
-                    android:layout_width="match_parent"
-                    android:src="@drawable/entre"
-                    android:padding="8dp"
-
-                    android:layout_height="match_parent">
-                </ImageView>
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/kkkk"
+                        android:layout_toLeftOf="@+id/ss1"
+                        android:layout_marginRight="10dp"
+                        android:layout_height="20dp">
+                    </ImageView>
                 <com.example.medparliament.Widget.Segow_UI_Font
-                    android:layout_weight="1.5"
                     android:textColor="@color/white"
                     android:text="@string/Entrepreneur"
                     android:textAlignment="gravity"
                     android:gravity="center_horizontal|center_vertical"
-                    android:background="@color/transparent"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_width="wrap_content"
+                    android:id="@+id/ss1"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content">
                 </com.example.medparliament.Widget.Segow_UI_Font>
-            </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="33dp">
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="53dp"
             android:layout_weight="1"
             android:layout_margin="5dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="40dp"
             android:id="@+id/policyMaker"
+            android:layout_marginRight="10dp"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/transparent"
-            app:cardCornerRadius="@dimen/radius">
-            <LinearLayout
+            app:cardCornerRadius="10dp">
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:background="@color/transparent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="2">
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/policybgbg">
+                </ImageView>
                 <com.example.medparliament.Widget.Segow_UI_Font
-                    android:layout_weight="1.5"
                     android:textColor="@color/white"
                     android:text="@string/Policy_Maker"
-                    android:background="@color/transparent"
                     android:textAlignment="gravity"
                     android:gravity="center_horizontal|center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_width="wrap_content"
+                    android:id="@+id/ss2"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content">
                 </com.example.medparliament.Widget.Segow_UI_Font>
                 <ImageView
-                    android:layout_weight=".5"
-                    android:layout_width="match_parent"
-                    android:src="@drawable/ic_contract"
-                    android:padding="8dp"
-
-                    android:layout_height="match_parent">
+                    android:layout_width="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/contracticon"
+                    android:layout_toLeftOf="@+id/ss2"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="20dp">
                 </ImageView>
-            </LinearLayout>
+            </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
+</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="40dp"
+            android:id="@+id/doctor"
+            android:layout_marginRight="10dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/transparent"
+            app:cardCornerRadius="10dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/doctorbgbg">
+                </ImageView>
+                <com.example.medparliament.Widget.Segow_UI_Font
+                    android:textColor="@color/white"
+                    android:text="@string/Doctor"
+                    android:textAlignment="gravity"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/ss3"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content">
+                </com.example.medparliament.Widget.Segow_UI_Font>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/doctor"
+                    android:layout_toLeftOf="@+id/ss3"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="20dp">
+                </ImageView>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight="1"
+            android:layout_marginTop="14dp"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="40dp"
+            android:id="@+id/profess"
+            android:layout_marginRight="10dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/transparent"
+            app:cardCornerRadius="10dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/professionalsbgbg">
+                </ImageView>
+                <com.example.medparliament.Widget.Segow_UI_Font
+                    android:textColor="@color/white"
+                    android:text="@string/Professionals"
+                    android:textAlignment="gravity"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/ss4"
+                    android:layout_centerInParent="true"
+                    android:layout_height="wrap_content">
+                </com.example.medparliament.Widget.Segow_UI_Font>
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/work"
+                    android:layout_toLeftOf="@+id/ss4"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="20dp">
+                </ImageView>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="40dp"
+                android:id="@+id/decision"
+                android:layout_marginRight="10dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/transparent"
+                app:cardCornerRadius="10dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/entreprenuerbgbg">
+                    </ImageView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/kkkk"
+                            android:layout_toLeftOf="@+id/ss12"
+                            android:layout_marginRight="10dp"
+                            android:layout_height="20dp">
+                        </ImageView>
+                        <com.example.medparliament.Widget.Segow_UI_Font
+                            android:textColor="@color/white"
+                            android:text="@string/DM"
+                            android:textAlignment="gravity"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:layout_width="wrap_content"
+                            android:id="@+id/ss12"
+                            android:layout_centerInParent="true"
+                            android:layout_height="wrap_content">
+                        </com.example.medparliament.Widget.Segow_UI_Font>
+                    </LinearLayout>
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
     </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <de.hdodenhof.circleimageview.CircleImageView
+
+        android:id="@+id/profile"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:padding="5dp"
+        android:background="@drawable/circular_layout"
+        android:src="@color/white"></de.hdodenhof.circleimageview.CircleImageView>
+    <LinearLayout
+       android:id="@+id/content"
+         android:layout_marginLeft="30dp"
+        android:layout_alignLeft="@id/profile"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <com.example.medparliament.Widget.Segow_UI_Bold_Font
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:maxLines="1"
+                android:id="@+id/name"
+                android:textAlignment="gravity"
+                android:textColor="@color/white"
+                android:gravity="left|center"
+                android:paddingLeft="10dp"
+                android:text=" "
+                android:layout_height="match_parent">
+            </com.example.medparliament.Widget.Segow_UI_Bold_Font>
+            <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:textAlignment="gravity"
+                android:gravity="right|center"
+                android:id="@+id/date"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
+                android:text=""
+                android:layout_height="match_parent">
+            </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+        </LinearLayout>
+        <com.example.medparliament.Widget.Segow_UI_Font
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:textSize="14dp"
+            android:id="@+id/createdby"
+            android:textAlignment="gravity"
+            android:textColor="@color/white"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="10dp"
+            android:text=""
+            android:layout_height="wrap_content">
+        </com.example.medparliament.Widget.Segow_UI_Font>
+        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:textAlignment="gravity"
+            android:gravity="left|top"
+            android:id="@+id/msg"
+            android:paddingTop="2dp"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:maxLines="4"
+            android:text="sadflh"
+            android:layout_height="match_parent">
+        </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+        <View
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@color/edithintColor">
+        </View>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

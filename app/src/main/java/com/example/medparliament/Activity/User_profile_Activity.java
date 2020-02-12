@@ -1,43 +1,36 @@
 package  com.example.medparliament.Activity;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
 import com.example.medparliament.Internet.Api_Calling;
 import com.example.medparliament.Internet.URLS;
-
 import com.example.medparliament.Internet.onResult;
 import com.example.medparliament.R;
 import com.example.medparliament.Utility.Comman;
 import com.example.medparliament.Utility.MySharedPrefrence;
 import com.example.medparliament.Widget.Segow_UI_Semi_Font;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-
 import de.hdodenhof.circleimageview.CircleImageView;
-
 public class User_profile_Activity extends Base_Activity implements onResult {
     MySharedPrefrence m;
      onResult onResult;
-    LinearLayout l1,l2,l3,l4,l5,l6,l7,new_linearLayout;
+    LinearLayout l1,l2,l3,l4,l5,l6,l7,new_linearLayout,l3_new,l5_new;
     ImageView profile_category_image,home1,new_image;
     ImageButton bck;
-    Segow_UI_Semi_Font userName,userEmail,i_name,u_name,universityAddress,mobile,qualification,batch,interest,new_location;
-    Segow_UI_Semi_Font l_i_name,l_u_name,l_university_name,l_mobile,l_qualifiacation,l_batch_qualification,l_interest,l_new_location;
+    Segow_UI_Semi_Font expertises ,userName,u_address,userEmail,i_name,u_name,universityAddress,mobile,qualification,batch,interest,new_location;
+    Segow_UI_Semi_Font l_expert,l_u_add, l_i_name,l_u_name,l_university_name,l_mobile,l_qualifiacation,l_batch_qualification,l_interest,l_new_location;
     ImageView edit;
     ProgressDialog progressDialog;
     CircleImageView profileImage;
@@ -59,6 +52,7 @@ public class User_profile_Activity extends Base_Activity implements onResult {
         userName=findViewById(R.id.user_name);
         userEmail=findViewById(R.id.user_email);
         new_linearLayout=findViewById(R.id.new_l3);
+        l5_new=findViewById(R.id.l5_new);
         l_new_location=findViewById(R.id.new_l_u_location);
         new_location=findViewById(R.id.new_location);
         new_image=findViewById(R.id.new_location_img);
@@ -70,7 +64,11 @@ public class User_profile_Activity extends Base_Activity implements onResult {
         l5=findViewById(R.id.l5);
         l6=findViewById(R.id.l6);
         l7=findViewById(R.id.l7);
+        l3_new =findViewById(R.id.l3_new);
         home1=findViewById(R.id.home1);
+        l_expert=findViewById(R.id.l_expert);
+        expertises =findViewById(R.id.expertises);
+        l_u_add=findViewById(R.id.l_u_add);
         l_i_name=findViewById(R.id.l_i_name);
         l_u_name=findViewById(R.id.l_u_name);
         l_mobile=findViewById(R.id.l_mobile);
@@ -83,6 +81,7 @@ public class User_profile_Activity extends Base_Activity implements onResult {
         qualification=findViewById(R.id.oqualifiaction);
         batch=findViewById(R.id.batch);
         u_name=findViewById(R.id.u_name);
+        u_address=findViewById(R.id.u_address);
         universityAddress=findViewById(R.id.universityAddress);
         mobile=findViewById(R.id.mobile);
         bck=findViewById(R.id.bck);
@@ -131,6 +130,9 @@ public class User_profile_Activity extends Base_Activity implements onResult {
 
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {
+        Log.d("user",jsonObject.toString());
+
+
         if(progressDialog!=null &&  progressDialog.isShowing())
         progressDialog.dismiss();
         ArrayList <String>arrayList=new ArrayList<>();
@@ -138,7 +140,124 @@ public class User_profile_Activity extends Base_Activity implements onResult {
         {
             JSONObject jo=new JSONObject();
             try {
-                if(m.getUserTypeId().equalsIgnoreCase("7")){
+                if(m.getUserTypeId().equalsIgnoreCase("9")){
+
+                    jo=jsonObject.getJSONObject("result").getJSONArray("userProfile").getJSONObject(0);
+                    new_linearLayout.setVisibility(View.GONE);
+                    l2.setVisibility(View.GONE);
+                    l3_new.setVisibility(View.VISIBLE);
+
+                    userName.setText(Comman.getValueFromJsonObject(jo,"userName"));
+                    userEmail.setText(Comman.getValueFromJsonObject(jo,"email"));
+                    l_i_name.setText(getResources().getString(R.string.Comapny_Name));
+                    i_name.setText(Comman.getValueFromJsonObject(jo,"companyName"));
+                    l_university_name.setText(getResources().getString(R.string.CompanyAddress));
+                    universityAddress.setText(Comman.getValueFromJsonObject(jo,"companyAddress"));
+                    l_mobile.setText(getResources().getString(R.string.Mobile_Number));
+                    mobile.setText(Comman.getValueFromJsonObject(jo,"mobileNo"));
+                    l_qualifiacation.setText(getResources().getString(R.string.Occupation));
+                    qualification.setText(Comman.getValueFromJsonObject(jo,"occupation"));
+
+                    l_batch_qualification.setText(getResources().getString(R.string.Designation));
+                    batch.setText(Comman.getValueFromJsonObject(jo,"designation"));
+                    l_u_add.setText(getResources().getString(R.string.Address));
+                   u_address.setText(Comman.getValueFromJsonObject(jo,"address"));
+                    l_interest.setText(getResources().getString(R.string.Interests));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                    if(!isFinishing())
+//                        Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
+
+                    if(jo.getJSONArray("userInterest")!=null && jo.getJSONArray("userInterest").length()>0)
+                        for (int i=0;i<jo.getJSONArray("userInterest").length();i++)
+                        {
+                            arrayList.add(String.valueOf(jo.getJSONArray("userInterest").get(i)));
+                        }
+                    if(arrayList!=null && arrayList.size()>0)
+                        interest.setText(arrayList.toString().replace("[","").replace("]",""));
+
+                    m.setUserName(Comman.getValueFromJsonObject(jo,"userName"));
+                    m.setUserEmail(Comman.getValueFromJsonObject(jo,"email"));
+                    m.setCompanyName(Comman.getValueFromJsonObject(jo,"companyName"));
+                    m.setUniversityAddress(Comman.getValueFromJsonObject(jo,"companyAddress"));
+                    m.setMobili(Comman.getValueFromJsonObject(jo,"mobileNo"));
+                    m.setUserPersonalAddress(Comman.getValueFromJsonObject(jo,"address"));
+                    m.setDasignation(Comman.getValueFromJsonObject(jo,"designation"));
+                    m.setQualication(Comman.getValueFromJsonObject(jo,"occupation"));
+                    m.setInterest(arrayList.toString().replace("[","").replace("]",""));
+                }
+               else   if(m.getUserTypeId().equalsIgnoreCase("8")){
+
+                    jo=jsonObject.getJSONObject("result").getJSONArray("userProfile").getJSONObject(0);
+                    new_linearLayout.setVisibility(View.GONE);
+                    l2.setVisibility(View.GONE);
+                    l5_new.setVisibility(View.VISIBLE);
+
+                    userName.setText(Comman.getValueFromJsonObject(jo,"userName"));
+                    userEmail.setText(Comman.getValueFromJsonObject(jo,"email"));
+                    l_i_name.setText(getResources().getString(R.string.institute));
+                    i_name.setText(Comman.getValueFromJsonObject(jo,"hospital"));
+                    l_university_name.setText(getResources().getString(R.string.hos_add));
+                    universityAddress.setText(Comman.getValueFromJsonObject(jo,"hospitalAddress"));
+                    l_mobile.setText(getResources().getString(R.string.Mobile_Number));
+                    mobile.setText(Comman.getValueFromJsonObject(jo,"mobileNo"));
+                    l_qualifiacation.setText(getResources().getString(R.string.Qualification));
+                    qualification.setText(Comman.getValueFromJsonObject(jo,"qualificationName"));
+
+                    l_batch_qualification.setText(getResources().getString(R.string.Designation));
+                    batch.setText(Comman.getValueFromJsonObject(jo,"designation"));
+                    l_expert.setText(getResources().getString(R.string.AreaofExperites));
+                    expertises.setText(Comman.getValueFromJsonObject(jo,"areaOfExpertise"));
+
+                    l_interest.setText(getResources().getString(R.string.Interests));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                    if(!isFinishing())
+//                        Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
+
+                    if(jo.getJSONArray("userInterest")!=null && jo.getJSONArray("userInterest").length()>0)
+                        for (int i=0;i<jo.getJSONArray("userInterest").length();i++)
+                        {
+                            arrayList.add(String.valueOf(jo.getJSONArray("userInterest").get(i)));
+                        }
+                    if(arrayList!=null && arrayList.size()>0)
+                        interest.setText(arrayList.toString().replace("[","").replace("]",""));
+
+                    m.setUserName(Comman.getValueFromJsonObject(jo,"userName"));
+                    m.setUserEmail(Comman.getValueFromJsonObject(jo,"email"));
+                    m.setCompanyName(Comman.getValueFromJsonObject(jo,"hospital"));
+                    m.setUniversityAddress(Comman.getValueFromJsonObject(jo,"hospitalAddress"));
+                    m.setMobili(Comman.getValueFromJsonObject(jo,"mobileNo"));
+                    m.setUserPersonalAddress(Comman.getValueFromJsonObject(jo,"areaOfExpertise"));
+                    m.setDasignation(Comman.getValueFromJsonObject(jo,"designation"));
+                    m.setQualication(Comman.getValueFromJsonObject(jo,"qualificationName"));
+                    m.setInterest(arrayList.toString().replace("[","").replace("]",""));
+                }
+                else if(m.getUserTypeId().equalsIgnoreCase("7")){
                 jo=jsonObject.getJSONObject("result").getJSONArray("userProfile").getJSONObject(0);
                     new_linearLayout.setVisibility(View.GONE);
                     l_new_location.setText(getResources().getString(R.string.Address));
@@ -177,8 +296,8 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     m.setQualicationBatch(Comman.getValueFromJsonObject(jo,"batchOfQualification"));
                     m.setQualication(Comman.getValueFromJsonObject(jo,"qualificationName"));
                     m.setInterest(arrayList.toString().replace("[","").replace("]",""));
-                    }
-                     else if(m.getUserTypeId().equalsIgnoreCase("5")){
+                }
+                else if(m.getUserTypeId().equalsIgnoreCase("5")){
                          if(!isFinishing())
                     Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
                     l5.setVisibility(View.GONE);
@@ -205,7 +324,6 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     m.setMobili(Comman.getValueFromJsonObject(jo,"mobileNo"));
                     m.setCountry(Comman.getValueFromJsonObject(jo,"countryName"));
                     m.setDescription(Comman.getValueFromJsonObject(jo,"aboutProfile"));
-
                 }
                 else if(m.getUserTypeId().equalsIgnoreCase("6")){
                     jo=jsonObject.getJSONObject("result").getJSONArray("userProfile").getJSONObject(0);

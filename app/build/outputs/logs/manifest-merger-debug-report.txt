@@ -1,14 +1,15 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-46:12
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-60:12
 MERGED from [com.github.mohammadatif:Animatoo:master] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\70be449d007fb61b957febd5f4cc7a95\Animatoo-master\AndroidManifest.xml:2:1-11:12
 MERGED from [com.sun.easysnackbar:easysnackbar:1.0.1] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\8162e6a69fd34b62a1fd6bd25494662b\jetified-easysnackbar-1.0.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:2:1-25:12
 MERGED from [com.google.android.material:material:1.1.0-alpha02] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\753ffec64a415d5839cc12aafdf13d5e\material-1.1.0-alpha02\AndroidManifest.xml:17:1-24:12
 MERGED from [com.crowdfire.cfalertdialog:cfalertdialog:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\9925d9f015f6d90248dab1d5e75a1861\jetified-cfalertdialog-1.1.0\AndroidManifest.xml:2:1-17:12
+MERGED from [com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\7d34aeb7ddb19ff1b3ba84e40e1569ec\core-10.0.5\AndroidManifest.xml:2:1-14:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\6119d746697059b7e1b74aab4d181f56\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\3ec6fa8458ddbe732478393a9f9e6c77\constraintlayout-1.1.3\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\062eb74c1a6fe650432564db4113c6b5\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -38,8 +39,8 @@ MERGED from [androidx.recyclerview:recyclerview:1.1.0-alpha01] C:\Users\fourbric
 MERGED from [io.fotoapparat:fotoapparat:2.7.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\88a33b960cb4b1267a1dccd3aa3544f6\fotoapparat-2.7.0\AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\664f4ae009672f8d49f9e02edae5cc02\exifinterface-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core-ktx:1.3.0-alpha01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\d4d04569b4884bed2e3bb4d0512e861c\core-ktx-1.3.0-alpha01\AndroidManifest.xml:2:1-9:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4932f7e67b26f042b51fa62f1aa4816d\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\dbbcc99072b5616db9e0106b8ed65934\activity-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4932f7e67b26f042b51fa62f1aa4816d\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\d1ca7cd3905794bed09cb92934ccd6c2\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4276267baf989d651cf25177c247ad49\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\8849109129fcb2f39779166fb64480b1\coordinatorlayout-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -48,48 +49,52 @@ MERGED from [androidx.customview:customview:1.0.0] C:\Users\fourbrick\.gradle\ca
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\3d4a3c67e39fa8d6d0c0f126c28b81d8\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\82b148795609bbbaf8e825fc2ff2a6bf\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.3.0-alpha01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ffb66abad4c251fa91912bdcea2c857b\core-1.3.0-alpha01\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ffa46f3d6480310395b7b525cf59ccde\lifecycle-runtime-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\78be57497ca2a8dd090798c529f3e53d\versionedparcelable-1.1.0\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f582580d3eb247a74d915a27810a4674\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\c75155371656c04dff3a027cdeb13e8a\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\53b4a4cf87c0ff501a8c414cec884555\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\3a992d8307f21a8f15eb649383ba6a6a\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\64ed055c454b36433d45a77285ee24d6\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ffa46f3d6480310395b7b525cf59ccde\lifecycle-runtime-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\3819fb4fef2e012192b32762458ba145\savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\63647da4654da12a6f2785cfbbad8123\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\733fc1d306cee2c05d3e1fb0b7527020\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\fdd65d8b6066fd289a68b42931dc03a2\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
-INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-46:12
-INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-46:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\64ed055c454b36433d45a77285ee24d6\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
+INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-60:12
 	package
 		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:3:5-40
 		INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml
 		INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-46:12
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-60:12
 		INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-46:12
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:1-60:12
 		INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:5:5-79
+MERGED from [com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\7d34aeb7ddb19ff1b3ba84e40e1569ec\core-10.0.5\AndroidManifest.xml:12:5-79
+MERGED from [com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\7d34aeb7ddb19ff1b3ba84e40e1569ec\core-10.0.5\AndroidManifest.xml:12:5-79
 	android:name
 		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:5:22-76
 uses-permission#android.permission.READ_PHONE_STATE
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:6:5-75
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:7:5-75
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:6:22-72
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:7:22-72
 uses-permission#android.permission.INTERNET
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:7:5-67
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:8:5-67
+MERGED from [com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\7d34aeb7ddb19ff1b3ba84e40e1569ec\core-10.0.5\AndroidManifest.xml:11:5-67
+MERGED from [com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\7d34aeb7ddb19ff1b3ba84e40e1569ec\core-10.0.5\AndroidManifest.xml:11:5-67
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:7:22-64
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:8:22-64
 application
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:9:5-44:19
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:12:5-58:19
 MERGED from [com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:16:5-23:19
 MERGED from [com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:16:5-23:19
 MERGED from [com.google.android.material:material:1.1.0-alpha02] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\753ffec64a415d5839cc12aafdf13d5e\material-1.1.0-alpha02\AndroidManifest.xml:22:5-20
@@ -127,99 +132,145 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\fo
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.0-alpha01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ffb66abad4c251fa91912bdcea2c857b\core-1.3.0-alpha01\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:15:9-35
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:18:9-35
 	android:label
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:12:9-41
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:15:9-41
 	android:roundIcon
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:14:9-54
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:17:9-54
 	android:largeHeap
 		ADDED from [com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:17:9-33
 	android:icon
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:11:9-43
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:14:9-43
 	android:allowBackup
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:13:9-35
 	android:theme
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:16:9-40
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:19:9-40
 	android:networkSecurityConfig
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:13:9-69
-activity#com.example.MedParliament.Activity.About_us_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:17:9-73
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:16:9-69
+activity#com.example.medparliament.Activity.AboutUsActivity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:20:9-71
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:17:19-61
-activity#com.example.MedParliament.Activity.Edit_Profile_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:18:9-19:58
-	android:windowSoftInputMode
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:19:13-55
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:20:19-59
+activity#com.example.medparliament.Activity.DecisionMaker
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:21:9-60
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:18:19-65
-activity#com.example.MedParliament.Activity.User_profile_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:20:9-68
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:21:19-57
+activity#com.example.medparliament.Activity.Forgot_Password_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:22:9-71
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:20:19-65
-activity#com.example.MedParliament.Activity.Post_Details_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:21:9-68
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:22:19-68
+activity#com.example.medparliament.Activity.OTP_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:23:9-59
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:21:19-65
-activity#com.example.MedParliament.Activity.My_Post_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:22:9-63
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:23:19-56
+activity#com.example.medparliament.Activity.All_Post_Details
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:24:9-63
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:22:19-60
-activity#com.example.MedParliament.Activity.Comment_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:23:9-63
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:24:19-60
+activity#com.example.medparliament.Activity.All_Post_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:25:9-64
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:23:19-60
-uses-library#org.apache.http.legacy
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:25:9-27:40
-	android:required
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:27:13-37
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:25:19-61
+activity#com.example.medparliament.Activity.ReplyActivity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:26:9-60
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:26:13-50
-activity#com.example.MedParliament.Activity.DashBoard_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:29:9-65
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:26:19-57
+activity#com.example.medparliament.Activity.Professonal_signup_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:27:9-74
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:29:19-62
-activity#com.example.MedParliament.Activity.Entrepreneur_SignUp_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:30:9-75
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:27:19-71
+activity#com.example.medparliament.Activity.DoctorSignupActivity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:28:9-67
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:30:19-72
-activity#com.example.MedParliament.Activity.Policy_Maker_SignUp_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:31:9-75
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:28:19-64
+activity#com.example.medparliament.Activity.NewsDetails_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:29:9-67
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:31:19-72
-activity#com.example.MedParliament.Activity.Student_SignUp_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:32:9-70
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:29:19-64
+activity#com.example.medparliament.Activity.All_News_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:30:9-64
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:32:19-67
-activity#com.example.MedParliament.Activity.SignUp_type_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:33:9-67
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:30:19-61
+activity#com.example.medparliament.Activity.ChangePassword_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:31:9-70
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:33:19-64
-activity#com.example.MedParliament.Activity.Login_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:34:9-61
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:31:19-67
+activity#com.example.medparliament.Activity.About_us_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:32:9-64
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:34:19-58
-activity#com.example.MedParliament.Activity.Login_Signup_Activity
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:32:19-61
+activity#com.example.medparliament.Activity.Edit_Profile_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:33:9-68
+	android:name
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:33:19-65
+activity#com.example.medparliament.Activity.User_profile_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:34:9-68
+	android:name
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:34:19-65
+activity#com.example.medparliament.Activity.Post_Details_Activity
 ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:35:9-68
 	android:name
 		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:35:19-65
-activity#com.example.MedParliament.Activity.Base_Activity
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:36:9-60
+activity#com.example.medparliament.Activity.My_Post_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:36:9-63
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:36:19-57
-activity#com.example.MedParliament.Activity.Splace
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:37:9-43:20
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:36:19-60
+activity#com.example.medparliament.Activity.Comment_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:37:9-63
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:37:19-50
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:37:19-60
+uses-library#org.apache.http.legacy
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:39:9-41:40
+	android:required
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:41:13-37
+	android:name
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:40:13-50
+activity#com.example.medparliament.Activity.DashBoard_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:43:9-65
+	android:name
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:43:19-62
+activity#com.example.medparliament.Activity.Entrepreneur_SignUp_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:44:9-75
+	android:name
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:44:19-72
+activity#com.example.medparliament.Activity.Policy_Maker_SignUp_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:45:9-75
+	android:name
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:45:19-72
+activity#com.example.medparliament.Activity.Student_SignUp_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:46:9-70
+	android:name
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:46:19-67
+activity#com.example.medparliament.Activity.SignUp_type_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:47:9-67
+	android:name
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:47:19-64
+activity#com.example.medparliament.Activity.Login_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:48:9-61
+	android:name
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:48:19-58
+activity#com.example.medparliament.Activity.Login_Signup_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:49:9-68
+	android:name
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:49:19-65
+activity#com.example.medparliament.Activity.Base_Activity
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:50:9-60
+	android:name
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:50:19-57
+activity#com.example.medparliament.Activity.Splace
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:51:9-57:20
+	android:name
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:51:19-50
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:38:13-42:29
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:52:13-56:29
 action#android.intent.action.MAIN
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:39:17-69
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:53:17-69
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:39:25-66
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:53:25-66
 category#android.intent.category.LAUNCHER
-ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:41:17-77
+ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:55:17-77
 	android:name
-		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:41:27-74
+		ADDED from E:\MedParliament\app\src\main\AndroidManifest.xml:55:27-74
 uses-sdk
 INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml
@@ -234,6 +285,8 @@ MERGED from [com.google.android.material:material:1.1.0-alpha02] C:\Users\fourbr
 MERGED from [com.google.android.material:material:1.1.0-alpha02] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\753ffec64a415d5839cc12aafdf13d5e\material-1.1.0-alpha02\AndroidManifest.xml:20:5-44
 MERGED from [com.crowdfire.cfalertdialog:cfalertdialog:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\9925d9f015f6d90248dab1d5e75a1861\jetified-cfalertdialog-1.1.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.crowdfire.cfalertdialog:cfalertdialog:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\9925d9f015f6d90248dab1d5e75a1861\jetified-cfalertdialog-1.1.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\7d34aeb7ddb19ff1b3ba84e40e1569ec\core-10.0.5\AndroidManifest.xml:7:5-9:41
+MERGED from [com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\7d34aeb7ddb19ff1b3ba84e40e1569ec\core-10.0.5\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\6119d746697059b7e1b74aab4d181f56\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\6119d746697059b7e1b74aab4d181f56\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\3ec6fa8458ddbe732478393a9f9e6c77\constraintlayout-1.1.3\AndroidManifest.xml:5:5-7:41
@@ -292,10 +345,10 @@ MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\fourbrick\.gra
 MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\664f4ae009672f8d49f9e02edae5cc02\exifinterface-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core-ktx:1.3.0-alpha01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\d4d04569b4884bed2e3bb4d0512e861c\core-ktx-1.3.0-alpha01\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.core:core-ktx:1.3.0-alpha01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\d4d04569b4884bed2e3bb4d0512e861c\core-ktx-1.3.0-alpha01\AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4932f7e67b26f042b51fa62f1aa4816d\viewpager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4932f7e67b26f042b51fa62f1aa4816d\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\dbbcc99072b5616db9e0106b8ed65934\activity-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\dbbcc99072b5616db9e0106b8ed65934\activity-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4932f7e67b26f042b51fa62f1aa4816d\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4932f7e67b26f042b51fa62f1aa4816d\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\d1ca7cd3905794bed09cb92934ccd6c2\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\d1ca7cd3905794bed09cb92934ccd6c2\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4276267baf989d651cf25177c247ad49\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
@@ -312,6 +365,8 @@ MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\fo
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\82b148795609bbbaf8e825fc2ff2a6bf\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.3.0-alpha01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ffb66abad4c251fa91912bdcea2c857b\core-1.3.0-alpha01\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.3.0-alpha01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ffb66abad4c251fa91912bdcea2c857b\core-1.3.0-alpha01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ffa46f3d6480310395b7b525cf59ccde\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ffa46f3d6480310395b7b525cf59ccde\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\78be57497ca2a8dd090798c529f3e53d\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\78be57497ca2a8dd090798c529f3e53d\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f582580d3eb247a74d915a27810a4674\documentfile-1.0.0\AndroidManifest.xml:20:5-44
@@ -322,10 +377,6 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\fourbrick\.gradle\caches\trans
 MERGED from [androidx.print:print:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\53b4a4cf87c0ff501a8c414cec884555\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\3a992d8307f21a8f15eb649383ba6a6a\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\3a992d8307f21a8f15eb649383ba6a6a\interpolator-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\64ed055c454b36433d45a77285ee24d6\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\64ed055c454b36433d45a77285ee24d6\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ffa46f3d6480310395b7b525cf59ccde\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ffa46f3d6480310395b7b525cf59ccde\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\3819fb4fef2e012192b32762458ba145\savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\3819fb4fef2e012192b32762458ba145\savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\63647da4654da12a6f2785cfbbad8123\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
@@ -334,6 +385,8 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\fourbric
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\733fc1d306cee2c05d3e1fb0b7527020\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\fdd65d8b6066fd289a68b42931dc03a2\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\fdd65d8b6066fd289a68b42931dc03a2\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\64ed055c454b36433d45a77285ee24d6\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\64ed055c454b36433d45a77285ee24d6\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml
 INJECTED from E:\MedParliament\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion

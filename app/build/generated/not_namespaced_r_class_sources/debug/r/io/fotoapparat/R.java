@@ -18,12 +18,12 @@ public final class R {
     public static final class dimen {
         private dimen() {}
 
-        public static final int focus_diameter = 0x7f0600a6;
+        public static final int focus_diameter = 0x7f0600ab;
     }
     public static final class drawable {
         private drawable() {}
 
-        public static final int focus_inner = 0x7f0700ad;
-        public static final int focus_outer = 0x7f0700ae;
+        public static final int focus_inner = 0x7f0700bd;
+        public static final int focus_outer = 0x7f0700be;
     }
 }

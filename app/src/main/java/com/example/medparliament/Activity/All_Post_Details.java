@@ -1,0 +1,131 @@
+package com.example.medparliament.Activity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.medparliament.Adapter.ThreadAdapter;
+import com.example.medparliament.Internet.Api_Calling;
+import com.example.medparliament.Internet.Models.Post_Modle;
+import com.example.medparliament.Internet.Models.Reply_Model;
+import com.example.medparliament.Internet.URLS;
+import com.example.medparliament.Internet.onResult;
+import com.example.medparliament.R;
+import com.example.medparliament.Utility.Comman;
+import com.example.medparliament.Utility.MySharedPrefrence;
+import com.example.medparliament.Utility.PrettyTimeClass;
+import com.example.medparliament.Widget.Segow_UI_Bold_Font;
+import com.example.medparliament.Widget.Segow_UI_Semi_Font;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+public class All_Post_Details extends AppCompatActivity  {
+    onResult onResult;
+    String postId="";
+    MySharedPrefrence m;
+    Segow_UI_Semi_Font date,created,msg;
+    ImageButton bck;
+    Segow_UI_Bold_Font title;
+    FloatingActionButton cmnts;
+    ProgressDialog progressDialog;
+    ArrayList<Reply_Model> arrayList;
+    RecyclerView recyclerView;
+    ThreadAdapter threadAdapter;
+    Post_Modle pm;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_all__post__details);
+        m=MySharedPrefrence.instanceOf(getApplicationContext());
+        Animatoo.animateSwipeLeft(All_Post_Details.this);
+//        Window window = getWindow();
+//        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+//        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        arrayList=new ArrayList<>();
+
+
+        cmnts=findViewById(R.id.cmnt);
+        cmnts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(All_Post_Details.this,ReplyActivity.class);
+                intent.putExtra("postId",postId);
+                startActivity(intent);
+            }
+        });
+        title=findViewById(R.id.title);
+        date=findViewById(R.id.date);
+        msg=findViewById(R.id.msg);
+        created=findViewById(R.id.created);
+
+        bck=findViewById(R.id.bck);
+        LinearLayoutManager manager=new LinearLayoutManager(getApplicationContext());
+
+        bck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        m=MySharedPrefrence.instanceOf(All_Post_Details.this);
+        onResult();
+        Intent i=getIntent();
+
+    }
+
+    public void onResult() {
+
+        Intent i = getIntent();
+         if(i!=null){
+              pm= (Post_Modle) i.getSerializableExtra("postn");
+         }
+         if(pm!=null) {
+             title.setText(pm.getPostTitle());
+             created.setText("By :-" + pm.getUserName());
+             date.setText("" + PrettyTimeClass.PrettyTime(Comman.timeInms(pm.getDateCreate())));
+             msg.setText("" + pm.getPostDescription());
+
+         }
+
+
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+       // Api_Calling.postMethodCall(All_Post_Details.this,getWindow().getDecorView().getRootView(),onResult, URLS.ALL_POSTS_THREAD,setjson(),"PostDetails");
+    }
+    public JSONObject setjson()
+    {
+        JSONObject jsonObject=new JSONObject();
+        try {
+            jsonObject.put("userTypeId",""+m.getUserTypeId()).put("postId",""+postId);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Comman.log("postDetailsJson",""+jsonObject);
+        return jsonObject;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Animatoo.animateSwipeRight(All_Post_Details.this);
+    }
+
+}

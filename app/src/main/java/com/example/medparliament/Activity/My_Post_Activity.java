@@ -65,9 +65,11 @@ public class My_Post_Activity extends Base_Activity implements onResult {
         nodata=findViewById(R.id.nodata);
         viewPager=findViewById(R.id.viewpager);
         tabLayout=findViewById(R.id.tabs);
+        tabLayout.setVisibility(View.GONE);
         post_page_adapter=new Post_Page_Adapter(getSupportFragmentManager(),this);
         viewPager.setAdapter(post_page_adapter);
         tabLayout.setupWithViewPager(viewPager);
+
         setupTabIcons();
 //        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 //        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
@@ -154,8 +156,8 @@ public class My_Post_Activity extends Base_Activity implements onResult {
     }
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
-        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
-        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
+//        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+//        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
     }
 
 }

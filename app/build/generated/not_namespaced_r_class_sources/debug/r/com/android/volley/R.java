@@ -12,26 +12,26 @@ public final class R {
     public static final class color {
         private color() {}
 
-        public static final int photo_crop_dim_color = 0x7f0500bc;
-        public static final int photo_crop_highlight_color = 0x7f0500bd;
-        public static final int solid_black = 0x7f0500ce;
+        public static final int photo_crop_dim_color = 0x7f0500c2;
+        public static final int photo_crop_highlight_color = 0x7f0500c3;
+        public static final int solid_black = 0x7f0500d4;
     }
     public static final class dimen {
         private dimen() {}
 
-        public static final int photo_crop_stroke_width = 0x7f060110;
-        public static final int photo_crop_width = 0x7f060111;
-        public static final int photo_preview_size = 0x7f060112;
+        public static final int photo_crop_stroke_width = 0x7f060113;
+        public static final int photo_crop_width = 0x7f060114;
+        public static final int photo_preview_size = 0x7f060115;
     }
     public static final class string {
         private string() {}
 
-        public static final int auth_failed = 0x7f0f0056;
-        public static final int generic_error = 0x7f0f0075;
-        public static final int generic_server_down = 0x7f0f0076;
-        public static final int generic_server_timeout = 0x7f0f0077;
-        public static final int no_internet = 0x7f0f0081;
-        public static final int no_network_connection = 0x7f0f0082;
-        public static final int parsing_failed = 0x7f0f0085;
+        public static final int auth_failed = 0x7f10007b;
+        public static final int generic_error = 0x7f1000a6;
+        public static final int generic_server_down = 0x7f1000a7;
+        public static final int generic_server_timeout = 0x7f1000a8;
+        public static final int no_internet = 0x7f1000b3;
+        public static final int no_network_connection = 0x7f1000b4;
+        public static final int parsing_failed = 0x7f1000b8;
     }
 }

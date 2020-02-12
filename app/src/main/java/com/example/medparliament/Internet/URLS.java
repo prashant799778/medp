@@ -19,7 +19,16 @@ public class URLS {
     public static String changeProfilePic=BASE_URL+"changeProfilePic";
     public static String USER_PROFILE=BASE_URL+"userProfile";
     public static String USER_POST=BASE_URL+"userPost";
+    public static String USER_REPLY=BASE_URL+"verifyPost1";
     public static String MY_POST=BASE_URL+"myPosts";
+    public static String GENERATEOTP=BASE_URL+"generateOtp";
     public static String ALL_POSTS=BASE_URL+"allPosts";
+    public static String ALL_POSTS_THREAD=BASE_URL+"allPostsThread";
+    public static String landingPageDashboard=BASE_URL+"landingPageDashboard";
+    public static String getNews=BASE_URL+"getNews";
     public static String ADD_USER=BASE_URL+"addUser";
+    public static String LIKEPOST=BASE_URL+"likePost";
+    public static String verifyOtp=BASE_URL+"verifyOtp";
+    public static String updatePassword=BASE_URL+"updatePassword";
+    public static String getSignUpVideo=BASE_URL+"getSignUpVideo";
 }

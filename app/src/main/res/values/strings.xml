@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">MedParliament</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -10,6 +10,9 @@
     <string name="Login">Login</string>
     <string name="Forgot_password">Forgot password ?</string>
     <string name="nopost">No post yet !!</string>
+    <string name="nothread">No Thread yet !!</string>
+    <string name="Know_Med">About MedParliament</string>
+    <string name="Enter_Med">Enter MedParliament</string>
     <string name="From">From</string>
     <string name="TO">To</string>
     <string name="Remember_Me">Remember Me</string>
@@ -22,17 +25,22 @@ Healthcare Leadership </string>
     <string name="MED_PARLIAMENT">MED PARLIAMENT</string>
     <string name="selectType">Select Type</string>
     <string name="done">Done</string>
-    <string name="welcome">Welcome To Med Parliament</string>
+    <string name="welcome">Welcome To MedParliament</string>
     <string name="PostDetails">Post Details</string>
-    <string name="Write_Your_Post">Write Your Post</string>
+    <string name="Write_Your_Post">Write to MedParliament </string>
+    <string name="Write_Your_Reply">Write Your Reply</string>
     <string name="Type_Description">Type Description</string>
     <string name="ttt">Please select the type you
 want to sign up as</string>
     <string name="Students">Students</string>
+    <string name="Doctor">Doctors</string>
+    <string name="Professionals">Professionals</string>
+    <string name="asProfessionals">As Professionals</string>
     <string name="Entrepreneur">Entrepreneur</string>
     <string name="Policy_Maker">Policy Maker</string>
     <string name="As_Entreprenuer">As Entrepreneur</string>
     <string name="As_Policy_Maker">As Policy Maker</string>
+    <string name="As_Doctor">As Doctor</string>
     <string name="Name">Name</string>
     <string name="Mobile_Number">Mobile Number</string>
     <string name="Country">Country</string>
@@ -57,23 +65,81 @@ want to sign up as</string>
     <string name="Institution_Name">Institution Name</string>
     <string name="Batch_of_Qualification">Batch of Qualification</string>
     <string name="University">University</string>
-
+    <string name="AnInitiativeOf">An Initiative Of </string>
     <string name="Others">Others</string>
     <string name="Save">Save</string>
+    <string name="Latest_News">Latest News</string>
     <string name="Define_in_200_words">Define in 200 words</string>
+    <string name="Annoucements">Annoucements</string>
     <string name="Organisation">Organisation</string>
     <string name="About_Your_Profile">About Your Profile</string>
     <string name="Home">Home</string>
+    <string name="Addressofjospital">Address of Hospital</string>
+    <string name="CompanyAddress">Company Address</string>
+    <string name="AreaofExperites">Area of Expertise</string>
+    <string name="Occupation">Occupation</string>
+    <string name="company">Name of the company</string>
+    <string name="company_address">Address of the company</string>
+
+    <string name="institute">Hospital/Health institute where practising</string>
+    <string name="hos_add">Address of the hospital</string>
+    <string name="veiw">View more>>></string>
+    <string name="Event">Events</string>
+    <string name="Read">Read more...</string>
+    <string name="Gallery">Gallery</string>
     <string name="userName">UserName</string>
+    <string name="MedParliament">MedParliament</string>
+    <string name="Login_signup">Login/Signup</string>
     <string name="AboutUs">About us</string>
+    <string name="Letgestarted">Let\'s get started</string>
+    <string name="Donthaveanaccount">Don\'t have an account ?</string>
     <string name="Rate_Now">Rate Now</string>
     <string name="MY_POST">My Posts</string>
     <string name="yes">Yes</string>
+    <string name="News">News</string>
     <string name="Comapny_Name">Company Name</string>
     <string name="Dashboard">Dashboard</string>
     <string name="Global_Leadership">Global Parliament of Healthcare Leadership</string>
     <string name="title">Title</string>
+    <string name="NewsDetails">NewsDetails</string>
     <string name="msg">Message</string>
     <string name="ok">Ok</string>
     <string name="No">No</string>
+    <string name="AllPost"> All Posts</string>
+    <string name="AllPostDetails"> All Posts Details</string>
+    <!--    <string name="ForgotPassword">Forgot Password</string>-->
+    <!--    <string name="Continue">Continue</string>-->
+    <!--    <string name="Forgot1">Please enter your registered email id to reset-->
+    <!--your password</string>-->
+    <!--    <string name="Email">E-mail Id</string>-->
+    <!--    <string name="OTP">Enter OTP</string>-->
+    <!--    <string name="DontGet">Didn\'t get OTP ?</string>-->
+    <!--    <string name="Resend">Resend OTP</string>-->
+    <!--    <string name="ResetPassword">Reset Password</string>-->
+
+
+    <string name="ForgotPassword">Forgot Password</string>
+    <string name="Continue">Continue</string>
+    <string name="Forgot1">Please enter your registered email id to reset
+your password</string>
+    <string name="Email">E-mail Id</string>
+    <string name="OTP">Enter OTP</string>
+    <string name="DecisionMaker">As Decision Maker</string>
+    <string name="DM">Decision Maker</string>
+    <string name="DontGet">Didn\'t get OTP ?</string>
+    <string name="Resend">Resend OTP</string>
+    <string name="ResetPassword">Reset Password</string>
+    <string name="done3">Password Changed Successfully</string>
+    <string name="done2">Go to Login</string>
+    <string name="Promising_Initiative">Promising Initiative </string>
+
+
+    <string name="newPassword">New Password</string>
+    <string name="Conform">Conform Password</string>
+    <string name="enter">Enter your New Password</string>
+
+
+    ///////////////////////////////////////////////////////////
+    <color name="done">#a2834d</color>
+    <color name="text2">#d3d3d2</color>
 </resources>

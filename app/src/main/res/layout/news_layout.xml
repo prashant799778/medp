@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+        <!--        <com.google.android.material.card.MaterialCardView-->
+        <!--            android:layout_width="90dp"-->
+        <!--            app:cardCornerRadius="5dp"-->
+        <!--            app:cardElevation="0dp"-->
+        <!--            android:id="@+id/card"-->
+        <!--            android:layout_marginLeft="5dp"-->
+        <!--            android:layout_height="90dp">-->
+        <ImageView
+            android:layout_width="100dp"
+            android:id="@+id/mainimg"
+            android:layout_marginLeft="5dp"
+            android:visibility="visible"
+            android:scaleType="centerCrop"
+            android:layout_height="match_parent">
+        </ImageView>
+        <!--        </com.google.android.material.card.MaterialCardView>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="4dp"
+                android:weightSum="2"
+                android:orientation="horizontal">
+                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                    android:layout_width="match_parent"
+                    android:paddingLeft="10dp"
+                    android:textSize="14dp"
+                    android:maxLines="1"
+                    android:id="@+id/title"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:layout_height="20dp">
+                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                    android:layout_width="match_parent"
+                    android:paddingLeft="10dp"
+                    android:textSize="12dp"
+                    android:maxLines="1"
+                    android:layout_weight="1"
+                    android:id="@+id/date"
+                    android:gravity="right"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/white"
+                    android:layout_height="20dp">
+                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+            </LinearLayout>
+            <com.example.medparliament.Widget.Open_Sans_Regular_Font
+                android:layout_width="match_parent"
+                android:paddingLeft="10dp"
+                android:textSize="12dp"
+                android:textColor="@color/white"
+                android:layout_marginTop="6dp"
+                android:id="@+id/msg"
+                android:maxLines="3"
+                android:layout_height="50dp">
+            </com.example.medparliament.Widget.Open_Sans_Regular_Font>
+            <com.example.medparliament.Widget.Open_Sans_Regular_Font
+                android:layout_width="match_parent"
+                android:paddingLeft="10dp"
+                android:id="@+id/read"
+                android:visibility="visible"
+                android:textColor="@color/textcolor"
+                android:text="@string/Read"
+                android:layout_height="wrap_content">
+            </com.example.medparliament.Widget.Open_Sans_Regular_Font>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

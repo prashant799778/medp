@@ -89,11 +89,13 @@
                 android:orientation="vertical">
             </LinearLayout>
             <RelativeLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
                 android:background="@color/transparent"
                 android:layout_height="wrap_content">
             <com.example.medparliament.Widget.Segow_UI_Font
+
                 android:layout_width="match_parent"
                 android:textSize="14dp"
                 android:hint="@string/forwhat"

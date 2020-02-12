@@ -3,8 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@color/colorAccent"
     android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/spashbgbg"
+        android:scaleType="centerCrop">
+    </ImageView>
     <ImageView
         android:layout_width="192dp"
         android:src="@drawable/group_"
@@ -43,17 +49,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="70dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
         <com.example.medparliament.Widget.Segow_UI_Bold_Font
             android:layout_width="wrap_content"
             android:textAlignment="gravity"
             android:gravity="center_horizontal|center_vertical"
-            android:textSize="18dp"
+            android:textSize="12dp"
             android:textColor="@color/textcolor"
-            android:text="@string/app_Version"
+            android:text="@string/AnInitiativeOf"
             android:layout_height="wrap_content">
         </com.example.medparliament.Widget.Segow_UI_Bold_Font>
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="20dp"
+
+            android:src="@drawable/medpr">
+        </ImageView>
     </LinearLayout>
 </RelativeLayout>

@@ -2,6 +2,8 @@ package com.example.medparliament.Internet;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -11,6 +13,7 @@ import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.request.SimpleMultiPartRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.medparliament.R;
 import com.example.medparliament.Utility.Comman;
 import com.example.medparliament.Utility.Constant;
 import com.example.medparliament.Internet.onResult;
@@ -31,6 +34,8 @@ public class Api_Calling {
 
     public static ArrayList<String>StudentIntrestList=new ArrayList<>();
     public static HashMap<String ,String>StudentIntrestHash=new HashMap<>();
+    public static ArrayList<String> DPIntrestList=new ArrayList<>();
+    public static HashMap<String ,String> DPIntrestHash=new HashMap<>();
 
     public static ArrayList<String>ProfileList=new ArrayList<>();
     public static HashMap<String ,String>ProfileHash=new HashMap<>();
@@ -219,6 +224,50 @@ public class Api_Calling {
         }
 
     }
+    public static void getDPIntrestList(final Context context, final View view ,String URL, JSONObject jsonObject)
+    {
+        if(!Comman.isConnectedToInternet(context))
+        {
+            Comman.topSnakBar(context, view,Constant.NO_INTERNET);
+        }else {
+            final JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Comman.log("DPInterestListResponse",""+response);
+                    try {
+                        if(Boolean.parseBoolean(response.getString("status"))){
+                            DPIntrestList.clear();
+                            JSONArray array=response.getJSONArray("result");
+                            for (int i=0;i<array.length();i++)
+                            {
+                                DPIntrestList.add(Comman.getValueFromJsonObject(array.getJSONObject(i),"name"));
+                                DPIntrestHash.put(Comman.getValueFromJsonObject(array.getJSONObject(i),"name"),Comman.getValueFromJsonObject(array.getJSONObject(i),"id"));
+                            }
+                        }else {
+//                            Comman.toastLong(context, response.getString("result"));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Comman.topSnakBar(context,view, Constant.SOMETHING_WENT_WRONG);
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+            final RequestQueue requestQueue= Volley.newRequestQueue(context);
+            requestQueue.add(jsonObjectRequest);
+            requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<Object>() {
+                @Override
+                public void onRequestFinished(Request<Object> request) {
+                    requestQueue.getCache().clear();
+                }
+            });
+        }
+
+    }
     public static void getALLCountry(final Context context, final View view, String URL)
     {
         if(!Comman.isConnectedToInternet(context))
@@ -349,6 +398,37 @@ public class Api_Calling {
 
 
 
+
+
+
+    public static void likePost(Context context, JSONObject jsonObject, final ImageView imageView, final TextView textView, String counter)
+    {
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URLS.LIKEPOST, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Comman.log("Result",""+response);
+                try {
+                    if(response.getString("status").equalsIgnoreCase("true")) {
+                        textView.setText("Endorse " + response.getString("result") + "  (Students)");
+                        imageView.setEnabled(false);
+                        imageView.setImageResource(R.drawable.ic_after_like);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue requestQueue=Volley.newRequestQueue(context);
+        requestQueue.add(jsonObjectRequest);
+    }
+
+
+
     public static void postMethodCall_NO_MSG(final Context context, final View view, final onResult onResult, String URL, JSONObject jsonObject, final String name)
     {
         if(!Comman.isConnectedToInternet(context))
@@ -356,6 +436,7 @@ public class Api_Calling {
             Comman.topSnakBar(context,view, Constant.NO_INTERNET);
             onResult.onResult(null,false);
         }else {
+            Comman.log(name,"yyyyy");
             JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
@@ -458,4 +539,32 @@ public class Api_Calling {
         }
     }
 
+
+    public static void videoApiCalling(Context context, View v, String URL, JSONObject object, final VideoListener videoListener)
+    {
+        if (!Comman.isConnectedToInternet(context)) {
+            Comman.topSnakBar(context, v, Constant.NO_INTERNET);
+        } else {
+            JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, object, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Comman.log("Response",""+response);
+                    try {
+                        if(Boolean.parseBoolean(response.getString("status"))){
+                            videoListener.onVideoResult(response,true);}else {
+                            videoListener.onVideoResult(null,false);}
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+            RequestQueue requestQueue=Volley.newRequestQueue(context);
+            requestQueue.add(jsonObjectRequest);
+        }
+    }
 }

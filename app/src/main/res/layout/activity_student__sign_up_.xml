@@ -58,6 +58,39 @@
                 android:layout_width="match_parent"
                 android:layout_below="@+id/cup"
                 android:orientation="vertical"
+                android:id="@+id/ll"
+                android:layout_marginHorizontal="34dp"
+                android:layout_height="220dp">
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/video"
+                    android:layout_height="match_parent"
+                    app:autoPlay="false"
+                    android:background="@color/white"
+                    app:enableAutomaticInitialization="false"
+                    app:showYouTubeButton="true">
+                </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:id="@+id/image"
+                    android:scaleType="centerCrop"
+                    android:layout_height="match_parent">
+                </ImageView>
+            </LinearLayout>
+            <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:id="@+id/videoTitle"
+                android:layout_marginHorizontal="34dp"
+                android:layout_below="@+id/ll"
+                android:textColor="@color/white"
+                android:textSize="20dp">
+            </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/videoTitle"
+                android:orientation="vertical"
                 android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="@dimen/rightMargin"
                 android:layout_height="wrap_content">
@@ -116,6 +149,45 @@
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
                     android:layout_height="@dimen/fieldHeight"/>
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/downarrow"
+                        android:padding="@dimen/imagepadding"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_centerVertical="true">
+                    </ImageView>
+                </RelativeLayout>
+<!--                <com.example.medparliament.Widget.Segow_UI_EditText-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:textSize="14dp"-->
+<!--                    android:hint="@string/Country"-->
+<!--                    android:layout_marginVertical="11dp"-->
+<!--                    android:paddingLeft="@dimen/leftpadding"-->
+<!--                    android:id="@+id/country"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textColorHint="@color/hintColor"-->
+<!--                    android:textCursorDrawable="@drawable/curcos"-->
+<!--                    android:background="@drawable/edit_text_boarder"-->
+<!--                    android:layout_height="@dimen/fieldHeight"/>-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.example.medparliament.Widget.Segow_UI_Font
+                        android:layout_width="match_parent"
+                        android:textSize="14dp"
+                        android:hint="@string/Country"
+                        android:id="@+id/country"
+                        android:textAlignment="gravity"
+                        android:gravity="center_vertical"
+                        android:layout_marginVertical="11dp"
+                        android:paddingLeft="@dimen/leftpadding"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/hintColor"
+                        android:textCursorDrawable="@drawable/curcos"
+                        android:background="@drawable/edit_text_boarder"
+                        android:layout_height="@dimen/fieldHeight"/>
                     <ImageView
                         android:layout_width="15dp"
                         android:layout_height="15dp"
@@ -186,33 +258,45 @@
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
                     android:layout_height="@dimen/fieldHeight"/>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <com.example.medparliament.Widget.Segow_UI_Font
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                <com.example.medparliament.Widget.Segow_UI_Font-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:textSize="14dp"-->
+<!--                    android:hint="@string/Qualification"-->
+<!--                    android:layout_marginVertical="11dp"-->
+<!--                    android:paddingLeft="@dimen/leftpadding"-->
+<!--                    android:id="@+id/qualificatin"-->
+<!--                    android:textAlignment="gravity"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textColorHint="@color/hintColor"-->
+<!--                    android:textCursorDrawable="@drawable/curcos"-->
+<!--                    android:background="@drawable/edit_text_boarder"-->
+<!--                    android:layout_height="@dimen/fieldHeight"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="15dp"-->
+<!--                    android:layout_height="15dp"-->
+<!--                    android:padding="@dimen/imagepadding"-->
+<!--                    android:src="@drawable/downarrow"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:layout_centerVertical="true">-->
+<!--                </ImageView>-->
+<!--                </RelativeLayout>-->
+                <com.example.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:textSize="14dp"
                     android:hint="@string/Qualification"
                     android:layout_marginVertical="11dp"
                     android:paddingLeft="@dimen/leftpadding"
                     android:id="@+id/qualificatin"
-                    android:textAlignment="gravity"
-                    android:gravity="center_vertical"
                     android:textColor="@color/white"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
                     android:layout_height="@dimen/fieldHeight"/>
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:padding="@dimen/imagepadding"
-                    android:src="@drawable/downarrow"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:layout_centerVertical="true">
-                </ImageView>
-                </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -252,33 +336,45 @@
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
                     android:layout_height="@dimen/fieldHeight"/>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                <com.example.medparliament.Widget.Segow_UI_Font
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+<!--                <com.example.medparliament.Widget.Segow_UI_Font-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:textSize="14dp"-->
+<!--                    android:hint="@string/University"-->
+<!--                    android:layout_marginVertical="11dp"-->
+<!--                    android:paddingLeft="@dimen/leftpadding"-->
+<!--                    android:id="@+id/universityname"-->
+<!--                    android:textAlignment="gravity"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textColorHint="@color/hintColor"-->
+<!--                    android:textCursorDrawable="@drawable/curcos"-->
+<!--                    android:background="@drawable/edit_text_boarder"-->
+<!--                    android:layout_height="@dimen/fieldHeight"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="15dp"-->
+<!--                    android:layout_height="15dp"-->
+<!--                    android:padding="@dimen/imagepadding"-->
+<!--                    android:src="@drawable/downarrow"-->
+<!--                    android:layout_alignParentRight="true"-->
+<!--                    android:layout_marginRight="20dp"-->
+<!--                    android:layout_centerVertical="true">-->
+<!--                </ImageView>-->
+<!--                </RelativeLayout>-->
+                <com.example.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:textSize="14dp"
-                    android:hint="@string/University"
+                    android:hint="@string/University_name"
                     android:layout_marginVertical="11dp"
                     android:paddingLeft="@dimen/leftpadding"
-                    android:id="@+id/universityname"
-                    android:textAlignment="gravity"
-                    android:gravity="center_vertical"
                     android:textColor="@color/white"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
+                    android:id="@+id/universityname"
                     android:layout_height="@dimen/fieldHeight"/>
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:padding="@dimen/imagepadding"
-                    android:src="@drawable/downarrow"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:layout_centerVertical="true">
-                </ImageView>
-                </RelativeLayout>
                 <com.example.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:textSize="14dp"

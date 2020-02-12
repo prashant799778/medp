@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
@@ -25,6 +26,7 @@ import com.example.medparliament.Utility.Constant;
 import com.example.medparliament.Utility.MySharedPrefrence;
 import com.example.medparliament.Widget.Segow_UI_Bold_Font;
 import com.example.medparliament.Widget.Segow_UI_EditText;
+import com.example.medparliament.Widget.Segow_UI_Font;
 import com.example.medparliament.Widget.Segow_UI_Semi_Font;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -49,9 +51,11 @@ public class Login_Activity extends Base_Activity implements View.OnClickListene
     RelativeLayout top_view;
     onResult onResult;
     ImageButton bck;
+    Segow_UI_Font forgot;
     RelativeLayout googleLogin;
     GoogleSignInClient googleSignInClient;
     private ProgressDialog progressDialog;
+    Segow_UI_Font signup;
     MySharedPrefrence m;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,23 +69,28 @@ public class Login_Activity extends Base_Activity implements View.OnClickListene
 //        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         m=MySharedPrefrence.instanceOf(Login_Activity.this);
         login=findViewById(R.id.login);
+        forgot=findViewById(R.id.forgot);
         login.setOnClickListener(this);
         email=findViewById(R.id.email);
         pswd=findViewById(R.id.pswd);
-        googleLogin=findViewById(R.id.googleLogin);
-        googleLogin.setOnClickListener(this);
+//        googleLogin=findViewById(R.id.googleLogin);
+//        googleLogin.setOnClickListener(this);
         top_view=findViewById(R.id.top_view);
+        forgot.setOnClickListener(this);
         bck.setOnClickListener(this);
+        signup=findViewById(R.id.l_signup);
+        signup.setOnClickListener(this);
         //google Login Listener
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
+//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestEmail()
+//                .build();
+//        googleSignInClient = GoogleSignIn.getClient(this, gso);
         Comman.ChangeFocus(email);
         Comman.ChangeFocus(pswd);
     }
     @Override
     public void onClick(View v) {
+        Comman.log("GGG","ggggjjj");
         if(v.getId()==R.id.login) {
             if (!email.getText().toString().isEmpty() && !pswd.getText().toString().isEmpty()) {
                 progressDialog = new ProgressDialog(Login_Activity.this);
@@ -93,7 +102,12 @@ public class Login_Activity extends Base_Activity implements View.OnClickListene
                 Comman.topSnakBar(Login_Activity.this,v, Constant.PLEASE_FILL_ALL_FIELD);
             }
         }
-        else {
+        else if(v.getId()==R.id.l_signup){
+            Comman.log("GGG","gggg");
+            startActivity(new Intent(Login_Activity.this,SignUp_type_Activity.class));
+        }else if(v.getId()==R.id.forgot){
+            startActivity(new Intent(Login_Activity.this,Forgot_Password_Activity.class));
+        }else {
             onBackPressed();
         }
     }
@@ -103,7 +117,7 @@ public class Login_Activity extends Base_Activity implements View.OnClickListene
         if(jsonObject!=null && status){
             try {
                 JSONObject jo=jsonObject.getJSONArray("result").getJSONObject(0);
-                if(Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("5") || Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("6") || Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("7")) {
+                if(Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("5") || Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("6") || Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("7") || Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("8")|| Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("9")) {
                     m.setLoggedIn(true);
                     m.setUserName(Comman.getValueFromJsonObject(jo,"userName"));
                     m.setUserId(Comman.getValueFromJsonObject(jo,"userId"));

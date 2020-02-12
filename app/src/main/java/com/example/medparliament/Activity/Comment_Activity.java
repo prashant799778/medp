@@ -69,22 +69,19 @@ public class Comment_Activity extends AppCompatActivity implements onResult {
             @Override
             public void onClick(View v) {
                if(!cmnt_msg.getText().toString().isEmpty()){
-                   if( !forwhat.getText().toString().isEmpty()){
-                   Api_Calling.multiPartCall(Comment_Activity.this,getWindow().getDecorView().getRootView(), URLS.USER_POST,conmtJson(),onResult,"Multi");}else {
-                       Comman.topSnakBar(Comment_Activity.this,getWindow().getDecorView().getRootView(),"Select For What Please!!!");
-                   }
+                   Api_Calling.multiPartCall(Comment_Activity.this,getWindow().getDecorView().getRootView(), URLS.USER_POST,conmtJson(),onResult,"Multi");
                }else {
                    Comman.topSnakBar(Comment_Activity.this,getWindow().getDecorView().getRootView(),"Write Something Please!!!");
                }
             }
         });
-        forwhat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopup(genderList,"Select For What",forwhat);
-                spinnerDialog.showSpinerDialog();
-            }
-        });
+//        forwhat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showPopup(genderList,"Select For What",forwhat);
+//                spinnerDialog.showSpinerDialog();
+//            }
+//        });
     }
     public void showPopup(ArrayList<String> items, String title, final Segow_UI_Font segow_ui_font)
     {
@@ -126,12 +123,12 @@ public class Comment_Activity extends AppCompatActivity implements onResult {
     public JSONObject conmtJson()
     {
         String forwhatid="";
-        if(forwhat!=null && forwhat.getTag()!=null)
-            forwhatid=forwhat.getTag().toString();
+//        if(forwhat!=null && forwhat.getTag()!=null)
+//            forwhatid=forwhat.getTag().toString();
         JSONObject jsonObject=new JSONObject();
         try {
             jsonObject.put("userId",""+m.getUserId()).put("userTypeId",""+m.getUserTypeId()).put("postTitle",""+title.getText().toString()).put("postDescription",""+cmnt_msg.getText().toString())
-                    .put("showuserTypeId",""+forwhatid).put("flag","n");
+                    .put("showuserTypeId","").put("flag","n");
         } catch (JSONException e) {
             e.printStackTrace();
         }

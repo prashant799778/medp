@@ -12,33 +12,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/dbgbg"
+        android:visibility="gone"
         android:scaleType="centerCrop">
     </ImageView>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:id="@+id/top1"
-        android:layout_height="match_parent">
-        <include android:id="@+id/toolbar"
-            layout="@layout/toolbar_layout"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:id="@+id/recycle"
-                android:layout_below="@+id/toolbar"
-                android:layout_marginTop="20dp"
-                android:layout_height="wrap_content">
-            </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="wrap_content">
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:id="@+id/nodata"
+            android:layout_centerHorizontal="true"
             android:orientation="vertical"
-            android:visibility="gone"
-            ><ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/nodata">
-        </ImageView>
+            android:visibility="gone">
+            <ImageView
+
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/nodata">
+            </ImageView>
             <com.example.medparliament.Widget.Segow_UI_Font
                 android:layout_width="wrap_content"
                 android:text="@string/nopost"
@@ -47,10 +41,257 @@
                 android:layout_height="wrap_content">
             </com.example.medparliament.Widget.Segow_UI_Font>
         </RelativeLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/top1"
+            android:layout_height="match_parent">
+            <include android:id="@+id/toolbar"
+                layout="@layout/toolbar_layout"/>
+            <LinearLayout
+                android:id="@+id/cover"
+                android:orientation="vertical"
+                android:layout_below="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/toolbar"
+                android:visibility="visible"
+                android:weightSum="2"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="13dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:src="@drawable/ic_info"
+                    android:scaleType="centerCrop"
+                    android:padding="10dp"
+                    android:id="@+id/img"
+                    android:layout_centerVertical="true"
+                    android:layout_height="match_parent">
+                </ImageView>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/fieldHeight"
+                    android:text="@string/Know_Med"
+                    android:id="@+id/login_signup"
+                    android:layout_toRightOf="@id/img"
+                    android:background="@color/transparent"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false">
+                </androidx.appcompat.widget.AppCompatButton>
+<!--                <androidx.appcompat.widget.AppCompatButton-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="@dimen/fieldHeight"-->
+<!--                    android:text="@string/Enter_Med"-->
+<!--                    android:background="@drawable/transparent"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textAllCaps="false">-->
+<!--                </androidx.appcompat.widget.AppCompatButton>-->
+<!--                <com.example.medparliament.Widget.Segow_UI_Bold_Font-->
+<!--                    android:paddingLeft="20dp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/Login_signup"-->
+<!--                    android:layout_centerHorizontal="true"-->
+<!--                    android:textSize="18dp"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textStyle="bold">-->
+<!--                </com.example.medparliament.Widget.Segow_UI_Bold_Font>-->
+            </RelativeLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginTop="20dp"
+                android:id="@+id/anouced"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                    android:layout_width="match_parent"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:text="@string/Annoucements"
+                    android:layout_height="wrap_content">
+                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:id="@+id/recycle_announced"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+                    </androidx.recyclerview.widget.RecyclerView>
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:id="@+id/arrow"
+                            android:visibility="gone"
+                            android:layout_height="50dp"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ic_back">
+                        </ImageView>
+                </RelativeLayout>
+            </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/cover"
+                android:id="@+id/news"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                    android:layout_width="match_parent"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:text="@string/Latest_News"
+                    android:layout_height="wrap_content">
+                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/recycle_news"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+                </androidx.recyclerview.widget.RecyclerView>
+                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                    android:layout_width="match_parent"
+                    android:textColor="@color/textcolor"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:id="@+id/morenews"
+                    android:gravity="left"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="20dp"
+                    android:text="@string/veiw"
+                    android:layout_height="wrap_content">
+                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/cover"
+                android:id="@+id/video_layout"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                        android:layout_width="match_parent"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:paddingLeft="20dp"
+                        android:text="@string/Latest_News"
+                        android:layout_height="wrap_content">
+                    </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+<!--                    <com.example.medparliament.Widget.Segow_UI_Semi_Font-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:textColor="@color/textcolor"-->
+<!--                        android:textSize="16dp"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:id="@+id/morenews"-->
+<!--                        android:gravity="center_horizontal"-->
+<!--                        android:paddingLeft="20dp"-->
+<!--                        android:text="@string/veiw"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    </com.example.medparliament.Widget.Segow_UI_Semi_Font>-->
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/recycle_video"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/news"
+                android:id="@+id/Event"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                    android:layout_width="match_parent"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:text="@string/Event"
+                    android:layout_height="wrap_content">
+                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/recycle_event"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/Event"
+                android:id="@+id/gallery"
+                android:visibility="gone"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                    android:layout_width="match_parent"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:paddingLeft="20dp"
+                    android:text="@string/Gallery"
+                    android:layout_height="wrap_content">
+                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/recycle_gallery"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+            android:visibility="gone"
             android:id="@+id/cmnt"
             style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:scaleType="centerCrop"
@@ -62,7 +303,7 @@
             app:tint="@null"
             android:layout_height="wrap_content">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
-        </RelativeLayout>
+    </RelativeLayout>
     <RelativeLayout
         android:layout_width="240dp"
         android:layout_gravity="start"
@@ -78,6 +319,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="20dp"
+                android:visibility="gone"
                 android:padding="12dp"
                 android:id="@+id/setting"
                 android:layout_toLeftOf="@+id/profile"
@@ -101,6 +343,7 @@
                 android:id="@+id/logout"
                 android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@+id/profile"
+                android:visibility="gone"
                 android:src="@drawable/ic_logout">
             </ImageView>
         </RelativeLayout>

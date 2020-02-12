@@ -141,6 +141,33 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+                    <com.example.medparliament.Widget.Segow_UI_Font
+                        android:layout_width="match_parent"
+                        android:textSize="14dp"
+                        android:hint="@string/Country"
+                        android:id="@+id/country"
+                        android:textAlignment="gravity"
+                        android:gravity="center_vertical"
+                        android:layout_marginVertical="11dp"
+                        android:paddingLeft="@dimen/leftpadding"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/hintColor"
+                        android:textCursorDrawable="@drawable/curcos"
+                        android:background="@drawable/edit_text_boarder"
+                        android:layout_height="@dimen/fieldHeight"/>
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/downarrow"
+                        android:padding="@dimen/imagepadding"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_centerVertical="true">
+                    </ImageView>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <com.example.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:textSize="14dp"

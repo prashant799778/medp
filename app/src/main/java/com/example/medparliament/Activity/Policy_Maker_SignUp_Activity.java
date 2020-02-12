@@ -145,6 +145,7 @@ public class Policy_Maker_SignUp_Activity extends Base_Activity implements View.
         }
 
     }
+
     public void setMultiChoice()
     {
         interest.setText("");
@@ -199,13 +200,13 @@ public class Policy_Maker_SignUp_Activity extends Base_Activity implements View.
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                m.setLoggedIn(true);
-                m.setUserName(Comman.getValueFromJsonObject(jsonObject1, "userName"));
-                m.setUserId(Comman.getValueFromJsonObject(jsonObject1, "userId"));
-                m.setUserTypeId(Comman.getValueFromJsonObject(jsonObject1, "userTypeId"));
-                m.setUserProfile(Comman.getValueFromJsonObject(jsonObject1, "profilePic"));
+                m.setLoggedIn(false);
+//                m.setUserName(Comman.getValueFromJsonObject(jsonObject1, "userName"));
+//                m.setUserId(Comman.getValueFromJsonObject(jsonObject1, "userId"));
+//                m.setUserTypeId(Comman.getValueFromJsonObject(jsonObject1, "userTypeId"));
+//                m.setUserProfile(Comman.getValueFromJsonObject(jsonObject1, "profilePic"));
                 Comman.log("USername", "dsfa" + m.getUserName());
-                Intent i = new Intent(Policy_Maker_SignUp_Activity.this, DashBoard_Activity.class);
+                Intent i = new Intent(Policy_Maker_SignUp_Activity.this, Login_Activity.class);
                 i.putExtra("username", "" + Comman.getValueFromJsonObject(jsonObject1, "userName"));
                 startActivity(i);
                 finish();
@@ -249,7 +250,7 @@ public class Policy_Maker_SignUp_Activity extends Base_Activity implements View.
                     put("os","").put("ipAddress","").put("country",""+Api_Calling.CountryHash.get(country.getText().toString()))
                     .put("city","").put("deviceid",""+Comman.uniqueId(Policy_Maker_SignUp_Activity.this))
                     .put("ImeiNo",""+Comman.getIMEI(Policy_Maker_SignUp_Activity.this))
-                    .put("interestId",""+doctorIdArray).put("profileCategoryId","")
+                    .put("interestId", doctorIdArray).put("profileCategoryId","")
                     .put("aboutProfile",""+about_profile.getText().toString()).put("designation",""+designation.getText().toString()).put("areaofActivity",""+about_profile.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
