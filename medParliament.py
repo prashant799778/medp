@@ -61,10 +61,10 @@ def promisingEvent1(image_name):
 
 
 
-@app.route("/signUpVideo/<image_name>")
+@app.route("/signUpImage/<image_name>")
 def signUpVideo1(image_name):
     try:
-        return send_from_directory('signUpVideo', filename=image_name, as_attachment=False)
+        return send_from_directory('signUpImage', filename=image_name, as_attachment=False)
     except FileNotFoundError:
         abort(404)
 
