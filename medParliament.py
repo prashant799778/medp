@@ -4857,6 +4857,7 @@ def promisingInitiatives():
         commonfile.writeLog("promisingInitiatives",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
+            text=""
             videoLink=""
             flag=inputdata['flag']
             if "text" in inputdata:
