@@ -184,7 +184,7 @@ def SelectQueryOrderbyAsc(table,columns,whereCondition,groupby,orderby,startlimi
         print("Error--->" + str(e))            
         return "0" 
 
-def SelectQueryOrderby(table,columns,whereCondition,groupby,startlimit,endlimit,orderby):
+def SelectQueryOrderbyNew(table,columns,whereCondition,groupby,startlimit,endlimit,orderby):
     try:
         limitCondition= ""
         
@@ -195,17 +195,55 @@ def SelectQueryOrderby(table,columns,whereCondition,groupby,startlimit,endlimit,
             groupby = " group by " + groupby
 
         print("startlimit"+str(startlimit))
-        if startlimit == 0 and endlimit == 0:
-             query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
-        else:
-            if whereCondition != "" and startlimit != "0":
-                whereCondition = " where 1=1 " + whereCondition
-            if startlimit != "" and endlimit != "":
-                limitCondition = "  limit "+startlimit+","+endlimit
+        print("endlimit"+str(endlimit))
+
+        #if startlimit == 0 and endlimit == 0:
+        query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
+        #else:
+        if whereCondition != "" and startlimit != "0":
+            #whereCondition = " where 1=1 " + whereCondition
+        if startlimit != "" and endlimit != "":
+            #limitCondition = "  limit "+startlimit+","+endlimit
             
-            print(orderby)    
+        print(orderby)    
                     
-            query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
+            # query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
+
+        print(query)
+        con = DBconnection()      
+        cursor = con.cursor()
+        cursor.execute(query)
+        data = cursor.fetchall()
+        cursor.close()
+      
+        if data:
+            data = {"status":"true","message":"","result":data}
+            return data
+        else:
+            data ={"status":"true","message":"No data Found","result":""}
+            return data
+
+    except Exception as e:
+        print("Error--->" + str(e))            
+        return "0" 
+
+
+def SelectQueryOrderby(table,columns,whereCondition,groupby,startlimit,endlimit,orderby):
+    try:
+        limitCondition= ""
+                     
+        if whereCondition != "" and startlimit != "0":
+            whereCondition = " where 1=1 " + whereCondition
+        if startlimit != "" and endlimit != "":
+            limitCondition = "  limit "+startlimit+","+endlimit
+        if orderby != "":
+            orderby = " order by " + orderby + " DESC "  
+        if groupby != "":
+            groupby = " group by " + groupby
+
+        print(orderby)    
+                
+        query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
 
         print(query)
         con = DBconnection()      
