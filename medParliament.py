@@ -5301,7 +5301,7 @@ def aboutUs():
                         data11 = databasefile.SelectQuery("aboutUs",column,WhereCondition,"",startlimit,endlimit)
                         return data11
                 if flag == 'u':
-                    WhereCondition = " and id = '"+str(aboutId)"'"
+                    WhereCondition = " and id='" + str(aboutId) + "'"
                     column = " description = '" + str(description) + "'"
                     data = databasefile.UpdateQuery("aboutUs",column,WhereCondition)
                     return data
