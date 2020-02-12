@@ -4778,7 +4778,7 @@ def getParliamentEvent():
                 column="userId"
                 whereCondition=" and eventId='"+str(y)+"'"
                 dat=databasefile.SelectQuery('eventInterest',column,whereCondition)
-                print(dat)
+                print(dat,'++++++++++++++++++++++++++++')
                 if dat['result'] !="":
                     i['eventCount']=len(dat['result'])
 
