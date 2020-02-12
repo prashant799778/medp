@@ -197,20 +197,11 @@ def SignUp():
 
                 if 'companyAddress' in inputdata:                    
                     companyAddress = inputdata['companyAddress']
-
-
-
-
-
-
-
-
+                
+                if 'multiUserTypeId' in inputdata:
+                    multiUserTypeId = inputdata['multiUserTypeId']
 
                 print(interestId)
-
-
-
-               
 
                 columns = " status,userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, countryId, city, deviceid, imeiNo "          
                 values = " '" + str(1) + "','"+  str(UserId) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Email) + "','" + str(userTypeId) + "','" + str(Gender) + "', "            
@@ -221,13 +212,21 @@ def SignUp():
                 data = databasefile.InsertQuery("userMaster",columns,values) 
 
                 if data != "0":
-                    column = 'userId,userName,userTypeId,profilePic'
+                    column = 'userId,userName,userTypeId,profilePic,email'
                     
                     data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)
-                    
                     if data["status"]!="false":
                         y=data["result"][0]
                         if (y["userTypeId"] == 5):
+                            
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+
                             columns="userId,aboutProfile,organization,designation"
                             values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
                             data1=databasefile.InsertQuery("policyMakerMaster",columns,values)
@@ -236,6 +235,15 @@ def SignUp():
 
 
                         if (y["userTypeId"] == 6):
+                            
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+
                             columns="userId,areaOfActivity,profileCategoryId,designation,companyName"
                             values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation)+ "','" + str(CompanyName) + "'"
                             data2=databasefile.InsertQuery("enterprenuerMaster",columns,values)
@@ -247,6 +255,24 @@ def SignUp():
 
 
                         if (y["userTypeId"]== 7):
+
+                            Y=ConstantData.getwebBaseurl()
+                            Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
+                            message = Mail(
+                                            from_email = 'medParliament@gmail.com',
+                                            to_emails = str(y["email"]),
+                                            subject = "Account Verification",
+                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+                            print(response.status_code,'------------------',response.body,"============",response.headers)
+                            
+                            print(message)
+
+                            # column="status='0'"
+                            # dat=databasefile.UpdateQuery('userMaster',column,WhereCondition)
+
+
                             columns="userId,address,qualificationId,batchOfQualification,institutionName,universityAddress,universityId"
                             values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "'"
                             data3 = databasefile.InsertQuery("studentMaster",columns,values) 
@@ -256,6 +282,15 @@ def SignUp():
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
                         
                         if (y["userTypeId"]== 8):
+
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+                            
                             columns="userId,qualificationId,designation,areaOfExpertise,hospital,hospitalAddress"
                             values=" '" + str(y["userId"])+ "','" + str(qualification) + "','" + str(designation) + "','" + str(areaOfExpertise) + "','" + str(hospital)+ "','" + str(hospitalAddress) + "'"
                             data3= databasefile.InsertQuery("doctorMaster",columns,values)
@@ -265,13 +300,38 @@ def SignUp():
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
                         
                         if (y["userTypeId"]== 9):
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
                             columns="userId,designation,occupation,companyName,companyAddress,address"
                             values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
-                            data6=databasefile.InsertQuery("professionalMaster",columns,values)
+                            data6=databasefile.InsertQuery("professionalMaster",column,values)
                             for i in interestId:
                                 column="userId,userTypeId,interestId"
-                                values=" '" + str(y["userId"]) + "','" + str('10') + "','" + str(i) + "'"
+                                values=" '" + str(y["userId"]) + "','" + str('9') + "','" + str(i) + "'"
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
+
+                        
+                        if (y["userTypeId"]== 12):
+                            for i in multiUserTypeId:
+                                message = Mail(
+                                    from_email = 'medParliament@gmail.com',
+                                    to_emails = str(y['email']),
+                                    subject = "Welcome to medParliament",
+                                    html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                                sg = SendGridAPIClient('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')
+                                response = sg.send(message)
+                                columns="userId,userTypeId"
+                                values=" '" + str(y["userId"])+ "','" + str(i) + "'"
+                                data6=databasefile.InsertQuery("signupUserTypeMapping",column,values)
+                                for j in interestId:
+                                    column="userId,userTypeId,interestId"
+                                    values=" '" + str(y["userId"]) + "','" + str('12') + "','" + str(j) + "'"
+                                    data5=databasefile.InsertQuery("userInterestMapping ",column,values)
 
 
 
@@ -282,7 +342,8 @@ def SignUp():
                         return commonfile.Errormessage()
                     if data["result"][0]["profilePic"]==None:
                         data["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
-                    
+
+                    data['message']='email has been sent successfully on your email'
                     return data
                 else:
                     return commonfile.Errormessage()
@@ -292,6 +353,7 @@ def SignUp():
     except Exception as e:
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
+
 
 # For testing        
 
