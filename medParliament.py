@@ -3817,6 +3817,7 @@ def userProfile():
                 WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId "
                 data1 = databasefile.SelectQueryOrderby("userMaster um,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(">>>>>>>>>>>>>2<<<<<<<<<<<<<<")
+                print(data1)
                 if data1["result"][0]["profilePic"]==None:
                     print(">>>>>>>>>>>>>3<<<<<<<<<<<<<<")
                     data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
