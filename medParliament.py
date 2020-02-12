@@ -4105,13 +4105,13 @@ def landingPageDashboard():
 
         if data4["result"]=="":
             data4["result"]=[]
-            for i in data4['result']:
-                if i['imagePath']!='':
-                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
-                if i['videoPath']!="":
-                    y=i['videoPath'].split('=')
+            for m in data4['result']:
+                if m['imagePath']!='':
+                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                if  m['videoPath']!="":
+                    y=m['videoPath'].split('=')
                     print(y,'++++++')
-                    i['videoId']=y[1]
+                    m['videoId']=y[1]
 
 
         if data != "0":
