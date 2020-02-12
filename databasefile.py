@@ -195,7 +195,7 @@ def SelectQueryOrderby(table,columns,whereCondition,groupby,startlimit,endlimit,
             groupby = " group by " + groupby
 
         print("startlimit"+str(startlimit))
-        if startlimit == 0:
+        if startlimit == 0 and endlimit == 0:
              query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
         else:
             if whereCondition != "" and startlimit != "0":
