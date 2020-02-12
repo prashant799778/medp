@@ -400,7 +400,7 @@ def SignUp():
 
 
 # For testing        
-
+ 
 @app.route('/SignUp', methods=['POST'])
 def SignUp1():
 
@@ -639,7 +639,7 @@ def SignUp1():
                             data6=databasefile.InsertQuery("professionalMaster",column,values)
                             for i in interestId:
                                 column="userId,userTypeId,interestId"
-                                values=" '" + str(y["userId"]) + "','" + str('10') + "','" + str(i) + "'"
+                                values=" '" + str(y["userId"]) + "','" + str('9') + "','" + str(i) + "'"
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
 
 
@@ -4924,7 +4924,7 @@ def getpromisingEvent():
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
         
-        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',videoPath)videoPath,text,UserCreate  "
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoPath,text,UserCreate  "
         data = databasefile.SelectQuery(" promisingEvent ",column,WhereCondition,"",startlimit,endlimit)
         
         if data != "0":
