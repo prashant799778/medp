@@ -4788,7 +4788,7 @@ def promisingEvent():
                 if "userId" in inputdata:
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
-                    column = column+UserCreate,text"
+                    column = column+"UserCreate,text"
                     values = values+ "','" + str(userId) + "','" + str(text) + "'"
                     data = databasefile.InsertQuery("promisingEvent",column,values)        
                 else:
