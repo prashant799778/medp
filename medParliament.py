@@ -1505,7 +1505,44 @@ def allprofessionalsMaster():
     except Exception as e :
         print("Exception---->" + str(e))    
         output =  {"status":"false","message":"something went wrong","result":""}
-        return output                            
+        return output
+
+
+@app.route('/allDecisionMaker', methods=['POST'])
+def allDecisionMaker():
+    try:
+        msg="1"
+        if msg =="1":
+            column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
+            column=column+"um.countryId,cm.countryName"
+            startlimit,endlimit="",""
+            WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId  "
+
+            
+            data = databasefile.SelectQueryOrderby("userMaster as um,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+
+          
+            
+            
+
+
+            if (data!=0):
+                for i in data["result"]:
+                   
+
+
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output =  {"status":"false","message":"something went wrong","result":""}
+        return output                                       
 
 
 @app.route('/enterprenuerMasterPannel', methods=['GET'])
