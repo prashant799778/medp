@@ -101,7 +101,7 @@ def getpromisingEvent(filename):
 
 def getSignUpVideo(filename):
 
-    path = "/var/www/medParliament/backend/med_parliament/signUpVideo/"+filename
+    path = "/var/www/medParliament/backend/med_parliament/signUpImage/"+filename
     return path
 
 
