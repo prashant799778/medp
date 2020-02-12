@@ -1374,11 +1374,6 @@ def allpolicyMakers():
         
         data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
 
-      
-        
-        
-
-
         if (data!=0):
             for i in data["result"]:
                 userId=i["userId"]
@@ -1453,11 +1448,6 @@ def allDoctorMaster():
             
             data = databasefile.SelectQueryOrderby("userMaster as um,doctorMaster as dm",column,WhereCondition,""," ",startlimit,endlimit)
 
-          
-            
-            
-
-
             if (data!=0):
                 for i in data["result"]:
                     userId=i["userId"]
@@ -1496,11 +1486,6 @@ def allprofessionalsMaster():
 
             
             data = databasefile.SelectQueryOrderby("userMaster as um,professionalMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
-
-          
-            
-            
-
 
             if (data!=0):
                 for i in data["result"]:
