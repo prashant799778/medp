@@ -4944,7 +4944,7 @@ def promisingInitiatives():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         whereCondition=" and  id='" + str(Id) + "'"
-                        column="videoPath='"+ str(videoPath)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',imagePath='" + str(ImagePath) + "'"
+                        column="videoPath='"+ str(videoLink)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',imagePath='" + str(ImagePath) + "'"
                         data=databasefile.UpdateQuery("promisingInitiatives",column,whereCondition)
 
             if data !=0 :                
