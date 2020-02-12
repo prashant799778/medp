@@ -1527,10 +1527,6 @@ def allDecisionMaker():
 
 
             if (data!=0):
-                for i in data["result"]:
-                   
-
-
                 Data = {"status":"true","message":"","result":data["result"]}
                 return Data
             else:
