@@ -4009,9 +4009,16 @@ def landingPageDashboard():
         if data3["result"]=="":
             data3["result"]=[]
 
+        column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,videoPath,text,UserCreate  "
+        data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition,"",startlimit,endlimit)
+
+        if data4["result"]=="":
+            data4["result"]=[]
+
+
         if data != "0":
             
-            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"]}
+            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"]}
             
         else:
             return commonfile.Errormessage()
@@ -4865,17 +4872,37 @@ def promisingInitiatives():
                     else:
                         column=" videoPath,"
                         values="'" +str(videoLink)+"'"
+
+            if 'postImage' in request.files:      
+                    file = request.files.get('postImage')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getpromisingEvent(filename)  
+
+                    filepath = '/promisingEvent/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            
             if flag =="i":
                 if "userId" in inputdata:
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
-                    column = column+" UserCreate,text"
-                    values = values+ ",'" + str(userId) + "','" + str(text) + "'"
+                    column = column+" UserCreate,text,imagePath"
+                    values = values+ ",'" + str(userId) + "','" + str(text) + "','" + str(ImagePath) + "'"
                     data = databasefile.InsertQuery("promisingInitiatives",column,values)        
+                
                 else:
-                    column = column+" text"
-                    values = values+  ",'" + str(text) + "'"
+                    column = column+" text,imagePath"
+                    values = values+  ",'" + str(text) + "','" + str(ImagePath) + "'"
                     data = databasefile.InsertQuery("promisingInitiatives",column,values)
+            
+            
             if flag =="u":
                 if "status" in inputdata:
                     if inputdata['status'] != "":
@@ -4885,7 +4912,7 @@ def promisingInitiatives():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         whereCondition=" and  id='" + str(Id) + "'"
-                        column="videoPath='"+ str(videoPath)+  "',status='"+ str(status)+  "',text='" + str(text) + "'"
+                        column="videoPath='"+ str(videoPath)+  "',status='"+ str(status)+  "',text='" + str(text) + "',imagePath='" + str(ImagePath) + "'"
                         data=databasefile.UpdateQuery("promisingInitiatives",column,whereCondition)
 
             if data !=0 :                
@@ -4924,7 +4951,7 @@ def getpromisingInitiatives():
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
         
-        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoPath,text,UserCreate  "
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,videoPath,text,UserCreate  "
         data = databasefile.SelectQuery("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit)
         
         if data != "0":
