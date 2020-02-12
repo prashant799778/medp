@@ -188,17 +188,22 @@ def SelectQueryOrderby(table,columns,whereCondition,groupby,startlimit,endlimit,
     try:
         limitCondition= ""
         
-        if whereCondition != "":
-            whereCondition = " where 1=1 " + whereCondition
-        if startlimit != "" and endlimit != "":
-            limitCondition = "  limit "+startlimit+","+endlimit
         if orderby != "":
             orderby = " order by " + orderby + " DESC "  
         if groupby != "":
             groupby = " group by " + groupby
-        print(orderby)    
-                
-        query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
+
+        if startlimit == "0":
+             query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
+        else:
+            if whereCondition != "" and startlimit != "0":
+                whereCondition = " where 1=1 " + whereCondition
+            if startlimit != "" and endlimit != "":
+                limitCondition = "  limit "+startlimit+","+endlimit
+            
+            print(orderby)    
+                    
+            query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
 
         print(query)
         con = DBconnection()      
