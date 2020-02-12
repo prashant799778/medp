@@ -5273,7 +5273,7 @@ def aboutUs():
     try: 
         startlimit,endlimit="",""   
         inputdata =  commonfile.DecodeInputdata(request.get_data())
-        
+        aboutId = '3'
         keyarr = ['description','flag']
         commonfile.writeLog("aboutUs",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
@@ -5290,9 +5290,6 @@ def aboutUs():
                 print('F')         
                 return commonfile.aboutUsDescriptionAlreadyExistMsg()
             else:
-                if 'id' in inputdata:
-                    aboutId = inputdata["id"]
-
                 if flag == 'n':
                     columns = " description"          
                     values = " '" + str(description) + "'"       
@@ -5304,7 +5301,7 @@ def aboutUs():
                         data11 = databasefile.SelectQuery("aboutUs",column,WhereCondition,"",startlimit,endlimit)
                         return data11
                 if flag == 'u':
-                    WhereCondition = " and id = '" + str(aboutId) + "'"
+                    WhereCondition = " and id = '"+str(aboutId)"'"
                     column = " description = '" + str(description) + "'"
                     data = databasefile.UpdateQuery("aboutUs",column,WhereCondition)
                     return data
