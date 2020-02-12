@@ -5077,6 +5077,11 @@ def signUpVideo():
                 if "status" in inputdata:
                     if inputdata['status'] != "":
                         status =inputdata["status"]
+                column1='Status=2'
+                whereCondition=" and userTypeId='" + str(userTypeId) + "'"
+                data5=databasefile.UpdateQuery('signUpVideo',column1,whereCondition)
+
+
                 # if "userId" in inputdata:
 
                 #     if inputdata['userId'] != "":
