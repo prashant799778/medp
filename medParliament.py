@@ -4773,43 +4773,33 @@ def promisingEvent():
                 if inputdata['text'] != "":
                     text =inputdata["text"]
 
-            if 'postImage' in request.files:      
-                file = request.files.get('postImage')        
-                filename = file.filename or ''                 
-                filename = filename.replace("'","") 
-
-                print(filename)
-                # filename = str(campaignId)                    
-                #folder path to save campaign image
-                FolderPath = ConstantData.getpromisingEvent(filename)  
-
-                filepath = '/promisingEvent/' + filename    
-                
-
-                file.save(FolderPath)
-                ImagePath = filepath
+            if "videoLink" in inputdata:
+                print("1111111111111111111")
+                if (inputdata['videoLink'] != None) :
+                    print("2222222222222222")
+                    videoLink =inputdata["videoLink"]
+                    if videoLink[0:24]!="https://www.youtube.com/":
+                        print("3333333333333333333")
+                        return {"message":"Please upload only youtube Link","result":"","status":"False"}
+                    else:
+                        column=" videoPath"
+                        values="'" +str(videoLink)+"'"
             if flag =="i":
                 if "userId" in inputdata:
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
-                    column = " videoPath,UserCreate,text"
-                    values = " '"+ str(ImagePath)+ "','" + str(userId) + "','" + str(text) + "'"
+                    column = column+UserCreate,text"
+                    values = values+ "','" + str(userId) + "','" + str(text) + "'"
                     data = databasefile.InsertQuery("promisingEvent",column,values)        
                 else:
-                    column = " videoPath,text"
-                    values = " '"+ str(videoPath)+  "','" + str(text) + "'"
+                    column = column+" text"
+                    values = values+  "','" + str(text) + "'"
                     data = databasefile.InsertQuery("promisingEvent",column,values)
             if flag =="u":
                 if "status" in inputdata:
                     if inputdata['status'] != "":
                         status =inputdata["status"]
-                # if "userId" in inputdata:
-
-                #     if inputdata['userId'] != "":
-                #         userId =inputdata["userId"]
-                #         whereCondition=" and UserCreate='" + str(userId) + "'"
-                #         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
-                #         data=databasefile.UpdateQuery("gallery",column,whereCondition)
+              
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
