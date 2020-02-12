@@ -72,6 +72,10 @@ def postTitlepostDescriptionAlreadyExistMsg():
     data = {"status":"false","message":"postTitle Or postDescription Already Exists","result":""}
     return data      
 
+def aboutUsDescriptionAlreadyExistMsg():
+    data = {"status":"false","message":"ContactNo or aboutUs Description Already Exists","result":""}
+    return data      
+
 def MobileNoNotFound():
     data = {"status":"false","message":"MobileNo Not Exists","result":""}
     return data   
