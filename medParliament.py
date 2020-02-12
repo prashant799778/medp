@@ -4863,13 +4863,13 @@ def promisingInitiatives():
                         print("3333333333333333333")
                         return {"message":"Please upload only youtube Link","result":"","status":"False"}
                     else:
-                        column=" videoPath"
+                        column=" videoPath,"
                         values="'" +str(videoLink)+"'"
             if flag =="i":
                 if "userId" in inputdata:
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
-                    column = column+"UserCreate,text"
+                    column = column+" UserCreate,text"
                     values = values+ ",'" + str(userId) + "','" + str(text) + "'"
                     data = databasefile.InsertQuery("promisingInitiatives",column,values)        
                 else:
