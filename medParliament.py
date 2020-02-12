@@ -4993,7 +4993,7 @@ def getpromisingInitiatives():
         if data['result'] != "":
             for i in data['result']:
                 if i['imagePath']!='':
-                    i['imagePath']=concat('"+ ConstantData.GetBaseURL() + "',i['imagePath'])
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
 
         else:
             return commonfile.Errormessage()
