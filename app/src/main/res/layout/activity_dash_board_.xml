@@ -63,6 +63,7 @@
                 android:visibility="visible"
                 android:weightSum="2"
                 android:orientation="vertical"
+                android:id="@+id/about"
                 android:layout_marginHorizontal="13dp"
                 android:layout_height="wrap_content">
                 <ImageView
@@ -107,6 +108,58 @@
 <!--                    android:textStyle="bold">-->
 <!--                </com.example.medparliament.Widget.Segow_UI_Bold_Font>-->
             </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/toolbar"
+                    android:visibility="visible"
+                    android:weightSum="2"
+                    android:orientation="vertical"
+                    android:id="@+id/cmnt"
+                    android:background="@color/white"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:src="@drawable/new_post"
+                        android:scaleType="centerCrop"
+                        android:padding="10dp"
+                        android:id="@+id/img11"
+                        android:layout_centerVertical="true"
+                        android:layout_height="40dp">
+                    </ImageView>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/fieldHeight"
+                        android:text="@string/Write"
+                        android:layout_toRightOf="@id/img11"
+                        android:background="@color/transparent"
+                        android:textColor="@color/textcolor"
+                        android:textAllCaps="false">
+                    </androidx.appcompat.widget.AppCompatButton>
+                    <!--                <androidx.appcompat.widget.AppCompatButton-->
+                    <!--                    android:layout_weight="1"-->
+                    <!--                    android:layout_marginTop="10dp"-->
+                    <!--                    android:layout_width="match_parent"-->
+                    <!--                    android:layout_height="@dimen/fieldHeight"-->
+                    <!--                    android:text="@string/Enter_Med"-->
+                    <!--                    android:background="@drawable/transparent"-->
+                    <!--                    android:textColor="@color/white"-->
+                    <!--                    android:textAllCaps="false">-->
+                    <!--                </androidx.appcompat.widget.AppCompatButton>-->
+                    <!--                <com.example.medparliament.Widget.Segow_UI_Bold_Font-->
+                    <!--                    android:paddingLeft="20dp"-->
+                    <!--                    android:layout_width="wrap_content"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:text="@string/Login_signup"-->
+                    <!--                    android:layout_centerHorizontal="true"-->
+                    <!--                    android:textSize="18dp"-->
+                    <!--                    android:layout_marginTop="5dp"-->
+                    <!--                    android:textColor="@color/white"-->
+                    <!--                    android:textStyle="bold">-->
+                    <!--                </com.example.medparliament.Widget.Segow_UI_Bold_Font>-->
+                </RelativeLayout>
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -365,7 +418,6 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:visibility="gone"
-            android:id="@+id/cmnt"
             style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:scaleType="centerCrop"
             android:layout_marginRight="30dp"

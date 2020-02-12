@@ -32,4 +32,5 @@ public class URLS {
     public static String updatePassword=BASE_URL+"updatePassword";
     public static String getSignUpVideo=BASE_URL+"getSignUpVideo";
     public static String seteventInterest=BASE_URL+"eventInterest";
+    public static String aboutUs=BASE_URL+"allaboutUs";
 }
