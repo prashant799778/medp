@@ -318,6 +318,7 @@ def SignUp():
                         
                         if (y["userTypeId"]== 12):
                             for i in multiUserTypeId:
+
                                 message = Mail(
                                     from_email = 'medParliament@gmail.com',
                                     to_emails = str(y['email']),
@@ -325,9 +326,52 @@ def SignUp():
                                     html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
                                 sg = SendGridAPIClient('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')
                                 response = sg.send(message)
+                                
                                 columns="userId,userTypeId"
                                 values=" '" + str(y["userId"])+ "','" + str(i) + "'"
                                 data6=databasefile.InsertQuery("signupUserTypeMapping",column,values)
+
+
+
+                                if (i ==5):
+
+                                    columns="userId,aboutProfile,organization,designation"
+                                    values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
+                                    data1=databasefile.InsertQuery("policyMakerMaster",columns,values)
+
+
+                                
+
+                                if (i==6):
+                                    columns="userId,areaOfActivity,profileCategoryId,designation,companyName"
+                                    values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation)+ "','" + str(CompanyName) + "'"
+                                    data2=databasefile.InsertQuery("enterprenuerMaster",columns,values)
+                                   
+                                
+                                
+                                if (i==7):
+                                    columns="userId,address,qualificationId,batchOfQualification,institutionName,universityAddress,universityId"
+                                    values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "'"
+                                    data3 = databasefile.InsertQuery("studentMaster",columns,values) 
+                                   
+
+                                
+                                
+                                
+                                if (i==8):
+                                    columns="userId,qualificationId,designation,areaOfExpertise,hospital,hospitalAddress"
+                                    values=" '" + str(y["userId"])+ "','" + str(qualification) + "','" + str(designation) + "','" + str(areaOfExpertise) + "','" + str(hospital)+ "','" + str(hospitalAddress) + "'"
+                                    data3= databasefile.InsertQuery("doctorMaster",columns,values)
+
+
+                                
+
+                                if (i==9):
+                                    columns="userId,designation,occupation,companyName,companyAddress,address"
+                                    values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
+                                    data6=databasefile.InsertQuery("professionalMaster",column,values)
+
+                                
                                 for j in interestId:
                                     column="userId,userTypeId,interestId"
                                     values=" '" + str(y["userId"]) + "','" + str('12') + "','" + str(j) + "'"
@@ -356,7 +400,7 @@ def SignUp():
 
 
 # For testing        
-
+ 
 @app.route('/SignUp', methods=['POST'])
 def SignUp1():
 
@@ -595,7 +639,7 @@ def SignUp1():
                             data6=databasefile.InsertQuery("professionalMaster",column,values)
                             for i in interestId:
                                 column="userId,userTypeId,interestId"
-                                values=" '" + str(y["userId"]) + "','" + str('10') + "','" + str(i) + "'"
+                                values=" '" + str(y["userId"]) + "','" + str('9') + "','" + str(i) + "'"
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
 
 
@@ -4791,18 +4835,18 @@ def deleteAnnouncement():
 
 
 
-@app.route('/promisingEvent', methods=['POST'])
-def promisingEvent():
+@app.route('/promisingInitiatives', methods=['POST'])
+def promisingInitiatives():
     try:
         inputdata = request.form.get('data')    
         inputdata = json.loads(inputdata) 
         startlimit,endlimit="",""
         keyarr = ["userId","flag"]
         
-        commonfile.writeLog("galleryImages",inputdata,0)
+        commonfile.writeLog("promisingInitiatives",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
-            ImagePath=""
+            videoLink=""
             flag=inputdata['flag']
             if "text" in inputdata:
                 if inputdata['text'] != "":
@@ -4817,19 +4861,19 @@ def promisingEvent():
                         print("3333333333333333333")
                         return {"message":"Please upload only youtube Link","result":"","status":"False"}
                     else:
-                        column=" videoPath"
+                        column=" videoPath,"
                         values="'" +str(videoLink)+"'"
             if flag =="i":
                 if "userId" in inputdata:
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
-                    column = column+"UserCreate,text"
-                    values = values+ "','" + str(userId) + "','" + str(text) + "'"
-                    data = databasefile.InsertQuery("promisingEvent",column,values)        
+                    column = column+" UserCreate,text"
+                    values = values+ ",'" + str(userId) + "','" + str(text) + "'"
+                    data = databasefile.InsertQuery("promisingInitiatives",column,values)        
                 else:
                     column = column+" text"
-                    values = values+  "','" + str(text) + "'"
-                    data = databasefile.InsertQuery("promisingEvent",column,values)
+                    values = values+  ",'" + str(text) + "'"
+                    data = databasefile.InsertQuery("promisingInitiatives",column,values)
             if flag =="u":
                 if "status" in inputdata:
                     if inputdata['status'] != "":
@@ -4840,7 +4884,7 @@ def promisingEvent():
                         Id =inputdata["id"]
                         whereCondition=" and  id='" + str(Id) + "'"
                         column="videoPath='"+ str(videoPath)+  "',status='"+ str(status)+  "',text='" + str(text) + "'"
-                        data=databasefile.UpdateQuery("promisingEvent",column,whereCondition)
+                        data=databasefile.UpdateQuery("promisingInitiatives",column,whereCondition)
 
             if data !=0 :                
                 return data
@@ -4856,8 +4900,8 @@ def promisingEvent():
 
 
 
-@app.route('/getpromisingEvent', methods=['POST'])
-def getpromisingEvent():
+@app.route('/getpromisingInitiatives', methods=['POST'])
+def getpromisingInitiatives():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
@@ -4878,8 +4922,8 @@ def getpromisingEvent():
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
         
-        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',videoPath)videoPath,text,UserCreate  "
-        data = databasefile.SelectQuery(" promisingEvent ",column,WhereCondition,"",startlimit,endlimit)
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoPath,text,UserCreate  "
+        data = databasefile.SelectQuery("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit)
         
         if data != "0":
             return data
@@ -4921,7 +4965,7 @@ def signUpVideo():
                         print("3333333333333333333")
                         return {"message":"Please upload only youtube Link","result":"","status":"False"}
                     else:
-                        column=" videoLink"
+                        column=" videoLink,"
                         values="'" +str(videoLink)+"'"
             
             if flag =="i":
@@ -4929,11 +4973,11 @@ def signUpVideo():
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
                     column = column+"UserCreate,text,userTypeId"
-                    values =values+ " '"+ str(videoLink)+ "','" + str(userId) + "','" + str(text) + "','" + str(userTypeId) + "'"
+                    values =values+ ",'" + str(userId) + "','" + str(text) + "','" + str(userTypeId) + "'"
                     data = databasefile.InsertQuery("signUpVideo",column,values)        
                 else:
                     column = column+"text,userTypeId"
-                    values =values+ " '"+ str(ImagePath)+  "','" + str(text) + "','" + str(userTypeId) + "'"
+                    values =values+   ",'" + str(text) + "','" + str(userTypeId) + "'"
                     data = databasefile.InsertQuery("signUpVideo",column,values)
             if flag =="u":
                 if "status" in inputdata:
@@ -4992,13 +5036,79 @@ def getSignUpVideo():
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
         
-        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,text,UserCreate  "
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,text,UserCreate,userTypeId"
         data = databasefile.SelectQuery("signUpVideo",column,WhereCondition,"",startlimit,endlimit)
         
         if data != "0":
             return data
         else:
             return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+@app.route('/deletePromisingInitiatives', methods=['POST'])
+def deletePromisingInitiatives():
+    try: 
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        WhereCondition="" 
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deletePromisingInitiatives",inputdata,0)
+        
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("promisingInitiatives",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+@app.route('/deleteSignUpVideo', methods=['POST'])
+def deleteSignUpVideo():
+    try:
+
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+
+        WhereCondition=""
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteSignUpVideo",inputdata,0)
+        
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("signUpVideo",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
