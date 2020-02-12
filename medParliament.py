@@ -4807,9 +4807,6 @@ def promisingEvent():
                         column="videoPath='"+ str(videoPath)+  "',status='"+ str(status)+  "',text='" + str(text) + "'"
                         data=databasefile.UpdateQuery("promisingEvent",column,whereCondition)
 
-
-
-
             if data !=0 :                
                 return data
             else:
