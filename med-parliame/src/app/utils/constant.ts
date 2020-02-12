@@ -58,6 +58,7 @@ export class AppSettings {
     public static deleteAnnouncement = 'deleteAnnouncement';
     public static allaboutUs = 'allaboutUs';
     public static aboutUs = 'aboutUs';
+    public static allDecisionMaker = 'allDecisionMaker';
     
     
     

@@ -40,6 +40,7 @@ import { CreateInfoComponent } from './info/create-info/create-info.component';
 import { EditInfoComponent } from './info/edit-info/edit-info.component';
 import { CreateAboutComponent } from './about/create-about/create-about.component';
 import { EditAboutComponent } from './about/edit-about/edit-about.component';
+import { UserDecisionComponent } from './user/user-decision/user-decision.component';
 
 
 
@@ -300,6 +301,11 @@ const routes: Routes = [
         component: UserStudentComponent,
         canActivate: [AuthGuard],
     },
+    {
+      path:'decision',
+      component: UserDecisionComponent,
+      canActivate: [AuthGuard],
+  },
     {
       path:'enterpenure',
       component: UserEnterpenureComponent,

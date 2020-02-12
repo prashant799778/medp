@@ -57,6 +57,7 @@ import { EditInfoComponent } from './info/edit-info/edit-info.component';
 import { CreateInfoComponent } from './info/create-info/create-info.component';
 import { CreateAboutComponent } from './about/create-about/create-about.component';
 import { EditAboutComponent } from './about/edit-about/edit-about.component';
+import { UserDecisionComponent } from './user/user-decision/user-decision.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { EditAboutComponent } from './about/edit-about/edit-about.component';
     EditInfoComponent,
     CreateInfoComponent,
     CreateAboutComponent,
-    EditAboutComponent
+    EditAboutComponent,
+    UserDecisionComponent
   ],
   imports: [
     BrowserModule,

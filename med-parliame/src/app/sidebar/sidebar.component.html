@@ -50,7 +50,9 @@
                                 <li><a id="userStudents" href="javascript:void(0)" (click)="goTo('User/student', $event)">Student </a></li>
                                 <li><a id="userStudents" href="javascript:void(0)" (click)="goTo('User/doctor', $event)">Doctor </a></li>
                                 <li><a id="userStudents" href="javascript:void(0)" (click)="goTo('User/professional', $event)">Professionals </a></li>
-							</ul>
+                                <li><a id="userStudents" href="javascript:void(0)" (click)="goTo('User/decision', $event)">Decision Maker </a></li>
+                            
+                            </ul>
 						</div>
                     </li>
                         <!-- <div class="inner-dropdown drop-showw mr-left trans">
@@ -96,6 +98,7 @@
                     <li *ngIf="!enterpernure && students && !operations" class="dp-down"><a id="studentTabs" href="javascript:void(0)" (click)="goTo('studentsList', $event)">Student <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
                     <li *ngIf="operationsDoctor && !operation && !operationProfessional" class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/doctor', $event)">Doctor <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
                     <li *ngIf="!operationsDoctor && !operation && operationProfessional" class="dp-down"><a href="javascript:void(0)" (click)="goTo('User/professional', $event)">Professional <img src="../../assets/images/d-users.svg" class="img-sdi"><img src="../../assets/images/a-users.svg" class="img-hdi"></a></li>
+                    
                     <!-- <div class="inner-dropdown drop-show mr-left">
                         <ul>
                             <li><a href="javascript:void(0)" (click)="goTo('User/policy')">post</a></li>onlyView

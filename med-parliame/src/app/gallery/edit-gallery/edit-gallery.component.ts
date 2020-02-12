@@ -192,6 +192,7 @@ export class EditGalleryComponent implements OnInit {
         this.activatedds = true;
         setTimeout(()=>{
           jQuery('#addAdmin-gallery2').modal('hide')
+          this.activatedds = false;
         },2000)
       }
       this.getNews();

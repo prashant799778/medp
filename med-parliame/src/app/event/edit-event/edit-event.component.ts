@@ -162,6 +162,7 @@ export class EditEventComponent implements OnInit {
         this.activatedds = true;
         setTimeout(()=>{
           jQuery('#addAdmin-event2').modal('hide')
+          this.activatedds = false;
         },2000)
       }
       this.getNews();

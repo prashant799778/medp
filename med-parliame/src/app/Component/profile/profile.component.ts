@@ -62,6 +62,9 @@ export class ProfileComponent implements OnInit {
 				}else if(this.AdminsDetails == '6'){
 					this.adminlist1 = 'User /'
 					this.adminlist2 = 'Entrepreneur /'
+				}else if(this.AdminsDetails == '13'){
+					this.adminlist1 = 'User /'
+					this.adminlist2 = 'Decision Maker /'
 				}
 
 				this.getData()
@@ -261,6 +264,18 @@ export class ProfileComponent implements OnInit {
 			let data = {
 				'userId': this.id,
 				'userTypeId': 9
+			}	
+			this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
+				console.log(resp)
+				this.userProfile = resp['result']['userProfile'][0]
+				this.userPost = resp['result']['userPost']
+			})
+		}
+		else if(this.userTypeId == '13'){
+			this.enterpueresss = true;
+			let data = {
+				'userId': this.id,
+				'userTypeId': 13
 			}	
 			this.userService.dataPostApi(data, AppSettings.UserProfile).then(resp=>{
 				console.log(resp)
