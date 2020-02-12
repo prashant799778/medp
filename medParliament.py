@@ -3818,15 +3818,15 @@ def userProfile():
                 data1 = databasefile.SelectQueryOrderby("userMaster um,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(">>>>>>>>>>>>>2<<<<<<<<<<<<<<")
                 print(data1)
-                if data1["result"][0]["profilePic"]==None:
-                    print(">>>>>>>>>>>>>3<<<<<<<<<<<<<<")
-                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
-                    print(">>>>>>>>>>>>>4<<<<<<<<<<<<<<")
-                else:
-                    # data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
-                    print(">>>>>>>>>>>>>3<<<<<<<<<<<<<<")
-                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
-                    print(">>>>>>>>>>>>>5<<<<<<<<<<<<<<")
+                # if data1["result"][0]["profilePic"]==None:
+                #     print(">>>>>>>>>>>>>3<<<<<<<<<<<<<<")
+                #     data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                #     print(">>>>>>>>>>>>>4<<<<<<<<<<<<<<")
+                # else:
+                #     # data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
+                #     print(">>>>>>>>>>>>>3<<<<<<<<<<<<<<")
+                #     data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                #     print(">>>>>>>>>>>>>5<<<<<<<<<<<<<<")
                 data2={"userProfile":data1["result"],"userPost":""}
                 print(">>>>>>>>>>>>>6<<<<<<<<<<<<<<")
                 data3={"status":"true","message":"","result":data2}
