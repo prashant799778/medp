@@ -1379,7 +1379,7 @@ def testallpolicyMakers():
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                 print(data1,"")
                 count=data1["count"]
-                print(i,'iiii11111111111111111111111')
+                print(i["noOfPosts"],'iiii11111111111111111111111')
                 i["noOfPosts"]=count
                 print( i["noOfPosts"], '====no of posts')
 
