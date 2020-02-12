@@ -4994,6 +4994,7 @@ def getpromisingInitiatives():
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+            return data
 
         else:
             return commonfile.Errormessage()
@@ -5129,10 +5130,13 @@ def getSignUpVideo():
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
         
-        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,text,UserCreate,userTypeId"
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,text,UserCreate,userTypeId,imagePath"
         data = databasefile.SelectQuery("signUpVideo",column,WhereCondition,"",startlimit,endlimit)
         
-        if data != "0":
+        if data['result'] != "":
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
             return data
         else:
             return commonfile.Errormessage()
