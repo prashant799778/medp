@@ -5038,7 +5038,7 @@ def getSignUpVideo():
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
         
-        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,text,UserCreate  "
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,text,UserCreate,userTypeId"
         data = databasefile.SelectQuery("signUpVideo",column,WhereCondition,"",startlimit,endlimit)
         
         if data != "0":
