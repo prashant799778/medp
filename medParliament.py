@@ -4986,11 +4986,15 @@ def getpromisingInitiatives():
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
         
         
-        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,videoPath,text,UserCreate  "
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
         data = databasefile.SelectQuery("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit)
         
-        if data != "0":
-            return data
+         
+        if data['result'] != "":
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=concat('"+ ConstantData.GetBaseURL() + "',i['imagePath'])
+
         else:
             return commonfile.Errormessage()
 
