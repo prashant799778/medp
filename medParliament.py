@@ -1357,6 +1357,42 @@ def allpolicyMakers():
         print("Exception---->" + str(e))    
         output =  {"status":"false","message":"something went wrong","result":""}
         return output
+    
+
+@app.route('/testallpolicyMakers', methods=['GET'])
+def testallpolicyMakers():
+    try:
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
+        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId  and um.countryId=cm.id"
+
+        
+        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+
+        if (data!=0):
+            for i in data["result"]:
+                print(i,'i')
+                userId=i["userId"]
+                column="count(*) as count"
+                whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
+                data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                print(data1,"")
+                count=data1["count"]
+
+                i["noOfPosts"]=count
+
+
+            Data = {"status":"true","message":"","result":data["result"]}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output =  {"status":"false","message":"something went wrong","result":""}
+        return output
 
 
 
