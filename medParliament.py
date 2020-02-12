@@ -4944,7 +4944,7 @@ def promisingInitiatives():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         whereCondition=" and  id='" + str(Id) + "'"
-                        column="videoPath='"+ str(videoPath)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',imagePath='" + str(ImagePath) + "'"
+                        column="videoPath='"+ str(videoLink)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',imagePath='" + str(ImagePath) + "'"
                         data=databasefile.UpdateQuery("promisingInitiatives",column,whereCondition)
 
             if data !=0 :                
@@ -5011,7 +5011,7 @@ def signUpVideo():
         inputdata = request.form.get('data')    
         inputdata = json.loads(inputdata) 
         startlimit,endlimit="",""
-        keyarr = ["userId","flag"]
+        keyarr = ["flag"]
         
         commonfile.writeLog("galleryImages",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
@@ -5351,7 +5351,25 @@ def deleteAboutUs():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
+@app.route('/allaboutUs', methods=['GET'])
+def allaboutUs():
+    try:
+        columns=" * "
+        
+        data = databasefile.SelectQueryMaxId("aboutUs",columns)
+       
 
+        if data:           
+            Data = {"status":"true","message":"","result":data["result"]}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output 
 
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
