@@ -5,7 +5,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
-
+declare var jQuery: any
 @Component({
   selector: 'app-create-about',
   templateUrl: './create-about.component.html',
@@ -25,6 +25,7 @@ export class CreateAboutComponent implements OnInit {
   imageShow: any= '';
   showBanner: number;
   updateCheck: boolean;
+  messageShow: any;
   config: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -140,7 +141,12 @@ export class CreateAboutComponent implements OnInit {
     this.apiService.dataPostApi(newsData, AppSettings.aboutUs).then((data: any[]) => {
       console.log(data);
       if(data['status'] == 'true'){
+        jQuery('#addAdmin-news2').modal('show')
         this.frmNews.reset();
+        this.messageShow = 'Updated'
+        setTimeout(()=>{
+          jQuery('#addAdmin-news2').modal('hide')
+        },2000)
         this.imageShow = '';
         console.log(this.file)
         this.file = '';
