@@ -200,9 +200,9 @@ def SelectQueryOrderbyNew(table,columns,whereCondition,groupby,startlimit,endlim
         #if startlimit == 0 and endlimit == 0:
         query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
         #else:
-        if whereCondition != "" and startlimit != "0":
+        #if whereCondition != "" and startlimit != "0":
             #whereCondition = " where 1=1 " + whereCondition
-        if startlimit != "" and endlimit != "":
+        #if startlimit != "" and endlimit != "":
             #limitCondition = "  limit "+startlimit+","+endlimit
             
         print(orderby)    
