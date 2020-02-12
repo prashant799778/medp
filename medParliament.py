@@ -3470,13 +3470,16 @@ def updateStatus1():
 
             else:
                 column="status='0'"
+                print("iiiiiiiiiiiiiiiiiiiiiiii")
                 message = Mail(
                                 from_email = 'medParliament@gmail.com',
                                 to_emails = str(email),
                                 subject = "Account Activated",
                                 html_content = '<strong>Congratulations! Your account has been activated successfully </strong> <br> .<br> Thanks,medParliament Team')
                 sg = SendGridAPIClient('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')
+                print("iiiiiiiiiiiiiijjjjjjjjiiiiiiiiii")
                 response = sg.send(message)
+                print("iiiiiiiiiiiiiiiiiiiiiiiikkkkkkkk")
                 whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "' and userId = '" + str(userId)+ "' "
                 output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
                 output=output1    
@@ -3810,11 +3813,12 @@ def userProfile():
                 else:
                     return commonfile.Errormessage()
             if userTypeId==13:
-                column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
+                column="um.mobileNo as mobileNo, um.userName as userName, um.userTypeId,um.password as password, um.profilePic as profilePic, um.userId,um.gender,um.email,um.status,"
                 column=column+"um.countryId,cm.countryName"
                 startlimit,endlimit="",""
-                WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId  "
+                WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId "
                 data1 = databasefile.SelectQueryOrderby("userMaster um,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
+                print(data1)
                 if data1["result"][0]["profilePic"]==None:
                     data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
                 else:
@@ -3825,8 +3829,6 @@ def userProfile():
                     return data3
                 else:
                     return commonfile.Errormessage()
-
-
 
             else:
                 data = {"status":"false","message":"userTypeId is not correct.","result":""}
