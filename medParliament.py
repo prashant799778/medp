@@ -4090,6 +4090,7 @@ def landingPageDashboard():
         if data2["result"]=="":
             data2["result"]=[]
 
+        print("1111----")
         WhereCondition1 = " on ev.eventId = pm.id " 
         column3 = "id,Status,UserCreate,eventTitle, eventSummary, pm.id as likedId, eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data3 = databasefile.SelectQueryOrderby("parliamentEvent pm left outer join eventInterest ev",column3,WhereCondition1,"",startlimit,endlimit,orderby)

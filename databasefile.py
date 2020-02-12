@@ -200,7 +200,7 @@ def SelectQueryOrderby(table,columns,whereCondition,groupby,startlimit,endlimit,
                 
         query = " select " + columns + " from " + table + " " + whereCondition  + " " + groupby +" "+ orderby + limitCondition +" ;"
 
-        print("QUERY",query)
+        print(query)
         con = DBconnection()      
         cursor = con.cursor()
         cursor.execute(query)
