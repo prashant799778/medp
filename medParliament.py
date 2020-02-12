@@ -5096,7 +5096,7 @@ def signUpVideo():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         whereCondition=" and  id='" + str(Id) + "'"
-                        column="videoLink='"+ str(videoLink)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',userTypeId='" + str(userTypeId) + "'"
+                        column="videoLink='"+ str(videoLink)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',userTypeId='" + str(userTypeId) + "',imagePath='" + str(ImagePath) + "'"
                         data=databasefile.UpdateQuery("signUpVideo",column,whereCondition)
 
             if data !=0 :                
