@@ -52,7 +52,7 @@ def announcementsImage(image_name):
 
 
 @app.route("/promisingEvent/<image_name>")
-def promisingEvent(image_name):
+def promisingEvent1(image_name):
     try:
         return send_from_directory('promisingEvent', filename=image_name, as_attachment=False)
     except FileNotFoundError:
@@ -62,7 +62,7 @@ def promisingEvent(image_name):
 
 
 @app.route("/signUpVideo/<image_name>")
-def signUpVideo(image_name):
+def signUpVideo1(image_name):
     try:
         return send_from_directory('signUpVideo', filename=image_name, as_attachment=False)
     except FileNotFoundError:
