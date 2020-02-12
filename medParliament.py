@@ -4782,9 +4782,9 @@ def getParliamentEvent():
                 dat=databasefile.SelectQuery('eventInterest',column,whereCondition,"",startlimit,endlimit)
                 print(dat,'++++++++++++++++++++++++++++')
                 if dat['result'] !="":
-                    i['eventCount']=len(dat['result'])
+                    i['eventInterestCount']=len(dat['result'])
                 else:
-                    i['eventCount']=0
+                    i['eventInterstCount']=0
 
 
             return data
