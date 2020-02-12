@@ -5129,6 +5129,11 @@ def getSignUpVideo():
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
+
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"] 
+                    WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
         
         column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,text,UserCreate,userTypeId,imagePath"
         data = databasefile.SelectQuery("signUpVideo",column,WhereCondition,"",startlimit,endlimit)
