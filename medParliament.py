@@ -5224,7 +5224,7 @@ def aboutUs():
             WhereCondition = " and contactNo = '" + str(contactNo) + "'"
             count = databasefile.SelectCountQuery("aboutUs",WhereCondition,"")
             
-            if int(count) > 0:
+            if int(count) > 0 and flag == 'n':
                 print('F')         
                 return commonfile.aboutUsDescriptionAlreadyExistMsg()
             else:
