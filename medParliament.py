@@ -5327,7 +5327,7 @@ def aboutUs():
             flag = inputdata["flag"]
             print('====',flag)
         
-            WhereCondition = " and description = '" + str(description) + "'"
+            WhereCondition = " "
             count = databasefile.SelectCountQuery("aboutUs",WhereCondition,"")
             
             if int(count) > 0 and flag == 'n':
