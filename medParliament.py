@@ -130,7 +130,7 @@ def SignUp():
         print(inputdata)     
         
         keyarr = ['userName','mobileNo','email','password','gender',"userTypeId"]
-        commonfile.writeLog("signup",inputdata,0)
+        commonfile.writeLog("SignUp1",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":  
@@ -150,7 +150,7 @@ def SignUp():
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
-            WhereCondition = " and email = '" + str(Email) + "' and password = '" + str(Password) + "'"
+            WhereCondition = " and email = '" + str(Email) + "'"
             count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
             
             if int(count) > 0:
@@ -395,7 +395,7 @@ def SignUp1():
         print(inputdata)     
         
         keyarr = ['userName','mobileNo','email','password','gender',"userTypeId"]
-        commonfile.writeLog("signup",inputdata,0)
+        commonfile.writeLog("SignUp",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":  
@@ -415,7 +415,7 @@ def SignUp1():
 
             UserId = commonfile.CreateHashKey(Email,Name)
             
-            WhereCondition = " and email = '" + str(Email) + "' and password = '" + str(Password) + "'"
+            WhereCondition = " and email = '" + str(Email) + "'"
             count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
             
             if int(count) > 0:
@@ -3279,7 +3279,7 @@ def verifyPost123():
         startlimit,endlimit="",""
         print("111111111111111111111111")
         keyarr = ['userId','eventId','userTypeId']
-        commonfile.writeLog("verifyPost",inputdata,0)
+        commonfile.writeLog("eventInterest",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         print("22222222222222222222222")
         if msg == "1":
