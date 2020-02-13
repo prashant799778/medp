@@ -5,7 +5,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
-
+declare var jQuery: any;
 @Component({
   selector: 'app-create-news',
   templateUrl: './create-news.component.html',
@@ -17,6 +17,7 @@ export class CreateNewsComponent implements OnInit {
   userTypeDetails= []
   errorMsg: any;
   newsDetails : any;
+  messageShow: any;
   totalnews : number;
   categoryList: [];
   htmlContent = '';
@@ -141,6 +142,13 @@ export class CreateNewsComponent implements OnInit {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
+        jQuery('#addAdmin-news7').modal('show')
+        this.messageShow = 'Updated'
+        setTimeout(()=>{
+          jQuery('#addAdmin-news7').modal('hide')
+        },2000)
+        this.getUsertype()
+        this.updateCheck =false;
         this.imageShow = '';
         console.log(this.file)
         this.file = '';
@@ -176,6 +184,13 @@ export class CreateNewsComponent implements OnInit {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
+        jQuery('#addAdmin-news7').modal('show')
+        this.messageShow = 'Updated'
+        setTimeout(()=>{
+          jQuery('#addAdmin-news7').modal('hide')
+        },2000)
+        this.getUsertype()
+        // this.updateCheck =false;
         this.imageShow = '';
         console.log(this.file)
         this.file = '';

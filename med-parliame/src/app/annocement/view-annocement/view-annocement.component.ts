@@ -5,7 +5,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
-
+declare var jQuery: any
 @Component({
   selector: 'app-view-annocement',
   templateUrl: './view-annocement.component.html',
@@ -24,6 +24,7 @@ export class ViewAnnocementComponent implements OnInit {
   file: any;
   imageShow: any= '';
   showBanner: number;
+  messageShow: any;
   updateCheck: boolean;
   config: AngularEditorConfig = {
     editable: true,
@@ -141,13 +142,20 @@ export class ViewAnnocementComponent implements OnInit {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
+        jQuery('#addAdmin-news3').modal('show')
+        this.messageShow = 'Updated'
+        setTimeout(()=>{
+          jQuery('#addAdmin-news3').modal('hide')
+        },2000)
+        this.getUsertype()
+        this.updateCheck =false;
         this.imageShow = '';
         console.log(this.file)
         this.file = '';
         var elemsss = (<HTMLInputElement>document.getElementById('file12'))
         
         elemsss.value = '';
-
+        
         // document.getElementById('filesss').val('');
 
 
@@ -177,6 +185,12 @@ export class ViewAnnocementComponent implements OnInit {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
+        jQuery('#addAdmin-news3').modal('show')
+        this.messageShow = 'Inserted'
+        setTimeout(()=>{
+          jQuery('#addAdmin-news3').modal('hide')
+        },2000)
+        this.getUsertype()
         this.imageShow = '';
         console.log(this.file)
         this.file = '';

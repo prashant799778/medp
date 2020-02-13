@@ -141,8 +141,9 @@ export class CreateAboutComponent implements OnInit {
     this.apiService.dataPostApi(newsData, AppSettings.aboutUs).then((data: any[]) => {
       console.log(data);
       if(data['status'] == 'true'){
-        jQuery('#addAdmin-news2').modal('show')
+       
         this.frmNews.reset();
+        jQuery('#addAdmin-news2').modal('show')
         this.messageShow = 'Updated'
         setTimeout(()=>{
           jQuery('#addAdmin-news2').modal('hide')

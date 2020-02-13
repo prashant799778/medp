@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
 import {IMyDpOptions} from 'mydatepicker';
-
+declare var jQuery: any
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
@@ -26,6 +26,7 @@ export class CreateEventComponent implements OnInit {
   imageShow: any= '';
   showBanner: number;
   updateCheck: boolean;
+  messageShow: any
   public myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd.mm.yyyy',
@@ -151,13 +152,20 @@ export class CreateEventComponent implements OnInit {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
+        jQuery('#addAdmin-news4').modal('show')
+        this.messageShow = 'Updated'
+        setTimeout(()=>{
+          jQuery('#addAdmin-news4').modal('hide')
+        },2000)
+        this.getUsertype()
+        this.updateCheck =false;
         this.imageShow = '';
         console.log(this.file)
         this.file = '';
         var elemsss = (<HTMLInputElement>document.getElementById('file12'))
         
         elemsss.value = '';
-
+        this.updateCheck =false;
         // document.getElementById('filesss').val('');
 
 
@@ -188,6 +196,12 @@ export class CreateEventComponent implements OnInit {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
+        jQuery('#addAdmin-news4').modal('show')
+        this.messageShow = 'Inserted'
+        setTimeout(()=>{
+          jQuery('#addAdmin-news4').modal('hide')
+        },2000)
+        this.getUsertype()
         this.imageShow = '';
         console.log(this.file)
         this.file = '';

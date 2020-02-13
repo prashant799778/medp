@@ -5,7 +5,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
-
+declare var jQuery: any;
 @Component({
   selector: 'app-view-gallery',
   templateUrl: './view-gallery.component.html',
@@ -23,6 +23,7 @@ export class ViewGalleryComponent implements OnInit {
   newsId: number;
   file: any;
   imageShow: any= '';
+  messageShow: any;
   showBanner: number;
   updateCheck: Boolean;
   config: AngularEditorConfig = {
@@ -139,6 +140,13 @@ export class ViewGalleryComponent implements OnInit {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
+        jQuery('#addAdmin-news4').modal('show')
+        this.messageShow = 'Updated'
+        setTimeout(()=>{
+          jQuery('#addAdmin-news4').modal('hide')
+        },2000)
+        this.getUsertype()
+        this.updateCheck =false;
         this.imageShow = '';
         console.log(this.file)
         this.file = '';
@@ -175,6 +183,13 @@ export class ViewGalleryComponent implements OnInit {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
+        jQuery('#addAdmin-news4').modal('show')
+        this.messageShow = 'Inserted'
+        setTimeout(()=>{
+          jQuery('#addAdmin-news4').modal('hide')
+        },2000)
+        this.getUsertype()
+       
         this.imageShow = '';
         console.log(this.file)
         this.file = '';
