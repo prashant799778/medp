@@ -121,6 +121,9 @@ attr actionProviderClass
 attr actionTextColorAlpha
 attr actionViewClass
 attr activityChooserViewStyle
+attr actualImageResource
+attr actualImageScaleType
+attr actualImageUri
 attr alertDialogButtonGroupStyle
 attr alertDialogCenterButtons
 attr alertDialogStyle
@@ -143,6 +146,7 @@ attr autoSizePresetSizes
 attr autoSizeStepGranularity
 attr autoSizeTextType
 attr background
+attr backgroundImage
 attr backgroundInsetBottom
 attr backgroundInsetEnd
 attr backgroundInsetStart
@@ -355,6 +359,9 @@ attr fabCradleRoundedCornerRadius
 attr fabCradleVerticalOffset
 attr fabCustomSize
 attr fabSize
+attr fadeDuration
+attr failureImage
+attr failureImageScaleType
 attr fastScrollEnabled
 attr fastScrollHorizontalThumbDrawable
 attr fastScrollHorizontalTrackDrawable
@@ -527,6 +534,7 @@ attr navigationMode
 attr navigationViewStyle
 attr numericModifiers
 attr overlapAnchor
+attr overlayImage
 attr paddingBottomNoButtons
 attr paddingEnd
 attr paddingStart
@@ -555,11 +563,17 @@ attr piv_selectedColor
 attr piv_strokeWidth
 attr piv_unselectedColor
 attr piv_viewPager
+attr placeholderImage
+attr placeholderImageScaleType
 attr popupMenuStyle
 attr popupTheme
 attr popupWindowStyle
 attr preserveIconSpacing
+attr pressedStateOverlayImage
 attr pressedTranslationZ
+attr progressBarAutoRotateInterval
+attr progressBarImage
+attr progressBarImageScaleType
 attr progressBarPadding
 attr progressBarStyle
 attr queryBackground
@@ -568,8 +582,24 @@ attr radioButtonStyle
 attr ratingBarStyle
 attr ratingBarStyleIndicator
 attr ratingBarStyleSmall
+attr retryImage
+attr retryImageScaleType
 attr reverseLayout
 attr rippleColor
+attr roundAsCircle
+attr roundBottomEnd
+attr roundBottomLeft
+attr roundBottomRight
+attr roundBottomStart
+attr roundTopEnd
+attr roundTopLeft
+attr roundTopRight
+attr roundTopStart
+attr roundWithOverlayColor
+attr roundedCornerRadius
+attr roundingBorderColor
+attr roundingBorderPadding
+attr roundingBorderWidth
 attr scopeUris
 attr scrimAnimationDuration
 attr scrimBackground
@@ -732,6 +762,7 @@ attr useCompatPadding
 attr useMaterialThemeColors
 attr useWebUi
 attr videoId
+attr viewAspectRatio
 attr viewInflaterClass
 attr viewpagerAspectRatio
 attr voiceIcon
@@ -1360,6 +1391,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable after
 drawable alpha
 drawable avd_hide_password
 drawable avd_show_password
@@ -1450,6 +1482,8 @@ drawable group_91
 drawable handle
 drawable ic_after_like
 drawable ic_arrow_back_black_24dp
+drawable ic_arrow_back_ios
+drawable ic_arrow_forward_ios
 drawable ic_back
 drawable ic_building
 drawable ic_cam
@@ -1488,6 +1522,7 @@ drawable ic_phone
 drawable ic_photo_camera
 drawable ic_pin
 drawable ic_qualification
+drawable ic_question
 drawable ic_red1
 drawable ic_school_1
 drawable ic_school__1
@@ -1498,6 +1533,7 @@ drawable ic_star
 drawable ic_study
 drawable ic_study_as
 drawable ic_unfold_more_black_24dp
+drawable icon
 drawable kkkk
 drawable l
 drawable login
@@ -1557,6 +1593,7 @@ id FUNCTION
 id META
 id SHIFT
 id SYM
+id about
 id about_profile
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -1646,6 +1683,8 @@ id buttonPanel
 id camera_view
 id cancel_action
 id center
+id centerCrop
+id centerInside
 id center_horizontal
 id center_vertical
 id cfdialog_background
@@ -1706,6 +1745,7 @@ id dialog_button
 id dimensions
 id direct
 id disableHome
+id dismissContainer
 id dismissView
 id doctor
 id done
@@ -1742,8 +1782,14 @@ id fill_horizontal
 id fill_vertical
 id filled
 id filter_chip
+id fitBottomStart
+id fitCenter
+id fitEnd
+id fitStart
+id fitXY
 id fixed
 id flash
+id focusCrop
 id focusView
 id forever
 id forgot
@@ -1773,8 +1819,10 @@ id image
 id imageView1
 id imageViewIcon
 id imageViewplaces
+id imagesPager
 id img
 id img1
+id img11
 id img_count
 id info
 id instantRecyclerView
@@ -1901,17 +1949,14 @@ id profilecatogery
 id progress
 id progress_circular
 id progress_horizontal
+id promissingInitiative
 id pswd
 id qualifiaction
 id qualificatin
 id radio
 id read
 id recycle
-id recycle_announced
-id recycle_event
 id recycle_gallery
-id recycle_news
-id recycle_video
 id recyclerView
 id recycler_view
 id rel_for
@@ -1921,11 +1966,13 @@ id reset_password
 id right
 id right_icon
 id right_side
+id rootContainer
 id rounded
 id save
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
+id scalableVideoView
 id scale
 id scale_down
 id screen
@@ -1963,6 +2010,7 @@ id showTitle
 id signup
 id sim_txt
 id simple_text
+id skip
 id slide
 id smallLabel
 id snackbar_action
@@ -2031,6 +2079,8 @@ id topPanel
 id top_view
 id topbar
 id touch_outside
+id transitionImageContainer
+id transitionImageView
 id transition_current_scene
 id transition_layout_save
 id transition_position
@@ -2052,7 +2102,6 @@ id unlabeled
 id up
 id useLogo
 id user_email
-id user_login
 id user_name
 id username
 id vertical
@@ -2066,6 +2115,7 @@ id viewpager_announced
 id viewpager_events
 id viewpager_gallery
 id viewpager_news
+id viewpager_promissing
 id viewpager_video
 id visible
 id vp_slider_layout
@@ -2246,10 +2296,13 @@ layout test_reflow_chipgroup
 layout toolbar_layout
 layout top_snakbar
 layout video_item_layout
+layout view_image_viewer
 menu dropdown
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 raw ayp_youtube_player
+raw video
 string AboutUs
 string About_Your_Profile
 string Address
@@ -2339,6 +2392,7 @@ string Type_Description
 string University
 string University_Address
 string University_name
+string Write
 string Write_Your_Post
 string Write_Your_Reply
 string abc_action_bar_home_description
@@ -2382,12 +2436,15 @@ string ayp_live
 string ayp_null_time
 string ayp_open_video_in_youtube
 string ayp_play_button
+string base_url
 string bottom_sheet_behavior
+string callback_url
 string cannot_click_image_pix
 string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
+string client_id
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
 string common_google_play_services_enable_title
@@ -2427,6 +2484,7 @@ string hos_add
 string icon_content_description
 string institute
 string interest
+string library_name
 string message_to_drag_up
 string msg
 string mtrl_chip_close_icon_content_description
@@ -2448,9 +2506,11 @@ string pix_ok
 string pix_recent
 string pix_selected
 string pix_tap_to_select
+string promissing_initiative
 string search_menu_title
 string selectType
 string selection_limiter_pix
+string skip
 string status_bar_notification_info_overflow
 string text_Login_SignUp
 string title
@@ -2692,6 +2752,9 @@ style DefaultNumberPickerTheme
 style DialogAnimations
 style DialogAnimations_SmileWindow
 style DrawerIconStyle
+style ImageViewerDialog
+style ImageViewerDialog_Default
+style ImageViewerDialog_NoStatusBar
 style MyCheckBox
 style MyCustomTabText
 style Platform_AppCompat
@@ -3088,6 +3151,7 @@ styleable FlowLayout itemSpacing lineSpacing
 styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery
 styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
 styleable ForegroundLinearLayout android_foreground android_foregroundGravity foregroundInsidePadding
+styleable GenericDraweeHierarchy actualImageScaleType backgroundImage fadeDuration failureImage failureImageScaleType overlayImage placeholderImage placeholderImageScaleType pressedStateOverlayImage progressBarAutoRotateInterval progressBarImage progressBarImageScaleType retryImage retryImageScaleType roundAsCircle roundBottomEnd roundBottomLeft roundBottomRight roundBottomStart roundTopEnd roundTopLeft roundTopRight roundTopStart roundWithOverlayColor roundedCornerRadius roundingBorderColor roundingBorderPadding roundingBorderWidth viewAspectRatio
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
 styleable LinearConstraintLayout android_orientation
@@ -3117,6 +3181,7 @@ styleable ScrollingViewBehavior_Layout behavior_overlapTop
 styleable SearchView android_focusable android_maxWidth android_inputType android_imeOptions closeIcon commitIcon defaultQueryHint goIcon iconifiedByDefault layout queryBackground queryHint searchHintIcon searchIcon submitBackground suggestionRowLayout voiceIcon
 styleable ShapeAppearance cornerFamily cornerFamilyBottomLeft cornerFamilyBottomRight cornerFamilyTopLeft cornerFamilyTopRight cornerSize cornerSizeBottomLeft cornerSizeBottomRight cornerSizeTopLeft cornerSizeTopRight
 styleable SignInButton buttonSize colorScheme scopeUris
+styleable SimpleDraweeView actualImageResource actualImageScaleType actualImageUri backgroundImage fadeDuration failureImage failureImageScaleType overlayImage placeholderImage placeholderImageScaleType pressedStateOverlayImage progressBarAutoRotateInterval progressBarImage progressBarImageScaleType retryImage retryImageScaleType roundAsCircle roundBottomEnd roundBottomLeft roundBottomRight roundBottomStart roundTopEnd roundTopLeft roundTopRight roundTopStart roundWithOverlayColor roundedCornerRadius roundingBorderColor roundingBorderPadding roundingBorderWidth viewAspectRatio
 styleable SliderView sliderAnimationDuration sliderAutoCycleDirection sliderAutoCycleEnabled sliderCircularHandlerEnabled sliderIndicatorAnimationDuration sliderIndicatorGravity sliderIndicatorMargin sliderIndicatorOrientation sliderIndicatorPadding sliderIndicatorRadius sliderIndicatorRtlMode sliderIndicatorSelectedColor sliderIndicatorUnselectedColor sliderScrollTimeInSec sliderStartAutoCycle
 styleable Snackbar snackbarButtonStyle snackbarStyle
 styleable SnackbarLayout android_maxWidth actionTextColorAlpha animationMode backgroundOverlayColorAlpha elevation maxActionInlineWidth

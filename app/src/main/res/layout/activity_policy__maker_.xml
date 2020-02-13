@@ -92,18 +92,19 @@
                     android:visibility="gone"
                     android:layout_height="match_parent">
                 </ImageView>
+                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/videoTitle"
+                    android:visibility="gone"
+                    android:layout_marginHorizontal="34dp"
+                    android:layout_below="@+id/ll"
+                    android:textColor="@color/white"
+                    android:textSize="20dp">
+                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
             </LinearLayout>
-            <com.example.medparliament.Widget.Segow_UI_Semi_Font
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:id="@+id/videoTitle"
-                android:visibility="gone"
-                android:layout_marginHorizontal="34dp"
-                android:layout_below="@+id/ll"
-                android:textColor="@color/white"
-                android:textSize="20dp">
-            </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_below="@+id/ll"

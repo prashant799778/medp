@@ -2,13 +2,17 @@ package com.example.medparliament;
 
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 
 public class MyApplication extends Application {
 
-    public  MyApplication(){
-         super();
 
 
-
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Fresco.initialize(this);
+        // Required initialization logic here!
     }
 }

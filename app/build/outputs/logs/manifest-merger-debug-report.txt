@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-60:12
-INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-60:12
-INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-60:12
-INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-60:12
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-63:12
 MERGED from [com.github.mohammadatif:Animatoo:master] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\70be449d007fb61b957febd5f4cc7a95\Animatoo-master\AndroidManifest.xml:2:1-11:12
 MERGED from [com.sun.easysnackbar:easysnackbar:1.0.1] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\aad9308f05cad793c3000c20e48dea7d\jetified-easysnackbar-1.0.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.fxn769:pix:1.4.4] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:2:1-25:12
@@ -11,6 +11,8 @@ MERGED from [com.google.android.material:material:1.1.0-alpha02] C:\Users\Work-P
 MERGED from [com.crowdfire.cfalertdialog:cfalertdialog:1.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\a08778e710ad398f2d06676d6dfed8f7\jetified-cfalertdialog-1.1.0\AndroidManifest.xml:2:1-17:12
 MERGED from [com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\7d34aeb7ddb19ff1b3ba84e40e1569ec\core-10.0.5\AndroidManifest.xml:2:1-14:12
 MERGED from [com.github.stfalcon:frescoimageviewer:0.5.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\a22a66353e01455c3383f0e3a5f6a06b\jetified-frescoimageviewer-0.5.0\AndroidManifest.xml:2:1-12:12
+MERGED from [com.github.stfalcon:stfalcon-imageviewer:0.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\934fababdc9ab9b25107cc4b4387493a\stfalcon-imageviewer-0.1.0\AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.chrisbanes:PhotoView:2.2.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\9c7617a04000e1e71e75b54923bf3993\PhotoView-2.2.0\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\6119d746697059b7e1b74aab4d181f56\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\3ec6fa8458ddbe732478393a9f9e6c77\constraintlayout-1.1.3\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\062eb74c1a6fe650432564db4113c6b5\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -21,6 +23,7 @@ MERGED from [com.github.MdFarhanRaja:SearchableSpinner:2.0] C:\Users\Work-PC\.gr
 MERGED from [com.google.android.gms:play-services-auth:17.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\7c3357205c0d6443051a58acd987f14a\play-services-auth-17.0.0\AndroidManifest.xml:17:1-39:12
 MERGED from [com.github.bumptech.glide:glide:4.10.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\87cc0020caff993913d2a7e25a4ed169\glide-4.10.0\AndroidManifest.xml:2:1-12:12
 MERGED from [com.asksira.android:loopingviewpager:1.2.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\fb83ef735f06e343487fe69091dbbd01\loopingviewpager-1.2.0\AndroidManifest.xml:2:1-11:12
+MERGED from [com.facebook.fresco:fresco:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\61e14fbb764ec7b7285bb05da83884ff\fresco-2.1.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\ec593f8d91037f6ef1bbcd6a177afa1c\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\fb2fbe77879a57ea0c5dfd6fe59ba874\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2cd50160f6260a0aee2042ad6ca92acf\play-services-auth-api-phone-17.0.0\AndroidManifest.xml:2:1-7:12
@@ -33,7 +36,6 @@ MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\Work-PC\.gra
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\00bc847ce5b9e3ce7b40d465bffbf9e9\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.media:media:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\767612e54049c1347a891905a7e9d5e4\media-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4f8b5527496d67480951cc322460db7f\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.transition:transition:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d2cae29ea156ecc28d8f5099dc624ed2\transition-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4fe44ae24daa7cfa2dd483a5d3b65a2f\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\5276819c062a92c029464122749254f1\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.10.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\e671e9f00c2780be6d3d0096a67e519b\gifdecoder-4.10.0\AndroidManifest.xml:2:1-11:12
@@ -42,6 +44,7 @@ MERGED from [io.fotoapparat:fotoapparat:2.7.0] C:\Users\Work-PC\.gradle\caches\t
 MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\664f4ae009672f8d49f9e02edae5cc02\exifinterface-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core-ktx:1.3.0-alpha01] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d4d04569b4884bed2e3bb4d0512e861c\core-ktx-1.3.0-alpha01\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\dbbcc99072b5616db9e0106b8ed65934\activity-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.0.1] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d5e538a4cea89ded941d1fd55df7aafc\transition-1.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4932f7e67b26f042b51fa62f1aa4816d\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d1ca7cd3905794bed09cb92934ccd6c2\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4276267baf989d651cf25177c247ad49\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
@@ -63,20 +66,34 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Work-PC\
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\fdd65d8b6066fd289a68b42931dc03a2\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\64ed055c454b36433d45a77285ee24d6\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [me.relex:photodraweeview:1.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2667ddc4c58cb33516eab7459a06649f\jetified-photodraweeview-1.1.0\AndroidManifest.xml:2:1-10:12
-INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-60:12
-INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-60:12
-INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-60:12
+MERGED from [com.facebook.fresco:drawee:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4d43483abb2cd95936c9a72b4dea2a70\drawee-2.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagefilters:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\1585cf466a8c940472e8ddfeedc4809e\nativeimagefilters-2.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:memory-type-native:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\8d29ad0ade78b51a0a4ae1b7610e688d\memory-type-native-2.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:memory-type-java:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\cb33442cc4493ade6126549b90a9ac80\memory-type-java-2.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-native:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\9cdee1b2ae6b7ab8f3c577b0d5006e9f\imagepipeline-native-2.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:memory-type-ashmem:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\63a1b10b70302c4a63b241985ed017f5\memory-type-ashmem-2.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\bb34397629e9e51564a24769b7d6b268\imagepipeline-2.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\20885df7f1468a3bf135f2866861cdab\nativeimagetranscoder-2.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:soloader:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\47c633fa91f0afadab1369ea8c9c0bf2\soloader-2.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\b3b6544fbdfb882358dd15548138b52b\imagepipeline-base-2.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:fbcore:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\95e1638e8c1896609f865722e0c422fa\jetified-fbcore-2.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.8.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d61dd9b070318b34766b5dbb9344b8be\soloader-0.8.0\AndroidManifest.xml:2:1-13:12
+MERGED from [com.facebook.fresco:ui-common:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\b237f09f1a077808266fae5a6f24fe13\ui-common-2.1.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:annotation:0.8.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\9a43a2412af6e78c84e85722bbc5cfd9\annotation-0.8.0\AndroidManifest.xml:2:1-13:12
+INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-63:12
 	package
 		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:3:5-40
 		INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml
 		INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-60:12
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-63:12
 		INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-60:12
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:1-63:12
 		INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:2:11-69
@@ -96,8 +113,14 @@ MERGED from [com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5] C:\Use
 MERGED from [com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\7d34aeb7ddb19ff1b3ba84e40e1569ec\core-10.0.5\AndroidManifest.xml:11:5-67
 	android:name
 		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:8:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:11:5-81
+MERGED from [com.fxn769:pix:1.4.4] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:14:5-81
+MERGED from [com.fxn769:pix:1.4.4] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:14:5-81
+	android:name
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:11:22-78
 application
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:12:5-58:19
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:13:5-61:19
 MERGED from [com.fxn769:pix:1.4.4] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:16:5-23:19
 MERGED from [com.fxn769:pix:1.4.4] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:16:5-23:19
 MERGED from [com.google.android.material:material:1.1.0-alpha02] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\753ffec64a415d5839cc12aafdf13d5e\material-1.1.0-alpha02\AndroidManifest.xml:22:5-20
@@ -132,148 +155,174 @@ MERGED from [androidx.core:core:1.3.0-alpha01] C:\Users\Work-PC\.gradle\caches\t
 MERGED from [androidx.core:core:1.3.0-alpha01] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\ffb66abad4c251fa91912bdcea2c857b\core-1.3.0-alpha01\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\78be57497ca2a8dd090798c529f3e53d\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\78be57497ca2a8dd090798c529f3e53d\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
+MERGED from [com.facebook.soloader:soloader:0.8.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d61dd9b070318b34766b5dbb9344b8be\soloader-0.8.0\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.8.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d61dd9b070318b34766b5dbb9344b8be\soloader-0.8.0\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:annotation:0.8.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\9a43a2412af6e78c84e85722bbc5cfd9\annotation-0.8.0\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:annotation:0.8.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\9a43a2412af6e78c84e85722bbc5cfd9\annotation-0.8.0\AndroidManifest.xml:11:5-20
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.0-alpha01] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\ffb66abad4c251fa91912bdcea2c857b\core-1.3.0-alpha01\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:18:9-35
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:21:9-35
 	android:label
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:15:9-41
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:18:9-41
 	android:roundIcon
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:17:9-54
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:20:9-54
 	android:largeHeap
 		ADDED from [com.fxn769:pix:1.4.4] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:17:9-33
+	android:persistent
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:15:9-35
 	android:icon
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:14:9-43
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:17:9-43
 	android:allowBackup
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:13:9-35
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:16:9-35
 	android:theme
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:19:9-40
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:22:9-40
 	android:networkSecurityConfig
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:16:9-69
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:19:9-69
+	android:name
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:14:10-39
 activity#com.example.medparliament.Activity.AboutUsActivity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:20:9-71
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:23:9-71
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:20:19-59
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:23:19-59
 activity#com.example.medparliament.Activity.DecisionMaker
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:21:9-60
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:24:9-60
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:21:19-57
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:24:19-57
 activity#com.example.medparliament.Activity.Forgot_Password_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:22:9-71
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:25:9-71
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:22:19-68
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:25:19-68
 activity#com.example.medparliament.Activity.OTP_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:23:9-59
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:26:9-59
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:23:19-56
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:26:19-56
 activity#com.example.medparliament.Activity.All_Post_Details
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:24:9-63
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:27:9-63
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:24:19-60
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:27:19-60
 activity#com.example.medparliament.Activity.All_Post_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:25:9-64
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:28:9-64
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:25:19-61
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:28:19-61
 activity#com.example.medparliament.Activity.ReplyActivity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:26:9-60
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:29:9-60
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:26:19-57
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:29:19-57
 activity#com.example.medparliament.Activity.Professonal_signup_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:27:9-74
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:30:9-74
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:27:19-71
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:30:19-71
 activity#com.example.medparliament.Activity.DoctorSignupActivity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:28:9-67
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:31:9-67
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:28:19-64
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:31:19-64
 activity#com.example.medparliament.Activity.NewsDetails_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:29:9-67
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:32:9-67
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:29:19-64
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:32:19-64
 activity#com.example.medparliament.Activity.All_News_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:30:9-64
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:33:9-64
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:30:19-61
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:33:19-61
 activity#com.example.medparliament.Activity.ChangePassword_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:31:9-70
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:34:9-70
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:31:19-67
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:34:19-67
 activity#com.example.medparliament.Activity.About_us_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:32:9-64
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:35:9-64
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:32:19-61
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:35:19-61
 activity#com.example.medparliament.Activity.Edit_Profile_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:33:9-68
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:36:9-68
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:33:19-65
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:36:19-65
 activity#com.example.medparliament.Activity.User_profile_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:34:9-68
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:37:9-68
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:34:19-65
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:37:19-65
 activity#com.example.medparliament.Activity.Post_Details_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:35:9-68
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:38:9-68
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:35:19-65
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:38:19-65
 activity#com.example.medparliament.Activity.My_Post_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:36:9-63
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:39:9-63
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:36:19-60
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:39:19-60
 activity#com.example.medparliament.Activity.Comment_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:37:9-63
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:40:9-63
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:37:19-60
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:40:19-60
 uses-library#org.apache.http.legacy
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:39:9-41:40
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:42:9-44:40
 	android:required
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:41:13-37
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:44:13-37
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:40:13-50
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:43:13-50
 activity#com.example.medparliament.Activity.DashBoard_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:43:9-65
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:46:9-102
+	android:screenOrientation
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:46:19-55
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:43:19-62
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:46:56-99
 activity#com.example.medparliament.Activity.Entrepreneur_SignUp_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:44:9-75
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:47:9-112
+	android:screenOrientation
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:47:19-55
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:44:19-72
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:47:56-109
 activity#com.example.medparliament.Activity.Policy_Maker_SignUp_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:45:9-75
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:48:9-113
+	android:screenOrientation
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:48:19-55
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:45:19-72
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:48:57-110
 activity#com.example.medparliament.Activity.Student_SignUp_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:46:9-70
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:49:9-107
+	android:screenOrientation
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:49:19-55
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:46:19-67
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:49:56-104
 activity#com.example.medparliament.Activity.SignUp_type_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:47:9-67
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:50:9-104
+	android:screenOrientation
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:50:19-55
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:47:19-64
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:50:56-101
 activity#com.example.medparliament.Activity.Login_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:48:9-61
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:51:9-98
+	android:screenOrientation
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:51:19-55
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:48:19-58
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:51:56-95
 activity#com.example.medparliament.Activity.Login_Signup_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:49:9-68
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:52:9-105
+	android:screenOrientation
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:52:19-55
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:49:19-65
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:52:56-102
 activity#com.example.medparliament.Activity.Base_Activity
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:50:9-60
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:53:9-97
+	android:screenOrientation
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:53:19-55
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:50:19-57
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:53:56-94
 activity#com.example.medparliament.Activity.Splace
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:51:9-57:20
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:54:9-60:20
+	android:screenOrientation
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:54:19-55
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:51:19-50
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:54:56-87
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:52:13-56:29
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:55:13-59:29
 action#android.intent.action.MAIN
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:53:17-69
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:56:17-69
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:53:25-66
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:56:25-66
 category#android.intent.category.LAUNCHER
-ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:55:17-77
+ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:58:17-77
 	android:name
-		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:55:27-74
+		ADDED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml:58:27-74
 uses-sdk
 INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml
@@ -292,6 +341,10 @@ MERGED from [com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5] C:\Use
 MERGED from [com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\7d34aeb7ddb19ff1b3ba84e40e1569ec\core-10.0.5\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.stfalcon:frescoimageviewer:0.5.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\a22a66353e01455c3383f0e3a5f6a06b\jetified-frescoimageviewer-0.5.0\AndroidManifest.xml:8:5-10:41
 MERGED from [com.github.stfalcon:frescoimageviewer:0.5.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\a22a66353e01455c3383f0e3a5f6a06b\jetified-frescoimageviewer-0.5.0\AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.stfalcon:stfalcon-imageviewer:0.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\934fababdc9ab9b25107cc4b4387493a\stfalcon-imageviewer-0.1.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.stfalcon:stfalcon-imageviewer:0.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\934fababdc9ab9b25107cc4b4387493a\stfalcon-imageviewer-0.1.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.chrisbanes:PhotoView:2.2.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\9c7617a04000e1e71e75b54923bf3993\PhotoView-2.2.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.chrisbanes:PhotoView:2.2.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\9c7617a04000e1e71e75b54923bf3993\PhotoView-2.2.0\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\6119d746697059b7e1b74aab4d181f56\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\6119d746697059b7e1b74aab4d181f56\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\3ec6fa8458ddbe732478393a9f9e6c77\constraintlayout-1.1.3\AndroidManifest.xml:5:5-7:41
@@ -312,6 +365,8 @@ MERGED from [com.github.bumptech.glide:glide:4.10.0] C:\Users\Work-PC\.gradle\ca
 MERGED from [com.github.bumptech.glide:glide:4.10.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\87cc0020caff993913d2a7e25a4ed169\glide-4.10.0\AndroidManifest.xml:6:5-8:41
 MERGED from [com.asksira.android:loopingviewpager:1.2.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\fb83ef735f06e343487fe69091dbbd01\loopingviewpager-1.2.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.asksira.android:loopingviewpager:1.2.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\fb83ef735f06e343487fe69091dbbd01\loopingviewpager-1.2.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:fresco:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\61e14fbb764ec7b7285bb05da83884ff\fresco-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\61e14fbb764ec7b7285bb05da83884ff\fresco-2.1.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\ec593f8d91037f6ef1bbcd6a177afa1c\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\ec593f8d91037f6ef1bbcd6a177afa1c\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\fb2fbe77879a57ea0c5dfd6fe59ba874\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
@@ -336,8 +391,6 @@ MERGED from [androidx.media:media:1.0.0] C:\Users\Work-PC\.gradle\caches\transfo
 MERGED from [androidx.media:media:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\767612e54049c1347a891905a7e9d5e4\media-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4f8b5527496d67480951cc322460db7f\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4f8b5527496d67480951cc322460db7f\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.transition:transition:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d2cae29ea156ecc28d8f5099dc624ed2\transition-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.transition:transition:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d2cae29ea156ecc28d8f5099dc624ed2\transition-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4fe44ae24daa7cfa2dd483a5d3b65a2f\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4fe44ae24daa7cfa2dd483a5d3b65a2f\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\5276819c062a92c029464122749254f1\loader-1.0.0\AndroidManifest.xml:20:5-44
@@ -354,6 +407,8 @@ MERGED from [androidx.core:core-ktx:1.3.0-alpha01] C:\Users\Work-PC\.gradle\cach
 MERGED from [androidx.core:core-ktx:1.3.0-alpha01] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d4d04569b4884bed2e3bb4d0512e861c\core-ktx-1.3.0-alpha01\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\dbbcc99072b5616db9e0106b8ed65934\activity-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\dbbcc99072b5616db9e0106b8ed65934\activity-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.0.1] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d5e538a4cea89ded941d1fd55df7aafc\transition-1.0.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.transition:transition:1.0.1] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d5e538a4cea89ded941d1fd55df7aafc\transition-1.0.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4932f7e67b26f042b51fa62f1aa4816d\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4932f7e67b26f042b51fa62f1aa4816d\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d1ca7cd3905794bed09cb92934ccd6c2\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
@@ -396,6 +451,34 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Work-PC\.gra
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\64ed055c454b36433d45a77285ee24d6\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [me.relex:photodraweeview:1.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2667ddc4c58cb33516eab7459a06649f\jetified-photodraweeview-1.1.0\AndroidManifest.xml:8:5-44
 MERGED from [me.relex:photodraweeview:1.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2667ddc4c58cb33516eab7459a06649f\jetified-photodraweeview-1.1.0\AndroidManifest.xml:8:5-44
+MERGED from [com.facebook.fresco:drawee:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4d43483abb2cd95936c9a72b4dea2a70\drawee-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\4d43483abb2cd95936c9a72b4dea2a70\drawee-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\1585cf466a8c940472e8ddfeedc4809e\nativeimagefilters-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\1585cf466a8c940472e8ddfeedc4809e\nativeimagefilters-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:memory-type-native:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\8d29ad0ade78b51a0a4ae1b7610e688d\memory-type-native-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:memory-type-native:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\8d29ad0ade78b51a0a4ae1b7610e688d\memory-type-native-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:memory-type-java:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\cb33442cc4493ade6126549b90a9ac80\memory-type-java-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:memory-type-java:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\cb33442cc4493ade6126549b90a9ac80\memory-type-java-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-native:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\9cdee1b2ae6b7ab8f3c577b0d5006e9f\imagepipeline-native-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-native:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\9cdee1b2ae6b7ab8f3c577b0d5006e9f\imagepipeline-native-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:memory-type-ashmem:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\63a1b10b70302c4a63b241985ed017f5\memory-type-ashmem-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:memory-type-ashmem:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\63a1b10b70302c4a63b241985ed017f5\memory-type-ashmem-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\bb34397629e9e51564a24769b7d6b268\imagepipeline-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\bb34397629e9e51564a24769b7d6b268\imagepipeline-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\20885df7f1468a3bf135f2866861cdab\nativeimagetranscoder-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\20885df7f1468a3bf135f2866861cdab\nativeimagetranscoder-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:soloader:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\47c633fa91f0afadab1369ea8c9c0bf2\soloader-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:soloader:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\47c633fa91f0afadab1369ea8c9c0bf2\soloader-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\b3b6544fbdfb882358dd15548138b52b\imagepipeline-base-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\b3b6544fbdfb882358dd15548138b52b\imagepipeline-base-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\95e1638e8c1896609f865722e0c422fa\jetified-fbcore-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\95e1638e8c1896609f865722e0c422fa\jetified-fbcore-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.8.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d61dd9b070318b34766b5dbb9344b8be\soloader-0.8.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.8.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\d61dd9b070318b34766b5dbb9344b8be\soloader-0.8.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:ui-common:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\b237f09f1a077808266fae5a6f24fe13\ui-common-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:ui-common:2.1.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\b237f09f1a077808266fae5a6f24fe13\ui-common-2.1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:annotation:0.8.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\9a43a2412af6e78c84e85722bbc5cfd9\annotation-0.8.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:annotation:0.8.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\9a43a2412af6e78c84e85722bbc5cfd9\annotation-0.8.0\AndroidManifest.xml:7:5-9:41
 INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml
 INJECTED from E:\medParliament\med_parliament\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
@@ -420,10 +503,6 @@ uses-permission#android.permission.VIBRATE
 ADDED from [com.fxn769:pix:1.4.4] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:13:5-66
 	android:name
 		ADDED from [com.fxn769:pix:1.4.4] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:13:22-63
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from [com.fxn769:pix:1.4.4] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:14:5-81
-	android:name
-		ADDED from [com.fxn769:pix:1.4.4] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:14:22-78
 activity#com.fxn.pix.Pix
 ADDED from [com.fxn769:pix:1.4.4] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\2312c6f6ad8f9a72c91f1b2d7ace5f07\pix-1.4.4\AndroidManifest.xml:19:9-22:52
 	android:screenOrientation

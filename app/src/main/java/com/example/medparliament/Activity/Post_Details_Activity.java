@@ -47,6 +47,7 @@ public class Post_Details_Activity extends AppCompatActivity implements onResult
   Segow_UI_Bold_Font title;
     FloatingActionButton  cmnts;
   ProgressDialog progressDialog;
+    MySharedPrefrence mySharedPrefrence;
     ArrayList<Reply_Model> arrayList;
     RecyclerView recyclerView;
     ThreadAdapter threadAdapter;

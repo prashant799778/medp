@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 
+import android.media.MediaPlayer;
 import android.media.session.MediaController;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,8 +37,12 @@ import com.example.medparliament.Widget.Segow_UI_Semi_Font;
             @Override
             public void onClick(View v) {
                 if(Comman.Check_Login(Splace.this)){
-                    startActivity(new Intent(Splace.this,DashBoard_Activity.class));}else {
                     startActivity(new Intent(Splace.this,DashBoard_Activity.class));
+                    finish();
+
+                }else {
+                    startActivity(new Intent(Splace.this,DashBoard_Activity.class));
+                    finish();
                 }
             }
         });
@@ -47,6 +52,14 @@ import com.example.medparliament.Widget.Segow_UI_Semi_Font;
          Uri u = Uri.parse(path);
          videoView.setVideoURI(u);
          videoView.start();
+
+         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+             @Override
+             public void onCompletion(MediaPlayer mp) {
+                 startActivity(new Intent(Splace.this,DashBoard_Activity.class));
+                 finish();
+             }
+         });
 
      }
  }

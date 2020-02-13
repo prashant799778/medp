@@ -4,12 +4,12 @@ public class Video_Model {
 
 
      String DateCreate;
-           String   UserCreate;
-            String id;
-           String imagePath;
-          String text;
-          String videoPath;
-          String videoId;
+           String   UserCreate="asd";
+            String id="1";
+           String imagePath="";
+          String text="";
+          String videoPath="";
+          String videoId="rzlfeocUVhI";
 
     public String getVideoId() {
         return videoId;

@@ -94,6 +94,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
     public void onResult(JSONObject jsonObject, Boolean status) {
         progressDialog.dismiss();
         ab.setText("Already Intrested");
+        ab.setBackgroundResource(R.color.hintColor);
 //        if (jsonObject != null && status) {
 //            try {
 //                JSONObject jo = jsonObject.getJSONArray("result").getJSONObject(0);
@@ -106,6 +107,9 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
 //                e.printStackTrace();
 //            }
 //        }
+
+
+
     }
 
 
@@ -127,6 +131,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
      ab.setVisibility(View.VISIBLE );
      if(eventModel.getLikedId()!=null &&  Integer.valueOf(eventModel.getLikedId())>0){
          ab.setText("Already Intrested");
+         ab.setBackgroundResource(R.color.hintColor);
       }else{
 
 

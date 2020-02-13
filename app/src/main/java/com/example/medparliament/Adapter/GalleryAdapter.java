@@ -3,6 +3,7 @@ package com.example.medparliament.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
+import android.media.Image;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.medparliament.Activity.Post_Details_Activity;
 import com.example.medparliament.Internet.Models.DashboardGalleryModel;
 import com.example.medparliament.Internet.Models.Post_Modle;
@@ -22,6 +24,8 @@ import com.example.medparliament.Utility.PrettyTimeClass;
 import com.example.medparliament.Widget.Segow_UI_Bold_Font;
 import com.example.medparliament.Widget.Segow_UI_Font;
 import com.example.medparliament.Widget.Segow_UI_Semi_Font;
+import com.stfalcon.frescoimageviewer.ImageViewer;
+import com.stfalcon.imageviewer.StfalconImageViewer;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,9 +51,23 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.Notifica
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBindViewHolder(@NonNull NotificationHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final NotificationHolder holder, int position) {
         final DashboardGalleryModel pm=list.get(position);
         Comman.setRectangleImage(context,holder.imageView,pm.getImagePath());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                new ImageViewer.Builder<DashboardGalleryModel>(context, list)
+                        .setFormatter(new ImageViewer.Formatter<DashboardGalleryModel>() {
+                            @Override
+                            public String format(DashboardGalleryModel customImage) {
+                                return customImage.getImagePath();
+                            }
+                        })
+                        .show();
+            }
+        });
 
 
     }

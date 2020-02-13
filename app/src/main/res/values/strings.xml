@@ -12,7 +12,7 @@
     <string name="Forgot_password">Forgot password ?</string>
     <string name="nopost">No post yet !!</string>
     <string name="nothread">No Thread yet !!</string>
-    <string name="Know_Med">About MedParliament</string>
+    <string name="Know_Med">Login / Sign Up</string>
     <string name="Enter_Med">Enter MedParliament</string>
     <string name="From">From</string>
     <string name="TO">To</string>
@@ -71,7 +71,8 @@ want to sign up as</string>
     <string name="Others">Others</string>
     <string name="Save">Save</string>
     <string name="Latest_News">Market Insight</string>
-    <string name="Latest_Video">Promising Initiatives</string>
+    <string name="Latest_Video">MedAchievers.TV</string>
+    <string name="promissing_initiative">Promising Initiatives</string>
     <string name="Define_in_200_words">Define in 200 words</string>
     <string name="Annoucements">Annoucements</string>
     <string name="Organisation">Organisation</string>
@@ -86,7 +87,7 @@ want to sign up as</string>
 
     <string name="institute">Hospital/Health institute where practising</string>
     <string name="hos_add">Address of the hospital</string>
-    <string name="veiw">View more>>></string>
+    <string name="veiw">View more ></string>
     <string name="Event">Events</string>
     <string name="Read">Read more...</string>
     <string name="Gallery">Gallery</string>
@@ -146,4 +147,10 @@ your password</string>
     ///////////////////////////////////////////////////////////
     <color name="done">#a2834d</color>
     <color name="text2">#d3d3d2</color>
+
+    ////instagram
+    <string name="client_id">your_client_id</string>
+    <string name="callback_url">https://instagram.com/</string>
+    <string name="base_url">https://api.instagram.com/</string>
+
 </resources>

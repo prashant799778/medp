@@ -1,71 +1,70 @@
-
 package com.example.medparliament.Adapter;
 
+import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-        import android.content.Context;
-        import android.content.Intent;
-        import android.text.Html;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.ImageView;
-        import android.widget.TextView;
+import androidx.viewpager.widget.PagerAdapter;
 
-        import com.asksira.loopingviewpager.LoopingPagerAdapter;
-        import com.example.medparliament.Activity.NewsDetails_Activity;
-        import com.example.medparliament.Internet.Models.DashboardGalleryModel;
-        import com.example.medparliament.Internet.Models.Dashboard_News_Model;
-        import com.example.medparliament.R;
-        import com.example.medparliament.Utility.Comman;
-        import com.example.medparliament.Utility.PrettyTimeClass;
-        import com.example.medparliament.Widget.Open_Sans_Regular_Font;
-        import com.example.medparliament.Widget.Segow_UI_Semi_Font;
-        import com.stfalcon.frescoimageviewer.ImageViewer;
+import com.example.medparliament.Internet.Models.DashboardGalleryModel;
+import com.example.medparliament.R;
+import com.example.medparliament.Utility.Comman;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
-public class Dashboard_gallery_adapter_new  extends LoopingPagerAdapter<DashboardGalleryModel> {
+public class Dashboard_gallery_adapter_new  extends PagerAdapter {
 
-    public Dashboard_gallery_adapter_new (Context context, ArrayList<DashboardGalleryModel> itemList, boolean isInfinite) {
-        super(context, itemList, isInfinite);
+    private Context context;
+    ArrayList<DashboardGalleryModel> itemList;
+    public Dashboard_gallery_adapter_new(Context context, ArrayList<DashboardGalleryModel> itemList,boolean flag) {
+        this.context = context;
+        this.itemList=itemList;
     }
 
-    //This method will be triggered if the item View has not been inflated before.
     @Override
-    protected View inflateView(int viewType, ViewGroup container, int listPosition) {
-        return LayoutInflater.from(context).inflate(R.layout.gallery_layout, container, false);
+    public Object instantiateItem(ViewGroup collection, int position) {
+
+        Log.d("Test Gallery","Test Gallery"+itemList.size());
+        final DashboardGalleryModel pm = itemList.get(position);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        ViewGroup convertView = (ViewGroup) inflater.inflate(R.layout.gallery_layout, collection, false);
+
+        ImageView imageView;
+
+        imageView=convertView.findViewById(R.id.main_img);
+        Comman.setRectangleImage(context,imageView,pm.getImagePath());
+        collection.addView(convertView);
+        return convertView;
     }
 
-    //Bind your data with your item View here.
-    //Below is just an example in the demo app.
-    //You can assume convertView will not be null here.
-    //You may also consider using a ViewHolder pattern.
     @Override
-    protected void bindView(View convertView, final int listPosition, int viewType) {
-
-        final String[] st=new String[itemList.size()];
-
-        if(convertView!=null) {
-
-            ImageView imageView;
-
-            imageView=convertView.findViewById(R.id.main_img);
-
-            final DashboardGalleryModel pm= itemList.get(listPosition);
-            Comman.setRectangleImage(context,imageView,pm.getImagePath());
-
-
-            st[listPosition]=pm.getImagePath();
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    new ImageViewer.Builder(context,st)
-//                            .setStartPosition(listPosition)
-//                            .show();
-                }
-            });
-
-
-        }
+    public void destroyItem(ViewGroup collection, int position, Object view) {
+        collection.removeView((View) view);
     }
+
+    @Override
+    public int getCount() {
+        return itemList.size();
+    }
+
+    @Override
+    public boolean isViewFromObject(View view, Object object) {
+        return view == object;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        final DashboardGalleryModel pm = itemList.get(position);
+        return "";
+    }
+
+    public void updateList(ArrayList<DashboardGalleryModel> itemList){
+        Log.d("gallery","gallery"+itemList.size());
+        this.itemList=itemList;
+        super.notifyDataSetChanged();
+    }
+
 }

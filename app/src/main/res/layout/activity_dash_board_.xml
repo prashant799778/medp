@@ -19,7 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -28,7 +27,6 @@
             android:orientation="vertical"
             android:visibility="gone">
             <ImageView
-
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:src="@drawable/nodata">
@@ -45,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
-
+   android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:id="@+id/top1"
             android:layout_height="match_parent">
@@ -64,49 +62,27 @@
                 android:weightSum="2"
                 android:orientation="vertical"
                 android:id="@+id/about"
-                android:layout_marginHorizontal="13dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="40dp"
-                    android:src="@drawable/ic_info"
-                    android:scaleType="centerCrop"
-                    android:padding="10dp"
-                    android:id="@+id/img"
-                    android:layout_centerVertical="true"
-                    android:layout_height="match_parent">
-                </ImageView>
+<!--                <ImageView-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:src="@drawable/ic_info"-->
+<!--                    android:scaleType="centerCrop"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:id="@+id/img"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_height="match_parent">-->
+<!--                </ImageView>-->
                 <androidx.appcompat.widget.AppCompatButton
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/fieldHeight"
                     android:text="@string/Know_Med"
                     android:id="@+id/login_signup"
-                    android:layout_toRightOf="@id/img"
                     android:background="@color/transparent"
                     android:textColor="@color/white"
                     android:textAllCaps="false">
                 </androidx.appcompat.widget.AppCompatButton>
-<!--                <androidx.appcompat.widget.AppCompatButton-->
-<!--                    android:layout_weight="1"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="@dimen/fieldHeight"-->
-<!--                    android:text="@string/Enter_Med"-->
-<!--                    android:background="@drawable/transparent"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textAllCaps="false">-->
-<!--                </androidx.appcompat.widget.AppCompatButton>-->
-<!--                <com.example.medparliament.Widget.Segow_UI_Bold_Font-->
-<!--                    android:paddingLeft="20dp"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="@string/Login_signup"-->
-<!--                    android:layout_centerHorizontal="true"-->
-<!--                    android:textSize="18dp"-->
-<!--                    android:layout_marginTop="5dp"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textStyle="bold">-->
-<!--                </com.example.medparliament.Widget.Segow_UI_Bold_Font>-->
             </RelativeLayout>
 
                 <RelativeLayout
@@ -116,6 +92,7 @@
                     android:weightSum="2"
                     android:orientation="vertical"
                     android:id="@+id/cmnt"
+                    android:gravity="center"
                     android:background="@color/white"
                     android:layout_marginHorizontal="20dp"
                     android:layout_height="wrap_content">
@@ -138,33 +115,12 @@
                         android:textColor="@color/textcolor"
                         android:textAllCaps="false">
                     </androidx.appcompat.widget.AppCompatButton>
-                    <!--                <androidx.appcompat.widget.AppCompatButton-->
-                    <!--                    android:layout_weight="1"-->
-                    <!--                    android:layout_marginTop="10dp"-->
-                    <!--                    android:layout_width="match_parent"-->
-                    <!--                    android:layout_height="@dimen/fieldHeight"-->
-                    <!--                    android:text="@string/Enter_Med"-->
-                    <!--                    android:background="@drawable/transparent"-->
-                    <!--                    android:textColor="@color/white"-->
-                    <!--                    android:textAllCaps="false">-->
-                    <!--                </androidx.appcompat.widget.AppCompatButton>-->
-                    <!--                <com.example.medparliament.Widget.Segow_UI_Bold_Font-->
-                    <!--                    android:paddingLeft="20dp"-->
-                    <!--                    android:layout_width="wrap_content"-->
-                    <!--                    android:layout_height="wrap_content"-->
-                    <!--                    android:text="@string/Login_signup"-->
-                    <!--                    android:layout_centerHorizontal="true"-->
-                    <!--                    android:textSize="18dp"-->
-                    <!--                    android:layout_marginTop="5dp"-->
-                    <!--                    android:textColor="@color/white"-->
-                    <!--                    android:textStyle="bold">-->
-                    <!--                </com.example.medparliament.Widget.Segow_UI_Bold_Font>-->
+
                 </RelativeLayout>
             <LinearLayout
-
                 android:layout_width="match_parent"
                 android:layout_below="@+id/toolbar"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/anouced"
                 android:visibility="gone"
                 android:orientation="vertical"
@@ -182,7 +138,22 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <com.asksira.loopingviewpager.LoopingViewPager
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_forward_ios"
+                        ></ImageView>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_back_ios"
+                        ></ImageView>
+                    <com.example.medparliament.Widget.CustomViewPager
                         android:id="@+id/viewpager_announced"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -193,14 +164,9 @@
                         android:clipToPadding="false"
                         app:viewpagerAspectRatio="1.78"
                         app:itemAspectRatio="1.33"/>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:visibility="gone"
-                        android:layout_width="match_parent"
-                        android:id="@+id/recycle_announced"
-                        android:layout_marginTop="10dp"
-                        android:layout_height="wrap_content">
-                    </androidx.recyclerview.widget.RecyclerView>
+
                         <ImageView
+
                             android:layout_width="50dp"
                             android:id="@+id/arrow"
                             android:visibility="gone"
@@ -216,7 +182,6 @@
                 android:layout_width="match_parent"
                 android:layout_below="@+id/cover"
                 android:id="@+id/news"
-
                 android:visibility="gone"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
@@ -239,7 +204,26 @@
                     android:layout_height="wrap_content">
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
                 </LinearLayout>
-                <com.asksira.loopingviewpager.LoopingViewPager
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_forward_ios"
+                        ></ImageView>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_back_ios"
+                        ></ImageView>
+                <com.example.medparliament.Widget.CustomViewPager
                     android:id="@+id/viewpager_news"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -250,13 +234,7 @@
                     android:clipToPadding="false"
                     app:viewpagerAspectRatio="1.78"
                     app:itemAspectRatio="1.33"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:id="@+id/recycle_news"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content">
-                </androidx.recyclerview.widget.RecyclerView>
+                </RelativeLayout>
                 <com.example.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
                     android:textColor="@color/textcolor"
@@ -264,9 +242,9 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:id="@+id/morenews"
-                    android:gravity="left"
+                    android:gravity="right"
                     android:layout_marginTop="5dp"
-                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
                     android:text="@string/veiw"
                     android:layout_height="wrap_content">
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
@@ -276,8 +254,8 @@
                 android:layout_width="match_parent"
                 android:layout_below="@+id/news"
                 android:id="@+id/video_layout"
-                android:visibility="gone"
                 android:layout_marginTop="20dp"
+                android:visibility="gone"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
                 <LinearLayout
@@ -311,31 +289,114 @@
 <!--                    </com.example.medparliament.Widget.Segow_UI_Semi_Font>-->
                 </LinearLayout>
 
-                <com.asksira.loopingviewpager.LoopingViewPager
-                    android:id="@+id/viewpager_video"
+
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+                 <ImageView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentRight="true"
+                     android:layout_centerVertical="true"
+                     android:src="@drawable/ic_arrow_forward_ios">
+
+                 </ImageView>
+                 <ImageView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentLeft="true"
+                     android:layout_centerVertical="true"
+                     android:src="@drawable/ic_arrow_back_ios">
+
+                 </ImageView>
+
+                    <com.example.medparliament.Widget.CustomViewPager
+                        android:id="@+id/viewpager_video"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:isInfinite="true"
+                        app:autoScroll="true"
+                        app:scrollInterval="5000"
+                        android:clipToPadding="false"
+                        app:viewpagerAspectRatio="1.78"
+                        app:itemAspectRatio="1.33"/>
+             </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/video_layout"
+                android:id="@+id/promissingInitiative"
+                android:visibility="gone"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:isInfinite="true"
-                    app:autoScroll="false"
-                    app:scrollInterval="5000"
-                    android:clipToPadding="false"
-                    app:viewpagerAspectRatio="1.78"
-                    app:itemAspectRatio="1.33"/>
-
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:id="@+id/recycle_video"
+                    android:weightSum="2"
                     android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                        android:layout_width="match_parent"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:paddingLeft="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="@string/promissing_initiative"
+                        android:layout_height="wrap_content">
+                    </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                </androidx.recyclerview.widget.RecyclerView>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_forward_ios"
+                        ></ImageView>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_back_ios"
+                        ></ImageView>
+                    <com.example.medparliament.Widget.CustomViewPager
+                        android:id="@+id/viewpager_promissing"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        app:isInfinite="true"
+                        app:autoScroll="true"
+                        app:scrollInterval="5000"
+                        android:clipToPadding="false"
+                        app:viewpagerAspectRatio="1.78"
+                        app:itemAspectRatio="1.33"/>
+                </RelativeLayout>
+                <!--<com.example.medparliament.Widget.Segow_UI_Semi_Font
+                    android:layout_width="match_parent"
+                    android:textColor="@color/textcolor"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:id="@+id/morenews"
+                    android:gravity="right"
+                    android:layout_marginTop="5dp"
+                    android:paddingRight="20dp"
+                    android:text="@string/veiw"
+                    android:layout_height="wrap_content">
+                </com.example.medparliament.Widget.Segow_UI_Semi_Font>-->
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_below="@+id/video_layout"
+                android:layout_below="@+id/promissingInitiative"
                 android:id="@+id/Event"
                 android:visibility="gone"
                 android:layout_marginTop="20dp"
@@ -351,33 +412,44 @@
                     android:layout_marginBottom="20dp"
                     android:layout_height="wrap_content">
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
-                <com.asksira.loopingviewpager.LoopingViewPager
-                    android:layout_marginHorizontal="20dp"
-                    android:id="@+id/viewpager_events"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:isInfinite="true"
-                    app:autoScroll="true"
-                    app:scrollInterval="5000"
-                    android:clipToPadding="false"
-                    app:viewpagerAspectRatio="1.78"
-                    app:itemAspectRatio="1.33"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:id="@+id/recycle_event"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content">
-                </androidx.recyclerview.widget.RecyclerView>
+
+                 <RelativeLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_forward_ios"
+                        ></ImageView>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_back_ios"
+                        ></ImageView>
+                    <com.example.medparliament.Widget.CustomViewPager
+                        android:id="@+id/viewpager_events"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        app:isInfinite="true"
+                        app:autoScroll="true"
+                        app:scrollInterval="5000"
+                        android:clipToPadding="false"
+                        app:viewpagerAspectRatio="1.78"
+                        app:itemAspectRatio="1.33"/>
+                 </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_below="@+id/Event"
                 android:id="@+id/gallery"
-
                 android:visibility="gone"
-                android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
@@ -391,24 +463,44 @@
                     android:layout_marginBottom="20dp"
                     android:layout_height="wrap_content">
                 </com.example.medparliament.Widget.Segow_UI_Semi_Font>
-                <com.asksira.loopingviewpager.LoopingViewPager
-                    android:id="@+id/viewpager_gallery"
+                <RelativeLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:isInfinite="true"
-                    app:autoScroll="false"
-                    app:scrollInterval="5000"
-                    android:layout_marginHorizontal="20dp"
-                    android:clipToPadding="false"
-                    app:viewpagerAspectRatio="1.78"
-                    app:itemAspectRatio="1.33"/>
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_arrow_forward_ios"
+                    ></ImageView>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_arrow_back_ios"
+                    ></ImageView>
                 <androidx.recyclerview.widget.RecyclerView
-                    android:visibility="gone"
+
                     android:layout_width="match_parent"
                     android:id="@+id/recycle_gallery"
                     android:layout_marginTop="10dp"
                     android:layout_height="wrap_content">
                 </androidx.recyclerview.widget.RecyclerView>
+                </RelativeLayout>
+                <com.example.medparliament.Widget.CustomViewPager
+                    android:id="@+id/viewpager_gallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:visibility="gone"
+                    app:isInfinite="true"
+                    app:autoScroll="true"
+                    app:scrollInterval="5000"
+                    android:clipToPadding="false"
+                    app:viewpagerAspectRatio="1.78"
+                    app:itemAspectRatio="1.33"/>
+
             </LinearLayout>
 
         </RelativeLayout>
