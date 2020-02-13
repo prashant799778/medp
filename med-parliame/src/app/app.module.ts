@@ -58,6 +58,8 @@ import { CreateInfoComponent } from './info/create-info/create-info.component';
 import { CreateAboutComponent } from './about/create-about/create-about.component';
 import { EditAboutComponent } from './about/edit-about/edit-about.component';
 import { UserDecisionComponent } from './user/user-decision/user-decision.component';
+import { CreatePromisingInitiativeComponent } from './promising/create-promising-initiative/create-promising-initiative.component';
+import { EditPromisingInitiativeComponent } from './promising/edit-promising-initiative/edit-promising-initiative.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +112,9 @@ import { UserDecisionComponent } from './user/user-decision/user-decision.compon
     CreateInfoComponent,
     CreateAboutComponent,
     EditAboutComponent,
-    UserDecisionComponent
+    UserDecisionComponent,
+    CreatePromisingInitiativeComponent,
+    EditPromisingInitiativeComponent
   ],
   imports: [
     BrowserModule,
