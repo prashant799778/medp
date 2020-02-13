@@ -4072,7 +4072,7 @@ def landingPageDashboard():
                     userTypeId =inputdata["userTypeId"]
                     WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
                     column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
-                    data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"",startlimit,endlimit,orderby)
+                    data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"","0","10",orderby)
                     print(data1,"")
                     
                     if data1["result"]=="":
@@ -4087,14 +4087,14 @@ def landingPageDashboard():
                     endlimit =str(inputdata["endlimit"])
         
         column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",endlimit,orderby)
         if data["result"]=="":
             data["result"]=[]
 
         
 
         column2 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
-        data2 = databasefile.SelectQueryOrderby("gallery",column2,"","",startlimit,endlimit,orderby)
+        data2 = databasefile.SelectQueryOrderby("gallery",column2,"","","0","10",orderby)
         
         if data2["result"]=="":
             data2["result"]=[]
@@ -4109,7 +4109,7 @@ def landingPageDashboard():
 
         column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
         WhereCondition2= " and Status<2"
-        data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"",startlimit,endlimit)
+        data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"","0","10")
         print(data4)
 
         if data4["result"]=="":
