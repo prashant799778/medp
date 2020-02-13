@@ -4471,7 +4471,8 @@ def galleryImages():
 @app.route('/galleryImages1', methods=['POST'])
 def galleryImages1():
     try:
-        inputdata = request.form.get('data')    
+        inputdata = request.form.get('data') 
+
         inputdata = json.loads(inputdata) 
         startlimit,endlimit="",""
         keyarr = ["userId","flag"]
@@ -4522,6 +4523,11 @@ def galleryImages1():
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
+                        inputdata1 = request.form.get('postImage')
+                        if  inputdata1 !=None: 
+                            index=re.search("/eventImages", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
                         whereCondition=" and  id='" + str(Id) + "'"
                         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
                         data=databasefile.UpdateQuery("gallery",column,whereCondition)
