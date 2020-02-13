@@ -4028,7 +4028,7 @@ def getNews():
                     WhereCondition=WhereCondition+" and n.id='"+str(Id)+"'"
         orderby=" n.id "
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
-        column = "n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("news n,userMaster um",column,WhereCondition,"","0","10",orderby)
         if data != "0":
             return data
@@ -4650,6 +4650,9 @@ def parliamentEvent():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
+
+
+#update parliament event
 @app.route('/parliamentEvent1', methods=['POST'])
 def parliamentEvent1():
 
@@ -4686,7 +4689,8 @@ def parliamentEvent1():
                 if inputdata['eventDate'] != "":
                     eventDate =inputdata["eventDate"]
             if 'postImage' in request.files:      
-                    file = request.files.get('postImage')        
+                    file = request.files.get('postImage') 
+                    print(file)       
                     filename = file.filename or ''                 
                     filename = filename.replace("'","") 
 
