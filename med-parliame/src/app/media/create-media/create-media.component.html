@@ -72,14 +72,14 @@
                             
                         <br>
 
-                        <button class="btn btn-success pull-right" (click)="imageCLik()">Video Upload</button>
-                    <button class="btn btn-success pull-right"(click)="imageCLik1()">Image Upload</button>
+                        <button class="btn btn-success pull-right buttonsss " (click)="imageCLik()">Video Upload</button>
+                    <button class="btn btn-success pull-right buttonsss "(click)="imageCLik1()">Image Upload</button>
                     <br>
                     <ng-container *ngIf="!imageClick">
                         <label for="newsTitle"> Video Link</label>
                             <input type="text" class="form-control" formControlName="videoLink">
                         </ng-container>
-                        <br>
+                        
                         <ng-container *ngIf="imageClick">
                                 <label for="banner">Image</label>
                                 <input id="file12" type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
@@ -91,7 +91,7 @@
                            </div>
                         </ng-container>
                        
-                        <br>
+                        
                         <!-- <label for="summary">Gallery Shots</label>
                             <textarea type="text" class="form-control" formControlName="summary" placeholder="Enter Gallery Summary..." rows="4"></textarea>
                         <br>
