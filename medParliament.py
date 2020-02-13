@@ -5180,7 +5180,7 @@ def signUpVideo():
             flag=inputdata['flag']
             if "text" in inputdata:
                 if inputdata['text'] != "":
-                    text =inputdata["text"]
+                    text =commonfile.EscapeSpecialChar(inputdata["text"])
             
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
