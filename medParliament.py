@@ -4690,7 +4690,7 @@ def parliamentEvent1():
         
             if "eventSummary" in inputdata:
                 if inputdata['eventSummary'] != "":
-                    eventSummary =inputdata["eventSummary"]
+                    eventSummary =commonfile.EscapeSpecialChar(inputdata["eventSummary"])
             
             if "eventLocation" in inputdata:
                 if inputdata['eventLocation'] != "":
