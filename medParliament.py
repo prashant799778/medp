@@ -4527,6 +4527,7 @@ def galleryImages1():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('postImage')
+                        print(inputdata1,"==========================================")
                         if  inputdata1 !=None: 
                             index=re.search("/eventImages", inputdata1).start()
                             ImagePath=""
