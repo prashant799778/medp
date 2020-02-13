@@ -3905,9 +3905,9 @@ def changeProfilePic():
 
 # create news by admin
 
-
-@app.route('/news', methods=['POST'])
-def news1():
+#market Insights (copy of news)
+@app.route('/promissingIntiatives', methods=['POST'])
+def promissingIntiatives():
 
     try:
        
@@ -4010,8 +4010,8 @@ def news1():
 
 
 
-@app.route('/getNews', methods=['POST'])
-def getNews():
+@app.route('/getPromissingIntiatives', methods=['POST'])
+def getPromissingIntiatives():
 
     try:
         WhereCondition,startlimit,endlimit="","",""
@@ -4123,11 +4123,14 @@ def landingPageDashboard():
                     print(y,'++++++')
                     m['videoId']=y[1]
             
-
+        column5 = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data5 = databasefile.SelectQueryOrderby("promissingIntiatives",column5,WhereCondition,"","0","10",orderby)
+        if data5["result"]=="":
+            data5["result"]=[]
 
         if data != "0":
             
-            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"]}
+            return {"message":"","status":"true","promissingIntiatives":data5["result"],"news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"]}
             
         else:
             return commonfile.Errormessage()
