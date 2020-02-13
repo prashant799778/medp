@@ -185,7 +185,7 @@ export class CreateNewsComponent implements OnInit {
       if(data['status'] == 'true'){
         this.frmNews.reset();
         jQuery('#addAdmin-news7').modal('show')
-        this.messageShow = 'Updated'
+        this.messageShow = 'Inserted'
         setTimeout(()=>{
           jQuery('#addAdmin-news7').modal('hide')
         },2000)

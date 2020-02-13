@@ -99,7 +99,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 		if(this.local.get('userData1')[0].userTypeId == 12){
 			console.log(this.locations)
 			console.log(this.secondLocation)
-			if(this.secondLocation != 'vent/' && this.secondLocation != 'lery/' && this.secondLocation != 'ment/'  && this.secondLocation != 'info/'  && this.secondLocation != 'edia/' && this.secondLocation != 'bout/'){
+			if(this.secondLocation != 'vent/' && this.secondLocation != 'lery/' && this.secondLocation != 'ment/'  && this.secondLocation != 'info/'  && this.secondLocation != 'edia/' && this.secondLocation != 'bout/' && this.secondLocation != 'sing/'){
 				console.log("changed routing")
 				this.router.navigateByUrl('/news/editNews')
 				setTimeout(()=>{

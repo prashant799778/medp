@@ -208,7 +208,7 @@ export class CreateInfoComponent implements OnInit {
       if(data['status'] == 'true'){
         this.frmNews.reset();
         jQuery('#addAdmin-news8').modal('show')
-        this.messageShow = 'Updated'
+        this.messageShow = 'Inserted'
         setTimeout(()=>{
           jQuery('#addAdmin-news8').modal('hide')
         },2000)

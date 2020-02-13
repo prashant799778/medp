@@ -209,7 +209,7 @@ export class CreateMediaComponent implements OnInit {
       if(data['status'] == 'true'){
         this.frmNews.reset();
         jQuery('#addAdmin-news6').modal('show')
-        this.messageShow = 'Updated'
+        this.messageShow = 'Inserted'
         setTimeout(()=>{
           jQuery('#addAdmin-news6').modal('hide')
         },2000)
