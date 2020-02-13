@@ -4169,7 +4169,7 @@ def announcements():
         if msg == "1":
             if "title" in inputdata:
                 if inputdata['title'] != "":
-                    title =inputdata["title"]
+                    title =commonfile.EscapeSpecialChar(inputdata["title"])
                     column=" title "
                     values=" '"+ str(title) +"'"
 
@@ -4182,7 +4182,7 @@ def announcements():
 
             if "summary" in inputdata:
                 if inputdata['summary'] != "":
-                    summary =inputdata["summary"]
+                    summary =commonfile.EscapeSpecialChar(inputdata["summary"])
                     column=column+", summary"
                     values=values+ ",'"+str(summary)+"'"
         
@@ -5199,7 +5199,7 @@ def signUpVideo():
             flag=inputdata['flag']
             if "text" in inputdata:
                 if inputdata['text'] != "":
-                    text =inputdata["text"]
+                    text =commonfile.EscapeSpecialChar(inputdata["text"])
             
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
@@ -5467,7 +5467,7 @@ def aboutUs():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":      
-            description = inputdata["description"]
+            description = commonfile.EscapeSpecialChar(inputdata["description"])
             flag = inputdata["flag"]
             print('====',flag)
         
