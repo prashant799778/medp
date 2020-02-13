@@ -38,6 +38,7 @@ def userId():
         column='userTypeId'
         whereCondition=" and userId='"+ str(userId)  +"' "
         output=databasefile.SelectQuery('userMaster',column,whereCondition,"",startlimit,endlimit)
+        print(output,"11111111111111111111")
         if output['result']== "":
             y=output['result'][0]
             if y['userTypeId'] ==7:
