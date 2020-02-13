@@ -4087,7 +4087,7 @@ def landingPageDashboard():
                     endlimit =str(inputdata["endlimit"])
         
         column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",endlimit,orderby)
+        data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",orderby)
         if data["result"]=="":
             data["result"]=[]
 
