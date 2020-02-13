@@ -47,6 +47,11 @@ def likeAlreadyExistMsg():
     return data
 
 
+def EventInterstAlreadyExistMsg():
+    data = {"status":"false","message":"You have  Already Interested Event","result":""}
+    return data
+
+
 
 def CountryAlreadyExistMsg():
     data = {"status":"false","message":"Country Already Exists","result":""}
@@ -70,6 +75,10 @@ def EmailMobileAlreadyExistMsg():
 
 def postTitlepostDescriptionAlreadyExistMsg():
     data = {"status":"false","message":"postTitle Or postDescription Already Exists","result":""}
+    return data      
+
+def aboutUsDescriptionAlreadyExistMsg():
+    data = {"status":"false","message":"aboutUs Description Already Exists","result":""}
     return data      
 
 def MobileNoNotFound():

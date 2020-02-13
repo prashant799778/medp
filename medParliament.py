@@ -49,6 +49,26 @@ def announcementsImage(image_name):
     except FileNotFoundError:
         abort(404)
 
+
+
+@app.route("/promisingEvent/<image_name>")
+def promisingEvent1(image_name):
+    try:
+        return send_from_directory('promisingEvent', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
+
+
+
+@app.route("/signUpImage/<image_name>")
+def signUpVideo1(image_name):
+    try:
+        return send_from_directory('signUpImage', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
+
 @app.route("/newsimages/<image_name>")
 def newsimages(image_name):
     try:
@@ -84,7 +104,7 @@ def profilePic(image_name):
         return send_from_directory('profilePic', filename=image_name, as_attachment=False)
     except FileNotFoundError:
         abort(404)
-@app.route('/SignUp', methods=['POST'])
+@app.route('/SignUp1', methods=['POST'])
 def SignUp():
 
     try: 
@@ -197,20 +217,11 @@ def SignUp():
 
                 if 'companyAddress' in inputdata:                    
                     companyAddress = inputdata['companyAddress']
-
-
-
-
-
-
-
-
+                
+                if 'multiUserTypeId' in inputdata:
+                    multiUserTypeId = inputdata['multiUserTypeId']
 
                 print(interestId)
-
-
-
-               
 
                 columns = " status,userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, countryId, city, deviceid, imeiNo "          
                 values = " '" + str(1) + "','"+  str(UserId) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Email) + "','" + str(userTypeId) + "','" + str(Gender) + "', "            
@@ -221,13 +232,21 @@ def SignUp():
                 data = databasefile.InsertQuery("userMaster",columns,values) 
 
                 if data != "0":
-                    column = 'userId,userName,userTypeId,profilePic'
+                    column = 'userId,userName,userTypeId,profilePic,email'
                     
                     data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)
-                    
                     if data["status"]!="false":
                         y=data["result"][0]
                         if (y["userTypeId"] == 5):
+                            
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+
                             columns="userId,aboutProfile,organization,designation"
                             values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
                             data1=databasefile.InsertQuery("policyMakerMaster",columns,values)
@@ -236,6 +255,15 @@ def SignUp():
 
 
                         if (y["userTypeId"] == 6):
+                            
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+
                             columns="userId,areaOfActivity,profileCategoryId,designation,companyName"
                             values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation)+ "','" + str(CompanyName) + "'"
                             data2=databasefile.InsertQuery("enterprenuerMaster",columns,values)
@@ -247,6 +275,24 @@ def SignUp():
 
 
                         if (y["userTypeId"]== 7):
+
+                            Y=ConstantData.getwebBaseurl()
+                            Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
+                            message = Mail(
+                                            from_email = 'medParliament@gmail.com',
+                                            to_emails = str(y["email"]),
+                                            subject = "Account Verification",
+                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+                            print(response.status_code,'------------------',response.body,"============",response.headers)
+                            
+                            print(message)
+
+                            # column="status='0'"
+                            # dat=databasefile.UpdateQuery('userMaster',column,WhereCondition)
+
+
                             columns="userId,address,qualificationId,batchOfQualification,institutionName,universityAddress,universityId"
                             values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "'"
                             data3 = databasefile.InsertQuery("studentMaster",columns,values) 
@@ -256,6 +302,15 @@ def SignUp():
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
                         
                         if (y["userTypeId"]== 8):
+
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+                            
                             columns="userId,qualificationId,designation,areaOfExpertise,hospital,hospitalAddress"
                             values=" '" + str(y["userId"])+ "','" + str(qualification) + "','" + str(designation) + "','" + str(areaOfExpertise) + "','" + str(hospital)+ "','" + str(hospitalAddress) + "'"
                             data3= databasefile.InsertQuery("doctorMaster",columns,values)
@@ -265,15 +320,32 @@ def SignUp():
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
                         
                         if (y["userTypeId"]== 9):
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
                             columns="userId,designation,occupation,companyName,companyAddress,address"
                             values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
-                            data6=databasefile.InsertQuery("professionalMaster",columns,values)
+                            data6=databasefile.InsertQuery("professionalMaster",column,values)
                             for i in interestId:
                                 column="userId,userTypeId,interestId"
-                                values=" '" + str(y["userId"]) + "','" + str('10') + "','" + str(i) + "'"
+                                values=" '" + str(y["userId"]) + "','" + str('9') + "','" + str(i) + "'"
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
 
-
+                        
+                        if (y["userTypeId"]== 13):
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+                            
+                               
 
                              
 
@@ -282,7 +354,8 @@ def SignUp():
                         return commonfile.Errormessage()
                     if data["result"][0]["profilePic"]==None:
                         data["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
-                    
+
+                    data['message']='email has been sent successfully on your email'
                     return data
                 else:
                     return commonfile.Errormessage()
@@ -293,9 +366,10 @@ def SignUp():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
-# For testing        
 
-@app.route('/SignUp1', methods=['POST'])
+# For testing        
+ 
+@app.route('/SignUp', methods=['POST'])
 def SignUp1():
 
     try: 
@@ -533,8 +607,18 @@ def SignUp1():
                             data6=databasefile.InsertQuery("professionalMaster",column,values)
                             for i in interestId:
                                 column="userId,userTypeId,interestId"
-                                values=" '" + str(y["userId"]) + "','" + str('10') + "','" + str(i) + "'"
+                                values=" '" + str(y["userId"]) + "','" + str('9') + "','" + str(i) + "'"
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
+
+                        if (y["userTypeId"]== 13):
+                            message = Mail(
+                                from_email = 'medParliament@gmail.com',
+                                to_emails = str(y['email']),
+                                subject = "Welcome to medParliament",
+                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                            sg = SendGridAPIClient('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')
+                            response = sg.send(message)
+                            
 
 
 
@@ -1295,6 +1379,43 @@ def allpolicyMakers():
         print("Exception---->" + str(e))    
         output =  {"status":"false","message":"something went wrong","result":""}
         return output
+    
+
+@app.route('/testallpolicyMakers', methods=['GET'])
+def testallpolicyMakers():
+    try:
+        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
+        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId  and um.countryId=cm.id"
+
+        
+        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+
+        if (data!=0):
+            for i in data["result"]:
+                print(i,'iiiiiiiiiiiiiiiiii')
+                userId=i["userId"]
+                column="count(*) as count"
+                whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
+                data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                print(data1,"")
+                count=data1["count"]
+                print(i["noOfPosts"],'iiii11111111111111111111111')
+                i["noOfPosts"]=count
+                print( i["noOfPosts"], '====no of posts')
+
+
+            Data = {"status":"true","message":"","result":data["result"]}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output =  {"status":"false","message":"something went wrong","result":""}
+        return output
 
 
 
@@ -1305,7 +1426,7 @@ def allDoctorMaster():
        
         if msg =="1":
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
-            column=column+" dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
+            column=column+" dm.qualificationId as qualificationName,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
             startlimit,endlimit="",""
             WhereCondition=" and um.usertypeId='8' and dm.userId=um.userId  "
 
@@ -1384,7 +1505,40 @@ def allprofessionalsMaster():
     except Exception as e :
         print("Exception---->" + str(e))    
         output =  {"status":"false","message":"something went wrong","result":""}
-        return output                            
+        return output
+
+
+@app.route('/allDecisionMaker', methods=['POST'])
+def allDecisionMaker():
+    try:
+        msg="1"
+        if msg =="1":
+            column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
+            column=column+"um.countryId,cm.countryName"
+            startlimit,endlimit="",""
+            WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId  "
+
+            
+            data = databasefile.SelectQueryOrderby("userMaster as um,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+
+          
+            
+            
+
+
+            if (data!=0):
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output =  {"status":"false","message":"something went wrong","result":""}
+        return output                                       
 
 
 @app.route('/enterprenuerMasterPannel', methods=['GET'])
@@ -1546,7 +1700,7 @@ def studentMasterPannel():
 def allstudents():
     try:
         column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
-        column=column+" pm.address,pm.qualificationId,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId,um.status "
+        column=column+" pm.address,pm.qualificationId as qualificationName,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId as universityName,um.status "
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId  "
         
@@ -2176,7 +2330,7 @@ def allPosts1():
             
             userTypeId=inputdata["userTypeId"]
             
-            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'" +whereCondition
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
             
@@ -3088,6 +3242,66 @@ def verifyPost12():
         return output
 
 
+
+@app.route('/eventInterest', methods=['POST'])
+def verifyPost123():
+    try:
+        print("nnnnnnnnnnnn",request.get_data(),"===================",type(request.get_data()))
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        print("mmmmmmmmmmm")
+        startlimit,endlimit="",""
+        print("111111111111111111111111")
+        keyarr = ['userId','eventId','userTypeId']
+        commonfile.writeLog("verifyPost",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print("22222222222222222222222")
+        if msg == "1":
+            approvedUserId = inputdata["userId"]
+            postId = inputdata["eventId"]
+            userTypeId = int(inputdata["userTypeId"])
+
+            WhereCondition = " and eventId = '" + str(postId) + "' and userId = '" + str(approvedUserId) + "'"
+            count = databasefile.SelectCountQuery("eventInterest",WhereCondition,"")
+            
+            if int(count) > 0:
+                print('F')         
+                return commonfile.EventInterstAlreadyExistMsg()
+            else:
+                print("333333333333333333333")
+             
+               
+                column = "userId,eventId,userTypeId,UserCreate"                
+                values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(approvedUserId) + "'"
+                data = databasefile.InsertQuery("eventInterest",column,values)
+                if data!="0":
+                    column="*"
+                    whereCondition=" and eventId ='" + str(postId) + "'"
+                    data1=databasefile.SelectQuery("eventInterest",column,whereCondition,"",startlimit,endlimit)
+                    if (data1["status"]!="false"):
+                        y=data1["result"][0]
+                        for i in data1['result']:
+                            i['likeStatus']=1
+                        y2=i['likeStatus']
+
+                      
+                       
+                        data1={"status":"true","result":y2,"message":""}
+                        return data1
+                    else:
+                        data1={"status":"true","result":"","message":"No Data Found"}
+                        return data1
+
+                else:
+                    return commonfile.Errormessage()
+        else:
+            return msg 
+
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
 @app.route('/verifyPost', methods=['POST'])
 def verifyPost():
     try:
@@ -3302,12 +3516,14 @@ def generateOtp():
             for i in range(4):
                 OTP += digits[math.floor(random.random() * 10)]
             message = Mail(
-                from_email = 'abcd@gmail.com',
+                from_email = 'medParliament@gmail.com',
                 to_emails = str(email),
                 subject = "Otp for Reset Password",
-                html_content = '<strong> Otp To Reset Your Password is:' + str(OTP) + ' </strong> <br> .<br> Thanks,medParliament Team')
+                html_content = '<strong> Otp To Reset Your Password is:' + str(OTP) + ' </strong> <br> <br> Thanks<br> <br> MedParliament Team')
             sg = SendGridAPIClient('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')
             response = sg.send(message)
+           
+
 
           
             column="otp='" + str(OTP)+ "'"
@@ -3316,11 +3532,11 @@ def generateOtp():
             columns='otp'
             
             data=databasefile.SelectQuery("userMaster",columns,whereCondition,"",startlimit,endlimit)
-            if output!='0':
+            if data['result']!="":
                 Data = {"status":"true","message":"","result":data["result"]}                  
                 return Data
             else:
-                return commonfile.Errormessage()
+                return {"status":"false","message":"Invalid Email","result":""}  
         else:
             return msg         
  
@@ -3376,7 +3592,7 @@ def verifyOtp():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        keyarr = ['ostp','email']
+        keyarr = ['otp','email']
         print(inputdata,"B")
         commonfile.writeLog("verifyOtp",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
@@ -3391,7 +3607,7 @@ def verifyOtp():
                 Data = {"status":"true","message":"","result":data1["result"]}                  
                 return Data
             else:
-                data = {"status":"false","message":"No Data Found","result":""}
+                data = {"status":"false","message":"Invalid OTP","result":""}
                 return data      
         else:
             return msg         
@@ -3487,7 +3703,7 @@ def userProfile():
                     return commonfile.Errormessage()
             if userTypeId == 7:
                 column="um.userName,um.email,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
-                column=column+"sm.address,"
+                column=column+"sm.address,sm.qualificationId as qualificationName,sm.universityId as universityName,"
                 column=column+" sm.batchOfQualification, sm.institutionName, sm.universityAddress"
                 WhereCondition="   and um.userId=sm.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,studentMaster sm",column,WhereCondition,"",startlimit,endlimit,"")
@@ -3523,7 +3739,7 @@ def userProfile():
                     return commonfile.Errormessage()
             if userTypeId == 8:
                 column="um.userName,um.email,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
-                column=column+"dm.userId,dm.qualificationId,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
+                column=column+"dm.userId,dm.qualificationId as qualificationName,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
                
                 WhereCondition="    and um.userId=dm.userId and um.userId='" + str(userId) + "'"
                 data1 = databasefile.SelectQueryOrderby("userMaster um,doctorMaster dm",column,WhereCondition,"",startlimit,endlimit,"")
@@ -3588,6 +3804,23 @@ def userProfile():
                 else:
                     data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
                 data2={"userProfile":data1["result"],"userPost":data4["result"]}
+                data3={"status":"true","message":"","result":data2}
+                if  data3:                     
+                    return data3
+                else:
+                    return commonfile.Errormessage()
+            if userTypeId==13:
+                column="um.mobileNo as mobileNo, um.userName as userName, um.userTypeId,um.password as password, um.profilePic as profilePic, um.userId,um.gender,um.email,um.status,"
+                column=column+"um.countryId,cm.countryName"
+                startlimit,endlimit="",""
+                WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId "
+                data1 = databasefile.SelectQueryOrderby("userMaster um,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
+                print(data1)
+                if data1["result"][0]["profilePic"]==None:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+                else:
+                    data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(data1["result"][0]["profilePic"])
+                data2={"userProfile":data1["result"],"userPost":""}
                 data3={"status":"true","message":"","result":data2}
                 if  data3:                     
                     return data3
@@ -3795,7 +4028,7 @@ def getNews():
                     WhereCondition=WhereCondition+" and n.id='"+str(Id)+"'"
         orderby=" n.id "
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
-        column = "n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+        column = "n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("news n,userMaster um",column,WhereCondition,"","0","10",orderby)
         if data != "0":
             return data
@@ -3857,16 +4090,35 @@ def landingPageDashboard():
         if data2["result"]=="":
             data2["result"]=[]
 
-
-        column3 = "id,Status,UserCreate,eventTitle ,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data3 = databasefile.SelectQueryOrderby("parliamentEvent ",column3,WhereCondition,"",startlimit,endlimit,orderby)
+        print("1111----")
+        WhereCondition1 = " on pm.eventId = ev.id " 
+        column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary, ifnull(pm.id,0) as likedId,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev left outer join eventInterest pm",column3,WhereCondition1,"",0,0,orderby)
         
         if data3["result"]=="":
             data3["result"]=[]
 
+        column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
+        WhereCondition2= " and Status<2"
+        data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"",startlimit,endlimit)
+        print(data4)
+
+        if data4["result"]=="":
+            data4["result"]=[]
+
+        for m in data4['result']:
+                if m['imagePath']!='':
+                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+                if  m['videoPath']!="":
+                    y=m['videoPath'].split('=')
+                    print(y,'++++++')
+                    m['videoId']=y[1]
+            
+
+
         if data != "0":
             
-            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"]}
+            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"]}
             
         else:
             return commonfile.Errormessage()
@@ -4105,7 +4357,7 @@ def getAnnouncement():
                 if inputdata['endlimit'] != "":
                     endlimit =str(inputdata["endlimit"])
         
-        column = "id,Status,userTypeId,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,UserCreate  "
+        column = "id,Status,userTypeId,title,summary,videoLink,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,UserCreate  "
         data = databasefile.SelectQuery("announcement",column,WhereCondition,"",startlimit,endlimit)
         for i in data["result"]:
             if i["imagePath"]!="":
@@ -4310,7 +4562,7 @@ def getGalleryImages():
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
         
-        column = "id,Status,date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,UserCreate  "
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,UserCreate  "
         data = databasefile.SelectQuery(" gallery ",column,WhereCondition,"",startlimit,endlimit)
         
         if data != "0":
@@ -4515,10 +4767,26 @@ def getParliamentEvent():
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"] 
+                    WhereCondition=WhereCondition+" and userTypeId='"+str(userTypeId)+"'"
         
-        column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(CONVERT_TZ(eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
-        if data != "0":
+        if data['result'] != "":
+            for i in data['result']:
+                y=i['id']
+                column="userId"
+                whereCondition=" and eventId='"+str(y)+"'"
+                dat=databasefile.SelectQuery('eventInterest',column,whereCondition,"",startlimit,endlimit)
+                print(dat,'++++++++++++++++++++++++++++')
+                if dat['result'] !="":
+                    i['eventInterestCount']=len(dat['result'])
+                else:
+                    i['eventInterestCount']=0
+
+
             return data
         else:
             return commonfile.Errormessage()
@@ -4597,7 +4865,7 @@ def deleteGallery():
             commonfile.writeLog("deleteGallery",inputdata,0)
         
         keyarr = ['id']
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if "id" in inputdata:
             if inputdata['id'] != "":
                 Id =inputdata["id"] 
@@ -4629,7 +4897,7 @@ def deleteEvent():
             commonfile.writeLog("deleteEvent",inputdata,0)
         
         keyarr = ['id']
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if "id" in inputdata:
             if inputdata['id'] != "":
                 Id =inputdata["id"] 
@@ -4663,7 +4931,7 @@ def deleteAnnouncement():
             commonfile.writeLog("deleteEvent",inputdata,0)
         
         keyarr = ['id']
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,request.args)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if "id" in inputdata:
             if inputdata['id'] != "":
                 Id =inputdata["id"] 
@@ -4683,6 +4951,565 @@ def deleteAnnouncement():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
+
+
+
+
+
+@app.route('/promisingInitiatives', methods=['POST'])
+def promisingInitiatives():
+    try:
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        startlimit,endlimit="",""
+        keyarr = ["flag"]
+        
+        commonfile.writeLog("promisingInitiatives",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            text=""
+            videoLink=""
+            ImagePath=""
+            flag=inputdata['flag']
+            if "text" in inputdata:
+                if inputdata['text'] != "":
+                    text =inputdata["text"]
+
+            if "videoLink" in inputdata:
+                print("1111111111111111111")
+                if (inputdata['videoLink'] != None) :
+                    print("2222222222222222")
+                    videoLink =inputdata["videoLink"]
+                    if videoLink[0:24]!="https://www.youtube.com/":
+                        print("3333333333333333333")
+                        videoLink=""
+                        column=" videoPath,"
+                        values="'" +str(videoLink)+"'"
+
+                        
+                    else:
+                        column=" videoPath,"
+                        values="'" +str(videoLink)+"'"
+
+            if 'postImage' in request.files:      
+                    file = request.files.get('postImage')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getpromisingEvent(filename)  
+
+                    filepath = '/promisingEvent/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            
+            
+
+
+
+            if flag =="i":
+                if "userId" in inputdata:
+                    if inputdata['userId'] != "":
+                        userId =inputdata["userId"]
+                    column = column+" UserCreate,text,imagePath"
+                    values = values+ ",'" + str(userId) + "','" + str(text) + "','" + str(ImagePath) + "'"
+                    data = databasefile.InsertQuery("promisingInitiatives",column,values)        
+                
+                else:
+                    column = column+" text,imagePath"
+                    values = values+  ",'" + str(text) + "','" + str(ImagePath) + "'"
+                    data = databasefile.InsertQuery("promisingInitiatives",column,values)
+            
+            
+            if flag =="u":
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status =inputdata["status"]
+              
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        whereCondition=" and  id='" + str(Id) + "'"
+                        column="videoPath='"+ str(videoLink)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',imagePath='" + str(ImagePath) + "'"
+                        data=databasefile.UpdateQuery("promisingInitiatives",column,whereCondition)
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+
+
+@app.route('/getpromisingInitiatives', methods=['POST'])
+def getpromisingInitiatives():
+
+    try:        
+        
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and Status<2"
+        
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
+        
+        
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
+        data = databasefile.SelectQuery("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit)
+        
+         
+        if data['result'] != "":
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+            return data
+
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+
+@app.route('/getpromisingInitiativesAdmin', methods=['POST'])
+def getpromisingInitiatives1():
+
+    try:        
+        
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and Status<3"
+        
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
+        
+        
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
+        data = databasefile.SelectQuery("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit)
+        
+         
+        if data['result'] != "":
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+            return data
+
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+@app.route('/signUpVideo', methods=['POST'])
+def signUpVideo():
+    try:
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        startlimit,endlimit="",""
+        keyarr = ["flag"]
+        
+        commonfile.writeLog("galleryImages",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            column=""
+            values=""
+            text=""
+            ImagePath=""
+            videoLink=""
+            flag=inputdata['flag']
+            if "text" in inputdata:
+                if inputdata['text'] != "":
+                    text =inputdata["text"]
+            
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+
+            if "videoLink" in inputdata:
+                print("1111111111111111111")
+                if (inputdata['videoLink'] != None) :
+                    print("2222222222222222")
+                    videoLink =inputdata["videoLink"]
+                    if videoLink=="":
+                        videoLink=""
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+            
+                      
+                    else:
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+
+            if 'postImage' in request.files:      
+                    file = request.files.get('postImage')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getSignUpVideo(filename)  
+
+                    filepath = '/signUpImage/' + filename 
+                       
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            
+            
+            
+            if flag =="i":
+                if "userId" in inputdata:
+                    column1='Status=2'
+                    whereCondition=" and userTypeId='" + str(userTypeId) + "'"
+                    data5=databasefile.UpdateQuery('signUpVideo',column1,whereCondition)
+                    
+                    if inputdata['userId'] != "":
+                        userId =inputdata["userId"]
+                    column = column+"UserCreate,text,userTypeId,imagePath"
+                    values =values+ "'" + str(userId) + "','" + str(text) + "','" + str(userTypeId) + "','" + str(ImagePath) + "'"
+                    data = databasefile.InsertQuery("signUpVideo",column,values)        
+                else:
+                    column = column+"text,userTypeId,imagePath"
+                    values =values+   "'" + str(text) + "','" + str(userTypeId) + "','" + str(ImagePath) + "'"
+                    data = databasefile.InsertQuery("signUpVideo",column,values)
+            
+            if flag =="u":
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status =inputdata["status"]
+                column1='Status=2'
+                whereCondition=" and userTypeId='" + str(userTypeId) + "'"
+                data5=databasefile.UpdateQuery('signUpVideo',column1,whereCondition)
+
+
+                # if "userId" in inputdata:
+
+                #     if inputdata['userId'] != "":
+                #         userId =inputdata["userId"]
+                #         whereCondition=" and UserCreate='" + str(userId) + "'"
+                #         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
+                #         data=databasefile.UpdateQuery("gallery",column,whereCondition)
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        whereCondition=" and  id='" + str(Id) + "'"
+                        column="videoLink='"+ str(videoLink)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',userTypeId='" + str(userTypeId) + "',imagePath='" + str(ImagePath) + "'"
+                        data=databasefile.UpdateQuery("signUpVideo",column,whereCondition)
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+
+
+@app.route('/getSignUpVideo', methods=['POST'])
+def getSignUpVideo():
+
+    try:        
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and Status<2"
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
+
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"] 
+                    WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
+        
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,text,UserCreate,userTypeId,imagePath"
+        data = databasefile.SelectQuery("signUpVideo",column,WhereCondition,"",startlimit,endlimit)
+        
+        if data['result'] != "":
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                if i['videoLink']!='':
+                    y=i['videoLink'].split('=')
+                    print(y)
+                    i['videoId']=y[1]
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+@app.route('/getSignUpVideoAdmin', methods=['POST'])
+def getSignUpVideo1():
+
+    try:        
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and Status<3"
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
+
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"] 
+                    WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
+        
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,text,UserCreate,userTypeId,imagePath"
+        data = databasefile.SelectQuery("signUpVideo",column,WhereCondition,"",startlimit,endlimit)
+        
+        if data['result'] != "":
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+@app.route('/deletePromisingInitiatives', methods=['POST'])
+def deletePromisingInitiatives():
+    try: 
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        WhereCondition="" 
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deletePromisingInitiatives",inputdata,0)
+        
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("promisingInitiatives",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+@app.route('/deleteSignUpVideo', methods=['POST'])
+def deleteSignUpVideo():
+    try:
+
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+
+        WhereCondition=""
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteSignUpVideo",inputdata,0)
+        
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("signUpVideo",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+@app.route('/aboutUs', methods=['POST'])
+def aboutUs():
+
+    try: 
+        startlimit,endlimit="",""   
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        aboutId = '3'
+        keyarr = ['description','flag']
+        commonfile.writeLog("aboutUs",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+       
+        if msg == "1":      
+            description = inputdata["description"]
+            flag = inputdata["flag"]
+            print('====',flag)
+        
+            WhereCondition = " "
+            count = databasefile.SelectCountQuery("aboutUs",WhereCondition,"")
+            
+            if int(count) > 0 and flag == 'n':
+                print('F')         
+                return commonfile.aboutUsDescriptionAlreadyExistMsg()
+            else:
+                if flag == 'n':
+                    columns = " description"          
+                    values = " '" + str(description) + "'"       
+                    data = databasefile.InsertQuery("aboutUs",columns,values)
+                    if data != "0":
+                        column = '*'
+                        WhereCondition = " and description = '" + str(description) + "'"
+                        
+                        data11 = databasefile.SelectQuery("aboutUs",column,WhereCondition,"",startlimit,endlimit)
+                        return data11
+                if flag == 'u':
+                    WhereCondition = " and id='" + str(aboutId) + "'"
+                    column = " description = '" + str(description) + "'"
+                    data = databasefile.UpdateQuery("aboutUs",column,WhereCondition)
+                    return data
+                else:
+                    return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+@app.route('/deleteAboutUs', methods=['POST'])
+def deleteAboutUs():
+    try:
+
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+
+        WhereCondition=""
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteAboutUs",inputdata,0)
+        
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("aboutUs",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+@app.route('/allaboutUs', methods=['POST'])
+def allaboutUs():
+    try:
+        columns=" * "
+        
+        data = databasefile.SelectQueryMaxId("aboutUs",columns)
+       
+
+        if data:           
+            Data = {"status":"true","message":"","result":data["result"]}
+            return Data
+        else:
+            output = {"status":"false","message":"No Data Found","result":""}
+            return output
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output 
 
 if __name__ == "__main__":
     CORS(app, support_credentials=True)

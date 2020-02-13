@@ -94,6 +94,17 @@ def getGalleryPath(filename):
     return path
 
 
+def getpromisingEvent(filename):
+
+    path = "/var/www/medParliament/backend/med_parliament/promisingEvent/"+filename
+    return path
+
+def getSignUpVideo(filename):
+
+    path = "/var/www/medParliament/backend/med_parliament/signUpImage/"+filename
+    return path
+
+
 def getEventPath(filename):
 
     path = "/var/www/medParliament/backend/med_parliament/eventImages/"+filename
