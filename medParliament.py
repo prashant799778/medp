@@ -730,7 +730,7 @@ def login1():
                 
 
             else:
-                Data = {"status":"False","message":"Till Now your account is not approved By admin ,after admin approval you can access your account","result":""} 
+                Data = {"status":"False","message":"Till Now your account is not approved By admin, after admin approval you can access your account","result":""} 
                 return Data
         else:
             data = {"status":"false","message":"Please Enter Your correct Password and email","result":""}
@@ -1371,9 +1371,9 @@ def  professionalsMasterPannel():
 def allpolicyMakers():
     try:
         column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
-        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
+        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,(cm.Name)countryName"
         startlimit,endlimit="",""
-        WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId  and um.countryId=cm.id"
+        WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId  and um.countryId=cm.Id"
 
         
         data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
@@ -1540,9 +1540,9 @@ def allDecisionMaker():
         msg="1"
         if msg =="1":
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
-            column=column+"um.countryId,cm.countryName"
+            column=column+"um.countryId,(cm.Name)countryName"
             startlimit,endlimit="",""
-            WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId  "
+            WhereCondition=" and um.usertypeId='13' and cm.Id=um.countryId  "
 
             
             data = databasefile.SelectQueryOrderby("userMaster as um,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
@@ -3135,9 +3135,9 @@ def allCategories():
 @app.route('/allCountries', methods=['GET'])
 def allCountries():
     try:
-        columns=" id, countryName "
+        columns=" Id as id, Name as countryName  "
         
-        data = databasefile.SelectQueryMaxId("countryMaster",columns)
+        data = databasefile.SelectQueryMaxId("CountryMasterNew",columns)
        
 
         if data:           
@@ -3663,7 +3663,7 @@ def userProfile():
             userTypeId=int(inputdata['userTypeId'])
             print(userTypeId,'--------',type(userTypeId))
             if userTypeId == 5:
-                column="um.userName,um.email,cm.countryName,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
+                column="um.userName,um.email,(cm.Name)countryName,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
                 column=column+"ms.organization,"
                 column=column+" ms.aboutProfile, ms.designation"
                 WhereCondition=" and cm.id=um.countryId and um.userId=ms.userId and um.userId='" + str(userId) + "'"
@@ -3837,9 +3837,9 @@ def userProfile():
                     return commonfile.Errormessage()
             if userTypeId==13:
                 column="um.mobileNo as mobileNo, um.userName as userName, um.userTypeId,um.password as password, um.profilePic as profilePic, um.userId,um.gender,um.email,um.status,"
-                column=column+"um.countryId,cm.countryName"
+                column=column+"um.countryId,(cm.Name)countryName"
                 startlimit,endlimit="",""
-                WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId "
+                WhereCondition=" and um.usertypeId='13' and cm.Id=um.countryId "
                 data1 = databasefile.SelectQueryOrderby("userMaster um,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 if data1["result"][0]["profilePic"]==None:
@@ -3930,9 +3930,153 @@ def changeProfilePic():
 
 # create news by admin
 
+#market Insights (copy of news)
+@app.route('/promissingIntiatives', methods=['POST'])
+def promissingIntiatives():
+
+    try:
+       
+        inputdata = request.form.get('news')    
+        inputdata = json.loads(inputdata) 
+        print("newsdata",inputdata)
+        commonfile.writeLog("news",inputdata,0)
+        keyarr = ["newsTitle","userTypeId","summary","newsDesc","flag"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            ImagePath=""
+            flag=inputdata['flag']
+            if "newsTitle" in inputdata:
+                if inputdata['newsTitle'] != "":
+                    newsTitle =commonfile.EscapeSpecialChar(inputdata["newsTitle"])
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+        
+            if "summary" in inputdata:
+                if inputdata['summary'] != "":
+                    summary =commonfile.EscapeSpecialChar(inputdata["summary"])
+            
+            if "newsDesc" in inputdata:
+                if inputdata['newsDesc'] != "":
+                    newsDesc =commonfile.EscapeSpecialChar(inputdata["newsDesc"]) 
+
+             
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"]        
+            
+            
+            if 'NewsBanner' in request.files:      
+                    file = request.files.get('NewsBanner')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getNewsPath(filename)  
+
+                    filepath = '/newsimages/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            if flag =='i':      
+                if "UserId" in inputdata:
+                    if inputdata['UserId'] != "":
+                        UserId =inputdata["UserId"]
+                      
+                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
+                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
+                    data = databasefile.InsertQuery("promissingIntiatives",column,values)        
+                else:
+                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc"
+                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
+                    data = databasefile.InsertQuery("promissingIntiatives",column,values)
+            if flag =='u':
+                
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status =inputdata["status"]
+                # if "UserId" in inputdata:
+                #     if inputdata['UserId'] != "":
+                #         UserId =inputdata["UserId"]
+                      
+                #     whereCondition= " and id= '"+ str(Id) +"' and UserCreate='"+ str(UserId) +"'" 
+                #     column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
+                #     data=databasefile.UpdateQuery("news",column,whereCondition)
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        inputdata1 = request.form.get('NewsBanner')
+                        
+                        if  inputdata1 !=None: 
+                            index=re.search("/newsimages", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
+
+
+                        whereCondition=" and id= '"+ str(Id) +"'"
+                        column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
+                        data=databasefile.UpdateQuery("promissingIntiatives",column,whereCondition)
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+
+@app.route('/getPromissingIntiatives', methods=['POST'])
+def getPromissingIntiatives():
+
+    try:
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and n.Status<2 "
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+                    WhereCondition=WhereCondition+"  and n.userTypeId IN(0,'"+str(userTypeId)+"')"
+
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+" and n.id='"+str(Id)+"'"
+        orderby=" n.id "
+        WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
+        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+        data = databasefile.SelectQueryOrderby("promissingIntiatives n,userMaster um",column,WhereCondition,"","0","10",orderby)
+        if data != "0":
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
 
 @app.route('/news', methods=['POST'])
-def news1():
+def news():
 
     try:
        
@@ -4010,7 +4154,7 @@ def news1():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        print(inputdata1,"==========================================")
+                        
                         if  inputdata1 !=None: 
                             index=re.search("/newsimages", inputdata1).start()
                             ImagePath=""
@@ -4076,7 +4220,6 @@ def getNews():
 
 
 
-
 @app.route('/landingPageDashboard', methods=['POST'])
 def landingPageDashboard():
 
@@ -4097,7 +4240,7 @@ def landingPageDashboard():
                     userTypeId =inputdata["userTypeId"]
                     WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
                     column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
-                    data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"",startlimit,endlimit,orderby)
+                    data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"","0","10",orderby)
                     print(data1,"")
                     
                     if data1["result"]=="":
@@ -4112,14 +4255,14 @@ def landingPageDashboard():
                     endlimit =str(inputdata["endlimit"])
         
         column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",orderby)
         if data["result"]=="":
             data["result"]=[]
 
         
 
         column2 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
-        data2 = databasefile.SelectQueryOrderby("gallery",column2,"","",startlimit,endlimit,orderby)
+        data2 = databasefile.SelectQueryOrderby("gallery",column2,"","","0","10",orderby)
         
         if data2["result"]=="":
             data2["result"]=[]
@@ -4134,7 +4277,7 @@ def landingPageDashboard():
 
         column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
         WhereCondition2= " and Status<2"
-        data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"",startlimit,endlimit)
+        data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"","0","10")
         print(data4)
 
         if data4["result"]=="":
@@ -4148,11 +4291,14 @@ def landingPageDashboard():
                     print(y,'++++++')
                     m['videoId']=y[1]
             
-
+        column5 = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data5 = databasefile.SelectQueryOrderby("promissingIntiatives",column5,WhereCondition,"","0","10",orderby)
+        if data5["result"]=="":
+            data5["result"]=[]
 
         if data != "0":
             
-            return {"message":"","status":"true","news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"]}
+            return {"message":"","status":"true","promissingIntiatives":data5["result"],"news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"]}
             
         else:
             return commonfile.Errormessage()
