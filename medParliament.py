@@ -3964,11 +3964,11 @@ def promissingIntiatives():
                       
                     column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
                     values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
-                    data = databasefile.InsertQuery("promisingInitiatives",column,values)        
+                    data = databasefile.InsertQuery("promissingIntiatives",column,values)        
                 else:
                     column = "newsTitle,userTypeId,imagePath,summary,newsDesc"
                     values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
-                    data = databasefile.InsertQuery("promisingInitiatives",column,values)
+                    data = databasefile.InsertQuery("promissingIntiatives",column,values)
             if flag =='u':
                 
                 if "status" in inputdata:
