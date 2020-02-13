@@ -5443,7 +5443,7 @@ def aboutUs():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
         if msg == "1":      
-            description = inputdata["description"]
+            description = commonfile.EscapeSpecialChar(inputdata["description"])
             flag = inputdata["flag"]
             print('====',flag)
         
