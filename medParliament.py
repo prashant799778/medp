@@ -3984,6 +3984,14 @@ def news1():
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
+                        inputdata1 = request.form.get('NewsBanner')
+                        print(inputdata1,"==========================================")
+                        if  inputdata1 !=None: 
+                            index=re.search("/newsimages", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
+
+
                         whereCondition=" and id= '"+ str(Id) +"'"
                         column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
                         data=databasefile.UpdateQuery("news",column,whereCondition)
@@ -4322,6 +4330,12 @@ def announcements1():
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
+                        inputdata1 = request.form.get('postImage')
+                        print(inputdata1,"==========================================")
+                        if  inputdata1 !=None: 
+                            index=re.search("/announcementsImage", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
                         whereCondition=" and  id= '"+ str(Id)+"'"
                         column="title='"+ str(title)+"',summary='"+ str(summary)+"',userTypeId='"+ str(userTypeId)+"',videoLink='"+ str(videoLink)+"',imagePath='"+ str(ImagePath)+"',Status='"+ str(status)+"'"
                         data=databasefile.UpdateQuery("announcement",column,whereCondition)
@@ -5054,6 +5068,11 @@ def promisingInitiatives():
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
+                        inputdata1 = request.form.get('postImage')
+                        if  inputdata1 !=None: 
+                            index=re.search("/promisingEvent", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
                         whereCondition=" and  id='" + str(Id) + "'"
                         column="videoPath='"+ str(videoLink)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',imagePath='" + str(ImagePath) + "'"
                         data=databasefile.UpdateQuery("promisingInitiatives",column,whereCondition)
@@ -5255,6 +5274,11 @@ def signUpVideo():
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
+                        inputdata1 = request.form.get('postImage')
+                        if  inputdata1 !=None: 
+                            index=re.search("/signUpImage", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
                         whereCondition=" and  id='" + str(Id) + "'"
                         column="videoLink='"+ str(videoLink)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',userTypeId='" + str(userTypeId) + "',imagePath='" + str(ImagePath) + "'"
                         data=databasefile.UpdateQuery("signUpVideo",column,whereCondition)
