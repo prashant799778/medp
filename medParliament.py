@@ -18,6 +18,7 @@ import commonfile
 import ConstantData
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+import re
 
 from flask import Flask, render_template
 app = Flask(__name__)
