@@ -4161,7 +4161,7 @@ def announcements():
         if msg == "1":
             if "title" in inputdata:
                 if inputdata['title'] != "":
-                    title =inputdata["title"]
+                    title =commonfile.EscapeSpecialChar(inputdata["title"])
                     column=" title "
                     values=" '"+ str(title) +"'"
 
@@ -4174,7 +4174,7 @@ def announcements():
 
             if "summary" in inputdata:
                 if inputdata['summary'] != "":
-                    summary =inputdata["summary"]
+                    summary =commonfile.EscapeSpecialChar(inputdata["summary"])
                     column=column+", summary"
                     values=values+ ",'"+str(summary)+"'"
         
