@@ -41,7 +41,7 @@ def userId():
         print(output,"11111111111111111111")
         if output['result']== "":
             y=output['result'][0]
-            if y['userTypeId'] ==7  or (y['userTypeId'] =='7') :
+            if (y['userTypeId'] ==7)  or (y['userTypeId'] =='7') :
                 column=' emailVerificationStatus=1,status=0 '
                 data=databasefile.UpdateQuery('userMaster',column,whereCondition)
 
