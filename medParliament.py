@@ -3994,7 +3994,7 @@ def promissingIntiatives():
 
                         whereCondition=" and id= '"+ str(Id) +"'"
                         column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
-                        data=databasefile.UpdateQuery("promisingInitiatives",column,whereCondition)
+                        data=databasefile.UpdateQuery("promissingIntiatives",column,whereCondition)
 
 
             if data !=0 :                
@@ -4038,7 +4038,7 @@ def getPromissingIntiatives():
         orderby=" n.id "
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
-        data = databasefile.SelectQueryOrderby("promisingInitiatives n,userMaster um",column,WhereCondition,"","0","10",orderby)
+        data = databasefile.SelectQueryOrderby("promissingIntiatives n,userMaster um",column,WhereCondition,"","0","10",orderby)
         if data != "0":
             return data
         else:
