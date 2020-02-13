@@ -4668,7 +4668,7 @@ def parliamentEvent1():
         print("1111111111111")
         if msg == "1":
             flag=inputdata['flag']
-            imagePath=""
+            ImagePath=""
 
             print("22222222222222")
             if "eventTitle" in inputdata:
