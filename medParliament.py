@@ -4481,8 +4481,7 @@ def galleryImages1():
         if msg =="1":
             ImagePath=""
             flag=inputdata['flag']
-            if 'postImage' in request.files: 
-                print("3333333333333333")     
+            if 'postImage' in request.files:      
                 file = request.files.get('postImage')        
                 filename = file.filename or ''                 
                 filename = filename.replace("'","") 
@@ -4497,6 +4496,8 @@ def galleryImages1():
 
                 file.save(FolderPath)
                 ImagePath = filepath
+           
+            
             if flag =="i":
                 if "userId" in inputdata:
                     if inputdata['userId'] != "":
@@ -4509,6 +4510,7 @@ def galleryImages1():
                     values = " '"+ str(ImagePath)+  "'"
                     data = databasefile.InsertQuery("gallery",column,values)
             if flag =="u":
+                
                 if "status" in inputdata:
                     if inputdata['status'] != "":
                         status =inputdata["status"]
@@ -4813,7 +4815,7 @@ def userDropdown():
        
 
         if data:
-            data['result'].append({"id":0,"userName":"all"})
+            data['result'].append({"id":0,"userName":"Decision Maker"})
             #data["result"][0]["id"]=0           
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
