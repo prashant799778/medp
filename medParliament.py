@@ -4529,7 +4529,7 @@ def galleryImages1():
                         inputdata1 = request.form.get('postImage')
                         print(inputdata1,"==========================================")
                         if  inputdata1 !=None: 
-                            index=re.search("/eventImages", inputdata1).start()
+                            index=re.search("/gallery", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
                         whereCondition=" and  id='" + str(Id) + "'"
