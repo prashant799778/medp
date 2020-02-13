@@ -4688,7 +4688,8 @@ def parliamentEvent1():
             if "eventDate" in inputdata:
                 if inputdata['eventDate'] != "":
                     eventDate =inputdata["eventDate"]
-            if 'postImage' in request.files:      
+            if 'postImage' in request.files:
+                    print("333333333333333")      
                     file = request.files.get('postImage') 
                     print(file)       
                     filename = file.filename or ''                 
