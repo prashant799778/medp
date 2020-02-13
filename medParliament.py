@@ -3796,7 +3796,7 @@ def getNews():
         orderby=" n.id "
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = "n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(n.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
-        data = databasefile.SelectQueryOrderby("news n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data = databasefile.SelectQueryOrderby("news n,userMaster um",column,WhereCondition,"","0","10",orderby)
         if data != "0":
             return data
         else:
