@@ -191,7 +191,9 @@ export class EditMediaComponent implements OnInit {
         this.activatedds = true;
         setTimeout(()=>{
           jQuery('#addAdmin-promising').modal('hide')
-          this.activatedds = false;
+          setTimeout(()=>{
+            this.activatedds = false;
+          },1000)
         },2000)
       }
       this.getNews();

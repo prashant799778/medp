@@ -160,7 +160,9 @@ export class EditNewsComponent implements OnInit {
         this.activatedds = true;
         setTimeout(()=>{
           jQuery('#addAdmin-news').modal('hide')
-          this.activatedds = false;
+          setTimeout(()=>{
+            this.activatedds = false;
+          },1000)
         },1000)
       }
       this.getNews();
