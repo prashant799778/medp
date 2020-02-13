@@ -4743,6 +4743,11 @@ def parliamentEvent1():
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
+                        inputdata1 = request.form.get('postImage')
+                        if  inputdata1 !=None: 
+                            index=re.search("/eventImages", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
                         whereCondition= " and id='" + str(Id) + "' "
                         column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
                         data=databasefile.UpdateQuery('parliamentEvent',column,whereCondition)
