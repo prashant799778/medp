@@ -39,7 +39,7 @@ def userId():
         whereCondition=" and userId='"+ str(userId)  +"' "
         output=databasefile.SelectQuery('userMaster',column,whereCondition,"",startlimit,endlimit)
         print(output,"11111111111111111111")
-        if output['result']== "":
+        if output['result']!= "":
             y=output['result'][0]
             if (y['userTypeId'] ==7)  or (y['userTypeId'] =='7') :
                 column=' emailVerificationStatus=1,status=0 '
@@ -49,8 +49,8 @@ def userId():
                 column='emailVerificationStatus=1'
                 data=databasefile.UpdateQuery('userMaster',column,whereCondition)
                 
-        if data !="0":
-            return {"status":"true","message":"Congratulations! Your account has been activated successfully","result":""}
+            if data !="0":
+                return {"status":"true","message":"Congratulations! Your account has been activated successfully","result":""}
         else:
             return {"status":"false","message":"Not a valid user","result":""}
     except FileNotFoundError:
