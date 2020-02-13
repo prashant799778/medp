@@ -4481,7 +4481,8 @@ def galleryImages1():
         if msg =="1":
             ImagePath=""
             flag=inputdata['flag']
-            if 'postImage' in request.files:      
+            if 'postImage' in request.files: 
+                print("3333333333333333")     
                 file = request.files.get('postImage')        
                 filename = file.filename or ''                 
                 filename = filename.replace("'","") 
