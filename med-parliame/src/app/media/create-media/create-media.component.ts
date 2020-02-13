@@ -122,6 +122,15 @@ export class CreateMediaComponent implements OnInit {
   }
   UpdateNews(){
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
+    if(this.imageClick == true){
+      let imageCheck = this.frmNews.get('newsTitle').value
+      let imageText = this.frmNews.get('banner').value
+      console.log(imageCheck, imageText)
+      if(imageCheck == '' || imageText == ''){
+        
+        return false;
+      }
+    }
     const newsData = {
       text: this.frmNews.get('newsTitle').value,
       // summary: this.frmNews.get('summary').value,
@@ -249,6 +258,13 @@ export class CreateMediaComponent implements OnInit {
     if(this.newsDetails[0]['imagePath'] !== " "){
       this.showBanner = 1;
       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
+    }
+    if(this.newsDetails[0]['videoLink']){
+      this.imageClick = false;
+      this.frmNews.get('videoLink').setValue(this.newsDetails[0]['videoLink']);  
+    }else{
+      this.imageClick = true;
+      this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['text']);
     }
     this.frmNews.get('videoLink').setValue(this.newsDetails[0]['videoPath']);
     this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['text']);
