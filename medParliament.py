@@ -4606,7 +4606,7 @@ def parliamentEvent():
             print("22222222222222")
             if "eventTitle" in inputdata:
                 if inputdata['eventTitle'] != "":
-                    eventTitle =inputdata["eventTitle"]
+                    eventTitle =commonfile.EscapeSpecialChar(inputdata["eventTitle"])
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
