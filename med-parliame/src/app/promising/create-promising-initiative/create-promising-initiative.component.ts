@@ -139,7 +139,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
     formData.append('news', JSON.stringify(newsData));
 
     console.log(formData);
-    this.apiService.dataPostApi(formData, AppSettings.CREATE_ADMIN_NEWS).then((data: any[]) => {
+    this.apiService.dataPostApi(formData, AppSettings.promissingIntiatives).then((data: any[]) => {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
@@ -181,7 +181,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
     formData.append('news', JSON.stringify(newsData));
 
     console.log(formData);
-    this.apiService.dataPostApi(formData, AppSettings.CREATE_ADMIN_NEWS).then((data: any[]) => {
+    this.apiService.dataPostApi(formData, AppSettings.promissingIntiatives).then((data: any[]) => {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
@@ -216,7 +216,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
 
   getNewsData(newsId){
     const params = { id: newsId};
-      this.apiService.dataPostApi(params,AppSettings.SHOW_ADMIN_NEWS).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.getPromissingIntiatives).then((data: any[]) => {
         console.log(data['result']);
         if (data['status'] === 'true') {
           this.newsDetails = data['result'];

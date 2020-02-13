@@ -77,7 +77,7 @@ export class EditPromisingInitiativeComponent implements OnInit {
     // this.frmShowNews.get('CategoryId').setValue(this.CategoryId)
     let data = this.frmShowNews.getRawValue();
     
-    this.apiService.dataPostApi(data,AppSettings.SHOW_ADMIN_NEWS).then((data: any[]) => {
+    this.apiService.dataPostApi(data,AppSettings.getPromissingIntiatives).then((data: any[]) => {
       this.totalRecords = data['totalnewscategorywise']
       console.log(this.totalRecords)
       if(this.totalRecords > this.pageSize){
@@ -103,7 +103,7 @@ export class EditPromisingInitiativeComponent implements OnInit {
       endlimit: this.pageSize,
       // UserCreate: AppSettings.getLoggedInUser()                
     };
-      this.apiService.dataPostApi(params,AppSettings.SHOW_ADMIN_NEWS).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.getPromissingIntiatives).then((data: any[]) => {
         this.totalRecords = data['totalnewscategorywise']
 
         if(this.totalRecords > this.pageSize){
@@ -122,7 +122,7 @@ export class EditPromisingInitiativeComponent implements OnInit {
       startlimit: 0,
       endlimit: this.pageSize
     };    
-      this.apiService.dataPostApi(params,AppSettings.SHOW_ADMIN_NEWS).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.getPromissingIntiatives).then((data: any[]) => {
         this.totalRecords = data['totalnewscategorywise']
 
         if(this.totalRecords > this.pageSize){
@@ -140,7 +140,7 @@ export class EditPromisingInitiativeComponent implements OnInit {
 
   editNews(NewsId) {
     console.log(NewsId);
-    this.router.navigate(['/news/createNews'], { queryParams: {NewsId: NewsId}});
+    this.router.navigate(['/promising/createPromising'], { queryParams: {NewsId: NewsId}});
   }
 
   deleteNews(id){

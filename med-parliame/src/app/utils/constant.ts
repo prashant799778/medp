@@ -60,7 +60,8 @@ export class AppSettings {
     public static aboutUs = 'aboutUs';
     public static allDecisionMaker = 'allDecisionMaker';
     
-    
+    public static getPromissingIntiatives = 'getPromissingIntiatives';
+    public static promissingIntiatives = 'promissingIntiatives';
     
     
 

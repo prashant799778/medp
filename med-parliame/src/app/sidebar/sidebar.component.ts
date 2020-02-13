@@ -159,6 +159,17 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				$("#mediaId").addClass("active")
 			},100)
 		}
+		if(this.secondLocation == 'sing/' ){
+			setTimeout(()=>{
+				// && this.locations == 'editMedia'
+				$(".side-menu ul li a").removeClass("active");
+				// var elem = document.getElementById("mediaId")
+				// console.log(elem)
+				// elem.click();
+				$("#newsIdMarketss").addClass("active")
+			},100)
+		}
+		
 
 		if(this.locations == 'http://localhost:5002/allPosts'){
 			
