@@ -257,7 +257,7 @@ def SignUp():
                         if (y["userTypeId"] == 5):
                             
                             message = Mail(
-                                from_email = 'medParliament@gmail.com',
+                                from_email = 'medparliament@medachievers.com',
                                 to_emails = str(y['email']),
                                 subject = "Welcome to medParliament",
                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
@@ -274,7 +274,7 @@ def SignUp():
                         if (y["userTypeId"] == 6):
                             
                             message = Mail(
-                                from_email = 'medParliament@gmail.com',
+                                from_email = 'medparliament@medachievers.com',
                                 to_emails = str(y['email']),
                                 subject = "Welcome to medParliament",
                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
@@ -296,7 +296,7 @@ def SignUp():
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                            from_email = 'medParliament@gmail.com',
+                                            from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
@@ -321,7 +321,7 @@ def SignUp():
                         if (y["userTypeId"]== 8):
 
                             message = Mail(
-                                from_email = 'medParliament@gmail.com',
+                                from_email = 'medparliament@medachievers.com',
                                 to_emails = str(y['email']),
                                 subject = "Welcome to medParliament",
                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
@@ -338,7 +338,7 @@ def SignUp():
                         
                         if (y["userTypeId"]== 9):
                             message = Mail(
-                                from_email = 'medParliament@gmail.com',
+                                from_email = 'medparliament@medachievers.com',
                                 to_emails = str(y['email']),
                                 subject = "Welcome to medParliament",
                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
@@ -355,7 +355,7 @@ def SignUp():
                         
                         if (y["userTypeId"]== 13):
                             message = Mail(
-                                from_email = 'medParliament@gmail.com',
+                                from_email = 'medparliament@medachievers.com',
                                 to_emails = str(y['email']),
                                 subject = "Welcome to medParliament",
                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
@@ -534,7 +534,7 @@ def SignUp1():
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                            from_email = 'medParliament@gmail.com',
+                                            from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
@@ -553,7 +553,7 @@ def SignUp1():
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                            from_email = 'medParliament@gmail.com',
+                                            from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
@@ -575,7 +575,7 @@ def SignUp1():
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                            from_email = 'medParliament@gmail.com',
+                                            from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
@@ -602,7 +602,7 @@ def SignUp1():
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                            from_email = 'medParliament@gmail.com',
+                                            from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
@@ -622,7 +622,7 @@ def SignUp1():
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                            from_email = 'medParliament@gmail.com',
+                                            from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
@@ -640,7 +640,7 @@ def SignUp1():
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                            from_email = 'medParliament@gmail.com',
+                                            from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
@@ -3479,7 +3479,7 @@ def updateStatus1():
             print(data['result'][0]['status'],"status")
             if data['result'][0]['status']==0:
                 message = Mail(
-                                from_email = 'medParliament@gmail.com',
+                                from_email = 'medparliament@medachievers.com',
                                 to_emails = str(email),
                                 subject = "Account DeActivated",
                                 html_content = '<strong> Your account has been DeActivated </strong> <br> .<br> Thanks,medParliament Team')
@@ -3498,7 +3498,7 @@ def updateStatus1():
             else:
                 column="status='0'"
                 message = Mail(
-                                from_email = 'medParliament@gmail.com',
+                                from_email = 'medparliament@medachievers.com',
                                 to_emails = str(email),
                                 subject = "Account Activated",
                                 html_content = '<strong>Congratulations! Your account has been activated successfully </strong> <br> .<br> Thanks,medParliament Team')
@@ -3543,7 +3543,7 @@ def generateOtp():
             for i in range(4):
                 OTP += digits[math.floor(random.random() * 10)]
             message = Mail(
-                from_email = 'medParliament@gmail.com',
+                from_email = 'medparliament@medachievers.com',
                 to_emails = str(email),
                 subject = "Otp for Reset Password",
                 html_content = '<strong> Otp To Reset Your Password is:' + str(OTP) + ' </strong> <br> <br> Thanks<br> <br> MedParliament Team')
