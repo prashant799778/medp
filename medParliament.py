@@ -41,11 +41,11 @@ def userId():
         if output['result']== "":
             y=output['result'][0]
             if y['userTypeId'] ==7:
-                column='emailVerificationStatus=1,status=0'
+                column=' emailVerificationStatus=1,status=0 '
                 data=databasefile.UpdateQuery('userMaster',column,whereCondition)
 
             else:
-                column='emailVerificationStatus=0'
+                column='emailVerificationStatus=1'
                 data=databasefile.UpdateQuery('userMaster',column,whereCondition)
                 
         if data !="0":
