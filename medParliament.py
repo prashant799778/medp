@@ -3985,7 +3985,7 @@ def news1():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        print(inputdata1,"==========================================")
+                        
                         if  inputdata1 !=None: 
                             index=re.search("/newsimages", inputdata1).start()
                             ImagePath=""
