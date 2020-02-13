@@ -1346,9 +1346,9 @@ def  professionalsMasterPannel():
 def allpolicyMakers():
     try:
         column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
-        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,cm.countryName"
+        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,(cm.Name)countryName"
         startlimit,endlimit="",""
-        WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId  and um.countryId=cm.id"
+        WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId  and um.countryId=cm.Id"
 
         
         data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
@@ -1515,9 +1515,9 @@ def allDecisionMaker():
         msg="1"
         if msg =="1":
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
-            column=column+"um.countryId,cm.countryName"
+            column=column+"um.countryId,(cm.Name)countryName"
             startlimit,endlimit="",""
-            WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId  "
+            WhereCondition=" and um.usertypeId='13' and cm.Id=um.countryId  "
 
             
             data = databasefile.SelectQueryOrderby("userMaster as um,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
@@ -3638,7 +3638,7 @@ def userProfile():
             userTypeId=int(inputdata['userTypeId'])
             print(userTypeId,'--------',type(userTypeId))
             if userTypeId == 5:
-                column="um.userName,um.email,cm.countryName,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
+                column="um.userName,um.email,(cm.Name)countryName,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
                 column=column+"ms.organization,"
                 column=column+" ms.aboutProfile, ms.designation"
                 WhereCondition=" and cm.id=um.countryId and um.userId=ms.userId and um.userId='" + str(userId) + "'"
@@ -3812,9 +3812,9 @@ def userProfile():
                     return commonfile.Errormessage()
             if userTypeId==13:
                 column="um.mobileNo as mobileNo, um.userName as userName, um.userTypeId,um.password as password, um.profilePic as profilePic, um.userId,um.gender,um.email,um.status,"
-                column=column+"um.countryId,cm.countryName"
+                column=column+"um.countryId,(cm.Name)countryName"
                 startlimit,endlimit="",""
-                WhereCondition=" and um.usertypeId='13' and cm.id=um.countryId "
+                WhereCondition=" and um.usertypeId='13' and cm.Id=um.countryId "
                 data1 = databasefile.SelectQueryOrderby("userMaster um,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 if data1["result"][0]["profilePic"]==None:
