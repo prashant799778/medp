@@ -3110,9 +3110,9 @@ def allCategories():
 @app.route('/allCountries', methods=['GET'])
 def allCountries():
     try:
-        columns=" id, countryName "
+        columns=" Id as id, Name as countryName  "
         
-        data = databasefile.SelectQueryMaxId("countryMaster",columns)
+        data = databasefile.SelectQueryMaxId("CountryMasterNew",columns)
        
 
         if data:           
