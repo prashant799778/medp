@@ -27,19 +27,34 @@ app.config['SECRET_KEY'] = 'secret!'
 
 
 
+
 @app.route("/AccountVerification",methods=['GET'])
 def userId():
     try:
         userId=request.args['userId']
-        column=" status='0' "
+        startlimit,endlimit="",""
+
+        
+        column='userTypeId'
         whereCondition=" and userId='"+ str(userId)  +"' "
-        data=databasefile.UpdateQuery('userMaster',column,whereCondition)
+        output=databasefile.SelectQuery('userMaster',column,whereCondition,startlimit,endlimit)
+        if output['result']== "":
+            y=output['result'][0]
+            if y['userTypeId'] ==7:
+                column='emailVerificationStatus=1,status=0'
+                data=databasefile.UpdateQuery('userMaster',column,whereCondition)
+
+            else:
+                column='emailVerificationStatus=0'
+                data=databasefile.UpdateQuery('userMaster',column,whereCondition)
+                
         if data !="0":
             return {"status":"true","message":"Congratulations! Your account has been activated successfully","result":""}
         else:
             return {"status":"false","message":"Not a valid user","result":""}
     except FileNotFoundError:
         abort(404)
+
 
 
 
@@ -515,11 +530,13 @@ def SignUp1():
                         y=data["result"][0]
                         if (y["userTypeId"] == 5):
                             
+                            Y=ConstantData.getwebBaseurl()
+                            Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                from_email = 'medParliament@gmail.com',
-                                to_emails = str(y['email']),
-                                subject = "Welcome to medParliament",
-                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                                            from_email = 'medParliament@gmail.com',
+                                            to_emails = str(y["email"]),
+                                            subject = "Account Verification",
+                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
 
@@ -531,12 +548,14 @@ def SignUp1():
 
 
                         if (y["userTypeId"] == 6):
-                            
+
+                            Y=ConstantData.getwebBaseurl()
+                            Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                from_email = 'medParliament@gmail.com',
-                                to_emails = str(y['email']),
-                                subject = "Welcome to medParliament",
-                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                                            from_email = 'medParliament@gmail.com',
+                                            to_emails = str(y["email"]),
+                                            subject = "Account Verification",
+                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
 
@@ -579,11 +598,13 @@ def SignUp1():
                         
                         if (y["userTypeId"]== 8):
 
+                            Y=ConstantData.getwebBaseurl()
+                            Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                from_email = 'medParliament@gmail.com',
-                                to_emails = str(y['email']),
-                                subject = "Welcome to medParliament",
-                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                                            from_email = 'medParliament@gmail.com',
+                                            to_emails = str(y["email"]),
+                                            subject = "Account Verification",
+                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             
@@ -596,11 +617,14 @@ def SignUp1():
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
                         
                         if (y["userTypeId"]== 9):
+
+                            Y=ConstantData.getwebBaseurl()
+                            Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                from_email = 'medParliament@gmail.com',
-                                to_emails = str(y['email']),
-                                subject = "Welcome to medParliament",
-                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                                            from_email = 'medParliament@gmail.com',
+                                            to_emails = str(y["email"]),
+                                            subject = "Account Verification",
+                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             columns="userId,designation,occupation,companyName,companyAddress,address"
@@ -612,14 +636,15 @@ def SignUp1():
                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
 
                         if (y["userTypeId"]== 13):
+                            Y=ConstantData.getwebBaseurl()
+                            Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
                             message = Mail(
-                                from_email = 'medParliament@gmail.com',
-                                to_emails = str(y['email']),
-                                subject = "Welcome to medParliament",
-                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                                            from_email = 'medParliament@gmail.com',
+                                            to_emails = str(y["email"]),
+                                            subject = "Account Verification",
+                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
-                            
 
 
 
