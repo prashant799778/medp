@@ -207,7 +207,9 @@ export class EditInfoComponent implements OnInit {
         this.activatedds = true;
         setTimeout(()=>{
           jQuery('#addAdmin-info').modal('hide')
-          this.activatedds = false;
+          setTimeout(()=>{
+            this.activatedds = false;
+          },1000)
         },2000)
       }
       this.getNews();
