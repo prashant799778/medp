@@ -122,7 +122,8 @@ export class CreateNewsComponent implements OnInit {
  
   }
   UpdateNews(){
-    console.log(this.frmNews.value)
+    if(this.frmNews.valid){
+      console.log(this.frmNews.value)
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
       // newsType : this.frmNews.get('newsType').value,
@@ -164,48 +165,71 @@ export class CreateNewsComponent implements OnInit {
 
       }
     });
+    }else{
+      const controls = this.frmNews.controls;
+		
+      Object.keys(controls).forEach(controlName => {
+        console.log(controls)
+        controls[controlName].markAllAsTouched();
+      });
+      console.log(this.frmNews)
+      return false;
+    } 
+    
   }
 
   submitNews() {
-    this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
-    const newsData = {
-      // newsType : this.frmNews.get('newsType').value,
-      newsTitle: this.frmNews.get('newsTitle').value,
-      summary: this.frmNews.get('summary').value,
-      newsDesc: this.frmNews.get('newsDesc').value,
-      UserId : this.frmNews.get('userCreate').value,
-      userTypeId: this.frmNews.get('userTypeId').value,
-      flag: 'i'
-    };
-
-    const formData = new FormData();
-    formData.append('NewsBanner', this.frmNews.get('banner').value);
-    formData.append('news', JSON.stringify(newsData));
-
-    console.log(formData);
-    this.apiService.dataPostApi(formData, AppSettings.CREATE_ADMIN_NEWS).then((data: any[]) => {
-      console.log(data);
-      if(data['status'] == 'true'){
-        this.frmNews.reset();
-        jQuery('#addAdmin-news7').modal('show')
-        this.messageShow = 'Inserted'
-        setTimeout(()=>{
-          jQuery('#addAdmin-news7').modal('hide')
-        },2000)
-        this.getUsertype()
-        // this.updateCheck =false;
-        this.imageShow = '';
-        console.log(this.file)
-        this.file = '';
-        var elemsss = (<HTMLInputElement>document.getElementById('file12'))
-        
-        elemsss.value = '';
-
-        // document.getElementById('filesss').val('');
-
-
-      }
-    });
+    if(this.frmNews.valid){
+      this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
+      const newsData = {
+        // newsType : this.frmNews.get('newsType').value,
+        newsTitle: this.frmNews.get('newsTitle').value,
+        summary: this.frmNews.get('summary').value,
+        newsDesc: this.frmNews.get('newsDesc').value,
+        UserId : this.frmNews.get('userCreate').value,
+        userTypeId: this.frmNews.get('userTypeId').value,
+        flag: 'i'
+      };
+  
+      const formData = new FormData();
+      formData.append('NewsBanner', this.frmNews.get('banner').value);
+      formData.append('news', JSON.stringify(newsData));
+  
+      console.log(formData);
+      this.apiService.dataPostApi(formData, AppSettings.CREATE_ADMIN_NEWS).then((data: any[]) => {
+        console.log(data);
+        if(data['status'] == 'true'){
+          this.frmNews.reset();
+          jQuery('#addAdmin-news7').modal('show')
+          this.messageShow = 'Inserted'
+          setTimeout(()=>{
+            jQuery('#addAdmin-news7').modal('hide')
+          },2000)
+          this.getUsertype()
+          // this.updateCheck =false;
+          this.imageShow = '';
+          console.log(this.file)
+          this.file = '';
+          var elemsss = (<HTMLInputElement>document.getElementById('file12'))
+          
+          elemsss.value = '';
+  
+          // document.getElementById('filesss').val('');
+  
+  
+        }
+      });
+    }else{
+      const controls = this.frmNews.controls;
+		
+      Object.keys(controls).forEach(controlName => {
+        console.log(controls)
+        controls[controlName].markAllAsTouched();
+      });
+      console.log(this.frmNews)
+      return false;
+    }
+    
 
   }
 

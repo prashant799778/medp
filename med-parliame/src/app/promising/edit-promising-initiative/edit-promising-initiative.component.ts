@@ -34,7 +34,6 @@ export class EditPromisingInitiativeComponent implements OnInit {
         this.frmShowNews = this.fb.group({
           startlimit: [''],
           endlimit: [''],
-          
           UserType: [''],
           filter: ['']
         });  
