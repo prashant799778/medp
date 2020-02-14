@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
@@ -86,16 +86,19 @@ export class CreateNewsComponent implements OnInit {
   initializeForm() {
     // Question,Answer,UserId
     this.frmNews = this.fb.group({
-      newsType: [''],
-      newsTitle: [''],
+      // newsType: ['',Validators.required],
+      newsTitle: ['',Validators.required],
       banner: [''],
-      summary: [''],
-      newsDesc: [''],
+      summary: ['',Validators.required],
+      newsDesc: ['',Validators.required],
       userCreate: [''],
-      userTypeId: [''],
+      userTypeId: ['',Validators.required],
       id: [''],
       
     });
+    this.frmNews.valueChanges.subscribe(()=>{
+      console.log(this.frmNews)
+    })
   }
 
   onFileSelect(event) {

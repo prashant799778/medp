@@ -105,7 +105,7 @@ export class EditNewsComponent implements OnInit {
       // UserCreate: AppSettings.getLoggedInUser()                
     };
       this.apiService.dataPostApi(params,AppSettings.SHOW_ADMIN_NEWS).then((data: any[]) => {
-        this.totalRecords = data['totalnewscategorywise']
+        this.totalRecords = data['totalCount']
 
         if(this.totalRecords > this.pageSize){
           console.log("inside if",this.totalRecords)
@@ -124,7 +124,7 @@ export class EditNewsComponent implements OnInit {
       endlimit: this.pageSize
     };    
       this.apiService.dataPostApi(params,AppSettings.SHOW_ADMIN_NEWS).then((data: any[]) => {
-        this.totalRecords = data['totalnewscategorywise']
+        this.totalRecords = data['totalCount']
 
         if(this.totalRecords > this.pageSize){
           console.log("inside if",this.totalRecords)

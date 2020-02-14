@@ -46,6 +46,11 @@
                             <select formControlName="userTypeId">
                                 <option *ngFor="let userType of userTypeDetails" [value]="userType.id">{{userType.userName}}</option>
                             </select>
+                            
+                            {{frmNews.get('userTypeId').errors | json}}
+                            <div class="error" *ngIf="frmNews.get('userTypeId').errors && (frmNews.get('userTypeId').touched || frmNews.get('userTypeId').dirty)">
+                                <p>Market Insights category is required</p>
+                              </div>
                             <!--  <ng-select 
                                      [items]="categoryList"
                                      bindLabel="category"
@@ -58,6 +63,9 @@
                             <br>
                             <label for="newsTitle">Market Insights Title</label>
                                 <input type="text" class="form-control" formControlName="newsTitle">
+                                <div class=error *ngIf="frmNews.get('newsTitle').errors && (frmNews.get('newsTitle').touched || frmNews.get('newsTitle').dirty)">
+                                  <p>Market Insights Title is required</p>
+                                </div>
                             <br>
                             <label for="banner">Market Insights Banner</label>
                                 <input id="file12" type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
@@ -68,11 +76,17 @@
                                 <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
                            </div>
                             <br>
-                            <label for="summary">Market Insights Shots</label>
+                            <label for="summary">Market Insights Summary</label>
                                 <textarea type="text" class="form-control" formControlName="summary" placeholder="Enter News Summary..." rows="4"></textarea>
+                                <div class=error *ngIf="frmNews.get('newsTitle').errors && (frmNews.get('newsTitle').touched || frmNews.get('newsTitle').dirty)">
+                                    <p>Market Insights Summary is required</p>
+                                  </div>
                             <br>
                             <label for="newsDesc">Market Insights Description</label>
                             <angular-editor formControlName="newsDesc" [config]="config"></angular-editor>
+                            <div class=error>
+                                <p>Market Insights Description is required</p>
+                              </div>
                           </div>
                           <button *ngIf="!updateCheck" type="submit" class="btn btn-success pull-right" (click)="submitNews()">Submit</button>
                           <button *ngIf="updateCheck" type="submit" class="btn btn-success pull-right" (click)="UpdateNews()">Update</button>
