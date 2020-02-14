@@ -4067,6 +4067,8 @@ def getPromissingIntiatives():
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("promissingIntiatives n,userMaster um",column,WhereCondition,"","0","10",orderby)
+        data2 = databasefile.SelectTotalCountQuery("promissingIntiatives","","")
+        data["totalCount"]=data2
         if data != "0":
             return data
         else:
@@ -4218,7 +4220,6 @@ def getNews():
         column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("news n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
         data2 = databasefile.SelectTotalCountQuery("news","","")
-        print(data2,"------------------------")
 
         if data != "0":
             data["totalCount"]=data2
