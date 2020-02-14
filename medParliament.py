@@ -45,12 +45,12 @@ def userId():
                 column=' emailVerificationStatus=1,status=0 '
                 data=databasefile.UpdateQuery('userMaster',column,whereCondition)
                 if data !="0":
-                return {"status":"true","message":"Congratulations! Your account has been activated successfully","result":""}
+                    return {"status":"true","message":"Congratulations! Your account has been activated successfully","result":""}
             else:
                 column='emailVerificationStatus=1'
                 data1=databasefile.UpdateQuery('userMaster',column,whereCondition)
                 if data1 !="0":
-                return {"status":"true","message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account will be activated you will get a confirmation mail.","result":""}
+                    return {"status":"true","message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account will be activated you will get a confirmation mail.","result":""}
             
             
         else:
