@@ -78,7 +78,7 @@ export class EditAnnocementComponent implements OnInit {
     let data = this.frmShowNews.getRawValue();
     
     this.apiService.dataPostApi(data,AppSettings.getAnnouncement).then((data: any[]) => {
-      this.totalRecords = data['totalnewscategorywise']
+      this.totalRecords = data['totalCount']
       console.log(this.totalRecords)
       if(this.totalRecords > this.pageSize){
         console.log("inside if",this.totalRecords)
@@ -107,7 +107,7 @@ export class EditAnnocementComponent implements OnInit {
       // UserCreate: AppSettings.getLoggedInUser()                
     };
       this.apiService.dataPostApi(params,AppSettings.getAnnouncement).then((data: any[]) => {
-        this.totalRecords = data['totalnewscategorywise']
+        this.totalRecords = data['totalCount']
 
         if(this.totalRecords > this.pageSize){
           console.log("inside if",this.totalRecords)
@@ -126,7 +126,7 @@ export class EditAnnocementComponent implements OnInit {
       endlimit: this.pageSize
     };    
       this.apiService.dataPostApi(params,AppSettings.getAnnouncement).then((data: any[]) => {
-        this.totalRecords = data['totalnewscategorywise']
+        this.totalRecords = data['totalCount']
 
         if(this.totalRecords > this.pageSize){
           console.log("inside if",this.totalRecords)
