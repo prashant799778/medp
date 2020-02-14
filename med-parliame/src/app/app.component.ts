@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder,Validators } from '@angular/forms';
 import { AuthsService } from './services/auths.service';
 import { LocalStorageService } from 'angular-web-storage';
+import { ActivatedRoute } from '@angular/router';
+import { UserServiceService } from './services/user-service.service';
+import { AppSettings } from './utils/constant';
 declare var jQuery: any;
 
 @Component({
@@ -16,20 +19,58 @@ export class AppComponent {
   showPasswords: boolean;
   loginMedPar: any;
   errors: any;
+  AccountVerification: boolean;
+  userId: any;
+  message: any;
   constructor(public fb: FormBuilder,
+				public userService: UserServiceService,
+				public route: ActivatedRoute,
 				public local: LocalStorageService,
 				public authsService: AuthsService){
 
-						
-				this.createTable()
-					if(this.local.get('userData1')){
-						this.loginSuccess = true;
-					}
+					console.log(window.location.href)
+					this.AccountVerification = false
+      let location = window.location.href
+      location = location = location.substring(location.lastIndexOf("/") + 1, location.length );
+      let secondLocation = location.substring(0, location.lastIndexOf("/") + 1)
+      secondLocation = secondLocation.substring(secondLocation.lastIndexOf("/") + 1, secondLocation.length - 5 );
+      console.log(location)
+      let splitLocation = location.split('?')
+      console.log(splitLocation[1])
+      if( splitLocation[0] == 'AccountVerification'){
+        // this.router.navigateByUrl('/AccountVerification')
+		this.AccountVerification = true
 
-					this.authsService.logoutEvent.subscribe(resp=>{
-						this.loginSuccess = false;
-					})
+		// this.route.queryParams.subscribe(params => {
+		// 	this.userId = params['userId'];
+			
+			let secondSPlit = splitLocation[1].split('=')
 
+			
+			let data = {
+				'userId': secondSPlit[1]
+			}
+			this.userService.getApiDataacountVerfication(AppSettings.AccountVerification,data).then(resp=>{
+				console.log(resp)
+				if(resp['status'] == 'true'){
+					this.message = resp['message']
+				}
+			})
+		// })
+
+	  }else{
+		this.AccountVerification = false
+		this.createTable()
+		if(this.local.get('userData1')){
+			this.loginSuccess = true;
+		}
+
+		this.authsService.logoutEvent.subscribe(resp=>{
+			this.loginSuccess = false;
+		})
+
+	  }
+				
 					// jQuery('input[type="checkbox"]'). click(function(){
 					// 	if(jQuery(this). prop("checked") == true){
 					// 	alert("Checkbox is checked." );

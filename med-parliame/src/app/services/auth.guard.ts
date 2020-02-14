@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { SessionStorageService, LocalStorageService } from 'angular-web-storage';
 import { AuthsService } from './auths.service';
 import { UserServiceService } from './user-service.service';
+import { splitClasses } from '@angular/compiler';
 // import { UserService } from './user.service';
 // import { SessionStorageService } from 'angular-web-storage';
 
@@ -30,29 +31,36 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
       location = location = location.substring(location.lastIndexOf("/") + 1, location.length );
       let secondLocation = location.substring(0, location.lastIndexOf("/") + 1)
       secondLocation = secondLocation.substring(secondLocation.lastIndexOf("/") + 1, secondLocation.length - 5 );
-      console.log(secondLocation)
-      if( secondLocation == 'AccountVerification/')
-      if (this.session.get(this.KEY)) {
+      console.log(location)
+      let splitLocation = location.split('?')
+      console.log(splitLocation[0])
+      if( splitLocation[0] == 'AccountVerification'){
+        // this.router.navigateByUrl('/AccountVerification')
+        console.log("success")
+      }else{
+        if (this.session.get(this.KEY)) {
+          let isuserLoggedIn = this.local.get('userData1');
+         
+         
+          this.userService.getSaveCustomer(isuserLoggedIn);
+          let isuserLoggedIn1 = this.local.get('userData2');
+         
+         
+          this.userService.getSaveCustomer1(isuserLoggedIn1);
+          return true;
+      }else{
         let isuserLoggedIn = this.local.get('userData1');
-       
-       
+        
         this.userService.getSaveCustomer(isuserLoggedIn);
         let isuserLoggedIn1 = this.local.get('userData2');
-       
-       
-        this.userService.getSaveCustomer1(isuserLoggedIn1);
+         
+         
+          this.userService.getSaveCustomer1(isuserLoggedIn1);
+        
         return true;
-    }else{
-      // let isuserLoggedIn = this.local.get('userData1');
+      }
+      }
       
-      // this.userService.getSaveCustomer(isuserLoggedIn);
-      // let isuserLoggedIn1 = this.local.get('userData2');
-       
-       
-      //   this.userService.getSaveCustomer1(isuserLoggedIn1);
-      
-      return true;
-    }
 
     
     
