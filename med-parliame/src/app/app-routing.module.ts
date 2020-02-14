@@ -54,7 +54,7 @@ const routes: Routes = [
   { path: 'allPosts', component: PostsComponent, canActivate:[AuthGuard]},
   { path: 'enterpenure', component: EnterpenuressComponent, canActivate:[AuthGuard]},
   { path: 'studentsList', component: StudentListsComponent, canActivate:[AuthGuard]},
-  { path: 'AccountVerification', component: AccountVerificationComponent, canActivate:[AuthGuard]},
+  { path: 'AccountVerification', component: AccountVerificationComponent},
   
   { path: 'setting', 
   children: [                          //<---- child components declared here
