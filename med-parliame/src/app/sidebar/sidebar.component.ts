@@ -173,7 +173,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 			},100)
 		}
 		
-
+console.log(this.locations, this.secondLocation)
 		if(this.locations == 'http://localhost:5002/allPosts'){
 			
 			setTimeout(()=>{
@@ -200,14 +200,35 @@ console.log(this.local.get('userData1')[0].userTypeId)
 			},100)
 		}else if(this.locations == 'policy' && this.secondLocation == 'User/'){
 			setTimeout(()=>{
-				// var element = document.getElementById("studentTabs")
-				// console.log(element)
 				$(".drop-showw").css({"display":"block"});
 				$(".side-menu ul li a").removeClass("active");
 				var elem = document.getElementById("userPolicy")
 				elem.click();
-				// elem.addClass("active");
 				$("#userPolicy").addClass("active")
+			},100)
+		}else if(this.locations == 'professional' && this.secondLocation == 'User/'){
+			setTimeout(()=>{
+				$(".drop-showw").css({"display":"block"});
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("userProfessionals")
+				elem.click();
+				$("#userProfessionals").addClass("active")
+			},100)
+		}else if(this.locations == 'doctor' && this.secondLocation == 'User/'){
+			setTimeout(()=>{
+				$(".drop-showw").css({"display":"block"});
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("userDoctors")
+				elem.click();
+				$("#userDoctors").addClass("active")
+			},100)
+		}else if(this.locations == 'decision' && this.secondLocation == 'User/'){
+			setTimeout(()=>{
+				$(".drop-showw").css({"display":"block"});
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("userdecision")
+				elem.click();
+				$("#userdecision").addClass("active")
 			},100)
 		}else if(this.locations == 'enterpenure' && this.secondLocation == 'User/'){
 			setTimeout(()=>{
@@ -230,6 +251,34 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				elem.click();
 				// elem.addClass("active");
 				$("#userStudents").addClass("active")
+			},100)
+		}else if(this.locations == 'doctor' && this.secondLocation == 'dmin/'){
+			setTimeout(()=>{
+				$(".drop-show").css({"display":"block"});
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("admin1Doctor")
+				console.log(elem)
+				elem.click();
+				$("#admin1Doctor").addClass("active")
+			},100)
+		}else if(this.locations == 'professional' && this.secondLocation == 'dmin/'){
+			setTimeout(()=>{
+				$(".drop-show").css({"display":"block"});
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("admin1Professional")
+				elem.click();
+				$("#admin1Professional").addClass("active")
+			},100)
+		}else if(this.locations == 'operation' && this.secondLocation == 'dmin/'){
+			setTimeout(()=>{
+				// var element = document.getElementById("studentTabs")
+				// console.log(element)
+				$(".drop-show").css({"display":"block"});
+				$(".side-menu ul li a").removeClass("active");
+				var elem = document.getElementById("admin1Operational")
+				elem.click();
+				// elem.addClass("active");
+				$("#admin1Operational").addClass("active")
 			},100)
 		}else if(this.locations == 'policy' && this.secondLocation == 'dmin/'){
 			setTimeout(()=>{
@@ -376,6 +425,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 	}
 
 	showSLider(){
+		console.log("user chlick")
 		this.AdminImage = false;
 		this.PostImage = false;
 		if(this.numbers == 0){
