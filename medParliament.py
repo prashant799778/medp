@@ -4221,6 +4221,7 @@ def getNews():
         print(data2,"------------------------")
 
         if data != "0":
+            data["totalCount"]=data2
             return data
         else:
             return commonfile.Errormessage()
