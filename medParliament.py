@@ -4157,8 +4157,9 @@ def news():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        
-                        if  inputdata1 !=None or (inputdata1!=(http://134.209.153.34.5031): 
+                        if inputdata1==ConstantData.GetBaseURL():
+                            ImagePath=""
+                        else : 
                             index=re.search("/newsimages", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
