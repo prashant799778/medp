@@ -35,7 +35,7 @@ export class EditNewsComponent implements OnInit {
         this.frmShowNews = this.fb.group({
           startlimit: [''],
           endlimit: [''],
-          CategoryId: ['1'],
+         
           UserType: [''],
           filter: ['']
         });  
@@ -79,7 +79,7 @@ export class EditNewsComponent implements OnInit {
     let data = this.frmShowNews.getRawValue();
     
     this.apiService.dataPostApi(data,AppSettings.SHOW_ADMIN_NEWS).then((data: any[]) => {
-      this.totalRecords = data['totalnewscategorywise']
+      this.totalRecords = data['totalCount']
       console.log(this.totalRecords)
       if(this.totalRecords > this.pageSize){
         console.log("inside if",this.totalRecords)
