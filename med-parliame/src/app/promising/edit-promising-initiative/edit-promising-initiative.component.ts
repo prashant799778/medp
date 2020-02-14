@@ -34,7 +34,7 @@ export class EditPromisingInitiativeComponent implements OnInit {
         this.frmShowNews = this.fb.group({
           startlimit: [''],
           endlimit: [''],
-          CategoryId: ['1'],
+          
           UserType: [''],
           filter: ['']
         });  
@@ -78,7 +78,7 @@ export class EditPromisingInitiativeComponent implements OnInit {
     let data = this.frmShowNews.getRawValue();
     
     this.apiService.dataPostApi(data,AppSettings.getPromissingIntiatives).then((data: any[]) => {
-      this.totalRecords = data['totalnewscategorywise']
+      this.totalRecords = data['totalCount']
       console.log(this.totalRecords)
       if(this.totalRecords > this.pageSize){
         console.log("inside if",this.totalRecords)
@@ -104,7 +104,7 @@ export class EditPromisingInitiativeComponent implements OnInit {
       // UserCreate: AppSettings.getLoggedInUser()                
     };
       this.apiService.dataPostApi(params,AppSettings.getPromissingIntiatives).then((data: any[]) => {
-        this.totalRecords = data['totalnewscategorywise']
+        this.totalRecords = data['totalCount']
 
         if(this.totalRecords > this.pageSize){
           console.log("inside if",this.totalRecords)
@@ -123,7 +123,7 @@ export class EditPromisingInitiativeComponent implements OnInit {
       endlimit: this.pageSize
     };    
       this.apiService.dataPostApi(params,AppSettings.getPromissingIntiatives).then((data: any[]) => {
-        this.totalRecords = data['totalnewscategorywise']
+        this.totalRecords = data['totalCount']
 
         if(this.totalRecords > this.pageSize){
           console.log("inside if",this.totalRecords)

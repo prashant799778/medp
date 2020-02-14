@@ -34,7 +34,7 @@ export class EditEventComponent implements OnInit {
         this.frmShowNews = this.fb.group({
           startlimit: [''],
           endlimit: [''],
-          CategoryId: ['1'],
+          
           UserType: [''],
           filter: ['']
         });  
