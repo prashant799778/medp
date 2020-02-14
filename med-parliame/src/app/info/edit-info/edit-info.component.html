@@ -86,7 +86,7 @@
                                   <tr>
                                       <td>{{news.text}}</td>
                                       <td><img *ngIf="news && news.imagePath" src="{{news.imagePath}}" class="hash-img tab-shadow"></td>
-                                    <td> {{news.videoLink}} </td>
+                                    <td> <p *ngIf="news.videoLink"(click)="openLink(news.videoLink)">{{news.videoLink}} <p></td>
                                     <td>{{getUserType(news.userTypeId)}}</td>
                                     <td>{{status[i]}}</td>
                                     <td> {{news.DateCreate}} </td>

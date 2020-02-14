@@ -202,7 +202,9 @@ export class EditMediaComponent implements OnInit {
   clsoeModal(){
     jQuery('#addAdmin-promising').modal('hide')
   }
-
+  openLink(link){
+		window.open(link);
+	}
   
 
 }

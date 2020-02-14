@@ -196,6 +196,10 @@ export class EditAnnocementComponent implements OnInit {
     this.getNews()
   }
 
+  openLink(link){
+		window.open(link);
+	}
+
   
 
 }

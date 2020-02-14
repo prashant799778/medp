@@ -232,6 +232,11 @@ export class EditInfoComponent implements OnInit {
   
 }
 
+openLink(link){
+  window.open(link);
+}
+
+
   
 
 }

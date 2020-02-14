@@ -25,6 +25,13 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       console.log(this.local)
+      console.log(window.location.href)
+      let location = window.location.href
+      location = location = location.substring(location.lastIndexOf("/") + 1, location.length );
+      let secondLocation = location.substring(0, location.lastIndexOf("/") + 1)
+      secondLocation = secondLocation.substring(secondLocation.lastIndexOf("/") + 1, secondLocation.length - 5 );
+      console.log(secondLocation)
+      if( secondLocation == 'AccountVerification/')
       if (this.session.get(this.KEY)) {
         let isuserLoggedIn = this.local.get('userData1');
        
@@ -36,13 +43,13 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
         this.userService.getSaveCustomer1(isuserLoggedIn1);
         return true;
     }else{
-      let isuserLoggedIn = this.local.get('userData1');
+      // let isuserLoggedIn = this.local.get('userData1');
       
-      this.userService.getSaveCustomer(isuserLoggedIn);
-      let isuserLoggedIn1 = this.local.get('userData2');
+      // this.userService.getSaveCustomer(isuserLoggedIn);
+      // let isuserLoggedIn1 = this.local.get('userData2');
        
        
-        this.userService.getSaveCustomer1(isuserLoggedIn1);
+      //   this.userService.getSaveCustomer1(isuserLoggedIn1);
       
       return true;
     }

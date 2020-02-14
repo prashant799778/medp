@@ -94,7 +94,10 @@ console.log(this.local.get('userData1')[0].userTypeId)
 		this.locations = this.locations.substring(this.locations.lastIndexOf("/") + 1, this.locations.length );
 		
 		this.secondLocation = this.secondLocation.substring(this.secondLocation.lastIndexOf("/") + 1, this.secondLocation.length - 5 );
-		
+		console.log(this.local.get('userData1')[0].userTypeId)
+		// if(this.local.get('userData1')[0].userTypeId == ""){
+		// 	this.local.get('userData1')[0].userTypeId
+		// }
 
 		if(this.local.get('userData1')[0].userTypeId == 12){
 			console.log(this.locations)
