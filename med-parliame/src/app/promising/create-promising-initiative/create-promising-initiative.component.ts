@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
@@ -87,13 +87,21 @@ export class CreatePromisingInitiativeComponent implements OnInit {
   initializeForm() {
     // Question,Answer,UserId
     this.frmNews = this.fb.group({
-      newsType: [''],
-      newsTitle: [''],
+      // newsType: [''],
+      // newsTitle: [''],
+      // banner: [''],
+      // summary: [''],
+      // newsDesc: [''],
+      // userCreate: [''],
+      // userTypeId: [''],
+      // id: [''],
+      newsType: ['',Validators.required],
+      newsTitle: ['',Validators.required],
       banner: [''],
-      summary: [''],
-      newsDesc: [''],
+      summary: ['',Validators.required],
+      newsDesc: ['',Validators.required],
       userCreate: [''],
-      userTypeId: [''],
+      userTypeId: ['',Validators.required],
       id: [''],
       
     });
@@ -120,7 +128,8 @@ export class CreatePromisingInitiativeComponent implements OnInit {
  
   }
   UpdateNews(){
-    console.log(this.frmNews.value)
+    if(this.frmNews.valid){
+      console.log(this.frmNews.value)
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
       // newsType : this.frmNews.get('newsType').value,
@@ -162,10 +171,22 @@ export class CreatePromisingInitiativeComponent implements OnInit {
 
       }
     });
+    }else{
+      const controls = this.frmNews.controls;
+		
+      Object.keys(controls).forEach(controlName => {
+        console.log(controls)
+        controls[controlName].markAllAsTouched();
+      });
+      console.log(this.frmNews)
+      return false;
+    } 
+    
   }
 
   submitNews() {
-    this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
+    if(this.frmNews.valid){
+      this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
       // newsType : this.frmNews.get('newsType').value,
       newsTitle: this.frmNews.get('newsTitle').value,
@@ -204,6 +225,18 @@ export class CreatePromisingInitiativeComponent implements OnInit {
 
       }
     });
+
+    }else{
+      const controls = this.frmNews.controls;
+		
+      Object.keys(controls).forEach(controlName => {
+        console.log(controls)
+        controls[controlName].markAllAsTouched();
+      });
+      console.log(this.frmNews)
+      return false;
+    } 
+    
 
   }
 

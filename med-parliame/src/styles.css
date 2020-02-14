@@ -918,3 +918,10 @@ ul.ant-pagination li {
         position: relative;
         top: -3px;
     }
+    .error p{
+    
+        margin-top: 5px;
+        color: red;
+        font-size: 12px;
+    
+    }

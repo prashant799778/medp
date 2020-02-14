@@ -1,3 +1,7 @@
 .form-group label {
     margin-right: 10px;
 }
+my-date-picker.dpk-lk{
+    position: unset;
+    width: 50%;
+}
