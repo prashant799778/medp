@@ -63,3 +63,7 @@ p.inline-blk div {
     left: 4px;
     top: 3px;
 }
+
+.video-link{
+    cursor: pointer;
+}

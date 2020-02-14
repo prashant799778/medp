@@ -58,3 +58,7 @@ p.inline-blk div {
     vertical-align: middle;
     width: 300px;
 }
+
+.video-link{
+    cursor: pointer;
+}

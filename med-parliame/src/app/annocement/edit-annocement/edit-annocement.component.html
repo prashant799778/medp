@@ -73,7 +73,7 @@
                                       <td> <img src="{{news.imagePath}}" class="hash-img tab-shadow" > </td>
                                       <td> <p>{{news.title}}</p> </td> 
                                       <td> <p>{{news.summary}} </p></td> 
-                                      <td > <p *ngIf="news.videoLink"(click)="openLink(news.videoLink)">{{news.videoLink}} </p></td> 
+                                      <td > <p class="video-link" *ngIf="news.videoLink"(click)="openLink(news.videoLink)">{{news.videoLink}} </p></td> 
                                       
                                       <td> <p>{{news.DateCreate}} </p></td>
                                       <!-- <td>  {{news.UserName}} </td> -->

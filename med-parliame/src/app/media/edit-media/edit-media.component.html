@@ -82,7 +82,7 @@
                                   <tr>
                                     <td> {{news.text}}</td>
                                     <td><img *ngIf="news && news.imagePath" src="{{news.imagePath}}" class="hash-img tab-shadow"></td>
-                                    <td> <p *ngIf="news.videoPath"(click)="openLink(news.videoPath)">{{news.videoPath}}</p>  </td>
+                                    <td> <p class="video-link" *ngIf="news.videoPath"(click)="openLink(news.videoPath)">{{news.videoPath}}</p>  </td>
                                     <td>
                                           <div class="btn-edit-group">
                                                   <button type="button" class="edit-btn" (click)="editNews(news.id)" >  <img src="../../../assets/images/edit-im.svg"></button>
