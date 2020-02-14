@@ -50,7 +50,7 @@ def userId():
                 column='emailVerificationStatus=1'
                 data1=databasefile.UpdateQuery('userMaster',column,whereCondition)
                 if data1 !="0":
-                    return {"status":"true","message":"Your email has been verified. Thank you for verifying your email. Your sign up details have been sent to our admin for review. Your account must be approved before you can login. When your account is activated you will get a confirmation mail.","result":""}
+                    return {"status":"true","message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account is activated you will get a confirmation mail.","result":""}
             
             
         else:
@@ -1379,7 +1379,7 @@ def allpolicyMakers():
         WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId  and um.countryId=cm.Id"
 
         
-        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,CountryMasterNew as cm",column,WhereCondition,""," ",startlimit,endlimit)
 
       
         
