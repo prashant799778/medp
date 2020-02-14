@@ -632,7 +632,7 @@ def SignUp1():
                             response = sg.send(message)
                             columns="userId,designation,occupation,companyName,companyAddress,address"
                             values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
-                            data6=databasefile.InsertQuery("professionalMaster",column,values)
+                            data6=databasefile.InsertQuery("professionalMaster",columns,values)
                             for i in interestId:
                                 column="userId,userTypeId,interestId"
                                 values=" '" + str(y["userId"]) + "','" + str('9') + "','" + str(i) + "'"
