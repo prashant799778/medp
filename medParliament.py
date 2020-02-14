@@ -4249,12 +4249,18 @@ def landingPageDashboard():
             if "startlimit" in inputdata:
                 if inputdata['startlimit'] != "":
                     startlimit =str(inputdata["startlimit"])
+            
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+        
+            
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
                     WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
                     column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
-                    data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"","0","10",orderby)
+                    data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"",startlimit,endlimit,orderby)
                     print(data1,"")
                     
                     if data1["result"]=="":
@@ -4264,15 +4270,16 @@ def landingPageDashboard():
                             if i["imagePath"]!="":
                                 i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
 
-            if "endlimit" in inputdata:
-                if inputdata['endlimit'] != "":
-                    endlimit =str(inputdata["endlimit"])
-        
-        column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",orderby)
-        if data["result"]=="":
-            data["result"]=[]
-
+        if "userTypeId" not in inputdata:
+            column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+            data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","3",orderby)
+            if data["result"]=="":
+                data["result"]=[]
+        else :
+            column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+            data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",orderby)
+            if data["result"]=="":
+                data["result"]=[]
         
 
         column2 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
