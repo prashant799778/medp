@@ -3670,7 +3670,7 @@ def userProfile():
                 column=column+"ms.organization,"
                 column=column+" ms.aboutProfile, ms.designation"
                 WhereCondition=" and cm.id=um.countryId and um.userId=ms.userId and um.userId='" + str(userId) + "'"
-                data1 = databasefile.SelectQueryOrderby("userMaster um,policyMakerMaster ms,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
+                data1 = databasefile.SelectQueryOrderby("userMaster um,policyMakerMaster ms,CountryMasterNew cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print("===========================",data1)
                 
                 orderby="ab.id"
