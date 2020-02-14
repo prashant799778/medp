@@ -836,7 +836,7 @@ def addCountry():
                     print("111111111111111uuuuuuuuuu")
                     columns= "countryName='" + str(Name) + "' "
                     whereCondition= " and id='" + str(Id) + "' "
-                    data2=databasefile.UpdateQuery("countryMaster",columns,whereCondition)
+                    data2=databasefile.UpdateQuery("CountryMasterNew",columns,whereCondition)
                     if data2 !='0':
                         return data2
                     else:
@@ -846,7 +846,7 @@ def addCountry():
            
             
             WhereCondition = " and countryName = '" + str(Name) + "' "
-            count = databasefile.SelectCountQuery("countryMaster",WhereCondition,"")
+            count = databasefile.SelectCountQuery("CountryMasterNew",WhereCondition,"")
             
             if int(count) > 0:
                 return commonfile.CountryAlreadyExistMsg()
@@ -857,11 +857,11 @@ def addCountry():
                     column = "countryName"                
                     values = " '" + str(Name) + "'"
 
-                    data = databasefile.InsertQuery("countryMaster",column,values)        
+                    data = databasefile.InsertQuery("CountryMasterNew",column,values)        
                     if data != "0":
                         column = 'id,countryName'
                         
-                        data = databasefile.SelectQuery("countryMaster",column,WhereCondition,"",startlimit,endlimit)
+                        data = databasefile.SelectQuery("CountryMasterNew",column,WhereCondition,"",startlimit,endlimit)
                         print(data)
                         Data = {"status":"true","message":"","result":data["result"]}                  
                         return Data
@@ -1419,7 +1419,7 @@ def testallpolicyMakers():
         WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId  and um.countryId=cm.id"
 
         
-        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,CountryMasterNew as cm",column,WhereCondition,""," ",startlimit,endlimit)
 
         if (data!=0):
             for i in data["result"]:
@@ -1548,7 +1548,7 @@ def allDecisionMaker():
             WhereCondition=" and um.usertypeId='13' and cm.Id=um.countryId  "
 
             
-            data = databasefile.SelectQueryOrderby("userMaster as um,countryMaster as cm",column,WhereCondition,""," ",startlimit,endlimit)
+            data = databasefile.SelectQueryOrderby("userMaster as um,CountryMasterNew as cm",column,WhereCondition,""," ",startlimit,endlimit)
 
           
             
@@ -3843,7 +3843,7 @@ def userProfile():
                 column=column+"um.countryId,(cm.Name)countryName"
                 startlimit,endlimit="",""
                 WhereCondition=" and um.usertypeId='13' and cm.Id=um.countryId "
-                data1 = databasefile.SelectQueryOrderby("userMaster um,countryMaster cm",column,WhereCondition,"",startlimit,endlimit,"")
+                data1 = databasefile.SelectQueryOrderby("userMaster um,CountryMasterNew cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 if data1["result"][0]["profilePic"]==None:
                     data1["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
