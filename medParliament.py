@@ -4042,9 +4042,11 @@ def promissingIntiatives():
 def getPromissingIntiatives():
 
     try:
+        print('AA')
         WhereCondition,startlimit,endlimit="","",""
         WhereCondition=WhereCondition+" and n.Status<2 "
         if request.get_data():
+            print('B')
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
             if "startlimit" in inputdata:
@@ -4076,6 +4078,7 @@ def getPromissingIntiatives():
             return commonfile.Errormessage()
 
     except Exception as e :
+        print('EXC')
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
