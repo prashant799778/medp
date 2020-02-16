@@ -4471,9 +4471,10 @@ def announcements1():
                     column=column+", summary"
                     values=values+ ",'"+str(summary)+"'"
         
-            if "videoLink" in inputdata and ("videoLink" in inputdata !="") :
+            if "videoLink" in inputdata :
                 print("1111111111111111111")
-                if (inputdata['videoLink'] != None) :
+               
+                if (inputdata['videoLink'] != None) or (inputdata['videoLink'] != "") :
                     print("2222222222222222")
                     videoLink =inputdata["videoLink"]
                     if videoLink[0:24]!="https://www.youtube.com/":
