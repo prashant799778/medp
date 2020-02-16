@@ -27,6 +27,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
   imageShow: any= '';
   showBanner: number;
   updateCheck: boolean;
+  removeButton: boolean;
   config: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -57,6 +58,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
     console.log('constructor');
     this.initializeForm();
     this.updateCheck= false;
+    this.removeButton = false;
    }
 
    ngOnInit() {
@@ -119,6 +121,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
           this.imageShow = (<FileReader>event.target).result;
           this.frmNews.get('banner').setValue(this.file);
           this.showBanner = 0;
+          this.removeButton = true;
         }
       }
       
@@ -268,6 +271,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
     if(this.newsDetails[0]['imagePath'] !== " "){
       this.showBanner = 1;
       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
+      this.removeButton = true;
     }
     this.frmNews.get('newsType').setValue(this.newsDetails[0]['newsType']);
     this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['newsTitle']);
@@ -281,6 +285,13 @@ export class CreatePromisingInitiativeComponent implements OnInit {
     //   })
     // }
     this.frmNews.get('userTypeId').setValue(this.newsDetails[0]['userTypeId'])
+  }
+  removeImage(){
+    this.removeButton = false;
+    this.frmNews.get('banner').setValue('')
+    this.imageShow = ''
+    this.file = ''
+    // jQuery('#file12')
   }
   getUsertype(){
     this.apiService.dataPostApi(null,AppSettings.userDropDown).then(resp=>{

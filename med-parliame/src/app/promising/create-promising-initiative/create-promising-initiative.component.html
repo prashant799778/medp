@@ -68,9 +68,11 @@
                             <label for="banner">Promising Initiative Banner</label>
                                 <input id="file12" type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                                 <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
+                                    <button (click)="removeImage()" *ngIf="removeButton">Remove Image</button>
                                     <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
                                </div>
                                <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
+                                  <button (click)="removeImage()" *ngIf="removeButton">Remove Image</button>
                                 <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
                            </div>
                             <br>
