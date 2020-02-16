@@ -152,7 +152,7 @@ export class EditPromisingInitiativeComponent implements OnInit {
     let data ={
       'id': this.newsId
     }
-    this.apiService.dataPostApi(data, AppSettings.deletePromisingInitiatives).then((data: any[]) => {
+    this.apiService.dataPostApi(data, AppSettings.deletePromissingInitiatives).then((data: any[]) => {
       console.log(data);
       if(data['status'] == 'true'){
         this.activatedds = true;

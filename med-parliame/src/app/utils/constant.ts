@@ -53,6 +53,8 @@ export class AppSettings {
     public static signUpVideo = 'signUpVideo';
     public static deleteSignUpVideo = 'deleteSignUpVideo';
     public static deletePromisingInitiatives = 'deletePromisingInitiatives';
+    public static deletePromissingInitiatives = 'deletePromissingInitiatives';
+    
     public static deleteGallery = 'deleteGallery';
     public static deleteEvent = 'deleteEvent';
     public static deleteAnnouncement = 'deleteAnnouncement';
