@@ -4014,7 +4014,7 @@ def promissingIntiatives():
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
                         print("inputdata=================",inputdata1)
-                        if (inputdata1!=ConstantData.GetBaseURL()) or ('NewsBanner'  in inputdata) :
+                        if ((inputdata1!=ConstantData.GetBaseURL()) or ('NewsBanner'  in inputdata)) :
                             if  inputdata1 !=None: 
                                 index=re.search("/newsimages", inputdata1).start()
                                 ImagePath=""
