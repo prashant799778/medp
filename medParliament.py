@@ -4014,11 +4014,11 @@ def promissingIntiatives():
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
                         print("inputdata=================",inputdata1)
-                        
-                        if  inputdata1 !=None: 
-                            index=re.search("/newsimages", inputdata1).start()
-                            ImagePath=""
-                            ImagePath=inputdata1[index:]
+                        if inputdata1!=ConstantData.GetBaseURL():
+                            if  inputdata1 !=None: 
+                                index=re.search("/newsimages", inputdata1).start()
+                                ImagePath=""
+                                ImagePath=inputdata1[index:]
 
 
                         whereCondition=" and id= '"+ str(Id) +"'"
