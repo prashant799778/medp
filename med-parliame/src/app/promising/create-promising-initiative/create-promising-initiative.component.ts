@@ -95,7 +95,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
       // userCreate: [''],
       // userTypeId: [''],
       // id: [''],
-      newsType: ['',Validators.required],
+      newsType: [''],
       newsTitle: ['',Validators.required],
       banner: [''],
       summary: ['',Validators.required],

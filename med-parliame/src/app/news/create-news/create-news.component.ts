@@ -86,7 +86,7 @@ export class CreateNewsComponent implements OnInit {
   initializeForm() {
     // Question,Answer,UserId
     this.frmNews = this.fb.group({
-      newsType: ['',Validators.required],
+      newsType: [''],
       newsTitle: ['',Validators.required],
       banner: [''],
       summary: ['',Validators.required],
