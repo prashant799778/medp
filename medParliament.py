@@ -5637,7 +5637,7 @@ def deletePromissingInitiatives():
                 WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
         if msg == "1":                        
             
-            data = databasefile.DeleteQuery("promissingInitiatives",WhereCondition)
+            data = databasefile.DeleteQuery("promissingIntiatives",WhereCondition)
 
             if data != "0":
                 return data
