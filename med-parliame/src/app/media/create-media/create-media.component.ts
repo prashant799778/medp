@@ -259,10 +259,12 @@ export class CreateMediaComponent implements OnInit {
       this.showBanner = 1;
       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
     }
-    if(this.newsDetails[0]['videoLink']){
+    if(this.newsDetails[0]['videoPath']){
+      console.log("news if")
       this.imageClick = false;
-      this.frmNews.get('videoLink').setValue(this.newsDetails[0]['videoLink']);  
+      this.frmNews.get('videoLink').setValue(this.newsDetails[0]['videoPath']);  
     }else{
+      console.log("news else")
       this.imageClick = true;
       this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['text']);
     }
