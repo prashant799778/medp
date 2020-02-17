@@ -99,6 +99,18 @@ export class PostsComponent implements OnInit {
           //     this.getStatus(resp.status)
           //   })
           // })
+        }else if(this.id == 13){
+          this.titleHeading = 'Decision Maker'
+          // let datas = {
+          //   'userTypeId': 9
+          // }
+          // this.userService.dataPostApi(datas, AppSettings.AllPosts).then(resp=>{
+          //   this.postList = resp['result']['1']
+          //   console.log(this.postList)
+          //   this.postList.forEach(resp=>{
+          //     this.getStatus(resp.status)
+          //   })
+          // })
         }
       }
       
