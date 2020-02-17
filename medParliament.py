@@ -4263,7 +4263,7 @@ def landingPageDashboard():
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
-                    WhereCondition=WhereCondition+"  and userTypeId='"+str(userTypeId)+"'"
+                    WhereCondition=WhereCondition+" and  userTypeId=0  and userTypeId='"+str(userTypeId)+"'"
                     column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
                     data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"",startlimit,endlimit,orderby)
                     print(data1,"")
