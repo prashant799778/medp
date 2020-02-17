@@ -4555,7 +4555,7 @@ def getAnnouncement():
 
     try:        
         WhereCondition,startlimit,endlimit="","",""
-        WhereCondition=WhereCondition+" and Status<2  and userTypeId=0"
+        WhereCondition=WhereCondition+" and Status<2 "
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
