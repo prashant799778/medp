@@ -5038,13 +5038,13 @@ def userDropdown():
     try:
         columns=" id,userName  "
         startlimit,endlimit="",""
-        whereCondition=" and id>4 and id<10"
+        whereCondition=" and id>4 and id<10 or id=13"
         
         data = databasefile.SelectQuery("userTypeMaster",columns,whereCondition,"",startlimit,endlimit)
        
 
         if data:
-            data['result'].append({"id":0,"userName":"Decision Maker"})
+            data['result'].append({"id":0,"userName":"All"})
             #data["result"][0]["id"]=0           
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
