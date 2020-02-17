@@ -4569,6 +4569,10 @@ def getAnnouncement():
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
                     endlimit =str(inputdata["endlimit"])
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =str(inputdata["userTypeId"])
+                    WhereCondition=WhereCondition+"  and userTypeId="+str(userTypeId)+""
         
         column = "id,Status,userTypeId,title,summary,videoLink,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,UserCreate  "
         data = databasefile.SelectQuery("announcement",column,WhereCondition,"",startlimit,endlimit)
