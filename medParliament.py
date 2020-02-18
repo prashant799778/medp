@@ -4102,7 +4102,7 @@ def news():
             flag=inputdata['flag']
             if "newsTitle" in inputdata:
                 if inputdata['newsTitle'] != "":
-                    newsTitle =commonfile.EscapeSpecialChar(inputdata["newsTitle"].encode('UTF-8'))
+                    newsTitle =commonfile.EscapeSpecialChar(inputdata["newsTitle"])
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
