@@ -3842,7 +3842,7 @@ def userProfile():
                 column="um.mobileNo as mobileNo, um.userName as userName, um.userTypeId,um.password as password, um.profilePic as profilePic, um.userId,um.gender,um.email,um.status,"
                 column=column+"um.countryId,(cm.Name)countryName"
                 startlimit,endlimit="",""
-                WhereCondition=" and um.usertypeId='13' and cm.Id=um.countryId "
+                WhereCondition=" and um.usertypeId='13' and cm.Id=um.countryId and   um.userId='" + str(userId) + "' "
                 data1 = databasefile.SelectQueryOrderby("userMaster um,CountryMasterNew cm",column,WhereCondition,"",startlimit,endlimit,"")
                 print(data1)
                 if data1["result"][0]["profilePic"]==None:
