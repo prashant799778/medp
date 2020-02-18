@@ -28,6 +28,7 @@
                             <th>Country</th>
                             <th>No. of Post</th>
                             <th>Status</th>
+                            <th>Email Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -46,6 +47,11 @@
                                     <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>
                                     <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Inactive</button>
                                     <!-- <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button> -->
+                            </td>
+                            <td>
+                                
+                                <img class="emailImage" *ngIf="userPolicy.emailStatus == 0" src="../../../assets/images/emailClose.svg">
+                                <img class="emailImage" *ngIf="userPolicy.emailStatus == 1" src="../../../assets/images/emailRight.svg">
                             </td>
                             <td>
                                 <button type="button" class="acton-btn" (click)="policyDetail(userPolicy.userId)">
