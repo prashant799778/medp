@@ -1374,7 +1374,7 @@ def  professionalsMasterPannel():
 def allpolicyMakers():
     try:
         column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
-        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,(cm.Name)countryName"
+        column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,(cm.Name)countryName,um.emailVerificationStatus as emailStatus"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId  and um.countryId=cm.Id"
 
@@ -1455,7 +1455,7 @@ def allDoctorMaster():
        
         if msg =="1":
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
-            column=column+" dm.qualificationId as qualificationName,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
+            column=column+" dm.qualificationId as qualificationName,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress,um.emailVerificationStatus as emailStatus"
             startlimit,endlimit="",""
             WhereCondition=" and um.usertypeId='8' and dm.userId=um.userId  "
 
@@ -1499,7 +1499,7 @@ def allprofessionalsMaster():
         msg="1"
         if msg =="1":
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
-            column=column+"pm.userId,pm.designation,pm.occupation,pm.companyName,pm.companyAddress,pm.address"
+            column=column+"pm.userId,pm.designation,pm.occupation,pm.companyName,pm.companyAddress,pm.address,um.emailVerificationStatus as emailStatus"
             startlimit,endlimit="",""
             WhereCondition=" and um.userTypeId='9' and pm.userId=um.userId  "
 
@@ -1543,7 +1543,7 @@ def allDecisionMaker():
         msg="1"
         if msg =="1":
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
-            column=column+"um.countryId,(cm.Name)countryName"
+            column=column+"um.countryId,(cm.Name)countryName,um.emailVerificationStatus as emailStatus"
             startlimit,endlimit="",""
             WhereCondition=" and um.usertypeId='13' and cm.Id=um.countryId  "
 
@@ -1613,7 +1613,7 @@ def enterprenuerMasterPannel():
 def allenterprenuer():
     try:
         column="um.mobileNo as mobileNo,um.email ,um.userName as userName,um.password as password,um.userId,um.gender,um.countryId,um.city,"
-        column=column+"pm.areaOfActivity,pm.profileCategoryId,pm.designation,um.status,pm.companyName"
+        column=column+"pm.areaOfActivity,pm.profileCategoryId,pm.designation,um.status,pm.companyName,um.emailVerificationStatus as emailStatus"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId "
         
@@ -1729,7 +1729,7 @@ def studentMasterPannel():
 def allstudents():
     try:
         column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
-        column=column+" pm.address,pm.qualificationId as qualificationName,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId as universityName,um.status "
+        column=column+" pm.address,pm.qualificationId as qualificationName,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId as universityName,um.status,um.emailVerificationStatus as emailStatus"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId  "
         
