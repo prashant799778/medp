@@ -374,7 +374,7 @@ def SignUp():
                     if data["result"][0]["profilePic"]==None:
                         data["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
 
-                    data['message']='email has been sent successfully on your email'
+                    data['message']='email verification link has been sent successfully on your email'
                     return data
                 else:
                     return commonfile.Errormessage()
