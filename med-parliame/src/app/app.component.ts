@@ -22,6 +22,8 @@ export class AppComponent {
   AccountVerification: boolean;
   userId: any;
   message: any;
+  secondplit: any;
+  emailVerified: boolean;
   constructor(public fb: FormBuilder,
 				public userService: UserServiceService,
 				public route: ActivatedRoute,
@@ -29,7 +31,8 @@ export class AppComponent {
 				public authsService: AuthsService){
 
 					console.log(window.location.href)
-					this.AccountVerification = false
+					this.AccountVerification = false;
+					this.emailVerified =  false;
       let location = window.location.href
       location = location = location.substring(location.lastIndexOf("/") + 1, location.length );
       let secondLocation = location.substring(0, location.lastIndexOf("/") + 1)
@@ -45,17 +48,10 @@ export class AppComponent {
 		// 	this.userId = params['userId'];
 			
 			let secondSPlit = splitLocation[1].split('=')
-
+			this.secondplit = secondSPlit[1]
 			
-			let data = {
-				'userId': secondSPlit[1]
-			}
-			this.userService.getApiDataacountVerfication(AppSettings.AccountVerification,data).then(resp=>{
-				console.log(resp)
-				if(resp['status'] == 'true'){
-					this.message = resp['message']
-				}
-			})
+			
+			
 		// })
 
 	  }else{
@@ -162,6 +158,21 @@ export class AppComponent {
 	}
 	closeModal(){
 		jQuery("#logout-pop").modal('hide')
+	}
+	emailVerify(){
+		let data = {
+			'userId': this.secondplit
+		}
+		this.userService.getApiDataacountVerfication(AppSettings.AccountVerification,data).then(resp=>{
+			console.log(resp)
+			if(resp['status'] == 'true'){
+				this.message = resp['message']
+			}else{
+				this.message = resp['message']
+			}
+			this.emailVerified = true;
+		})
+		
 	}
 	
 }

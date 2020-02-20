@@ -35,8 +35,9 @@
 <body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;height: 100% !important;
             width: 100% !important;">
     <!-- HIDDEN PREHEADER TEXT -->
-    <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Roboto', sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"> We're thrilled to have you here! Get ready to dive into your new account. </div>
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse !important">
+    
+
+    <table  border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse !important">
         <!-- LOGO -->
         <tr>
             <td bgcolor="#e1a23c" align="center">
@@ -49,6 +50,7 @@
         </tr>
         <tr>
             <td bgcolor="#e1a23c" align="center" style="padding: 0px 10px 0px 10px;">
+
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Roboto', sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;">
@@ -64,8 +66,26 @@
         </tr>
         <tr>
             <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-                    <tr>
+
+                <table  *ngIf="!emailVerified" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                 
+                    <div style="text-align: center; height: 88px; background:#ffffff"><button (click)="emailVerify()" class="verify-btn" style="padding: 10px 23px;
+                      background: #e1a23c;
+                      color: #fff;
+                      display: block;
+                      width: 200px;
+                      margin: 0 auto;
+                      border-radius: 5px;"> Click to Verify</button></div>
+                
+               
+              </table>
+
+
+                <table *ngIf="emailVerified" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                 
+                      <div *ngIf="!emailVerified"><button (click)="emailVerify()">Verified</button></div>
+                  
+                  <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Roboto', sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
                             <p style="margin: 0;">Email Verification</p>
                         </td>
