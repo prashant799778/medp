@@ -35,8 +35,8 @@ def userId():
         startlimit,endlimit="",""
 
         
-        column='userTypeId'
-        whereCondition=" and userId='"+ str(userId)  +"' "
+        column='userTypeId,emailVerificationStatus'
+        whereCondition=" and userId='"+ str(userId) +"' "
         output=databasefile.SelectQuery('userMaster',column,whereCondition,"",startlimit,endlimit)
         print(output,"11111111111111111111")
         if output['result']!= "":
