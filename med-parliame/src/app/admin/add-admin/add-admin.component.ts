@@ -180,7 +180,7 @@ export class AddAdminComponent implements OnInit {
 				this.activatedds = true;
 				setTimeout(()=>{
 					jQuery('#addAdmin-pop').modal("hide")
-				},2000000000)
+				},2000)
 				
 			}
 		})
