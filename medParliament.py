@@ -40,18 +40,22 @@ def userId():
         output=databasefile.SelectQuery('userMaster',column,whereCondition,"",startlimit,endlimit)
         print(output,"11111111111111111111")
         if output['result']!= "":
-            y=output['result'][0]
-            if (y['userTypeId'] ==7)  or (y['userTypeId'] =='7') :
-                column=' emailVerificationStatus=1,status=0 '
-                data=databasefile.UpdateQuery('userMaster',column,whereCondition)
-                if data !="0":
-                    return {"status":"true","message":"Congratulations! Your account has been activated successfully","result":""}
-            else:
-                column='emailVerificationStatus=1'
-                data1=databasefile.UpdateQuery('userMaster',column,whereCondition)
-                if data1 !="0":
-                    return {"status":"true","message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account is activated you will get a confirmation mail.","result":""}
             
+            if output['result'][0]["emailVerificationStatus"]==0
+                y=output['result'][0]
+                if (y['userTypeId'] ==7)  or (y['userTypeId'] =='7') :
+                    column=' emailVerificationStatus=1,status=0 '
+                    data=databasefile.UpdateQuery('userMaster',column,whereCondition)
+                    if data !="0":
+                        return {"status":"true","message":"Congratulations! Your account has been activated successfully","result":""}
+                else:
+                    column='emailVerificationStatus=1'
+                    data1=databasefile.UpdateQuery('userMaster',column,whereCondition)
+                    if data1 !="0":
+                        return {"status":"true","message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account is activated you will get a confirmation mail.","result":""}
+            else:
+                return {"status":"true","message":"Dear user your Email is Already verified","result":""}
+
             
         else:
             return {"status":"false","message":"Not a valid user","result":""}
