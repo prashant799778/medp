@@ -123,267 +123,267 @@ def profilePic(image_name):
         return send_from_directory('profilePic', filename=image_name, as_attachment=False)
     except FileNotFoundError:
         abort(404)
-@app.route('/SignUp1', methods=['POST'])
-def SignUp():
+# @app.route('/SignUp1', methods=['POST'])
+# def SignUp():
 
-    try: 
-        startlimit,endlimit="",""   
-        inputdata =  commonfile.DecodeInputdata(request.get_data())  
-        print(inputdata)     
+#     try: 
+#         startlimit,endlimit="",""   
+#         inputdata =  commonfile.DecodeInputdata(request.get_data())  
+#         print(inputdata)     
         
-        keyarr = ['userName','mobileNo','email','password','gender',"userTypeId"]
-        commonfile.writeLog("SignUp1",inputdata,0)
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+#         keyarr = ['userName','mobileNo','email','password','gender',"userTypeId"]
+#         commonfile.writeLog("SignUp1",inputdata,0)
+#         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
        
-        if msg == "1":  
-            DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City,organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","0","","","","","","",""
-            address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
-            CompanyName=""
-            areaOfExpertise,hospital,hospitalAddress="","",""
-            occupation,companyAddress="",""
+#         if msg == "1":  
+#             DeviceId,DeviceType,Os,ImeiNo,ipAddress,Country,City,organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","","0","","","","","","",""
+#             address,qualification,batchofQualification,instituteName,universityName,universityAddress="","","","","",""
+#             CompanyName=""
+#             areaOfExpertise,hospital,hospitalAddress="","",""
+#             occupation,companyAddress="",""
             
          
-            Name = inputdata["userName"]
-            MobileNo = inputdata["mobileNo"]
-            Email = inputdata["email"] 
-            Gender = inputdata["gender"]
-            Password = inputdata["password"]
-            print(Password)
+#             Name = inputdata["userName"]
+#             MobileNo = inputdata["mobileNo"]
+#             Email = inputdata["email"] 
+#             Gender = inputdata["gender"]
+#             Password = inputdata["password"]
+#             print(Password)
 
-            UserId = commonfile.CreateHashKey(Email,Name)
+#             UserId = commonfile.CreateHashKey(Email,Name)
             
-            WhereCondition = " and email = '" + str(Email) + "'"
-            count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
+#             WhereCondition = " and email = '" + str(Email) + "'"
+#             count = databasefile.SelectCountQuery("userMaster",WhereCondition,"")
             
-            if int(count) > 0:
-                print('F')         
-                return commonfile.EmailMobileAlreadyExistMsg()
-            else:
-                print("qqqqqqqqqqqqqqqqqqqqq")
+#             if int(count) > 0:
+#                 print('F')         
+#                 return commonfile.EmailMobileAlreadyExistMsg()
+#             else:
+#                 print("qqqqqqqqqqqqqqqqqqqqq")
                 
-                if 'country' in inputdata:                    
-                    Country = inputdata["country"]
-                if Country == "":
-                    Country='0'  
-                if 'city' in inputdata:                    
-                    City = inputdata["city"]  
-                if 'userTypeId' in inputdata:                                    
-                    userTypeId = inputdata['userTypeId']
-                if 'gender' in inputdata:                    
-                    Gender = inputdata['gender']                  
-                if 'deviceid' in inputdata:                   
-                    DeviceId = inputdata['deviceid'] 
-                if 'deviceType' in inputdata:                    
-                    DeviceType = inputdata['deviceType']
-                    DeviceType = ConstantData.GetDeviceTypeId(DeviceType)
-                if 'os' in inputdata:                    
-                    Os = inputdata['os'] 
-                if 'ImeiNo' in inputdata:                    
-                   ImeiNo = inputdata['ImeiNo']
-                if 'ipAddress' in inputdata:                    
-                   ipAddress = inputdata['ipAddress']
-                if 'password' in inputdata:                    
-                   Password = inputdata['password']
-                if 'organization' in inputdata:                    
-                    organization = inputdata['organization']
+#                 if 'country' in inputdata:                    
+#                     Country = inputdata["country"]
+#                 if Country == "":
+#                     Country='0'  
+#                 if 'city' in inputdata:                    
+#                     City = inputdata["city"]  
+#                 if 'userTypeId' in inputdata:                                    
+#                     userTypeId = inputdata['userTypeId']
+#                 if 'gender' in inputdata:                    
+#                     Gender = inputdata['gender']                  
+#                 if 'deviceid' in inputdata:                   
+#                     DeviceId = inputdata['deviceid'] 
+#                 if 'deviceType' in inputdata:                    
+#                     DeviceType = inputdata['deviceType']
+#                     DeviceType = ConstantData.GetDeviceTypeId(DeviceType)
+#                 if 'os' in inputdata:                    
+#                     Os = inputdata['os'] 
+#                 if 'ImeiNo' in inputdata:                    
+#                    ImeiNo = inputdata['ImeiNo']
+#                 if 'ipAddress' in inputdata:                    
+#                    ipAddress = inputdata['ipAddress']
+#                 if 'password' in inputdata:                    
+#                    Password = inputdata['password']
+#                 if 'organization' in inputdata:                    
+#                     organization = inputdata['organization']
                 
-                if 'aboutProfile' in inputdata:                    
-                    aboutProfile = inputdata['aboutProfile']
+#                 if 'aboutProfile' in inputdata:                    
+#                     aboutProfile = inputdata['aboutProfile']
 
-                if 'designation' in inputdata:                    
-                   designation = inputdata['designation'] 
+#                 if 'designation' in inputdata:                    
+#                    designation = inputdata['designation'] 
 
-                if 'areaofActivity' in inputdata:                    
-                    areaofActivity = inputdata['areaofActivity']
+#                 if 'areaofActivity' in inputdata:                    
+#                     areaofActivity = inputdata['areaofActivity']
 
-                if 'profileCategoryId' in inputdata:                    
-                    profileCategoryId = inputdata['profileCategoryId']
+#                 if 'profileCategoryId' in inputdata:                    
+#                     profileCategoryId = inputdata['profileCategoryId']
 
-                if 'interestId' in inputdata:                    
-                    interestId = inputdata['interestId']   
+#                 if 'interestId' in inputdata:                    
+#                     interestId = inputdata['interestId']   
 
-                if 'address' in inputdata:                    
-                    address = inputdata['address']
+#                 if 'address' in inputdata:                    
+#                     address = inputdata['address']
 
-                if 'qualification' in inputdata:                    
-                    qualification = inputdata['qualification']
+#                 if 'qualification' in inputdata:                    
+#                     qualification = inputdata['qualification']
 
-                if 'batchofQualification' in inputdata:                    
-                    batchofQualification = inputdata['batchofQualification']
+#                 if 'batchofQualification' in inputdata:                    
+#                     batchofQualification = inputdata['batchofQualification']
 
-                if 'institutionName' in inputdata:                    
-                    instituteName = inputdata['institutionName']  
+#                 if 'institutionName' in inputdata:                    
+#                     instituteName = inputdata['institutionName']  
 
-                if 'universityName' in inputdata:                    
-                    universityName = inputdata['universityName']
+#                 if 'universityName' in inputdata:                    
+#                     universityName = inputdata['universityName']
 
-                if 'universityAddress' in inputdata:                    
-                    universityAddress = inputdata['universityAddress']
+#                 if 'universityAddress' in inputdata:                    
+#                     universityAddress = inputdata['universityAddress']
 
-                if 'companyName' in inputdata:                    
-                    CompanyName = inputdata['companyName']
+#                 if 'companyName' in inputdata:                    
+#                     CompanyName = inputdata['companyName']
 
-                if 'areaOfExpertise' in inputdata:                    
-                    areaOfExpertise = inputdata['areaOfExpertise']
+#                 if 'areaOfExpertise' in inputdata:                    
+#                     areaOfExpertise = inputdata['areaOfExpertise']
 
-                if 'hospital' in inputdata:                    
-                    hospital = inputdata['hospital']
+#                 if 'hospital' in inputdata:                    
+#                     hospital = inputdata['hospital']
 
-                if 'hospitalAddress' in inputdata:                    
-                    hospitalAddress = inputdata['hospitalAddress']
-                if 'occupation' in inputdata:                    
-                    occupation = inputdata['occupation']
+#                 if 'hospitalAddress' in inputdata:                    
+#                     hospitalAddress = inputdata['hospitalAddress']
+#                 if 'occupation' in inputdata:                    
+#                     occupation = inputdata['occupation']
 
-                if 'companyAddress' in inputdata:                    
-                    companyAddress = inputdata['companyAddress']
+#                 if 'companyAddress' in inputdata:                    
+#                     companyAddress = inputdata['companyAddress']
                 
-                if 'multiUserTypeId' in inputdata:
-                    multiUserTypeId = inputdata['multiUserTypeId']
+#                 if 'multiUserTypeId' in inputdata:
+#                     multiUserTypeId = inputdata['multiUserTypeId']
 
-                print(interestId)
+#                 print(interestId)
 
-                columns = " status,userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, countryId, city, deviceid, imeiNo "          
-                values = " '" + str(1) + "','"+  str(UserId) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Email) + "','" + str(userTypeId) + "','" + str(Gender) + "', "            
-                values = values + " '" + str(Password) + "','" + str(DeviceType) + "','" + str(Os) + "','" + str(ipAddress) + "','"                 
-                values = values + str(Country) + "','" + str(City) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
+#                 columns = " status,userId, userName, mobileNo, email, userTypeId, gender, password, deviceType, os, ipAddress, countryId, city, deviceid, imeiNo "          
+#                 values = " '" + str(1) + "','"+  str(UserId) + "','" + str(Name) + "','" + str(MobileNo) + "','" + str(Email) + "','" + str(userTypeId) + "','" + str(Gender) + "', "            
+#                 values = values + " '" + str(Password) + "','" + str(DeviceType) + "','" + str(Os) + "','" + str(ipAddress) + "','"                 
+#                 values = values + str(Country) + "','" + str(City) + "','" + str(DeviceId) + "','" + str(ImeiNo) +"'" 
 
 
-                data = databasefile.InsertQuery("userMaster",columns,values) 
+#                 data = databasefile.InsertQuery("userMaster",columns,values) 
 
-                if data != "0":
-                    column = 'userId,userName,userTypeId,profilePic,email'
+#                 if data != "0":
+#                     column = 'userId,userName,userTypeId,profilePic,email'
                     
-                    data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)
-                    if data["status"]!="false":
-                        y=data["result"][0]
-                        if (y["userTypeId"] == 5):
+#                     data = databasefile.SelectQuery("userMaster",column,WhereCondition,"",startlimit,endlimit)
+#                     if data["status"]!="false":
+#                         y=data["result"][0]
+#                         if (y["userTypeId"] == 5):
                             
-                            message = Mail(
-                                from_email = 'medparliament@medachievers.com',
-                                to_emails = str(y['email']),
-                                subject = "Welcome to medParliament",
-                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-                            sg = SendGridAPIClient('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')
-                            response = sg.send(message)
+#                             message = Mail(
+#                                 from_email = 'medparliament@medachievers.com',
+#                                 to_emails = str(y['email']),
+#                                 subject = "Welcome to medParliament",
+#                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+#                             sg = SendGridAPIClient('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')
+#                             response = sg.send(message)
 
-                            columns="userId,aboutProfile,organization,designation"
-                            values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
-                            data1=databasefile.InsertQuery("policyMakerMaster",columns,values)
-
-
+#                             columns="userId,aboutProfile,organization,designation"
+#                             values=" '" + str(y["userId"]) + "','" + str(aboutProfile) + "','" + str(organization) + "','" + str(designation) + "'"
+#                             data1=databasefile.InsertQuery("policyMakerMaster",columns,values)
 
 
-                        if (y["userTypeId"] == 6):
+
+
+#                         if (y["userTypeId"] == 6):
                             
-                            message = Mail(
-                                from_email = 'medparliament@medachievers.com',
-                                to_emails = str(y['email']),
-                                subject = "Welcome to medParliament",
-                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-                            sg = SendGridAPIClient('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')
-                            response = sg.send(message)
+#                             message = Mail(
+#                                 from_email = 'medparliament@medachievers.com',
+#                                 to_emails = str(y['email']),
+#                                 subject = "Welcome to medParliament",
+#                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+#                             sg = SendGridAPIClient('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')
+#                             response = sg.send(message)
 
-                            columns="userId,areaOfActivity,profileCategoryId,designation,companyName"
-                            values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation)+ "','" + str(CompanyName) + "'"
-                            data2=databasefile.InsertQuery("enterprenuerMaster",columns,values)
-                            for i in interestId:
-                                column="userId,userTypeId,interestId"
-                                values=" '" + str(y["userId"]) + "','" + str('6') + "','" + str(i) + "'"
-                                data4=databasefile.InsertQuery("userInterestMapping ",column,values) 
+#                             columns="userId,areaOfActivity,profileCategoryId,designation,companyName"
+#                             values=" '" + str(y["userId"]) + "','" + str(areaofActivity) + "','" + str(profileCategoryId) + "','" + str(designation)+ "','" + str(CompanyName) + "'"
+#                             data2=databasefile.InsertQuery("enterprenuerMaster",columns,values)
+#                             for i in interestId:
+#                                 column="userId,userTypeId,interestId"
+#                                 values=" '" + str(y["userId"]) + "','" + str('6') + "','" + str(i) + "'"
+#                                 data4=databasefile.InsertQuery("userInterestMapping ",column,values) 
 
 
 
-                        if (y["userTypeId"]== 7):
+#                         if (y["userTypeId"]== 7):
 
-                            Y=ConstantData.getwebBaseurl()
-                            Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
-                            message = Mail(
-                                            from_email = 'medparliament@medachievers.com',
-                                            to_emails = str(y["email"]),
-                                            subject = "Account Verification",
-                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-                            sg = SendGridAPIClient('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')
-                            response = sg.send(message)
-                            print(response.status_code,'------------------',response.body,"============",response.headers)
+#                             Y=ConstantData.getwebBaseurl()
+#                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
+#                             message = Mail(
+#                                             from_email = 'medparliament@medachievers.com',
+#                                             to_emails = str(y["email"]),
+#                                             subject = "Account Verification",
+#                                             html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+#                             sg = SendGridAPIClient('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')
+#                             response = sg.send(message)
+#                             print(response.status_code,'------------------',response.body,"============",response.headers)
                             
-                            print(message)
+#                             print(message)
 
-                            # column="status='0'"
-                            # dat=databasefile.UpdateQuery('userMaster',column,WhereCondition)
+#                             # column="status='0'"
+#                             # dat=databasefile.UpdateQuery('userMaster',column,WhereCondition)
 
 
-                            columns="userId,address,qualificationId,batchOfQualification,institutionName,universityAddress,universityId"
-                            values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "'"
-                            data3 = databasefile.InsertQuery("studentMaster",columns,values) 
-                            for i in interestId:
-                                column="userId,userTypeId,interestId"
-                                values=" '" + str(y["userId"]) + "','" + str('7') + "','" + str(i) + "'"
-                                data5=databasefile.InsertQuery("userInterestMapping ",column,values)
+#                             columns="userId,address,qualificationId,batchOfQualification,institutionName,universityAddress,universityId"
+#                             values=" '" + str(y["userId"]) + "','" + str(address) + "','" + str(qualification) + "','" + str(batchofQualification) + "','" + str(instituteName)+ "','" + str(universityAddress)+ "','" + str(universityName)+ "'"
+#                             data3 = databasefile.InsertQuery("studentMaster",columns,values) 
+#                             for i in interestId:
+#                                 column="userId,userTypeId,interestId"
+#                                 values=" '" + str(y["userId"]) + "','" + str('7') + "','" + str(i) + "'"
+#                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
                         
-                        if (y["userTypeId"]== 8):
+#                         if (y["userTypeId"]== 8):
 
-                            message = Mail(
-                                from_email = 'medparliament@medachievers.com',
-                                to_emails = str(y['email']),
-                                subject = "Welcome to medParliament",
-                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-                            sg = SendGridAPIClient('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')
-                            response = sg.send(message)
+#                             message = Mail(
+#                                 from_email = 'medparliament@medachievers.com',
+#                                 to_emails = str(y['email']),
+#                                 subject = "Welcome to medParliament",
+#                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+#                             sg = SendGridAPIClient('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')
+#                             response = sg.send(message)
                             
-                            columns="userId,qualificationId,designation,areaOfExpertise,hospital,hospitalAddress"
-                            values=" '" + str(y["userId"])+ "','" + str(qualification) + "','" + str(designation) + "','" + str(areaOfExpertise) + "','" + str(hospital)+ "','" + str(hospitalAddress) + "'"
-                            data3= databasefile.InsertQuery("doctorMaster",columns,values)
-                            for i in interestId:
-                                column="userId,userTypeId,interestId"
-                                values=" '" + str(y["userId"]) + "','" + str('8') + "','" + str(i) + "'"
-                                data5=databasefile.InsertQuery("userInterestMapping ",column,values)
+#                             columns="userId,qualificationId,designation,areaOfExpertise,hospital,hospitalAddress"
+#                             values=" '" + str(y["userId"])+ "','" + str(qualification) + "','" + str(designation) + "','" + str(areaOfExpertise) + "','" + str(hospital)+ "','" + str(hospitalAddress) + "'"
+#                             data3= databasefile.InsertQuery("doctorMaster",columns,values)
+#                             for i in interestId:
+#                                 column="userId,userTypeId,interestId"
+#                                 values=" '" + str(y["userId"]) + "','" + str('8') + "','" + str(i) + "'"
+#                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
                         
-                        if (y["userTypeId"]== 9):
-                            message = Mail(
-                                from_email = 'medparliament@medachievers.com',
-                                to_emails = str(y['email']),
-                                subject = "Welcome to medParliament",
-                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-                            sg = SendGridAPIClient('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')
-                            response = sg.send(message)
-                            columns="userId,designation,occupation,companyName,companyAddress,address"
-                            values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
-                            data6=databasefile.InsertQuery("professionalMaster",column,values)
-                            for i in interestId:
-                                column="userId,userTypeId,interestId"
-                                values=" '" + str(y["userId"]) + "','" + str('9') + "','" + str(i) + "'"
-                                data5=databasefile.InsertQuery("userInterestMapping ",column,values)
+#                         if (y["userTypeId"]== 9):
+#                             message = Mail(
+#                                 from_email = 'medparliament@medachievers.com',
+#                                 to_emails = str(y['email']),
+#                                 subject = "Welcome to medParliament",
+#                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+#                             sg = SendGridAPIClient('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')
+#                             response = sg.send(message)
+#                             columns="userId,designation,occupation,companyName,companyAddress,address"
+#                             values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
+#                             data6=databasefile.InsertQuery("professionalMaster",column,values)
+#                             for i in interestId:
+#                                 column="userId,userTypeId,interestId"
+#                                 values=" '" + str(y["userId"]) + "','" + str('9') + "','" + str(i) + "'"
+#                                 data5=databasefile.InsertQuery("userInterestMapping ",column,values)
 
                         
-                        if (y["userTypeId"]== 13):
-                            message = Mail(
-                                from_email = 'medparliament@medachievers.com',
-                                to_emails = str(y['email']),
-                                subject = "Welcome to medParliament",
-                                html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-                            sg = SendGridAPIClient('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')
-                            response = sg.send(message)
+#                         if (y["userTypeId"]== 13):
+#                             message = Mail(
+#                                 from_email = 'medparliament@medachievers.com',
+#                                 to_emails = str(y['email']),
+#                                 subject = "Welcome to medParliament",
+#                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+#                             sg = SendGridAPIClient('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')
+#                             response = sg.send(message)
                             
                                
 
                              
 
 
-                    else:
-                        return commonfile.Errormessage()
-                    if data["result"][0]["profilePic"]==None:
-                        data["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
+#                     else:
+#                         return commonfile.Errormessage()
+#                     if data["result"][0]["profilePic"]==None:
+#                         data["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
 
-                    data['message']='email verification link has been sent successfully on your email'
-                    return data
-                else:
-                    return commonfile.Errormessage()
-        else:
-            return msg
+#                     data['message']='email verification link has been sent successfully on your email'
+#                     return data
+#                 else:
+#                     return commonfile.Errormessage()
+#         else:
+#             return msg
 
-    except Exception as e:
-        print("Exception--->" + str(e))                                  
-        return commonfile.Errormessage() 
+#     except Exception as e:
+#         print("Exception--->" + str(e))                                  
+#         return commonfile.Errormessage() 
 
 
 # For testing        
@@ -659,7 +659,7 @@ def SignUp1():
                     if data["result"][0]["profilePic"]==None:
                         data["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/defaultPic.jpg"
 
-                    data['message']='email has been sent successfully on your email'
+                    data['message']='Email verification link has been sent successfully on your email'
                     return data
                 else:
                     return commonfile.Errormessage()
