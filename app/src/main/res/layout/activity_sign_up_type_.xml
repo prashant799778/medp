@@ -7,18 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".Activity.SignUp_type_Activity">
     <ImageView
+        android:visibility="gone"
+        android:id="@+id/uIcon"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/up"
+        android:layout_width="10dp"
+        android:layout_height="10dp">
+
+    </ImageView>
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/bg1"
         android:scaleType="centerCrop">
     </ImageView>
 
-    <ScrollView
+    <com.example.medparliament.Widget.ObservableScrollView
+        android:id="@+id/scroll1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
         <RelativeLayout
+            android:id="@+id/relative"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <RelativeLayout
@@ -39,7 +51,7 @@
                 <com.example.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_toRightOf="@+id/bck"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/textcolor"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:textSize="17dp"
@@ -95,18 +107,22 @@
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:id="@+id/student"
+
             app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/transparent"
-            app:cardCornerRadius="10dp">
+             app:cardBackgroundColor="@color/transparent"
+
+           >
             <RelativeLayout
+  android:background="@drawable/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ImageView
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/studentbgbg">
+                     android:scaleType="fitCenter"
+                    android:src="@drawable/transparent">
                 </ImageView>
 
                 <LinearLayout
@@ -118,13 +134,14 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/student_icon"
+                        android:src="@drawable/union_3"
+
                         android:layout_toLeftOf="@+id/ss"
                         android:layout_marginRight="10dp"
                         android:layout_height="20dp">
                     </ImageView>
                 <com.example.medparliament.Widget.Segow_UI_Font
-                    android:textColor="@color/white"
+                    android:textColor="@color/textcolor"
                     android:text="@string/Students"
                     android:textAlignment="gravity"
                     android:gravity="center_horizontal|center_vertical"
@@ -152,12 +169,14 @@
             android:layout_marginRight="10dp"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/transparent"
-            app:cardCornerRadius="10dp">
+           >
             <RelativeLayout
+                android:background="@drawable/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ImageView
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -170,15 +189,16 @@
                    android:layout_marginLeft="90dp"
                     android:orientation="horizontal">
                     <ImageView
+                        
                         android:layout_width="20dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/kkkk"
+                        android:src="@drawable/driver_big"
                         android:layout_toLeftOf="@+id/ss1"
                         android:layout_marginRight="10dp"
                         android:layout_height="20dp">
                     </ImageView>
                 <com.example.medparliament.Widget.Segow_UI_Font
-                    android:textColor="@color/white"
+                    android:textColor="@color/textcolor"
                     android:text="@string/Entrepreneur"
                     android:textAlignment="gravity"
                     android:gravity="center_horizontal|center_vertical"
@@ -208,13 +228,14 @@
             android:layout_marginRight="10dp"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/transparent"
-            app:cardCornerRadius="10dp">
+           >
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
+                  android:background="@drawable/transparent"
                 android:orientation="vertical">
                 <ImageView
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -230,14 +251,14 @@
 
                         android:layout_width="20dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/contracticon"
+                        android:src="@drawable/contract"
                         android:layout_toLeftOf="@+id/ss2"
                         android:layout_marginRight="10dp"
                         android:layout_height="20dp">
                     </ImageView>
                 <com.example.medparliament.Widget.Segow_UI_Font
 
-                    android:textColor="@color/white"
+                    android:textColor="@color/textcolor"
                     android:text="@string/Policy_Maker"
                     android:textAlignment="gravity"
                     android:gravity="center_horizontal|center_vertical"
@@ -267,12 +288,14 @@
             android:layout_marginRight="10dp"
             app:cardElevation="0dp"
             app:cardBackgroundColor="@color/transparent"
-            app:cardCornerRadius="10dp">
+          >
             <RelativeLayout
+                android:background="@drawable/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ImageView
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -301,7 +324,7 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:text="@string/Doctor"
                     android:textAlignment="gravity"
-                    android:textColor="@color/white"></com.example.medparliament.Widget.Segow_UI_Font>
+                    android:textColor="@color/textcolor"></com.example.medparliament.Widget.Segow_UI_Font>
 
                 </LinearLayout>
             </RelativeLayout>
@@ -324,13 +347,14 @@
             android:id="@+id/profess"
             android:layout_marginRight="10dp"
             app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/transparent"
-            app:cardCornerRadius="10dp">
+            app:cardBackgroundColor="@color/transparent" >
             <RelativeLayout
+                android:background="@drawable/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ImageView
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -351,7 +375,7 @@
                         android:layout_height="20dp">
                     </ImageView>
                 <com.example.medparliament.Widget.Segow_UI_Font
-                    android:textColor="@color/white"
+                    android:textColor="@color/textcolor"
                     android:text="@string/Professionals"
                     android:textAlignment="gravity"
                     android:gravity="center_horizontal|center_vertical"
@@ -382,12 +406,14 @@
                 android:layout_marginRight="10dp"
                 app:cardElevation="0dp"
                 app:cardBackgroundColor="@color/transparent"
-                app:cardCornerRadius="10dp">
+               >
                 <RelativeLayout
+                    android:background="@drawable/transparent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
                     <ImageView
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
@@ -402,13 +428,13 @@
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_centerVertical="true"
-                            android:src="@drawable/kkkk"
+                            android:src="@drawable/work"
                             android:layout_toLeftOf="@+id/ss12"
                             android:layout_marginRight="10dp"
                             android:layout_height="20dp">
                         </ImageView>
                         <com.example.medparliament.Widget.Segow_UI_Font
-                            android:textColor="@color/white"
+                            android:textColor="@color/textcolor"
                             android:text="@string/DM"
                             android:textAlignment="gravity"
                             android:gravity="center_horizontal|center_vertical"
@@ -422,7 +448,23 @@
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
+
+
+
+
     </LinearLayout>
         </RelativeLayout>
-    </ScrollView>
+    </com.example.medparliament.Widget.ObservableScrollView>
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/bIcon"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/down"
+        android:layout_width="10dp"
+        android:layout_height="10dp">
+
+    </ImageView>
+
 </RelativeLayout>

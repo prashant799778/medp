@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.example.medparliament.Activity.Login_Signup_Activity;
 import com.example.medparliament.Activity.NewsDetails_Activity;
 import com.example.medparliament.Internet.Models.Dashboard_News_Model;
 import com.example.medparliament.R;
@@ -52,10 +53,17 @@ public class Dashboard_news_adapter_new  extends PagerAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(Comman.Check_Login(context)){
                 Intent intent = new Intent(context, NewsDetails_Activity.class);
                 intent.putExtra("newses", pm);
 
-                context.startActivity(intent);
+                context.startActivity(intent);} else {
+
+                    Intent intent = new Intent(context, Login_Signup_Activity.class);
+
+
+                    context.startActivity(intent);
+                }
             }
         });
         collection.addView(convertView);

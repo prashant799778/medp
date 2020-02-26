@@ -77,9 +77,16 @@ public class Dashboard_events_adapter_new extends PagerAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(Comman.Check_Login(context)){
                 Intent intent = new Intent(context, NewsDetails_Activity.class);
                 intent.putExtra("event",pm);
-                context.startActivity(intent);
+                context.startActivity(intent);} else {
+
+                    Intent intent = new Intent(context, Login_Signup_Activity.class);
+
+
+                    context.startActivity(intent);
+                }
             }
         });
 

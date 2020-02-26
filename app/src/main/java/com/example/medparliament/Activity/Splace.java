@@ -17,18 +17,24 @@ import android.widget.VideoView;
 import com.example.medparliament.R;
 import com.example.medparliament.Utility.Comman;
 import com.example.medparliament.Utility.MySharedPrefrence;
+
+import com.example.medparliament.Widget.CustomVideo;
 import com.example.medparliament.Widget.ScalableVideoView;
 import com.example.medparliament.Widget.Segow_UI_Semi_Font;
 
  public class Splace extends Base_Activity {
-      ScalableVideoView videoView;
+     VideoView videoView;
      Segow_UI_Semi_Font skip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         Window window = getWindow();
         videoView=findViewById(R.id.scalableVideoView);
+        setDimension();
         skip=findViewById(R.id.skip);
         window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
@@ -61,5 +67,32 @@ import com.example.medparliament.Widget.Segow_UI_Semi_Font;
              }
          });
 
+     }
+
+     private void setDimension() {
+         // Adjust the size of the video
+         // so it fits on the screen
+         float videoProportion = getVideoProportion();
+         int screenWidth = getResources().getDisplayMetrics().widthPixels;
+         int screenHeight = getResources().getDisplayMetrics().heightPixels;
+         float screenProportion = (float) screenHeight / (float) screenWidth;
+         android.view.ViewGroup.LayoutParams lp = videoView.getLayoutParams();
+
+         if (videoProportion < screenProportion) {
+             lp.height= screenHeight;
+             lp.width = (int) ((float) screenHeight / videoProportion);
+         } else {
+             lp.width = screenWidth;
+             lp.height = (int) ((float) screenWidth * videoProportion);
+         }
+         videoView.setLayoutParams(lp);
+     }
+
+     // This method gets the proportion of the video that you want to display.
+// I already know this ratio since my video is hardcoded, you can get the
+// height and width of your video and appropriately generate  the proportion
+//    as :height/width
+     private float getVideoProportion(){
+         return 1.5f;
      }
  }

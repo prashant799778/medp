@@ -57,6 +57,10 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
 //        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         this.onResult = this;
         ab=findViewById(R.id.interest);
+        if(!Comman.Check_Login(getApplicationContext())) {
+
+            ab.setVisibility(View.GONE);
+        }
         title = findViewById(R.id.title);
         date = findViewById(R.id.date);
         loc = findViewById(R.id.loc);
@@ -93,8 +97,9 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {
         progressDialog.dismiss();
+        if(status){
         ab.setText("Already Intrested");
-        ab.setBackgroundResource(R.color.hintColor);
+        ab.setBackgroundResource(R.color.hintColor);}
 //        if (jsonObject != null && status) {
 //            try {
 //                JSONObject jo = jsonObject.getJSONArray("result").getJSONObject(0);
@@ -209,6 +214,10 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
     @Override
     protected void onStart() {
         super.onStart();
+        if(!Comman.Check_Login(getApplicationContext())) {
+
+            ab.setVisibility(View.GONE);
+        }
 //        Api_Calling.postMethodCall(NewsDetails_Activity.this,getWindow().getDecorView().getRootView(),onResult, URLS.ALL_POSTS,setjson(),"NewstDetails");
     }
     public JSONObject setjson()

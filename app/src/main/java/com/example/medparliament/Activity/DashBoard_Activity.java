@@ -159,7 +159,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board_);
-         
+
         video_layout=findViewById(R.id.video_layout);
         promising_layout=findViewById(R.id.promissingInitiative);
          bell=findViewById(R.id.bell);
@@ -269,13 +269,13 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
         moreNews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashBoard_Activity.this,All_News_Activity.class));
-//                if(Comman.Check_Login(DashBoard_Activity.this)){
-//
-//                    startActivity(new Intent(DashBoard_Activity.this,All_News_Activity.class));
-//                }else {
-//                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
-//                }
+//                startActivity(new Intent(DashBoard_Activity.this,All_News_Activity.class));
+                if(Comman.Check_Login(DashBoard_Activity.this)){
+
+                    startActivity(new Intent(DashBoard_Activity.this,All_News_Activity.class));
+                }else {
+                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
+                }
 
             }
         });
@@ -373,8 +373,8 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
 
 
 
-                        if(Comman.Check_Login(DashBoard_Activity.this)){
-                        announce.setVisibility(View.VISIBLE);}}
+
+                        announce.setVisibility(View.VISIBLE);}
                 }
                 if(jsonObject.getJSONArray("news").length()>0){
                 ArrayList<Dashboard_News_Model> dash_news_list = gson.fromJson(jsonObject.getString("news"), new TypeToken<ArrayList<Dashboard_News_Model>>() {}.getType());

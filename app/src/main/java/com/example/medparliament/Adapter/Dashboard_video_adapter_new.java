@@ -44,8 +44,8 @@ public class Dashboard_video_adapter_new  extends PagerAdapter {
 
 
 
-        YouTubePlayerView youTubePlayerView= convertView.findViewById(R.id.video);
-
+        YouTubePlayerView youTubePlayerView= (YouTubePlayerView) convertView.findViewById(R.id.video);
+        youTubePlayerView.getPlayerUiController().showYouTubeButton(false);
         ImageView imageView=convertView.findViewById(R.id.image);
         final View over_lay = convertView.findViewById(R.id.over_lay);
         over_lay.setVisibility(View.GONE);

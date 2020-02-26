@@ -3,6 +3,7 @@ package com.example.medparliament.Utility;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -48,6 +49,11 @@ import java.util.Date;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Comman {
+
+    public static  final  int LINKDIN_CODE=34;
+    public static  final  String   CLIENT_ID="81vcpjj66cwoe5";
+    public static  final  String CLIENT_SECRET="KagaZFp3Uae6otPu";
+    public static  final  String REDIRECT_URL="https://www.medachievers.com/";
     public  static boolean Check_Login(Context context)
     {
         com.example.medparliament.Utility.MySharedPrefrence mySharedPrefrence= com.example.medparliament.Utility.MySharedPrefrence.instanceOf(context);
@@ -166,7 +172,7 @@ public class Comman {
       if(msg!=null)
       segow_ui_semi_font.setText(msg);
       // true represent show at top,false at bottom
-      EasySnackBar.make(mView, contentView, EasySnackBar.LENGTH_LONG, true).show();}
+      EasySnackBar.make(mView, contentView, EasySnackBar.LENGTH_INDEFINITE, true).setDuration(3000).show();}
   }
 
     public static String getValueFromJsonObject(JSONObject jsonObject, String key) {
@@ -266,5 +272,8 @@ public class Comman {
                     }
                 });
     }
+
+
+
 
 }

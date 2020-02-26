@@ -117,7 +117,7 @@ public class Login_Activity extends Base_Activity implements View.OnClickListene
         if(jsonObject!=null && status){
             try {
                 JSONObject jo=jsonObject.getJSONArray("result").getJSONObject(0);
-                if(Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("5") || Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("6") || Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("7") || Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("8")|| Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("9")) {
+                if(Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("5") || Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("6") || Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("7") || Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("8")|| Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("9") || Comman.getValueFromJsonObject(jo,"userTypeId").equalsIgnoreCase("13")) {
                     m.setLoggedIn(true);
                     m.setUserName(Comman.getValueFromJsonObject(jo,"userName"));
                     m.setUserId(Comman.getValueFromJsonObject(jo,"userId"));

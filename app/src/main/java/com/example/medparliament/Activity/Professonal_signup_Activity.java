@@ -1,13 +1,17 @@
 package  com.example.medparliament.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -25,12 +29,15 @@ import com.example.medparliament.R;
 import com.example.medparliament.Utility.Comman;
 import com.example.medparliament.Utility.Constant;
 import com.example.medparliament.Utility.MySharedPrefrence;
+import com.example.medparliament.Widget.Segow_UI_Bold_Font;
 import com.example.medparliament.Widget.Segow_UI_EditText;
 import com.example.medparliament.Widget.Segow_UI_Font;
 import com.example.medparliament.Widget.Segow_UI_Semi_Font;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+import com.shantanudeshmukh.linkedinsdk.LinkedInBuilder;
+import com.shantanudeshmukh.linkedinsdk.helpers.LinkedInUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,7 +66,8 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
     LinearLayout ll;
     Segow_UI_Semi_Font title;
     JSONObject jsonObject1 = new JSONObject();
-
+    ImageButton login_button;
+    Segow_UI_Bold_Font login_txt;
     MySharedPrefrence m;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +106,7 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
         ll=findViewById(R.id.ll);
         videoView = (YouTubePlayerView) findViewById(R.id.video);
         title = findViewById(R.id.videoTitle);
-
+        login_txt=findViewById(R.id.login_text);
 
         bck=findViewById(R.id.bck);
         bck.setOnClickListener(this);
@@ -138,7 +146,17 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
         Api_Calling.getALLCountry(Professonal_signup_Activity.this,getWindow().getDecorView().getRootView(),URLS.ALL_COUNTRY);
         Api_Calling.videoApiCalling(Professonal_signup_Activity.this, getWindow().getDecorView().getRootView(), URLS.getSignUpVideo, videoJson(), videoListener);
 
-
+        login_button=findViewById(R.id.login_button);
+        login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinkedInBuilder.getInstance(Professonal_signup_Activity.this)
+                        .setClientID(Comman.CLIENT_ID)
+                        .setClientSecret(Comman.CLIENT_SECRET)
+                        .setRedirectURI(Comman.REDIRECT_URL)
+                        .authenticate(Comman.LINKDIN_CODE);
+            }
+        });
     }
     @Override
     public void onClick(View v) {
@@ -299,9 +317,13 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
                 videoView.release();
                 Intent i = new Intent(Professonal_signup_Activity.this, Login_Activity.class);
                 i.putExtra("username", "" + Comman.getValueFromJsonObject(jsonObject1, "userName"));
-                startActivity(i);
-                finish();
-
+//                startActivity(i);
+//                finish();
+                try {
+                    alertBox(Professonal_signup_Activity.this,jsonObject.getString("message"),i);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -395,4 +417,72 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
         }
         return jsonObject;
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Comman.LINKDIN_CODE && data != null) {
+            if (resultCode == RESULT_OK) {
+                //Successfully signed in
+                LinkedInUser user = data.getParcelableExtra("social_login");
+
+                if(user!=null){
+
+
+                    login_txt.setVisibility(View.VISIBLE);
+                    login_button.setVisibility(View.GONE);
+                    name.setText(user.getFirstName() +" "+user.getLastName());
+                    email.setText(user.getEmail());
+                    //acessing user info
+                    Log.i("LinkedInLogin", user.getEmail());
+                }
+
+
+            } else {
+
+                if (data.getIntExtra("err_code", 0) == LinkedInBuilder.ERROR_USER_DENIED) {
+                    //Handle : user denied access to account
+                    Comman.topSnakBar(getApplicationContext(),getWindow().getDecorView().getRootView(),"user denied access to account");
+                } else if (data.getIntExtra("err_code", 0) == LinkedInBuilder.ERROR_FAILED) {
+                    Comman.topSnakBar(getApplicationContext(),getWindow().getDecorView().getRootView(),data.getStringExtra("err_message"));
+                    //Handle : Error in API : see logcat output for details
+                    Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
+                }
+            }
+        }
+
+    }
+
+    public   void   alertBox(Context context, String msg, final Intent intent){
+        androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(context);
+        builder1.setMessage(msg);
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        dialog.cancel();
+                        startActivity(intent);
+                        finish();
+
+                    }
+                });
+//
+//        builder1.setNegativeButton(
+//                "No",
+//                new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        dialog.cancel();
+//                    }
+//                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+
+    }
+
 }

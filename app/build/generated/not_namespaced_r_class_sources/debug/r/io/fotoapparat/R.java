@@ -23,7 +23,7 @@ public final class R {
     public static final class drawable {
         private drawable() {}
 
-        public static final int focus_inner = 0x7f0700be;
-        public static final int focus_outer = 0x7f0700bf;
+        public static final int focus_inner = 0x7f0700c1;
+        public static final int focus_outer = 0x7f0700c2;
     }
 }

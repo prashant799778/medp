@@ -1,0 +1,42 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.linkedin.android.mobilesdk.test"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:7:5-9:41
+8        android:minSdkVersion="14"
+8-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:8:9-35
+9        android:targetSdkVersion="16" />
+9-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:9:9-38
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:11:5-67
+11-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:11:22-64
+12
+13    <instrumentation
+13-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:13:5-18:71
+14        android:name="android.test.InstrumentationTestRunner"
+14-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:14:9-62
+15        android:functionalTest="false"
+15-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:15:9-39
+16        android:handleProfiling="false"
+16-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:16:9-40
+17        android:label="Tests for com.linkedin.android.mobilesdk.test"
+17-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:17:9-70
+18        android:targetPackage="com.linkedin.android.mobilesdk.test" />
+18-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:18:9-68
+19
+20    <application
+20-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:20:5-22:19
+21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+21-->[androidx.core:core:1.0.0] C:\Users\Work-PC\.gradle\caches\transforms-2\files-2.1\246153fc0686d4ff78c8961ca91329b7\core-1.0.0\AndroidManifest.xml:22:18-86
+22        android:debuggable="true" >
+22-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:20:18-43
+23        <uses-library android:name="android.test.runner" />
+23-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:21:9-60
+23-->E:\medParliament\med_parliament\linkedin-sdk\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5674621239619801663.xml:21:23-57
+24    </application>
+25
+26</manifest>

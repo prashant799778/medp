@@ -1449,6 +1449,7 @@ drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
 drawable component
+drawable contract
 drawable contracticon
 drawable cup
 drawable curcos
@@ -1462,9 +1463,11 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable doctor
 drawable doctorbgbg
+drawable down
 drawable downarrow
 drawable drawer_gradient
 drawable drawer_gradient1
+drawable driver_big
 drawable edit_text_boarder
 drawable editbgbg
 drawable entre
@@ -1536,8 +1539,10 @@ drawable ic_unfold_more_black_24dp
 drawable icon
 drawable kkkk
 drawable l
+drawable linkdin_logo
 drawable login
 drawable login_signup_image
+drawable mask_group_38
 drawable medpr
 drawable mtrl_popupmenu_background
 drawable mtrl_tabs_default_indicator
@@ -1579,6 +1584,8 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable transparent
 drawable trigger
+drawable union_3
+drawable up
 drawable white_note
 drawable work
 font segoe_bold_italic
@@ -1665,6 +1672,7 @@ id area_activity
 id arrow
 id async
 id auto
+id bIcon
 id bach
 id back_and_forth
 id backgroundView
@@ -1882,7 +1890,9 @@ id llll
 id loc
 id location
 id login
+id login_button
 id login_signup
+id login_text
 id logout
 id mainFrameLayout
 id mainView
@@ -1960,6 +1970,7 @@ id recycle_gallery
 id recyclerView
 id recycler_view
 id rel_for
+id relative
 id resend_otp
 id reset_new_pwsd
 id reset_password
@@ -1977,6 +1988,7 @@ id scale
 id scale_down
 id screen
 id scroll
+id scroll1
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
@@ -2090,6 +2102,7 @@ id tt
 id ttt
 id tv_dialog_content_desc
 id tv_dialog_title
+id uIcon
 id u_address
 id u_name
 id unchecked
@@ -2119,6 +2132,7 @@ id viewpager_promissing
 id viewpager_video
 id visible
 id vp_slider_layout
+id web_view_linkedin_login
 id wide
 id withText
 id worm
@@ -2289,6 +2303,8 @@ layout reply_layout
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout sh_linkedin_activity_linkedin_authentication
+layout sh_linkedin_layout_progress_dialog
 layout slider_view
 layout support_simple_spinner_dropdown_item
 layout test_layout
@@ -2465,6 +2481,7 @@ string common_signin_button_text
 string common_signin_button_text_long
 string company
 string company_address
+string complete
 string done
 string done2
 string done3
@@ -2510,6 +2527,8 @@ string promissing_initiative
 string search_menu_title
 string selectType
 string selection_limiter_pix
+string sh_linkedin_app_name
+string sh_linkedin_progress_dialog_message
 string skip
 string status_bar_notification_info_overflow
 string text_Login_SignUp

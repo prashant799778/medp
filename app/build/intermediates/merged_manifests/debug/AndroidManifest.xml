@@ -93,6 +93,7 @@
             android:name="com.fxn.pix.Pix"
             android:noHistory="true"
             android:screenOrientation="portrait" />
+        <activity android:name="com.shantanudeshmukh.linkedinsdk.LinkedInAuthenticationActivity" />
         <activity
             android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
             android:excludeFromRecents="true"

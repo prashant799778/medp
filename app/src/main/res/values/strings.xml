@@ -13,6 +13,7 @@
     <string name="nopost">No post yet !!</string>
     <string name="nothread">No Thread yet !!</string>
     <string name="Know_Med">Login / Sign Up</string>
+    <string name="complete">Complete Your Profile</string>
     <string name="Enter_Med">Enter MedParliament</string>
     <string name="From">From</string>
     <string name="TO">To</string>
@@ -74,7 +75,7 @@ want to sign up as</string>
     <string name="Latest_Video">MedAchievers.TV</string>
     <string name="promissing_initiative">Promising Initiatives</string>
     <string name="Define_in_200_words">Define in 200 words</string>
-    <string name="Annoucements">Annoucements</string>
+    <string name="Annoucements">Announcements</string>
     <string name="Organisation">Organisation</string>
     <string name="About_Your_Profile">About Your Profile</string>
     <string name="Home">Home</string>

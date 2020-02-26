@@ -1,10 +1,12 @@
 package com.example.medparliament.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,8 +15,11 @@ import android.provider.Settings;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -22,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,9 +47,13 @@ import com.example.medparliament.Widget.Segow_UI_Font;
 import com.example.medparliament.Widget.Segow_UI_Semi_Font;
 import com.google.android.gms.common.api.Api;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+import com.shantanudeshmukh.linkedinsdk.LinkedInBuilder;
+import com.shantanudeshmukh.linkedinsdk.helpers.LinkedInUser;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -54,7 +64,7 @@ import java.util.ArrayList;
 import in.galaxyofandroid.spinerdialog.OnSpinerItemClick;
 import in.galaxyofandroid.spinerdialog.SpinnerDialog;
 
-public class Student_SignUp_Activity extends Base_Activity implements View.OnClickListener, onResult, VideoListener {
+public class Student_SignUp_Activity extends Base_Activity implements View.OnClickListener, onResult, VideoListener  {
     Button signup;
     JSONArray doctorIdArray;
     RelativeLayout googleLogin;
@@ -79,11 +89,18 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
     String userTypeId = "";
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
+    ImageButton login_button;
+    Segow_UI_Bold_Font login_txt;
+    ScrollView scrollView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student__sign_up_);
+
         Animatoo.animateSwipeLeft(Student_SignUp_Activity.this);
+
+
+
         this.onResult = this;
         this.videoListener = this;
         m = MySharedPrefrence.instanceOf(Student_SignUp_Activity.this);
@@ -100,6 +117,19 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
         qualifiaction = findViewById(R.id.qualificatin);
         bacth = findViewById(R.id.bach);
 
+        //linkdien
+        login_button=findViewById(R.id.login_button);
+        login_txt=findViewById(R.id.login_text);
+//        login_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("user_detail","on click");
+//          loginHandle();
+//            }
+//        });
+
+
+        ///
         image=findViewById(R.id.image);
         ll=findViewById(R.id.ll);
         videoView = (YouTubePlayerView) findViewById(R.id.video);
@@ -181,6 +211,18 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
 //              }
 //            }
 //        });
+
+        login_button=findViewById(R.id.login_button);
+        login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinkedInBuilder.getInstance(Student_SignUp_Activity.this)
+                        .setClientID(Comman.CLIENT_ID)
+                        .setClientSecret(Comman.CLIENT_SECRET)
+                        .setRedirectURI(Comman.REDIRECT_URL)
+                        .authenticate(Comman.LINKDIN_CODE);
+            }
+        });
     }
 
     @Override
@@ -220,6 +262,8 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
         Comman.log("SignIpJSon", "" + jsonObject);
         return jsonObject;
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -296,6 +340,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
 
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {
+
         progressDialog.dismiss();
         if (jsonObject != null && status) {
             JSONObject jsonObject1 = new JSONObject();
@@ -312,10 +357,17 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
 //                m.setUserTypeId(Comman.getValueFromJsonObject(jsonObject1, "userTypeId"));
 //                m.setUserProfile(Comman.getValueFromJsonObject(jsonObject1, "profilePic"));
                 videoView.release();
+
                 Intent i = new Intent(Student_SignUp_Activity.this, Login_Activity.class);
                 i.putExtra("username", "" + Comman.getValueFromJsonObject(jsonObject1, "userName"));
-                startActivity(i);
-                finish();
+                //startActivity(i);
+              //  finish();
+
+                try {
+                    alertBox(Student_SignUp_Activity.this,jsonObject.getString("message"),i);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
         }
@@ -480,4 +532,71 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
         }
         return jsonObject;
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Comman.LINKDIN_CODE && data != null) {
+            if (resultCode == RESULT_OK) {
+                //Successfully signed in
+                LinkedInUser user = data.getParcelableExtra("social_login");
+
+                if(user!=null){
+                    login_txt.setVisibility(View.VISIBLE);
+                    login_button.setVisibility(View.GONE);
+                    name.setText(user.getFirstName() +" "+user.getLastName());
+                    email.setText(user.getEmail());
+                    //acessing user info
+                    Log.i("LinkedInLogin", user.getEmail());
+                }
+
+
+            } else {
+
+                if (data.getIntExtra("err_code", 0) == LinkedInBuilder.ERROR_USER_DENIED) {
+                    //Handle : user denied access to account
+                    Comman.topSnakBar(getApplicationContext(),getWindow().getDecorView().getRootView(),"user denied access to account");
+                } else if (data.getIntExtra("err_code", 0) == LinkedInBuilder.ERROR_FAILED) {
+                    Comman.topSnakBar(getApplicationContext(),getWindow().getDecorView().getRootView(),data.getStringExtra("err_message"));
+                    //Handle : Error in API : see logcat output for details
+                    Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
+                }
+            }
+        }
+
+    }
+
+
+    public   void   alertBox(Context context, String msg, final Intent intent){
+        androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(context);
+        builder1.setMessage(msg);
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        dialog.cancel();
+                        startActivity(intent);
+                        finish();
+
+                    }
+                });
+//
+//        builder1.setNegativeButton(
+//                "No",
+//                new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        dialog.cancel();
+//                    }
+//                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+
+    }
+
 }

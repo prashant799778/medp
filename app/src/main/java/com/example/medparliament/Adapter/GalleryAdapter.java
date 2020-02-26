@@ -51,14 +51,14 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.Notifica
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBindViewHolder(@NonNull final NotificationHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final NotificationHolder holder, final int position) {
         final DashboardGalleryModel pm=list.get(position);
         Comman.setRectangleImage(context,holder.imageView,pm.getImagePath());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                new ImageViewer.Builder<DashboardGalleryModel>(context, list)
+                new ImageViewer.Builder<DashboardGalleryModel>(context, list).setStartPosition(position)
                         .setFormatter(new ImageViewer.Formatter<DashboardGalleryModel>() {
                             @Override
                             public String format(DashboardGalleryModel customImage) {
