@@ -35,7 +35,7 @@ def userId():
         startlimit,endlimit="",""
 
         
-        column='userTypeId,emailVerificationStatus'
+        column='userTypeId,emailVerificationStatus,userName'
         whereCondition=" and userId='"+ str(userId) +"' "
         output=databasefile.SelectQuery('userMaster',column,whereCondition,"",startlimit,endlimit)
         print(output,"11111111111111111111")
@@ -44,15 +44,35 @@ def userId():
             if output['result'][0]["emailVerificationStatus"]==0:
                 y=output['result'][0]
                 if (y['userTypeId'] ==7)  or (y['userTypeId'] =='7') :
+                    userName=y['userName']
+                    usertypeId=y['userTypeId']
                     column=' emailVerificationStatus=1,status=0 '
+                    column2='content'
+                    whereCondition2=" and  userTypeId='7'"
+                    content=databasefile.SelectQuery1('accountVerficationContent',column2,whereCondition2)
                     data=databasefile.UpdateQuery('userMaster',column,whereCondition)
                     if data !="0":
-                        return {"status":"true","message":"Congratulations! Your account has been activated successfully","result":""}
-                else:
+                        return {"status":"true","userName":userName,"content":content,"message":"Congratulations! Your account has been activated successfully","result":""}
+                if (y['userTypeId'] ==13) or  (y['userTypeId'] =='13'):
                     column='emailVerificationStatus=1'
+                    userName=y['userName']
+                    usertypeId=y['userTypeId']
+                    column2='content'
+                    whereCondition2=" and  userTypeId='13'"
+                    content=databasefile.SelectQuery1('accountVerficationContent',column2,whereCondition2)
                     data1=databasefile.UpdateQuery('userMaster',column,whereCondition)
                     if data1 !="0":
-                        return {"status":"true","message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account is activated you will get a confirmation mail.","result":""}
+                        return {"status":"true","userName":userName,"content":content,"message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account is activated you will get a confirmation mail.","result":""}        
+                
+                else:
+                    column='emailVerificationStatus=1'
+                    usertypeId=y['userTypeId']
+                    userName=y['userName']
+                    column2='content'
+                    whereCondition2=" and  userTypeId='"+str(usertypeId)+"'"
+                    data1=databasefile.UpdateQuery('userMaster',column,whereCondition)
+                    if data1 !="0":
+                        return {"status":"true","userName":userName,"content":content,"message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account is activated you will get a confirmation mail.","result":""}
             else:
                 return {"status":"true","message":"Dear user your Email is Already verified","result":""}
 
