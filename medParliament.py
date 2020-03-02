@@ -71,6 +71,7 @@ def userId():
                     column2='content'
                     whereCondition2=" and  userTypeId='"+str(usertypeId)+"'"
                     data1=databasefile.UpdateQuery('userMaster',column,whereCondition)
+                    content=databasefile.SelectQuery1('accountVerficationContent',column2,whereCondition2)
                     if data1 !="0":
                         return {"status":"true","userName":userName,"content":content,"message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account is activated you will get a confirmation mail.","result":""}
             else:
