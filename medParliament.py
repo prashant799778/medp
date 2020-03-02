@@ -75,7 +75,8 @@ def userId():
                     if data1 !="0":
                         return {"status":"true","userName":userName,"content":content,"message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account is activated you will get a confirmation mail.","result":""}
             else:
-                return {"status":"true","message":"Dear user your Email is Already verified","result":""}
+                userName=output['result'][0]['userName']
+                return {"status":"true","message":"Dear user your Email is Already verified","content":"Dear '"+str(userName)+"' your Email has been Verified Already","result":""}
 
             
         else:
