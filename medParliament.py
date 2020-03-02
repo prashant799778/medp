@@ -539,11 +539,13 @@ def SignUp1():
                             
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
+                            userName=str(y['userName'])
                             message = Mail(
                                             from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                                            html_content = ' Hello Mr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> ')
+                            
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
 
@@ -558,11 +560,12 @@ def SignUp1():
 
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
+                            userName=str(y['userName'])
                             message = Mail(
                                             from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                                            html_content = ' Hello Mr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> ')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
 
@@ -580,11 +583,12 @@ def SignUp1():
 
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
+                            userName=str(y['userName'])
                             message = Mail(
                                             from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                                            html_content = ' Hello Mr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> ')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             print(response.status_code,'------------------',response.body,"============",response.headers)
@@ -607,11 +611,12 @@ def SignUp1():
 
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
+                            userName=str(y['userName'])
                             message = Mail(
                                             from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                                            html_content = ' Hello Dr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> ')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             
@@ -627,11 +632,12 @@ def SignUp1():
 
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
+                            userName=str(y['userName'])
                             message = Mail(
                                             from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                                            html_content = ' Hello Mr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> ')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             columns="userId,designation,occupation,companyName,companyAddress,address"
@@ -645,11 +651,12 @@ def SignUp1():
                         if (y["userTypeId"]== 13):
                             Y=ConstantData.getwebBaseurl()
                             Y=Y+"/AccountVerification"+"?userId=" + str(y["userId"]) + " "
+                            userName=str(y['userName'])
                             message = Mail(
                                             from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
+                                            html_content = ' Hello Mr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community of Healthcare leaders. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> ')
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
 
