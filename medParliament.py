@@ -4779,6 +4779,67 @@ def commentsMarketingInsight():
 
 
 
+@app.route('/enrollUpSkills', methods=['POST'])
+def enrollUpSkills():
+    try:
+        print("nnnnnnnnnnnn",request.get_data(),"===================",type(request.get_data()))
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        print("mmmmmmmmmmm")
+        startlimit,endlimit="",""
+        print("111111111111111111111111")
+        keyarr = ['userId','upSkillsId','userTypeId']
+        commonfile.writeLog("enrollUpSkills",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print("22222222222222222222222")
+        if msg == "1":
+            approvedUserId = inputdata["userId"]
+            postId = inputdata["upSkillsId"]
+            userTypeId = int(inputdata["userTypeId"])
+
+            WhereCondition = " and upSkillsId = '" + str(postId) + "' and userId = '" + str(approvedUserId) + "'"
+            count = databasefile.SelectCountQuery("enrollUpskills",WhereCondition,"")
+            
+            if int(count) > 0:
+                print('F')         
+                return commonfile.EmailMobileAlreadyExistMsg()
+            else:
+                print("333333333333333333333")
+             
+               
+                column = "userId,upSkillsId,userTypeId"                
+                values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
+                data = databasefile.InsertQuery("enrollUpskills",column,values)
+                if data!="0":
+                    column="*"
+                    whereCondition=" and upSkillsId ='" + str(postId) + "'"
+                    data1=databasefile.SelectQuery("enrollUpskills",column,whereCondition,"",startlimit,endlimit)
+                    if (data1["status"]!="false"):
+                        y=data1["result"][0]
+                        for i in data1['result']:
+                            i['enrollUpSkills']=1
+                        y2=i['enrollUpSkills']
+
+                      
+                       
+                        data1={"status":"true","result":y2,"message":""}
+                        return data1
+                    else:
+                        data1={"status":"true","result":"","message":"No Data Found"}
+                        return data1
+
+                else:
+                    return commonfile.Errormessage()
+        else:
+            return msg 
+
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output        
+
+
+
+
 
 
 
@@ -5005,6 +5066,39 @@ def landingPageDashboardtest():
 
                 data22={"result":data5['result'],"status":"true","message":""}
                 return data22
+
+            if key ==7:
+                WhereCondition123 =WhereCondition+ " on lki.marketingInsightId  = mi.id " 
+
+
+
+                    
+                column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.ifnull(lki.id,0) as likedId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
+                data6 = databasefile.SelectQueryOrderbyNew("marketingInsights as mi left outer join likeMarketingInsight  as lki",column6,WhereCondition123,"","0","10",orderby)
+                if data6["result"]=="":
+                    data6["result"]=[]
+
+                data22={"result":data6['result'],"status":"true","message":""}
+                return data22
+
+            if key ==7:
+                WhereCondition1234 =WhereCondition+ " on lki.upSkillsId= mi.id " 
+
+
+
+                    
+                column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.ifnull(lki.id,0) as enrolledId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
+                data7 = databasefile.SelectQueryOrderbyNew("upSkillsOpportunity  as mi left outer join  enrollUpskills   as lki",column6,WhereCondition123,"","0","10",orderby)
+                if data7["result"]=="":
+                    data7["result"]=[]
+
+                data22={"result":data7['result'],"status":"true","message":""}
+                return data22
+            
+
+           
+
+
 
             
 
