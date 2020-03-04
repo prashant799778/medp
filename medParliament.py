@@ -5068,13 +5068,12 @@ def landingPageDashboardtest():
                 return data22
 
             if key ==7:
-                WhereCondition123 =WhereCondition+ " on lki.marketingInsightId  = mi.id " 
-
+               
 
 
                     
-                column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.ifnull(lki.id,0) as likedId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
-                data6 = databasefile.SelectQueryOrderbyNew("marketingInsights as mi left outer join likeMarketingInsight  as lki",column6,WhereCondition123,"","0","10",orderby)
+                column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
+                data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"","0","10",orderby)
                 if data6["result"]=="":
                     data6["result"]=[]
 
@@ -5082,13 +5081,13 @@ def landingPageDashboardtest():
                 return data22
 
             if key ==8:
-                WhereCondition1234 =WhereCondition+ " on lki.upSkillsId= mi.id " 
+               
 
 
 
                     
-                column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.ifnull(lki.id,0) as enrolledId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
-                data7 = databasefile.SelectQueryOrderbyNew("upSkillsOpportunity  as mi left outer join  enrollUpskills   as lki",column6,WhereCondition123,"","0","10",orderby)
+                column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
+                data7 = databasefile.SelectQueryOrderbyNew("upSkillsOpportunity  as mi",column7,WhereCondition,"","0","10",orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
 
