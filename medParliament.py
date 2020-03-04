@@ -5006,10 +5006,7 @@ def landingPageDashboardtest():
                 data22={"result":data5['result'],"status":"true","message":""}
                 return data22
 
-            if key ==7:
-
-
-            if key==8:
+            
 
 
 
