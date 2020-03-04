@@ -4929,7 +4929,7 @@ def landingPageDashboardtest():
                             for i in data1["result"]:
                                 if i["imagePath"]!="":
                                     i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
-                data={"result":data1['result'],"status":"true","message"}
+                data={"result":data1['result'],"status":"true","message":""}
                 return data
 
             if key ==2:
