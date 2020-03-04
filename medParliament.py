@@ -4272,6 +4272,269 @@ def getNews():
 
 
 
+@app.route('/marketingInsights', methods=['POST'])
+def MarketingInsights():
+
+    try:
+       
+        inputdata = request.form.get('news')    
+        inputdata = json.loads(inputdata) 
+        print("newsdata",inputdata)
+        commonfile.writeLog("news",inputdata,0)
+        keyarr = ["newsTitle","userTypeId","summary","newsDesc","flag"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            ImagePath=""
+            flag=inputdata['flag']
+            if "newsTitle" in inputdata:
+                if inputdata['newsTitle'] != "":
+                    newsTitle =commonfile.EscapeSpecialChar(inputdata["newsTitle"])
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+        
+            if "summary" in inputdata:
+                if inputdata['summary'] != "":
+                    summary =commonfile.EscapeSpecialChar(inputdata["summary"])
+            
+            if "newsDesc" in inputdata:
+                if inputdata['newsDesc'] != "":
+                    newsDesc =commonfile.EscapeSpecialChar(inputdata["newsDesc"]) 
+
+             
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"]        
+            
+            
+            if 'NewsBanner' in request.files:      
+                    file = request.files.get('NewsBanner')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getMarketingInsightsPath(filename)  
+
+                    filepath = '/marketingInsights/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            if flag =='i':      
+                if "UserId" in inputdata:
+                    if inputdata['UserId'] != "":
+                        UserId =inputdata["UserId"]
+                      
+                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
+                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
+                    data = databasefile.InsertQuery("marketingInsights",column,values)        
+                else:
+                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc"
+                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
+                    data = databasefile.InsertQuery("marketingInsights",column,values)
+            if flag =='u':
+                
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status =inputdata["status"]
+                # if "UserId" in inputdata:
+                #     if inputdata['UserId'] != "":
+                #         UserId =inputdata["UserId"]
+                      
+                #     whereCondition= " and id= '"+ str(Id) +"' and UserCreate='"+ str(UserId) +"'" 
+                #     column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
+                #     data=databasefile.UpdateQuery("news",column,whereCondition)
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        inputdata1 = request.form.get('NewsBanner')
+                        if inputdata1==ConstantData.GetBaseURL():
+                            ImagePath=""
+                        else : 
+                            index=re.search("/getMarketingInsightsPath", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
+
+
+                        whereCondition=" and id= '"+ str(Id) +"'"
+                        column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
+                        data=databasefile.UpdateQuery("marketingInsights",column,whereCondition)
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+
+@app.route('/getMarketingInsights', methods=['POST'])
+def getMarketingInsights():
+
+    try:
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and n.Status<2 "
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+                    WhereCondition=WhereCondition+"  and n.userTypeId IN(0,'"+str(userTypeId)+"')"
+
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+" and n.id='"+str(Id)+"'"
+        
+       
+        
+        
+
+        orderby=" n.id "
+        WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
+        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+        data = databasefile.SelectQueryOrderby("marketingInsights n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data2 = databasefile.SelectTotalCountQuery("marketingInsights","","")
+
+        if data != "0":
+            data["totalCount"]=data2
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+@app.route('/likeMarketingInsight', methods=['POST'])
+def likeMarketingInsight():
+    try:
+        print("nnnnnnnnnnnn",request.get_data(),"===================",type(request.get_data()))
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        print("mmmmmmmmmmm")
+        startlimit,endlimit="",""
+        print("111111111111111111111111")
+        keyarr = ['userId','marketingInsightId','userTypeId']
+        commonfile.writeLog("likeMarketingInsight",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print("22222222222222222222222")
+        if msg == "1":
+            approvedUserId = inputdata["userId"]
+            postId = inputdata["marketingInsightId"]
+            userTypeId = int(inputdata["userTypeId"])
+
+            WhereCondition = " and marketingInsightId = '" + str(postId) + "' and userId = '" + str(approvedUserId) + "'"
+            count = databasefile.SelectCountQuery("likeMarketingInsight",WhereCondition,"")
+            
+            if int(count) > 0:
+                print('F')         
+                return commonfile.EmailMobileAlreadyExistMsg()
+            else:
+                print("333333333333333333333")
+             
+               
+                column = "userId,marketingInsightId,userTypeId"                
+                values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
+                data = databasefile.InsertQuery("likeMarketingInsight",column,values)
+                if data!="0":
+                    column="*"
+                    whereCondition=" and marketingInsightId ='" + str(postId) + "'"
+                    data1=databasefile.SelectQuery("likeMarketingInsight",column,whereCondition,"",startlimit,endlimit)
+                    if (data1["status"]!="false"):
+                        y=data1["result"][0]
+                        for i in data1['result']:
+                            i['likeStatus']=1
+                        y2=i['likeStatus']
+
+                      
+                       
+                        data1={"status":"true","result":y2,"message":""}
+                        return data1
+                    else:
+                        data1={"status":"true","result":"","message":"No Data Found"}
+                        return data1
+
+                else:
+                    return commonfile.Errormessage()
+        else:
+            return msg 
+
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output        
+
+
+
+
+
+
+@app.route('/commentsMarketingInsight', methods=['POST'])
+def commentsMarketingInsight():
+    try:
+        print("nnnnnnnnnnnn",request.get_data(),"===================",type(request.get_data()))
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        print("mmmmmmmmmmm")
+        startlimit,endlimit="",""
+        print("111111111111111111111111")
+        keyarr = ['userId','marketingInsightId','userTypeId','commentDescription']
+        commonfile.writeLog("verifyPost",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print("22222222222222222222222")
+        if msg == "1":
+            userId = inputdata["userId"]
+            postId = inputdata["marketingInsightId"]
+            userTypeId = int(inputdata["userTypeId"])
+            print("333333333333333333333")
+            if (userTypeId == 7) or (userTypeId =='7'):
+         
+                commentDescription=inputdata['commentDescription']
+                column = "userId,marketingInsightId,userTypeId,commentDescription,status"                
+                values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription) + "','" + str('1') "'"
+                data = databasefile.InsertQuery("marketingInsightComment",column,values)
+            else:
+                commentDescription=inputdata['commentDescription']
+                column = "userId,marketingInsightId,userTypeId,commentDescription,status"                
+                values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription)+ "','" + str('0') + "'"
+                data = databasefile.InsertQuery("marketingInsightComment",column,values)
+
+            if data!="0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg 
+
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+
+
+
+
+
+
 @app.route('/landingPageDashboard', methods=['POST'])
 def landingPageDashboard():
 
