@@ -4632,6 +4632,7 @@ def allMarketingInsightThread():
             postId,WhereCondition1="",""
 
             if "userId" in inputdata and 'Id' in inputdata:
+                marketingInsightId=inputdata['Id']
                 if inputdata['userId'] != "":
                     userId =inputdata["userId"]
                     WhereCondition="  and pm.userId ='"+str(userId)+"'  and pm.marketingInsightId='" + str(marketingInsightId) + "' or pm.status='1'"
