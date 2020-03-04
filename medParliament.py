@@ -4413,6 +4413,58 @@ def getMarketingInsights():
         return commonfile.Errormessage()
 
 
+@app.route('/allMarketingInsightThread', methods=['POST'])
+def allMarketingInsightThread():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        WhereCondition=""
+
+        keyarr = ['Id']
+        print(inputdata,"B")
+        commonfile.writeLog("allMarketingInsightThread",inputdata,0)
+        data1={"status":"true","message":"","result":[]}
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="pm.id"
+            postId,whereCondition="",""
+
+            
+            if 'Id' in inputdata:
+                marketingInsightId=inputdata['Id']
+                whereCondition=" and pm.marketingInsightId='" + str(marketingInsightId) + "' "
+                column1="pm.id,um.userName,um.email,pm.status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+                WhereCondition1="  and pm.userId=um.userId and pm.marketingInsightId='" + str(marketingInsightId) + "'" 
+                orderby=" id "
+                data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                WhereCondition=WhereCondition+" and n.id='"+str(marketingInsightId)+"'"
+                column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+                data = databasefile.SelectQuery1("marketingInsights n,userMaster um",column,WhereCondition)
+
+
+
+            
+            
+            if (data!=0):
+            
+                        
+                        
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":{"comments":data1["result"],"post":data["result"]}}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output         
+
+
 @app.route('/likeMarketingInsight', methods=['POST'])
 def likeMarketingInsight():
     try:
