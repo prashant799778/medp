@@ -96,6 +96,18 @@ def marketingInsights(image_name):
 
 
 
+
+@app.route("/UpSkillsOpportunity/<image_name>")
+def UpSkillsOpportunity(image_name):
+    try:
+        return send_from_directory('UpSkillsOpportunity', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
+
+
+
+
 @app.route("/announcementsImage/<image_name>")
 def announcementsImage(image_name):
     try:
@@ -4362,7 +4374,12 @@ def MarketingInsights():
 
     except Exception as e:
         print("Exception--->" + str(e))                                  
-        return commonfile.Errormessage() 
+        return commonfile.Errormessage()
+
+
+
+
+
 
 
 
@@ -4411,6 +4428,190 @@ def getMarketingInsights():
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
+
+
+@app.route('/upSkillsOpportunity', methods=['POST'])
+def upSkillsOpportunity():
+
+    try:
+       
+        inputdata = request.form.get('news')    
+        inputdata = json.loads(inputdata) 
+        print("newsdata",inputdata)
+        commonfile.writeLog("news",inputdata,0)
+        keyarr = ["newsTitle","userTypeId","summary","newsDesc","flag"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            ImagePath=""
+            flag=inputdata['flag']
+            if "newsTitle" in inputdata:
+                if inputdata['newsTitle'] != "":
+                    newsTitle =commonfile.EscapeSpecialChar(inputdata["newsTitle"])
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+        
+            if "summary" in inputdata:
+                if inputdata['summary'] != "":
+                    summary =commonfile.EscapeSpecialChar(inputdata["summary"])
+            
+            if "newsDesc" in inputdata:
+                if inputdata['newsDesc'] != "":
+                    newsDesc =commonfile.EscapeSpecialChar(inputdata["newsDesc"])
+
+            if "length" in inputdata:
+                if inputdata['length'] != "":
+                    length =commonfile.EscapeSpecialChar(inputdata["length"])
+
+            if "effort" in inputdata:
+                if inputdata['effort'] != "":
+                    effort =commonfile.EscapeSpecialChar(inputdata["effort"])
+
+            if "price" in inputdata:
+                if inputdata['price'] != "":
+                    price =commonfile.EscapeSpecialChar(inputdata["price"]) 
+
+            if "institutions" in inputdata:
+                if inputdata['institutions'] != "":
+                    institutions =commonfile.EscapeSpecialChar(inputdata["institutions"]) 
+
+            if "level" in inputdata:
+                if inputdata['level'] != "":
+                    level =commonfile.EscapeSpecialChar(inputdata["level"])
+
+            
+            if "language" in inputdata:
+                if inputdata['language'] != "":
+                    level =commonfile.EscapeSpecialChar(inputdata["language"])
+
+            if "videoTranscript" in inputdata:
+                if inputdata['videoTranscript'] != "":
+                    videoTranscript =commonfile.EscapeSpecialChar(inputdata["videoTranscript"])        
+                
+
+
+                 
+
+             
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"]        
+            
+            
+            if 'NewsBanner' in request.files:      
+                    file = request.files.get('NewsBanner')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getUpSkillsOpportunity(filename)  
+
+                    filepath = '/UpSkillsOpportunity/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+            if flag =='i':      
+                if "UserId" in inputdata:
+                    if inputdata['UserId'] != "":
+                        UserId =inputdata["UserId"]
+                      
+                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate,length,effort,price,institutions,level,language,videoTranscript"
+                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
+                    data = databasefile.InsertQuery("upSkillsOpportunity",column,values)        
+                else:
+                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc,length,effort,price,institutions,level,language,videoTranscript"
+                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
+                    values= values+ " '"+ str(length) +"','" + str(effort)+"','" + str(price)+"','" + str(institutions) +"','" + str(level)  +"','" + str(language) +"','" + str(videoTranscript)+  "'"
+                    data = databasefile.InsertQuery("upSkillsOpportunity",column,values)
+            if flag =='u':
+                
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status =inputdata["status"]
+                # if "UserId" in inputdata:
+                #     if inputdata['UserId'] != "":
+                #         UserId =inputdata["UserId"]
+                      
+                #     whereCondition= " and id= '"+ str(Id) +"' and UserCreate='"+ str(UserId) +"'" 
+                #     column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
+                #     data=databasefile.UpdateQuery("news",column,whereCondition)
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        inputdata1 = request.form.get('NewsBanner')
+                        if inputdata1==ConstantData.GetBaseURL():
+                            ImagePath=""
+                        else : 
+                            index=re.search("/UpSkillsOpportunity", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
+
+
+                        whereCondition=" and id= '"+ str(Id) +"'"
+                        column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"',length='"+ str(length) +"',effort='"+ str(effort) +"',price='"+ str(price) +"',institutions='"+ str(institutions) +"',level='"+ str(level) +"',language='"+ str(language) +"',videoTranscript='"+ str(videoTranscript) +"'"
+                        data=databasefile.UpdateQuery("upSkillsOpportunity",column,whereCondition)
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+@app.route('/getUpSkillsOpportunity', methods=['POST'])
+def getupSkillsOpportunity():
+
+    try:
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and n.Status<2 "
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+                    WhereCondition=WhereCondition+"  and n.userTypeId IN(0,'"+str(userTypeId)+"')"
+
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+" and n.id='"+str(Id)+"'"
+        
+       
+        
+        
+
+        orderby=" n.id "
+        WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
+        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName,n.length,n.effort,n.price,n.institutions,n.level,n.language,n.videoTranscript"
+        data = databasefile.SelectQueryOrderby("upSkillsOpportunity n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data2 = databasefile.SelectTotalCountQuery("upSkillsOpportunity","","")
+
+        if data != "0":
+            data["totalCount"]=data2
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()                 
 
 
 @app.route('/allMarketingInsightThread', methods=['POST'])

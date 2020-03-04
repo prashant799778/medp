@@ -82,7 +82,14 @@ def getNewsPath(filename):
 def getMarketingInsightsPath(filename):
 
     path = "/var/www/medParliament/backend/med_parliament/marketingInsights/"+filename
+    return path 
+
+
+def getUpSkillsOpportunity(filename):
+
+    path = "/var/www/medParliament/backend/med_parliament/UpSkillsOpportunity/"+filename
     return path    
+
 
 def getAnnouncementsPath(filename):
 
