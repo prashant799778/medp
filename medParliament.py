@@ -5081,7 +5081,7 @@ def landingPageDashboardtest():
                 data22={"result":data6['result'],"status":"true","message":""}
                 return data22
 
-            if key ==7:
+            if key ==8:
                 WhereCondition1234 =WhereCondition+ " on lki.upSkillsId= mi.id " 
 
 
