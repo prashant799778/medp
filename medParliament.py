@@ -5870,6 +5870,71 @@ def deleteNews():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
+@app.route('/deleteMarketingInsights', methods=['POST'])
+def deleteNews1():
+    try: 
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+
+        WhereCondition="" 
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteMarketingInsights",inputdata,0)
+
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("marketingInsights",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+@app.route('/deleteUpSkillsOpportunity', methods=['POST'])
+def deleteNews2():
+    try: 
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+
+        WhereCondition="" 
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteUpSkillsOpportunity",inputdata,0)
+
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("upSkillsOpportunity",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()           
+
 @app.route('/deleteGallery', methods=['POST'])
 def deleteGallery():
     try: 
