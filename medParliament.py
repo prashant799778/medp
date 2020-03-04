@@ -4620,7 +4620,7 @@ def allMarketingInsightThread():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        WhereCondition=""
+        WhereCondition1=""
 
         keyarr = ['Id']
         print(inputdata,"B")
@@ -4631,16 +4631,23 @@ def allMarketingInsightThread():
             orderby="pm.id"
             postId,WhereCondition1="",""
 
-            if "userTypeId" in inputdata:
-                if inputdata['userTypeId'] != "":
-                    userTypeId =inputdata["userTypeId"]
-                    WhereCondition1="  and pm.userTypeId ='"+str(userTypeId)+"'"
+            if "userId" in inputdata and 'Id' in inputdata:
+                if inputdata['userId'] != "":
+                    userId =inputdata["userId"]
+                    WhereCondition="  and pm.userId ='"+str(userId)+"'  and pm.marketingInsightId='" + str(marketingInsightId) + "' or pm.status='1'"
+                    column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+                    orderby=" id "
+                    data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                    WhereCondition=" and n.id='"+str(marketingInsightId)+"'"
+                    column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+                    data = databasefile.SelectQuery1("marketingInsights n,userMaster um",column,WhereCondition)
+
                   
             
             if 'Id' in inputdata:
                 marketingInsightId=inputdata['Id']
               
-                column1="pm.id,um.userName,um.email,pm.status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+                column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
                 WhereCondition="  and pm.userId=um.userId and pm.marketingInsightId='" + str(marketingInsightId) + "'" 
                 orderby=" id "
 
@@ -4653,7 +4660,7 @@ def allMarketingInsightThread():
 
             
             
-            if (data['status']!='false'):
+            if (data['status']!='False'):
             
                         
                         
