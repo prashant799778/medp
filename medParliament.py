@@ -4653,13 +4653,13 @@ def allMarketingInsightThread():
 
             
             
-            if (data!=0):
+            if (data['status']!='false'):
             
                         
                         
                 
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":{"comments":data1['result'],"post":data}}
+                Data = {"status":"true","message":"","result":[data1['result'],data]}
                 return Data
             else:
                 output = {"status":"false","message":"No Data Found","result":""}
