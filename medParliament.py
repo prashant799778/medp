@@ -4508,7 +4508,7 @@ def commentsMarketingInsight():
          
                 commentDescription=inputdata['commentDescription']
                 column = "userId,marketingInsightId,userTypeId,commentDescription,status"                
-                values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription) + "','" + str('1') "'"
+                values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription) + "','" + str('1')  + "'"
                 data = databasefile.InsertQuery("marketingInsightComment",column,values)
             else:
                 commentDescription=inputdata['commentDescription']
