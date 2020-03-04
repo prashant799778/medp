@@ -4521,7 +4521,7 @@ def upSkillsOpportunity():
                       
                     column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate,length,effort,price,institutions,level,language,videoTranscript"
                     values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
-                    values= values+ " '"+ str(length) +"','" + str(effort)+"','" + str(price)+"','" + str(institutions) +"','" + str(level)  +"','" + str(language) +"','" + str(videoTranscript)+  "'"
+                    values= values+ " ,'"+ str(length) +"','" + str(effort)+"','" + str(price)+"','" + str(institutions) +"','" + str(level)  +"','" + str(language) +"','" + str(videoTranscript)+  "'"
                     data = databasefile.InsertQuery("upSkillsOpportunity",column,values)        
                 else:
                     column = "newsTitle,userTypeId,imagePath,summary,newsDesc,length,effort,price,institutions,level,language,videoTranscript"
@@ -5005,6 +5005,12 @@ def landingPageDashboardtest():
 
                 data22={"result":data5['result'],"status":"true","message":""}
                 return data22
+
+            if key ==7:
+
+
+            if key==8:
+
 
 
             
