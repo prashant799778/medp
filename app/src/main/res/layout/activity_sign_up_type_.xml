@@ -23,7 +23,7 @@
         android:scaleType="centerCrop">
     </ImageView>
 
-    <com.example.medparliament.Widget.ObservableScrollView
+    <com.medparliament.Widget.ObservableScrollView
         android:id="@+id/scroll1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -48,7 +48,7 @@
                     android:src="@drawable/ic_back">
 
                 </ImageButton>
-                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_toRightOf="@+id/bck"
                     android:layout_width="wrap_content"
                     android:textColor="@color/textcolor"
@@ -59,7 +59,7 @@
                     android:lineHeight="17dp"
                     android:text="@string/Signup"
                     >
-                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                </com.medparliament.Widget.Segow_UI_Semi_Font>
             </RelativeLayout>
             <LinearLayout
                 android:id="@+id/simple_text"
@@ -68,7 +68,7 @@
                 android:layout_marginTop="50dp"
                 android:layout_below="@+id/top"
                 android:layout_height="wrap_content">
-                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/selectType"
@@ -77,8 +77,8 @@
                     android:textColor="@color/textcolor"
                     android:gravity="left"
                     android:paddingLeft="@dimen/fieldHeight">
-                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
-                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                </com.medparliament.Widget.Segow_UI_Semi_Font>
+                <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/ttt"
@@ -88,7 +88,7 @@
                     android:textColor="@color/white"
                     android:gravity="left"
                     android:paddingLeft="@dimen/fieldHeight">
-                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                </com.medparliament.Widget.Segow_UI_Semi_Font>
             </LinearLayout>
 
 
@@ -140,7 +140,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_height="20dp">
                     </ImageView>
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:textColor="@color/textcolor"
                     android:text="@string/Students"
                     android:textAlignment="gravity"
@@ -149,7 +149,7 @@
                     android:id="@+id/ss"
                     android:layout_centerInParent="true"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
+                </com.medparliament.Widget.Segow_UI_Font>
                 </LinearLayout>
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -197,7 +197,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_height="20dp">
                     </ImageView>
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:textColor="@color/textcolor"
                     android:text="@string/Entrepreneur"
                     android:textAlignment="gravity"
@@ -206,7 +206,7 @@
                     android:id="@+id/ss1"
                     android:layout_centerInParent="true"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
+                </com.medparliament.Widget.Segow_UI_Font>
                 </LinearLayout>
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -256,7 +256,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_height="20dp">
                     </ImageView>
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
 
                     android:textColor="@color/textcolor"
                     android:text="@string/Policy_Maker"
@@ -266,7 +266,7 @@
                     android:id="@+id/ss2"
                     android:layout_centerInParent="true"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
+                </com.medparliament.Widget.Segow_UI_Font>
 
                 </LinearLayout>
             </RelativeLayout>
@@ -316,7 +316,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_height="20dp">
                     </ImageView>
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:id="@+id/ss3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -324,7 +324,7 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:text="@string/Doctor"
                     android:textAlignment="gravity"
-                    android:textColor="@color/textcolor"></com.example.medparliament.Widget.Segow_UI_Font>
+                    android:textColor="@color/textcolor"></com.medparliament.Widget.Segow_UI_Font>
 
                 </LinearLayout>
             </RelativeLayout>
@@ -374,7 +374,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_height="20dp">
                     </ImageView>
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:textColor="@color/textcolor"
                     android:text="@string/Professionals"
                     android:textAlignment="gravity"
@@ -383,7 +383,7 @@
                     android:id="@+id/ss4"
                     android:layout_centerInParent="true"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
+                </com.medparliament.Widget.Segow_UI_Font>
 
                 </LinearLayout>
             </RelativeLayout>
@@ -433,7 +433,7 @@
                             android:layout_marginRight="10dp"
                             android:layout_height="20dp">
                         </ImageView>
-                        <com.example.medparliament.Widget.Segow_UI_Font
+                        <com.medparliament.Widget.Segow_UI_Font
                             android:textColor="@color/textcolor"
                             android:text="@string/DM"
                             android:textAlignment="gravity"
@@ -442,7 +442,7 @@
                             android:id="@+id/ss12"
                             android:layout_centerInParent="true"
                             android:layout_height="wrap_content">
-                        </com.example.medparliament.Widget.Segow_UI_Font>
+                        </com.medparliament.Widget.Segow_UI_Font>
                     </LinearLayout>
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -454,7 +454,7 @@
 
     </LinearLayout>
         </RelativeLayout>
-    </com.example.medparliament.Widget.ObservableScrollView>
+    </com.medparliament.Widget.ObservableScrollView>
     <ImageView
         android:visibility="gone"
         android:id="@+id/bIcon"

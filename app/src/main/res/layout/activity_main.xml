@@ -42,7 +42,7 @@
               android:layout_height="wrap_content"
               />
 
-          <com.example.medparliament.Widget.Segow_UI_Semi_Font
+          <com.medparliament.Widget.Segow_UI_Semi_Font
               android:id="@+id/skip"
               android:layout_width="100dp"
               android:layout_height="25dp"
@@ -52,14 +52,14 @@
               android:gravity="center_vertical|center_horizontal"
               android:text="@string/skip"
               android:textColor="@color/white"
-              android:textSize="14dp"></com.example.medparliament.Widget.Segow_UI_Semi_Font>
+              android:textSize="14dp"></com.medparliament.Widget.Segow_UI_Semi_Font>
       </FrameLayout>
 
 
 
     </RelativeLayout>
 
-<!--    <com.example.medparliament.Widget.Segow_UI_Semi_Font-->
+<!--    <com.medparliament.Widget.Segow_UI_Semi_Font-->
 <!--        android:layout_width="100dp"-->
 <!--        android:layout_height="25dp"-->
 <!--        android:id="@+id/skip"-->
@@ -71,7 +71,7 @@
 <!--        android:textColor="@color/white"-->
 <!--        android:text="@string/skip"-->
 <!--        android:background="@drawable/transparent">-->
-<!--    </com.example.medparliament.Widget.Segow_UI_Semi_Font>-->
+<!--    </com.medparliament.Widget.Segow_UI_Semi_Font>-->
 
 
 
@@ -114,7 +114,7 @@
         android:layout_marginBottom="70dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
-        <com.example.medparliament.Widget.Segow_UI_Bold_Font
+        <com.medparliament.Widget.Segow_UI_Bold_Font
             android:layout_width="wrap_content"
             android:textAlignment="gravity"
             android:gravity="center_horizontal|center_vertical"
@@ -122,7 +122,7 @@
             android:textColor="@color/textcolor"
             android:text="@string/AnInitiativeOf"
             android:layout_height="wrap_content">
-        </com.example.medparliament.Widget.Segow_UI_Bold_Font>
+        </com.medparliament.Widget.Segow_UI_Bold_Font>
         <ImageView
             android:layout_width="65dp"
             android:layout_height="20dp"

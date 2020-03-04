@@ -25,7 +25,7 @@
             android:scaleType="fitCenter"
             android:background="@color/transparent"
             android:src="@drawable/ic_back"></ImageButton>
-        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+        <com.medparliament.Widget.Segow_UI_Semi_Font
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:textColor="@color/white"
@@ -35,8 +35,8 @@
             android:lineHeight="17dp"
             android:text="@string/Write_Your_Post"
             >
-        </com.example.medparliament.Widget.Segow_UI_Semi_Font>
-        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+        </com.medparliament.Widget.Segow_UI_Semi_Font>
+        <com.medparliament.Widget.Segow_UI_Semi_Font
             android:id="@+id/done"
             android:layout_alignParentRight="true"
             android:layout_width="100dp"
@@ -49,7 +49,7 @@
             android:textColor="@color/white"
             android:text="@string/done"
             >
-        </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+        </com.medparliament.Widget.Segow_UI_Semi_Font>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:background="@color/transparent"
                 android:layout_height="wrap_content">
-            <com.example.medparliament.Widget.Segow_UI_EditText
+            <com.medparliament.Widget.Segow_UI_EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/Title_Here"
@@ -80,7 +80,7 @@
                 android:background="@drawable/edit_text_boarder"
                 android:id="@+id/title"
                 android:paddingLeft="15dp">
-            </com.example.medparliament.Widget.Segow_UI_EditText>
+            </com.medparliament.Widget.Segow_UI_EditText>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -94,7 +94,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@color/transparent"
                 android:layout_height="wrap_content">
-            <com.example.medparliament.Widget.Segow_UI_Font
+            <com.medparliament.Widget.Segow_UI_Font
 
                 android:layout_width="match_parent"
                 android:textSize="14dp"
@@ -116,7 +116,7 @@
                     android:layout_centerVertical="true"
                     android:layout_height="15dp"/>
             </RelativeLayout>
-            <com.example.medparliament.Widget.Segow_UI_EditText
+            <com.medparliament.Widget.Segow_UI_EditText
                 android:layout_width="match_parent"
                 android:textSize="14dp"
                 android:hint="@string/Type_Description"

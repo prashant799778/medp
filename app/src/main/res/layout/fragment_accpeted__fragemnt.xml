@@ -22,12 +22,12 @@
         android:layout_height="200dp"
         android:src="@drawable/nodata">
     </ImageView>
-        <com.example.medparliament.Widget.Segow_UI_Font
+        <com.medparliament.Widget.Segow_UI_Font
             android:layout_width="wrap_content"
             android:text="@string/nopost"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="150dp"
             android:layout_height="wrap_content">
-        </com.example.medparliament.Widget.Segow_UI_Font>
+        </com.medparliament.Widget.Segow_UI_Font>
     </RelativeLayout>
 </RelativeLayout>

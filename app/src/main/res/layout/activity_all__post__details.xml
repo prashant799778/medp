@@ -33,7 +33,7 @@
                     android:scaleType="fitCenter"
                     android:background="@color/transparent"
                     android:src="@drawable/ic_back"></ImageButton>
-                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:textColor="@color/white"
@@ -43,8 +43,8 @@
                     android:lineHeight="17dp"
                     android:text="@string/AllPostDetails"
                     >
-                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
-                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                </com.medparliament.Widget.Segow_UI_Semi_Font>
+                <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:id="@+id/done"
                     android:layout_alignParentRight="true"
                     android:layout_width="100dp"
@@ -57,7 +57,7 @@
                     android:textColor="@color/white"
                     android:text="@string/done"
                     >
-                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                </com.medparliament.Widget.Segow_UI_Semi_Font>
             </RelativeLayout>
             <LinearLayout
                 android:id="@+id/second"
@@ -67,20 +67,20 @@
                 android:layout_below="@+id/top"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Bold_Font
+                <com.medparliament.Widget.Segow_UI_Bold_Font
                     android:layout_width="match_parent"
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     android:id="@+id/title"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Bold_Font>
+                </com.medparliament.Widget.Segow_UI_Bold_Font>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="2"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
-                    <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                    <com.medparliament.Widget.Segow_UI_Semi_Font
                         android:layout_width="match_parent"
                         android:textColor="@color/white"
                         android:textSize="14dp"
@@ -88,8 +88,8 @@
                         android:gravity="left"
                         android:layout_weight="1"
                         android:layout_height="wrap_content">
-                    </com.example.medparliament.Widget.Segow_UI_Semi_Font>
-                    <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                    </com.medparliament.Widget.Segow_UI_Semi_Font>
+                    <com.medparliament.Widget.Segow_UI_Semi_Font
                         android:layout_width="match_parent"
                         android:textColor="@color/white"
                         android:textSize="14dp"
@@ -98,16 +98,16 @@
                         android:paddingRight="10dp"
                         android:id="@+id/date"
                         android:layout_height="wrap_content">
-                    </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                    </com.medparliament.Widget.Segow_UI_Semi_Font>
                 </LinearLayout>
-                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
                     android:textColor="@color/white"
                     android:textSize="14dp"
                     android:layout_marginTop="10dp"
                     android:id="@+id/msg"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                </com.medparliament.Widget.Segow_UI_Semi_Font>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -120,7 +120,7 @@
                         android:id="@+id/like"
                         android:layout_height="50dp">
                     </ImageView>
-                    <com.example.medparliament.Widget.Segow_UI_Font
+                    <com.medparliament.Widget.Segow_UI_Font
                         android:layout_width="match_parent"
                         android:textSize="14dp"
                         android:id="@+id/likecount"
@@ -130,7 +130,7 @@
                         android:gravity="left|center_vertical"
                         android:text=""
                         android:layout_height="match_parent">
-                    </com.example.medparliament.Widget.Segow_UI_Font>
+                    </com.medparliament.Widget.Segow_UI_Font>
                 </LinearLayout>
             </LinearLayout>
 

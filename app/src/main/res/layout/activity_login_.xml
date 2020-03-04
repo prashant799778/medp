@@ -34,7 +34,7 @@
                     android:scaleType="fitCenter"
                     android:background="@color/transparent"
                     android:src="@drawable/ic_back"></ImageButton>
-                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_toRightOf="@+id/bck"
                     android:layout_width="wrap_content"
                     android:textColor="@color/white"
@@ -43,8 +43,8 @@
                     android:textSize="17dp"
                     android:lineHeight="17dp"
                     android:text="@string/Login">
-                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
-                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                </com.medparliament.Widget.Segow_UI_Semi_Font>
+                <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:id="@+id/done"
                     android:layout_alignParentRight="true"
                     android:layout_width="100dp"
@@ -57,7 +57,7 @@
                     android:textColor="@color/white"
                     android:text="@string/done"
                     >
-                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                </com.medparliament.Widget.Segow_UI_Semi_Font>
             </RelativeLayout>
             <ImageView
                 android:layout_weight=".5"
@@ -77,7 +77,7 @@
                 android:layout_marginHorizontal="@dimen/leftMargin"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/Login"
@@ -87,8 +87,8 @@
                     android:layout_weight=".5"
                     android:clickable="true"
                     android:gravity="left|bottom">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_Font
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/Letgestarted"
@@ -100,7 +100,7 @@
                     android:clickable="true"
                     android:paddingBottom="7dp"
                     android:gravity="left|bottom">
-                </com.example.medparliament.Widget.Segow_UI_Font>
+                </com.medparliament.Widget.Segow_UI_Font>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                 android:layout_marginLeft="@dimen/leftMargin"
                 android:layout_marginRight="@dimen/rightMargin"
                 android:layout_height="wrap_content">
-                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
                     android:layout_marginVertical="18dp"
                     android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
                     android:textColor="@color/or_color"
                     android:textAlignment="center"
                     android:textSize="14dp"/>
-                <com.example.medparliament.Widget.Segow_UI_EditText
+                <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:textSize="14dp"
                     android:hint="@string/Email__Mobile_No"
@@ -142,7 +142,7 @@
                     app:errorEnabled="true"
                     app:passwordToggleTint="@color/white"
                     app:hintEnabled="false">
-                <com.example.medparliament.Widget.Segow_UI_EditText
+                <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:textSize="14dp"
                     android:id="@+id/pswd"
@@ -189,7 +189,7 @@
                         android:buttonTint="@color/textcolor"
                         android:layout_height="match_parent"
                         />
-                    <com.example.medparliament.Widget.Segow_UI_Font
+                    <com.medparliament.Widget.Segow_UI_Font
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="@string/Remember_Me"
@@ -201,9 +201,9 @@
                         android:paddingBottom="7dp"
                         android:layout_gravity="bottom"
                         android:layout_marginRight="2dp">
-                    </com.example.medparliament.Widget.Segow_UI_Font>
+                    </com.medparliament.Widget.Segow_UI_Font>
                 </LinearLayout>
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/Forgot_password"
@@ -215,14 +215,14 @@
                     android:paddingBottom="7dp"
                     android:gravity="right|bottom"
                     android:id="@+id/forgot">
-                </com.example.medparliament.Widget.Segow_UI_Font>
+                </com.medparliament.Widget.Segow_UI_Font>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_marginTop="20dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                    <com.example.medparliament.Widget.Segow_UI_Font
+                    <com.medparliament.Widget.Segow_UI_Font
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="@string/Donthaveanaccount"
@@ -233,8 +233,8 @@
                         android:clickable="true"
                         android:paddingBottom="7dp"
                         android:gravity="right|bottom">
-                    </com.example.medparliament.Widget.Segow_UI_Font>
-                    <com.example.medparliament.Widget.Segow_UI_Font
+                    </com.medparliament.Widget.Segow_UI_Font>
+                    <com.medparliament.Widget.Segow_UI_Font
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="@string/Signup"
@@ -247,7 +247,7 @@
                         android:clickable="true"
                         android:paddingBottom="7dp"
                         android:gravity="left|bottom">
-                    </com.example.medparliament.Widget.Segow_UI_Font>
+                    </com.medparliament.Widget.Segow_UI_Font>
                 </LinearLayout>
             </LinearLayout>
         </RelativeLayout>

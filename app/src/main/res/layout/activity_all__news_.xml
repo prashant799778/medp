@@ -24,7 +24,7 @@
             android:scaleType="fitCenter"
             android:background="@color/transparent"
             android:src="@drawable/ic_back"></ImageButton>
-        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+        <com.medparliament.Widget.Segow_UI_Semi_Font
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:textColor="@color/white"
@@ -34,8 +34,8 @@
             android:lineHeight="17dp"
             android:text="@string/News"
             >
-        </com.example.medparliament.Widget.Segow_UI_Semi_Font>
-        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+        </com.medparliament.Widget.Segow_UI_Semi_Font>
+        <com.medparliament.Widget.Segow_UI_Semi_Font
             android:id="@+id/done"
             android:layout_alignParentRight="true"
             android:layout_width="100dp"
@@ -49,7 +49,7 @@
             android:text="@string/done"
             >
 
-        </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+        </com.medparliament.Widget.Segow_UI_Semi_Font>
     </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
@@ -71,12 +71,12 @@
         android:layout_height="200dp"
         android:src="@drawable/nodata">
     </ImageView>
-        <com.example.medparliament.Widget.Segow_UI_Font
+        <com.medparliament.Widget.Segow_UI_Font
             android:layout_width="wrap_content"
             android:text="@string/nopost"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="150dp"
             android:layout_height="wrap_content">
-        </com.example.medparliament.Widget.Segow_UI_Font>
+        </com.medparliament.Widget.Segow_UI_Font>
     </RelativeLayout>
 </RelativeLayout>

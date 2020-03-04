@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:id="@+id/toolbar_layout_top"
     android:layout_height="wrap_content">
-    <com.example.medparliament.Widget.Segow_UI_Bold_Font
+    <com.medparliament.Widget.Segow_UI_Bold_Font
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/MedParliament"
@@ -12,7 +12,7 @@
         android:layout_marginTop="15dp"
         android:textColor="@color/white"
         android:textStyle="bold">
-    </com.example.medparliament.Widget.Segow_UI_Bold_Font>
+    </com.medparliament.Widget.Segow_UI_Bold_Font>
 
 <!--    <ImageView-->
 <!--        android:visibility="gone"-->

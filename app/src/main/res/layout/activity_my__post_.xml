@@ -25,7 +25,7 @@
             android:scaleType="fitCenter"
             android:background="@color/transparent"
             android:src="@drawable/ic_back"></ImageButton>
-        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+        <com.medparliament.Widget.Segow_UI_Semi_Font
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:textColor="@color/white"
@@ -35,8 +35,8 @@
             android:lineHeight="17dp"
             android:text="@string/MY_POST"
             >
-        </com.example.medparliament.Widget.Segow_UI_Semi_Font>
-        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+        </com.medparliament.Widget.Segow_UI_Semi_Font>
+        <com.medparliament.Widget.Segow_UI_Semi_Font
             android:id="@+id/done"
             android:layout_alignParentRight="true"
             android:layout_width="100dp"
@@ -50,7 +50,7 @@
             android:text="@string/done"
             >
 
-        </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+        </com.medparliament.Widget.Segow_UI_Semi_Font>
     </RelativeLayout>
 
     <com.google.android.material.tabs.TabLayout

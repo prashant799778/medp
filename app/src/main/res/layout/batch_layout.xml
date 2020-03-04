@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="35dp">
-        <com.example.medparliament.Widget.Segow_UI_Bold_Font
+        <com.medparliament.Widget.Segow_UI_Bold_Font
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:layout_marginRight="10dp"
             android:orientation="vertical">
-            <com.example.medparliament.Widget.Segow_UI_Semi_Font
+            <com.medparliament.Widget.Segow_UI_Semi_Font
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/From"
@@ -36,7 +36,7 @@
                 android:textColor="@color/colorAccent"
                 android:textAlignment="center"
                 android:id="@+id/t1">
-            </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+            </com.medparliament.Widget.Segow_UI_Semi_Font>
             <NumberPicker
                 android:layout_marginTop="5dp"
                 android:paddingRight="20dp"
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+                <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/TO"
@@ -68,7 +68,7 @@
                     android:textColor="@color/colorAccent"
                     android:textAlignment="center"
                     android:id="@+id/t2">
-                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                </com.medparliament.Widget.Segow_UI_Semi_Font>
                 <NumberPicker
                     android:layout_marginTop="5dp"
                     android:id="@+id/number2"

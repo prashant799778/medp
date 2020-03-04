@@ -11,7 +11,7 @@
         android:layout_height="20dp"
         android:layout_gravity="center_vertical"
         android:scaleType="fitXY"/>
-    <com.example.medparliament.Widget.Segow_UI_Semi_Font
+    <com.medparliament.Widget.Segow_UI_Semi_Font
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="40dp"

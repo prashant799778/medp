@@ -19,7 +19,7 @@
             android:scaleType="fitCenter"
             android:background="@color/transparent"
             android:src="@drawable/ic_back"></ImageView>
-        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+        <com.medparliament.Widget.Segow_UI_Semi_Font
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:textColor="@color/white"
@@ -28,8 +28,8 @@
             android:textSize="18dp"
             android:lineHeight="17dp"
             android:text="@string/AboutUs">
-        </com.example.medparliament.Widget.Segow_UI_Semi_Font>
-        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+        </com.medparliament.Widget.Segow_UI_Semi_Font>
+        <com.medparliament.Widget.Segow_UI_Semi_Font
             android:id="@+id/save"
             android:layout_alignParentRight="true"
             android:layout_width="100dp"
@@ -42,9 +42,9 @@
             android:visibility="gone"
             android:text="@string/Save"
             android:textSize="14dp">
-        </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+        </com.medparliament.Widget.Segow_UI_Semi_Font>
     </RelativeLayout>
-    <com.example.medparliament.Widget.Segow_UI_Semi_Font
+    <com.medparliament.Widget.Segow_UI_Semi_Font
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
@@ -54,7 +54,7 @@
         android:paddingHorizontal="20dp"
         android:layout_above="@+id/enter"
         android:id="@+id/msg">
-    </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+    </com.medparliament.Widget.Segow_UI_Semi_Font>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_weight="1"
         android:layout_marginTop="10dp"

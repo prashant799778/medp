@@ -39,7 +39,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/Login"
@@ -50,8 +50,8 @@
                     android:layout_weight=".5"
                     android:clickable="true"
                     android:gravity="left|bottom">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_Font
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/Letgestarted"
@@ -65,9 +65,9 @@
                     android:clickable="true"
                     android:paddingBottom="7dp"
                     android:gravity="left|bottom">
-                </com.example.medparliament.Widget.Segow_UI_Font>
+                </com.medparliament.Widget.Segow_UI_Font>
             </LinearLayout>
-            <com.example.medparliament.Widget.Open_Sans_Regular_Font
+            <com.medparliament.Widget.Open_Sans_Regular_Font
                 android:layout_width="match_parent"
                 android:paddingLeft="20dp"
                 android:textSize="16dp"
@@ -76,7 +76,7 @@
                 android:id="@+id/msg"
                 android:maxLines="4"
                 android:layout_height="60dp">
-            </com.example.medparliament.Widget.Open_Sans_Regular_Font>
+            </com.medparliament.Widget.Open_Sans_Regular_Font>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/fieldHeight"
@@ -86,7 +86,7 @@
                 android:paddingLeft="30dp"
                 android:layout_below="@+id/msg"
                 android:orientation="horizontal">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/Read"
@@ -98,8 +98,8 @@
                     android:paddingBottom="7dp"
                     android:layout_gravity="bottom"
                     android:layout_marginRight="2dp">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_Font
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text=""
@@ -113,7 +113,7 @@
                     android:paddingBottom="7dp"
                     android:layout_gravity="bottom"
                     android:layout_marginRight="2dp">
-                </com.example.medparliament.Widget.Segow_UI_Font>
+                </com.medparliament.Widget.Segow_UI_Font>
             </LinearLayout>
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>

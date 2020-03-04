@@ -1,4 +1,4 @@
-com.example.medparliament
+com.medparliament
 anim abc_fade_in
 anim abc_fade_out
 anim abc_grow_fade_in_from_bottom
@@ -194,6 +194,14 @@ attr buttonStyle
 attr buttonStyleSmall
 attr buttonTint
 attr buttonTintMode
+attr camera_aspectRatio
+attr camera_facing
+attr camera_flash
+attr camera_focus
+attr camera_imageJpegQuality
+attr camera_imageMegaPixels
+attr camera_permissions
+attr camera_zoomFactor
 attr cardBackgroundColor
 attr cardCornerRadius
 attr cardElevation
@@ -1671,9 +1679,11 @@ id anouced
 id area_activity
 id arrow
 id async
+id audio
 id auto
 id bIcon
 id bach
+id back
 id back_and_forth
 id backgroundView
 id barrier
@@ -1688,6 +1698,8 @@ id bottom
 id bottomButtons
 id bottom_sheet
 id buttonPanel
+id button_capture
+id camera
 id camera_view
 id cancel_action
 id center
@@ -1724,6 +1736,7 @@ id container
 id content
 id contentPanel
 id continue_bbt
+id continuous
 id controls_container
 id coordinator
 id cop
@@ -2048,6 +2061,7 @@ id standard
 id start
 id status_bar_bg
 id status_bar_latest_event_content
+id storage
 id stretch
 id student
 id submenuarrow
@@ -2090,6 +2104,7 @@ id top1
 id topPanel
 id top_view
 id topbar
+id torch
 id touch_outside
 id transitionImageContainer
 id transitionImageView
@@ -2213,6 +2228,7 @@ layout activity_decision_maker
 layout activity_doctor_signup
 layout activity_edit__profile_
 layout activity_entrepreneur__sign_up_
+layout activity_face_detection
 layout activity_forgot__password
 layout activity_login_
 layout activity_login__signup_
@@ -2461,6 +2477,7 @@ string character_counter_overflowed_content_description
 string character_counter_pattern
 string chip_text
 string client_id
+string com_crashlytics_android_build_id
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
 string common_google_play_services_enable_title
@@ -2487,6 +2504,8 @@ string done2
 string done3
 string email
 string enter
+string err_bitmap_received_is_null
+string err_unable_to_open_camera
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string forwhat
@@ -3149,6 +3168,7 @@ styleable BottomAppBar backgroundTint elevation fabAlignmentMode fabAnimationMod
 styleable BottomNavigationView elevation itemBackground itemHorizontalTranslationEnabled itemIconSize itemIconTint itemTextAppearanceActive itemTextAppearanceInactive itemTextColor labelVisibilityMode menu
 styleable BottomSheetBehavior_Layout backgroundTint behavior_fitToContents behavior_hideable behavior_peekHeight behavior_skipCollapsed shapeAppearance shapeAppearanceOverlay
 styleable ButtonBarLayout allowStacking
+styleable CameraKitView android_adjustViewBounds camera_aspectRatio camera_facing camera_flash camera_focus camera_imageJpegQuality camera_imageMegaPixels camera_permissions camera_zoomFactor
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Chip android_textAppearance android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical singleLine singleSelection
@@ -3220,4 +3240,5 @@ styleable ViewBackgroundHelper android_background backgroundTint backgroundTintM
 styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable YouTubePlayerSeekBar color fontSize
 styleable YouTubePlayerView autoPlay enableAutomaticInitialization enableLiveVideoUi handleNetworkEvents showFullScreenButton showSeekBar showVideoCurrentTime showVideoDuration showYouTubeButton useWebUi videoId
+xml file_paths
 xml network_security_config

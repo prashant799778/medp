@@ -49,7 +49,7 @@
                 android:layout_marginTop="20dp"
                 android:weightSum="2"
                 android:orientation="horizontal">
-            <com.example.medparliament.Widget.Segow_UI_Semi_Font
+            <com.medparliament.Widget.Segow_UI_Font
                 android:layout_width="match_parent"
                 android:paddingLeft="10dp"
                 android:textSize="14dp"
@@ -58,8 +58,8 @@
                 android:layout_weight="1"
                 android:textColor="@color/white"
                 android:layout_height="20dp">
-            </com.example.medparliament.Widget.Segow_UI_Semi_Font>
-                <com.example.medparliament.Widget.Segow_UI_Semi_Font
+            </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:textSize="12dp"
@@ -70,9 +70,9 @@
                     android:paddingRight="10dp"
                     android:textColor="@color/white"
                     android:layout_height="20dp">
-                </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+                </com.medparliament.Widget.Segow_UI_Font>
             </LinearLayout>
-            <com.example.medparliament.Widget.Open_Sans_Regular_Font
+            <com.medparliament.Widget.Open_Sans_Regular_Font
                 android:layout_width="match_parent"
                 android:paddingLeft="10dp"
                 android:textSize="12dp"
@@ -81,8 +81,8 @@
                 android:id="@+id/msg"
                 android:maxLines="4"
                 android:layout_height="75dp">
-            </com.example.medparliament.Widget.Open_Sans_Regular_Font>
-            <com.example.medparliament.Widget.Open_Sans_Regular_Font
+            </com.medparliament.Widget.Open_Sans_Regular_Font>
+            <com.medparliament.Widget.Segow_UI_Font
                 android:layout_width="match_parent"
                 android:paddingLeft="10dp"
                 android:id="@+id/read"
@@ -90,7 +90,7 @@
                 android:textColor="@color/textcolor"
                 android:text="@string/Read"
                 android:layout_height="wrap_content">
-            </com.example.medparliament.Widget.Open_Sans_Regular_Font>
+            </com.medparliament.Widget.Segow_UI_Font>
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

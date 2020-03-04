@@ -25,7 +25,7 @@
 
         </ImageButton>
 
-        <com.example.medparliament.Widget.Segow_UI_Bold_Font
+        <com.medparliament.Widget.Segow_UI_Bold_Font
             android:layout_toRightOf="@+id/bck"
             android:layout_width="wrap_content"
             android:textColor="@color/white"
@@ -36,7 +36,7 @@
             android:lineHeight="17dp"
             android:text="@string/Forgot_password"
             >
-        </com.example.medparliament.Widget.Segow_UI_Bold_Font>
+        </com.medparliament.Widget.Segow_UI_Bold_Font>
     </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.example.medparliament.Widget.Segow_UI_Font
+        <com.medparliament.Widget.Segow_UI_Font
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="#d3d3d2"
@@ -62,7 +62,7 @@
             android:textSize="13dp"
             android:text="@string/Forgot1">
 
-        </com.example.medparliament.Widget.Segow_UI_Font>
+        </com.medparliament.Widget.Segow_UI_Font>
 
     </LinearLayout>
 
@@ -77,7 +77,7 @@
         android:paddingTop="12dp"
         android:id="@+id/l6"
         android:orientation="vertical">
-        <com.example.medparliament.Widget.Segow_UI_Font
+        <com.medparliament.Widget.Segow_UI_Font
             android:layout_width="match_parent"
             android:textSize="@dimen/edittextsize"
             android:paddingLeft="10dp"
@@ -85,8 +85,8 @@
             android:id="@+id/l_University_address"
             android:textColor="#d3d3d2"
             android:layout_height="wrap_content">
-        </com.example.medparliament.Widget.Segow_UI_Font>
-        <com.example.medparliament.Widget.otpEditText
+        </com.medparliament.Widget.Segow_UI_Font>
+        <com.medparliament.Widget.otpEditText
             android:id="@+id/et_otp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
             android:maxLength="4"
             android:textIsSelectable="false"
             android:textSize="20sp">
-        </com.example.medparliament.Widget.otpEditText>
+        </com.medparliament.Widget.otpEditText>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -119,16 +119,16 @@
         android:padding="28dp"
         android:orientation="horizontal">
 
-        <com.example.medparliament.Widget.Segow_UI_Font
+        <com.medparliament.Widget.Segow_UI_Font
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:textColor="#d3d3d2" android:gravity="center"
         android:textSize="13dp"
         android:text="@string/DontGet">
 
-    </com.example.medparliament.Widget.Segow_UI_Font>
+    </com.medparliament.Widget.Segow_UI_Font>
 
-        <com.example.medparliament.Widget.Segow_UI_Font
+        <com.medparliament.Widget.Segow_UI_Font
             android:id="@+id/resend_otp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -137,7 +137,7 @@
             android:layout_marginLeft="6dp"
             android:text="@string/Resend">
 
-        </com.example.medparliament.Widget.Segow_UI_Font>
+        </com.medparliament.Widget.Segow_UI_Font>
     </LinearLayout>
     </LinearLayout>
     </ScrollView>

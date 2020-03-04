@@ -17,7 +17,7 @@
             android:layout_marginTop="40dp"
             android:src="@drawable/exclamation">
         </ImageView>
-        <com.example.medparliament.Widget.Segow_UI_Bold_Font
+        <com.medparliament.Widget.Segow_UI_Bold_Font
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -27,7 +27,7 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-        <com.example.medparliament.Widget.Segow_UI_Semi_Font
+        <com.medparliament.Widget.Segow_UI_Semi_Font
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

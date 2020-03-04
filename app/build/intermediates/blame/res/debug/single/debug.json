@@ -48,16 +48,16 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\70be449d007fb61b957febd5f4cc7a95\\Animatoo-master\\res\\anim\\animate_diagonal_right_exit.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_ayp_ic_youtube_24dp.png.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-xxxhdpi-v4\\ayp_ic_youtube_24dp.png"
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_ayp_ic_fullscreen_exit_24dp.png.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-xxhdpi-v4\\ayp_ic_fullscreen_exit_24dp.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_ayp_ic_fullscreen_exit_24dp.png.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-xxhdpi-v4\\ayp_ic_fullscreen_exit_24dp.png"
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_ayp_ic_youtube_24dp.png.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-xxxhdpi-v4\\ayp_ic_youtube_24dp.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
@@ -80,12 +80,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\70be449d007fb61b957febd5f4cc7a95\\Animatoo-master\\res\\anim\\animate_slide_down_exit.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_black_16dp.png.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_singlechoice_material.xml.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_black_16dp.png.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-hdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\anim_animate_slide_left_exit.xml.flat",
@@ -104,12 +104,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\aad9308f05cad793c3000c20e48dea7d\\jetified-easysnackbar-1.0.1\\res\\layout\\layout_custom_snack_bar.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_entrepreneur.xml.flat",
-        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable\\ic_entrepreneur.xml"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\animator_mtrl_fab_transformation_sheet_collapse_spec.xml.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\animator\\mtrl_fab_transformation_sheet_collapse_spec.xml"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_entrepreneur.xml.flat",
+        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable\\ic_entrepreneur.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_p.xml.flat",
@@ -176,12 +176,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\77c2fc448e2bd0738fd67dce062b1efd\\play-services-base-17.0.0\\res\\drawable-xxhdpi-v4\\common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\xml_network_security_config.xml.flat",
-        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\xml\\network_security_config.xml"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_mobile.xml.flat",
         "source": "E:\\medParliament\\med_parliament\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_mobile.xml"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\xml_network_security_config.xml.flat",
+        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\xml\\network_security_config.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_bg_low.xml.flat",
@@ -232,12 +232,12 @@
         "source": "E:\\medParliament\\med_parliament\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_mobile.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_decision_maker.xml.flat",
-        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\layout\\activity_decision_maker.xml"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_decision_maker.xml.flat",
+        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\layout\\activity_decision_maker.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_edittext.xml.flat",
@@ -300,16 +300,16 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\color_mtrl_btn_text_btn_ripple_color.xml.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\color\\mtrl_btn_text_btn_ripple_color.xml"
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_ayp_ic_play_36dp.png.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-xxxhdpi-v4\\ayp_ic_play_36dp.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_ayp_ic_play_36dp.png.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-xxxhdpi-v4\\ayp_ic_play_36dp.png"
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\color_mtrl_btn_text_btn_ripple_color.xml.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\color\\mtrl_btn_text_btn_ripple_color.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_bar_up_container.xml.flat",
@@ -460,12 +460,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-xxxhdpi-v4\\ayp_ic_menu_24dp.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_laptop.png.flat",
-        "source": "E:\\medParliament\\med_parliament\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_laptop.png"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\ffb66abad4c251fa91912bdcea2c857b\\core-1.3.0-alpha01\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_laptop.png.flat",
+        "source": "E:\\medParliament\\med_parliament\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_laptop.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_red1.xml.flat",
@@ -488,12 +488,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_pressed_holo_light.9.png.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_list_pressed_holo_light.9.png"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_login.png.flat",
         "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable-mdpi\\login.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_pressed_holo_light.9.png.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\font_segoe_ui.ttf.flat",
@@ -510,6 +510,10 @@
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\xml_file_paths.xml.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\3a6eb7c62389c954f63ce9b7209a3175\\jetified-paracamera-0.2.2\\res\\xml\\file_paths.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_dashboard_news_layout.xml.flat",
@@ -568,16 +572,16 @@
         "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable\\ic_study_as.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_arrow_forward_ios.png.flat",
-        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_arrow_forward_ios.png"
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_sh_linkedin_layout_progress_dialog.xml.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\fd3493cfb3cf74bd922143bf3e7d21fe\\linkedinsdk-1.0.0\\res\\layout\\sh_linkedin_layout_progress_dialog.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_sh_linkedin_layout_progress_dialog.xml.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\fd3493cfb3cf74bd922143bf3e7d21fe\\linkedinsdk-1.0.0\\res\\layout\\sh_linkedin_layout_progress_dialog.xml"
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_arrow_forward_ios.png.flat",
+        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_arrow_forward_ios.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_black_36dp.png.flat",
@@ -752,12 +756,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_abc_btn_colored_material.xml.flat",
@@ -796,12 +800,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\a08778e710ad398f2d06676d6dfed8f7\\jetified-cfalertdialog-1.1.0\\res\\layout\\cfalert_layout.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_ayp_ic_fullscreen_24dp.png.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-hdpi-v4\\ayp_ic_fullscreen_24dp.png"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_ic_arrow_back_black_24dp.png.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\2312c6f6ad8f9a72c91f1b2d7ace5f07\\pix-1.4.4\\res\\drawable-xxhdpi-v4\\ic_arrow_back_black_24dp.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_ayp_ic_fullscreen_24dp.png.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-hdpi-v4\\ayp_ic_fullscreen_24dp.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
@@ -944,12 +948,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_tile_bg.xml.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\ffb66abad4c251fa91912bdcea2c857b\\core-1.3.0-alpha01\\res\\drawable\\notification_tile_bg.xml"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_down.png.flat",
         "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable-hdpi\\down.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_tile_bg.xml.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\ffb66abad4c251fa91912bdcea2c857b\\core-1.3.0-alpha01\\res\\drawable\\notification_tile_bg.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_media.xml.flat",
@@ -976,12 +980,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\2312c6f6ad8f9a72c91f1b2d7ace5f07\\pix-1.4.4\\res\\drawable-anydpi-v21\\ic_unfold_more_black_24dp.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_ayp_ic_youtube_24dp.png.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-xxhdpi-v4\\ayp_ic_youtube_24dp.png"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-mdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_ayp_ic_youtube_24dp.png.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-xxhdpi-v4\\ayp_ic_youtube_24dp.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
@@ -1088,12 +1092,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\2312c6f6ad8f9a72c91f1b2d7ace5f07\\pix-1.4.4\\res\\drawable-xxxhdpi-v4\\ic_unfold_more_black_24dp.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_up.png.flat",
-        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable-mdpi\\up.png"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_up.png.flat",
+        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable-mdpi\\up.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_icon_light.xml.flat",
@@ -1116,16 +1120,16 @@
         "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_primary_text_disable_only_material_dark.xml.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_light.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\ffb66abad4c251fa91912bdcea2c857b\\core-1.3.0-alpha01\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-hdpi-v4\\abc_text_select_handle_left_mtrl_light.png"
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_primary_text_disable_only_material_dark.xml.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_top_snakbar.xml.flat",
@@ -1184,12 +1188,12 @@
         "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable-xxxhdpi\\contract.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_navigation_empty_icon.xml.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\drawable\\navigation_empty_icon.xml"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\interpolator-v21_mtrl_linear_out_slow_in.xml.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\interpolator-v21\\mtrl_linear_out_slow_in.xml"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_navigation_empty_icon.xml.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\drawable\\navigation_empty_icon.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_flash_auto_black_24dp.xml.flat",
@@ -1208,12 +1212,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\70be449d007fb61b957febd5f4cc7a95\\Animatoo-master\\res\\anim\\animate_shrink_enter.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_ayp_ic_fullscreen_exit_24dp.png.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-mdpi-v4\\ayp_ic_fullscreen_exit_24dp.png"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-xhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_ayp_ic_fullscreen_exit_24dp.png.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\7d34aeb7ddb19ff1b3ba84e40e1569ec\\core-10.0.5\\res\\drawable-mdpi-v4\\ayp_ic_fullscreen_exit_24dp.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_design_ic_visibility_off.png.flat",
@@ -1478,6 +1482,10 @@
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_design_ic_visibility_off.png.flat",
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\drawable-xxhdpi-v4\\design_ic_visibility_off.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_face_detection.xml.flat",
+        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\layout\\activity_face_detection.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_reply.xml.flat",
@@ -2480,12 +2488,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\drawable\\ic_mtrl_chip_checked_black.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_material_alert_dialog_title.xml.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\layout\\material_alert_dialog_title.xml"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_up.png.flat",
         "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable-xxxhdpi\\up.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_material_alert_dialog_title.xml.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\layout\\material_alert_dialog_title.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
@@ -2780,12 +2788,12 @@
         "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-xxxhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_doctor.png.flat",
         "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable-mdpi\\doctor.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
@@ -2868,16 +2876,16 @@
         "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\layout\\reply_layout.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\interpolator_btn_checkbox_checked_mtrl_animation_interpolator_0.xml.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\interpolator\\btn_checkbox_checked_mtrl_animation_interpolator_0.xml"
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_news_layout.xml.flat",
+        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\layout\\news_layout.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_rounded_btn_bodr.xml.flat",
         "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable-v24\\rounded_btn_bodr.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_news_layout.xml.flat",
-        "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\layout\\news_layout.xml"
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\interpolator_btn_checkbox_checked_mtrl_animation_interpolator_0.xml.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\6119d746697059b7e1b74aab4d181f56\\appcompat-1.1.0\\res\\interpolator\\btn_checkbox_checked_mtrl_animation_interpolator_0.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_laptop.xml.flat",
@@ -3648,12 +3656,12 @@
         "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable\\ic_setting.xml"
     },
     {
-        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_layout_tab_icon.xml.flat",
-        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\layout\\design_layout_tab_icon.xml"
-    },
-    {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_driver_big.png.flat",
         "source": "E:\\medParliament\\med_parliament\\app\\src\\main\\res\\drawable-xxxhdpi\\driver_big.png"
+    },
+    {
+        "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_layout_tab_icon.xml.flat",
+        "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\753ffec64a415d5839cc12aafdf13d5e\\material-1.1.0-alpha02\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
         "merged": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_seekbar_track_material.xml.flat",

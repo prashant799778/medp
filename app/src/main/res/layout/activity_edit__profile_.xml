@@ -31,7 +31,7 @@
                 android:scaleType="fitCenter"
                 android:background="@color/transparent"
                 android:src="@drawable/ic_back"></ImageView>
-            <com.example.medparliament.Widget.Segow_UI_Semi_Font
+            <com.medparliament.Widget.Segow_UI_Semi_Font
                 android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
@@ -41,8 +41,8 @@
                 android:lineHeight="17dp"
                 android:text="@string/My_Profile"
                 >
-            </com.example.medparliament.Widget.Segow_UI_Semi_Font>
-            <com.example.medparliament.Widget.Segow_UI_Semi_Font
+            </com.medparliament.Widget.Segow_UI_Semi_Font>
+            <com.medparliament.Widget.Segow_UI_Semi_Font
                 android:id="@+id/save"
                 android:layout_alignParentRight="true"
                 android:layout_width="100dp"
@@ -55,7 +55,7 @@
                 android:visibility="visible"
                 android:text="@string/Save"
                 android:textSize="14dp">
-            </com.example.medparliament.Widget.Segow_UI_Semi_Font>
+            </com.medparliament.Widget.Segow_UI_Semi_Font>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="120dp"
@@ -96,7 +96,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-            <com.example.medparliament.Widget.Segow_UI_Font
+            <com.medparliament.Widget.Segow_UI_Font
                 android:layout_width="match_parent"
                 android:textSize="@dimen/edittextsize"
                 android:paddingLeft="10dp"
@@ -104,8 +104,8 @@
                 android:layout_marginTop="5dp"
                 android:textColor="@color/hintColor"
                 android:layout_height="wrap_content">
-            </com.example.medparliament.Widget.Segow_UI_Font>
-            <com.example.medparliament.Widget.Segow_UI_EditText
+            </com.medparliament.Widget.Segow_UI_Font>
+            <com.medparliament.Widget.Segow_UI_EditText
                 android:layout_width="match_parent"
                 android:paddingLeft="10dp"
                 android:textColor="@color/white"
@@ -115,7 +115,7 @@
                 android:layout_marginTop="@dimen/top"
                 android:background="@color/transparent"
                 android:layout_height="wrap_content">
-            </com.example.medparliament.Widget.Segow_UI_EditText>
+            </com.medparliament.Widget.Segow_UI_EditText>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -130,15 +130,15 @@
                 android:layout_marginTop="@dimen/edittop"
                 android:id="@+id/l2"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:textSize="@dimen/edittextsize"
                     android:paddingLeft="10dp"
                     android:id="@+id/l_email"
                     android:textColor="@color/hintColor"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_EditText
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:textColor="@color/white"
@@ -148,7 +148,7 @@
                     android:textCursorDrawable="@drawable/curcos"
                     android:id="@+id/email"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_EditText>
+                </com.medparliament.Widget.Segow_UI_EditText>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -163,15 +163,15 @@
                 android:id="@id/l3"
                 android:layout_marginTop="@dimen/edittop"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:textSize="@dimen/edittextsize"
                     android:paddingLeft="10dp"
                     android:id="@+id/l_institute_name"
                     android:textColor="@color/hintColor"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_EditText
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:textColor="@color/white"
@@ -181,7 +181,7 @@
                     android:background="@color/transparent"
                     android:textCursorDrawable="@drawable/curcos"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_EditText>
+                </com.medparliament.Widget.Segow_UI_EditText>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -196,15 +196,15 @@
                 android:layout_marginTop="@dimen/edittop"
                 android:id="@id/l5"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:textSize="@dimen/edittextsize"
                     android:paddingLeft="10dp"
                     android:id="@+id/l_mobile"
                     android:textColor="@color/hintColor"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_EditText
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:textColor="@color/white"
@@ -216,7 +216,7 @@
                     android:background="@color/transparent"
                     android:textCursorDrawable="@drawable/curcos"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_EditText>
+                </com.medparliament.Widget.Segow_UI_EditText>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -231,15 +231,15 @@
                 android:layout_marginTop="@dimen/edittop"
                 android:id="@+id/l4"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:textSize="@dimen/edittextsize"
                     android:paddingLeft="10dp"
                     android:id="@+id/l_unversity_name"
                     android:textColor="@color/hintColor"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_EditText
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:textColor="@color/white"
@@ -249,7 +249,7 @@
                     android:background="@color/transparent"
                     android:id="@+id/university_name"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_EditText>
+                </com.medparliament.Widget.Segow_UI_EditText>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -267,15 +267,15 @@
                 android:layout_marginTop="@dimen/edittop"
                 android:id="@+id/l6"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:textSize="@dimen/edittextsize"
                     android:paddingLeft="10dp"
                     android:id="@+id/l_University_address"
                     android:textColor="@color/hintColor"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_EditText
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:textColor="@color/white"
@@ -285,7 +285,7 @@
                     android:id="@+id/university_address"
                     android:textCursorDrawable="@drawable/curcos"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_EditText>
+                </com.medparliament.Widget.Segow_UI_EditText>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -301,15 +301,15 @@
                 android:layout_marginTop="@dimen/edittop"
                 android:id="@+id/l7"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:textSize="@dimen/edittextsize"
                     android:paddingLeft="10dp"
                     android:id="@+id/l_qualification"
                     android:textColor="@color/hintColor"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_EditText
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:layout_marginTop="10dp"
@@ -320,7 +320,7 @@
                     android:id="@+id/qualificatin"
                     android:background="@color/transparent"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_EditText>
+                </com.medparliament.Widget.Segow_UI_EditText>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -336,15 +336,15 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/l8"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:textSize="@dimen/edittextsize"
                     android:paddingLeft="10dp"
                     android:id="@+id/l_bach_of_qualification"
                     android:textColor="@color/hintColor"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_EditText
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:id="@+id/bach"
@@ -355,7 +355,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/edittextsize"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_EditText>
+                </com.medparliament.Widget.Segow_UI_EditText>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -371,15 +371,15 @@
                 android:layout_marginTop="@dimen/edittop"
                 android:id="@+id/l9"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:textSize="@dimen/edittextsize"
                     android:paddingLeft="10dp"
                     android:id="@+id/l_personal"
                     android:textColor="@color/hintColor"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_EditText
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:textColor="@color/white"
@@ -391,7 +391,7 @@
                     android:id="@+id/address"
 
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_EditText>
+                </com.medparliament.Widget.Segow_UI_EditText>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -406,15 +406,15 @@
                 android:id="@+id/kkkk"
                 android:layout_marginTop="@dimen/edittop"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:textSize="@dimen/edittextsize"
                     android:paddingLeft="10dp"
                     android:id="@+id/l_new"
                     android:textColor="@color/hintColor"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_EditText
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:textCursorDrawable="@drawable/curcos"
@@ -424,7 +424,7 @@
                     android:textSize="@dimen/edittextsize"
                     android:id="@+id/new_e"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_EditText>
+                </com.medparliament.Widget.Segow_UI_EditText>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -439,15 +439,15 @@
                 android:id="@+id/l10"
                 android:layout_marginTop="@dimen/edittop"
                 android:orientation="vertical">
-                <com.example.medparliament.Widget.Segow_UI_Font
+                <com.medparliament.Widget.Segow_UI_Font
                     android:layout_width="match_parent"
                     android:textSize="@dimen/edittextsize"
                     android:paddingLeft="10dp"
                     android:id="@+id/l_interest"
                     android:textColor="@color/hintColor"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_Font>
-                <com.example.medparliament.Widget.Segow_UI_EditText
+                </com.medparliament.Widget.Segow_UI_Font>
+                <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:id="@+id/interest"
@@ -459,7 +459,7 @@
                     android:focusable="false"
                     android:background="@color/transparent"
                     android:layout_height="wrap_content">
-                </com.example.medparliament.Widget.Segow_UI_EditText>
+                </com.medparliament.Widget.Segow_UI_EditText>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
