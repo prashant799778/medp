@@ -4483,7 +4483,7 @@ def upSkillsOpportunity():
             
             if "language" in inputdata:
                 if inputdata['language'] != "":
-                    level =commonfile.EscapeSpecialChar(inputdata["language"])
+                   language=commonfile.EscapeSpecialChar(inputdata["language"])
 
             if "videoTranscript" in inputdata:
                 if inputdata['videoTranscript'] != "":
