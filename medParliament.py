@@ -4668,7 +4668,7 @@ def allMarketingInsightThread():
                         
                 
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":[data1['result'],data]}
+                Data = {"status":"true","message":"","result":[data1['result'],data['result']]}
                 return Data
             else:
                 output = {"status":"false","message":"No Data Found","result":""}
