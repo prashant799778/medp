@@ -4526,7 +4526,7 @@ def upSkillsOpportunity():
                 else:
                     column = "newsTitle,userTypeId,imagePath,summary,newsDesc,length,effort,price,institutions,level,language,videoTranscript"
                     values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
-                    values= values+ " '"+ str(length) +"','" + str(effort)+"','" + str(price)+"','" + str(institutions) +"','" + str(level)  +"','" + str(language) +"','" + str(videoTranscript)+  "'"
+                    values= values+ ", '"+ str(length) +"','" + str(effort)+"','" + str(price)+"','" + str(institutions) +"','" + str(level)  +"','" + str(language) +"','" + str(videoTranscript)+  "'"
                     data = databasefile.InsertQuery("upSkillsOpportunity",column,values)
             if flag =='u':
                 
