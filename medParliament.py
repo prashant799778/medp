@@ -4945,6 +4945,7 @@ def landingPageDashboard1():
                     whereCondition="and lki.marketingInsightId='"+str(marketingInsightId)+"'"
                     columns="count(*) as count"
                     likeCount=databasefile.SelectQuery('likeMarketingInsight as lki',columns,whereCondition,"","")
+                    print(likeCount)
                     if likeCount['status']!='false':
                         lki=likeCount['result'][0]['count']
                         i['likeCount']=lki
