@@ -5225,6 +5225,19 @@ def landingPageDashboardtest():
                 if data6["result"]=="":
                     data6["result"]=[]
 
+                for i in data6['result']:
+                    marketingInsightId=i['id']
+                    whereCondition="and lki.marketingInsightId='"+str(marketingInsightId)+"'"
+                    columns="count(*) as count"
+                    likeCount=databasefile.SelectQuery('likeMarketingInsight as lki',columns,whereCondition,"","","")
+                    print(likeCount)
+                    if likeCount['status']!='false':
+                        lki=likeCount['result'][0]['count']
+                        i['likeCount']=lki
+                    else:
+                        i['likeCount']=0
+
+
                 data22={"result":data6['result'],"status":"true","message":""}
                 return data22
 
