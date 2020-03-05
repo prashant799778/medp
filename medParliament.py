@@ -4714,18 +4714,25 @@ def likeMarketingInsight():
                 values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
                 data = databasefile.InsertQuery("likeMarketingInsight",column,values)
                 if data!="0":
-                    column="*"
-                    whereCondition=" and marketingInsightId ='" + str(postId) + "'"
+                    column="count(*) as count"
+                    whereCondition=" and marketingInsightId ='" + str(postId) + "' "
                     data1=databasefile.SelectQuery("likeMarketingInsight",column,whereCondition,"",startlimit,endlimit)
                     if (data1["status"]!="false"):
-                        y=data1["result"][0]
-                        for i in data1['result']:
-                            i['likeStatus']=1
-                        y2=i['likeStatus']
+                        o=[]
+                        y=data1["result"][0]["count"]
+                        whereCondition99= " and marketingInsightId ='" + str(postId) + "' and userId='" + str(approvedUserId) + "'"
+                        column88="status"
+                        da1=databasefile.SelectQuery("likeMarketingInsight",column88,whereCondition99,"",startlimit,endlimit)
+                        for i in da1:
+                            if da1['status'] != 'false':
+                                i['makedone']=1
+                                y.update(i['makedone'])
+                                o.append(y)        
+                       
 
                       
                        
-                        data1={"status":"true","result":y2,"message":""}
+                        data1={"status":"true","result":o,"message":""}
                         return data1
                     else:
                         data1={"status":"true","result":"","message":"No Data Found"}
