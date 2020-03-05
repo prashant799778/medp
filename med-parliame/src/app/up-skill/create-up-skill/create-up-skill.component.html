@@ -1,0 +1,180 @@
+<div class="animated fadeIn">
+    <div class="card card-default crd-box">
+      <div class="card-header border-remo">
+        <div class="flx-ed">
+          <div class="upper-wrap">
+            <div class="image-section-set bg-color">
+              <svg class="image-set" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 477.867 477.867" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M460.8,119.467h-85.333v-102.4C375.467,7.641,367.826,0,358.4,0H17.067C7.641,0,0,7.641,0,17.067V409.6
+                      c0,37.703,30.564,68.267,68.267,68.267H409.6c37.703,0,68.267-30.564,68.267-68.267V136.533
+                      C477.867,127.108,470.226,119.467,460.8,119.467z M136.533,85.333h102.4c9.426,0,17.067,7.641,17.067,17.067
+                      s-7.641,17.067-17.067,17.067h-102.4c-9.426,0-17.067-7.641-17.067-17.067S127.108,85.333,136.533,85.333z M290.133,409.6h-204.8
+                      c-9.426,0-17.067-7.641-17.067-17.067s7.641-17.067,17.067-17.067h204.8c9.426,0,17.067,7.641,17.067,17.067
+                      S299.559,409.6,290.133,409.6z M290.133,341.333h-204.8c-9.426,0-17.067-7.641-17.067-17.067c0-9.426,7.641-17.067,17.067-17.067
+                      h204.8c9.426,0,17.067,7.641,17.067,17.067C307.2,333.692,299.559,341.333,290.133,341.333z M290.133,273.067h-204.8
+                      c-9.426,0-17.067-7.641-17.067-17.067c0-9.426,7.641-17.067,17.067-17.067h204.8c9.426,0,17.067,7.641,17.067,17.067
+                      C307.2,265.426,299.559,273.067,290.133,273.067z M290.133,204.8h-204.8c-9.426,0-17.067-7.641-17.067-17.067
+                      c0-9.426,7.641-17.067,17.067-17.067h204.8c9.426,0,17.067,7.641,17.067,17.067C307.2,197.159,299.559,204.8,290.133,204.8z
+                       M443.733,409.6c0,18.851-15.282,34.133-34.133,34.133s-34.133-15.282-34.133-34.133v-256h68.267V409.6z"/>
+                  </g>
+                </g>
+          </svg>
+            </div>
+            <h2 class="main-hading">MedAchievers Academy Master</h2>
+        </div>
+          <div class="card-header-actions crd-bnt">
+            <!-- <a [routerLink]="['/news/createNews']" class="btn" target="_self">Create News</a> -->
+            <a [routerLink]="['/upSkill/editUpSkill']" class="btn" target="_self">View MedAchievers Academy</a>
+          </div>
+        </div>
+        <!-- <i class="fa fa-list"></i>Create News Data
+        <div class="card-header-actions d-flex">
+          
+          <a  class="btn btn-block btn-outline-dark" target="_self">Create News</a>
+          <a [routerLink]="['/news/editNews']" class="btn btn-block btn-outline-dark" target="_self">View News</a>
+       </div> -->
+    </div>
+     <div class="card-body">
+        <div class="row">
+              <div class="col-lg-12">
+                <div class="card-body p-4 border-rd">
+                    <form [formGroup]="frmNews" autocomplete="off">
+                      <div class="form-group">
+                       <label for="newsType">MedAchievers Academy category</label>
+                        <select formControlName="userTypeId">
+                            <option *ngFor="let userType of userTypeDetails" [value]="userType.id">{{userType.userName}}</option>
+                        </select>
+                        
+                        <!-- {{frmNews.get('userTypeId').errors | json}} -->
+                        <div class="error" *ngIf="frmNews.get('userTypeId').errors && (frmNews.get('userTypeId').touched || frmNews.get('userTypeId').dirty)">
+                            <p>MedAchievers Academy category is required</p>
+                          </div>
+                        <!--  <ng-select 
+                                 [items]="categoryList"
+                                 bindLabel="category"
+                                 bindValue="id"
+                                 labelForId="newsType"
+                                 placeholder="Please select News Category"
+                                 clearAllText="Clear"
+                                 formControlName="newsType">
+                        </ng-select> -->
+                        <br>
+                        <label for="newsTitle">MedAchievers Academy Title</label>
+                            <input type="text" class="form-control" formControlName="newsTitle">
+                            <div class=error *ngIf="frmNews.get('newsTitle').errors && (frmNews.get('newsTitle').touched || frmNews.get('newsTitle').dirty)">
+                              <p>MedAchievers Academy Title is required</p>
+                            </div>
+                        <br>
+                        <label for="banner">MedAchievers Academy Banner</label>
+                            <input id="file12" type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
+                            <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
+                                <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
+                           </div>
+                           <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
+                            <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
+                       </div>
+                        <br>
+                        <label for="summary">MedAchievers Academy Summary</label>
+                            <textarea type="text" class="form-control" formControlName="summary" placeholder="Enter News Summary..." rows="4"></textarea>
+                            <div class=error *ngIf="frmNews.get('summary').errors && (frmNews.get('summary').touched || frmNews.get('summary').dirty)">
+                                <p>MedAchievers Academy Summary is required</p>
+                              </div>
+                        <br>
+                        <label for="newsDesc">MedAchievers Academy Description</label>
+                        <angular-editor formControlName="newsDesc" [config]="config"></angular-editor>
+                        <div class=error *ngIf="frmNews.get('newsDesc').errors && (frmNews.get('newsDesc').touched || frmNews.get('newsDesc').dirty)">
+                            <p>MedAchievers Academy Description is required</p>
+                          </div>
+
+                          <br>
+                        <label for="newsTitle">MedAchievers Academy Length</label>
+                            <input type="text" class="form-control" formControlName="newsLength">
+                            <div class=error *ngIf="frmNews.get('newsLength').errors && (frmNews.get('newsLength').touched || frmNews.get('newsLength').dirty)">
+                              <p>MedAchievers Academy Length is required</p>
+                            </div>
+                        
+                        <br>
+                        <label for="newsTitle">MedAchievers Academy Effort</label>
+                            <input type="text" class="form-control" formControlName="newsEffort">
+                            <div class=error *ngIf="frmNews.get('newsEffort').errors && (frmNews.get('newsEffort').touched || frmNews.get('newsEffort').dirty)">
+                                <p>MedAchievers Academy Effort is required</p>
+                            </div>
+                            
+                        <br>
+                        <label for="newsTitle">MedAchievers Academy Price</label>
+                            <input type="text" class="form-control" formControlName="newsPrice">
+                            <div class=error *ngIf="frmNews.get('newsPrice').errors && (frmNews.get('newsPrice').touched || frmNews.get('newsPrice').dirty)">
+                                <p>MedAchievers Academy Price is required</p>
+                            </div>
+                        
+                        <br>
+                        <label for="newsTitle">MedAchievers Academy Institution</label>
+                            <input type="text" class="form-control" formControlName="newsInstitution">
+                            <div class=error *ngIf="frmNews.get('newsInstitution').errors && (frmNews.get('newsInstitution').touched || frmNews.get('newsInstitution').dirty)">
+                                <p>MedAchievers Academy Institution is required</p>
+                            </div>
+                        
+                        <br>
+                        <label for="newsTitle">MedAchievers Academy Subject</label>
+                            <input type="text" class="form-control" formControlName="newsSubject">
+                            <div class=error *ngIf="frmNews.get('newsSubject').errors && (frmNews.get('newsSubject').touched || frmNews.get('newsSubject').dirty)">
+                                <p>MedAchievers Academy Subject is required</p>
+                            </div>
+                        
+                        <br>
+                        <label for="newsTitle">MedAchievers Academy Level</label>
+                            <input type="text" class="form-control" formControlName="newsLevel">
+                            <div class=error *ngIf="frmNews.get('newsLevel').errors && (frmNews.get('newsLevel').touched || frmNews.get('newsLevel').dirty)">
+                                <p>MedAchievers Academy Level is required</p>
+                            </div>
+                        
+                        <br>
+                        <label for="newsTitle">MedAchievers Academy Language</label>
+                            <input type="text" class="form-control" formControlName="newsLanguage">
+                            <div class=error *ngIf="frmNews.get('newsLanguage').errors && (frmNews.get('newsLanguage').touched || frmNews.get('newsLanguage').dirty)">
+                                <p>MedAchievers Academy Language is required</p>
+                            </div>
+                        
+                        <br>
+                        <label for="newsTitle">MedAchievers Academy Video Transcript</label>
+                            <input type="text" class="form-control" formControlName="newsvideoTranscript">
+                            <div class=error *ngIf="frmNews.get('newsvideoTranscript').errors && (frmNews.get('newsvideoTranscript').touched || frmNews.get('newsvideoTranscript').dirty)">
+                                <p>MedAchievers Academy Video Transcript is required</p>
+                            </div>
+                            
+                      </div>
+                      <button *ngIf="!updateCheck" type="submit" class="btn btn-success pull-right" (click)="submitNews()">Submit</button>
+                      <button *ngIf="updateCheck" type="submit" class="btn btn-success pull-right" (click)="UpdateNews()">Update</button>
+                    </form>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="addAdmin-news7" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <template>
+                  <div class="modal-header border-remo paddign-remove">
+                  <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                      <img src="../../../assets/images/close-im.svg">
+                  </button>
+                  </div>
+              </template>
+              
+              <div class="modal-body" >
+                      <div class="success-parent">
+                              <div class="child-success"><img src="../../../assets/images/correct.svg"></div>                           
+                              <div class="child-success"><h2>{{messageShow}} Successfully</h2></div> 
+                          </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+    
+      

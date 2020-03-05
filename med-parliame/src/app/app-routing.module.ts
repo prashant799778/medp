@@ -43,6 +43,12 @@ import { EditAboutComponent } from './about/edit-about/edit-about.component';
 import { UserDecisionComponent } from './user/user-decision/user-decision.component';
 import { CreatePromisingInitiativeComponent } from './promising/create-promising-initiative/create-promising-initiative.component';
 import { EditPromisingInitiativeComponent } from './promising/edit-promising-initiative/edit-promising-initiative.component';
+import { ViewMarketInsightPostComponent } from './market-insight-post/view-market-insight-post/view-market-insight-post.component';
+import { CreateMarketNewsComponent } from './market-news/create-market-news/create-market-news.component';
+import { EditMarketNewsComponent } from './market-news/edit-market-news/edit-market-news.component';
+import { CreateUpSkillComponent } from './up-skill/create-up-skill/create-up-skill.component';
+import { EditUpSkillComponent } from './up-skill/edit-up-skill/edit-up-skill.component';
+import { ReplyPostMarketComponent } from './market-insight-post/reply-post-market/reply-post-market.component';
 
 
 
@@ -55,7 +61,8 @@ const routes: Routes = [
   { path: 'enterpenure', component: EnterpenuressComponent, canActivate:[AuthGuard]},
   { path: 'studentsList', component: StudentListsComponent, canActivate:[AuthGuard]},
   { path: 'AccountVerification', component: AccountVerificationComponent,canActivate:[AuthGuard]},
-  
+  { path: 'marketInsightPost', component: ViewMarketInsightPostComponent,canActivate:[AuthGuard]},
+  { path: 'replyPostMarketing', component: ReplyPostMarketComponent,canActivate:[AuthGuard]},
   { path: 'setting', 
   children: [                          //<---- child components declared here
     { path: '',redirectTo: '/Setting/add',pathMatch:'full'}, 
@@ -106,6 +113,46 @@ const routes: Routes = [
       {
         path:'editNews',
         component: EditNewsComponent,
+        canActivate: [AuthGuard],
+    },
+    
+  
+    
+      
+  ]
+  },
+  { path: 'upSkill', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/upSkill/createUpSkill',pathMatch:'full'}, 
+   
+       {
+          path:'createUpSkill',
+          component: CreateUpSkillComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editUpSkill',
+        component: EditUpSkillComponent,
+        canActivate: [AuthGuard],
+    },
+    
+  
+    
+      
+  ]
+  },
+  { path: 'marketInsight', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/marketInsight/createMarketInsight',pathMatch:'full'}, 
+   
+       {
+          path:'createMarketInsight',
+          component: CreateMarketNewsComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editMarketInsight',
+        component: EditMarketNewsComponent,
         canActivate: [AuthGuard],
     },
     

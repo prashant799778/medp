@@ -6,12 +6,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
 declare var jQuery: any;
+
 @Component({
-  selector: 'app-create-news',
-  templateUrl: './create-news.component.html',
-  styleUrls: ['./create-news.component.css']
+  selector: 'app-create-up-skill',
+  templateUrl: './create-up-skill.component.html',
+  styleUrls: ['./create-up-skill.component.css']
 })
-export class CreateNewsComponent implements OnInit {
+export class CreateUpSkillComponent implements OnInit {
   data: [];
   httpError: boolean;
   userTypeDetails= []
@@ -94,6 +95,14 @@ export class CreateNewsComponent implements OnInit {
       userCreate: [''],
       userTypeId: ['',Validators.required],
       id: [''],
+      newsvideoTranscript: [''],
+      newsLanguage: [''],
+      newsLevel: [''],
+      newsSubject: [''],
+      newsInstitution: [''],
+      newsPrice: [''],
+      newsEffort: [''],
+      newsLength: [''],
       
     });
     this.frmNews.valueChanges.subscribe(()=>{
@@ -134,7 +143,18 @@ export class CreateNewsComponent implements OnInit {
       userTypeId: this.frmNews.get('userTypeId').value,
       flag: 'u',
       id: this.frmNews.get('id').value,
-      status: 1
+      status: 1,
+
+
+
+      videoTranscript: this.frmNews.get('newsvideoTranscript').value,
+      language: this.frmNews.get('newsLanguage').value,
+      level: this.frmNews.get('newsLevel').value,
+      subject: this.frmNews.get('newsSubject').value,
+      institutions: this.frmNews.get('newsInstitution').value,
+      price: this.frmNews.get('newsPrice').value,
+      effort: this.frmNews.get('newsEffort').value,
+      length: this.frmNews.get('newsLength').value,
     };
 
     const formData = new FormData();
@@ -142,7 +162,7 @@ export class CreateNewsComponent implements OnInit {
     formData.append('news', JSON.stringify(newsData));
 
     console.log(formData);
-    this.apiService.dataPostApi(formData, AppSettings.marketingInsights).then((data: any[]) => {
+    this.apiService.dataPostApi(formData, AppSettings.upSkillsOpportunity).then((data: any[]) => {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
@@ -188,7 +208,17 @@ export class CreateNewsComponent implements OnInit {
         newsDesc: this.frmNews.get('newsDesc').value,
         UserId : this.frmNews.get('userCreate').value,
         userTypeId: this.frmNews.get('userTypeId').value,
-        flag: 'i'
+        flag: 'i',
+
+
+        videoTranscript: this.frmNews.get('newsvideoTranscript').value,
+      language: this.frmNews.get('newsLanguage').value,
+      level: this.frmNews.get('newsLevel').value,
+      subject: this.frmNews.get('newsSubject').value,
+      institutions: this.frmNews.get('newsInstitution').value,
+      price: this.frmNews.get('newsPrice').value,
+      effort: this.frmNews.get('newsEffort').value,
+      length: this.frmNews.get('newsLength').value,
       };
   
       const formData = new FormData();
@@ -196,7 +226,7 @@ export class CreateNewsComponent implements OnInit {
       formData.append('news', JSON.stringify(newsData));
   
       console.log(formData);
-      this.apiService.dataPostApi(formData, AppSettings.marketingInsights).then((data: any[]) => {
+      this.apiService.dataPostApi(formData, AppSettings.upSkillsOpportunity).then((data: any[]) => {
         console.log(data);
         if(data['status'] == 'true'){
           this.frmNews.reset();
@@ -242,7 +272,7 @@ export class CreateNewsComponent implements OnInit {
 
   getNewsData(newsId){
     const params = { id: newsId};
-      this.apiService.dataPostApi(params,AppSettings.getMarketingInsights).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.getUpSkillsOpportunity).then((data: any[]) => {
         console.log(data['result']);
         if (data['status'] === 'true') {
           this.newsDetails = data['result'];
@@ -267,6 +297,14 @@ export class CreateNewsComponent implements OnInit {
     this.frmNews.get('summary').setValue(this.newsDetails[0]['summary']);
     this.frmNews.get('newsDesc').setValue(this.newsDetails[0]['newsDesc']);
     this.frmNews.get('id').setValue(this.newsDetails[0]['id']);
+    this.frmNews.get('newsvideoTranscript').setValue(this.newsDetails[0]['videoTranscript'])
+      this.frmNews.get('newsLanguage').setValue(this.newsDetails[0]['language'])
+      this.frmNews.get('newsLevel').setValue(this.newsDetails[0]['level'])
+      this.frmNews.get('newsSubject').setValue(this.newsDetails[0]['subject'])
+      this.frmNews.get('newsInstitution').setValue(this.newsDetails[0]['institutions'])
+      this.frmNews.get('newsPrice').setValue(this.newsDetails[0]['price'])
+      this.frmNews.get('newsEffort').setValue(this.newsDetails[0]['effort'])
+      this.frmNews.get('newsLength').setValue(this.newsDetails[0]['length'])
     // this.frmNews.get('status').setValue(this.newsDetails[0]['newsDesc']);
     // if(this.userTypeDetails){
     //   this.userTypeDetails.forEach(resp=>{

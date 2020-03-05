@@ -6,12 +6,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
 declare var jQuery: any;
+
 @Component({
-  selector: 'app-create-news',
-  templateUrl: './create-news.component.html',
-  styleUrls: ['./create-news.component.css']
+  selector: 'app-create-market-news',
+  templateUrl: './create-market-news.component.html',
+  styleUrls: ['./create-market-news.component.css']
 })
-export class CreateNewsComponent implements OnInit {
+export class CreateMarketNewsComponent implements OnInit {
   data: [];
   httpError: boolean;
   userTypeDetails= []

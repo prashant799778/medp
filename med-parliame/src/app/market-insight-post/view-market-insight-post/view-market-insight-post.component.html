@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <div class="row" >
+        <div class="col-12 col-sm-12 col-md-12">
+            <div class="upper-wrap">
+                <div class="image-section-set bg-color">
+                    <img class="image-set" src="../../assets/images/post-im.svg">
+                </div>
+                <!-- <h2 class="main-hading">Post {{titleHeading}}</h2> -->
+                <ul class="sub-heading d-flex al-item mr-remove">
+                        <li>Market Insight Post /</li>
+                        <li>Student</li>
+                      </ul> 
+            </div>
+        </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 margin-tp">
+                <div class="record-box shadow-box                                                          table-responsive bg-white-fff border-round">
+                     <div class="upper-wrap">
+                        <h2 class="main-hading mr-bottom">Posts</h2>   
+                    </div>
+                    <table class="table">                               
+                        <thead>
+                            <tr>
+                                    <th> Image</th>
+                                    <th> Title</th>
+                                    <th> Summary</th>
+                                    <th> Description</th>
+                                    <th> Date</th>
+                                    <th>Created By</th>
+                                    <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngIf="postList && postList.length > 0">
+                                <tr *ngFor="let subAdmin of postList ; let i =  index">
+                                        <td> <img  src="../../../assets/images/no-image-available.png" class="hash-img tab-shadow"> </td>
+                                        <td> <p>{{subAdmin.newsTitle}} </p></td> 
+                                        <td> <p>{{subAdmin.summary}} </p></td>                                       
+                                        <td> <p [innerHtml]="subAdmin.newsDesc " class="inline-blk"></p> </td>
+                                        <td> {{subAdmin.DateCreate}}</td>
+                                        <td>  <p>{{subAdmin.userName}} </p></td> 
+                                    <!-- <td class="txt-color-r text-uppercase"> -->
+                                        <!-- <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-panding border-round-rem">Pending</button> -->
+                                        <!-- <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Approved</button> -->
+                                        <!-- <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Rejected</button> -->
+                                    <!-- </td> -->
+                                    <td>
+                                        <button type="button" class="acton-btn" (click)="policyDetail(subAdmin.id, subAdmin.userTypeId)">
+                                            <img src="../../assets/images/view.svg" class="action-view">
+                                        </button>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                           
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -60,6 +60,15 @@ import { EditAboutComponent } from './about/edit-about/edit-about.component';
 import { UserDecisionComponent } from './user/user-decision/user-decision.component';
 import { CreatePromisingInitiativeComponent } from './promising/create-promising-initiative/create-promising-initiative.component';
 import { EditPromisingInitiativeComponent } from './promising/edit-promising-initiative/edit-promising-initiative.component';
+import { PipesPipe } from './pipes.pipe';
+import { SanitizeHtmlPipe } from './pipes.pipe';
+import { ViewMarketInsightPostComponent } from './market-insight-post/view-market-insight-post/view-market-insight-post.component';
+import { EditMarketNewsComponent } from './market-news/edit-market-news/edit-market-news.component';
+import { CreateMarketNewsComponent } from './market-news/create-market-news/create-market-news.component';
+import { CreateUpSkillComponent } from './up-skill/create-up-skill/create-up-skill.component';
+import { EditUpSkillComponent } from './up-skill/edit-up-skill/edit-up-skill.component';
+import { ReplyPostMarketComponent } from './market-insight-post/reply-post-market/reply-post-market.component';
+import { CommonPipe } from './common.pipe';
 
 @NgModule({
   declarations: [
@@ -114,7 +123,16 @@ import { EditPromisingInitiativeComponent } from './promising/edit-promising-ini
     EditAboutComponent,
     UserDecisionComponent,
     CreatePromisingInitiativeComponent,
-    EditPromisingInitiativeComponent
+    EditPromisingInitiativeComponent,
+    PipesPipe,
+    SanitizeHtmlPipe,
+    ViewMarketInsightPostComponent,
+    EditMarketNewsComponent,
+    CreateMarketNewsComponent,
+    CreateUpSkillComponent,
+    EditUpSkillComponent,
+    ReplyPostMarketComponent,
+    CommonPipe
   ],
   imports: [
     BrowserModule,

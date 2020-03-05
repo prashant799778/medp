@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { LocalStorageService } from 'angular-web-storage';
+import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppSettings } from 'src/app/utils/constant';
-import { UserServiceService } from 'src/app/services/user-service.service';
-import { LocalStorageService } from 'angular-web-storage';
-declare var jQuery: any
+declare var jQuery: any;
 
 @Component({
-  selector: 'app-edit-news',
-  templateUrl: './edit-news.component.html',
-  styleUrls: ['./edit-news.component.css']
+  selector: 'app-edit-market-news',
+  templateUrl: './edit-market-news.component.html',
+  styleUrls: ['./edit-market-news.component.css']
 })
-export class EditNewsComponent implements OnInit {
+export class EditMarketNewsComponent implements OnInit {
 
   allnews = [];
   httpError: boolean;
@@ -123,7 +123,7 @@ export class EditNewsComponent implements OnInit {
       startlimit: 0,
       endlimit: this.pageSize
     };    
-      this.apiService.dataPostApi(params,AppSettings.getMarketingInsights).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.SHOW_ADMIN_NEWS).then((data: any[]) => {
         this.totalRecords = data['totalCount']
 
         if(this.totalRecords > this.pageSize){
@@ -154,7 +154,7 @@ export class EditNewsComponent implements OnInit {
     let data ={
       'id': this.newsId
     }
-    this.apiService.dataPostApi(data, AppSettings.deleteMarketingInsights).then((data: any[]) => {
+    this.apiService.dataPostApi(data, AppSettings.DELETE_ADMIN_NEWS).then((data: any[]) => {
       console.log(data);
       if(data['status'] == 'true'){
         this.activatedds = true;

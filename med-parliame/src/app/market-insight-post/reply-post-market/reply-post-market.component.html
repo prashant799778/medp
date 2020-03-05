@@ -1,0 +1,154 @@
+<div class="container-fluid">
+        <div class="row">
+          <form [formGroup]="frmPost" autocomplete="off" class="full-wd">
+            <div class="col-12 col-sm-12 col-md-12">
+              <div class="upper-wrap">
+                <div class="image-section-set bg-color">
+                    <img class="image-set" src="../../../assets/images/home.svg">
+                </div>
+                <ul class="sub-heading d-flex al-item mr-remove">
+                        <li *ngIf="dashboardssCheck == 'dashboard'" (click)="goto('/dashboard')">Market Insight /</li>
+                        <li>Market Post Details</li>
+                      </ul> 
+              </div>
+              <div class="policy-container same-margin bg-white-fff top-lr-padding">
+                    <!-- <h2 class="main-hading">Policy Detail</h2> -->
+                    <h3 class="policy-title" *ngIf="postDetails && postDetails.postTitle">{{postDetails.postTitle}}.</h3>
+        
+                    <div class="wrap-box d-flex al-item mr-bottom">
+                      <img src="../../../assets/images/profile.png" class="image-section">
+                      <h3 class="title-name" *ngIf="postDetails && postDetails.userName">{{postDetails.userName}}</h3>
+                    </div>
+                    <div class="information-container">
+                      <!-- <h2 class="question-heading">What is Lorem Ipsum?</h2> -->
+                      <p class="description-p"*ngIf="postDetails && postDetails.newsDesc" [innerHTML]="postDetails.newsDesc | sanitizeHtml">
+                       
+                        <!-- <span *ngIf="comment.length > 0"> -->
+                          
+                         
+                        <!-- </span> -->
+                      </p>
+                      <ng-container *ngIf="comment.length">
+                          <span *ngFor="let comment of comment" >
+                              <div class="wrap-inr-bx border-rd">
+                              <div class="wrap-box d-flex al-item mr-bottom">
+                                  <img src="../../../assets/images/profile.png" class="image-section">
+                                  <h3 class="title-name" >{{comment.userName}}</h3>
+                                  <h3 class="title-name"> {{comment.DateCreate}}</h3>
+                                </div>
+                              <div class="ap-box d-flex">
+                              <span>{{comment.commentDescription}}</span>
+                              <ul *ngIf="!studentAdmin">
+                                    <li><button type="button" class="btn-success">approved</button></li>
+                                    <li><button type="button" class="btn-danger">reject</button></li>
+                                  </ul>
+                                  </div>
+                            </div>
+                                <!-- <span>Posted on {{comment.DateCreate}}</span> -->
+                          </span>
+                      </ng-container>
+                    </div>
+                    <div class="bottom-section same-margin" *ngIf="!superLogin">
+                      <ul class="group-action-button mr-remove d-flex al-item " *ngIf="onlyView">
+                        <!-- <li class="fill-back-ac" ><a href="javascript:void(0)" (click)="Approved(1)" >Approve</a></li> -->
+                        <!-- <li class="bg-color-l-black"><a href="javascript:void(0)" (click)="Approved(3)">On Hold</a></li> -->
+                        <!-- <li class="fill-back"><a href="javascript:void(0)" (click)="Approved(2)">Reject</a></li> -->
+                      </ul>
+                    </div>
+                </div> 
+               
+            </div>
+          </form>
+            <!--  Start Approve pop Modal-->
+            <!-- <div class="modal fade" id="approv-pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body" *ngIf="!beforeApproved">
+                      
+                    <button *ngIf="approvedModal == 1" (click)="Approve(1)"> Approved</button>
+                    <button *ngIf="approvedModal == 3" (click)="Approve(3)"> OnHold</button>
+                    <button *ngIf="approvedModal == 2" (click)="Approve(2)"> Rejected</button>
+                  </div>
+                  <div class="modal-body" *ngIf="beforeApproved">
+                      
+                        <h2>Successful</h2>
+                      </div>
+                </div>
+              </div>
+            </div> -->
+            <!-- End Approve pop Modal-->
+        </div>
+        </div>
+        
+        
+        
+        
+        <div class="modal fade" id="approv-pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <template>
+                        <div class="modal-header border-remo">
+                        <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                            <!-- <span aria-hidden="true">&times;</span> -->
+                            <img src="../../../assets/images/close-im.svg">
+                        </button>
+                        </div>
+                    </template>
+                    <div class="modal-body" *ngIf="!activatedds">
+                        
+                        <div class="inner-model-box same-margin" *ngIf="approvedModal == 2">
+                            <div class="d-flex al-item">
+                                <img src="../../../assets/images/caution.svg" class="altr">
+                                <div class="dc-act">
+                                    <h3>Post Rejection </h3>
+                                    <span >Are you want to reject this post ?</span>
+                                </div>
+                            </div>
+                            <div class="grp-btn text-center">
+                                <button *ngIf="approvedModal == 2" (click)="closeMOdal()" class="mod-btn dc-bg-color-gray">Cancel</button>
+                                <button *ngIf="approvedModal == 2" (click)="Approve(2)" class="mod-btn fill-back">Reject</button>
+                            </div>
+                            </div>
+                        <div class="inner-model-box" *ngIf="approvedModal == 1">
+                                <div class="d-flex al-item">
+                                        <img src="../../../assets/images/caution-ac.svg" class="altr">
+                                        <div class="dc-act">
+                                            <h3>Post Approval</h3>
+                                            <span >Are you want to approve this post ?</span>
+                                        </div>
+                                    </div>
+        
+                                    <div class="grp-btn text-center">
+                                            <button *ngIf="approvedModal == 1" (click)="closeMOdal()" class="mod-btn dc-bg-color-gray">Cancel</button>
+                                            <button *ngIf="approvedModal == 1" (click)="Approve(1)" class="mod-btn fill-back-ac">Approve</button>
+                                    </div>
+                            </div>
+                        <!-- <h2>{{modalDescription}}</h2> -->
+                    </div>
+                    <div class="modal-body" *ngIf="activatedds" class="successful-modal">
+                            <!-- <span *ngIf="userProfile && userProfile.status == 0">Are you what to sure Deactivated</span>
+                            <span *ngIf="userProfile && userProfile.status == 1">Are you what to sure activated</span>
+                            <button *ngIf="userProfile && userProfile.status == 0" (click)="ActiveStudent()">Deactivated</button>
+                            <button *ngIf="userProfile && userProfile.status == 1" (click)="ActiveStudent()">Activated</button> -->
+                           <div class="success-parent">
+                               <div class="child-success"><img src="../../../assets/images/correct.svg"></div>
+        
+                                
+                               <div *ngIf="approvedModal == 0" class="child-success"><h2> Rejected Successfully</h2></div> 
+                                            <div *ngIf="approvedModal == 1" class="child-success"><h2> Approved Successfully</h2></div> 
+                           </div>
+                            
+                        </div>
+                  </div>
+                </div>
+              </div>
+        
+        
+        
+        

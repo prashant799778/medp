@@ -166,9 +166,9 @@ export class AppComponent {
 		this.userService.getApiDataacountVerfication(AppSettings.AccountVerification,data).then(resp=>{
 			console.log(resp)
 			if(resp['status'] == 'true'){
-				this.message = resp['message']
+				this.message = resp['content']
 			}else{
-				this.message = resp['message']
+				this.message = resp['content']
 			}
 			this.emailVerified = true;
 		})
