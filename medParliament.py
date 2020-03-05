@@ -5299,6 +5299,8 @@ def landingPageDashboardtest():
                 if data7["result"]=="":
                     data7["result"]=[]
                 for i in data7['result']:
+                    if 'userId' in inputdata:
+                        userId=inputdata['userId']
                     marketingInsightId=i['id']
                     whereCondition999="and lki.upSkillsId='"+str(marketingInsightId)+"' and userId='"+str(userId)+"'"
                     column999="status"
