@@ -4723,7 +4723,7 @@ def likeMarketingInsight():
                         whereCondition99= " and marketingInsightId ='" + str(postId) + "' and userId='" + str(approvedUserId) + "'"
                         column88="status"
                         da1=databasefile.SelectQuery("likeMarketingInsight",column88,whereCondition99,"",startlimit,endlimit)
-                        for i in da1:
+                        for i in da1['result']:
                             if da1['status'] != 'false':
                                 i['makedone']=1
                                 y.update(i['makedone'])
