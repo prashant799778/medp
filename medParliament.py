@@ -4940,7 +4940,7 @@ def landingPageDashboard1():
                 data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"","0","10",orderby)
                 if data6["result"]=="":
                     data6["result"]=[]
-                for i in data6:
+                for i in data6['result']:
                     marketingInsightId=i['id']
                     whereCondition="and lki.marketingInsightId='"+str(marketingInsightId)+"'"
                     columns="count(*) as count"
