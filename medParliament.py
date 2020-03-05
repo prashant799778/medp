@@ -4934,7 +4934,7 @@ def landingPageDashboard1():
         if "userTypeId" in inputdata:
             if inputdata['userTypeId'] != "":
                 userTypeId =inputdata["userTypeId"]
-                WhereCondition=" mi.Status <2 and  mi.userTypeId=0  or mi.userTypeId='"+str(userTypeId)+"'"
+                WhereCondition="and  mi.Status <2 and  mi.userTypeId=0  or mi.userTypeId='"+str(userTypeId)+"'"
 
                 column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
                 data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"","0","10",orderby)
