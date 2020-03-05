@@ -5245,17 +5245,34 @@ def landingPageDashboardtest():
 
                 for i in data6['result']:
                     marketingInsightId=i['id']
+                    if 'userId' in inputdata:
+                        userId=inputdata['userId']
+
                    
                     whereCondition="and lki.marketingInsightId='"+str(marketingInsightId)+"'"
                     columns="count(*) as count"
                     likeCount=databasefile.SelectQuery('likeMarketingInsight as lki',columns,whereCondition,"","","")
                     print(likeCount)
                     if likeCount['status']!='false':
+                        whereCondition999="and lki.marketingInsightId='"+str(marketingInsightId)+"' and userId='"+str(userId)+"'"
+                        column999="status"
+                        makedone=databasefile.SelectQuery('likeMarketingInsight as lki',column999,whereCondition999,"","","")
+                       
+
                         lki=likeCount['result'][0]['count']
+
+                            
+
                         i['likeCount']=lki
+                        if makedone['status']!="false":
+                            i['makedone']=1
+                        else:
+                            i['makedone']=0
+                            
                         
                     else:
                         i['likeCount']=0
+                        i['makedone']=0
 
 
                 data22={"result":data6['result'],"status":"true","message":""}
