@@ -4845,7 +4845,127 @@ def enrollUpSkills():
     except Exception as e :
         print("Exception---->" +str(e))           
         output = {"status":"false","message":"something went wrong","result":""}
-        return output        
+        return output
+
+@app.route('/landingPageDashboard1', methods=['POST'])
+def landingPageDashboard1():
+
+    try:
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and Status<2"
+        
+        data1={"message":"","status":"true","result":[]}
+        orderby=" id "
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+            
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+        
+            
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+                    WhereCondition=WhereCondition+" and  userTypeId=0  or userTypeId='"+str(userTypeId)+"'"
+                    column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
+                    data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"",startlimit,endlimit,orderby)
+                    print(data1,"")
+                    
+                    if data1["result"]=="":
+                        data1["result"]=[]
+                    else:
+                        for i in data1["result"]:
+                            if i["imagePath"]!="":
+                                i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
+
+        if "userTypeId" not in inputdata:
+            column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+            data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","3",orderby)
+            if data["result"]=="":
+                data["result"]=[]
+        else :
+            column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+            data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",orderby)
+            if data["result"]=="":
+                data["result"]=[]
+        
+
+        column2 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        data2 = databasefile.SelectQueryOrderby("gallery",column2,"","","0","10",orderby)
+        
+        if data2["result"]=="":
+            data2["result"]=[]
+
+        print("1111----")
+        WhereCondition1 = " on pm.eventId = ev.id " 
+        column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary, ifnull(pm.id,0) as likedId,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev left outer join eventInterest pm",column3,WhereCondition1,"",0,0,orderby)
+        
+        if data3["result"]=="":
+            data3["result"]=[]
+
+        column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
+        WhereCondition2= " and Status<2"
+        data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"","0","10")
+        print(data4)
+
+        if data4["result"]=="":
+            data4["result"]=[]
+
+        for m in data4['result']:
+                if m['imagePath']!='':
+                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+                if  m['videoPath']!="":
+                    y=m['videoPath'].split('=')
+                    print(y,'++++++')
+                    m['videoId']=y[1]
+            
+        column5 = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data5 = databasefile.SelectQueryOrderby("promissingIntiatives",column5,WhereCondition,"","0","10",orderby)
+        if data5["result"]=="":
+            data5["result"]=[]
+
+
+        if "userTypeId" in inputdata:
+            if inputdata['userTypeId'] != "":
+                userTypeId =inputdata["userTypeId"]
+                WhereCondition=" mi.Status <2 and  mi.userTypeId=0  or mi.userTypeId='"+str(userTypeId)+"'"
+
+                column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
+                data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"","0","10",orderby)
+                if data6["result"]=="":
+                    data6["result"]=[]
+
+                column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
+                data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition,"","0","10",orderby)
+                if data7["result"]=="":
+                    data7["result"]=[]    
+
+
+
+
+            
+
+            
+
+       
+
+
+        if data != "0":
+            
+            return {"message":"","status":"true","marketingInsights":data6['result'],"upSkillsOpportunity":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"promissingIntiatives":data5["result"],"news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"]}
+            
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()                
 
 
 
@@ -4937,6 +5057,9 @@ def landingPageDashboard():
         data5 = databasefile.SelectQueryOrderby("promissingIntiatives",column5,WhereCondition,"","0","10",orderby)
         if data5["result"]=="":
             data5["result"]=[]
+
+
+            
 
        
 
