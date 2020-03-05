@@ -4940,6 +4940,16 @@ def landingPageDashboard1():
                 data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"","0","10",orderby)
                 if data6["result"]=="":
                     data6["result"]=[]
+                for i in data6:
+                    marketingInsightId=i['id']
+                    whereCondition="and lki.marketingInsightId='"+str(marketingInsightId)+"'"
+                    columns="count(*) as count"
+                    likeCount=databasefile.SelectQuery4('likeMarketingInsight as lki',columns,whereCondition)
+                    if likeCount['status']!='false':
+                        lki=likeCount['result'][0]['count']
+                        i['likeCount']=lki
+                    else:
+                        i['likeCount']=0
 
                 column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition,"","0","10",orderby)
