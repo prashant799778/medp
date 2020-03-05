@@ -5095,13 +5095,14 @@ def landingPageDashboardtest():
                 return data22
 
             if key ==8:
+                WhereCondition229=" and mi.Status<2 and  mi.userTypeId=0  or mi.userTypeId='"+str(userTypeId)+"'"
                
 
 
 
                     
                 column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
-                data7 = databasefile.SelectQueryOrderbyNew("upSkillsOpportunity  as mi",column7,WhereCondition,"","0","10",orderby)
+                data7 = databasefile.SelectQueryOrderbyNew("upSkillsOpportunity  as mi",column7,WhereCondition229,"","0","10",orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
 
