@@ -4829,18 +4829,25 @@ def enrollUpSkills():
                 values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "'"
                 data = databasefile.InsertQuery("enrollUpskills",column,values)
                 if data!="0":
-                    column="*"
+                    column="count(*) as count"
                     whereCondition=" and upSkillsId ='" + str(postId) + "'"
                     data1=databasefile.SelectQuery("enrollUpskills",column,whereCondition,"",startlimit,endlimit)
                     if (data1["status"]!="false"):
+                        o=[]
                         y=data1["result"][0]
-                        for i in data1['result']:
-                            i['enrollUpSkills']=1
-                        y2=i['enrollUpSkills']
-
+                        print(y,"+++++++++++++++++=")
+                        whereCondition99= " and upSkillsId  ='" + str(postId) + "' and userId='" + str(approvedUserId) + "'"
+                        column88="status"
+                        da1=databasefile.SelectQuery("enrollUpskills",column88,whereCondition99,"",startlimit,endlimit)
+                        if da1['status'] != 'false':
+                            for i in da1['result']:
+                                i['makedone']=1
+                                y2={"makedone":1}
+                                y.update(y2)
+                                o.append(y)    
                       
                        
-                        data1={"status":"true","result":y2,"message":""}
+                        data1={"status":"true","result":o,"message":""}
                         return data1
                     else:
                         data1={"status":"true","result":"","message":"No Data Found"}
@@ -5291,6 +5298,16 @@ def landingPageDashboardtest():
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition229,"","0","10",orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
+                for i in data7['result']:
+                    marketingInsightId=i['id']
+                    whereCondition999="and lki.upSkillsId='"+str(marketingInsightId)+"' and userId='"+str(userId)+"'"
+                    column999="status"
+                    makedone=databasefile.SelectQuery('enrollUpskills as lki',column999,whereCondition999,"","","")
+                    if makedone['status']!="false":
+                        i['makedone']=1
+                    else:
+                        i['makedone']=0
+
 
                 data22={"result":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"status":"true","message":""}
                 return data22
