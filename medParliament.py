@@ -4720,6 +4720,7 @@ def likeMarketingInsight():
                     if (data1["status"]!="false"):
                         o=[]
                         y=data1["result"][0]
+                        print(y,"+++++++++++++++++=")
                         whereCondition99= " and marketingInsightId ='" + str(postId) + "' and userId='" + str(approvedUserId) + "'"
                         column88="status"
                         da1=databasefile.SelectQuery("likeMarketingInsight",column88,whereCondition99,"",startlimit,endlimit)
