@@ -5042,7 +5042,6 @@ def landingPageDashboardtest():
                 data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev left outer join eventInterest pm",column3,WhereCondition1,"",0,0,orderby)
                 
                 if data3["result"]=="":
-                    data3["result"]=[]
                 data22={"result":data3['result'],"status":"true","message":""}
                 return data22
             
@@ -5106,7 +5105,7 @@ def landingPageDashboardtest():
                 if data7["result"]=="":
                     data7["result"]=[]
 
-                data22={"result":data7['result'],"status":"true","message":""}
+                data22={"result":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"status":"true","message":""}
                 return data22
             
 
