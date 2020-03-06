@@ -4956,29 +4956,7 @@ def landingPageDashboard1():
                 data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"","0","10",orderby)
                 if data6["result"]=="":
                     data6["result"]=[]
-                for i in data6['result']:
-                    if "userId" in inputdata:
-                        if inputdata['userId'] != "":
-                            userId=inputdata['userId']
-                    marketingInsightId=i['id']
-                    whereCondition="and lki.marketingInsightId='"+str(marketingInsightId)+"'"
-                    columns="count(*) as count"
-                    likeCount=databasefile.SelectQuery('likeMarketingInsight as lki',columns,whereCondition,"","","")
-                    print(likeCount)
-                    whereCondition2="and lki.marketingInsightId='"+str(marketingInsightId)+"' and userId='" +str(userId)+"'"
-                    column88="status"
-                    makedone=databasefile.SelectQuery('likeMarketingInsight as lki',column88,whereCondition2)
-                    makedone1=makedone['result'][0][status]
-
-
-                    if likeCount['status']!='false':
-                        lki=likeCount['result'][0]['count']
-                        i['likeCount']=lki
-                        i['makedone']=makedone1
-                    else:
-                        i['likeCount']=0
-                        i['makedone']=0
-
+               
                 column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition,"","0","10",orderby)
                 if data7["result"]=="":
