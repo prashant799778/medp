@@ -22,11 +22,11 @@
                 </g>
           </svg>
             </div>
-            <h2 class="main-hading">MedAchievers Academy Master</h2>
+            <h2 class="main-hading">Academic Council Master</h2>
         </div>
           <div class="card-header-actions crd-bnt">
             <!-- <a [routerLink]="['/news/createNews']" class="btn" target="_self">Create News</a> -->
-            <a [routerLink]="['/upSkill/editUpSkill']" class="btn" target="_self">View MedAchievers Academy</a>
+            <a [routerLink]="['/upSkill/editUpSkill']" class="btn" target="_self">View Academic Council</a>
           </div>
         </div>
         <!-- <i class="fa fa-list"></i>Create News Data
@@ -42,14 +42,14 @@
                 <div class="card-body p-4 border-rd">
                     <form [formGroup]="frmNews" autocomplete="off">
                       <div class="form-group">
-                       <label for="newsType">MedAchievers Academy category</label>
+                       <label for="newsType">Academic Council category</label>
                         <select formControlName="userTypeId">
                             <option *ngFor="let userType of userTypeDetails" [value]="userType.id">{{userType.userName}}</option>
                         </select>
                         
                         <!-- {{frmNews.get('userTypeId').errors | json}} -->
                         <div class="error" *ngIf="frmNews.get('userTypeId').errors && (frmNews.get('userTypeId').touched || frmNews.get('userTypeId').dirty)">
-                            <p>MedAchievers Academy category is required</p>
+                            <p>Academic Council category is required</p>
                           </div>
                         <!--  <ng-select 
                                  [items]="categoryList"
@@ -61,13 +61,13 @@
                                  formControlName="newsType">
                         </ng-select> -->
                         <br>
-                        <label for="newsTitle">MedAchievers Academy Title</label>
+                        <label for="newsTitle">Academic Council Title</label>
                             <input type="text" class="form-control" formControlName="newsTitle">
                             <div class=error *ngIf="frmNews.get('newsTitle').errors && (frmNews.get('newsTitle').touched || frmNews.get('newsTitle').dirty)">
-                              <p>MedAchievers Academy Title is required</p>
+                              <p>Academic Council Title is required</p>
                             </div>
                         <br>
-                        <label for="banner">MedAchievers Academy Banner</label>
+                        <label for="banner">Academic Council Banner</label>
                             <input id="file12" type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                             <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
                                 <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
@@ -76,72 +76,72 @@
                             <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
                        </div>
                         <br>
-                        <label for="summary">MedAchievers Academy Summary</label>
+                        <label for="summary">Academic Council Summary</label>
                             <textarea type="text" class="form-control" formControlName="summary" placeholder="Enter News Summary..." rows="4"></textarea>
                             <div class=error *ngIf="frmNews.get('summary').errors && (frmNews.get('summary').touched || frmNews.get('summary').dirty)">
-                                <p>MedAchievers Academy Summary is required</p>
+                                <p>Academic Council Summary is required</p>
                               </div>
                         <br>
-                        <label for="newsDesc">MedAchievers Academy Description</label>
+                        <label for="newsDesc">Academic Council Description</label>
                         <angular-editor formControlName="newsDesc" [config]="config"></angular-editor>
                         <div class=error *ngIf="frmNews.get('newsDesc').errors && (frmNews.get('newsDesc').touched || frmNews.get('newsDesc').dirty)">
-                            <p>MedAchievers Academy Description is required</p>
+                            <p>Academic Council Description is required</p>
                           </div>
 
                           <br>
-                        <label for="newsTitle">MedAchievers Academy Length</label>
+                        <label for="newsTitle">Academic Council Length</label>
                             <input type="text" class="form-control" formControlName="newsLength">
                             <div class=error *ngIf="frmNews.get('newsLength').errors && (frmNews.get('newsLength').touched || frmNews.get('newsLength').dirty)">
-                              <p>MedAchievers Academy Length is required</p>
+                              <p>Academic Council Length is required</p>
                             </div>
                         
                         <br>
-                        <label for="newsTitle">MedAchievers Academy Effort</label>
+                        <label for="newsTitle">Academic Council Effort</label>
                             <input type="text" class="form-control" formControlName="newsEffort">
                             <div class=error *ngIf="frmNews.get('newsEffort').errors && (frmNews.get('newsEffort').touched || frmNews.get('newsEffort').dirty)">
-                                <p>MedAchievers Academy Effort is required</p>
+                                <p>Academic Council Effort is required</p>
                             </div>
                             
                         <br>
-                        <label for="newsTitle">MedAchievers Academy Price</label>
+                        <label for="newsTitle">Academic Council Price</label>
                             <input type="text" class="form-control" formControlName="newsPrice">
                             <div class=error *ngIf="frmNews.get('newsPrice').errors && (frmNews.get('newsPrice').touched || frmNews.get('newsPrice').dirty)">
-                                <p>MedAchievers Academy Price is required</p>
+                                <p>Academic Council Price is required</p>
                             </div>
                         
                         <br>
-                        <label for="newsTitle">MedAchievers Academy Institution</label>
+                        <label for="newsTitle">Academic Council Institution</label>
                             <input type="text" class="form-control" formControlName="newsInstitution">
                             <div class=error *ngIf="frmNews.get('newsInstitution').errors && (frmNews.get('newsInstitution').touched || frmNews.get('newsInstitution').dirty)">
-                                <p>MedAchievers Academy Institution is required</p>
+                                <p>Academic Council Institution is required</p>
                             </div>
                         
                         <br>
-                        <label for="newsTitle">MedAchievers Academy Subject</label>
+                        <label for="newsTitle">Academic Council Subject</label>
                             <input type="text" class="form-control" formControlName="newsSubject">
                             <div class=error *ngIf="frmNews.get('newsSubject').errors && (frmNews.get('newsSubject').touched || frmNews.get('newsSubject').dirty)">
-                                <p>MedAchievers Academy Subject is required</p>
+                                <p>Academic Council Subject is required</p>
                             </div>
                         
                         <br>
-                        <label for="newsTitle">MedAchievers Academy Level</label>
+                        <label for="newsTitle">Academic Council Level</label>
                             <input type="text" class="form-control" formControlName="newsLevel">
                             <div class=error *ngIf="frmNews.get('newsLevel').errors && (frmNews.get('newsLevel').touched || frmNews.get('newsLevel').dirty)">
-                                <p>MedAchievers Academy Level is required</p>
+                                <p>Academic Council Level is required</p>
                             </div>
                         
                         <br>
-                        <label for="newsTitle">MedAchievers Academy Language</label>
+                        <label for="newsTitle">Academic Council Language</label>
                             <input type="text" class="form-control" formControlName="newsLanguage">
                             <div class=error *ngIf="frmNews.get('newsLanguage').errors && (frmNews.get('newsLanguage').touched || frmNews.get('newsLanguage').dirty)">
-                                <p>MedAchievers Academy Language is required</p>
+                                <p>Academic Council Language is required</p>
                             </div>
                         
                         <br>
-                        <label for="newsTitle">MedAchievers Academy Video Transcript</label>
+                        <label for="newsTitle">Academic Council Video Transcript</label>
                             <input type="text" class="form-control" formControlName="newsvideoTranscript">
                             <div class=error *ngIf="frmNews.get('newsvideoTranscript').errors && (frmNews.get('newsvideoTranscript').touched || frmNews.get('newsvideoTranscript').dirty)">
-                                <p>MedAchievers Academy Video Transcript is required</p>
+                                <p>Academic Council Video Transcript is required</p>
                             </div>
                             
                       </div>
