@@ -5302,10 +5302,11 @@ def landingPageDashboardtest():
                     if 'userId' in inputdata:
                         userId=inputdata['userId']
                     marketingInsightId=i['id']
-                    whereCondition999="and lki.upSkillsId='"+str(marketingInsightId)+"' and userId='"+str(userId)+"'"
-                    column999="status"
+                    whereCondition999="and lki.upSkillsId='"+str(marketingInsightId)+"' and lki.userId='"+str(userId)+"'"
+                    column999="lki.status"
                     makedone=databasefile.SelectQuery('enrollUpskills as lki',column999,whereCondition999,"","","")
                     if makedone['status']!="false":
+
                         i['makedone']=1
                     else:
                         i['makedone']=0
