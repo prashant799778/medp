@@ -4863,7 +4863,7 @@ def enrollUpSkills():
         output = {"status":"false","message":"something went wrong","result":""}
         return output
 
-@app.route('/landingPageDashboard1', methods=['POST'])
+@app.route('/landingPageDashboard', methods=['POST'])
 def landingPageDashboard1():
 
     try:
@@ -5008,7 +5008,7 @@ def landingPageDashboard1():
 
 
 
-@app.route('/landingPageDashboard', methods=['POST'])
+@app.route('/landingPageDashboard1', methods=['POST'])
 def landingPageDashboard():
 
     try:
