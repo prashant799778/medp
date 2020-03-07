@@ -5005,7 +5005,7 @@ def landingPageDashboard1():
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition,"","0","10",orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
-                    
+
                 if 'userId' in inputdata:
                     userId=inputdata['userId']
                     marketingInsightId=i['id']
@@ -5083,6 +5083,13 @@ def landingPageDashboard1():
                 else:
                     i['makedone']=0
 
+
+        column99 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        data99 = databasefile.SelectQueryOrderby("ourPartners",column99,"","","0","10",orderby)
+        
+        if data99["result"]=="":
+            data99["result"]=[]
+
                         
 
 
@@ -5097,7 +5104,7 @@ def landingPageDashboard1():
 
         if data != "0":
             
-            return {"message":"","status":"true","marketingInsights":data6['result'],"upSkillsOpportunity":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"promissingIntiatives":data5["result"],"news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"]}
+            return {"message":"","status":"true","marketingInsights":data6['result'],"upSkillsOpportunity":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"promissingIntiatives":data5["result"],"news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"],"ourPartners":data99}
             
         else:
             return commonfile.Errormessage()
@@ -5415,6 +5422,17 @@ def landingPageDashboardtest():
 
                 data22={"result":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"status":"true","message":""}
                 return data22
+            if key ==9:
+
+                column99 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+                data99 = databasefile.SelectQueryOrderby("ourPartners",column99,"","","0","10",orderby)
+                
+                if data99["result"]=="":
+                    data99["result"]=[]
+
+                data22={"result":data99['result'],"status":"true","message":""}
+                return data22
+                        
             
 
            
