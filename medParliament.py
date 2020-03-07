@@ -4869,6 +4869,7 @@ def landingPageDashboard1():
     try:
         WhereCondition,startlimit,endlimit="","",""
         WhereCondition=WhereCondition+" and Status<2"
+        startlimit,endlimit="",""
         
         data1={"message":"","status":"true","result":[]}
         orderby=" id "
