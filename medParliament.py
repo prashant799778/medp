@@ -4976,7 +4976,7 @@ def landingPageDashboard1():
                 data6["result"]=[]
             for i in data6['result']:
                 marketingInsightId=i['id']
-                
+
                 if 'userId' in inputdata:
                     userId=inputdata['userId']
 
@@ -5006,7 +5006,7 @@ def landingPageDashboard1():
                         i['likeCount']=0
                         i['makedone']=0
                 else:
-                    i['likeCount']=0
+                   
                     i['makedone']=0
                                 
            
