@@ -4980,30 +4980,34 @@ def landingPageDashboard1():
                         userId=inputdata['userId']
 
                    
-                    whereCondition="and lki.marketingInsightId='"+str(marketingInsightId)+"'"
-                    columns="count(*) as count"
-                    likeCount=databasefile.SelectQuery('likeMarketingInsight as lki',columns,whereCondition,"","","")
-                    print(likeCount)
-                    if likeCount['status']!='false':
-                        whereCondition999="and lki.marketingInsightId='"+str(marketingInsightId)+"' and userId='"+str(userId)+"'"
-                        column999="status"
-                        makedone=databasefile.SelectQuery('likeMarketingInsight as lki',column999,whereCondition999,"","","")
-                       
+                        whereCondition="and lki.marketingInsightId='"+str(marketingInsightId)+"'"
+                        columns="count(*) as count"
+                        likeCount=databasefile.SelectQuery('likeMarketingInsight as lki',columns,whereCondition,"","","")
+                        print(likeCount,"+++++++++++++")
+                        if likeCount['status']!='false':
+                            whereCondition999="and lki.marketingInsightId='"+str(marketingInsightId)+"' and userId='"+str(userId)+"'"
+                            column999="status"
+                            makedone=databasefile.SelectQuery('likeMarketingInsight as lki',column999,whereCondition999,"","","")
+                           
 
-                        lki=likeCount['result'][0]['count']
+                            lki=likeCount['result'][0]['count']
 
+                                
+
+                            i['likeCount']=lki
+                            if makedone['status']!="false":
+                                i['makedone']=1
+                            else:
+                                i['makedone']=0
+                                
                             
-
-                        i['likeCount']=lki
-                        if makedone['status']!="false":
-                            i['makedone']=1
                         else:
+                            i['likeCount']=0
                             i['makedone']=0
-                            
-                        
                     else:
                         i['likeCount']=0
-                        i['makedone']=0    
+                        i['makedone']=0
+                                
            
             column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
             data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition,"","0","10",orderby)
@@ -5021,6 +5025,8 @@ def landingPageDashboard1():
                         i['makedone']=1
                     else:
                         i['makedone']=0
+                else:
+                    i['makedone']=0
 
                         
 
