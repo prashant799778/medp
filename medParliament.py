@@ -5197,7 +5197,7 @@ def landingPageDashboardtest():
 
                 print("1111----")
                 WhereCondition1 = " on pm.eventId = ev.id " 
-                column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary, ifnull(pm.id,0) as likedId,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+                column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary, ifnull(pm.eventId,0) as likedId,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
                 data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev left outer join eventInterest pm",column3,WhereCondition1,"",0,0,orderby)
                 
                 if data3["result"]=="":
