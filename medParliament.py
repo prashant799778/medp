@@ -5005,18 +5005,19 @@ def landingPageDashboard1():
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition,"","0","10",orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
+                for i in data7['result']:
 
-                if 'userId' in inputdata:
-                    userId=inputdata['userId']
-                    marketingInsightId=i['id']
-                    whereCondition999="and lki.upSkillsId='"+str(marketingInsightId)+"' and lki.userId='"+str(userId)+"'"
-                    column999="lki.status"
-                    makedone=databasefile.SelectQuery('enrollUpskills as lki',column999,whereCondition999,"","","")
-                    if makedone['status']!="false":
+                    if 'userId' in inputdata:
+                        userId=inputdata['userId']
+                        marketingInsightId=i['id']
+                        whereCondition999="and lki.upSkillsId='"+str(marketingInsightId)+"' and lki.userId='"+str(userId)+"'"
+                        column999="lki.status"
+                        makedone=databasefile.SelectQuery('enrollUpskills as lki',column999,whereCondition999,"","","")
+                        if makedone['status']!="false":
 
-                        i['makedone']=1
-                    else:
-                        i['makedone']=0
+                            i['makedone']=1
+                        else:
+                            i['makedone']=0
 
 
         if "userTypeId" not  in inputdata:
