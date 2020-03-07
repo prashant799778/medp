@@ -4874,7 +4874,8 @@ def landingPageDashboard1():
         data1={"message":"","status":"true","result":[]}
         orderby=" id "
         if request.get_data():
-            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+            inputdata =  commonfile.DecodeInputdata(request.get_data())
+            print(inputdata)        
         
             if "startlimit" in inputdata:
                 if inputdata['startlimit'] != "":
