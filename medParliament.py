@@ -4873,6 +4873,7 @@ def landingPageDashboard1():
         
         data1={"message":"","status":"true","result":[]}
         orderby=" id "
+        inputdata={}
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())
             print(inputdata,"++++++++++++++++++")        
