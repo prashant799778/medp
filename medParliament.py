@@ -157,6 +157,15 @@ def gallery(image_name):
     except FileNotFoundError:
         abort(404)
 
+
+
+@app.route("/ourPartners/<image_name>")
+def ourPartners1(image_name):
+    try:
+        return send_from_directory('ourPartners', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)        
+
 @app.route("/postImage/<image_name>")
 def postImage(image_name):
     try:
@@ -6904,6 +6913,159 @@ def allaboutUs():
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
+
+
+
+
+@app.route('/ourPartnersImages', methods=['POST'])
+def ourPartners():
+    try:
+        inputdata = request.form.get('data') 
+
+        inputdata = json.loads(inputdata) 
+        startlimit,endlimit="",""
+        keyarr = ["userId","flag"]
+        
+        commonfile.writeLog("ourPartners",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            ImagePath=""
+            flag=inputdata['flag']
+            if 'postImage' in request.files:      
+                file = request.files.get('postImage')        
+                filename = file.filename or ''                 
+                filename = filename.replace("'","") 
+
+                print(filename)
+                # filename = str(campaignId)                    
+                #folder path to save campaign image
+                FolderPath = ConstantData.getourPartners(filename)  
+
+                filepath = '/ourPartners/' + filename    
+                
+
+                file.save(FolderPath)
+                ImagePath = filepath
+           
+            
+            if flag =="i":
+                if "userId" in inputdata:
+                    if inputdata['userId'] != "":
+                        userId =inputdata["userId"]
+                    column = " imagePath,UserCreate"
+                    values = " '"+ str(ImagePath)+ "','" + str(userId) + "'"
+                    data = databasefile.InsertQuery("ourPartners",column,values)        
+                else:
+                    column = " imagePath "
+                    values = " '"+ str(ImagePath)+  "'"
+                    data = databasefile.InsertQuery("ourPartners",column,values)
+            if flag =="u":
+                
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status =inputdata["status"]
+                # if "userId" in inputdata:
+
+                #     if inputdata['userId'] != "":
+                #         userId =inputdata["userId"]
+                #         whereCondition=" and UserCreate='" + str(userId) + "'"
+                #         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
+                #         data=databasefile.UpdateQuery("gallery",column,whereCondition)
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        inputdata1 = request.form.get('postImage')
+                        print(inputdata1,"==========================================")
+                        if  inputdata1 !=None: 
+                            index=re.search("/ourPartners", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
+                        whereCondition=" and  id='" + str(Id) + "'"
+                        column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
+                        data=databasefile.UpdateQuery("ourPartners",column,whereCondition)
+
+
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+@app.route('/getOurPartners', methods=['POST'])
+def getOurPartners():
+
+    try:        
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and Status<2"
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
+        
+        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,UserCreate  "
+        data = databasefile.SelectQuery(" ourPartners ",column,WhereCondition,"",startlimit,endlimit)
+        
+        if data != "0":
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+@app.route('/deleteOurPartners', methods=['POST'])
+def deleteOurPartners():
+    try: 
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        WhereCondition=""
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteOurPartners",inputdata,0)
+        
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("ourPartners",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
 
 if __name__ == "__main__":
     CORS(app, support_credentials=True)

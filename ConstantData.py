@@ -107,6 +107,12 @@ def getGalleryPath(filename):
     return path
 
 
+def getourPartners(filename):
+
+    path = "/var/www/medParliament/backend/med_parliament/ourPartners/"+filename
+    return path    
+
+
 def getpromisingEvent(filename):
 
     path = "/var/www/medParliament/backend/med_parliament/promisingEvent/"+filename
