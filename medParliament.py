@@ -4968,7 +4968,7 @@ def landingPageDashboard1():
         if "userTypeId" not  in inputdata:
            
    
-            WhereCondition="and  mi.Status <2 and  mi.userTypeId=0"
+            WhereCondition="and  mi.Status <2 "
 
             column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
             data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"","0","10",orderby)
