@@ -17,7 +17,9 @@ export class AppSettings {
     public static allMarketingInsightThread = 'allMarketingInsightThread';
     public static deleteUpSkillsOpportunity = 'deleteUpSkillsOpportunity';
     public static deleteMarketingInsights = 'deleteMarketingInsights';
-    
+    public static ourPartnersImages = 'ourPartnersImages';
+    public static getOurPartners = 'getOurPartners';
+    public static deleteOurPartners = 'deleteOurPartners';
     
     
 
@@ -73,6 +75,11 @@ export class AppSettings {
     
     public static getPromissingIntiatives = 'getPromissingIntiatives';
     public static promissingIntiatives = 'promissingIntiatives';
+    
+    public static getuserContent = 'getuserContent';
+    public static usersContent = 'usersContent';
+    public static deleteUserContent = 'deleteUserContent';
+    
     
     
 

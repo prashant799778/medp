@@ -69,6 +69,10 @@ import { CreateUpSkillComponent } from './up-skill/create-up-skill/create-up-ski
 import { EditUpSkillComponent } from './up-skill/edit-up-skill/edit-up-skill.component';
 import { ReplyPostMarketComponent } from './market-insight-post/reply-post-market/reply-post-market.component';
 import { CommonPipe } from './common.pipe';
+import { EditParterComponent } from './our-partner/edit-parter/edit-parter.component';
+import { ViewParterComponent } from './our-partner/view-parter/view-parter.component';
+import { ViewContentComponent } from './user-content/view-content/view-content.component';
+import { EditContentComponent } from './user-content/edit-content/edit-content.component';
 
 @NgModule({
   declarations: [
@@ -132,7 +136,11 @@ import { CommonPipe } from './common.pipe';
     CreateUpSkillComponent,
     EditUpSkillComponent,
     ReplyPostMarketComponent,
-    CommonPipe
+    CommonPipe,
+    EditParterComponent,
+    ViewParterComponent,
+    ViewContentComponent,
+    EditContentComponent
   ],
   imports: [
     BrowserModule,

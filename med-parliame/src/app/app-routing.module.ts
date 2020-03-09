@@ -49,6 +49,10 @@ import { EditMarketNewsComponent } from './market-news/edit-market-news/edit-mar
 import { CreateUpSkillComponent } from './up-skill/create-up-skill/create-up-skill.component';
 import { EditUpSkillComponent } from './up-skill/edit-up-skill/edit-up-skill.component';
 import { ReplyPostMarketComponent } from './market-insight-post/reply-post-market/reply-post-market.component';
+import { EditParterComponent } from './our-partner/edit-parter/edit-parter.component';
+import { ViewParterComponent } from './our-partner/view-parter/view-parter.component';
+import { ViewContentComponent } from './user-content/view-content/view-content.component';
+import { EditContentComponent } from './user-content/edit-content/edit-content.component';
 
 
 
@@ -226,6 +230,49 @@ const routes: Routes = [
       
   ]
   },
+
+  { path: 'ourPartner', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/ourPartner/createPartner',pathMatch:'full'}, 
+   
+       {
+          path:'createPartner',
+          component: ViewParterComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editPartner',
+        component: EditParterComponent,
+        canActivate: [AuthGuard],
+    },
+    
+  
+    
+      
+  ]
+  },
+
+  { path: 'userContent', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/userContent/createContent',pathMatch:'full'}, 
+   
+       {
+          path:'createContent',
+          component: ViewContentComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editContent',
+        component: EditContentComponent,
+        canActivate: [AuthGuard],
+    },
+    
+  
+    
+      
+  ]
+  },
+
 
   { path: 'about', 
   children: [                          //<---- child components declared here

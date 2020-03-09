@@ -32,7 +32,7 @@ export class CreateUpSkillComponent implements OnInit {
     spellcheck: true,
     height: '15rem',
     minHeight: '5rem',
-    placeholder: 'Enter News Description...',
+    placeholder: 'Enter Academic Council Description...',
     translate: 'no',
     defaultFontName: 'Arial',
     customClasses: [
