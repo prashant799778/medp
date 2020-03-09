@@ -7268,7 +7268,7 @@ def getuserContent():
                     WhereCondition=WhereCondition+" and n.id='"+str(Id)+"'"
         orderby=" n.id "
        
-        column = " n.id,n.Status,n.content ,date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath "
+        column = " n.id,n.Status,n.userTypeId,n.content ,date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath "
         data = databasefile.SelectQueryOrderby("userContent n",column,WhereCondition,"","0","10",orderby)
         print(data,"-------------------------------------------")
         data2 = databasefile.SelectTotalCountQuery("userContent","","")
@@ -7282,6 +7282,40 @@ def getuserContent():
         print('EXC')
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
+
+
+
+
+@app.route('/deleteUserContent', methods=['POST'])
+def deleteUserContent():
+    try: 
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        WhereCondition=""
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteUserContent",inputdata,0)
+        
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("userContent",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()        
 
 
 
