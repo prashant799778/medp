@@ -110,7 +110,14 @@ def getGalleryPath(filename):
 def getourPartners(filename):
 
     path = "/var/www/medParliament/backend/med_parliament/ourPartners/"+filename
-    return path    
+    return path
+
+
+
+def getuserContent(filename):
+
+    path = "/var/www/medParliament/backend/med_parliament/contentimages/"+filename
+    return path         
 
 
 def getpromisingEvent(filename):
