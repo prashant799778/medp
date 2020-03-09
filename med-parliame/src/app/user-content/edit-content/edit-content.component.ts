@@ -186,7 +186,7 @@ export class EditContentComponent implements OnInit {
     let data ={
       'id': this.newsId
     }
-    this.apiService.dataPostApi(data, AppSettings.deleteOurPartners).then((data: any[]) => {
+    this.apiService.dataPostApi(data, AppSettings.deleteUserContent).then((data: any[]) => {
       console.log(data);
       if(data['status'] == 'true'){
         this.activatedds = true;
