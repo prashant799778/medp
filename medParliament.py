@@ -7146,7 +7146,7 @@ def userContent():
         inputdata = request.form.get('userContent')    
         inputdata = json.loads(inputdata) 
         print("userContent",inputdata)
-        commonfile.writeLog("userContent",inputdata,0)
+        commonfile.writeLog("usersContent",inputdata,0)
         keyarr = ["content","flag","userTypeId"]           
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         
