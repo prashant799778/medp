@@ -72,6 +72,7 @@
                               <thead> 
                                     <tr>
                                       <th>User Content Image</th>
+                                      <th>Description</th>
                                       <th>Date of Creation</th>
                                       <th>Action</th>
                                     </tr>
@@ -80,6 +81,7 @@
                                     <ng-container *ngFor="let news of allnews">
                                       <tr>
                                         <td> <img src="{{news.imagePath}}" class="hash-img tab-shadow"> </td>
+                                        <td>  {{news.content}} </td>
                                         <td>  {{news.DateCreate}} </td>
                                         <td>
                                               <div class="btn-edit-group">

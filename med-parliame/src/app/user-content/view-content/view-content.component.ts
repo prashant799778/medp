@@ -125,7 +125,7 @@ export class ViewContentComponent implements OnInit {
       // newsTitle: this.frmNews.get('newsTitle').value,
       // summary: this.frmNews.get('summary').value,
       // newsDesc: this.frmNews.get('newsDesc').value,
-      userId : this.frmNews.get('userCreate').value,
+      UserId : this.frmNews.get('userCreate').value,
       userTypeId: this.frmNews.get('userTypeId').value,
       flag: 'u',
       id: this.frmNews.get('id').value,
@@ -170,7 +170,7 @@ export class ViewContentComponent implements OnInit {
       // newsTitle: this.frmNews.get('newsTitle').value,
       // summary: this.frmNews.get('summary').value,
       // newsDesc: this.frmNews.get('newsDesc').value,
-      userId : this.frmNews.get('userCreate').value,
+      UserId : this.frmNews.get('userCreate').value,
       flag: 'i',
       userTypeId: this.frmNews.get('userTypeId').value
     };
