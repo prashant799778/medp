@@ -1464,7 +1464,7 @@ def allpolicyMakers():
                 whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                 if data1['status'] !="False":
-                    count=data1["count"]
+                    count=data1["result"]["count"]
                     i["noOfPosts"]=count
                 else:
                     i["noOfPosts"]=0
@@ -1545,7 +1545,7 @@ def allDoctorMaster():
                     whereCondition=" and pm.usertypeId='8' and pm.userId='" + str(userId) + "' "
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                     if data1['status'] !="False":
-                        count=data1["count"]
+                        count=data1["result"]["count"]
                         i["noOfPosts"]=count
                     else:
                         i["noOfPosts"]=0
@@ -1591,7 +1591,7 @@ def allprofessionalsMaster():
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                     print(data1,"d")
                     if data1['status'] !="False":
-                        count=data1["count"]
+                        count=data1["result"]["count"]
                         i["noOfPosts"]=count
                     else:
                         i["noOfPosts"]=0
@@ -1702,7 +1702,7 @@ def allenterprenuer():
                 print(data1,"")
                
                 if data1['status'] !="False":
-                    count=data1["count"]
+                    count=data1["result"]["count"]
                     i["noOfPosts"]=count
                 else:
                     i["noOfPosts"]=0
@@ -1824,7 +1824,7 @@ def allstudents():
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                 print(data1,"")
                 if data1['status'] !="False":
-                    count=data1["count"]
+                    count=data1["result"]["count"]
                     i["noOfPosts"]=count
                 else:
                     i["noOfPosts"]=0      
