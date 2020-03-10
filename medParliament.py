@@ -1546,6 +1546,7 @@ def allDoctorMaster():
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                     print(data1,"")
                     count=data1["count"]
+                    print(count,"ddddd")
 
                     i["noOfPosts"]=count
 
@@ -1590,6 +1591,7 @@ def allprofessionalsMaster():
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                     print(data1,"")
                     count=data1["count"]
+                    print(count,"Proffes")
 
                     i["noOfPosts"]=count
 
