@@ -1463,11 +1463,11 @@ def allpolicyMakers():
                 column="count(*) as count"
                 whereCondition=" and pm.usertypeId='5' and pm.userId='" + str(userId) + "' "
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
-                print(data1,"")
-                count=data1["count"]
-
-                i["noOfPosts"]=count
-
+                if data1['status'] !="False":
+                    count=data1["count"]
+                    i["noOfPosts"]=count
+                else:
+                    i["noOfPosts"]=0
 
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
@@ -1544,11 +1544,11 @@ def allDoctorMaster():
                     column="count(*) as count"
                     whereCondition=" and pm.usertypeId='8' and pm.userId='" + str(userId) + "' "
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
-                    print(data1,"")
-                    count=data1["count"]
-                    print(count,"ddddd")
-
-                    i["noOfPosts"]=count
+                    if data1['status'] !="False":
+                        count=data1["count"]
+                        i["noOfPosts"]=count
+                    else:
+                        i["noOfPosts"]=0
 
 
                 Data = {"status":"true","message":"","result":data["result"]}
@@ -1589,11 +1589,11 @@ def allprofessionalsMaster():
                     column="count(*) as count"
                     whereCondition=" and pm.usertypeId='9' and pm.userId='" + str(userId) + "' "
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
-                    print(data1,"")
-                    count=data1["count"]
-                    print(count,"Proffes")
-
-                    i["noOfPosts"]=count
+                    if data1['status'] !="False":
+                        count=data1["count"]
+                        i["noOfPosts"]=count
+                    else:
+                        i["noOfPosts"]=0
 
 
                 Data = {"status":"true","message":"","result":data["result"]}
@@ -1699,9 +1699,12 @@ def allenterprenuer():
                 whereCondition=" and pm.usertypeId='6' and pm.userId='" + str(userId) + "' "
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                 print(data1,"")
-                count=data1["count"]
-
-                i["noOfPosts"]=count
+               
+                if data1['status'] !="False":
+                    count=data1["count"]
+                    i["noOfPosts"]=count
+                else:
+                    i["noOfPosts"]=0
     
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
@@ -1819,9 +1822,11 @@ def allstudents():
                 whereCondition=" and pm.usertypeId='7' and pm.userId='" + str(userId) + "' "
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
                 print(data1,"")
-                count=data1["count"]
-
-                i["noOfPosts"]=count       
+                if data1['status'] !="False":
+                    count=data1["count"]
+                    i["noOfPosts"]=count
+                else:
+                    i["noOfPosts"]=0      
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
         else:
