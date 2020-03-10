@@ -1589,6 +1589,7 @@ def allprofessionalsMaster():
                     column="count(*) as count"
                     whereCondition=" and pm.usertypeId='9' and pm.userId='" + str(userId) + "' "
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                    print(data1,"d")
                     if data1['status'] !="False":
                         count=data1["count"]
                         i["noOfPosts"]=count
