@@ -7248,6 +7248,13 @@ def userContent():
                 if "UserId" in inputdata:
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
+                    
+                    whereCondition=" and  userTypeId='"+str(userTypeId)+"'"
+
+
+                    data1=databasefile.DeleteQuery("userContent",whereCondition)
+
+
                       
                     column = "userTypeId,imagePath,content,UserCreate"
                     values = " '" + str(userTypeId)+"','" + str(ImagePath) +"','" + str(content) + "','" + str(UserId) + "'"
