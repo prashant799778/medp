@@ -53,7 +53,7 @@ has become truly global. Top minds and leaders are gathering through the platfor
 draw common solutions and methods for improved healthcare delivery, more fruitful <br>\
 transactions and enhanced skilling opportunities. A glittery constellation of Ministers, <br>\
 Diplomats, Healthcare CEOs, Research and tech titans, venture capitalists from different <br>\
-parts of the globe are now sharing deeper ways of collaboration and Transaction.<br>\
+parts of the globe are now sharing deeper ways of collaboration and Transaction.<br><br>\
 <strong>WHAT DO WE HAVE FOR YOU?</strong><br><br>\
 We look forward to your views and insights on the healthcare industry and all of the<br> \
 industries which intersect with it. Do take the time to browse our app for the latest <br>\
@@ -122,7 +122,7 @@ has become truly global. Top minds and leaders are gathering through the platfor
 draw common solutions and methods for improved healthcare delivery, more fruitful <br>\
 transactions and enhanced skilling opportunities. A glittery constellation of Ministers, <br>\
 Diplomats, Healthcare CEOs, Research and tech titans, venture capitalists from different <br>\
-parts of the globe are now sharing deeper ways of collaboration and Transaction.<br>\
+parts of the globe are now sharing deeper ways of collaboration and Transaction.<br><br>\
 <strong>WHAT DO WE HAVE FOR YOU?</strong><br><br>\
 We look forward to your views and insights on the healthcare industry and all of the<br> \
 industries which intersect with it. Do take the time to browse our app for the latest <br>\
@@ -193,7 +193,7 @@ has become truly global. Top minds and leaders are gathering through the platfor
 draw common solutions and methods for improved healthcare delivery, more fruitful <br>\
 transactions and enhanced skilling opportunities. A glittery constellation of Ministers, <br>\
 Diplomats, Healthcare CEOs, Research and tech titans, venture capitalists from different <br>\
-parts of the globe are now sharing deeper ways of collaboration and Transaction.<br>\
+parts of the globe are now sharing deeper ways of collaboration and Transaction.<br><br>\
 <strong>WHAT DO WE HAVE FOR YOU?</strong><br><br>\
 We look forward to your views and insights on the healthcare industry and all of the<br> \
 industries which intersect with it. Do take the time to browse our app for the latest <br>\
