@@ -45,6 +45,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
     DashboardAnnouncedModel announcedModel;
     ImageView img;
     AppCompatButton  ab;
+    Intent i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +55,8 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
 //        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 //        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         this.onResult = this;
-        ab=findViewById(R.id.interest);
-        if(!Comman.Check_Login(getApplicationContext())) {
+        ab = findViewById(R.id.interest);
+        if (!Comman.Check_Login(getApplicationContext())) {
 
             ab.setVisibility(View.GONE);
         }
@@ -63,10 +64,10 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
         date = findViewById(R.id.date);
         loc = findViewById(R.id.loc);
         msg = findViewById(R.id.msg);
-       header = findViewById(R.id.header);
+        header = findViewById(R.id.header);
         created = findViewById(R.id.created);
         bck = findViewById(R.id.bck);
-         img= findViewById(R.id.cover);
+        img = findViewById(R.id.cover);
 //        progressDialog = new ProgressDialog(NewsDetails_Activity.this);
 //        progressDialog.setMessage("Loading...");
 //        progressDialog.setCancelable(true);
@@ -78,22 +79,22 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
             }
         });
         m = MySharedPrefrence.instanceOf(NewsDetails_Activity.this);
-        Intent i = getIntent();
+         i = getIntent();
         if (i != null) {
-
-            pm=(NewsModelList) i.getSerializableExtra("news");
+            pm = (NewsModelList) i.getSerializableExtra("news");
             postId = i.getStringExtra("postId");
-            eventModel= (Dashbooard_eventModel) i.getSerializableExtra("event");
-            newses =  (Dashboard_News_Model)i.getSerializableExtra("newses");
-            announcedModel= (DashboardAnnouncedModel) i.getSerializableExtra("ann");
-
+            eventModel = (Dashbooard_eventModel) i.getSerializableExtra("event");
+            newses = (Dashboard_News_Model) i.getSerializableExtra("newses");
+            announcedModel = (DashboardAnnouncedModel) i.getSerializableExtra("ann");
         }
-
         setResult();
     }
-
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {
+        if(jsonObject!=null)
+        {
+            Comman.log("EVENT$$$$$",""+jsonObject.toString());
+        }
         progressDialog.dismiss();
         if(status){
         ab.setText("Already Intrested");
@@ -130,19 +131,17 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
 
  }
  if(eventModel != null){
-       Log.d("AAAAAAA",eventModel.toString());
+       Log.d("AAAAAAA",eventModel.getMakedone());
      ab.setVisibility(View.VISIBLE );
-     if(eventModel.getLikedId()!=null &&  Integer.valueOf(eventModel.getLikedId())>0){
+     if(eventModel.getMakedone()!=null &&  !eventModel.getMakedone().equalsIgnoreCase("0")){
          ab.setText("Already Intrested");
          ab.setBackgroundResource(R.color.hintColor);
+         ab.setEnabled(false);
       }else{
-
-
          ab.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
                  if(Comman.Check_Login(getApplicationContext())) {
-
                      progressDialog = new ProgressDialog(NewsDetails_Activity.this);
                      progressDialog.setMessage("Loading...");
                      progressDialog.setCancelable(true);
@@ -151,11 +150,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
                  }else{
                      startActivity(new Intent(NewsDetails_Activity.this,Login_Signup_Activity.class));
                      finish();
-
                  }
-
-
-
              }
          });
      }
@@ -216,6 +211,15 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult 
 
             ab.setVisibility(View.GONE);
         }
+        if (i != null) {
+            pm = (NewsModelList) i.getSerializableExtra("news");
+            postId = i.getStringExtra("postId");
+            eventModel = (Dashbooard_eventModel) i.getSerializableExtra("event");
+            newses = (Dashboard_News_Model) i.getSerializableExtra("newses");
+            announcedModel = (DashboardAnnouncedModel) i.getSerializableExtra("ann");
+//            eventModel.notify();
+        }
+        setResult();
 //        Api_Calling.postMethodCall(NewsDetails_Activity.this,getWindow().getDecorView().getRootView(),onResult, URLS.ALL_POSTS,setjson(),"NewstDetails");
     }
     public JSONObject setjson()

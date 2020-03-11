@@ -10,7 +10,7 @@
     android:layout_marginRight="10dp"
     app:cardElevation="0dp"
     app:cardBackgroundColor="@color/transparent"
-    android:layout_height="200dp">
+    android:layout_height="90dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,7 +28,7 @@
                 android:maxLines="1"
                 android:id="@+id/name"
                 android:textAlignment="gravity"
-                android:textColor="@color/white"
+                android:textColor="@color/solid_black"
                 android:gravity="left|center"
                 android:paddingLeft="10dp"
                 android:text=""
@@ -41,7 +41,7 @@
                 android:gravity="right|center"
                 android:id="@+id/date"
                 android:paddingRight="10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/solid_black"
                 android:text=""
                 android:layout_height="match_parent">
             </com.medparliament.Widget.Segow_UI_Semi_Font>
@@ -49,9 +49,10 @@
         <com.medparliament.Widget.Segow_UI_Font
             android:layout_width="match_parent"
             android:textSize="14dp"
+            android:visibility="gone"
             android:id="@+id/createdby"
             android:textAlignment="gravity"
-            android:textColor="@color/white"
+            android:textColor="@color/solid_black"
             android:gravity="left|center_vertical"
             android:paddingLeft="10dp"
             android:text=""
@@ -66,15 +67,17 @@
             android:paddingTop="2dp"
             android:layout_marginTop="5dp"
             android:paddingLeft="10dp"
-            android:textColor="@color/white"
-            android:maxLines="4"
+            android:paddingRight="10dp"
+            android:textColor="@color/solid_black"
+            android:maxLines="2"
             android:text="sadflh"
-            android:layout_height="40dp">
+            android:layout_height="30dp">
         </com.medparliament.Widget.Segow_UI_Semi_Font>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/layout"
+            android:visibility="gone"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="50dp"
@@ -89,7 +92,7 @@
                 android:id="@+id/likecount"
                 android:textAlignment="gravity"
                 android:layout_marginLeft="-10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/solid_black"
                 android:gravity="left|center_vertical"
                 android:text=""
                 android:layout_height="match_parent">

@@ -103,6 +103,7 @@ public class User_profile_Activity extends Base_Activity implements onResult {
     @Override
     protected void onStart() {
         super.onStart();
+        Comman.setRectangleImage(User_profile_Activity.this,profileImage,m.getUserProfile());
         Api_Calling.postMethodCall(User_profile_Activity.this,getWindow().getDecorView().getRootView(),onResult, URLS.USER_PROFILE,myPostJson(),"USer_Profile");
     }
 
@@ -215,8 +216,10 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     l_batch_qualification.setText(getResources().getString(R.string.Designation));
                     batch.setText(Comman.getValueFromJsonObject(jo,"designation"));
                     l_expert.setText(getResources().getString(R.string.AreaofExperites));
+//                    expertises.setText("fdsdfsajh");
+//                    expertises.setVisibility(View.VISIBLE);
+                    Comman.log("Experties",""+Comman.getValueFromJsonObject(jo,"areaOfExpertise"));
                     expertises.setText(Comman.getValueFromJsonObject(jo,"areaOfExpertise"));
-
                     l_interest.setText(getResources().getString(R.string.Interests));
 
 

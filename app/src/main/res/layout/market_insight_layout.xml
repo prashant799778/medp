@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="320dp"
+    android:layout_marginBottom="10dp"
+    android:background="@color/white"
+    android:maxHeight="300dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+
+        <com.medparliament.Widget.Open_Sans_Regular_Font
+            android:id="@+id/streme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:text=""
+            android:textColor="@color/c1c1"
+            android:textSize="20dp"></com.medparliament.Widget.Open_Sans_Regular_Font>
+
+        <com.medparliament.Widget.Segow_UI_Bold_Font
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/heading"
+            android:textSize="13dp"
+            android:textColor="@color/c1c1"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="3dp">
+        </com.medparliament.Widget.Segow_UI_Bold_Font>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="158dp"
+            android:visibility="gone"
+            android:id="@+id/mainimg"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop">
+        </ImageView>
+        <com.medparliament.Widget.Segow_UI_Font
+            android:layout_width="match_parent"
+            android:id="@+id/msg"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:lineHeight="22dp"
+            android:textSize="14dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/c1c1"
+            android:text="yyyy"
+            android:layout_height="wrap_content">
+        </com.medparliament.Widget.Segow_UI_Font>
+    </LinearLayout>
+</RelativeLayout>

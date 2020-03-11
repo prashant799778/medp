@@ -10,6 +10,7 @@ public class Constant {
     public static final String INVALIDE_MAIL="Invalid  email";
     public static final String ENTER_EMIAL="Please Enter  email";
     public static final String OTP="Please Enter  OTP";
+    public static final String MSG="Please Write Something";
 
 
 }

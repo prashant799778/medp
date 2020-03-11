@@ -55,14 +55,14 @@ public class Dashboard_events_adapter_new1 extends LoopingPagerAdapter<Dashbooar
           title.setText(pm.getEventTitle());
            place.setText(pm.getEventLocation());
            date.setText(PrettyTimeClass.PrettyTime(Comman.timeInms(pm.getDateCreate())));
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, NewsDetails_Activity.class);
-                    intent.putExtra("event",pm);
-                    context.startActivity(intent);
-                }
-            });
+//            convertView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(context, NewsDetails_Activity.class);
+//                    intent.putExtra("event",pm);
+//                    context.startActivity(intent);
+//                }
+//            });
 
 
 

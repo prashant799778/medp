@@ -37,7 +37,6 @@ public class Dashboard_video_adapter_new  extends PagerAdapter {
 
         Log.d("aaa","aaaaa");
         final Video_Model pm = itemList.get(position);
-
         LayoutInflater inflater = LayoutInflater.from(context);
         ViewGroup convertView = (ViewGroup) inflater.inflate(R.layout.video_item_layout, collection, false);
 
@@ -122,7 +121,6 @@ public class Dashboard_video_adapter_new  extends PagerAdapter {
         }
 
         else{
-
             imageView.setVisibility(View.VISIBLE);
 
             Comman.setRectangleImage(context,imageView,pm.getImagePath());

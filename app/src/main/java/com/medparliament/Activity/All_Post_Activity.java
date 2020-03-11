@@ -103,7 +103,6 @@ public class All_Post_Activity extends Base_Activity implements onResult {
                 tab.setIcon(R.drawable.white_note);
 
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
 

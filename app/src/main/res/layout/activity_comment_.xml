@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorAccent"
     android:layout_height="match_parent"
     tools:context=".Activity.Comment_Activity">
     <ImageView
@@ -14,7 +13,7 @@
     </ImageView>
     <RelativeLayout
         android:id="@+id/top"
-        android:background="@color/transparent"
+        android:background="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="52dp">
         <ImageButton
@@ -53,9 +52,8 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="70dp"
         android:background="@color/transparent"
-        android:layout_marginHorizontal="30dp"
         android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,24 +61,31 @@
             android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
+                android:orientation="vertical"
                 android:background="@color/transparent"
                 android:layout_height="wrap_content">
             <com.medparliament.Widget.Segow_UI_EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/Title_Here"
-                android:textSize="24dp"
+                android:textSize="16dp"
                 android:textAlignment="gravity"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
                 android:gravity="center_vertical"
-                android:textColor="@color/white"
-                android:textColorHint="@color/hintColor"
+                android:textColor="@color/solid_black"
                 android:textCursorDrawable="@drawable/curcos"
-                android:background="@drawable/edit_text_boarder"
+                android:background="@color/white"
                 android:id="@+id/title"
                 android:paddingLeft="15dp">
             </com.medparliament.Widget.Segow_UI_EditText>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:id="@+id/v"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/divideColor">
+                </View>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -91,7 +96,7 @@
             <RelativeLayout
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:background="@color/transparent"
                 android:layout_height="wrap_content">
             <com.medparliament.Widget.Segow_UI_Font
@@ -118,21 +123,20 @@
             </RelativeLayout>
             <com.medparliament.Widget.Segow_UI_EditText
                 android:layout_width="match_parent"
-                android:textSize="14dp"
+                android:textSize="16dp"
                 android:hint="@string/Type_Description"
                 android:inputType="textMultiLine"
                 android:visibility="visible"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:textAlignment="gravity"
                 android:gravity="left|center_vertical"
                 android:id="@+id/cmnt"
                 android:paddingTop="10dp"
-                android:textColor="@color/white"
-                android:textColorHint="@color/hintColor"
+                android:textColor="@color/solid_black"
                 android:textCursorDrawable="@drawable/curcos"
-                android:background="@drawable/edit_text_boarder"
+                android:background="@drawable/white_note"
                 android:paddingLeft="@dimen/leftpadding"
-                android:layout_height="200dp"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

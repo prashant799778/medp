@@ -56,7 +56,7 @@ public class Dashboard_events_adapter_new extends PagerAdapter {
         msg=convertView.findViewById(R.id.msg);
         place=convertView.findViewById(R.id.place);
         mainimg=convertView.findViewById(R.id.mainimg);
-
+        Comman.log("AAAAAAA","MakeDoneONSetData"+pm.getMakedone());
         Comman.setRectangleImage(context,mainimg,pm.getImagePath());
         msg.setText(pm.getEventSummary());
         title.setText(pm.getEventTitle());
@@ -68,6 +68,7 @@ public class Dashboard_events_adapter_new extends PagerAdapter {
                 if(Comman.Check_Login(context)){
                 Intent intent = new Intent(context, NewsDetails_Activity.class);
                 intent.putExtra("event",pm);
+                Comman.log("AAAAAAA","MakeDone"+pm.getMakedone());
                 context.startActivity(intent);} else {
 
                     Intent intent = new Intent(context, Login_Signup_Activity.class);

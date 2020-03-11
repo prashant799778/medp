@@ -24,12 +24,10 @@ import com.medparliament.Widget.Segow_UI_Semi_Font;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-           startActivity(new Intent(Splace.this, FaceDetectionActivity.class));
+//           startActivity(new Intent(Splace.this, FaceDetectionActivity.class));
         Window window = getWindow();
         videoView=findViewById(R.id.scalableVideoView);
-        setDimension();
+//        setDimension();
         skip=findViewById(R.id.skip);
         window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
@@ -37,10 +35,10 @@ import com.medparliament.Widget.Segow_UI_Semi_Font;
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                videoView.stopPlayback();
                 if(Comman.Check_Login(Splace.this)){
                     startActivity(new Intent(Splace.this,DashBoard_Activity.class));
                     finish();
-
                 }else {
                     startActivity(new Intent(Splace.this,DashBoard_Activity.class));
                     finish();

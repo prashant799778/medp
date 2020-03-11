@@ -322,7 +322,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
             @Override
             public void onClick(String item, int position) {
                 segow_ui_font.setText(item);
-                segow_ui_font.setTextColor(Color.WHITE);
+                segow_ui_font.setTextColor(Color.BLACK);
                 segow_ui_font.setTag(position);
             }
         });
@@ -377,7 +377,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
         }
         CFAlertDialog.Builder builder = new CFAlertDialog.Builder(this, R.style.MyCheckBox);
         builder.setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT);
-        builder.setMessage("Select Interest").setTextColor(Color.WHITE);
+        builder.setMessage("Select Interest").setTextColor(Color.BLACK);
         builder.setMultiChoiceItems(str, barray, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int index, boolean b) {
@@ -385,7 +385,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
                     dialogInterface.dismiss();
                     define.setVisibility(View.VISIBLE);
                     interest.setText(str[index]);
-                    interest.setTextColor(Color.WHITE);
+                    interest.setTextColor(Color.BLACK);
                 } else {
                     Comman.log("Selected " + index, "" + str[index] + " Status" + Api_Calling.StudentIntrestList.size());
                     if (b) {
@@ -405,7 +405,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
                 dialogInterface.dismiss();
                 Comman.log("Intersest Final Arrya", "" + doctorIdArray.toString());
                 interest.setText(value.toString().replace("[", "").replace("]", "").trim());
-                interest.setTextColor(Color.WHITE);
+                interest.setTextColor(Color.BLACK);
             }
         });
         builder.show();
@@ -455,7 +455,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
             @Override
             public void onClick(View v) {
                 textView.setText(s1 + "-" + s2);
-                textView.setTextColor(Color.WHITE);
+                textView.setTextColor(Color.BLACK);
                 alertDialog.dismiss();
             }
         });

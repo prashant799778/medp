@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
     tools:context=".Activity.Student_SignUp_Activity">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/signbgbg"
-        android:scaleType="centerCrop">
-    </ImageView>
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:src="@drawable/signbgbg"-->
+<!--        android:scaleType="centerCrop">-->
+<!--    </ImageView>-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -19,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RelativeLayout
-                android:background="@color/transparent"
+                android:background="@color/colorPrimary"
                 android:layout_width="match_parent"
                 android:id="@+id/ttt"
                 android:layout_height="52dp">
@@ -46,7 +45,7 @@
                 <ImageView
                     android:layout_weight=".5"
                     android:layout_width="150dp"
-                    android:src="@drawable/cup"
+                    android:src="@drawable/ic_group_185"
                     android:padding="8dp"
                     android:layout_below="@+id/ttt"
                     android:id="@+id/cup"
@@ -67,7 +66,7 @@
                     android:id="@+id/video"
                     android:layout_height="match_parent"
                     app:autoPlay="false"
-                    android:background="@color/white"
+                    android:background="@color/solid_black"
                     app:showYouTubeButton="true">
                 </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
                 <ImageView
@@ -85,7 +84,7 @@
                 android:id="@+id/videoTitle"
                 android:layout_marginHorizontal="34dp"
                 android:layout_below="@+id/ll"
-                android:textColor="@color/white"
+                android:textColor="@color/solid_black"
                 android:textSize="20dp">
             </com.medparliament.Widget.Segow_UI_Semi_Font>
 
@@ -107,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/login_button"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/white"
+                android:textColor="@color/solid_black"
                 android:textAlignment="center"
                 android:layout_marginVertical="20dp"
                 android:text="@string/complete"
@@ -128,7 +127,7 @@
                     android:id="@+id/name"
                     android:layout_marginVertical="11dp"
                     android:paddingLeft="@dimen/leftpadding"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
@@ -142,7 +141,7 @@
                     android:id="@+id/mobile"
                     android:maxLength="10"
                     android:inputType="number"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
@@ -154,7 +153,7 @@
                     android:layout_marginVertical="11dp"
                     android:paddingLeft="@dimen/leftpadding"
                     android:id="@+id/email"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
@@ -171,7 +170,7 @@
                     android:id="@+id/gender"
                     android:textAlignment="gravity"
                     android:gravity="center_vertical"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
@@ -193,7 +192,7 @@
 <!--                    android:layout_marginVertical="11dp"-->
 <!--                    android:paddingLeft="@dimen/leftpadding"-->
 <!--                    android:id="@+id/country"-->
-<!--                    android:textColor="@color/white"-->
+<!--                    android:textColor="@color/solid_black"-->
 <!--                    android:textColorHint="@color/hintColor"-->
 <!--                    android:textCursorDrawable="@drawable/curcos"-->
 <!--                    android:background="@drawable/edit_text_boarder"-->
@@ -210,7 +209,7 @@
                         android:gravity="center_vertical"
                         android:layout_marginVertical="11dp"
                         android:paddingLeft="@dimen/leftpadding"
-                        android:textColor="@color/white"
+                        android:textColor="@color/solid_black"
                         android:textColorHint="@color/hintColor"
                         android:textCursorDrawable="@drawable/curcos"
                         android:background="@drawable/edit_text_boarder"
@@ -232,7 +231,7 @@
                     app:passwordToggleEnabled="true"
                     app:boxBackgroundColor="@color/transparent"
                     app:errorEnabled="true"
-                    app:passwordToggleTint="@color/white"
+                    app:passwordToggleTint="@color/solid_black"
                     app:boxBackgroundMode="none"
                     app:hintEnabled="false">
                     <com.medparliament.Widget.Segow_UI_EditText
@@ -242,7 +241,7 @@
                         android:inputType="textPassword"
                         android:paddingLeft="@dimen/leftpadding"
                         android:id="@+id/pswd"
-                        android:textColor="@color/white"
+                        android:textColor="@color/solid_black"
                         android:textColorHint="@color/hintColor"
                         android:textCursorDrawable="@drawable/curcos"
                         android:background="@drawable/edit_text_boarder"
@@ -254,9 +253,9 @@
                     android:id="@+id/t_password"
                     android:layout_height="@dimen/fieldHeight"
                     app:passwordToggleEnabled="true"
-                    app:boxBackgroundColor="@color/white"
+                    app:boxBackgroundColor="@color/solid_black"
                     app:boxBackgroundMode="none"
-                    app:passwordToggleTint="@color/white"
+                    app:passwordToggleTint="@color/solid_black"
                     app:errorEnabled="true"
                     app:hintEnabled="false">
                     <com.medparliament.Widget.Segow_UI_EditText
@@ -266,7 +265,7 @@
                         android:inputType="textPassword"
                         android:id="@+id/confr_pswd"
                         android:paddingLeft="@dimen/leftpadding"
-                        android:textColor="@color/white"
+                        android:textColor="@color/solid_black"
                         android:textColorHint="@color/hintColor"
                         android:textCursorDrawable="@drawable/curcos"
                         android:background="@drawable/edit_text_boarder"
@@ -280,7 +279,7 @@
                     android:layout_marginVertical="11dp"
                     android:paddingLeft="@dimen/leftpadding"
                     android:id="@+id/address"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
@@ -297,7 +296,7 @@
 <!--                    android:id="@+id/qualificatin"-->
 <!--                    android:textAlignment="gravity"-->
 <!--                    android:gravity="center_vertical"-->
-<!--                    android:textColor="@color/white"-->
+<!--                    android:textColor="@color/solid_black"-->
 <!--                    android:textColorHint="@color/hintColor"-->
 <!--                    android:textCursorDrawable="@drawable/curcos"-->
 <!--                    android:background="@drawable/edit_text_boarder"-->
@@ -319,7 +318,7 @@
                     android:layout_marginVertical="11dp"
                     android:paddingLeft="@dimen/leftpadding"
                     android:id="@+id/qualificatin"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
@@ -336,7 +335,7 @@
                     android:textAlignment="gravity"
                     android:gravity="center_vertical"
                     android:id="@+id/bach"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
@@ -358,7 +357,7 @@
                     android:layout_marginVertical="11dp"
                     android:paddingLeft="@dimen/leftpadding"
                     android:id="@+id/instutionName"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
@@ -375,7 +374,7 @@
 <!--                    android:id="@+id/universityname"-->
 <!--                    android:textAlignment="gravity"-->
 <!--                    android:gravity="center_vertical"-->
-<!--                    android:textColor="@color/white"-->
+<!--                    android:textColor="@color/solid_black"-->
 <!--                    android:textColorHint="@color/hintColor"-->
 <!--                    android:textCursorDrawable="@drawable/curcos"-->
 <!--                    android:background="@drawable/edit_text_boarder"-->
@@ -396,7 +395,7 @@
                     android:hint="@string/University_name"
                     android:layout_marginVertical="11dp"
                     android:paddingLeft="@dimen/leftpadding"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
@@ -408,7 +407,7 @@
                     android:hint="@string/University_Address"
                     android:layout_marginVertical="11dp"
                     android:paddingLeft="@dimen/leftpadding"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
@@ -426,7 +425,7 @@
                     android:id="@+id/interest"
                     android:textAlignment="gravity"
                     android:gravity="center_vertical"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"
@@ -453,7 +452,7 @@
                     android:id="@+id/define"
                     android:paddingTop="10dp"
                     android:paddingLeft="@dimen/leftpadding"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textColorHint="@color/hintColor"
                     android:textCursorDrawable="@drawable/curcos"
                     android:background="@drawable/edit_text_boarder"

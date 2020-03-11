@@ -54,7 +54,7 @@ public class Post_Adapter extends RecyclerView.Adapter<Post_Adapter.Notification
         Comman.log("My",""+pm.getPostDescription());
             if(pm.getDateCreate()!=null)
         holder.date.setText(""+ PrettyTimeClass.PrettyTime(Comman.timeInms(pm.getDateCreate())));}else {
-            holder.userName.setText(pm.getPostTitle());
+            holder.userName.setText(pm.getUserName());
             holder.creaedby.setText("By :"+pm.getUserName());
             holder.msg.setText(pm.getPostDescription());
             if(pm.getDateCreate()!=null)

@@ -13,19 +13,19 @@ public class Segow_UI_Bold_Font extends TextView {
 
     public Segow_UI_Bold_Font(Context context) {
         super(context);
-        Typeface face= Typeface.createFromAsset(context.getAssets(), "Atami_Bold.otf");
+        Typeface face= Typeface.createFromAsset(context.getAssets(), "Lato_Medium.ttf");
         this.setTypeface(face);
     }
 
     public Segow_UI_Bold_Font(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "Atami_Bold.otf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "Lato_Medium.ttf");
         this.setTypeface(face);
     }
 
     public Segow_UI_Bold_Font(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "Atami_Bold.otf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "Lato_Medium.ttf");
         this.setTypeface(face);
     }
 

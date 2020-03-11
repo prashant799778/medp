@@ -5,17 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
     tools:context=".Activity.All_Post_Activity">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/mypostbgbg"
-        android:scaleType="centerCrop">
-    </ImageView>
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:src="@drawable/mypostbgbg"-->
+<!--        android:scaleType="centerCrop">-->
+<!--    </ImageView>-->
     <RelativeLayout
         android:id="@+id/top"
-        android:background="@color/transparent"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="52dp">
         <ImageButton

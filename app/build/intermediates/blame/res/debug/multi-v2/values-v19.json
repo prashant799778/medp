@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\medParliament\\med_parliament\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v19\\values-v19.xml",
+            "outputFile": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v19\\values-v19.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Work-PC\\.gradle\\caches\\transforms-2\\files-2.1\\2312c6f6ad8f9a72c91f1b2d7ace5f07\\pix-1.4.4\\res\\values-v19\\values-v19.xml",
+                    "source": "C:\\Users\\fourbrick\\.gradle\\caches\\transforms-2\\files-2.1\\15061ae46ccf79900f99f276bee92115\\jetified-pix-1.4.4\\res\\values-v19\\values-v19.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

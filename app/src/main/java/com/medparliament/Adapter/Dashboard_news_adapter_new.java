@@ -40,7 +40,7 @@ public class Dashboard_news_adapter_new  extends PagerAdapter {
         final Dashboard_News_Model pm = itemList.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(context);
-        ViewGroup convertView = (ViewGroup) inflater.inflate(R.layout.dashboard_news_layout, collection, false);
+        ViewGroup convertView = (ViewGroup) inflater.inflate(R.layout.dashboard_event_layout, collection, false);
 
 
 

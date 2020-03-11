@@ -211,7 +211,7 @@ public class Policy_Maker_SignUp_Activity extends Base_Activity implements View.
         }
         CFAlertDialog.Builder builder = new CFAlertDialog.Builder(this,R.style.MyCheckBox);
         builder.setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT);
-        builder.setMessage("Select Interest").setTextColor(Color.WHITE);
+        builder.setMessage("Select Interest").setTextColor(Color.BLACK);
         builder.setMultiChoiceItems(str,barray, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int index, boolean b) {
@@ -286,7 +286,7 @@ public class Policy_Maker_SignUp_Activity extends Base_Activity implements View.
             @Override
             public void onClick(String item, int position) {
                 segow_ui_font.setText(item);
-                segow_ui_font.setTextColor(Color.WHITE);
+                segow_ui_font.setTextColor(Color.BLACK);
                 segow_ui_font.setTag(position);
             }
         });

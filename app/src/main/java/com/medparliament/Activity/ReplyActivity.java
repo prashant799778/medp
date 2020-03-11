@@ -36,12 +36,10 @@ public class ReplyActivity extends AppCompatActivity implements onResult {
     Segow_UI_Semi_Font done;
     onResult onResult;
     MySharedPrefrence m;
-
     SpinnerDialog spinnerDialog;
     ArrayList<String>genderList=new ArrayList<>();
     Segow_UI_EditText cmnt_msg;
     String postId="";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

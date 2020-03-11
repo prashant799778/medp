@@ -13,19 +13,19 @@ public class Segow_UI_EditText extends EditText {
 
     public Segow_UI_EditText(Context context) {
         super(context);
-        Typeface face= Typeface.createFromAsset(context.getAssets(), "AtamiRegular.otf");
+        Typeface face= Typeface.createFromAsset(context.getAssets(), "Lato_Medium.ttf");
         this.setTypeface(face);
     }
 
     public Segow_UI_EditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "AtamiRegular.otf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "Lato_Medium.ttf");
         this.setTypeface(face);
     }
 
     public Segow_UI_EditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "AtamiRegular.otf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "Lato_Medium.ttf");
         this.setTypeface(face);
     }
 

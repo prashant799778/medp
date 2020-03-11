@@ -1,11 +1,14 @@
 package com.medparliament.Adapter;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -58,8 +61,6 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.Notifica
                         .show();
             }
         });
-
-
     }
     @Override
     public int getItemCount() {

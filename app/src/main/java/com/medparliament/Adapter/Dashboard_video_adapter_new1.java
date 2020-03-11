@@ -122,9 +122,7 @@ public class Dashboard_video_adapter_new1 extends LoopingPagerAdapter<Video_Mode
 
                     }
                 });
-
             }
-
             else{
 
                   imageView.setVisibility(View.VISIBLE);

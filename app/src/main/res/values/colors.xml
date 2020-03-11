@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#071930</color>
-    <color name="colorPrimaryDark">#071930</color>
-    <color name="colorAccent">#071930</color>
-    <color name="or_color">#071930</color>
-    <color name="forgotClor">#071930</color>
+    <color name="colorPrimary">#2579bd</color>
+    <color name="colorPrimaryDark">#2579bd</color>
+    <color name="colorAccent">#2579bd</color>
+    <color name="or_color">#2579bd</color>
+    <color name="forgotClor">#2579bd</color>
     <color name="loginCuttonColor">#0e68a7
     </color>
     <color name="white">#ffffff</color>
     <color name="studycolor">#ffefed</color>
-    <color name="enterColor">#e3ffe6</color>
+    <color name="enterColor">#2579bd</color>
     <color name="polocyColor">#ffffe3</color>
     <color name="tt">#373737</color>
     <color name="bg">#f8f8f8</color>
@@ -18,8 +18,22 @@
     <color name="red">#ff0000</color>
     <color name="edithintColor">#c3c5c7</color>
     <color name="textcolor">#dfa541</color>
-    <color name="editTextcolor">#262625</color>
-    <color name="hintColor">#6B7682</color>
-    <color name="bbb">#373948</color>
+    <color name="editTextcolor">#2579bd</color>
+    <color name="linecolorcolor">#f1f5f8</color>
+    <color name="g">#46ab3b</color>
+    <color name="hintColor">#000000</color>
+    <color name="bbb">#2579bd</color>
+    <color name="newColor">#2579bd</color>
+    <color name="divideColor">#f1f5f8</color>
+    <color name="c1c1">#383838</color>
+
+    <color name="bg1">#f1f5f8
+
+    </color>
+
+
+
+
+
 
 </resources>

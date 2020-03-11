@@ -10,12 +10,12 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera"></uses-feature>
+    <uses-permission android:name="android.permission.CAMERA" />
 
-<application
+    <uses-feature android:name="android.hardware.camera" />
+
+    <application
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,9 +25,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-    tools:replace="android:name">
-    <activity android:name=".Temp.CameraActivity"></activity>
-        <activity android:name=".Activity.FaceDetectionActivity"></activity>
+        tools:replace="android:name">
+        <activity android:name=".Activity.News_Activity_1"></activity>
+        <activity android:name=".Activity.New_News_Details_Activity" />
+        <activity android:name=".Activity.Market_Insight_Detail_Activity" />
+        <activity android:name=".Activity.Tabs_DashBoard_Activity" />
+        <activity android:name=".Activity.Up_Skill_Details_Activity" />
+        <activity android:name=".Temp.CameraActivity" />
+        <activity android:name=".Activity.FaceDetectionActivity" />
         <activity android:name=".Activity.AboutUsActivity" />
         <activity android:name=".Activity.DecisionMaker" />
         <activity android:name=".Activity.Forgot_Password_Activity" />

@@ -63,13 +63,13 @@ public class Post_Adapter2  extends RecyclerView.Adapter<Post_Adapter2.Notificat
     public void onBindViewHolder(@NonNull final Post_Adapter2.NotificationHolder holder, int position) {
         final Post_Modle pm=list.get(position);
         if(a==1){
-            holder.userName.setText(pm.getPostTitle());
+            holder.userName.setText("me");
             holder.creaedby.setText("By :"+userName);
             holder.msg.setText(""+pm.getPostDescription());
             Comman.log("My",""+pm.getPostDescription());
             if(pm.getDateCreate()!=null)
                 holder.date.setText(""+ PrettyTimeClass.PrettyTime(Comman.timeInms(pm.getDateCreate())));}else {
-            holder.userName.setText(pm.getPostTitle());
+            holder.userName.setText("me");
             holder.creaedby.setText("By :"+pm.getUserName());
             holder.msg.setText(pm.getPostDescription());
             if(pm.getDateCreate()!=null)

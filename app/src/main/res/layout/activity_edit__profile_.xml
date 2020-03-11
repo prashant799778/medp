@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
     tools:context=".Activity.Edit_Profile_Activity">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/editbgbg"
-        android:scaleType="centerCrop">
-    </ImageView>
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:src="@drawable/editbgbg"-->
+<!--        android:scaleType="centerCrop">-->
+<!--    </ImageView>-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -20,7 +19,7 @@
         android:layout_height="wrap_content">
         <RelativeLayout
             android:id="@+id/top"
-            android:background="@color/transparent"
+            android:background="@color/colorAccent"
             android:layout_width="match_parent"
             android:layout_height="52dp">
             <ImageView
@@ -108,7 +107,7 @@
             <com.medparliament.Widget.Segow_UI_EditText
                 android:layout_width="match_parent"
                 android:paddingLeft="10dp"
-                android:textColor="@color/white"
+                android:textColor="@color/c1c1"
                 android:textSize="@dimen/edittextsize"
                 android:id="@+id/name"
                 android:textCursorDrawable="@drawable/curcos"
@@ -141,7 +140,7 @@
                 <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/c1c1"
                     android:textSize="@dimen/edittextsize"
                     android:layout_marginTop="10dp"
                     android:background="@color/transparent"
@@ -174,7 +173,7 @@
                 <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/c1c1"
                     android:textSize="@dimen/edittextsize"
                     android:id="@+id/institute_name"
                     android:layout_marginTop="10dp"
@@ -207,7 +206,7 @@
                 <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/c1c1"
                     android:layout_marginTop="10dp"
                     android:textSize="@dimen/edittextsize"
                     android:inputType="number"
@@ -242,7 +241,7 @@
                 <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/c1c1"
                     android:textSize="@dimen/edittextsize"
                     android:textCursorDrawable="@drawable/curcos"
                     android:layout_marginTop="10dp"
@@ -278,7 +277,7 @@
                 <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/c1c1"
                     android:textSize="@dimen/edittextsize"
                     android:layout_marginTop="10dp"
                     android:background="@color/transparent"
@@ -314,7 +313,7 @@
                     android:paddingLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:textCursorDrawable="@drawable/curcos"
-                    android:textColor="@color/white"
+                    android:textColor="@color/c1c1"
                     android:textSize="@dimen/edittextsize"
 
                     android:id="@+id/qualificatin"
@@ -352,7 +351,7 @@
                     android:background="@color/transparent"
 
                     android:textCursorDrawable="@drawable/curcos"
-                    android:textColor="@color/white"
+                    android:textColor="@color/c1c1"
                     android:textSize="@dimen/edittextsize"
                     android:layout_height="wrap_content">
                 </com.medparliament.Widget.Segow_UI_EditText>
@@ -382,7 +381,7 @@
                 <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/c1c1"
                     android:textCursorDrawable="@drawable/curcos"
                     android:layout_marginTop="10dp"
                     android:textSize="@dimen/edittextsize"
@@ -420,7 +419,7 @@
                     android:textCursorDrawable="@drawable/curcos"
                     android:layout_marginTop="10dp"
                     android:background="@color/transparent"
-                    android:textColor="@color/white"
+                    android:textColor="@color/c1c1"
                     android:textSize="@dimen/edittextsize"
                     android:id="@+id/new_e"
                     android:layout_height="wrap_content">
@@ -451,7 +450,7 @@
                     android:layout_width="match_parent"
                     android:paddingLeft="10dp"
                     android:id="@+id/interest"
-                    android:textColor="@color/white"
+                    android:textColor="@color/c1c1"
                     android:textCursorDrawable="@drawable/curcos"
                     android:textSize="@dimen/edittextsize"
                     android:layout_marginTop="10dp"

@@ -2,17 +2,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/toolbar_layout_top"
+    android:background="@color/colorPrimary"
     android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="30dp"
+            android:src="@drawable/new_ic_logo"
+            android:id="@+id/new_logo"
+            android:layout_centerVertical="true"
+            android:layout_height="25dp">
+        </ImageView>
     <com.medparliament.Widget.Segow_UI_Bold_Font
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/MedParliament"
         android:layout_centerHorizontal="true"
         android:textSize="18dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/new_logo"
         android:textColor="@color/white"
         android:textStyle="bold">
     </com.medparliament.Widget.Segow_UI_Bold_Font>
+    </RelativeLayout>
 
 <!--    <ImageView-->
 <!--        android:visibility="gone"-->
@@ -35,14 +49,12 @@
         android:layout_marginRight="20dp"
         android:adjustViewBounds="true"
         android:src="@drawable/ic_notifications_bell_button" />
-
     <androidx.appcompat.widget.Toolbar
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar_actionbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
     </androidx.appcompat.widget.Toolbar>
 
 

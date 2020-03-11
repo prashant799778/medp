@@ -20,9 +20,10 @@
                 android:layout_width="250dp"
                 android:layout_height="250dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/group_"
+                android:src="@drawable/ic_logo_new"
                 android:layout_marginTop="30dp"
-                android:scaleType="centerInside"
+                android:padding="50dp"
+                android:scaleType="centerCrop"
                 android:id="@+id/cop">
             </ImageView>
             <com.medparliament.Widget.Segow_UI_Semi_Font
@@ -46,7 +47,7 @@
                 android:layout_marginTop="100dp"
                 android:textSize="22dp"
                 android:id="@+id/t2"
-                android:textColor="@color/textcolor"
+                android:textColor="@color/white"
                 android:gravity="center_horizontal">
             </com.medparliament.Widget.Segow_UI_Semi_Font>
             <com.medparliament.Widget.Segow_UI_Font
@@ -94,7 +95,7 @@
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/fieldHeight"
-                        android:background="@drawable/transparent"
+                        android:background="@drawable/rounded_btn_bodr"
                         android:text="@string/Signup"
                         android:textAllCaps="false"
                         android:layout_margin="10dp"

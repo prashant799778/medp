@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
     tools:context=".Activity.Post_Details_Activity">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/signbgbg"
-        android:scaleType="centerCrop">
-    </ImageView>
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:src="@drawable/signbgbg"-->
+<!--        android:scaleType="centerCrop">-->
+<!--    </ImageView>-->
     <androidx.core.widget.NestedScrollView
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
@@ -21,7 +20,7 @@
             android:layout_height="wrap_content">
             <RelativeLayout
                 android:id="@+id/top"
-                android:background="@color/transparent"
+                android:background="@color/colorPrimary"
                 android:layout_width="match_parent"
                 android:layout_height="52dp">
                 <ImageButton
@@ -53,7 +52,7 @@
                     android:paddingRight="15dp"
                     android:visibility="gone"
                     android:textSize="14dp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:text="@string/done"
                     >
                 </com.medparliament.Widget.Segow_UI_Semi_Font>
@@ -68,7 +67,7 @@
                 android:orientation="vertical">
                 <com.medparliament.Widget.Segow_UI_Bold_Font
                     android:layout_width="match_parent"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textSize="20dp"
                     android:id="@+id/title"
                     android:layout_height="wrap_content">
@@ -81,7 +80,7 @@
                     android:orientation="horizontal">
                 <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textSize="14dp"
                     android:id="@+id/created"
                     android:gravity="left"
@@ -90,7 +89,7 @@
                 </com.medparliament.Widget.Segow_UI_Semi_Font>
                     <com.medparliament.Widget.Segow_UI_Semi_Font
                         android:layout_width="match_parent"
-                        android:textColor="@color/white"
+                        android:textColor="@color/solid_black"
                         android:textSize="14dp"
                         android:layout_weight="1"
                         android:gravity="right"
@@ -101,7 +100,7 @@
                 </LinearLayout>
                 <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
-                    android:textColor="@color/white"
+                    android:textColor="@color/solid_black"
                     android:textSize="14dp"
                     android:layout_marginTop="10dp"
                     android:id="@+id/msg"
@@ -118,7 +117,8 @@
                     android:layout_below="@id/second"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/white"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@color/solid_black"
                     >
 
                 </View>
@@ -167,7 +167,7 @@
         android:layout_marginRight="30dp"
         app:backgroundTint="@color/white"
         app:rippleColor="@color/colorAccent"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="50dp"
         android:src="@drawable/new_post"
         app:tint="@null"
         android:layout_height="wrap_content">

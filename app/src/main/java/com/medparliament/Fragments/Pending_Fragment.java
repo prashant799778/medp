@@ -87,10 +87,13 @@ public class Pending_Fragment extends Base_Fragement implements onResult{
             nodata.setVisibility(View.GONE);
             Gson gson=new GsonBuilder().create();
             try {
+                if(jsonObject.getJSONArray("result").length()>0){
                 ArrayList<Post_Modle> rm = gson.fromJson(jsonObject.getString("result"), new TypeToken<ArrayList<Post_Modle>>(){}.getType());
                 arrayList.clear();
                 arrayList.addAll(rm);
-                adapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();}else {
+                    nodata.setVisibility(View.VISIBLE);
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }

@@ -14,6 +14,7 @@ public class URLS {
     public static String UpdateUser=BASE_URL+"UpdateUser1";
     public static String userDashBoardPost=BASE_URL+"userPostDashboard";
     public static String SIGNUP=BASE_URL+"SignUp";
+    public static String landingPageDashboardtest=BASE_URL+"landingPageDashboardtest";
     public static String changeProfilePic=BASE_URL+"changeProfilePic";
     public static String USER_PROFILE=BASE_URL+"userProfile";
     public static String USER_POST=BASE_URL+"userPost";
@@ -31,4 +32,9 @@ public class URLS {
     public static String getSignUpVideo=BASE_URL+"getSignUpVideo";
     public static String seteventInterest=BASE_URL+"eventInterest";
     public static String aboutUs=BASE_URL+"allaboutUs";
+    public static String commentsMarketingInsight=BASE_URL+"commentsMarketingInsight";
+    public static String likeMarketingInsight=BASE_URL+"likeMarketingInsight";
+    public static String getUpSkillsOpportunity=BASE_URL+"getUpSkillsOpportunity";
+    public static  String enrollUpSkills=BASE_URL+"enrollUpSkills";
+    public static String getuserContent=BASE_URL+"getuserContent";
 }

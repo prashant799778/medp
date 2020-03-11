@@ -12,6 +12,16 @@ public class Dashbooard_eventModel implements Serializable {
     String imagePath;
     String likedId;
 
+    public String getMakedone() {
+        return makedone;
+    }
+
+    public void setMakedone(String makedone) {
+        this.makedone = makedone;
+    }
+
+    String makedone;
+
     public String getLikedId() {
         return likedId;
     }

@@ -13,19 +13,19 @@ public class Open_Sans_Regular_Font extends TextView {
 
     public Open_Sans_Regular_Font(Context context) {
         super(context);
-        Typeface face= Typeface.createFromAsset(context.getAssets(), "OpenSans_Regular.ttf");
+        Typeface face= Typeface.createFromAsset(context.getAssets(), "Lato_Medium.ttf");
         this.setTypeface(face);
     }
 
     public Open_Sans_Regular_Font(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "OpenSans_Regular.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "Lato_Medium.ttf");
         this.setTypeface(face);
     }
 
     public Open_Sans_Regular_Font(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        Typeface face=Typeface.createFromAsset(context.getAssets(), "OpenSans_Regular.ttf");
+        Typeface face=Typeface.createFromAsset(context.getAssets(), "Lato_Medium.ttf");
         this.setTypeface(face);
     }
 

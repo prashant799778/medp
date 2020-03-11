@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="165dp"
     android:layout_marginHorizontal="20dp"
     app:cardCornerRadius="5dp"
     app:cardBackgroundColor="@color/colorAccent"
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/lets"
                 android:layout_marginTop="10dp"
-                android:paddingLeft="20dp"
+                android:paddingLeft="10dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <com.medparliament.Widget.Segow_UI_Font
@@ -46,7 +46,7 @@
                     android:text="@string/Login"
                     android:textColor="@color/white"
                     android:layout_gravity="bottom"
-                    android:textSize="18dp"
+                    android:textSize="14dp"
                     android:id="@+id/title"
                     android:layout_weight=".5"
                     android:clickable="true"
@@ -58,9 +58,9 @@
                     android:text="@string/Letgestarted"
                     android:textColor="@color/white"
                     android:layout_gravity="bottom"
-                    android:textSize="14dp"
+                    android:textSize="12dp"
                     android:id="@+id/place"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:paddingLeft="2dp"
                     android:clickable="true"
@@ -70,14 +70,14 @@
             </LinearLayout>
             <com.medparliament.Widget.Open_Sans_Regular_Font
                 android:layout_width="match_parent"
-                android:paddingLeft="20dp"
-                android:textSize="16dp"
+                android:paddingLeft="10dp"
+                android:textSize="12dp"
                 android:layout_below="@id/lets"
                 android:textColor="@color/white"
                 android:id="@+id/msg"
-                android:maxLines="3"
+                android:maxLines="5"
                 android:gravity="center_vertical"
-                android:layout_height="65dp">
+                android:layout_height="75dp">
             </com.medparliament.Widget.Open_Sans_Regular_Font>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,6 +85,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="bottom"
                 android:gravity="bottom"
+                android:visibility="gone"
                 android:paddingLeft="30dp"
                 android:layout_below="@+id/msg"
                 android:orientation="horizontal">

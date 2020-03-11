@@ -129,11 +129,11 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(m.getUserTypeId().equalsIgnoreCase("7")){
                 progressDialog = new ProgressDialog(Edit_Profile_Activity.this);
                 progressDialog.setMessage("Updating...");
                 progressDialog.setCancelable(true);
                 progressDialog.show();
+                if(m.getUserTypeId().equalsIgnoreCase("7")){
                 Api_Calling.multiPartCall1(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(),URLS.UpdateUser,setStudentJson(),onResult,"Student",array1);
                 }
                 else if(m.getUserTypeId().equalsIgnoreCase("6"))
@@ -240,8 +240,9 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == 100) {
             array1 = data.getStringArrayListExtra(Pix.IMAGE_RESULTS);
-            if(!isFinishing())
+            if(!isFinishing()) {
                 Glide.with(Edit_Profile_Activity.this).load(array1.get(0).trim()).into(profile_image);
+            }
         }
     }
     public JSONObject setJson()
@@ -268,8 +269,10 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         progressDialog.dismiss();
         if(jsonObject!=null)
         {
-            if(!isFinishing())
-            onBackPressed();
+            if(!isFinishing()) {
+                onBackPressed();
+                m.setUserProfile(array1.get(0));
+            }
         }
     }
     public void checkUserType(String userId)
@@ -518,7 +521,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
             @Override
             public void onClick(View v) {
                 textView.setText(s1+"-"+s2);
-                textView.setTextColor(Color.WHITE);
+                textView.setTextColor(Color.BLACK);
                 alertDialog.dismiss();
             }
         });
@@ -533,7 +536,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
             @Override
             public void onClick(String item, int position) {
                 segow_ui_font.setText(item);
-                segow_ui_font.setTextColor(Color.WHITE);
+                segow_ui_font.setTextColor(Color.BLACK);
                 segow_ui_font.setTag(position);
             }
         });
@@ -552,7 +555,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         }
         CFAlertDialog.Builder builder = new CFAlertDialog.Builder(this,R.style.MyCheckBox);
         builder.setDialogStyle(CFAlertDialog.CFAlertStyle.ALERT);
-        builder.setMessage("Select Interest").setTextColor(Color.WHITE);
+        builder.setMessage("Select Interest").setTextColor(Color.BLACK);
         builder.setMultiChoiceItems(str,barray, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int index, boolean b) {
@@ -560,7 +563,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
 //                    dialogInterface.dismiss();
 //                    define.setVisibility(View.VISIBLE);
 //                    interest.setText(str[index]);
-//                    interest.setTextColor(Color.WHITE);
+//                    interest.setTextColor(Color.BLACK);
 //                } else {
                     Comman.log("Selected " + index, "" + str[index] + " Status" + Api_Calling.StudentIntrestList.size());
                     if (b) {
@@ -580,7 +583,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                 dialogInterface.dismiss();
                 Comman.log("Intersest Final Arrya",""+doctorIdArray.toString());
                 interest.setText(value.toString().replace("[","").replace("]","").trim());
-                interest.setTextColor(Color.WHITE);
+                interest.setTextColor(Color.BLACK);
             }
         });
         builder.show();
@@ -675,20 +678,20 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                         .put("mobileNo",""+mobile.getText().toString())
                         .put("email",""+email.getText().toString()).put("hospital",""+university_name.getText().toString())
                         .put("hospitalAddress",""+university_address.getText().toString()). put("userTypeId","8").put("userId",""+m.getUserId())
-                        .put("interestId",doctorIdArray) .put("qualfication", Api_Calling.QualifiactionHashMap.get(qualfication.getText().toString()))
+                        .put("interestId",doctorIdArray) .put("qualfication",qualfication.getText().toString())
                         .put("areaOfExpertise",""+address.getText().toString()).put("designation",""+batch.getText().toString());}else {
                 jsonObject.put("userName",""+name.getText().toString())
                         .put("mobileNo",""+mobile.getText().toString())
                         .put("email",""+email.getText().toString()).put("hospital",""+university_name.getText().toString())
                         .put("hospitalAddress",""+university_address.getText().toString()). put("userTypeId","8").put("userId",""+m.getUserId())
-                        .put("interestId","") .put("qualfication",Api_Calling.QualifiactionHashMap.get(qualfication.getText().toString()))
+                        .put("interestId","") .put("qualfication",qualfication.getText().toString())
                         .put("areaOfExpertise",""+address.getText().toString()).put("designation",""+batch.getText().toString());
 
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Comman.log("SignIpJSon",""+jsonObject);
+        Comman.log("SignIpJSonDoctor",""+jsonObject);
         return jsonObject;
     }
 
