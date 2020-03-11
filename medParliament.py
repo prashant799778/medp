@@ -73,7 +73,7 @@ def userId():
                     data1=databasefile.UpdateQuery('userMaster',column,whereCondition)
                     content=databasefile.SelectQuery1('accountVerficationContent',column2,whereCondition2)
                     if data1 !="0":
-                        return {"status":"true","userName":userName,"content":content,"message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account is activated you will get a confirmation mail.","result":""}
+                        return {"status":"true","userName":userName,"content":content['content'],"message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account is activated you will get a confirmation mail.","result":""}
             else:
                 userName=output['result'][0]['userName']
                 return {"status":"true","message":"Dear user your Email is Already verified","content":"<h1>Email Verified Already!</h1> <p2> Dear "+str(userName)+",your Email has already been verified<p2> <p3>Thanks for signing up with MedParliament! We're excited to have you with us.</p3> <p4> THANKS & REGARDS </p4> <p5>TEAM MEDPARLIAMENT </p5>","result":""}
@@ -481,6 +481,36 @@ def getMailBody(userName, link):
                      color: #666666; font-family: \'Roboto\', sans-serif; font-size: 14px; font-weight:\
                       400; line-height: 18px;"></td></tr></table> </td></tr></table></body>'
 
+
+def getMailBody1(userName, link):
+    return '<body style="background-color: #f4f4f4; margin: 0 !important; padding:\
+     0 !important;height: 100% !important; width: 100% !important;"> <table border="0" \
+     cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse \
+     !important"> <tr> <td bgcolor="#e1a23c" align="center"> <table border="0" \
+     cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
+      <tr> <td align="center" valign="top" style="padding: 40px 10px 40px 10px;">\
+       </td></tr></table> </td></tr><tr> <td bgcolor="#e1a23c" align="center" style="padding:\
+        0px 10px 0px 10px;"> <table border="0" cellpadding="0" cellspacing="0" width="100%"\
+         style="max-width: 600px;"> <tr> <td bgcolor="#ffffff" align="center" valign="top" \
+         style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; \
+         font-family: \'Roboto\', sans-serif; font-size: 48px; font-weight: 400; letter-spacing:\
+          4px; line-height: 48px;"> <h4 style="font-size: 48px; font-weight: 400; margin: 2;">Welcome to MedParliament\
+                             </h4> </td></tr></table>\
+             </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
+               <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
+               <p style="margin: 0">Hello Dr. ' + str(userName) + '<br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
+               of Healthcare Leadership. </strong><br><br>Thank you for joining our community.\
+                <br><br>Please validate your email address by clicking on the button below <br>\
+                <br><strong> </p><a href="'+str(link)+'" style="padding: 10px 23px; background:\
+                 #e1a23c; color: #fff; display: block; width: 210px; margin: 0 auto; border-radius:\
+                  5px;"> Click to Verify Email</button> </div></table> </td></tr><tr> \
+                  <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
+                   <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:\
+                    600px;"> <tr> <td bgcolor="#f4f4f4" align="left" style="padding: 0px 30px 30px 30px;\
+                     color: #666666; font-family: \'Roboto\', sans-serif; font-size: 14px; font-weight:\
+                      400; line-height: 18px;"></td></tr></table> </td></tr></table></body>'                      
+
 @app.route('/SignUp', methods=['POST'])
 def SignUp1():
 
@@ -655,7 +685,7 @@ def SignUp1():
                                             from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = ' Hello Mr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> ')
+                                            html_content = getMailBody(userName, Y))
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
 
@@ -678,7 +708,7 @@ def SignUp1():
                                             from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = ' Hello Mr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> ')
+                                            html_content =getMailBody(userName, Y))
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             print(response.status_code,'------------------',response.body,"============",response.headers)
@@ -706,7 +736,7 @@ def SignUp1():
                                             from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = ' Hello Dr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> ')
+                                            html_content =getMailBody1(userName, Y))
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             
@@ -727,7 +757,7 @@ def SignUp1():
                                             from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = ' Hello Mr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> ')
+                                            html_content = getMailBody(userName, Y))
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             columns="userId,designation,occupation,companyName,companyAddress,address"
@@ -746,7 +776,7 @@ def SignUp1():
                                             from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = ' Hello Mr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community of Healthcare leaders. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> ')
+                                            html_content = getMailBody(userName, Y))
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
 
