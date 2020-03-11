@@ -65,6 +65,5 @@ As a MedParliamentarian, you are able to engage with the community in a variety 
 We are excited for your contributions and supporting you in promoting your voice in healthcare.\
  Do feel free to contact us at anytime.<br><br><br>\
 THANKS & REGARDS<br>\
-TEAM MEDPARLIAMENT<br> <br>\
-                
+TEAM MEDPARLIAMENT<br> <br>'
 
