@@ -4952,7 +4952,7 @@ def landingPageDashboard1():
             print("=====11======")
             
             print("=====12======")
-            WhereCondition229=" and ev.Status<2 and  ev.userTypeId=0 "
+            WhereCondition229=" and ev.Status<2  "
             column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
             data3 = databasefile.SelectQueryOrderby("parliamentEvent ev ",column3,WhereCondition229,"","0","10",orderby)
             print("=====13======")
