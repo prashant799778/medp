@@ -91,7 +91,37 @@ def SelectQuery1(table,columns,whereCondition):
 
     except Exception as e:
         print("Error--->" + str(e))            
+        return "0"   
+
+
+
+def SelectQuery4(table,columns,whereCondition):
+    try:
+        if whereCondition != "":
+            whereCondition = " where 1=1 " + whereCondition
+                
+        query = " select " + columns + " from " + table + " " + whereCondition  + "  ;"
+
+        print(query)
+        con = DBconnection()      
+        cursor = con.cursor()
+        cursor.execute(query)
+        data = cursor.fetchall()
+        cursor.close()
+      
+        if data:
+            data={"status":"true","result":data,"message":""}
+            return data
+        else:
+            data = {"status":"False","message":"No Data Found","result":""}
+
+        return data
+
+    except Exception as e:
+        print("Error--->" + str(e))            
         return "0"         
+
+            
 
 
 def SelectTimeQuery(columns):
