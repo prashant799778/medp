@@ -3631,12 +3631,18 @@ def updateStatus1():
                 accountVerficationContent=databasefile.SelectQuery1('userContent',columns,whereCondition)
                 userDoc=accountVerficationContent['result']['content']
                 print(userDoc,"+++++++++++++++++++++++++__________")
-                
-                message = Mail(
+                if userTypeId==8:
+                    message = Mail(
                                 from_email = 'medparliament@medachievers.com',
                                 to_emails = str(email),
                                 subject = "Account Activated",
-                                html_content =getactivationmail(userName))# '<strong>Congratulations! Your account has been activated successfully </strong> <br> <br> Thanks,medParliament Team')
+                                html_content =getactivationmailforDoctor(userName))# '<strong>Congratulations! Your account has been activated successfully </strong> <br> <br> Thanks,medParliament Team')
+                else:
+                    message = Mail(
+                                    from_email = 'medparliament@medachievers.com',
+                                    to_emails = str(email),
+                                    subject = "Account Activated",
+                                    html_content =getactivationmail(userName))# '<strong>Congratulations! Your account has been activated successfully </strong> <br> <br> Thanks,medParliament Team')
                 sg = SendGridAPIClient('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')
                 response = sg.send(message)
                 whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "' and userId = '" + str(userId)+ "' "
