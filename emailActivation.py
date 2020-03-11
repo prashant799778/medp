@@ -143,6 +143,7 @@ def getactivationmailforDecisionMaker(userName):#userName, link
      0 !important;height: 100% !important; width: 100% !important;"> <table border="0" \
      cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse \
      !important"> <tr> <td bgcolor="#e1a23c" align="center"> <table border="0" \
+     cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
       <tr> <td align="center" valign="top" style="padding: 40px 10px 40px 10px;">\
        </td></tr></table> </td></tr><tr> <td bgcolor="#e1a23c" align="center" style="padding:\
         0px 10px 0px 10px;"> <table border="0" cellpadding="0" cellspacing="0" width="100%"\
@@ -207,4 +208,3 @@ THANKS & REGARDS<br>\
 Dr. Harsha Vardhan<br>\
 Founder and Group Managing Director<br>\
 MedAchievers Private Limited </body>'
-'
