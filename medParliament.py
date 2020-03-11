@@ -7274,16 +7274,13 @@ def userContent():
                 #     column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
                 #     data=databasefile.UpdateQuery("news",column,whereCondition)
                 if "id" in inputdata:
-                    print("====1====")
+                    
                     if inputdata['id'] != "":
-                        print("====2====")
+                        
                         Id =inputdata["id"]
-                        print("====3====")
+                        
                         inputdata1 = request.form.get('postImage')
-                        print("====4====")
-                        print(inputdata1,"imageurl")
-                        print("====5====")
-                        print("inputdata=================",type(inputdata1))
+                        
                         if ((inputdata1!=ConstantData.GetBaseURL()) and (inputdata1 !="")) :
                             if  inputdata1 !=None: 
                                 index=re.search("/contentimages", inputdata1).start()
