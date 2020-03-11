@@ -4947,12 +4947,30 @@ def landingPageDashboard1():
             data2["result"]=[]
 
         print("1111----")
-        WhereCondition1 = " on pm.eventId = ev.id " 
-        column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary, ifnull(pm.id,0) as likedId,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev left outer join eventInterest pm",column3,WhereCondition1,"",0,0,orderby)
+        
+        WhereCondition229=" and ev.Status<2 and  ev.userTypeId=0  or ev.userTypeId='"+str(userTypeId)+"'"
+        column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev ",column3,WhereCondition229,"",0,0,orderby)
         
         if data3["result"]=="":
             data3["result"]=[]
+
+        for i in data3['result']:
+            if 'userId' in inputdata:
+                userId=inputdata['userId']
+                marketingInsightId=i['id']
+                whereCondition999="and lki.eventId='"+str(marketingInsightId)+"' and lki.userId='"+str(userId)+"'"
+                column999="lki.status"
+                makedone=databasefile.SelectQuery('eventInterest as lki',column999,whereCondition999,"","","")
+                if makedone['status']!="false":
+                    i['makedone']=1
+                else:
+                    i['makedone']=0
+
+            else:
+                i['makedone']=0    
+
+
 
         column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
         WhereCondition2= " and Status<2"
@@ -5324,12 +5342,28 @@ def landingPageDashboardtest():
 
 
                 print("1111----")
-                WhereCondition1 = " on pm.eventId = ev.id " 
-                column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary, ifnull(pm.eventId,0) as likedId,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-                data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev left outer join eventInterest pm",column3,WhereCondition1,"",0,0,orderby)
+                WhereCondition229=" and ev.Status<2 and  ev.userTypeId=0  or ev.userTypeId='"+str(userTypeId)+"'"
+                column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+                data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev ",column3,WhereCondition229,"",0,0,orderby)
                 
                 if data3["result"]=="":
                     data3["result"]=[]
+
+                for i in data3['result']:
+                    if 'userId' in inputdata:
+                        userId=inputdata['userId']
+                        marketingInsightId=i['id']
+                        whereCondition999="and lki.eventId='"+str(marketingInsightId)+"' and lki.userId='"+str(userId)+"'"
+                        column999="lki.status"
+                        makedone=databasefile.SelectQuery('eventInterest as lki',column999,whereCondition999,"","","")
+                        if makedone['status']!="false":
+                            i['makedone']=1
+                        else:
+                            i['makedone']=0
+
+                    else:
+                        i['makedone']=0    
+
                 data22={"result":data3['result'],"status":"true","message":""}
                 return data22
             
