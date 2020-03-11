@@ -4972,7 +4972,7 @@ def landingPageDashboard1():
                 marketingInsightId=i['id']
                 whereCondition999="and lki.eventId='"+str(marketingInsightId)+"' and lki.userId='"+str(userId)+"'"
                 column999="lki.status"
-                makedone=databasefile.SelectQuery('eventInterest as lki',column999,whereCondition999,"","","")
+                makedone=databasefile.SelectQueryOrderby('eventInterest as lki',column999,whereCondition999,"","","")
                 if makedone['status']!="false":
                     i['makedone']=1
                 else:
