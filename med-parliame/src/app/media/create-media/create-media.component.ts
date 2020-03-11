@@ -146,7 +146,7 @@ export class CreateMediaComponent implements OnInit {
     };
 
     const formData = new FormData();
-    formData.append('postImage', this.frmNews.get('banner').value ? this.frmNews.get('banner').value : "''");
+    formData.append('postImage', this.frmNews.get('banner').value ? this.frmNews.get('banner').value : "");
     formData.append('data', JSON.stringify(newsData));
 
     console.log(formData);
@@ -200,7 +200,7 @@ export class CreateMediaComponent implements OnInit {
 
     const formData = new FormData();
     
-    formData.append('postImage', this.frmNews.get('banner').value ? this.frmNews.get('banner').value : "''");
+    formData.append('postImage', this.frmNews.get('banner').value ? this.frmNews.get('banner').value : "");
     formData.append('data', JSON.stringify(newsData));
 
     console.log(formData);
