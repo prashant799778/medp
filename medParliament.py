@@ -2148,7 +2148,7 @@ def UpdateUser1():
 
             if (UserTypeId == 9):
                 WhereCondition = " and userId = '" + str(UserId) + "'"
-                column=" designation='" + str(designation) + "',occupation='" + str(occupation) + "',companyName='" + str(companyName) + "',companyAddress= '" + str(companyAddress) + "',address='" + str(address) + "'"
+                column=" designation='" + str(designation) + "',occupation='" + str(occupation) + "',companyName='" + str(CompanyName) + "',companyAddress= '" + str(companyAddress) + "',address='" + str(address) + "'"
                 output11=databasefile.UpdateQuery("professionalMaster",column,WhereCondition)
                 for i in interestId:
                     column="userId,interestId,userTypeId"
@@ -6524,6 +6524,7 @@ def promisingInitiatives():
                             index=re.search("/promisingEvent", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
+
                         whereCondition=" and  id='" + str(Id) + "'"
                         column="videoPath='"+ str(videoLink)+  "',Status='"+ str(status)+  "',text='" + str(text) + "',imagePath='" + str(ImagePath) + "'"
                         data=databasefile.UpdateQuery("promisingInitiatives",column,whereCondition)
@@ -6943,7 +6944,11 @@ def deleteSignUpVideo():
 
 
 @app.route('/aboutUs', methods=['POST'])
-def aboutUs():
+def aboutUs(): 
+
+
+
+
 
     try: 
         startlimit,endlimit="",""   
