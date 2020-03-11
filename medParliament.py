@@ -4947,13 +4947,24 @@ def landingPageDashboard1():
             data2["result"]=[]
 
         print("1111----")
+
+        if "userTypeId" not in inputdata:
+            WhereCondition229=" and ev.Status<2 and  ev.userTypeId=0 "
+            column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+            data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev ",column3,WhereCondition229,"",0,0,orderby)
+            
+            if data3["result"]=="":
+                data3["result"]=[]
+
+        else:
+
         
-        WhereCondition229=" and ev.Status<2 and  ev.userTypeId=0  or ev.userTypeId='"+str(userTypeId)+"'"
-        column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev ",column3,WhereCondition229,"",0,0,orderby)
-        
-        if data3["result"]=="":
-            data3["result"]=[]
+            WhereCondition229=" and ev.Status<2 and  ev.userTypeId=0  or ev.userTypeId='"+str(userTypeId)+"'"
+            column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+            data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev ",column3,WhereCondition229,"",0,0,orderby)
+            
+            if data3["result"]=="":
+                data3["result"]=[]
 
         for i in data3['result']:
             if 'userId' in inputdata:
