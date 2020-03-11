@@ -76,10 +76,10 @@
                             <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
                        </div>
                         <br>
-                        <label for="summary">Academic Council Summary</label>
+                        <label for="summary">Academic Council Subject</label>
                             <textarea type="text" class="form-control" formControlName="summary" placeholder="Enter Academic Council Summary..." rows="4"></textarea>
                             <div class=error *ngIf="frmNews.get('summary').errors && (frmNews.get('summary').touched || frmNews.get('summary').dirty)">
-                                <p>Academic Council Summary is required</p>
+                                <p>Academic Council Subject is required</p>
                               </div>
                         <br>
                         <label for="newsDesc">Academic Council Description</label>

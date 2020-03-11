@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
+import { Observable } from 'rxjs';
 declare var jQuery: any;
 
 @Component({
@@ -13,6 +14,16 @@ declare var jQuery: any;
   styleUrls: ['./view-content.component.css']
 })
 export class ViewContentComponent implements OnInit {
+
+  percentDone: number;
+  uploadSuccess: boolean;
+  size:any;
+  width:number;
+  height:number;
+  errorImage: boolean
+
+  @ViewChild('coverFilesInput', {static: false}) imgType:ElementRef;
+
   data: [];
   httpError: boolean;
   userTypeDetails= []
@@ -53,10 +64,14 @@ export class ViewContentComponent implements OnInit {
   };
 
   frmNews: FormGroup;
-  constructor(public fb: FormBuilder, private apiService: UserServiceService, private route: ActivatedRoute,public local:LocalStorageService, private router: Router) {
+  constructor(public fb: FormBuilder,private el:ElementRef, private apiService: UserServiceService, private route: ActivatedRoute,public local:LocalStorageService, private router: Router) {
     console.log('constructor');
     this.initializeForm();
     this.updateCheck =false;
+    // function myFunction() {
+    //   var x = document.getElementById("myImg").width;
+    //   document.getElementById("demo").innerHTML = x;
+    // }
    }
 
    ngOnInit() {
@@ -110,14 +125,94 @@ export class ViewContentComponent implements OnInit {
           this.imageShow = (<FileReader>event.target).result;
           this.frmNews.get('banner').setValue(this.file);
           this.showBanner = 0;
-        }
-      }
+
+          
+          //  img.src = fr.result; // This is the data URL 
+       };
+       
+        
+
+        
+    }
       
     }
+    let image:any = event.target.files[0];
+    console.log(image)
+          this.size = image.size;
+          console.log(this.size)
+          let fr = new FileReader;
+          console.log(fr)
+          fr.onload = () => { // when file has loaded
+            console.log("hello")
+            var img = new Image();
+           console.log(img)
+       
+           img.onload = () => {
+             console.log(img.width)
+               this.width = img.width;
+              //  console.log(this.width)
+               this.height = img.height;
+               let rat = this.gcds(this.width,this.height)
+                if(rat == '4:3'){
+                  this.errorImage = false;
+                }else{
+                  this.errorImage = true;
+                  this.imageShow = ''
+                }
+           };
+           img.src = fr.result;
+           
+
+          //  let ratio = Math.(this.width/this.height
+          //  if()
+       
+           
+          
+         
+      }
+      fr.readAsDataURL(image);
+      this.imgType.nativeElement.value = "";
     
     
  
   }
+
+  gcds(num_1,num_2){
+  
+    // var ratio = a / b;
+    // console.log(Math.abs(ratio))
+    // return ( Math.abs( ratio - 4 / 3 ) < Math.abs( ratio - 16 / 9 ) ) ? '4:3' : '16:9';
+    for(let num=num_2; num>1; num--) {
+      if((num_1 % num) == 0 && (num_2 % num) == 0) {
+          num_1=num_1/num;
+          num_2=num_2/num;
+      }
+  }
+  var ratio = num_1+":"+num_2;
+  return ratio;
+}
+    
+
+
+  getImageDimension (image): Observable<any> {
+    console.log(image)
+    return new Observable(observer => {
+        const img = new Image();
+        img.onload = function (event) {
+            const loadedImage: any = event.currentTarget;
+            image.width = loadedImage.width;
+            image.height = loadedImage.height;
+            console.log(image.width)
+            observer.next(image);
+            observer.complete();
+        }
+        img.src = image.url;
+        console.log(image.width)
+    });
+}
+
+
+
   UpdateNews(){
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
@@ -247,7 +342,12 @@ export class ViewContentComponent implements OnInit {
     this.apiService.dataPostApi(null,AppSettings.userDropDown).then(resp=>{
       console.log(resp)
       if(resp['status'] == 'true'){
-        this.userTypeDetails = resp['result']
+        // this.userTypeDetails = resp['result']
+        for(let i = 0; i<resp['result'].length - 1; i++){
+            console.log("cheeeekkkk",i)
+            this.userTypeDetails.push(resp['result'][i])
+            
+        }
       }
     })
   }

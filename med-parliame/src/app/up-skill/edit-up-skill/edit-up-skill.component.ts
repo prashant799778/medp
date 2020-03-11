@@ -141,7 +141,7 @@ export class EditUpSkillComponent implements OnInit {
 
   editNews(NewsId) {
     console.log(NewsId);
-    this.router.navigate(['/news/createNews'], { queryParams: {NewsId: NewsId}});
+    this.router.navigate(['/upSkill/createUpSkill'], { queryParams: {NewsId: NewsId}});
   }
 
   deleteNews(id){
