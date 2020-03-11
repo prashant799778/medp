@@ -468,8 +468,8 @@ def getMailBody(userName, link):
             width="125" height="120" style="display: block; border: 0px;"/> </td></tr></table>\
              </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
-               <div style="text-align: center; height: 88px; background:#ffffff"> \
-               <p>Hello Mr.' + str(userName) + '<br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
+               <div style="text-align: center; height: 88px; background:#ffffff"; min-height: 250px> \
+               <p style="margin: 0">Hello Mr. ' + str(userName) + '<br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
                of Healthcare Leadership. </strong><br><br>Thank you for joining our community.\
                 <br><br>Please validate your email address by clicking on the button below <br>\
                 <br><strong> </p><a href="'+str(link)+'" style="padding: 10px 23px; background:\
