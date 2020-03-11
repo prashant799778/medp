@@ -4917,7 +4917,7 @@ def landingPageDashboard1():
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
                     WhereCondition=WhereCondition+" and  userTypeId=0  or userTypeId='"+str(userTypeId)+"'"
-                    column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
+                    column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
                     data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"",startlimit,endlimit,orderby)
                     print(data1,"")
                     
@@ -4929,18 +4929,18 @@ def landingPageDashboard1():
                                 i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
 
         if "userTypeId" not in inputdata:
-            column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+            column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
             data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","3",orderby)
             if data["result"]=="":
                 data["result"]=[]
         else :
-            column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+            column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
             data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",orderby)
             if data["result"]=="":
                 data["result"]=[]
         
 
-        column2 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        column2 = "id,Status,UserCreate, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
         data2 = databasefile.SelectQueryOrderby("gallery",column2,"","","0","10",orderby)
         
         if data2["result"]=="":
@@ -5002,7 +5002,7 @@ def landingPageDashboard1():
                     print(y,'++++++')
                     m['videoId']=y[1]
             
-        column5 = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        column5 = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
         data5 = databasefile.SelectQueryOrderby("promissingIntiatives",column5,WhereCondition,"","0","10",orderby)
         if data5["result"]=="":
             data5["result"]=[]
@@ -5134,7 +5134,7 @@ def landingPageDashboard1():
                     i['makedone']=0
 
 
-        column99 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        column99 = "id,Status,UserCreate, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
         data99 = databasefile.SelectQueryOrderby("ourPartners",column99,"","","0","10",orderby)
         
         if data99["result"]=="":
