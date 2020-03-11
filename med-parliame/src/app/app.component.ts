@@ -32,7 +32,7 @@ export class AppComponent {
 
 					console.log(window.location.href)
 					this.AccountVerification = false;
-					this.emailVerified =  false;
+					this.emailVerified =  true;
       let location = window.location.href
       location = location = location.substring(location.lastIndexOf("/") + 1, location.length );
       let secondLocation = location.substring(0, location.lastIndexOf("/") + 1)
@@ -49,6 +49,7 @@ export class AppComponent {
 			
 			let secondSPlit = splitLocation[1].split('=')
 			this.secondplit = secondSPlit[1]
+			this.emailVerify()
 			
 			
 			
