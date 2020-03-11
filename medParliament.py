@@ -464,11 +464,11 @@ def getMailBody(userName, link):
          style="max-width: 600px;"> <tr> <td bgcolor="#ffffff" align="center" valign="top" \
          style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; \
          font-family: \'Roboto\', sans-serif; font-size: 48px; font-weight: 400; letter-spacing:\
-          4px; line-height: 48px;"> <img src="http://134.209.153.34:4200/assets/images/logo-sgn.svg"\
-            width="125" height="120" style="display: block; border: 0px;"/> </td></tr></table>\
+          4px; line-height: 48px;"> <h1 style="font-size: 48px; font-weight: 400; margin: 2;">MedParliament\
+                             </h1> </td></tr></table>\
              </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
-               <div style="min-height: 250px; text-align: center;background: #ffffff;> \
+               <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
                <p style="margin: 0">Hello Mr. ' + str(userName) + '<br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
                of Healthcare Leadership. </strong><br><br>Thank you for joining our community.\
                 <br><br>Please validate your email address by clicking on the button below <br>\
