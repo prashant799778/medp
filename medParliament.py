@@ -3597,10 +3597,10 @@ def updateStatus1():
             userTypeId = inputdata["userTypeId"]
             userId = inputdata["userId"]
             email = inputdata["email"]
-            column="status"
+            column="status ,userName"
             whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "'  and userId = '" + str(userId)+ "' "
             data=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
-            print('AAAA')
+            print('AAAA',data)
             print(data['result'][0]['status'],"status")
             if data['result'][0]['status']==0:
                 message = Mail(
@@ -3633,7 +3633,7 @@ def updateStatus1():
                                 from_email = 'medparliament@medachievers.com',
                                 to_emails = str(email),
                                 subject = "Account Activated",
-                                html_content =getactivationmail())# '<strong>Congratulations! Your account has been activated successfully </strong> <br> .<br> Thanks,medParliament Team')
+                                html_content =getactivationmail())# '<strong>Congratulations! Your account has been activated successfully </strong> <br> <br> Thanks,medParliament Team')
                 sg = SendGridAPIClient('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')
                 response = sg.send(message)
                 whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "' and userId = '" + str(userId)+ "' "
