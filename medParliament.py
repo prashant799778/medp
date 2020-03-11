@@ -807,7 +807,7 @@ def login1():
                 Data = {"status":"False","message":"Till Now your account is not approved By admin, after admin approval you can access your account","result":""} 
                 return Data
         else:
-            data = {"status":"false","message":"Please Enter Your correct Password and email","result":""}
+            data = {"status":"false","message":" Your Email or Password is not correct","result":""}
             return data
 
     except KeyError as e:
