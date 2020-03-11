@@ -16,7 +16,7 @@ def getactivationmail(userName):#userName, link
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
                <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
                <p style="margin: 0">Hello Mr. ' + str(userName) + '<br>Congratulations! Your account has been activated successfully </strong> <br> <br>\
-               <br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
+              <strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
                of Healthcare Leadership. </strong><br><br>Today, the nature of healthcare is very dynamic, global and interactive. This is era of <br>\
 genomics, personalized medicine, hospitals with hospitality, artificial intelligence, <br>\
 wearable devices and IoT. We at MedAchievers with our strong international<br>\
@@ -85,7 +85,7 @@ def getactivationmailforDoctor(userName):#userName, link
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
                <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
                <p style="margin: 0">Hello Dr. ' + str(userName) + '<br>Congratulations! Your account has been activated successfully </strong> <br> <br>\
-               <br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
+               <strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
                of Healthcare Leadership. </strong><br><br>Today, the nature of healthcare is very dynamic, global and interactive. This is era of <br>\
 genomics, personalized medicine, hospitals with hospitality, artificial intelligence, <br>\
 wearable devices and IoT. We at MedAchievers with our strong international<br>\
