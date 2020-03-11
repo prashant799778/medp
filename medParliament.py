@@ -19,7 +19,7 @@ import ConstantData
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import re
-from emailActivation import getactivationmail,getactivationmailforDoctor
+from emailActivation import getactivationmail,getactivationmailforDoctor,getactivationmailforDecisionMaker
 
 
 from flask import Flask, render_template
