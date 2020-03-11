@@ -66,13 +66,5 @@ We are excited for your contributions and supporting you in promoting your voice
  Do feel free to contact us at anytime.<br><br><br>\
 THANKS & REGARDS<br>\
 TEAM MEDPARLIAMENT<br> <br>\
-                <br><strong> </p><a href="" style="padding: 10px 23px; background:\
-                 #e1a23c; color: #fff; display: block; width: 210px; margin: 0 auto; border-radius:\
-                  5px;"> Click to Verify Email</button> </div></table> </td></tr><tr> \
-                  <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
-                   <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:\
-                    600px;"> <tr> <td bgcolor="#f4f4f4" align="left" style="padding: 0px 30px 30px 30px;\
-                     color: #666666; font-family: \'Roboto\', sans-serif; font-size: 14px; font-weight:\
-                      400; line-height: 18px;"></td></tr></table> </td></tr></table></body>'
-
+                
 
