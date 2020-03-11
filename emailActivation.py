@@ -1,4 +1,4 @@
-def getactivationmail():#userName, link
+def getactivationmail(userName):#userName, link
     return '<body style="background-color: #f4f4f4; margin: 0 !important; padding:\
      0 !important;height: 100% !important; width: 100% !important;"> <table border="0" \
      cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse \

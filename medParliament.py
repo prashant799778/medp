@@ -3602,6 +3602,7 @@ def updateStatus1():
             data=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
             print('AAAA',data)
             print(data['result'][0]['status'],"status")
+            userName=data['result'][0]['userName']
             if data['result'][0]['status']==0:
                 message = Mail(
                                 from_email = 'medparliament@medachievers.com',
