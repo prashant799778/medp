@@ -19,7 +19,8 @@ import ConstantData
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import re
-from emailActivation import getactivationmail,getactivationmailforDoctor,getactivationmailforDecisionMaker
+from emailActivation import getactivationmail,getactivationmailforDoctor,getactivationmailforDecisionMaker ,\
+    getactivationmailforStudent
 
 
 from flask import Flask, render_template
@@ -3637,6 +3638,13 @@ def updateStatus1():
                                 to_emails = str(email),
                                 subject = "Account Activated",
                                 html_content =getactivationmailforDoctor(userName))# '<strong>Congratulations! Your account has been activated successfully </strong> <br> <br> Thanks,medParliament Team')
+                elif userTypeId==13:
+                    message = Mail(
+                                from_email = 'medparliament@medachievers.com',
+                                to_emails = str(email),
+                                subject = "Account Activated",
+                                html_content =getactivationmailforStudent(userName))# '<strong>Congratulations! Your account has been activated successfully </strong> <br> <br> Thanks,medParliament Team')
+
                 elif userTypeId==13:
                     message = Mail(
                                 from_email = 'medparliament@medachievers.com',
