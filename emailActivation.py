@@ -155,9 +155,11 @@ def getactivationmailforDecisionMaker(userName):#userName, link
              </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
                <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
-               <p style="margin: 0">Hello Mr. ' + str(userName) + '<br>Congratulations! Your account has been activated successfully </strong> <br> <br>\
-               <strong>It is my pleasure to welcome you to MEDPARLIAMENT, the Global Parliament of Healthcare leadership.\
-                    </strong><br><br>Today, the nature of healthcare is very dynamic, global and interactive. This is era of <br>\
+               <p style="margin: 0">Hello Mr. ' + str(userName) + '<br>\
+                   Congratulations! Your account has been activated successfully </strong> <br> <br>\
+               <strong>It is my pleasure to welcome you to MEDPARLIAMENT, the Global Parliament of<br>\
+                   Healthcare leadership.\
+</strong><br><br>Today, the nature of healthcare is very dynamic, global and interactive. This is era of <br>\
 genomics, personalized medicine, hospitals with hospitality, artificial intelligence, <br>\
 wearable devices and IoT. We at MedAchievers with our strong international<br>\
 presence since 2014, including in India, Australia, USA, UK, Israel and Singapore<br>\
@@ -198,7 +200,8 @@ parts of the globe are now sharing deeper ways of collaboration and Transaction.
 We look forward to your views and insights on the healthcare industry and all of the<br> \
 industries which intersect with it. Do take the time to browse our app for the latest <br>\
 healthcare news and dedicated healthcare related content including videos and events.<br>\
-As a MedParliamentarian, you are able to engage with the community in a variety of ways. Some of these include:<br>\
+As a MedParliamentarian, you are able to engage with the community<br>\
+     in a variety of ways. Some of these include:<br>\
 •	Commenting on recent healthcare news inside our app<br>\
 •	Submitting any requirements you have to help improve healthcare<br>\
 •	Attending our exclusive events around India and abroad<br>\
