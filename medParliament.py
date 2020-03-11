@@ -451,7 +451,9 @@ def profilePic(image_name):
 
 
 # For testing        
- 
+
+def getMailBody(userName, link):
+    return '<body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;height: 100% !important; width: 100% !important;"> <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse !important"> <tr> <td bgcolor="#e1a23c" align="center"> <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;"> <tr> <td align="center" valign="top" style="padding: 40px 10px 40px 10px;"> </td></tr></table> </td></tr><tr> <td bgcolor="#e1a23c" align="center" style="padding: 0px 10px 0px 10px;"> <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;"> <tr> <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: \'Roboto\', sans-serif; font-size: 48px; font-weight: 400; letter-spacing: 4px; line-height: 48px;"> <h1 style="font-size: 48px; font-weight: 400; margin: 2;"> MedParliament </h1> <img src="http://134.209.153.34:4200/assets/images/logo-sgn.svg" width="125" height="120" style="display: block; border: 0px;"/> </td></tr></table> </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;"> <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;"> <div style="text-align: center; height: 88px; background:#ffffff"> <p>Hello Mr.' + str(userName) + '<br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br><br>Thank you for joining our community. <br><br>Please validate your email address by clicking on the button below <br><br><strong> </p><a href="'+str(link)+'" style="padding: 10px 23px; background: #e1a23c; color: #fff; display: block; width: 210px; margin: 0 auto; border-radius: 5px;"> Click to Verify Email</button> </div></table> </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;"> <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;"> <tr> <td bgcolor="#f4f4f4" align="left" style="padding: 0px 30px 30px 30px; color: #666666; font-family: 'Roboto', sans-serif; font-size: 14px; font-weight: 400; line-height: 18px;"> <br><p style="margin: 0; text-align: center;">MedAchievers MedParliament </p></td></tr></table> </td></tr></table></body>'
 @app.route('/SignUp', methods=['POST'])
 def SignUp1():
 
@@ -604,7 +606,8 @@ def SignUp1():
                                             from_email = 'medparliament@medachievers.com',
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
-                                            html_content = ' Hello Mr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> ')
+                                            html_content = getMailBody(userName, Y))
+                            #html_content = ' Hello Mr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> '
                             
                             sg = SendGridAPIClient('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')
                             response = sg.send(message)
