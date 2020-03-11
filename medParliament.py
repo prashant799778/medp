@@ -2183,6 +2183,7 @@ def UpdateUser():
         keyarr = ['userId','userName','email','userTypeId']
         print(inputdata)
         commonfile.writeLog("UpdateUser",inputdata,0)
+
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg == "1":
             print('3')
@@ -5304,7 +5305,7 @@ def landingPageDashboardtest():
                     data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",orderby)
                     if data["result"]=="":
                         data["result"]=[]
-                data22={"result":{"headline":data['result'][0],"news":data['result'][0:]},"status":"true","message":""}
+                data22={"result":{"headline":data['result'][0],"news":data['result'][1:]},"status":"true","message":""}
                 return data22
             
             if key ==3:
