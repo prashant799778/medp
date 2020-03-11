@@ -7276,9 +7276,7 @@ def userContent():
                 if "id" in inputdata:
                     
                     if inputdata['id'] != "":
-                        
                         Id =inputdata["id"]
-                        
                         inputdata1 = request.form.get('postImage')
                         
                         if ((inputdata1!=ConstantData.GetBaseURL()) and (inputdata1 !="")) :
