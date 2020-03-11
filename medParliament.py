@@ -4949,17 +4949,15 @@ def landingPageDashboard1():
         print("1111----")
 
         if "userTypeId" not in inputdata:
-            print("=====11======")
             
-            print("=====12======")
             WhereCondition229=" and ev.Status<2  "
             column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
             data3 = databasefile.SelectQueryOrderby("parliamentEvent ev ",column3,WhereCondition229,"","0","10",orderby)
-            print("=====13======")
-            print("=====13======",data3)
-            if data3["result"]=="":
-                data3["result"]=[]
-            print(data3)
+            
+            if data3:
+                if data3["result"]=="":
+                    data3["result"]=[]
+            
 
        
         if "userTypeId" in inputdata:
