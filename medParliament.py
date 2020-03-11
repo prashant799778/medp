@@ -52,7 +52,7 @@ def userId():
                     content=databasefile.SelectQuery1('accountVerficationContent',column2,whereCondition2)
                     data=databasefile.UpdateQuery('userMaster',column,whereCondition)
                     if data !="0":
-                        return {"status":"true","userName":userName,"content":content,"message":"Congratulations! Your account has been activated successfully","result":""}
+                        return {"status":"true","userName":userName,"content":content['result']['content'],"message":"Congratulations! Your account has been activated successfully","result":""}
                 if (y['userTypeId'] ==13) or  (y['userTypeId'] =='13'):
                     column='emailVerificationStatus=1'
                     userName=y['userName']
@@ -62,7 +62,7 @@ def userId():
                     content=databasefile.SelectQuery1('accountVerficationContent',column2,whereCondition2)
                     data1=databasefile.UpdateQuery('userMaster',column,whereCondition)
                     if data1 !="0":
-                        return {"status":"true","userName":userName,"content":content['content'],"message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account is activated you will get a confirmation mail.","result":""}        
+                        return {"status":"true","userName":userName,"content":content['result']['content'],"message":"Your email has been verified. Thank you for verifying your email. Your sign Up details have been sent to our admin  for review. Your account must be approved before you can login. when your account is activated you will get a confirmation mail.","result":""}        
                 
                 else:
                     column='emailVerificationStatus=1'
