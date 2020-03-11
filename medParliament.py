@@ -3637,6 +3637,13 @@ def updateStatus1():
                                 to_emails = str(email),
                                 subject = "Account Activated",
                                 html_content =getactivationmailforDoctor(userName))# '<strong>Congratulations! Your account has been activated successfully </strong> <br> <br> Thanks,medParliament Team')
+                elif userTypeId==13:
+                    message = Mail(
+                                from_email = 'medparliament@medachievers.com',
+                                to_emails = str(email),
+                                subject = "Account Activated",
+                                html_content =getactivationmailforDecisionMaker(userName))# '<strong>Congratulations! Your account has been activated successfully </strong> <br> <br> Thanks,medParliament Team')
+               
                 else:
                     message = Mail(
                                     from_email = 'medparliament@medachievers.com',
