@@ -196,17 +196,15 @@ draw common solutions and methods for improved healthcare delivery, more fruitfu
 transactions and enhanced skilling opportunities. A glittery constellation of Ministers, <br>\
 Diplomats, Healthcare CEOs, Research and tech titans, venture capitalists from different <br>\
 parts of the globe are now sharing deeper ways of collaboration and Transaction.<br><br>\
-<strong>WHAT DO WE HAVE FOR YOU?</strong><br><br>\
-We look forward to your views and insights on the healthcare industry and all of the<br> \
-industries which intersect with it. Do take the time to browse our app for the latest <br>\
-healthcare news and dedicated healthcare related content including videos and events.<br>\
-As a MedParliamentarian, you are able to engage with the community<br>\
-     in a variety of ways. Some of these include:<br>\
-•	Commenting on recent healthcare news inside our app<br>\
-•	Submitting any requirements you have to help improve healthcare<br>\
-•	Attending our exclusive events around India and abroad<br>\
-We are excited for your contributions and supporting you in promoting your voice in healthcare.\
- Do feel free to contact us at anytime.<br><br><br>\
+<strong>HOW TO ENAGE WITH MEDPARLIAMENT ? </strong><br><br>\
+As a MedParliamentarian, you are able to engage with the community in a variety of <br> \
+ways. Some of these include: <br>\
+	•	Commenting on recent healthcare news inside our app<br>\
+    •	Submitting any requirements you have to help improve healthcare<br>\
+	•	Attending our exclusive events around India and abroad<br>\
+We eagerly await your contributions to this forum for leaders and supporting you in \
+promoting your perspectives on healthcare related matters. Do feel free to contact us <br>\
+at anytime.<br><br>\
 THANKS & REGARDS<br>\
 Dr. Harsha Vardhan<br>\
 Founder and Group Managing Director<br>\
