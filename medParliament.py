@@ -4965,7 +4965,6 @@ def landingPageDashboard1():
                 data3 = databasefile.SelectQueryOrderby("parliamentEvent ev ",column3,WhereCondition229,"",0,0,orderby)
                 if data3["result"]=="":
                     data3["result"]=[]
-        print(data3)
 
         for i in data3['result']:
             if 'userId' in inputdata:
