@@ -3620,6 +3620,13 @@ def updateStatus1():
 
             else:
                 column="status='0'"
+                columns='content'
+                whereCondition=" and userTypeId='" + str(userTypeId)+ "' "
+
+                accountVerficationContent=databasefile.SelectQuery1('userContent',columns,whereCondition)
+                userDoc=accountVerficationContent['result']['content']
+                print(userDoc,"+++++++++++++++++++++++++__________")
+
                 message = Mail(
                                 from_email = 'medparliament@medachievers.com',
                                 to_emails = str(email),
