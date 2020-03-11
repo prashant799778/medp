@@ -141,7 +141,7 @@ export class EditMarketNewsComponent implements OnInit {
 
   editNews(NewsId) {
     console.log(NewsId);
-    this.router.navigate(['/news/createNews'], { queryParams: {NewsId: NewsId}});
+    this.router.navigate(['/marketInsight/createMarketInsight'], { queryParams: {NewsId: NewsId}});
   }
 
   deleteNews(id){

@@ -229,17 +229,17 @@ export class ViewContentComponent implements OnInit {
 
     const formData = new FormData();
     formData.append('postImage', this.frmNews.get('banner').value);
-    formData.append('data', JSON.stringify(newsData));
+    formData.append('userContent', JSON.stringify(newsData));
 
     console.log(formData);
     this.apiService.dataPostApi(formData, AppSettings.usersContent).then((data: any[]) => {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
-        jQuery('#addAdmin-news4').modal('show')
+        jQuery('#addAdmin-news66').modal('show')
         this.messageShow = 'Updated'
         setTimeout(()=>{
-          jQuery('#addAdmin-news4').modal('hide')
+          jQuery('#addAdmin-news66').modal('hide')
         },2000)
         this.getUsertype()
         this.updateCheck =false;
@@ -279,10 +279,10 @@ export class ViewContentComponent implements OnInit {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
-        jQuery('#addAdmin-news4').modal('show')
+        jQuery('#addAdmin-news66').modal('show')
         this.messageShow = 'Inserted'
         setTimeout(()=>{
-          jQuery('#addAdmin-news4').modal('hide')
+          jQuery('#addAdmin-news66').modal('hide')
         },2000)
         this.getUsertype()
        

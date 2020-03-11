@@ -144,7 +144,7 @@ export class EditContentComponent implements OnInit {
 
   editNews(NewsId) {
     console.log(NewsId);
-    this.router.navigate(['/ourPartner/createPartner'], { queryParams: {NewsId: NewsId}});
+    this.router.navigate(['/userContent/createContent'], { queryParams: {NewsId: NewsId}});
   }
 
   // deleteNews(id){
