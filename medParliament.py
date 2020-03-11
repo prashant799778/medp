@@ -3591,12 +3591,14 @@ def updateStatus1():
         startlimit,endlimit="",""
         keyarr = ['userTypeId','email','userId']
         print(inputdata,"B")
+        
         commonfile.writeLog("updateStatus",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             userTypeId = inputdata["userTypeId"]
             userId = inputdata["userId"]
             email = inputdata["email"]
+            print(userTypeId,type(userTypeId),"============================")
             column="status ,userName"
             whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "'  and userId = '" + str(userId)+ "' "
             data=databasefile.SelectQuery("userMaster",column,whereCondition,"",startlimit,endlimit)
@@ -3629,7 +3631,7 @@ def updateStatus1():
                 accountVerficationContent=databasefile.SelectQuery1('userContent',columns,whereCondition)
                 userDoc=accountVerficationContent['result']['content']
                 print(userDoc,"+++++++++++++++++++++++++__________")
-
+                
                 message = Mail(
                                 from_email = 'medparliament@medachievers.com',
                                 to_emails = str(email),
