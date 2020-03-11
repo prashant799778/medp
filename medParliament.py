@@ -4949,7 +4949,7 @@ def landingPageDashboard1():
         print("1111----")
 
         if "userTypeId" not in inputdata:
-            WhereCondition229=" and ev.Status<2 and  ev.userTypeId=0 "
+            WhereCondition229=" and ev.Status<2 and  ev.userTypeId='0' "
             column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
             data3 = databasefile.SelectQueryOrderby("parliamentEvent ev ",column3,WhereCondition229,"",0,0,orderby)
             
@@ -4972,7 +4972,7 @@ def landingPageDashboard1():
                 marketingInsightId=i['id']
                 whereCondition999="and lki.eventId='"+str(marketingInsightId)+"' and lki.userId='"+str(userId)+"'"
                 column999="lki.status"
-                makedone=databasefile.SelectQueryOrderby('eventInterest as lki',column999,whereCondition999,"","","")
+                makedone=databasefile.SelectQuery('eventInterest as lki',column999,whereCondition999,"","","")
                 if makedone['status']!="false":
                     i['makedone']=1
                 else:
