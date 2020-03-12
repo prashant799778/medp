@@ -5429,7 +5429,7 @@ def landingPageDashboardtest():
                         data["result"]=[]
                 else :
                     column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-                    data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",orderby)
+                    data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"",startlimit,endlimit,orderby)
                     if data["result"]=="":
                         data["result"]=[]
                 data22={"result":{"headline":data['result'][0],"news":data['result'][1:]},"status":"true","message":""}
@@ -5440,7 +5440,7 @@ def landingPageDashboardtest():
         
 
                 column2 = "id,Status,UserCreate, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
-                data2 = databasefile.SelectQueryOrderby("gallery",column2,"","","0","10",orderby)
+                data2 = databasefile.SelectQueryOrderby("gallery",column2,"","",startlimit,endlimit,orderby)
                 
                 if data2["result"]=="":
                     data2["result"]=[]
@@ -5453,7 +5453,7 @@ def landingPageDashboardtest():
                 print("1111----")
                 WhereCondition229=" and ev.Status<2 and  ev.userTypeId=0  or ev.userTypeId='"+str(userTypeId)+"'"
                 column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(CONVERT_TZ(ev.eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(ev.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-                data3 = databasefile.SelectQueryOrderby("parliamentEvent ev ",column3,WhereCondition229,"","0","10",orderby)
+                data3 = databasefile.SelectQueryOrderby("parliamentEvent ev ",column3,WhereCondition229,"",startlimit,endlimit,orderby)
                 
                 if data3["result"]=="":
                     data3["result"]=[]
@@ -5482,7 +5482,7 @@ def landingPageDashboardtest():
 
                 column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
                 WhereCondition2= " and Status<2"
-                data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"","0","10")
+                data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"",startlimit,endlimit)
                 print(data4)
 
                 if data4["result"]=="":
@@ -5504,7 +5504,7 @@ def landingPageDashboardtest():
 
                     
                 column5 = "id,Status,UserCreate,newsTitle,summary,newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-                data5 = databasefile.SelectQueryOrderby("promissingIntiatives",column5,WhereCondition,"","0","10",orderby)
+                data5 = databasefile.SelectQueryOrderby("promissingIntiatives",column5,WhereCondition,"",startlimit,endlimit,orderby)
                 if data5["result"]=="":
                     data5["result"]=[]
 
@@ -5517,7 +5517,7 @@ def landingPageDashboardtest():
 
                     
                 column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
-                data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"","0","10",orderby)
+                data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"",startlimit,endlimit,orderby)
                 if data6["result"]=="":
                     data6["result"]=[]
 
@@ -5564,7 +5564,7 @@ def landingPageDashboardtest():
 
                     
                 column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
-                data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition229,"","0","10",orderby)
+                data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition229,"",startlimit,endlimit,orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
                 for i in data7['result']:
@@ -5586,7 +5586,7 @@ def landingPageDashboardtest():
             if key ==9:
 
                 column99 = "id,Status,UserCreate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
-                data99 = databasefile.SelectQueryOrderby("ourPartners",column99,"","","0","10",orderby)
+                data99 = databasefile.SelectQueryOrderby("ourPartners",column99,"","",startlimit,endlimit,orderby)
                 
                 if data99["result"]=="":
                     data99["result"]=[]
