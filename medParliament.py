@@ -7502,7 +7502,7 @@ def generateOrder():
             order_amount=inputdata["order_amount"]
             userId=inputdata["userId"]
             client = razorpay.Client(auth=("rzp_live_OsvYv63WTYaI4c", "hYnMMNEGGKXVEwcWtTa2ABUD"))
-            clientId=client.order.create(amount=order_amount, currency=order_currency, receipt=order_receipt, notes=notes, payment_capture='0')
+            clientId=client.order.create({"amount":order_amount, "currency":order_currency, "receipt":order_receipt, "notes":notes, "payment_capture":'0'})
        
             if clientId:
                 Data = {"status":"true","message":"","result":clientId}                  
