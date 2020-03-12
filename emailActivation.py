@@ -161,7 +161,7 @@ def getactivationmailforDecisionMaker(userName):#userName, link
              </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
                <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
-               <p style="margin: 0">Hello Mr. ' + str(userName) + '<br>\
+               <p style="margin: 0"><h4 style="margin: 0">Hello Mr. ' + str(userName) + '</h4><br>\
                    Congratulations! Your account has been activated successfully </strong> <br> <br>\
                <strong>It is my pleasure to welcome you to MEDPARLIAMENT, the Global Parliament of<br>\
                    Healthcare leadership.\
@@ -184,7 +184,7 @@ must evolve and should allow them to get exposed to needed technology<br>\
 and apply the same in their practice. Moreover, the support for those <br>\
 already in the medical sciences as business owners, policy makers, academics<br>\
 and employees must become more robust. MedParliament is the coming together <br>\
-of our industry to achieve that end. <br>\
+of our industry to achieve that end. <br><br>\
 <strong>The Process</strong><br><br>\
 MedParliament addresses each of the critical areas associated with medical sciences,<br>\
  healthcare practice and management. With emerging trends highlighted, new opportunities<br>\
@@ -202,19 +202,21 @@ draw common solutions and methods for improved healthcare delivery, more fruitfu
 transactions and enhanced skilling opportunities. A glittery constellation of Ministers, <br>\
 Diplomats, Healthcare CEOs, Research and tech titans, venture capitalists from different <br>\
 parts of the globe are now sharing deeper ways of collaboration and Transaction.<br><br>\
-<strong>HOW TO ENAGE WITH MEDPARLIAMENT ? </strong><br><br>\
-As a MedParliamentarian, you are able to engage with the community in a variety of <br> \
-ways. Some of these include: <br>\
-	•	Commenting on recent healthcare news inside our app<br>\
-    •	Submitting any requirements you have to help improve healthcare<br>\
-	•	Attending our exclusive events around India and abroad<br>\
-We eagerly await your contributions to this forum for leaders and supporting you in \
+<h4 style="text-align: left; padding: 0 20px;">HOW TO ENAGE WITH MEDPARLIAMENT ? </h4><br><br>\
+<p style="text-align: left;padding: 0 30px; margin: 0;">As a MedParliamentarian, you are able to engage with the community in a variety of <br> \
+ways. Some of these include: </p>\
+<ul style="text-align: left; margin: 0;">\
+    <li style="margin-left: 10px;">Commenting on recent healthcare news inside our app</li>\
+    <li style="margin-left: 10px;">Submitting any requirements you have to help improve healthcare</li>\
+    <li style="margin-left: 10px;">Attending our exclusive events around India and abroad</li>\
+</ul>\
+<p style="text-align: left;padding: 0 30px; margin: 0;">We eagerly await your contributions to this forum for leaders and supporting you in \
 promoting your perspectives on healthcare related matters. Do feel free to contact us <br>\
 at anytime.<br><br>\
 THANKS & REGARDS<br>\
 Dr. Harsha Vardhan<br>\
 Founder and Group Managing Director<br>\
-MedAchievers Private Limited </body>'
+MedAchievers Private Limited </p></body>'
 
 
 
