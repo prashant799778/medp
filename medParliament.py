@@ -7491,7 +7491,7 @@ def deleteUserContent():
 def generateOrder():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
-        startlimit,endlimit="",""
+        #startlimit,endlimit="",""
         keyarr = ['order_amount',"userId"]
         order_currency = 'INR'
         print(inputdata,"B")
@@ -7502,7 +7502,7 @@ def generateOrder():
 
         if msg =="1":
             order_amount=inputdata["order_amount"]
-            userId=inputdata["userId"]
+            #userId=inputdata["userId"]
             #client = razorpay.Client(auth=("rzp_live_OsvYv63WTYaI4c", "hYnMMNEGGKXVEwcWtTa2ABUD"))
             client = razorpay.Client(auth=("rzp_test_4u8muzEpnmCqNG", "b18AZC0JeXQhg5lqVREI4HU5"))
             clientId=client.order.create({"amount":order_amount, "currency":order_currency, "receipt":order_receipt, "notes":notes, "payment_capture":'0'})
