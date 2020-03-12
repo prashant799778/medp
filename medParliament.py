@@ -7486,7 +7486,7 @@ def deleteUserContent():
 
 
 @app.route('/generateOrder', methods=['POST'])
-def generateOtp():
+def generateOrder():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
