@@ -36,7 +36,7 @@ must evolve and should allow them to get exposed to needed technology<br>\
 and apply the same in their practice. Moreover, the support for those <br>\
 already in the medical sciences as business owners, policy makers, academics<br>\
 and employees must become more robust. MedParliament is the coming together <br>\
-of our industry to achieve that end. <br>\
+of our industry to achieve that end. <br><br>\
 <strong>The Process</strong><br><br>\
 MedParliament addresses each of the critical areas associated with medical sciences,<br>\
  healthcare practice and management. With emerging trends highlighted, new opportunities<br>\
