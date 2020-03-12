@@ -7503,8 +7503,9 @@ def generateOrder():
         if msg =="1":
             order_amount=inputdata["order_amount"]
             userId=inputdata["userId"]
-            client = razorpay.Client(auth=("rzp_live_OsvYv63WTYaI4c", "hYnMMNEGGKXVEwcWtTa2ABUD"))
-            clientId=client.order.create(amount=order_amount, currency=order_currency, receipt=order_receipt, notes=notes, payment_capture='0')
+            #client = razorpay.Client(auth=("rzp_live_OsvYv63WTYaI4c", "hYnMMNEGGKXVEwcWtTa2ABUD"))
+            client = razorpay.Client(auth=("rzp_test_4u8muzEpnmCqNG", "b18AZC0JeXQhg5lqVREI4HU5"))
+            clientId=client.order.create({"amount":order_amount, "currency":order_currency, "receipt":order_receipt, "notes":notes, "payment_capture":'0'})
        
             if clientId:
                 Data = {"status":"true","message":"","result":clientId}                  
