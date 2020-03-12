@@ -54,20 +54,21 @@ draw common solutions and methods for improved healthcare delivery, more fruitfu
 transactions and enhanced skilling opportunities. A glittery constellation of Ministers, <br>\
 Diplomats, Healthcare CEOs, Research and tech titans, venture capitalists from different <br>\
 parts of the globe are now sharing deeper ways of collaboration and Transaction.<br>\
-<h4 style="text-align: left;padding: 0 20px">WHAT DO WE HAVE FOR YOU?</h4>\
-<p style="text-align: left;padding: 0 20px">We look forward to your views and insights on the healthcare industry and all of the<br>\
+<h4 style="text-align: left;padding: 0 30px">WHAT DO WE HAVE FOR YOU?</h4>\
+<p style="text-align: left;padding: 0 30px; margin: 0;">We look forward to your views and insights on the healthcare industry and all of the<br>\
 industries which intersect with it. Do take the time to browse our app for the latest <br>\
 healthcare news and dedicated healthcare related content including videos and events.<br>\
-As a MedParliamentarian, you are able to engage with the community in a variety of ways. Some of these include:<br>\
-<ul style="text-align: left">\
+As a MedParliamentarian, you are able to engage with the community in a variety of <br>\
+ways. Some of these include:</p><br>\
+<ul style="text-align: left; margin: 0;">\
 <li style="margin-left: 10px;">Commenting on recent healthcare news inside our app</li>\
 <li style="margin-left: 10px;">Submitting any requirements you have to help improve healthcare</li>\
 <li style="margin-left: 10px;">Attending our exclusive events around India and abroad</li>\
 </ul>\
-We are excited for your contributions and supporting you in promoting your voice in healthcare.\
- Do feel free to contact us at anytime.</p><br><br>\
+<p style="text-align: left;padding: 0 30px; margin: 0;">We are excited for your contributions and supporting you in promoting your voice in<br>\
+     healthcare. Do feel free to contact us at anytime.<br><br>\
 THANKS & REGARDS<br>\
-TEAM MEDPARLIAMENT<br> </body>'
+TEAM MEDPARLIAMENT<br></p> </body>'
 
 def getactivationmailforDoctor(userName):#userName, link
     return '<body style="background-color: #f4f4f4; margin: 0 !important; padding:\
