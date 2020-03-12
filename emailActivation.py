@@ -201,8 +201,8 @@ has become truly global. Top minds and leaders are gathering through the platfor
 draw common solutions and methods for improved healthcare delivery, more fruitful <br>\
 transactions and enhanced skilling opportunities. A glittery constellation of Ministers, <br>\
 Diplomats, Healthcare CEOs, Research and tech titans, venture capitalists from different <br>\
-parts of the globe are now sharing deeper ways of collaboration and Transaction.<br><br>\
-<h4 style="text-align: left; padding: 0 20px;">HOW TO ENAGE WITH MEDPARLIAMENT ? </h4><br><br>\
+parts of the globe are now sharing deeper ways of collaboration and Transaction.<br>\
+<h4 style="text-align: left; padding: 0 20px;">HOW TO ENAGE WITH MEDPARLIAMENT ? </h4>\
 <p style="text-align: left;padding: 0 30px; margin: 0;">As a MedParliamentarian, you are able to engage with the community in a variety of <br> \
 ways. Some of these include: </p>\
 <ul style="text-align: left; margin: 0;">\
