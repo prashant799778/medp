@@ -2512,6 +2512,7 @@ def allPosts1():
            
 
             
+
             
             if (data['result']!=""):
                 for i in data["result"]:
@@ -2592,13 +2593,13 @@ def allPostsThread():
             if 'postId' in inputdata:
                 postId=inputdata['postId']
                 whereCondition=" and pm.postId='" + str(postId) + "' "
-                column1="pm.id,um.userName,um.email,pm.commentDescription,(pm.approvedUserId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+                column1="pm.id,um.userName,um.email,pm.commentDescription,(pm.approvedUserId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                 WhereCondition1="  and pm.approvedUserId=um.userId and pm.postId='" + str(postId) + "'" 
                 orderby=" id "
                 data1 = databasefile.SelectQueryOrderbyAsc("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
             
             whereCondition=""
-            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.postId='" + str(postId) + "'" 
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
             
@@ -2648,7 +2649,7 @@ def allPosts11():
                 whereCondition=" and pm.postId='" + str(postId) + "' "
 
 
-            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'" +whereCondition
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
             
@@ -2706,7 +2707,7 @@ def allPosts2():
             orderby="pm.id"
             
             
-            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId=um.userId "
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
             print("11111111111111",data)
@@ -2821,70 +2822,70 @@ def myPosts():
         return output 
 
 
-@app.route('/myPostsTest', methods=['POST'])
-def myPostsTest():
-    try:
-        inputdata =  commonfile.DecodeInputdata(request.get_data())
-        startlimit,endlimit="",""
-        keyarr = ['userId','userTypeId']
-        print(inputdata,"B")
-        commonfile.writeLog("myPosts",inputdata,0)
+# @app.route('/myPostsTest', methods=['POST'])
+# def myPostsTest():
+#     try:
+#         inputdata =  commonfile.DecodeInputdata(request.get_data())
+#         startlimit,endlimit="",""
+#         keyarr = ['userId','userTypeId']
+#         print(inputdata,"B")
+#         commonfile.writeLog("myPosts",inputdata,0)
       
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        if msg =="1":
-            orderby=" pm.id "
+#         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+#         if msg =="1":
+#             orderby=" pm.id "
             
-            userTypeId=inputdata["userTypeId"]
-            userId=inputdata["userId"]
-            #status=int(inputdata["status"])
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','-05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition= " and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
-            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
-            print(data)
+#             userTypeId=inputdata["userTypeId"]
+#             userId=inputdata["userId"]
+#             #status=int(inputdata["status"])
+#             column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+#             WhereCondition= " and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
+#             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+#             print(data)
           
 
-            if (data['result']!=""):
+#             if (data['result']!=""):
                
 
-                # for i in data["result"]:
-                #     if (i["status"] == 1):
-                #         print(i["postId"])
-                #         column="um.userName as approvedBy"
-                #         WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
-                #         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
-                #         print(data1)
-                #         if "message" in data1:
-                #             pass
-                #         else:
-                #             i["approvedBy"]=data1["approvedBy"]
-                #         print(data1)
-                #     if (i["status"]==2):
-                #         column="um.userName as rejectedBy"
-                #         WhereCondition="and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
-                #         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
-                #         print(data1)
-                #         if "message" in data1:
-                #             pass
-                #         else:
-                #             i["rejectedBy"]=data1["rejectedBy"]
+#                 # for i in data["result"]:
+#                 #     if (i["status"] == 1):
+#                 #         print(i["postId"])
+#                 #         column="um.userName as approvedBy"
+#                 #         WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+#                 #         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+#                 #         print(data1)
+#                 #         if "message" in data1:
+#                 #             pass
+#                 #         else:
+#                 #             i["approvedBy"]=data1["approvedBy"]
+#                 #         print(data1)
+#                 #     if (i["status"]==2):
+#                 #         column="um.userName as rejectedBy"
+#                 #         WhereCondition="and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+#                 #         data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+#                 #         print(data1)
+#                 #         if "message" in data1:
+#                 #             pass
+#                 #         else:
+#                 #             i["rejectedBy"]=data1["rejectedBy"]
 
                 
-                print("111111111111111")          
+#                 print("111111111111111")          
                
-                return data
-            else:
-                data["result"]=[]
-                data['message']='No Data Found'
+#                 return data
+#             else:
+#                 data["result"]=[]
+#                 data['message']='No Data Found'
 
                 
-                return data
-        else:
-            return msg         
+#                 return data
+#         else:
+#             return msg         
 
-    except Exception as e :
-        print("Exception---->" + str(e))    
-        output = {"status":"false","message":"something went wrong","result":""}
-        return output 
+#     except Exception as e :
+#         print("Exception---->" + str(e))    
+#         output = {"status":"false","message":"something went wrong","result":""}
+#         return output 
 
 
 
@@ -2912,7 +2913,7 @@ def userPostDashboardApproved():
                 whereCondition=" and pm.postId='" + str(postId) + "' "
 
 
-            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and pm.status=1 and upm.postId=pm.postId and upm.showUserTypeId='"+ str(userTypeId) +"' and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'" +whereCondition
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um,postUserTypeMapping as upm",column,WhereCondition,"",startlimit,endlimit,orderby)
             
@@ -2984,7 +2985,7 @@ def userPostDashboardRejected():
                 whereCondition=" and pm.postId='" + str(postId) + "' "
 
 
-            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and pm.status=2 and upm.postId=pm.postId and upm.showUserTypeId='"+ str(userTypeId) +"' and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'" +whereCondition
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um,postUserTypeMapping as upm",column,WhereCondition,"",startlimit,endlimit,orderby)
             
@@ -3047,7 +3048,7 @@ def userPostDashboardPending():
                 whereCondition=" and pm.postId='" + str(postId) + "' "
 
 
-            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=" and pm.status=0 and upm.postId=pm.postId and upm.showUserTypeId='"+ str(userTypeId) +"' and um.userTypeId=pm.userTypeId and pm.userId=um.userId and pm.userTypeId='" + str(userTypeId) + "'" +whereCondition
             data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um,postUserTypeMapping as upm",column,WhereCondition,"",startlimit,endlimit,orderby)
             
@@ -4756,7 +4757,7 @@ def allMarketingInsightThread():
                 if inputdata['userId'] != "":
                     userId =inputdata["userId"]
                     WhereCondition="  and pm.userId ='"+str(userId)+"'  and pm.marketingInsightId='" + str(marketingInsightId) + "' or pm.status='1'"
-                    column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+                    column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                     orderby=" id "
                     data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
                     WhereCondition=" and n.id='"+str(marketingInsightId)+"'"
@@ -4768,7 +4769,7 @@ def allMarketingInsightThread():
             if 'Id' in inputdata:
                 marketingInsightId=inputdata['Id']
               
-                column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId,date_format(pm.dateCreate,'%Y-%m-%d %H:%i:%s')DateCreate"
+                column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                 WhereCondition="  and pm.userId=um.userId and pm.marketingInsightId='" + str(marketingInsightId) + "'" 
                 orderby=" id "
 
@@ -5045,7 +5046,7 @@ def landingPageDashboard1():
         if "userTypeId" not in inputdata:
             
             WhereCondition229=" and ev.Status<2  "
-            column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+            column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(CONVERT_TZ(ev.eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate, date_format(CONVERT_TZ(ev.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
             data3 = databasefile.SelectQueryOrderby("parliamentEvent ev ",column3,WhereCondition229,"","0","10",orderby)
             
             if data3:
@@ -5058,7 +5059,7 @@ def landingPageDashboard1():
             if inputdata['userTypeId'] != "":
                 userTypeId =inputdata["userTypeId"]
                 WhereCondition229=" and ev.Status<2 and  ev.userTypeId=0  or ev.userTypeId='"+str(userTypeId)+"'"
-                column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+                column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(CONVERT_TZ(ev.eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate, date_format(CONVERT_TZ(ev.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
                 data3 = databasefile.SelectQueryOrderby("parliamentEvent ev ",column3,WhereCondition229,"","0","10",orderby)
                 if data3["result"]=="":
                     data3["result"]=[]
@@ -5107,7 +5108,7 @@ def landingPageDashboard1():
                 userTypeId =inputdata["userTypeId"]
                 WhereCondition="and  mi.Status <2 and  mi.userTypeId=0  or mi.userTypeId='"+str(userTypeId)+"'"
 
-                column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
+                column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(mi.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
                 data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"","0","10",orderby)
                 if data6["result"]=="":
                     data6["result"]=[]
@@ -5144,7 +5145,7 @@ def landingPageDashboard1():
                             i['likeCount']=0
                             i['makedone']=0
                
-                column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
+                column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(mi.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition,"","0","10",orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
@@ -5168,7 +5169,7 @@ def landingPageDashboard1():
    
             WhereCondition="and  mi.Status <2 "
 
-            column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
+            column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(mi.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
             data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"","0","10",orderby)
             if data6["result"]=="":
                 data6["result"]=[]
@@ -5208,7 +5209,7 @@ def landingPageDashboard1():
                     i['makedone']=0
                                 
            
-            column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
+            column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(mi.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
             data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition,"","0","10",orderby)
             if data7["result"]=="":
                 data7["result"]=[]
@@ -5265,88 +5266,88 @@ def landingPageDashboard1():
 
 
 
-@app.route('/landingPageDashboard1', methods=['POST'])
-def landingPageDashboard():
+# @app.route('/landingPageDashboard1', methods=['POST'])
+# def landingPageDashboard():
 
-    try:
-        WhereCondition,startlimit,endlimit="","",""
-        WhereCondition=WhereCondition+" and Status<2"
+#     try:
+#         WhereCondition,startlimit,endlimit="","",""
+#         WhereCondition=WhereCondition+" and Status<2"
         
-        data1={"message":"","status":"true","result":[]}
-        orderby=" id "
-        if request.get_data():
-            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+#         data1={"message":"","status":"true","result":[]}
+#         orderby=" id "
+#         if request.get_data():
+#             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startlimit" in inputdata:
-                if inputdata['startlimit'] != "":
-                    startlimit =str(inputdata["startlimit"])
+#             if "startlimit" in inputdata:
+#                 if inputdata['startlimit'] != "":
+#                     startlimit =str(inputdata["startlimit"])
             
-            if "endlimit" in inputdata:
-                if inputdata['endlimit'] != "":
-                    endlimit =str(inputdata["endlimit"])
+#             if "endlimit" in inputdata:
+#                 if inputdata['endlimit'] != "":
+#                     endlimit =str(inputdata["endlimit"])
         
             
-            if "userTypeId" in inputdata:
-                if inputdata['userTypeId'] != "":
-                    userTypeId =inputdata["userTypeId"]
-                    WhereCondition=WhereCondition+" and  userTypeId=0  or userTypeId='"+str(userTypeId)+"'"
-                    column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
-                    data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"",startlimit,endlimit,orderby)
-                    print(data1,"")
+#             if "userTypeId" in inputdata:
+#                 if inputdata['userTypeId'] != "":
+#                     userTypeId =inputdata["userTypeId"]
+#                     WhereCondition=WhereCondition+" and  userTypeId=0  or userTypeId='"+str(userTypeId)+"'"
+#                     column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
+#                     data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"",startlimit,endlimit,orderby)
+#                     print(data1,"")
                     
-                    if data1["result"]=="":
-                        data1["result"]=[]
-                    else:
-                        for i in data1["result"]:
-                            if i["imagePath"]!="":
-                                i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
+#                     if data1["result"]=="":
+#                         data1["result"]=[]
+#                     else:
+#                         for i in data1["result"]:
+#                             if i["imagePath"]!="":
+#                                 i["imagePath"]=ConstantData.GetBaseURL()+i["imagePath"]
 
-        if "userTypeId" not in inputdata:
-            column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-            data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","3",orderby)
-            if data["result"]=="":
-                data["result"]=[]
-        else :
-            column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-            data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",orderby)
-            if data["result"]=="":
-                data["result"]=[]
+#         if "userTypeId" not in inputdata:
+#             column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+#             data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","3",orderby)
+#             if data["result"]=="":
+#                 data["result"]=[]
+#         else :
+#             column = "id,Status,UserCreate,newsTitle,summary,newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+#             data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",orderby)
+#             if data["result"]=="":
+#                 data["result"]=[]
         
 
-        column2 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
-        data2 = databasefile.SelectQueryOrderby("gallery",column2,"","","0","10",orderby)
+#         column2 = "id,Status,UserCreate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+#         data2 = databasefile.SelectQueryOrderby("gallery",column2,"","","0","10",orderby)
         
-        if data2["result"]=="":
-            data2["result"]=[]
+#         if data2["result"]=="":
+#             data2["result"]=[]
 
-        print("1111----")
-        WhereCondition1 = " on pm.eventId = ev.id " 
-        column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary, ifnull(pm.id,0) as likedId,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev left outer join eventInterest pm",column3,WhereCondition1,"",0,0,orderby)
+#         print("1111----")
+#         WhereCondition1 = " on pm.eventId = ev.id " 
+#         column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary, ifnull(pm.id,0) as likedId,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+#         data3 = databasefile.SelectQueryOrderbyNew("parliamentEvent ev left outer join eventInterest pm",column3,WhereCondition1,"",0,0,orderby)
         
-        if data3["result"]=="":
-            data3["result"]=[]
+#         if data3["result"]=="":
+#             data3["result"]=[]
 
-        column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
-        WhereCondition2= " and Status<2"
-        data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"","0","10")
-        print(data4)
+#         column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
+#         WhereCondition2= " and Status<2"
+#         data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"","0","10")
+#         print(data4)
 
-        if data4["result"]=="":
-            data4["result"]=[]
+#         if data4["result"]=="":
+#             data4["result"]=[]
 
-        for m in data4['result']:
-                if m['imagePath']!='':
-                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
-                if  m['videoPath']!="":
-                    y=m['videoPath'].split('=')
-                    print(y,'++++++')
-                    m['videoId']=y[1]
+#         for m in data4['result']:
+#                 if m['imagePath']!='':
+#                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+#                 if  m['videoPath']!="":
+#                     y=m['videoPath'].split('=')
+#                     print(y,'++++++')
+#                     m['videoId']=y[1]
             
-        column5 = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-        data5 = databasefile.SelectQueryOrderby("promissingIntiatives",column5,WhereCondition,"","0","10",orderby)
-        if data5["result"]=="":
-            data5["result"]=[]
+#         column5 = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+#         data5 = databasefile.SelectQueryOrderby("promissingIntiatives",column5,WhereCondition,"","0","10",orderby)
+#         if data5["result"]=="":
+#             data5["result"]=[]
 
 
             
@@ -5354,16 +5355,16 @@ def landingPageDashboard():
        
 
 
-        if data != "0":
+#         if data != "0":
             
-            return {"message":"","status":"true","promissingIntiatives":data5["result"],"news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"]}
+#             return {"message":"","status":"true","promissingIntiatives":data5["result"],"news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"]}
             
-        else:
-            return commonfile.Errormessage()
+#         else:
+#             return commonfile.Errormessage()
 
-    except Exception as e :
-        print("Exception--->" + str(e))                                  
-        return commonfile.Errormessage()
+#     except Exception as e :
+#         print("Exception--->" + str(e))                                  
+#         return commonfile.Errormessage()
 
 
 
@@ -5406,7 +5407,7 @@ def landingPageDashboardtest():
                     if inputdata['userTypeId'] != "":
                         userTypeId =inputdata["userTypeId"]
                         WhereCondition=WhereCondition+" and  userTypeId=0  or userTypeId='"+str(userTypeId)+"'"
-                        column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
+                        column1 = "id,Status,UserCreate,title,summary,videoLink, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath  "
                         data1 = databasefile.SelectQueryOrderby("announcement",column1,WhereCondition,"",startlimit,endlimit,orderby)
                         print(data1,"")
                         
@@ -5422,13 +5423,13 @@ def landingPageDashboardtest():
             if key ==2:
 
                 if "userTypeId" not in inputdata:
-                    column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+                    column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
                     data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","3",orderby)
                     if data["result"]=="":
                         data["result"]=[]
                 else :
-                    column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-                    data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","10",orderby)
+                    column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+                    data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"",startlimit,endlimit,orderby)
                     if data["result"]=="":
                         data["result"]=[]
                 data22={"result":{"headline":data['result'][0],"news":data['result'][1:]},"status":"true","message":""}
@@ -5438,8 +5439,8 @@ def landingPageDashboardtest():
 
         
 
-                column2 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
-                data2 = databasefile.SelectQueryOrderby("gallery",column2,"","","0","10",orderby)
+                column2 = "id,Status,UserCreate, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+                data2 = databasefile.SelectQueryOrderby("gallery",column2,"","",startlimit,endlimit,orderby)
                 
                 if data2["result"]=="":
                     data2["result"]=[]
@@ -5451,8 +5452,8 @@ def landingPageDashboardtest():
 
                 print("1111----")
                 WhereCondition229=" and ev.Status<2 and  ev.userTypeId=0  or ev.userTypeId='"+str(userTypeId)+"'"
-                column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(ev.eventDate,'%Y-%m-%d %H:%i:%s')eventDate, date_format(ev.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-                data3 = databasefile.SelectQueryOrderby("parliamentEvent ev ",column3,WhereCondition229,"","0","10",orderby)
+                column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(CONVERT_TZ(ev.eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(ev.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+                data3 = databasefile.SelectQueryOrderby("parliamentEvent ev ",column3,WhereCondition229,"",startlimit,endlimit,orderby)
                 
                 if data3["result"]=="":
                     data3["result"]=[]
@@ -5481,7 +5482,7 @@ def landingPageDashboardtest():
 
                 column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
                 WhereCondition2= " and Status<2"
-                data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"","0","10")
+                data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"",startlimit,endlimit)
                 print(data4)
 
                 if data4["result"]=="":
@@ -5502,8 +5503,8 @@ def landingPageDashboardtest():
 
 
                     
-                column5 = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
-                data5 = databasefile.SelectQueryOrderby("promissingIntiatives",column5,WhereCondition,"","0","10",orderby)
+                column5 = "id,Status,UserCreate,newsTitle,summary,newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+                data5 = databasefile.SelectQueryOrderby("promissingIntiatives",column5,WhereCondition,"",startlimit,endlimit,orderby)
                 if data5["result"]=="":
                     data5["result"]=[]
 
@@ -5515,8 +5516,8 @@ def landingPageDashboardtest():
 
 
                     
-                column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
-                data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"","0","10",orderby)
+                column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
+                data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"",startlimit,endlimit,orderby)
                 if data6["result"]=="":
                     data6["result"]=[]
 
@@ -5562,8 +5563,8 @@ def landingPageDashboardtest():
 
 
                     
-                column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(mi.DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
-                data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition229,"","0","10",orderby)
+                column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
+                data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition229,"",startlimit,endlimit,orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
                 for i in data7['result']:
@@ -5584,8 +5585,8 @@ def landingPageDashboardtest():
                 return data22
             if key ==9:
 
-                column99 = "id,Status,UserCreate, date_format(DateCreate,'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
-                data99 = databasefile.SelectQueryOrderby("ourPartners",column99,"","","0","10",orderby)
+                column99 = "id,Status,UserCreate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+                data99 = databasefile.SelectQueryOrderby("ourPartners",column99,"","",startlimit,endlimit,orderby)
                 
                 if data99["result"]=="":
                     data99["result"]=[]
