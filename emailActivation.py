@@ -99,7 +99,7 @@ frugal innovations. Conferences and summits are not enough, we need a strong <br
 platform that will address the pathways to create quality and affordable <br>\
 healthcare with entrepreneurs in a selected gathering of leaders with complementary<br>\
 skills. MedParliament is the launch of interactive platform that<br>\
-facilitates the globalization and transformation of healthcare.<br><br>\
+facilitates the globalization and transformation of healthcare.<br><br><br>\
 <strong>The Intention</strong><br>\
 <br>What it means to be a healthcare practitioner in 2020 is vastly different<br>\
 to what it will be in 2025, let alone to how it was in 2010.<br>\
