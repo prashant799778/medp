@@ -87,9 +87,9 @@ def getactivationmailforDoctor(userName):#userName, link
              </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
                <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
-               <p style="margin: 0">Hello Dr. ' + str(userName) + '<br>Congratulations! Your account has been activated successfully </strong> <br> <br>\
-               <strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
-               of Healthcare Leadership. </strong><br><br>Today, the nature of healthcare is very dynamic, global and interactive. This is era of <br>\
+               <p style="margin: 0"><h4 style="margin: 0">Hello Dr. ' + str(userName) + '</h4><br>Congratulations! Your account has been activated successfully </strong> <br> <br>\
+              <strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
+               of Healthcare Leadership.<br> </strong><br>Today, the nature of healthcare is very dynamic, global and interactive. This is era of <br>\
 genomics, personalized medicine, hospitals with hospitality, artificial intelligence, <br>\
 wearable devices and IoT. We at MedAchievers with our strong international<br>\
 presence since 2014, including in India, Australia, USA, UK, Israel and Singapore<br>\
@@ -99,7 +99,7 @@ frugal innovations. Conferences and summits are not enough, we need a strong <br
 platform that will address the pathways to create quality and affordable <br>\
 healthcare with entrepreneurs in a selected gathering of leaders with complementary<br>\
 skills. MedParliament is the launch of interactive platform that<br>\
-facilitates the globalization and transformation of healthcare.<br><br><br>\
+facilitates the globalization and transformation of healthcare.<br><br>\
 <strong>The Intention</strong><br>\
 <br>What it means to be a healthcare practitioner in 2020 is vastly different<br>\
 to what it will be in 2025, let alone to how it was in 2010.<br>\
@@ -108,7 +108,7 @@ must evolve and should allow them to get exposed to needed technology<br>\
 and apply the same in their practice. Moreover, the support for those <br>\
 already in the medical sciences as business owners, policy makers, academics<br>\
 and employees must become more robust. MedParliament is the coming together <br>\
-of our industry to achieve that end. <br>\
+of our industry to achieve that end.</p> <br>\
 <strong>The Process</strong><br><br>\
 MedParliament addresses each of the critical areas associated with medical sciences,<br>\
  healthcare practice and management. With emerging trends highlighted, new opportunities<br>\
@@ -125,21 +125,22 @@ has become truly global. Top minds and leaders are gathering through the platfor
 draw common solutions and methods for improved healthcare delivery, more fruitful <br>\
 transactions and enhanced skilling opportunities. A glittery constellation of Ministers, <br>\
 Diplomats, Healthcare CEOs, Research and tech titans, venture capitalists from different <br>\
-parts of the globe are now sharing deeper ways of collaboration and Transaction.<br><br>\
-<strong style="text-align: left;">WHAT DO WE HAVE FOR YOU?</strong><br><br>\
-<p style="text-align: left;padding: 0 30px">We look forward to your views and insights on the healthcare industry and all of the<br> \
+parts of the globe are now sharing deeper ways of collaboration and Transaction.<br>\
+<h4 style="text-align: left;padding: 0 30px">WHAT DO WE HAVE FOR YOU?</h4>\
+<p style="text-align: left;padding: 0 30px; margin: 0;">We look forward to your views and insights on the healthcare industry and all of the<br>\
 industries which intersect with it. Do take the time to browse our app for the latest <br>\
 healthcare news and dedicated healthcare related content including videos and events.<br>\
-As a MedParliamentarian, you are able to engage with the community in a variety of ways. Some of these include:<br>\
-<ul>\
-<li style="margin-left: 10px;">• Commenting on recent healthcare news inside our app</li>\
-<li style="margin-left: 10px;">• Submitting any requirements you have to help improve healthcare</li>\
-<li style="margin-left: 10px;">• Attending our exclusive events around India and abroad</li>\
+As a MedParliamentarian, you are able to engage with the community in a variety of <br>\
+ways. Some of these include:</p>\
+<ul style="text-align: left; margin: 0;">\
+<li style="margin-left: 10px;">Commenting on recent healthcare news inside our app</li>\
+<li style="margin-left: 10px;">Submitting any requirements you have to help improve healthcare</li>\
+<li style="margin-left: 10px;">Attending our exclusive events around India and abroad</li>\
 </ul>\
-We are excited for your contributions and supporting you in promoting your voice in healthcare.\
- Do feel free to contact us at anytime.</p><br><br><br>\
+<p style="text-align: left;padding: 0 30px; margin: 0;">We are excited for your contributions and supporting you in promoting your voice in<br>\
+     healthcare. Do feel free to contact us at anytime.<br><br>\
 THANKS & REGARDS<br>\
-TEAM MEDPARLIAMENT<br></body>'
+TEAM MEDPARLIAMENT<br></p> </body>'
 
 
 
