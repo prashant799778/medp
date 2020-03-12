@@ -17,7 +17,7 @@ def getactivationmail(userName):#userName, link
                <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
                <p style="margin: 0">Hello Mr. ' + str(userName) + '<br>Congratulations! Your account has been activated successfully </strong> <br> <br>\
               <strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
-               of Healthcare Leadership. </strong><br>Today, the nature of healthcare is very dynamic, global and interactive. This is era of <br>\
+               of Healthcare Leadership.<br> </strong><br>Today, the nature of healthcare is very dynamic, global and interactive. This is era of <br>\
 genomics, personalized medicine, hospitals with hospitality, artificial intelligence, <br>\
 wearable devices and IoT. We at MedAchievers with our strong international<br>\
 presence since 2014, including in India, Australia, USA, UK, Israel and Singapore<br>\
@@ -27,7 +27,7 @@ frugal innovations. Conferences and summits are not enough, we need a strong <br
 platform that will address the pathways to create quality and affordable <br>\
 healthcare with entrepreneurs in a selected gathering of leaders with complementary<br>\
 skills. MedParliament is the launch of interactive platform that<br>\
-facilitates the globalization and transformation of healthcare.<br>\
+facilitates the globalization and transformation of healthcare.<br><br>\
 <strong>The Intention</strong><br>\
 <br>What it means to be a healthcare practitioner in 2020 is vastly different<br>\
 to what it will be in 2025, let alone to how it was in 2010.<br>\
@@ -59,7 +59,7 @@ parts of the globe are now sharing deeper ways of collaboration and Transaction.
 industries which intersect with it. Do take the time to browse our app for the latest <br>\
 healthcare news and dedicated healthcare related content including videos and events.<br>\
 As a MedParliamentarian, you are able to engage with the community in a variety of <br>\
-ways. Some of these include:</p><br>\
+ways. Some of these include:</p>\
 <ul style="text-align: left; margin: 0;">\
 <li style="margin-left: 10px;">Commenting on recent healthcare news inside our app</li>\
 <li style="margin-left: 10px;">Submitting any requirements you have to help improve healthcare</li>\
