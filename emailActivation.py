@@ -17,7 +17,7 @@ def getactivationmail(userName):#userName, link
                <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
                <p style="margin: 0">Hello Mr. ' + str(userName) + '<br>Congratulations! Your account has been activated successfully </strong> <br> <br>\
               <strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
-               of Healthcare Leadership. </strong><br><br><p style="text-align: left;">Today, the nature of healthcare is very dynamic, global and interactive. This is era of <br>\
+               of Healthcare Leadership. </strong><br><br><p style="text-align: left;padding: 0 20px">Today, the nature of healthcare is very dynamic, global and interactive. This is era of <br>\
 genomics, personalized medicine, hospitals with hospitality, artificial intelligence, <br>\
 wearable devices and IoT. We at MedAchievers with our strong international<br>\
 presence since 2014, including in India, Australia, USA, UK, Israel and Singapore<br>\
@@ -29,7 +29,7 @@ healthcare with entrepreneurs in a selected gathering of leaders with complement
 skills. MedParliament is the launch of interactive platform that<br>\
 facilitates the globalization and transformation of healthcare.</p><br><br>\
 <strong>The Intention</strong><br>\
-<br><p style="text-align: left;">What it means to be a healthcare practitioner in 2020 is vastly different<br>\
+<br><p style="text-align: left;padding: 0 20px">What it means to be a healthcare practitioner in 2020 is vastly different<br>\
 to what it will be in 2025, let alone to how it was in 2010.<br>\
 Training and skilling opportunities for healthcare professionals <br>\
 must evolve and should allow them to get exposed to needed technology<br>\
@@ -38,7 +38,7 @@ already in the medical sciences as business owners, policy makers, academics<br>
 and employees must become more robust. MedParliament is the coming together <br>\
 of our industry to achieve that end.</p> <br>\
 <strong>The Process</strong><br><br>\
-<p style="text-align: left;">MedParliament addresses each of the critical areas associated with medical sciences,<br>\
+<p style="text-align: left;padding: 0 20px">MedParliament addresses each of the critical areas associated with medical sciences,<br>\
  healthcare practice and management. With emerging trends highlighted, new opportunities<br>\
  presented and practical information passed on from the leaders shaping healthcare in <br>\
 India and around the world, Medparliament is the premier platform for collaboration.<br>\
@@ -55,7 +55,7 @@ transactions and enhanced skilling opportunities. A glittery constellation of Mi
 Diplomats, Healthcare CEOs, Research and tech titans, venture capitalists from different <br>\
 parts of the globe are now sharing deeper ways of collaboration and Transaction.</p><br><br>\
 <strong>WHAT DO WE HAVE FOR YOU?</strong><br><br>\
-<p style="text-align: left;">We look forward to your views and insights on the healthcare industry and all of the<br> \
+<p style="text-align: left;padding: 0 20px">We look forward to your views and insights on the healthcare industry and all of the<br> \
 industries which intersect with it. Do take the time to browse our app for the latest <br>\
 healthcare news and dedicated healthcare related content including videos and events.<br>\
 As a MedParliamentarian, you are able to engage with the community in a variety of ways. Some of these include:<br>\
