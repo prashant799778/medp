@@ -21,7 +21,7 @@ from sendgrid.helpers.mail import Mail
 import re
 from emailActivation import getactivationmail,getactivationmailforDoctor,getactivationmailforDecisionMaker ,\
     getactivationmailforStudent
-
+import razorpay
 
 from flask import Flask, render_template
 app = Flask(__name__)
@@ -7483,6 +7483,46 @@ def deleteUserContent():
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()        
+
+
+
+
+@app.route('/generateOrder', methods=['POST'])
+def generateOrder():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['order_amount',"userId"]
+        order_currency = 'INR'
+        print(inputdata,"B")
+        commonfile.writeLog("generateOrder",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        order_receipt = 'order_rcptid_11'
+        notes = {'Shipping address': 'Bommanahalli, Bangalore'}   # OPTIONAL
+
+        if msg =="1":
+            order_amount=inputdata["order_amount"]
+            userId=inputdata["userId"]
+            client = razorpay.Client(auth=("rzp_live_OsvYv63WTYaI4c", "hYnMMNEGGKXVEwcWtTa2ABUD"))
+            clientId=client.order.create(amount=order_amount, currency=order_currency, receipt=order_receipt, notes=notes, payment_capture='0')
+       
+            if clientId:
+                Data = {"status":"true","message":"","result":clientId}                  
+                return Data
+            else:
+                return {"status":"false","message":"Invalid Email","result":""}  
+        else:
+            return msg         
+ 
+    except KeyError :
+        print("Key Exception---->")   
+        output = {"result":"key error","status":"false"}
+        return output  
+
+    except Exception as e :
+        print("Exceptio`121QWAaUJIHUJG n---->" +str(e))    
+        output = {"result":"somthing went wrong","status":"false"}
+        return output
 
 
 
