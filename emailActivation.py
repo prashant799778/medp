@@ -279,17 +279,18 @@ draw common solutions and methods for improved healthcare delivery, more fruitfu
 transactions and enhanced skilling opportunities. A glittery constellation of Ministers, <br>\
 Diplomats, Healthcare CEOs, Research and tech titans, venture capitalists from different <br>\
 parts of the globe are now sharing deeper ways of collaboration and Transaction.<br><br>\
-<strong>YOUR BENEFITS </strong><br><br>\
-As a Member of MedParliament, you are able to engage with the community in a <br> \
-variety of ways. Some of these include: <br>\
-    •	Commenting on recent market insights that helps you to interact deeper with the community. <br>\
-    •	Connecting to leaders of healthcare through our customized administrative  <br>\
-        engine that manages privacy of the query and also facilitates the communication. <br>\
-    •	Attending our exclusive events around India and abroad. <br>\
-    •	Opportunity to get exposed to upskilling and continuous education option at global scale. <br>\
-    •	Opportunity to join industrial training on specific technology in healthcare, research, management and leadership. <br>\
-We eagerly await your contributions to this forum for leaders and supporting you in \
+<h4 style="text-align: left; padding: 0 20px;">YOUR BENEFITS </h4>\
+<p style="text-align: left;padding: 0 30px; margin: 0;">As a Member of MedParliament, you are able to engage with the community in a <br> \
+variety of ways. Some of these include:</p>\
+<ul style="text-align: left; margin: 0;">\
+    <li style="margin-left: 10px;">Commenting on recent market insights that helps you to interact deeper with the community.</li>\
+    <li style="margin-left: 10px;">Connecting to leaders of healthcare through our customized administrative engine that manages privacy of the query and also facilitates the communication.</li>\
+    <li style="margin-left: 10px;">Attending our exclusive events around India and abroad.</li>\
+    <li style="margin-left: 10px;">Opportunity to get exposed to upskilling and continuous education option at global scale.</li>\
+    <li style="margin-left: 10px;">Opportunity to join industrial training on specific technology in healthcare, research, management and leadership.</li>\
+</ul>\
+<p style="text-align: left;padding: 0 30px; margin: 0;">We eagerly await your contributions to this forum for leaders and supporting you in \
 promoting your perspectives on healthcare related matters. Do feel free to contact us <br>\
 at anytime.<br><br>\
 THANKS & REGARDS<br>\
-TEAM MEDPARLIAMENT<br></body>'
+TEAM MEDPARLIAMENT</p></body>'
