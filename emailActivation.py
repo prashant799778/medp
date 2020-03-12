@@ -105,11 +105,11 @@ must evolve and should allow them to get exposed to needed technology<br>\
 and apply the same in their practice. Moreover, the support for those <br>\
 already in the medical sciences as business owners, policy makers, academics<br>\
 and employees must become more robust. MedParliament is the coming together <br>\
-of our industry to achieve that end. <br>\
+of our industry to achieve that end. <br><br>\
 <strong>The Process</strong><br><br>\
 MedParliament addresses each of the critical areas associated with medical sciences,<br>\
- healthcare practice and management. With emerging trends highlighted, new opportunities<br>\
- presented and practical information passed on from the leaders shaping healthcare in <br>\
+healthcare practice and management. With emerging trends highlighted, new opportunities<br>\
+presented and practical information passed on from the leaders shaping healthcare in <br>\
 India and around the world, Medparliament is the premier platform for collaboration.<br>\
 Our Medparliamentarians include healthcare professionals, clinicians, senior management <br>\
 of businesses related to healthcare, education organisations, funds, investors, government<br>\
@@ -128,9 +128,9 @@ We look forward to your views and insights on the healthcare industry and all of
 industries which intersect with it. Do take the time to browse our app for the latest <br>\
 healthcare news and dedicated healthcare related content including videos and events.<br>\
 As a MedParliamentarian, you are able to engage with the community in a variety of ways. Some of these include:<br>\
-•	Commenting on recent healthcare news inside our app<br>\
-•	Submitting any requirements you have to help improve healthcare<br>\
-•	Attending our exclusive events around India and abroad<br>\
+    •	Commenting on recent healthcare news inside our app<br>\
+    •	Submitting any requirements you have to help improve healthcare<br>\
+    •	Attending our exclusive events around India and abroad<br>\
 We are excited for your contributions and supporting you in promoting your voice in healthcare.\
  Do feel free to contact us at anytime.<br><br><br>\
 THANKS & REGARDS<br>\
@@ -178,11 +178,11 @@ must evolve and should allow them to get exposed to needed technology<br>\
 and apply the same in their practice. Moreover, the support for those <br>\
 already in the medical sciences as business owners, policy makers, academics<br>\
 and employees must become more robust. MedParliament is the coming together <br>\
-of our industry to achieve that end. <br>\
+of our industry to achieve that end. <br><br>\
 <strong>The Process</strong><br><br>\
 MedParliament addresses each of the critical areas associated with medical sciences,<br>\
- healthcare practice and management. With emerging trends highlighted, new opportunities<br>\
- presented and practical information passed on from the leaders shaping healthcare in <br>\
+healthcare practice and management. With emerging trends highlighted, new opportunities<br>\
+presented and practical information passed on from the leaders shaping healthcare in <br>\
 India and around the world, Medparliament is the premier platform for collaboration.<br>\
 Our Medparliamentarians include healthcare professionals, clinicians, senior management <br>\
 of businesses related to healthcare, education organisations, funds, investors, government<br>\
@@ -253,11 +253,11 @@ must evolve and should allow them to get exposed to needed technology<br>\
 and apply the same in their practice. Moreover, the support for those <br>\
 already in the medical sciences as business owners, policy makers, academics<br>\
 and employees must become more robust. MedParliament is the coming together <br>\
-of our industry to achieve that end. <br>\
+of our industry to achieve that end. <br><br>\
 <strong>The Process</strong><br><br>\
 MedParliament addresses each of the critical areas associated with medical sciences,<br>\
- healthcare practice and management. With emerging trends highlighted, new opportunities<br>\
- presented and practical information passed on from the leaders shaping healthcare in <br>\
+healthcare practice and management. With emerging trends highlighted, new opportunities<br>\
+presented and practical information passed on from the leaders shaping healthcare in <br>\
 India and around the world, Medparliament is the premier platform for collaboration.<br>\
 Our Medparliamentarians include healthcare professionals, clinicians, senior management <br>\
 of businesses related to healthcare, education organisations, funds, investors, government<br>\
