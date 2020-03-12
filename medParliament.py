@@ -7498,7 +7498,7 @@ def generateOtp():
         order_receipt = 'order_rcptid_11'
         notes = {'Shipping address': 'Bommanahalli, Bangalore'}   # OPTIONAL
 
-         if msg =="1":
+        if msg =="1":
             order_amount=inputdata["order_amount"]
             userId=inputdata["userId"]
             client = razorpay.Client(auth=("<YOUR_KEY>", "<YOUR_SECRET>"))
