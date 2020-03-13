@@ -7928,7 +7928,9 @@ def ourPartners155():
                 if "userId" in inputdata:
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
-                    for i in l2:    
+                    for i in l2:
+                        print(i,"++++++++++++++++++")
+
                         column = " imagePath,UserCreate"
                         values = " '"+ str(i)+ "','" + str(userId) + "'"
                         data = databasefile.InsertQuery("ourPartners",column,values)
