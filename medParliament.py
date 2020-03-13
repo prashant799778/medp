@@ -7941,7 +7941,7 @@ def ourPartners155():
                         column = " imagePath,UserCreate"
                         values = " '"+ str(m)+ "','" + str(userId) + "'"
                         data = databasefile.InsertQuery("ourPartners",column,values)
-                        return data        
+                    return data        
                 else:
                     for i in l2:
                         column = " imagePath "
@@ -7953,13 +7953,7 @@ def ourPartners155():
                 if "status" in inputdata:
                     if inputdata['status'] != "":
                         status =inputdata["status"]
-                # if "userId" in inputdata:
-
-                #     if inputdata['userId'] != "":
-                #         userId =inputdata["userId"]
-                #         whereCondition=" and UserCreate='" + str(userId) + "'"
-                #         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
-                #         data=databasefile.UpdateQuery("gallery",column,whereCondition)
+               
                 if "id" in inputdata:
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
