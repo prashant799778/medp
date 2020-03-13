@@ -7905,7 +7905,7 @@ def ourPartners155():
             fileCount=int(file_Count)
             imagelist=[]
             l2=[]
-            if fileCount!=0 and file_Count == "":
+            if fileCount!=0:
                 for ll in range(fileCount):
                     Filename= request.files.get('postImage_'+str(ll+1)+'')        
                     filename = file.filename or ''                 
@@ -7964,8 +7964,7 @@ def ourPartners155():
 
 
 
-            if data !=0 :                
-                return data
+            
             else:
                 return commonfile.Errormessage()
         else:
