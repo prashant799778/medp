@@ -7893,7 +7893,7 @@ def ourPartners155():
         startlimit,endlimit="",""
         keyarr = ["userId","flag"]
         
-        commonfile.writeLog("ourPartners",inputdata,0)
+        commonfile.writeLog("ourPartnersImages1",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             ImagePath=""
@@ -7911,7 +7911,7 @@ def ourPartners155():
                     imagelist.append(filename)
                     for i in imagelist:
                         FolderPath = ConstantData.getourPartners(i)  
-                        filepath = '/ourPartners/' + filename 
+                        filepath = '/ourPartners/' + i
                         l2.append(filepath)   
                         file.save(FolderPath)
                         ImagePath = filepath
