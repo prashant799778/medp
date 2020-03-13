@@ -4739,7 +4739,7 @@ def allMarketingInsightThread():
                         
                 
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":[data1['result'],[data['result']]]}
+                Data = {"status":"true","message":"","result":data1['result']}
                 return Data
             else:
                 output = {"status":"false","message":"No Data Found","result":""}
@@ -5098,7 +5098,7 @@ def allEventThread():
                         
                 
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":[data1['result'],[data['result']]]}
+                Data = {"status":"true","message":"","result":data1['result']}
                 return Data
             else:
                 output = {"status":"false","message":"No Data Found","result":""}
@@ -6752,21 +6752,21 @@ def promisingInitiatives():
                 if inputdata['text'] != "":
                     text =inputdata["text"]
 
+           
             if "videoLink" in inputdata:
                 print("1111111111111111111")
                 if (inputdata['videoLink'] != None) :
                     print("2222222222222222")
                     videoLink =inputdata["videoLink"]
-                    if videoLink[0:24]!="https://www.youtube.com/":
-                        print("3333333333333333333")
+                    if videoLink=="":
                         videoLink=""
                         column=" videoPath,"
-                        values="'" +str(videoLink)+"'"
-
-                        
+                        values="'" +str(videoLink)+"',"
+            
+                      
                     else:
                         column=" videoPath,"
-                        values="'" +str(videoLink)+"'"
+                        values="'" +str(videoLink)+"',"
 
             if 'postImage' in request.files:      
                     file = request.files.get('postImage')        
