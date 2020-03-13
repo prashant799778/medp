@@ -7342,7 +7342,7 @@ def allaboutUs():
 
 
 
-@app.route('/ourPartnersImages', methods=['POST'])
+@app.route('/ourPartnersImages1', methods=['POST'])
 def ourPartners():
     try:
         inputdata = request.form.get('data') 
@@ -8069,7 +8069,7 @@ def landingPageDashboard121():
 
 
 
-@app.route('/ourPartnersImages1', methods=['POST'])
+@app.route('/ourPartnersImages', methods=['POST'])
 def ourPartners155():
     try:
         inputdata = request.form.get('data') 
