@@ -7819,13 +7819,13 @@ def landingPageDashboard121():
             inputdata =  commonfile.DecodeInputdata(request.get_data())
             print(inputdata,"++++++++++++++++++")        
         
-            if "startlimit" in inputdata:
-                if inputdata['startlimit'] != "":
-                    startlimit =str(inputdata["startlimit"])
+            if "startLimit" in inputdata:
+                if inputdata['startLimit'] != "":
+                    startlimit =str(inputdata["startLimit"])
             
-            if "endlimit" in inputdata:
-                if inputdata['endlimit'] != "":
-                    endlimit =str(inputdata["endlimit"])
+            if "endLimit" in inputdata:
+                if inputdata['endLimit'] != "":
+                    endlimit =str(inputdata["endLimit"])
 
             if "dashboardId" in inputdata:
                 if inputdata['dashboardId'] != "":
