@@ -7880,7 +7880,93 @@ def landingPageDashboard121():
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
-        return commonfile.Errormessage()                            
+        return commonfile.Errormessage()
+
+
+
+@app.route('/ourPartnersImages1', methods=['POST'])
+def ourPartners1():
+    try:
+        inputdata = request.form.get('data') 
+
+        inputdata = json.loads(inputdata) 
+        startlimit,endlimit="",""
+        keyarr = ["userId","flag"]
+        
+        commonfile.writeLog("ourPartners",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            ImagePath=""
+            flag=inputdata['flag']
+            file_Count=inputdata['fileCount']
+            fileCount=int(file_Count)
+            imagelist=[]
+            l2=[]
+            if fileCount!=0 and file_Count == "":
+                for ll in range(fileCount):
+                    Filename= request.files.get('postImage_'+str(ll+1)+'')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+                    print(filename)
+                    imagelist.append(filename)
+                    for i in imagelist:
+                        FolderPath = ConstantData.getourPartners(i)  
+                        filepath = '/ourPartners/' + filename 
+                        l2.append(filepath)   
+                        file.save(FolderPath)
+                        ImagePath = filepath
+           
+            
+            if flag =="i":
+                if "userId" in inputdata:
+                    if inputdata['userId'] != "":
+                        userId =inputdata["userId"]
+                    for i in l2:    
+                        column = " imagePath,UserCreate"
+                        values = " '"+ str(i)+ "','" + str(userId) + "'"
+                        data = databasefile.InsertQuery("ourPartners",column,values)        
+                else:
+                    column = " imagePath "
+                    values = " '"+ str(ImagePath)+  "'"
+                    data = databasefile.InsertQuery("ourPartners",column,values)
+            if flag =="u":
+                
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status =inputdata["status"]
+                # if "userId" in inputdata:
+
+                #     if inputdata['userId'] != "":
+                #         userId =inputdata["userId"]
+                #         whereCondition=" and UserCreate='" + str(userId) + "'"
+                #         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
+                #         data=databasefile.UpdateQuery("gallery",column,whereCondition)
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        inputdata1 = request.form.get('postImage')
+                        print(inputdata1,"==========================================")
+                        if  inputdata1 !=None: 
+                            index=re.search("/ourPartners", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
+                        whereCondition=" and  id='" + str(Id) + "'"
+                        column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
+                        data=databasefile.UpdateQuery("ourPartners",column,whereCondition)
+
+
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()                                     
 
 
 
