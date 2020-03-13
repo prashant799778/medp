@@ -7930,7 +7930,12 @@ def ourPartners155():
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
                     print(l2,"@@@@@@@@@@@@@@@@2")
+                    l1=[]
                     for m in l2:
+                        for m in l1:
+                            if m not in l1:
+                                l1.append(m)
+                                print(l1,"+++132wswew")
                         print(m,"++++++++++++++++++")
 
                         column = " imagePath,UserCreate"
