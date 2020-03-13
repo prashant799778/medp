@@ -8089,7 +8089,7 @@ def landingPageDashboard12():
         for m in data2['result']:
                 if m['imagePath']!=None or  m['imagePath']!="" :
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
-                if  m['videoLink']!=None:
+                if  m['videoLink']!=None or  m['videoLink']!="":
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
                     m['videoId']=y[1]
