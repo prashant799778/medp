@@ -7908,7 +7908,7 @@ def ourPartners155():
             if fileCount!=0:
                 for ll in range(fileCount):
                     Filename= request.files.get('postImage_'+str(ll+1)+'')        
-                    filename = file.filename or ''                 
+                    filename = Filename.filename or ''                 
                     filename = filename.replace("'","") 
                     print(filename)
                     imagelist.append(filename)
