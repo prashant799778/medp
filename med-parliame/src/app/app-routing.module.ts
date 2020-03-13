@@ -53,6 +53,8 @@ import { EditParterComponent } from './our-partner/edit-parter/edit-parter.compo
 import { ViewParterComponent } from './our-partner/view-parter/view-parter.component';
 import { ViewContentComponent } from './user-content/view-content/view-content.component';
 import { EditContentComponent } from './user-content/edit-content/edit-content.component';
+import { CreateOperationAdminComponent } from './operation-admin/create-operation-admin/create-operation-admin.component';
+import { EditOperationAdminComponent } from './operation-admin/edit-operation-admin/edit-operation-admin.component';
 
 
 
@@ -264,6 +266,28 @@ const routes: Routes = [
       {
         path:'editContent',
         component: EditContentComponent,
+        canActivate: [AuthGuard],
+    },
+    
+  
+    
+      
+  ]
+  },
+
+
+  { path: 'operationDashboard', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/operationDashboard/createOperationDashboard',pathMatch:'full'}, 
+   
+       {
+          path:'createOperationDashboard',
+          component: CreateOperationAdminComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editOperationDashboard',
+        component: EditOperationAdminComponent,
         canActivate: [AuthGuard],
     },
     

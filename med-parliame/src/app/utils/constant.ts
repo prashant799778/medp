@@ -79,7 +79,7 @@ export class AppSettings {
     public static getuserContent = 'getuserContent';
     public static usersContent = 'usersContent';
     public static deleteUserContent = 'deleteUserContent';
-    
+    public static dashboard = 'dashboard';
     
     
 

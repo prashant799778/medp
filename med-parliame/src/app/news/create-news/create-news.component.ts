@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
@@ -12,6 +12,17 @@ declare var jQuery: any;
   styleUrls: ['./create-news.component.css']
 })
 export class CreateNewsComponent implements OnInit {
+
+  percentDone: number;
+  uploadSuccess: boolean;
+  size:any;
+  width:number;
+  height:number;
+  errorImage: boolean
+  imageClick: boolean;
+
+  @ViewChild('coverFilesInput', {static: false}) imgType:ElementRef;
+
   data: [];
   httpError: boolean;
   userTypeDetails= []
@@ -94,6 +105,7 @@ export class CreateNewsComponent implements OnInit {
       userCreate: [''],
       userTypeId: ['',Validators.required],
       id: [''],
+      videoLink: ['']
       
     });
     this.frmNews.valueChanges.subscribe(()=>{
@@ -117,10 +129,63 @@ export class CreateNewsComponent implements OnInit {
       }
       
     }
+    let image:any = event.target.files[0];
+    console.log(image)
+          this.size = image.size;
+          console.log(this.size)
+          let fr = new FileReader;
+          console.log(fr)
+          fr.onload = () => { // when file has loaded
+            console.log("hello")
+            let img = new Image()
+           console.log(img)
+       
+           img.onload = () => {
+             console.log(img.width)
+               this.width = img.width;
+              //  console.log(this.width)
+               this.height = img.height;
+               let rat = this.gcds(this.width,this.height)
+                if(rat == '4:3'){
+                  this.errorImage = false;
+                }else{
+                  this.errorImage = true;
+                  this.imageShow = ''
+                }
+           };
+           const csv = fr.result;
+           if(typeof csv == 'string'){
+            img.src = csv
+           }
+      }
+      
+      fr.readAsDataURL(image);
+      this.imgType.nativeElement.value = "";
     
     
  
   }
+  imageCLik1(){
+    this.imageShow = '';
+    this.imageClick = true
+  }
+  imageCLik(){
+    this.imageClick = false
+  }
+
+  gcds(num_1,num_2){
+    for(let num=num_2; num>1; num--) {
+      if((num_1 % num) == 0 && (num_2 % num) == 0) {
+          num_1=num_1/num;
+          num_2=num_2/num;
+      }
+  }
+  var ratio = num_1+":"+num_2;
+  return ratio;
+}
+ 
+
+
   UpdateNews(){
     if(this.frmNews.valid){
       console.log(this.frmNews.value)
@@ -134,7 +199,8 @@ export class CreateNewsComponent implements OnInit {
       userTypeId: this.frmNews.get('userTypeId').value,
       flag: 'u',
       id: this.frmNews.get('id').value,
-      status: 1
+      status: 1,
+      videoLink: this.frmNews.get('videoLink').value
     };
 
     const formData = new FormData();
@@ -188,7 +254,8 @@ export class CreateNewsComponent implements OnInit {
         newsDesc: this.frmNews.get('newsDesc').value,
         UserId : this.frmNews.get('userCreate').value,
         userTypeId: this.frmNews.get('userTypeId').value,
-        flag: 'i'
+        flag: 'i',
+        videoLink: this.frmNews.get('videoLink').value
       };
   
       const formData = new FormData();
@@ -267,6 +334,8 @@ export class CreateNewsComponent implements OnInit {
     this.frmNews.get('summary').setValue(this.newsDetails[0]['summary']);
     this.frmNews.get('newsDesc').setValue(this.newsDetails[0]['newsDesc']);
     this.frmNews.get('id').setValue(this.newsDetails[0]['id']);
+    this.frmNews.get('videoLink').setValue(this.newsDetails[0]['videoLink']);
+
     // this.frmNews.get('status').setValue(this.newsDetails[0]['newsDesc']);
     // if(this.userTypeDetails){
     //   this.userTypeDetails.forEach(resp=>{

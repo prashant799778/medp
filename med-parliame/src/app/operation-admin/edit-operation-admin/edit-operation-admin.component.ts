@@ -1,33 +1,31 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
-import { Observable } from 'rxjs';
 declare var jQuery: any;
 
 @Component({
-  selector: 'app-view-parter',
-  templateUrl: './view-parter.component.html',
-  styleUrls: ['./view-parter.component.css']
+  selector: 'app-edit-operation-admin',
+  templateUrl: './edit-operation-admin.component.html',
+  styleUrls: ['./edit-operation-admin.component.css']
 })
-export class ViewParterComponent implements OnInit {
+export class EditOperationAdminComponent implements OnInit {
 
   percentDone: number;
   uploadSuccess: boolean;
   size:any;
   width:number;
   height:number;
-  errorImage=[];
-  showAddButton: boolean;
+  errorImage: boolean
   @ViewChild('coverFilesInput', {static: false}) imgType:ElementRef;
 
 
-  bannerArray=[];
   data: [];
   httpError: boolean;
+  imageClick: boolean;
   userTypeDetails= []
   errorMsg: any;
   newsDetails : any;
@@ -35,9 +33,8 @@ export class ViewParterComponent implements OnInit {
   categoryList: [];
   htmlContent = '';
   newsId: number;
-  file=[];
-  imageShow= [];
-  banner: FormArray;
+  file: any;
+  imageShow: any= '';
   messageShow: any;
   showBanner: number;
   updateCheck: Boolean;
@@ -73,14 +70,7 @@ export class ViewParterComponent implements OnInit {
     this.updateCheck =false;
    }
 
-   Addmore(){
-     this.bannerArray.push('')
-     this.banArr()
-    //  this.addItem()
-     console.log(this.frmNews)
-   }
    ngOnInit() {
-     this.Addmore()
     console.log("step 1")
     this.route.queryParams.subscribe(params => {
       console.log(params);
@@ -110,68 +100,29 @@ export class ViewParterComponent implements OnInit {
     this.frmNews = this.fb.group({
       // newsType: [''],
       // newsTitle: [''],
-      banner: this.fb.array([]),
+      banner: [''],
       id:[''],
       // summary: [''],
       // newsDesc: [''],
       userCreate: [''],
+      videoLink: ['']
       // userTypeId: ['']
     });
-    
   }
 
-  banArr(){
-    return this.fb.group({
-      imga: ['']
-    })
-  }
-  createItem(): FormGroup {
-    return this.fb.group({
-      imga: ''
-    });
-  }
-  
-
-  addItem(): void {
-    this.banner = this.frmNews.get('banner') as FormArray;
-    this.banner.push(this.createItem());
-  }
-
-  onFileSelect(event, index) {
-    console.log(event.target.files.length,index)
+  onFileSelect(event) {
+    console.log(event)
     if(event.type === "change"){
       if (event.target.files.length > 0) {
-        // for (var i = 0; i < index; i++) { 
-          this.file.push(event.target.files[0]);
-          var reader = new FileReader();
-          reader.readAsDataURL(event.target.files[0]);
-          reader.onload = (event) => {
-            this.imageShow[index] = (<FileReader>event.target).result;
-
-            // this.addCreds(this.file[index])
-            console.log("helllllo")
-            for(let i = 0; i< index+1; i++){
-              // this.banArr()
-
-            }
-            this.addItem()
-            // this.addItem()
-            // addItem(): void {
-            //   this.banner = this.frmNews.get('banner') as FormArray;
-            //   this.banner.push(this.createItem());
-            // }
-              console.log(this.frmNews.controls.banner['controls'][index])
-              this.frmNews.controls.banner['controls'][index]['controls']['imga'].patchValue(this.file[index])
-
-            // this.frmNews.get('banner').setValue(this.file[index]);
-            this.showBanner = 0;
-            this.showAddButton = true;
-          }
-        // }
-       
-        // this.file = event.target.files[0];
+        this.file = event.target.files[0];
         // console.log(file);
-        
+        var reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = (event) => {
+          this.imageShow = (<FileReader>event.target).result;
+          this.frmNews.get('banner').setValue(this.file);
+          this.showBanner = 0;
+        }
       }
       
     }
@@ -193,10 +144,10 @@ export class ViewParterComponent implements OnInit {
                this.height = img.height;
                let rat = this.gcds(this.width,this.height)
                 if(rat == '4:3'){
-                  this.errorImage[index] = 0;
+                  this.errorImage = false;
                 }else{
-                  this.errorImage[index] = 1;
-                  this.imageShow = []
+                  this.errorImage = true;
+                  this.imageShow = ''
                 }
            };
            const csv = fr.result;
@@ -221,16 +172,6 @@ export class ViewParterComponent implements OnInit {
     
     
  
-  }
-
-  addCreds(val) {
-    console.log(this.frmNews.controls.banner as FormArray)
-    console.log(typeof( this.frmNews.controls.banner as FormArray))
-    const creds = this.frmNews.controls.banner as FormArray;
-    console.log(creds, typeof creds)
-              creds.push(val);
-
-
   }
 
   gcds(num_1,num_2){
@@ -284,9 +225,9 @@ export class ViewParterComponent implements OnInit {
         },2000)
         this.getUsertype()
         this.updateCheck =false;
-        this.imageShow =[];
+        this.imageShow = '';
         console.log(this.file)
-        this.file = [];
+        this.file = '';
         var elemsss = (<HTMLInputElement>document.getElementById('file12'))
         
         elemsss.value = '';
@@ -299,32 +240,29 @@ export class ViewParterComponent implements OnInit {
   }
 
 
-  submitNews() {
+  changesTabs(){
+    console.log('hello')
+  }
+
+
+  submitNews(id) {
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
       // newsType : this.frmNews.get('newsType').value,
       // newsTitle: this.frmNews.get('newsTitle').value,
-      // summary: this.frmNews.get('summary').value,
-      // newsDesc: this.frmNews.get('newsDesc').value,
-      fileCount: this.imageShow.length,
-      userId : this.frmNews.get('userCreate').value,
+      videoLink: this.frmNews.get('videoLink').value,
+      dashboardId: id, 
+      UserId : this.frmNews.get('userCreate').value,
       flag: 'i'
       // userTypeId: this.frmNews.get('userTypeId').value
     };
 
     const formData = new FormData();
-    for(let i= 1;i<=this.imageShow.length;i++){
-      console.log(this.frmNews.controls.banner['controls'],i)
-      if(this.frmNews.controls.banner['controls'] && this.frmNews.controls.banner['controls'][i-1]){
-        formData.append('postImage_'+i, this.frmNews.controls.banner['controls'][i-1]['controls']['imga'].value);
-      }
-      
-    }
-    
+    formData.append('postImage', this.frmNews.get('banner').value);
     formData.append('data', JSON.stringify(newsData));
 
     console.log(formData);
-    this.apiService.dataPostApi(formData, AppSettings.ourPartnersImages).then((data: any[]) => {
+    this.apiService.dataPostApi(formData, AppSettings.dashboard).then((data: any[]) => {
       console.log(data);
       if(data['status'] == 'true'){
         this.frmNews.reset();
@@ -335,9 +273,9 @@ export class ViewParterComponent implements OnInit {
         },2000)
         this.getUsertype()
        
-        this.imageShow = [];
+        this.imageShow = '';
         console.log(this.file)
-        this.file = [];
+        this.file = '';
         var elemsss = (<HTMLInputElement>document.getElementById('file12'))
         
         elemsss.value = '';
@@ -393,4 +331,13 @@ export class ViewParterComponent implements OnInit {
       }
     })
   }
+
+  imageCLik1(){
+    this.imageShow = '';
+    this.imageClick = true
+  }
+  imageCLik(){
+    this.imageClick = false
+  }
+
 }

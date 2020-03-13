@@ -68,12 +68,18 @@
                             </div>
                         <br>
                         <label for="banner">News Banner</label>
-                            <input id="file12" type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
+                            <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                             <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
                                 <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
+                                <div *ngIf="errorImage" class="error">
+                                        <p>Please Upload Image In 4:3</p>
+                                    </div>
                            </div>
                            <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
                             <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
+                            <div *ngIf="errorImage" class="error">
+                                    <p>Please Upload Image In 4:3</p>
+                                </div>
                        </div>
                         <br>
                         <label for="summary">News Summary</label>

@@ -144,7 +144,7 @@ export class ViewContentComponent implements OnInit {
           console.log(fr)
           fr.onload = () => { // when file has loaded
             console.log("hello")
-            var img = new Image();
+            let img = new Image()
            console.log(img)
        
            img.onload = () => {
@@ -160,16 +160,12 @@ export class ViewContentComponent implements OnInit {
                   this.imageShow = ''
                 }
            };
-           img.src = fr.result;
-           
-
-          //  let ratio = Math.(this.width/this.height
-          //  if()
-       
-           
-          
-         
+           const csv = fr.result;
+           if(typeof csv == 'string'){
+            img.src = csv
+           }
       }
+      
       fr.readAsDataURL(image);
       this.imgType.nativeElement.value = "";
     
@@ -178,10 +174,6 @@ export class ViewContentComponent implements OnInit {
   }
 
   gcds(num_1,num_2){
-  
-    // var ratio = a / b;
-    // console.log(Math.abs(ratio))
-    // return ( Math.abs( ratio - 4 / 3 ) < Math.abs( ratio - 16 / 9 ) ) ? '4:3' : '16:9';
     for(let num=num_2; num>1; num--) {
       if((num_1 % num) == 0 && (num_2 % num) == 0) {
           num_1=num_1/num;

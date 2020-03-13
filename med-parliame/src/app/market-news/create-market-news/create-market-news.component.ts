@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
@@ -13,6 +13,16 @@ declare var jQuery: any;
   styleUrls: ['./create-market-news.component.css']
 })
 export class CreateMarketNewsComponent implements OnInit {
+
+  percentDone: number;
+  uploadSuccess: boolean;
+  size:any;
+  width:number;
+  height:number;
+  errorImage: boolean
+
+  @ViewChild('coverFilesInput', {static: false}) imgType:ElementRef;
+
   data: [];
   httpError: boolean;
   userTypeDetails= []
@@ -120,8 +130,54 @@ export class CreateMarketNewsComponent implements OnInit {
     }
     
     
+    let image:any = event.target.files[0];
+    console.log(image)
+          this.size = image.size;
+          console.log(this.size)
+          let fr = new FileReader;
+          console.log(fr)
+          fr.onload = () => { // when file has loaded
+            console.log("hello")
+            let img = new Image()
+           console.log(img)
+       
+           img.onload = () => {
+             console.log(img.width)
+               this.width = img.width;
+              //  console.log(this.width)
+               this.height = img.height;
+               let rat = this.gcds(this.width,this.height)
+                if(rat == '4:3'){
+                  this.errorImage = false;
+                }else{
+                  this.errorImage = true;
+                  this.imageShow = ''
+                }
+           };
+           const csv = fr.result;
+           if(typeof csv == 'string'){
+            img.src = csv
+           }
+      }
+      
+      fr.readAsDataURL(image);
+      this.imgType.nativeElement.value = "";
+    
+    
  
   }
+
+  gcds(num_1,num_2){
+    for(let num=num_2; num>1; num--) {
+      if((num_1 % num) == 0 && (num_2 % num) == 0) {
+          num_1=num_1/num;
+          num_2=num_2/num;
+      }
+  }
+  var ratio = num_1+":"+num_2;
+  return ratio;
+}
+  
   UpdateNews(){
     if(this.frmNews.valid){
       console.log(this.frmNews.value)
