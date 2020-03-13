@@ -7536,7 +7536,7 @@ def dashboard():
         inputdata = request.form.get('data')    
         inputdata = json.loads(inputdata) 
         print("announcements",inputdata)
-        commonfile.writeLog("announcements",inputdata,0)
+        commonfile.writeLog("dashboard",inputdata,0)
         keyarr = ["dashboardId","flag"]           
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         
@@ -7636,7 +7636,7 @@ def dashboard():
     except Exception as e:
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
-        
+
 
 @app.route('/landingPageDashboard2', methods=['POST'])
 def landingPageDashboard12():
@@ -7783,7 +7783,84 @@ def landingPageDashboard12():
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
-        return commonfile.Errormessage()                
+        return commonfile.Errormessage()
+
+
+
+@app.route('/operationAdminDashboard', methods=['POST'])
+def landingPageDashboard121():
+
+    try:
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and status<2"
+        whereCondition2=""
+        startlimit,endlimit="",""
+        
+        data1={"message":"","status":"true","result":[]}
+        orderby=" id "
+        inputdata={}
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())
+            print(inputdata,"++++++++++++++++++")        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+            
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+
+            if "dashboardId" in inputdata:
+                if inputdata['dashboardId'] != "":
+                    dashboardId =str(inputdata["dashboardId"])
+                    WhereCondition=WhereCondition+" and dashboardId='"+str(dashboardId)+"'"
+        
+
+                  
+        
+       
+
+
+        column = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')dateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,videoLink"
+        data = databasefile.SelectQueryOrderby("dashboard ",column, WhereCondition,"",startlimit,endlimit,orderby)
+        coundata=databasefile,SelectQuery4("dashboard",column,WhereCondition)
+        totalcount=len(coundata['result'])
+        if data["result"]=="":
+            data["result"]=[]
+
+        for m in data['result']:
+                if m['imagePath']!='':
+                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+                if  m['videoPath']!="":
+                    y=m['videoPath'].split('=')
+                    print(y,'++++++')
+                    m['videoId']=y[1]
+
+               
+
+        
+
+
+
+            
+
+       
+
+
+        if data != "0":
+            
+            return {"message":"","status":"true","result":data['result'],"totalcount":totalcount}
+            
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()                            
+        
+
+
 
 
 
