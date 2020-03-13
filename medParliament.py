@@ -7936,11 +7936,10 @@ def ourPartners155():
                         if m not in l1:
                             l1.append(m)
                             print(l1,"+++132wswew")
-                        print(m,"++++++++++++++++++")
-
-                        column = " imagePath,UserCreate"
-                        values = " '"+ str(m)+ "','" + str(userId) + "'"
-                        data = databasefile.InsertQuery("ourPartners",column,values)
+                            for j in l1:
+                                column = " imagePath,UserCreate"
+                                values = " '"+ str(j)+ "','" + str(userId) + "'"
+                                data = databasefile.InsertQuery("ourPartners",column,values)
                     return data        
                 else:
                     for i in l2:
