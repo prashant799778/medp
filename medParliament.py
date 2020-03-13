@@ -7908,10 +7908,10 @@ def ourPartners155():
 
             if fileCount!=0:
                 for ll in range(fileCount):
-                    files= request.files.get('postImage_'+str(ll+1)+'')        
-                    filename = files.filename or ''                 
+                    file= request.files.get('postImage_'+str(ll+1)+'')        
+                    filename = file.filename or ''                 
                     filename = filename.replace("'","") 
-                    print(filename)
+                    print(filename,"++++++++++++++=")
                     imagelist.append(filename)
                     for i in imagelist:
                         FolderPath = ConstantData.getourPartners(i)  
