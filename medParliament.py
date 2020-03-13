@@ -7919,27 +7919,28 @@ def ourPartners155():
                         l2.append(filepath)   
                         file.save(FolderPath)
                         ImagePath = filepath
+                        if flag =="i":
+                            print("11was")
+                            if "userId" in inputdata:
+                                if inputdata['userId'] != "":
+                                    userId =inputdata["userId"]
+                                for i in l2:
+                                    print(i,"++++++++++++++++++")
 
-            print(l2)
+                                    column = " imagePath,UserCreate"
+                                    values = " '"+ str(i)+ "','" + str(userId) + "'"
+                                    data = databasefile.InsertQuery("ourPartners",column,values)
+                                    return data        
+                            else:
+                                column = " imagePath "
+                                values = " '"+ str(ImagePath)+  "'"
+                                data = databasefile.InsertQuery("ourPartners",column,values)
+                                return data
+
+            
            
             
-            if flag =="i":
-                print("11was")
-                if "userId" in inputdata:
-                    if inputdata['userId'] != "":
-                        userId =inputdata["userId"]
-                    for i in l2:
-                        print(i,"++++++++++++++++++")
 
-                        column = " imagePath,UserCreate"
-                        values = " '"+ str(i)+ "','" + str(userId) + "'"
-                        data = databasefile.InsertQuery("ourPartners",column,values)
-                        return data        
-                else:
-                    column = " imagePath "
-                    values = " '"+ str(ImagePath)+  "'"
-                    data = databasefile.InsertQuery("ourPartners",column,values)
-                    return data
             if flag =="u":
                 
                 if "status" in inputdata:
