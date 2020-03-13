@@ -7926,7 +7926,7 @@ def ourPartners155():
                                 if inputdata['userId'] != "":
                                     userId =inputdata["userId"]
                                 for i in l2:
-                                print(i,"++++++++++++++++++")
+                                    print(i,"++++++++++++++++++")
 
                                     column = " imagePath,UserCreate"
                                     values = " '"+ str(i)+ "','" + str(userId) + "'"
