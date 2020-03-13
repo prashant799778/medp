@@ -7635,7 +7635,156 @@ def dashboard():
 
     except Exception as e:
         print("Exception--->" + str(e))                                  
-        return commonfile.Errormessage()          
+        return commonfile.Errormessage()
+        
+
+@app.route('/landingPageDashboard2', methods=['POST'])
+def landingPageDashboard12():
+
+    try:
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and status<2"
+        whereCondition2=""
+        startlimit,endlimit="",""
+        
+        data1={"message":"","status":"true","result":[]}
+        orderby=" id "
+        inputdata={}
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())
+            print(inputdata,"++++++++++++++++++")        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+            
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+
+        #marketInsight            
+        
+        whereCondition2=WhereCondition+ " and dashboardId='1' "
+
+
+        column = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')dateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        data = databasefile.SelectQueryOrderby("dashboard ",column,whereCondition2,"","0","10",orderby)
+        if data["result"]=="":
+            data["result"]=[]
+
+        #news    
+
+        whereCondition2=WhereCondition+  " and dashboardId='2' "   
+        
+
+        column2 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        data2 = databasefile.SelectQueryOrderby("dashboard",column2,whereCondition2,"","0","10",orderby)
+        
+        if data2["result"]=="":
+            data2["result"]=[]
+
+        print("1111----")
+
+       
+            
+
+        #event
+        whereCondition2=WhereCondition+ " and dashboardId='5' " 
+        column3 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        data3 = databasefile.SelectQueryOrderby("dashboard ",column3,WhereCondition229,"","0","10",orderby)
+        if data3["result"]=="":
+            data3["result"]=[]
+
+        #medAchieversTv    
+
+        whereCondition2=WhereCondition+ " and dashboardId='3' "     
+        column4 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,videoLink  "
+        data4 = databasefile.SelectQuery("dashboard",column4,whereCondition2,"","0","10")
+        print(data4)
+
+        if data4["result"]=="":
+            data4["result"]=[]
+
+        for m in data4['result']:
+                if m['imagePath']!='':
+                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+                if  m['videoPath']!="":
+                    y=m['videoPath'].split('=')
+                    print(y,'++++++')
+                    m['videoId']=y[1]
+
+        #highl.in            
+
+        
+        whereCondition2=WhereCondition+ " and dashboardId='4' "             
+            
+        column5 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,videoLink   "
+        data5 = databasefile.SelectQueryOrderby("dashboard",column5,whereCondition2,"","0","10",orderby)
+        if data5["result"]=="":
+            data5["result"]=[]
+
+        for m in data5['result']:
+            if m['imagePath']!='':
+                m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+            if  m['videoPath']!="":
+                y=m['videoPath'].split('=')
+                print(y,'++++++')
+                m['videoId']=y[1]
+        
+        #gallery        
+
+
+        whereCondition2=WhereCondition+ " and dashboardId='6' "  
+
+        column6 = "mi.id,date_format(CONVERT_TZ(mi.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
+        data6 = databasefile.SelectQueryOrderby("dashboard as mi ",column6,WhereCondition,"","0","10",orderby)
+        if data6["result"]=="":
+            data6["result"]=[]
+
+        #Acadmic Council    
+
+        whereCondition2=WhereCondition+ " and dashboardId='7' "    
+       
+                            
+       
+        column7 = "mi.id,,date_format(CONVERT_TZ(mi.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath"
+        data7 = databasefile.SelectQueryOrderby("dashboard  as mi",column7,WhereCondition,"","0","10",orderby)
+        if data7["result"]=="":
+            data7["result"]=[]
+
+        #OurPartners
+
+
+
+        column99 = "id,Status,UserCreate, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        data99 = databasefile.SelectQueryOrderby("ourPartners",column99,"","",startlimit,endlimit,orderby)
+        
+        if data99["result"]=="":
+            data99["result"]=[]
+
+                        
+
+
+
+
+            
+
+            
+
+       
+
+
+        if data != "0":
+            
+            return {"message":"","status":"true","marketingInsights":data['result'],"upSkillsOpportunity":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"promissingIntiatives":data5["result"],"news":data2["result"],"gallery":data6["result"],"event":data5["result"],"promisingInitiatives":data4["result"],"ourPartners":data99}
+            
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()                
+
 
 
 
