@@ -4052,7 +4052,9 @@ def promissingIntiatives():
         
         if msg == "1":
             ImagePath=""
+            videoLink=""
             flag=inputdata['flag']
+            column,values="",""
             if "newsTitle" in inputdata:
                 if inputdata['newsTitle'] != "":
                     newsTitle =commonfile.EscapeSpecialChar(inputdata["newsTitle"])
@@ -4071,7 +4073,23 @@ def promissingIntiatives():
              
             if "id" in inputdata:
                 if inputdata['id'] != "":
-                    Id =inputdata["id"]        
+                    Id =inputdata["id"]
+
+
+            if "videoLink" in inputdata:
+                print("1111111111111111111")
+                if (inputdata['videoLink'] != None) :
+                    print("2222222222222222")
+                    videoLink =inputdata["videoLink"]
+                    if videoLink=="":
+                        videoLink=""
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+            
+                      
+                    else:
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"          
             
             
             if 'NewsBanner' in request.files:      
@@ -4094,12 +4112,12 @@ def promissingIntiatives():
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
                       
-                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
-                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
+                    column = column+"newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
+                    values =values+ " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
                     data = databasefile.InsertQuery("promissingIntiatives",column,values)        
                 else:
-                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc"
-                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
+                    column = column+"newsTitle,userTypeId,imagePath,summary,newsDesc"
+                    values = values+" '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
                     data = databasefile.InsertQuery("promissingIntiatives",column,values)
             if flag =='u':
                 
@@ -4126,7 +4144,7 @@ def promissingIntiatives():
 
 
                         whereCondition=" and id= '"+ str(Id) +"'"
-                        column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
+                        column="videoLink='"+ str(newsTitle) +"', newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
                         data=databasefile.UpdateQuery("promissingIntiatives",column,whereCondition)
 
 
@@ -4154,13 +4172,13 @@ def getPromissingIntiatives():
             print('B')
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startlimit" in inputdata:
-                if inputdata['startlimit'] != "":
-                    startlimit =str(inputdata["startlimit"])
+            if "startLimit" in inputdata:
+                if inputdata['startLimit'] != "":
+                    startlimit =str(inputdata["startLimit"])
                 
-            if "endlimit" in inputdata:
-                if inputdata['endlimit'] != "":
-                    endlimit =str(inputdata["endlimit"])
+            if "endLimit" in inputdata:
+                if inputdata['endLimit'] != "":
+                    endlimit =str(inputdata["endLimit"])
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
@@ -4172,12 +4190,20 @@ def getPromissingIntiatives():
                     WhereCondition=WhereCondition+" and n.id='"+str(Id)+"'"
         orderby=" n.id "
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
-        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+        column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("promissingIntiatives n,userMaster um",column,WhereCondition,"","0","10",orderby)
         print(data,"-------------------------------------------")
         data2 = databasefile.SelectTotalCountQuery("promissingIntiatives","","")
         data["totalCount"]=data2
         if data != "0":
+            
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                if i['videoLink']!='':
+                    y=i['videoLink'].split('=')
+                    print(y)
+                    i['videoId']=y[1]
             return data
         else:
             return commonfile.Errormessage()
@@ -4203,6 +4229,7 @@ def news():
         
         if msg == "1":
             ImagePath=""
+            videoLink=""
             flag=inputdata['flag']
             if "newsTitle" in inputdata:
                 if inputdata['newsTitle'] != "":
@@ -4222,7 +4249,23 @@ def news():
              
             if "id" in inputdata:
                 if inputdata['id'] != "":
-                    Id =inputdata["id"]        
+                    Id =inputdata["id"]
+
+
+            if "videoLink" in inputdata:
+                print("1111111111111111111")
+                if (inputdata['videoLink'] != None) :
+                    print("2222222222222222")
+                    videoLink =inputdata["videoLink"]
+                    if videoLink=="":
+                        videoLink=""
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+            
+                      
+                    else:
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"          
             
             
             if 'NewsBanner' in request.files:      
@@ -4245,8 +4288,8 @@ def news():
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
                       
-                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
-                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
+                    column = column+"newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
+                    values =values+ " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
                     data = databasefile.InsertQuery("news",column,values)        
                 else:
                     column = "newsTitle,userTypeId,imagePath,summary,newsDesc"
@@ -4326,12 +4369,19 @@ def getNews():
 
         orderby=" n.id "
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
-        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+        column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,n.imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("news n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
         data2 = databasefile.SelectTotalCountQuery("news","","")
 
         if data != "0":
             data["totalCount"]=data2
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                if i['videoLink']!='':
+                    y=i['videoLink'].split('=')
+                    print(y)
+                    i['videoId']=y[1]
             return data
         else:
             return commonfile.Errormessage()
@@ -4357,6 +4407,7 @@ def MarketingInsights():
         
         if msg == "1":
             ImagePath=""
+            videoLink=""
             flag=inputdata['flag']
             column,values="",""
             if "newsTitle" in inputdata:
@@ -4540,6 +4591,7 @@ def upSkillsOpportunity():
         if msg == "1":
             ImagePath=""
             flag=inputdata['flag']
+            column,values="",""
             if "newsTitle" in inputdata:
                 if inputdata['newsTitle'] != "":
                     newsTitle =commonfile.EscapeSpecialChar(inputdata["newsTitle"])
@@ -4582,7 +4634,23 @@ def upSkillsOpportunity():
 
             if "videoTranscript" in inputdata:
                 if inputdata['videoTranscript'] != "":
-                    videoTranscript =commonfile.EscapeSpecialChar(inputdata["videoTranscript"])        
+                    videoTranscript =commonfile.EscapeSpecialChar(inputdata["videoTranscript"]) 
+
+
+            if "videoLink" in inputdata:
+                print("1111111111111111111")
+                if (inputdata['videoLink'] != None) :
+                    print("2222222222222222")
+                    videoLink =inputdata["videoLink"]
+                    if videoLink=="":
+                        videoLink=""
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+            
+                      
+                    else:
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"         
                 
 
 
@@ -4614,13 +4682,13 @@ def upSkillsOpportunity():
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
                       
-                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate,length,effort,price,institutions,level,language,videoTranscript"
-                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
+                    column =column+ "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate,length,effort,price,institutions,level,language,videoTranscript"
+                    values =values+ " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
                     values= values+ " ,'"+ str(length) +"','" + str(effort)+"','" + str(price)+"','" + str(institutions) +"','" + str(level)  +"','" + str(language) +"','" + str(videoTranscript)+  "'"
                     data = databasefile.InsertQuery("upSkillsOpportunity",column,values)        
                 else:
-                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc,length,effort,price,institutions,level,language,videoTranscript"
-                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
+                    column =column+ "newsTitle,userTypeId,imagePath,summary,newsDesc,length,effort,price,institutions,level,language,videoTranscript"
+                    values =values+ " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
                     values= values+ ", '"+ str(length) +"','" + str(effort)+"','" + str(price)+"','" + str(institutions) +"','" + str(level)  +"','" + str(language) +"','" + str(videoTranscript)+  "'"
                     data = databasefile.InsertQuery("upSkillsOpportunity",column,values)
             if flag =='u':
@@ -4648,7 +4716,7 @@ def upSkillsOpportunity():
 
 
                         whereCondition=" and id= '"+ str(Id) +"'"
-                        column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"',length='"+ str(length) +"',effort='"+ str(effort) +"',price='"+ str(price) +"',institutions='"+ str(institutions) +"',level='"+ str(level) +"',language='"+ str(language) +"',videoTranscript='"+ str(videoTranscript) +"'"
+                        column="videoLink='"+ str(videoLink) +"' ,newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"',length='"+ str(length) +"',effort='"+ str(effort) +"',price='"+ str(price) +"',institutions='"+ str(institutions) +"',level='"+ str(level) +"',language='"+ str(language) +"',videoTranscript='"+ str(videoTranscript) +"'"
                         data=databasefile.UpdateQuery("upSkillsOpportunity",column,whereCondition)
 
 
@@ -4695,12 +4763,19 @@ def getupSkillsOpportunity():
 
         orderby=" n.id "
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
-        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName,n.length,n.effort,n.price,n.institutions,n.level,n.language,n.videoTranscript"
+        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath,n.videoLink ,um.userName,n.length,n.effort,n.price,n.institutions,n.level,n.language,n.videoTranscript"
         data = databasefile.SelectQueryOrderby("upSkillsOpportunity n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
         data2 = databasefile.SelectTotalCountQuery("upSkillsOpportunity","","")
 
         if data != "0":
             data["totalCount"]=data2
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                if i['videoLink']!='':
+                    y=i['videoLink'].split('=')
+                    print(y)
+                    i['videoId']=y[1]
             return data
         else:
             return commonfile.Errormessage()
@@ -6147,6 +6222,31 @@ def galleryImages():
         commonfile.writeLog("galleryImages",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
+            column,values="",""
+
+
+            if "videoLink" in inputdata:
+                print("1111111111111111111")
+                if (inputdata['videoLink'] != None) :
+                    print("2222222222222222")
+                    videoLink =inputdata["videoLink"]
+                    if videoLink=="":
+                        videoLink=""
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+            
+                      
+                    else:
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+
+            if "title" in inputdata:
+                if inputdata['title'] != "":
+                    title =inputdata["title"]
+                    column=" title "
+                    values=" '"+ str(title) +"'"
+
+                           
             if 'postImage' in request.files:      
                 file = request.files.get('postImage')        
                 filename = file.filename or ''                 
@@ -6165,12 +6265,12 @@ def galleryImages():
             if "userId" in inputdata:
                 if inputdata['userId'] != "":
                     userId =inputdata["userId"]
-                column = " imagePath,UserCreate"
-                values = " '"+ str(ImagePath)+ "','" + str(userId) + "'"
+                column =column+ " imagePath,UserCreate"
+                values =values+ " '"+ str(ImagePath)+ "','" + str(userId) + "'"
                 data = databasefile.InsertQuery("gallery",column,values)        
             else:
-                column = " imagePath "
-                values = " '"+ str(ImagePath)+  "'"
+                column =column+ " imagePath "
+                values =values+ " '"+ str(ImagePath)+  "'"
                 data = databasefile.InsertQuery("gallery",column,values)
 
             if data !=0 :                
@@ -6199,6 +6299,31 @@ def galleryImages1():
         if msg =="1":
             ImagePath=""
             flag=inputdata['flag']
+
+            column,values="",""
+
+
+            if "videoLink" in inputdata:
+                print("1111111111111111111")
+                if (inputdata['videoLink'] != None) :
+                    print("2222222222222222")
+                    videoLink =inputdata["videoLink"]
+                    if videoLink=="":
+                        videoLink=""
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+            
+                      
+                    else:
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+
+            if "title" in inputdata:
+                if inputdata['title'] != "":
+                    title =inputdata["title"]
+                    column=" title "
+                    values=" '"+ str(title) +"'"
+
             if 'postImage' in request.files:      
                 file = request.files.get('postImage')        
                 filename = file.filename or ''                 
@@ -6220,12 +6345,12 @@ def galleryImages1():
                 if "userId" in inputdata:
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
-                    column = " imagePath,UserCreate"
-                    values = " '"+ str(ImagePath)+ "','" + str(userId) + "'"
+                    column =column+ " imagePath,UserCreate"
+                    values =values+ " '"+ str(ImagePath)+ "','" + str(userId) + "'"
                     data = databasefile.InsertQuery("gallery",column,values)        
                 else:
-                    column = " imagePath "
-                    values = " '"+ str(ImagePath)+  "'"
+                    column =column+ " imagePath "
+                    values =values+ " '"+ str(ImagePath)+  "'"
                     data = databasefile.InsertQuery("gallery",column,values)
             if flag =="u":
                 
@@ -6249,7 +6374,7 @@ def galleryImages1():
                             ImagePath=""
                             ImagePath=inputdata1[index:]
                         whereCondition=" and  id='" + str(Id) + "'"
-                        column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
+                        column="videoLink='"+ str(videoLink)+  "',title='"+ str(title)+  "',imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
                         data=databasefile.UpdateQuery("gallery",column,whereCondition)
 
 
@@ -6276,23 +6401,30 @@ def getGalleryImages():
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startlimit" in inputdata:
+            if "startLimit" in inputdata:
                 if inputdata['startlimit'] != "":
-                    startlimit =str(inputdata["startlimit"])
+                    startlimit =str(inputdata["startLimit"])
                 
-            if "endlimit" in inputdata:
-                if inputdata['endlimit'] != "":
-                    endlimit =str(inputdata["endlimit"])
+            if "endLimit" in inputdata:
+                if inputdata['endLimit'] != "":
+                    endlimit =str(inputdata["endLimit"])
             
             if "id" in inputdata:
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
         
-        column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,UserCreate  "
+        column = "id,Status,title,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath,UserCreate  "
         data = databasefile.SelectQuery(" gallery ",column,WhereCondition,"",startlimit,endlimit)
         
         if data != "0":
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                if i['videoLink']!='':
+                    y=i['videoLink'].split('=')
+                    print(y)
+                    i['videoId']=y[1]
             return data
         else:
             return commonfile.Errormessage()
@@ -6318,6 +6450,7 @@ def parliamentEvent():
         print("1111111111111")
         if msg == "1":
             ImagePath=""
+            column,values="",""
 
             print("22222222222222")
             if "eventTitle" in inputdata:
@@ -6338,6 +6471,22 @@ def parliamentEvent():
             if "eventDate" in inputdata:
                 if inputdata['eventDate'] != "":
                     eventDate =inputdata["eventDate"]
+
+            if "videoLink" in inputdata:
+                print("1111111111111111111")
+                if (inputdata['videoLink'] != None) :
+                    print("2222222222222222")
+                    videoLink =inputdata["videoLink"]
+                    if videoLink=="":
+                        videoLink=""
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+            
+                      
+                    else:
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+
             if 'postImage' in request.files:      
                     file = request.files.get('postImage')        
                     filename = file.filename or ''                 
@@ -6357,8 +6506,8 @@ def parliamentEvent():
             if "UserId" in inputdata:
                 if inputdata['UserId'] != "":
                     UserId =inputdata["UserId"]
-                column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate,UserCreate"
-                values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
+                column =column+ "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate,UserCreate"
+                values =values+ " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
                 data = databasefile.InsertQuery("parliamentEvent",column,values)        
             else:
 
@@ -6395,6 +6544,7 @@ def parliamentEvent1():
         if msg == "1":
             flag=inputdata['flag']
             ImagePath=""
+            column,values="",""
 
             print("22222222222222")
             if "eventTitle" in inputdata:
@@ -6415,6 +6565,21 @@ def parliamentEvent1():
             if "eventDate" in inputdata:
                 if inputdata['eventDate'] != "":
                     eventDate =inputdata["eventDate"]
+
+            if "videoLink" in inputdata:
+                print("1111111111111111111")
+                if (inputdata['videoLink'] != None) :
+                    print("2222222222222222")
+                    videoLink =inputdata["videoLink"]
+                    if videoLink=="":
+                        videoLink=""
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+            
+                      
+                    else:
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
             if 'postImage' in request.files:
                     print("333333333333333")      
                     file = request.files.get('postImage') 
@@ -6437,8 +6602,8 @@ def parliamentEvent1():
                 if "UserId" in inputdata:
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
-                    column = "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate,UserCreate"
-                    values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
+                    column =column+ "eventTitle,userTypeId,imagePath,eventSummary,eventLocation,eventDate,UserCreate"
+                    values =values+ " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "','" + str(UserId) + "'"
                     data = databasefile.InsertQuery("parliamentEvent",column,values)        
                 else:
 
@@ -6465,7 +6630,7 @@ def parliamentEvent1():
                             ImagePath=""
                             ImagePath=inputdata1[index:]
                         whereCondition= " and id='" + str(Id) + "' "
-                        column="eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
+                        column="videoLink='"+ str(videoLink) +"' ,eventTitle='"+ str(eventTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',eventSummary='"+ str(eventSummary) +"',eventLocation='"+ str(eventLocation) +"',eventDate='"+ str(eventDate) +"',Status='"+ str(status) +"'"
                         data=databasefile.UpdateQuery('parliamentEvent',column,whereCondition)
                 
 
@@ -6492,13 +6657,13 @@ def getParliamentEvent():
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startlimit" in inputdata:
-                if inputdata['startlimit'] != "":
-                    startlimit =str(inputdata["startlimit"])
+            if "startLimit" in inputdata:
+                if inputdata['startLimit'] != "":
+                    startlimit =str(inputdata["startLimit"])
                 
-            if "endlimit" in inputdata:
-                if inputdata['endlimit'] != "":
-                    endlimit =str(inputdata["endlimit"])
+            if "endLimit" in inputdata:
+                if inputdata['endLimit'] != "":
+                    endlimit =str(inputdata["endLimit"])
             
             if "id" in inputdata:
                 if inputdata['id'] != "":
@@ -6509,10 +6674,16 @@ def getParliamentEvent():
                     userTypeId =inputdata["userTypeId"] 
                     WhereCondition=WhereCondition+" and userTypeId='"+str(userTypeId)+"'"
         
-        column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(CONVERT_TZ(eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(CONVERT_TZ(eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath   "
         data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
         if data['result'] != "":
             for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                if i['videoLink']!='':
+                    y=i['videoLink'].split('=')
+                    print(y)
+                    i['videoId']=y[1]
                 y=i['id']
                 column="userId"
                 whereCondition=" and eventId='"+str(y)+"'"
