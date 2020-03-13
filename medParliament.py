@@ -4358,6 +4358,7 @@ def MarketingInsights():
         if msg == "1":
             ImagePath=""
             flag=inputdata['flag']
+            column,values="",""
             if "newsTitle" in inputdata:
                 if inputdata['newsTitle'] != "":
                     newsTitle =commonfile.EscapeSpecialChar(inputdata["newsTitle"])
@@ -4376,7 +4377,23 @@ def MarketingInsights():
              
             if "id" in inputdata:
                 if inputdata['id'] != "":
-                    Id =inputdata["id"]        
+                    Id =inputdata["id"] 
+
+
+            if "videoLink" in inputdata:
+                print("1111111111111111111")
+                if (inputdata['videoLink'] != None) :
+                    print("2222222222222222")
+                    videoLink =inputdata["videoLink"]
+                    if videoLink=="":
+                        videoLink=""
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+            
+                      
+                    else:
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"       
             
             
             if 'NewsBanner' in request.files:      
@@ -4399,12 +4416,12 @@ def MarketingInsights():
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
                       
-                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
-                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
+                    column = column+",newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
+                    values =values+ " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
                     data = databasefile.InsertQuery("marketingInsights",column,values)        
                 else:
-                    column = "newsTitle,userTypeId,imagePath,summary,newsDesc"
-                    values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
+                    column = column+"newsTitle,userTypeId,imagePath,summary,newsDesc"
+                    values = values+" '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
                     data = databasefile.InsertQuery("marketingInsights",column,values)
             if flag =='u':
                 
@@ -4431,7 +4448,7 @@ def MarketingInsights():
 
 
                         whereCondition=" and id= '"+ str(Id) +"'"
-                        column="newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
+                        column="videoLink='"+ str(videoLink) +"' ,newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
                         data=databasefile.UpdateQuery("marketingInsights",column,whereCondition)
 
 
@@ -4485,13 +4502,21 @@ def getMarketingInsights():
 
         orderby=" n.id "
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
-        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+        column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("marketingInsights n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
         data2 = databasefile.SelectTotalCountQuery("marketingInsights","","")
 
         if data != "0":
             data["totalCount"]=data2
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                if i['videoLink']!='':
+                    y=i['videoLink'].split('=')
+                    print(y)
+                    i['videoId']=y[1]
             return data
+            
         else:
             return commonfile.Errormessage()
 
