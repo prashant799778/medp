@@ -7545,6 +7545,7 @@ def dashboard():
             summary=""
             videoLink=""
             flag=inputdata['flag']
+            column,values="",""
             # if "title" in inputdata:
             #     if inputdata['title'] != "":
             #         title =inputdata["title"]
@@ -7554,8 +7555,8 @@ def dashboard():
             if "dashboardId" in inputdata:
                 if inputdata['dashboardId'] != "":
                     dashboardId =inputdata["dashboardId"]
-                    column=column+" ,dashboardId "
-                    values=values+" ,'"+ str(dashboardId) +"'"
+                    column=column+" dashboardId "
+                    values=values+" '"+ str(dashboardId) +"'"
 
 
             # if "summary" in inputdata:
@@ -7858,7 +7859,7 @@ def landingPageDashboard121():
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()                            
-        
+
 
 
 
