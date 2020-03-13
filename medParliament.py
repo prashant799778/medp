@@ -7692,7 +7692,7 @@ def landingPageDashboard12():
         #event
         whereCondition2=WhereCondition+ " and dashboardId='5' " 
         column3 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
-        data3 = databasefile.SelectQueryOrderby("dashboard ",column3,WhereCondition229,"","0","10",orderby)
+        data3 = databasefile.SelectQueryOrderby("dashboard ",column3,whereCondition2,"","0","10",orderby)
         if data3["result"]=="":
             data3["result"]=[]
 
@@ -7738,7 +7738,7 @@ def landingPageDashboard12():
         whereCondition2=WhereCondition+ " and dashboardId='6' "  
 
         column6 = "mi.id,date_format(CONVERT_TZ(mi.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
-        data6 = databasefile.SelectQueryOrderby("dashboard as mi ",column6,WhereCondition,"","0","10",orderby)
+        data6 = databasefile.SelectQueryOrderby("dashboard as mi ",column6,whereCondition2,"","0","10",orderby)
         if data6["result"]=="":
             data6["result"]=[]
 
@@ -7749,7 +7749,7 @@ def landingPageDashboard12():
                             
        
         column7 = "mi.id,,date_format(CONVERT_TZ(mi.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath"
-        data7 = databasefile.SelectQueryOrderby("dashboard  as mi",column7,WhereCondition,"","0","10",orderby)
+        data7 = databasefile.SelectQueryOrderby("dashboard  as mi",column7,whereCondition2,"","0","10",orderby)
         if data7["result"]=="":
             data7["result"]=[]
 
