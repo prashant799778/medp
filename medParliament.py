@@ -7928,12 +7928,13 @@ def ourPartners155():
                     for i in l2:    
                         column = " imagePath,UserCreate"
                         values = " '"+ str(i)+ "','" + str(userId) + "'"
-                        data = databasefile.InsertQuery("ourPartners",column,values)        
+                        data = databasefile.InsertQuery("ourPartners",column,values)
+                        return data        
                 else:
                     column = " imagePath "
                     values = " '"+ str(ImagePath)+  "'"
                     data = databasefile.InsertQuery("ourPartners",column,values)
-                return data
+                    return data
             if flag =="u":
                 
                 if "status" in inputdata:
@@ -7958,6 +7959,7 @@ def ourPartners155():
                         whereCondition=" and  id='" + str(Id) + "'"
                         column="imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
                         data=databasefile.UpdateQuery("ourPartners",column,whereCondition)
+                        return data
 
 
 
