@@ -7919,13 +7919,14 @@ def ourPartners155():
                         l2.append(filepath)   
                         file.save(FolderPath)
                         ImagePath = filepath
+                        print(l2,"++++++++++++++++++")
                         if flag =="i":
                             print("11was")
                             if "userId" in inputdata:
                                 if inputdata['userId'] != "":
                                     userId =inputdata["userId"]
                                 for i in l2:
-                                    print(i,"++++++++++++++++++")
+                                print(i,"++++++++++++++++++")
 
                                     column = " imagePath,UserCreate"
                                     values = " '"+ str(i)+ "','" + str(userId) + "'"
