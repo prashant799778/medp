@@ -7316,7 +7316,7 @@ def getSignUpVideo1():
         
         if data['result'] != "":
             for i in data['result']:
-                if i['imagePath']!='' or  i['imagePath']!=None:
+                if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
             return data
         else:
