@@ -7106,7 +7106,7 @@ def getpromisingInitiatives1():
          
         if data['result'] != "":
             for i in data['result']:
-                if i['imagePath']!=None or  i['imagePath']=="":
+                if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
             return data
 
