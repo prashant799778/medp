@@ -7897,8 +7897,10 @@ def ourPartners155():
         commonfile.writeLog("ourPartnersImages1",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
+            print("111111111111111")
             ImagePath=""
             flag=inputdata['flag']
+            print("2222222222222222222222222222")
             file_Count=inputdata['fileCount']
             fileCount=int(file_Count)
             imagelist=[]
@@ -7919,6 +7921,7 @@ def ourPartners155():
            
             
             if flag =="i":
+                print("11was")
                 if "userId" in inputdata:
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
