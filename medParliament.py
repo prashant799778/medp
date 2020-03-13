@@ -5717,15 +5717,29 @@ def landingPageDashboardtest():
             if key ==2:
 
                 if "userTypeId" not in inputdata:
-                    column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+                    column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink as videoPath,imagePath   "
                     data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"","0","3",orderby)
                     if data["result"]=="":
                         data["result"]=[]
                 else :
-                    column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+                    column = "id,Status,UserCreate,newsTitle,summary,newsDesc, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, imagePath,videoLink  as videoPath  "
                     data = databasefile.SelectQueryOrderby("news ",column,WhereCondition,"",startlimit,endlimit,orderby)
                     if data["result"]=="":
                         data["result"]=[]
+
+
+                for m in data['result']:
+                        if m['imagePath']!='':
+                            m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+                        if  m['videoPath']!=None:
+                            y=m['videoPath'].split('=')
+                            print(y,'++++++')
+                            m['videoId']=y[1]
+                        else:
+                            m['videoId']=""
+
+
+
                 data22={"result":{"headline":data['result'][0],"news":data['result'][1:]},"status":"true","message":""}
                 return data22
             
@@ -5789,6 +5803,8 @@ def landingPageDashboardtest():
                             y=m['videoPath'].split('=')
                             print(y,'++++++')
                             m['videoId']=y[1]
+                        else:
+                            m['videoId']=""
 
                 data22={"result":data4['result'],"status":"true","message":""}
                 return data22
