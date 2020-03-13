@@ -7919,6 +7919,8 @@ def ourPartners155():
                         l2.append(filepath)   
                         file.save(FolderPath)
                         ImagePath = filepath
+
+            print(l2)
            
             
             if flag =="i":
