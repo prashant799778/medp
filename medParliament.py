@@ -7885,7 +7885,7 @@ def landingPageDashboard121():
 
 
 @app.route('/ourPartnersImages1', methods=['POST'])
-def ourPartners1():
+def ourPartners155():
     try:
         inputdata = request.form.get('data') 
 
