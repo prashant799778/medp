@@ -7936,10 +7936,11 @@ def ourPartners155():
                         data = databasefile.InsertQuery("ourPartners",column,values)
                         return data        
                 else:
-                    column = " imagePath "
-                    values = " '"+ str(ImagePath)+  "'"
-                    data = databasefile.InsertQuery("ourPartners",column,values)
-                    return data
+                    for i in l2:
+                        column = " imagePath "
+                        values = " '"+ str(i)+  "'"
+                        data = databasefile.InsertQuery("ourPartners",column,values)
+                        return data
             if flag =="u":
                 
                 if "status" in inputdata:
