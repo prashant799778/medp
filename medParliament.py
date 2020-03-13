@@ -7106,7 +7106,7 @@ def getpromisingInitiatives1():
          
         if data['result'] != "":
             for i in data['result']:
-                if i['imagePath']!='':
+                if i['imagePath']!=None or  i['imagePath']=="":
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
             return data
 
@@ -7293,13 +7293,13 @@ def getSignUpVideo1():
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startlimit" in inputdata:
-                if inputdata['startlimit'] != "":
-                    startlimit =str(inputdata["startlimit"])
+            if "startLimit" in inputdata:
+                if inputdata['startLimit'] != "":
+                    startlimit =str(inputdata["startLimit"])
                 
-            if "endlimit" in inputdata:
-                if inputdata['endlimit'] != "":
-                    endlimit =str(inputdata["endlimit"])
+            if "endLimit" in inputdata:
+                if inputdata['endLimit'] != "":
+                    endlimit =str(inputdata["endLimit"])
             
             if "id" in inputdata:
                 if inputdata['id'] != "":
@@ -7316,7 +7316,7 @@ def getSignUpVideo1():
         
         if data['result'] != "":
             for i in data['result']:
-                if i['imagePath']!='':
+                if i['imagePath']!='' or  i['imagePath']!=None:
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
             return data
         else:
