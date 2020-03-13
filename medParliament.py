@@ -7890,6 +7890,7 @@ def ourPartners155():
         inputdata = request.form.get('data') 
 
         inputdata = json.loads(inputdata) 
+        print(inputdata)
         startlimit,endlimit="",""
         keyarr = ["userId","flag"]
         
