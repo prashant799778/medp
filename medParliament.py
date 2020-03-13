@@ -5747,11 +5747,21 @@ def landingPageDashboardtest():
 
         
 
-                column2 = "id,Status,UserCreate, date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+                column2 = "id,Status,title,UserCreate,videoLink as videoPath ,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, imagePath  "
                 data2 = databasefile.SelectQueryOrderby("gallery",column2,"","",startlimit,endlimit,orderby)
                 
                 if data2["result"]=="":
                     data2["result"]=[]
+
+                for m in data2['result']:
+                        if m['imagePath']!='':
+                            m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+                        if  m['videoPath']!=None:
+                            y=m['videoPath'].split('=')
+                            print(y,'++++++')
+                            m['videoId']=y[1]
+                        else:
+                            m['videoId']=""
 
                 data22={"result":data2['result'],"status":"true","message":""}
                 return data22
@@ -5760,13 +5770,21 @@ def landingPageDashboardtest():
 
                 print("1111----")
                 WhereCondition229=" and ev.Status<2 and  ev.userTypeId=0  or ev.userTypeId='"+str(userTypeId)+"'"
-                column3 = "ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(CONVERT_TZ(ev.eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(ev.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+                column3 = "ev.id,ev.Status,ev.videoLink as videoPath,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(CONVERT_TZ(ev.eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(ev.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, imagePath   "
                 data3 = databasefile.SelectQueryOrderby("parliamentEvent ev ",column3,WhereCondition229,"",startlimit,endlimit,orderby)
                 
                 if data3["result"]=="":
                     data3["result"]=[]
 
                 for i in data3['result']:
+                    if i['imagePath']!='':
+                        i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                    if  i['videoPath']!=None:
+                        y=i['videoPath'].split('=')
+                        print(y,'++++++')
+                        i['videoId']=y[1]
+                    else:
+                        i['videoId']=""
                     if 'userId' in inputdata:
                         userId=inputdata['userId']
                         marketingInsightId=i['id']
@@ -5799,7 +5817,7 @@ def landingPageDashboardtest():
                 for m in data4['result']:
                         if m['imagePath']!='':
                             m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
-                        if  m['videoPath']!="":
+                        if  m['videoPath']!=None:
                             y=m['videoPath'].split('=')
                             print(y,'++++++')
                             m['videoId']=y[1]
@@ -5813,10 +5831,20 @@ def landingPageDashboardtest():
 
 
                     
-                column5 = "id,Status,UserCreate,newsTitle,summary,newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+                column5 = "id,Status,UserCreate,videoLink as videoPath,newsTitle,summary,newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath   "
                 data5 = databasefile.SelectQueryOrderby("promissingIntiatives",column5,WhereCondition,"",startlimit,endlimit,orderby)
                 if data5["result"]=="":
                     data5["result"]=[]
+
+                for m in data5['result']:
+                        if m['imagePath']!='':
+                            m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+                        if  m['videoPath']!=None:
+                            y=m['videoPath'].split('=')
+                            print(y,'++++++')
+                            m['videoId']=y[1]
+                        else:
+                            m['videoId']=""
 
                 data22={"result":data5['result'],"status":"true","message":""}
                 return data22
@@ -5826,13 +5854,22 @@ def landingPageDashboardtest():
 
 
                     
-                column6 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
+                column6 = "mi.id,mi.Status,mi.videoLink as videoPath,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath   "
                 data6 = databasefile.SelectQueryOrderby("marketingInsights as mi ",column6,WhereCondition,"",startlimit,endlimit,orderby)
                 if data6["result"]=="":
                     data6["result"]=[]
 
                 for i in data6['result']:
                     marketingInsightId=i['id']
+                    if i['imagePath']!='':
+                        i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                    
+                    if  i['videoPath']!=None:
+                        y=i['videoPath'].split('=')
+                        print(y,'++++++')
+                        i['videoId']=y[1]
+                    else:
+                        i['videoId']=""
                     if 'userId' in inputdata:
                         userId=inputdata['userId']
 
@@ -5873,11 +5910,20 @@ def landingPageDashboardtest():
 
 
                     
-                column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
+                column7 = "mi.id,mi.Status,mi.videoLink as videoPath,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition229,"",startlimit,endlimit,orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
                 for i in data7['result']:
+
+                    if i['imagePath']!='':
+                        i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                    if  i['videoPath']!=None:
+                        y=i['videoPath'].split('=')
+                        print(y,'++++++')
+                        i['videoId']=y[1]
+                    else:
+                        i['videoId']=""
                     if 'userId' in inputdata:
                         userId=inputdata['userId']
                     marketingInsightId=i['id']
