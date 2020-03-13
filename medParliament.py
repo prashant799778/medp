@@ -7905,10 +7905,11 @@ def ourPartners155():
             fileCount=int(file_Count)
             imagelist=[]
             l2=[]
+
             if fileCount!=0:
                 for ll in range(fileCount):
-                    Filename= request.files.get('postImage_'+str(ll+1)+'')        
-                    filename = Filename.filename or ''                 
+                    files= request.files.get('postImage_'+str(ll+1)+'')        
+                    filename = files.filename or ''                 
                     filename = filename.replace("'","") 
                     print(filename)
                     imagelist.append(filename)
