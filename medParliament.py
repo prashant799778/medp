@@ -7706,13 +7706,13 @@ def landingPageDashboard12():
         if data4["result"]=="":
             data4["result"]=[]
 
-        for m in data4['result']:
-                if m['imagePath']!='':
-                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
-                if  m['videoPath']!="":
-                    y=m['videoPath'].split('=')
-                    print(y,'++++++')
-                    m['videoId']=y[1]
+        # for m in data4['result']:
+        #         if m['imagePath']!='':
+        #             m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+        #         if  m['videoPath']!="":
+        #             y=m['videoPath'].split('=')
+        #             print(y,'++++++')
+        #             m['videoId']=y[1]
 
         #highl.in            
 
@@ -7724,13 +7724,13 @@ def landingPageDashboard12():
         if data5["result"]=="":
             data5["result"]=[]
 
-        for m in data5['result']:
-            if m['imagePath']!='':
-                m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
-            if  m['videoPath']!="":
-                y=m['videoPath'].split('=')
-                print(y,'++++++')
-                m['videoId']=y[1]
+        # for m in data5['result']:
+        #     if m['imagePath']!='':
+        #         m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+        #     if  m['videoPath']!="":
+        #         y=m['videoPath'].split('=')
+        #         print(y,'++++++')
+        #         m['videoId']=y[1]
         
         #gallery        
 
