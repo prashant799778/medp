@@ -7921,6 +7921,7 @@ def ourPartners155():
                         ImagePath = filepath
 
             print(l2,"++11111111111111")
+            l1=[]
            
             
             if flag =="i":
@@ -7930,7 +7931,7 @@ def ourPartners155():
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
                     print(l2,"@@@@@@@@@@@@@@@@2")
-                    l1=[]
+                    
                     for m in l2:
                         if m not in l1:
                             l1.append(m)
