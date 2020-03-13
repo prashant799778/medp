@@ -4200,7 +4200,7 @@ def getPromissingIntiatives():
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
-                if i['videoLink']!='':
+                if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
                     print(y)
                     i['videoId']=y[1]
@@ -4378,7 +4378,7 @@ def getNews():
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
-                if i['videoLink']!='':
+                if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
                     print(y)
                     i['videoId']=y[1]
@@ -4562,7 +4562,7 @@ def getMarketingInsights():
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
-                if i['videoLink']!='':
+                if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
                     print(y)
                     i['videoId']=y[1]
@@ -4772,7 +4772,7 @@ def getupSkillsOpportunity():
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
-                if i['videoLink']!='':
+                if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
                     print(y)
                     i['videoId']=y[1]
@@ -6421,7 +6421,7 @@ def getGalleryImages():
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
-                if i['videoLink']!='':
+                if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
                     print(y)
                     i['videoId']=y[1]
