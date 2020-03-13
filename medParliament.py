@@ -7925,14 +7925,15 @@ def ourPartners155():
             
             if flag =="i":
                 print("11was")
+                print(l2,"qqqqqqqqqqq")
                 if "userId" in inputdata:
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
-                    for i in l2:
+                    for m in l2:
                         print(i,"++++++++++++++++++")
 
                         column = " imagePath,UserCreate"
-                        values = " '"+ str(i)+ "','" + str(userId) + "'"
+                        values = " '"+ str(m)+ "','" + str(userId) + "'"
                         data = databasefile.InsertQuery("ourPartners",column,values)
                         return data        
                 else:
