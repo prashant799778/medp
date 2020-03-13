@@ -7525,6 +7525,118 @@ def generateOrder():
         output = {"result":"somthing went wrong","status":"false"}
         return output
 
+#_________________________________dashboard______________________
+
+
+@app.route('/dashboard', methods=['POST'])
+def dashboard():
+
+    try:
+       
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        print("announcements",inputdata)
+        commonfile.writeLog("announcements",inputdata,0)
+        keyarr = ["dashboardId","flag"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            ImagePath=""
+            summary=""
+            videoLink=""
+            flag=inputdata['flag']
+            # if "title" in inputdata:
+            #     if inputdata['title'] != "":
+            #         title =inputdata["title"]
+            #         column=" title "
+            #         values=" '"+ str(title) +"'"
+
+            if "dashboardId" in inputdata:
+                if inputdata['dashboardId'] != "":
+                    dashboardId =inputdata["dashboardId"]
+                    column=column+" ,dashboardId "
+                    values=values+" ,'"+ str(dashboardId) +"'"
+
+
+            # if "summary" in inputdata:
+            #     if inputdata['summary'] != "":
+            #         summary =inputdata["summary"]
+            #         column=column+", summary"
+            #         values=values+ ",'"+str(summary)+"'"
+        
+            if "videoLink" in inputdata :
+                print("1111111111111111111")
+               
+                if (inputdata['videoLink'] != None) and (inputdata['videoLink'] != "") :
+                    print("2222222222222222")
+                    videoLink =inputdata["videoLink"]
+                    if videoLink[0:24]!="https://www.youtube.com/":
+                        print("3333333333333333333")
+                        return {"message":"Please upload only youtube Link","result":"","status":"False"}
+                    else:
+                        column=column+" ,videoLink"
+                        values=values+",'" +str(videoLink)+"'"
+            
+            
+            if 'postImage' in request.files:      
+                    file = request.files.get('postImage')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getDashboard(filename)  
+
+                    filepath = '/dashboard/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+                    column=column+" ,imagePath"
+                    values=values+",'"+ str(ImagePath)+"'"
+            if flag =="i":
+                if "UserId" in inputdata:
+                    if inputdata['UserId'] != "":
+                        UserId =inputdata["UserId"]
+                    column =column + ",UserCreate"
+                    values =   values + str(UserId) + "'"
+                    data = databasefile.InsertQuery("dashboard",column,values)        
+                else:
+                    column = column+ " "
+                    
+                    data = databasefile.InsertQuery("dashboard",column,values)
+            if flag =='u':
+
+                if "status" in inputdata:
+                    if inputdata['status'] != "":
+                        status =inputdata["status"]
+
+                if "id" in inputdata:
+                    if inputdata['id'] != "":
+                        Id =inputdata["id"]
+                        inputdata1 = request.form.get('postImage')
+                        print(inputdata1,"==========================================")
+                        if  inputdata1 !=None: 
+                            index=re.search("/dashboard", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
+                        whereCondition=" and  id= '"+ str(Id)+"'"
+                        column="dashboardId='"+ str(dashboardId)+"',videoLink='"+ str(videoLink)+"',imagePath='"+ str(ImagePath)+"',Status='"+ str(status)+"'"
+                        data=databasefile.UpdateQuery("dashboard",column,whereCondition)
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()          
+
 
 
 if __name__ == "__main__":
