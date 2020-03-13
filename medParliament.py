@@ -7930,6 +7930,7 @@ def ourPartners155():
                     column = " imagePath "
                     values = " '"+ str(ImagePath)+  "'"
                     data = databasefile.InsertQuery("ourPartners",column,values)
+                return data
             if flag =="u":
                 
                 if "status" in inputdata:
