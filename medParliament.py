@@ -7862,21 +7862,43 @@ def landingPageDashboard12():
         whereCondition2=WhereCondition+ " and dashboardId='1' "
 
 
-        column = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')dateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath   "
+        column = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')dateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,videoLink   "
         data = databasefile.SelectQueryOrderby("dashboard ",column,whereCondition2,"","0","10",orderby)
         if data["result"]=="":
             data["result"]=[]
+
+
+        for m in data['result']:
+                if m['imagePath']!=None:
+                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+                if  m['videoLink']!=None:
+                    y=m['videoLink'].split('=')
+                    print(y,'++++++')
+                    m['videoId']=y[1]
+                else:
+                    m['videoId']=''
 
         #news    
 
         whereCondition2=WhereCondition+  " and dashboardId='2' "   
         
 
-        column2 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        column2 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,videoLink  "
         data2 = databasefile.SelectQueryOrderby("dashboard",column2,whereCondition2,"","0","10",orderby)
         
         if data2["result"]=="":
             data2["result"]=[]
+
+
+        for m in data2['result']:
+                if m['imagePath']!=None:
+                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+                if  m['videoLink']!=None:
+                    y=m['videoLink'].split('=')
+                    print(y,'++++++')
+                    m['videoId']=y[1]
+                else:
+                    m['videoId']=''
 
         print("1111----")
 
@@ -7885,10 +7907,21 @@ def landingPageDashboard12():
 
         #event
         whereCondition2=WhereCondition+ " and dashboardId='5' " 
-        column3 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath  "
+        column3 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,videoLink  "
         data3 = databasefile.SelectQueryOrderby("dashboard ",column3,whereCondition2,"","0","10",orderby)
         if data3["result"]=="":
             data3["result"]=[]
+
+        
+        for m in data3['result']:
+                if m['imagePath']!=None:
+                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+                if  m['videoLink']!=None:
+                    y=m['videoLink'].split('=')
+                    print(y,'++++++')
+                    m['videoId']=y[1]
+                else:
+                    m['videoId']=''    
 
         #medAchieversTv    
 
@@ -7937,10 +7970,21 @@ def landingPageDashboard12():
 
         whereCondition2=WhereCondition+ " and dashboardId='6' "  
 
-        column6 = "mi.id,date_format(CONVERT_TZ(mi.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath   "
+        column6 = "mi.id,date_format(CONVERT_TZ(mi.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,videoLink   "
         data6 = databasefile.SelectQueryOrderby("dashboard as mi ",column6,whereCondition2,"","0","10",orderby)
         if data6["result"]=="":
             data6["result"]=[]
+
+
+        for m in data6['result']:
+                if m['imagePath']!=None:
+                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+                if  m['videoLink']!=None:
+                    y=m['videoLink'].split('=')
+                    print(y,'++++++')
+                    m['videoId']=y[1]
+                else:
+                    m['videoId']=''
 
         #Acadmic Council    
 
@@ -7948,10 +7992,21 @@ def landingPageDashboard12():
        
                             
        
-        column7 = "mi.id,date_format(CONVERT_TZ(mi.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath"
+        column7 = "mi.id,date_format(CONVERT_TZ(mi.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,videoLink"
         data7 = databasefile.SelectQueryOrderby("dashboard  as mi",column7,whereCondition2,"","0","10",orderby)
         if data7["result"]=="":
             data7["result"]=[]
+
+
+        for m in data7['result']:
+                if m['imagePath']!=None:
+                    m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+                if  m['videoLink']!=None:
+                    y=m['videoLink'].split('=')
+                    print(y,'++++++')
+                    m['videoId']=y[1]
+                else:
+                    m['videoId']=''
 
         #OurPartners
 
