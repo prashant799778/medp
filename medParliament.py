@@ -7601,7 +7601,7 @@ def dashboard():
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
                     column =column + ",UserCreate"
-                    values =   values + str(UserId) + "'"
+                    values =   values+",'"+ str(UserId)+"'"
                     data = databasefile.InsertQuery("dashboard",column,values)        
                 else:
                     column = column+ " "
