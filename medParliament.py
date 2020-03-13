@@ -7722,6 +7722,8 @@ def landingPageDashboard12():
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
                     m['videoId']=y[1]
+                else:
+                    m['videoId']=''
 
         #highl.in            
 
@@ -7740,6 +7742,10 @@ def landingPageDashboard12():
                 y=m['videoLink'].split('=')
                 print(y,'++++++')
                 m['videoId']=y[1]
+
+            else:
+                m['videoId']=''
+    
         
         #gallery        
 
