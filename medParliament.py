@@ -7838,7 +7838,7 @@ def landingPageDashboard121():
        
 
 
-        column = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')dateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath,videoLink"
+        column = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')dateCreate,imagePath,videoLink"
         data = databasefile.SelectQueryOrderby("dashboard ",column, WhereCondition,"",startlimit,endlimit,orderby)
         coundata=databasefile,SelectQuery4("dashboard",column,WhereCondition)
         totalcount=len(coundata['result'])
@@ -7846,12 +7846,14 @@ def landingPageDashboard121():
             data["result"]=[]
 
         for m in data['result']:
-                if m['imagePath']!='':
+                if m['imagePath']!=None:
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
-                if  m['videoPath']!="":
+                if  m['videoPath']!=None:
                     y=m['videoPath'].split('=')
                     print(y,'++++++')
                     m['videoId']=y[1]
+                else:
+                    m['videoId']=""
 
                
 
