@@ -7831,6 +7831,11 @@ def landingPageDashboard121():
                 if inputdata['dashboardId'] != "":
                     dashboardId =str(inputdata["dashboardId"])
                     WhereCondition=WhereCondition+" and dashboardId='"+str(dashboardId)+"'"
+
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =int(inputdata["id"])
+                    WhereCondition=WhereCondition+" and id='"+str(Id)+"'"        
         
 
                   
