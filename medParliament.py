@@ -5215,6 +5215,7 @@ def commentsMarketingInsight():
             column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             orderby=" id "
             data1 = databasefile.SelectQueryOrderby("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
+            print(data1)
             r=[]
             r2=data1['result'][0]
             r.append(r2)
