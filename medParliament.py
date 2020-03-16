@@ -6109,7 +6109,11 @@ def landingPageDashboardtest():
                         if  m['videoPath']!=None:
                             y=m['videoPath'].split('=')
                             print(y,'++++++')
-                            m['videoId']=y[1]
+                            d=len(y)
+                            if d>1:
+                                m['videoId']=y[1]
+                            else:
+                                m['videoId']=y[0]
                         else:
                             m['videoId']=""
 
