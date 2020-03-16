@@ -8463,7 +8463,7 @@ def landingPageDashboard12():
 
 
         for m in data['result']:
-                if m['imagePath']!=None:
+                if m['imagePath']!='':
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
@@ -8492,7 +8492,7 @@ def landingPageDashboard12():
 
 
         for m in data2['result']:
-                if m['imagePath']!=None :
+                if m['imagePath']!='' :
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
@@ -8521,7 +8521,7 @@ def landingPageDashboard12():
 
         
         for m in data3['result']:
-                if m['imagePath']!=None:
+                if m['imagePath']!='':
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
@@ -8547,7 +8547,7 @@ def landingPageDashboard12():
             data4["result"]=[]
 
         for m in data4['result']:
-                if m['imagePath']!=None:
+                if m['imagePath']!='':
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
@@ -8572,7 +8572,7 @@ def landingPageDashboard12():
             data5["result"]=[]
 
         for m in data5['result']:
-            if m['imagePath']!=None:
+            if m['imagePath']!='':
                 m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
             if  m['videoLink']!=None:
                 y=m['videoLink'].split('=')
@@ -8600,7 +8600,7 @@ def landingPageDashboard12():
 
 
         for m in data6['result']:
-                if m['imagePath']!=None:
+                if m['imagePath']!='':
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
@@ -8627,7 +8627,7 @@ def landingPageDashboard12():
 
 
         for m in data7['result']:
-                if m['imagePath']!=None:
+                if m['imagePath']!='':
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
