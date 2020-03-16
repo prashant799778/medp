@@ -931,4 +931,8 @@ ul.ant-pagination li {
     margin-left: auto;
     margin-right: auto;
     display: block;
-}    
+}   
+
+.ap-box {
+    display: block !important;
+}
