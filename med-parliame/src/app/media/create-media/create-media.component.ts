@@ -342,6 +342,7 @@ export class CreateMediaComponent implements OnInit {
     this.imageClick = true
   }
   imageCLik(){
-    this.imageClick = false
+    this.imageClick = false;
+    this.frmNews.get('videoLink').setValue('');
   }
 }

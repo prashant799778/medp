@@ -170,7 +170,8 @@ export class CreateNewsComponent implements OnInit {
     this.imageClick = true
   }
   imageCLik(){
-    this.imageClick = false
+    this.imageClick = false;
+    this.frmNews.get('videoLink').setValue('');
   }
 
   gcds(num_1,num_2){

@@ -125,7 +125,8 @@ export class CreatePromisingInitiativeComponent implements OnInit {
     this.imageClick = true
   }
   imageCLik(){
-    this.imageClick = false
+    this.imageClick = false;
+    this.frmNews.get('videoLink').setValue('');
   }
   onFileSelect(event) {
     console.log(event)

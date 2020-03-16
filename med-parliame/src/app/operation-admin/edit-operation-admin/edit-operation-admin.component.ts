@@ -250,7 +250,7 @@ export class EditOperationAdminComponent implements OnInit {
     const newsData = {
       // newsType : this.frmNews.get('newsType').value,
       // newsTitle: this.frmNews.get('newsTitle').value,
-      videoLink: this.frmNews.get('videoLink').value,
+      videoLink: this.frmNews.get('videoLink').value ? this.frmNews.get('videoLink').value : "",
       dashboardId: id, 
       UserId : this.frmNews.get('userCreate').value,
       flag: 'i'
@@ -337,7 +337,8 @@ export class EditOperationAdminComponent implements OnInit {
     this.imageClick = true
   }
   imageCLik(){
-    this.imageClick = false
+    this.imageClick = false;
+    this.frmNews.get('videoLink').setValue('');
   }
 
 }

@@ -75,7 +75,8 @@ export class CreateUpSkillComponent implements OnInit {
     this.imageClick = true
   }
   imageCLik(){
-    this.imageClick = false
+    this.imageClick = false;
+    this.frmNews.get('videoLink').setValue('');
   }
 
    ngOnInit() {
@@ -106,6 +107,7 @@ export class CreateUpSkillComponent implements OnInit {
   initializeForm() {
     // Question,Answer,UserId
     this.frmNews = this.fb.group({
+      videoLink: [''],
       newsType: [''],
       newsTitle: ['',Validators.required],
       banner: [''],
