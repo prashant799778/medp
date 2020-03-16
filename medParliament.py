@@ -8358,8 +8358,8 @@ def dashboard():
                     videoLink =inputdata["videoLink"]
                     if videoLink=="":
                         videoLink=""
-                        column=" ,videoLink,"
-                        values="'" +str(videoLink)+"',"
+                        column=column+" ,videoLink,"
+                        values=values+"'" +str(videoLink)+"',"
             
                       
                     else:
