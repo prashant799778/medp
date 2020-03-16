@@ -7352,7 +7352,7 @@ def promisingInitiatives():
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
                     column = column+" UserCreate,text,imagePath"
-                    values = values+ ",'" + str(userId) + "','" + str(text) + "','" + str(ImagePath) + "'"
+                    values = values+ "'" + str(userId) + "','" + str(text) + "','" + str(ImagePath) + "'"
                     data = databasefile.InsertQuery("promisingInitiatives",column,values)        
                 
                 else:
