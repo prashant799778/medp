@@ -5218,7 +5218,7 @@ def commentsMarketingInsight():
             print(data1)
             r=[]
             r2=data1['result'][0]
-            print(r2,"111")
+            print(r2,"111111@@@@@@@@@@@@@@@@@@@@2")
             r.append(r2)
 
 
