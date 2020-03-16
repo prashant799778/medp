@@ -4850,7 +4850,76 @@ def allMarketingInsightThread():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
+        return output 
+
+
+@app.route('/allMarketingInsightThread1', methods=['POST'])
+def allMarketingInsightThread1():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        WhereCondition1=""
+
+        keyarr = ['Id']
+        print(inputdata,"B")
+        commonfile.writeLog("allMarketingInsightThread1",inputdata,0)
+        data1={"status":"true","message":"","result":[]}
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="pm.id"
+            postId,WhereCondition1="",""
+
+            if "userId" in inputdata and 'Id' in inputdata:
+                marketingInsightId=inputdata['Id']
+                if inputdata['userId'] != "":
+                    userId =inputdata["userId"]
+                    WhereCondition="  and pm.userId ='"+str(userId)+"'  and pm.marketingInsightId='" + str(marketingInsightId) + "' or pm.status='1'"
+                    column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                    orderby=" id "
+                    data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                    WhereCondition=" and n.id='"+str(marketingInsightId)+"'"
+                    column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+                    data = databasefile.SelectQuery1("marketingInsights n,userMaster um",column,WhereCondition)
+
+                  
+            
+            if 'Id' in inputdata:
+                marketingInsightId=inputdata['Id']
+              
+                column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                WhereCondition="  and pm.userId=um.userId and pm.marketingInsightId='" + str(marketingInsightId) + "'" 
+                orderby=" id "
+
+                data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
+                WhereCondition=" and n.id='"+str(marketingInsightId)+"'"
+                column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+                data = databasefile.SelectQuery1("marketingInsights n,userMaster um",column,WhereCondition)
+                print(data,"111111111111111111")
+            print(data,"22222222222222")
+
+
+
+            
+            
+            if (data['status']!='False'):
+            
+                        
+                        
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":[data1['result'],data['result']]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
         return output         
+
 
 
 @app.route('/likeMarketingInsight', methods=['POST'])
@@ -5209,7 +5278,80 @@ def allEventThread():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
+        return output 
+
+
+
+@app.route('/allEventThread1', methods=['POST'])
+def allEventThread1():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        WhereCondition1=""
+
+        keyarr = ['Id']
+        print(inputdata,"B")
+        commonfile.writeLog("allEventThread",inputdata,0)
+        data1={"status":"true","message":"","result":[]}
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="pm.id"
+            postId,WhereCondition1="",""
+
+            if "userId" in inputdata and 'Id' in inputdata:
+                eventId=inputdata['Id']
+                if inputdata['userId'] != "":
+                    userId =inputdata["userId"]
+                    WhereCondition="  and pm.userId ='"+str(userId)+"'  and pm.eventId='" + str(eventId) + "' or pm.status='1'"
+                    column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                    orderby=" id "
+                    data1 = databasefile.SelectQueryOrderbyAsc("eventComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                    WhereCondition=" and ev.id='"+str(eventId)+"'"
+                    column = " ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(CONVERT_TZ(ev.eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate, date_format(CONVERT_TZ(ev.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,um.userName "
+                    data = databasefile.SelectQuery1("parliamentEvent as ev,userMaster um",column,WhereCondition)
+
+                  
+            
+            if 'Id' in inputdata:
+                eventId=inputdata['Id']
+              
+                column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                WhereCondition="  and pm.userId=um.userId and pm.eventId='" + str(eventId) + "'" 
+                orderby=" id "
+
+                data1 = databasefile.SelectQueryOrderbyAsc("eventComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
+               
+                WhereCondition=" and ev.id='"+str(eventId)+"'"
+                column = " ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(CONVERT_TZ(ev.eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate, date_format(CONVERT_TZ(ev.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,um.userName "
+                data = databasefile.SelectQuery1("parliamentEvent as ev,userMaster um",column,WhereCondition)
+                print(data,"111111111111111111")
+
+            print(data,"22222222222222")
+
+
+
+            
+            
+            if (data['status']!='False'):
+            
+                        
+                        
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":[data1['result'],data['result']]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
         return output                 
+
+
 
 
 
@@ -6673,7 +6815,7 @@ def parliamentEvent1():
                     values = " '"+ str(eventTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(eventSummary) +"','" + str(eventLocation) + "','" + str(eventDate) + "'"
                     data = databasefile.InsertQuery("parliamentEvent",column,values)
             if flag =="u":
-                if "status" in inputdata:
+                if "status"  in inputdata:
                     if inputdata['status'] != "":
                         status=inputdata["status"]
 
@@ -6985,6 +7127,8 @@ def deleteAnnouncement():
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
+
+
 
 
 
