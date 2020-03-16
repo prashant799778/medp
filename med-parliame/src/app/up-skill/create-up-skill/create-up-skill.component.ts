@@ -376,7 +376,7 @@ export class CreateUpSkillComponent implements OnInit {
       this.frmNews.get('newsPrice').setValue(this.newsDetails[0]['price'])
       this.frmNews.get('newsEffort').setValue(this.newsDetails[0]['effort'])
       this.frmNews.get('newsLength').setValue(this.newsDetails[0]['length'])
-    // this.frmNews.get('status').setValue(this.newsDetails[0]['newsDesc']);
+    this.frmNews.get('videoLink').setValue(this.newsDetails[0]['videoLink']);
     // if(this.userTypeDetails){
     //   this.userTypeDetails.forEach(resp=>{
     //     if(resp.id == this.newsDetails[0]['userTypeId'])

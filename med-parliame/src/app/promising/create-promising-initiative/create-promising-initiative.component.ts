@@ -347,7 +347,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
     this.frmNews.get('summary').setValue(this.newsDetails[0]['summary']);
     this.frmNews.get('newsDesc').setValue(this.newsDetails[0]['newsDesc']);
     this.frmNews.get('id').setValue(this.newsDetails[0]['id']);
-    // this.frmNews.get('status').setValue(this.newsDetails[0]['newsDesc']);
+    this.frmNews.get('videoLink').setValue(this.newsDetails[0]['videoLink']);
     // if(this.userTypeDetails){
     //   this.userTypeDetails.forEach(resp=>{
     //     if(resp.id == this.newsDetails[0]['userTypeId'])
