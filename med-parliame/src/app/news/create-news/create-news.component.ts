@@ -204,7 +204,7 @@ export class CreateNewsComponent implements OnInit {
     };
 
     const formData = new FormData();
-    formData.append('NewsBanner', this.frmNews.get('banner').value);
+    formData.append('NewsBanner', this.frmNews.get('banner').value ? this.frmNews.get('banner').value : 'NULL');
     formData.append('news', JSON.stringify(newsData));
 
     console.log(formData);
@@ -259,7 +259,7 @@ export class CreateNewsComponent implements OnInit {
       };
   
       const formData = new FormData();
-      formData.append('NewsBanner', this.frmNews.get('banner').value);
+      formData.append('NewsBanner', this.frmNews.get('banner').value ? this.frmNews.get('banner').value : 'NULL');
       formData.append('news', JSON.stringify(newsData));
   
       console.log(formData);

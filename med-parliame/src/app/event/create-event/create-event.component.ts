@@ -19,7 +19,8 @@ export class CreateEventComponent implements OnInit {
   size:any;
   width:number;
   height:number;
-  errorImage: boolean
+  errorImage: boolean;
+  imageClick: boolean;
 
   @ViewChild('coverFilesInput', {static: false}) imgType:ElementRef;
   data: [];
@@ -107,7 +108,9 @@ export class CreateEventComponent implements OnInit {
       userTypeId: [''],
       id: [''],
       userCreate: [''],
-      eventLocation: ['']
+      eventLocation: [''],
+      videoLink: ['']
+      
     });
     this.frmNews.get('eventDate').valueChanges.subscribe(resp=>{
       if(resp && resp.formatted)
@@ -193,7 +196,8 @@ export class CreateEventComponent implements OnInit {
       
       flag: 'u',
       id: this.frmNews.get('id').value,
-      status: 1
+      status: 1,
+      videoLink: this.frmNews.get('videoLink').value,
     };
 
     const formData = new FormData();
@@ -226,6 +230,14 @@ export class CreateEventComponent implements OnInit {
     });
   }
 
+  imageCLik1(){
+    this.imageShow = '';
+    this.imageClick = true
+  }
+  imageCLik(){
+    this.imageClick = false
+  }
+
 
   submitNews() {
     console.log(this.frmNews.get('eventDate').value.formatted)
@@ -237,7 +249,8 @@ export class CreateEventComponent implements OnInit {
       eventDate: this.getDate(this.frmNews.get('eventDate').value.formatted),
       UserId : this.frmNews.get('userCreate').value,
       userTypeId: this.frmNews.get('userTypeId').value,
-      flag: 'i'
+      flag: 'i',
+      videoLink: this.frmNews.get('videoLink').value,
     };
 
     const formData = new FormData();

@@ -72,6 +72,7 @@
                               <thead> 
                                     <tr>
                                       <th>Sign-Up Image</th>
+                                      <th>Video Link</th>
                                       <th>Description</th>
                                       <th>Date of Creation</th>
                                       <th>Action</th>
@@ -80,7 +81,8 @@
                                   <tbody> 
                                     <ng-container *ngFor="let news of allnews">
                                       <tr>
-                                        <td> <img src="{{news.imagePath}}" class="hash-img tab-shadow"> </td>
+                                        <td> <img *ngIf="news.imagePath  != ''"  src="{{news.imagePath}}" class="hash-img tab-shadow"> </td>
+                                        <td>  {{news.videoLink}} </td>
                                         <td>  {{news.content}} </td>
                                         <td>  {{news.DateCreate}} </td>
                                         <td>
