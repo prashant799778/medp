@@ -4136,11 +4136,11 @@ def promissingIntiatives():
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
                         print("inputdata=================",type(inputdata1))
-                        if ((inputdata1!=ConstantData.GetBaseURL()) and (inputdata1 !="")) :
-                            if  inputdata1 !=None: 
-                                index=re.search("/newsimages", inputdata1).start()
-                                ImagePath=""
-                                ImagePath=inputdata1[index:]
+                        if  inputdata1 is not None: 
+                            print(inputdata1)
+                            index=re.search("/newsimages", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
 
 
                         whereCondition=" and id= '"+ str(Id) +"'"
@@ -4311,10 +4311,12 @@ def news():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        if  inputdata1 !=None: 
+                        if  inputdata1 is not None: 
                             index=re.search("/newsimages", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
+
+                            print(inputdata1)
 
 
                         whereCondition=" and id= '"+ str(Id) +"'"
@@ -4488,7 +4490,7 @@ def MarketingInsights():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        if  inputdata1 !=None: 
+                        if  inputdata1 is not None:
                             index=re.search("/marketingInsights", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
@@ -4703,9 +4705,7 @@ def upSkillsOpportunity():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        if inputdata1==ConstantData.GetBaseURL():
-                            ImagePath=""
-                        else : 
+                        if  inputdata1 is not None:
                             index=re.search("/UpSkillsOpportunity", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
@@ -7010,7 +7010,7 @@ def parliamentEvent1():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('postImage')
-                        if  inputdata1 !=None: 
+                        if  inputdata1 is not None:
                             index=re.search("/eventImages", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
@@ -7399,7 +7399,7 @@ def promisingInitiatives():
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('postImage')
                         print(inputdata1,"@##!!@@")
-                        if  inputdata1 !=None: 
+                        if  inputdata1 is not None:
                             index=re.search("/promisingEvent", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
@@ -8828,7 +8828,7 @@ def ourPartners155():
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('postImage')
                         print(inputdata1,"==========================================")
-                        if  inputdata1 !=None: 
+                        if  inputdata1 is not None: 
                             index=re.search("/ourPartners", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
