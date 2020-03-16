@@ -8382,14 +8382,13 @@ def dashboard():
 
                     file.save(FolderPath)
                     ImagePath = filepath
-                    column=column+" ,imagePath"
-                    values=values+",'"+ str(ImagePath)+"'"
+                   
             if flag =="i":
                 if "UserId" in inputdata:
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
-                    column =column + "UserCreate"
-                    values =   values+"'"+ str(UserId)+"'"
+                    column =column + "UserCreate,imagePath"
+                    values =   values+"'"+ str(UserId)+",'"+ str(ImagePath)+"'"
                     data = databasefile.InsertQuery("dashboard",column,values)        
                 else:
                     column = column+ " "
