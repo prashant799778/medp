@@ -5149,7 +5149,7 @@ def commentsevent():
             WhereCondition="  and pm.userId ='"+str(userId)+"'  and eventId='" + str(postId) + "'"
             column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             orderby=" id "
-            data1 = databasefile.SelectQueryOrderby("eventComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+            data1 = databasefile.SelectQueryOrderby("eventComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
 
             if data!="0":
                 return data1
@@ -5204,7 +5204,7 @@ def commentsMarketingInsight():
             WhereCondition="  and pm.userId ='"+str(userId)+"'  and marketingInsightId='" + str(postId) + "'"
             column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             orderby=" id "
-            data1 = databasefile.SelectQueryOrderby("marketingInsightComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+            data1 = databasefile.SelectQueryOrderby("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
                 
 
 
