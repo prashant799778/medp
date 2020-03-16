@@ -8340,8 +8340,8 @@ def dashboard():
             if "dashboardId" in inputdata:
                 dashboardId =inputdata["dashboardId"]
                 print(dashboardId)
-                column=column+" dashboardId "
-                values=values+" '"+ str(dashboardId) +"'"
+                column=column+" dashboardId ,"
+                values=values+" '"+ str(dashboardId) +"',"
 
 
             # if "summary" in inputdata:
@@ -8363,8 +8363,8 @@ def dashboard():
             
                       
                     else:
-                        column=column+" ,videoLink,"
-                        values=values+",'" +str(videoLink)+"',"
+                        column=column+" videoLink,"
+                        values=values+"'" +str(videoLink)+"',"
             
             
             if 'postImage' in request.files:      
@@ -8388,7 +8388,7 @@ def dashboard():
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
                     column =column + "UserCreate,imagePath"
-                    values =   values+"'"+ str(UserId)+",'"+ str(ImagePath)+"'"
+                    values =   values+"'"+ str(UserId)+"','" + str(ImagePath)+"'"
                     data = databasefile.InsertQuery("dashboard",column,values)        
                 else:
                     column = column+ " "
