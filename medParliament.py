@@ -4311,9 +4311,7 @@ def news():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        if inputdata1==ConstantData.GetBaseURL():
-                            ImagePath=""
-                        else : 
+                        if  inputdata1 !=None: 
                             index=re.search("/newsimages", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
@@ -4490,9 +4488,7 @@ def MarketingInsights():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        if inputdata1==ConstantData.GetBaseURL():
-                            ImagePath=""
-                        else : 
+                        if  inputdata1 !=None: 
                             index=re.search("/marketingInsights", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
