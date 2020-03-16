@@ -6882,6 +6882,7 @@ def getParliamentEvent():
         column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(CONVERT_TZ(eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath   "
         data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
         if data['result'] != "":
+
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
@@ -6889,9 +6890,10 @@ def getParliamentEvent():
                     y=i['videoLink'].split('=')
                     print(y)
                     i['videoId']=y[1]
-                y=i['id']
+                    
+                y2=i['id']
                 column="userId"
-                whereCondition=" and eventId='"+str(y)+"'"
+                whereCondition=" and eventId='"+str(y2)+"'"
                 dat=databasefile.SelectQuery('eventInterest',column,whereCondition,"",startlimit,endlimit)
                 print(dat,'++++++++++++++++++++++++++++')
                 if dat['result'] !="":
