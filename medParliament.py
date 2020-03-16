@@ -8388,8 +8388,8 @@ def dashboard():
                 if "UserId" in inputdata:
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
-                    column =column + ",UserCreate"
-                    values =   values+",'"+ str(UserId)+"'"
+                    column =column + "UserCreate"
+                    values =   values+"'"+ str(UserId)+"'"
                     data = databasefile.InsertQuery("dashboard",column,values)        
                 else:
                     column = column+ " "
