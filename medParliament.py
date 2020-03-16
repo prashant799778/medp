@@ -4467,7 +4467,7 @@ def MarketingInsights():
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
                       
-                    column = column+",newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
+                    column = column+"newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
                     values =values+ " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
                     data = databasefile.InsertQuery("marketingInsights",column,values)        
                 else:
@@ -5496,7 +5496,7 @@ def commentsevent12():
         output = {"status":"false","message":"something went wrong","result":""}
         return output        
 
-                         
+
 
 
 
