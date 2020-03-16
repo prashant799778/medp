@@ -8339,7 +8339,7 @@ def dashboard():
 
             if "dashboardId" in inputdata:
                 dashboardId =inputdata["dashboardId"]
-                print(dashboard)
+                print(dashboardId)
                 column=column+" dashboardId "
                 values=values+" '"+ str(dashboardId) +"'"
 
