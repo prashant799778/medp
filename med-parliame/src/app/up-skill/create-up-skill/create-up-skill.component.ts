@@ -19,7 +19,8 @@ export class CreateUpSkillComponent implements OnInit {
   size:any;
   width:number;
   height:number;
-  errorImage: boolean
+  errorImage: boolean;
+  imageClick: boolean;
 
   @ViewChild('coverFilesInput', {static: false}) imgType:ElementRef;
 
@@ -69,6 +70,13 @@ export class CreateUpSkillComponent implements OnInit {
     this.initializeForm();
     this.updateCheck= false;
    }
+   imageCLik1(){
+    this.imageShow = '';
+    this.imageClick = true
+  }
+  imageCLik(){
+    this.imageClick = false
+  }
 
    ngOnInit() {
     console.log("step 1")
@@ -203,6 +211,7 @@ export class CreateUpSkillComponent implements OnInit {
       flag: 'u',
       id: this.frmNews.get('id').value,
       status: 1,
+      videoLink: this.frmNews.get('videoLink').value,
 
 
 
@@ -268,6 +277,7 @@ export class CreateUpSkillComponent implements OnInit {
         UserId : this.frmNews.get('userCreate').value,
         userTypeId: this.frmNews.get('userTypeId').value,
         flag: 'i',
+        videoLink: this.frmNews.get('videoLink').value,
 
 
         videoTranscript: this.frmNews.get('newsvideoTranscript').value,

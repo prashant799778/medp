@@ -47,6 +47,7 @@
                               <thead>
                                 <tr>
                                   <th> Image</th>
+                                  <th>Video Link</th>
                                   <th> Title</th>
                                   <th> Summary</th>
                                   <th> Description</th>
@@ -59,6 +60,7 @@
                                     <ng-container *ngFor="let news of allnews">
                                          <tr >
                                       <td> <img src="{{news.imagePath}}" class="hash-img tab-shadow"> </td>
+                                      <td> {{news.videoLink}} </td>
                                       <td> <p>{{news.newsTitle}} </p></td> 
                                       <td> <p>{{news.summary}} </p></td>                                       
                                       <td> <p [innerHtml]="news.newsDesc " class="inline-blk"></p> </td>

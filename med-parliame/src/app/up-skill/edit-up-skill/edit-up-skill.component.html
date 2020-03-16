@@ -47,6 +47,7 @@
                           <thead>
                             <tr>
                               <th> Image</th>
+                              <th>Video</th>
                               <th> Title</th>
                               <th> Subject</th>
                               <th> Description</th>
@@ -60,6 +61,7 @@
                                      <tr >
 
                                   <td> <img *ngIf="news.imagePath != 'http://134.209.153.34:5031'" src="{{news.imagePath}}" class="hash-img tab-shadow"> <img *ngIf="news.imagePath == 'http://134.209.153.34:5031'" src="../../../assets/images/no-image-available.png" class="hash-img tab-shadow"> </td>
+                                  <td> {{news.videoLink}} </td>
                                   <td> <p>{{news.newsTitle}} </p></td> 
                                   <td> <p>{{news.summary}} </p></td>                                       
                                   <td> <p [innerHtml]="news.newsDesc " class="inline-blk"></p> </td>

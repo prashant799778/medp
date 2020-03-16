@@ -69,20 +69,30 @@
                             <label for="newsTitle">User Content Description</label>
                                 <input type="text" class="form-control" formControlName="content">
                             <br>
-                            <label for="banner">User Content Banner</label>
-                                <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
-                                <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
-                                    <img [src]="imageShow" id="file13" class="img-fluid  mx-auto d-block">
-                                    <div *ngIf="errorImage" class="error">
+                            <button class="btn btn-success pull-right buttonsss " (click)="imageCLik()">Video Upload</button>
+                            <button class="btn btn-success pull-right buttonsss ml-3 "(click)="imageCLik1()">Image Upload</button>
+                            <br>
+                            <ng-container *ngIf="!imageClick">
+                                <label for="newsTitle"> Video Link</label>
+                                    <input type="text" class="form-control" formControlName="videoLink">
+                                </ng-container>
+                                
+                                <ng-container *ngIf="imageClick">
+                                        <label for="banner">Image</label>
+                                        <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
+                                        <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
+                                            <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
+                                            <div *ngIf="errorImage" class="error">
+                                                <p>Please Upload Image In 4:3</p>
+                                            </div>
+                                       </div>
+                                       <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
+                                        <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
+                                        <div *ngIf="errorImage" class="error">
                                             <p>Please Upload Image In 4:3</p>
                                         </div>
-                               </div>
-                               <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
-                                <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block" id="file13">
-                                <div *ngIf="errorImage" class="error">
-                                    <p>Please Upload Image In 4:3</p>
-                                </div>
-                           </div>
+                                   </div>
+                                </ng-container>                           
                             <br>
                             <!-- <label for="summary">Gallery Shots</label>
                                 <textarea type="text" class="form-control" formControlName="summary" placeholder="Enter Gallery Summary..." rows="4"></textarea>

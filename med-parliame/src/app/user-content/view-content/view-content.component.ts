@@ -20,7 +20,8 @@ export class ViewContentComponent implements OnInit {
   size:any;
   width:number;
   height:number;
-  errorImage: boolean
+  errorImage: boolean;
+  imageClick: boolean;
 
   @ViewChild('coverFilesInput', {static: false}) imgType:ElementRef;
 
@@ -73,6 +74,13 @@ export class ViewContentComponent implements OnInit {
     //   document.getElementById("demo").innerHTML = x;
     // }
    }
+   imageCLik1(){
+    this.imageShow = '';
+    this.imageClick = true
+  }
+  imageCLik(){
+    this.imageClick = false
+  }
 
    ngOnInit() {
     console.log("step 1")
@@ -107,7 +115,7 @@ export class ViewContentComponent implements OnInit {
       banner: [''],
       id:[''],
       // summary: [''],
-      // newsDesc: [''],
+      videoLink: [''],
       userCreate: [''],
       userTypeId: ['']
     });
@@ -216,7 +224,8 @@ export class ViewContentComponent implements OnInit {
       userTypeId: this.frmNews.get('userTypeId').value,
       flag: 'u',
       id: this.frmNews.get('id').value,
-      status: 1
+      status: 1,
+      videoLink: this.frmNews.get('videoLink').value,
     };
 
     const formData = new FormData();
@@ -259,7 +268,8 @@ export class ViewContentComponent implements OnInit {
       // newsDesc: this.frmNews.get('newsDesc').value,
       UserId : this.frmNews.get('userCreate').value,
       flag: 'i',
-      userTypeId: this.frmNews.get('userTypeId').value
+      userTypeId: this.frmNews.get('userTypeId').value,
+      videoLink: this.frmNews.get('videoLink').value,
     };
 
     const formData = new FormData();
@@ -325,7 +335,7 @@ export class ViewContentComponent implements OnInit {
     }
     this.frmNews.get('content').setValue(this.newsDetails[0]['content']);
     this.frmNews.get('userTypeId').setValue(this.newsDetails[0]['userTypeId']);
-    // this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['newsTitle']);
+    this.frmNews.get('videoLink').setValue(this.newsDetails[0]['videoLink']);
     // this.frmNews.get('summary').setValue(this.newsDetails[0]['summary']);
     // this.frmNews.get('newsDesc').setValue(this.newsDetails[0]['newsDesc']);
     this.frmNews.get('id').setValue(this.newsDetails[0]['id']);

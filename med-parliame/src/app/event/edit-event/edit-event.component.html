@@ -59,6 +59,7 @@
                               <thead> 
                                     <tr>
                                       <th>Event Image</th>
+                                      <th>Video Link</th>
                                       <th>Event Title</th>
                                       <th>Event Shots</th>
                                       <th>Event Location</th>
@@ -70,6 +71,7 @@
                                     <ng-container *ngFor="let news of allnews">
                                          <tr >
                                       <td> <img src="{{news.imagePath}}" class="hash-img tab-shadow"> </td>
+                                      <td> {{news.videoLink}} </td>
                                       <td> {{news.eventTitle}} </td> 
                                       <td> {{news.eventSummary}} </td>                                       
                                       <td> {{news.eventLocation}} </td>

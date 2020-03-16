@@ -20,6 +20,7 @@ export class CreateMarketNewsComponent implements OnInit {
   width:number;
   height:number;
   errorImage: boolean
+  imageClick: boolean;
 
   @ViewChild('coverFilesInput', {static: false}) imgType:ElementRef;
 
@@ -93,6 +94,13 @@ export class CreateMarketNewsComponent implements OnInit {
 
   expanded(event: any): void {
   }
+  imageCLik1(){
+    this.imageShow = '';
+    this.imageClick = true
+  }
+  imageCLik(){
+    this.imageClick = false
+  }
 
   initializeForm() {
     // Question,Answer,UserId
@@ -105,6 +113,7 @@ export class CreateMarketNewsComponent implements OnInit {
       userCreate: [''],
       userTypeId: ['',Validators.required],
       id: [''],
+      videoLink: ['']
       
     });
     this.frmNews.valueChanges.subscribe(()=>{
@@ -191,6 +200,7 @@ export class CreateMarketNewsComponent implements OnInit {
       userTypeId: this.frmNews.get('userTypeId').value,
       flag: 'u',
       id: this.frmNews.get('id').value,
+      videoLink: this.frmNews.get('videoLink').value,
       status: 1
     };
 
@@ -245,7 +255,8 @@ export class CreateMarketNewsComponent implements OnInit {
         newsDesc: this.frmNews.get('newsDesc').value,
         UserId : this.frmNews.get('userCreate').value,
         userTypeId: this.frmNews.get('userTypeId').value,
-        flag: 'i'
+        flag: 'i',
+        videoLink: this.frmNews.get('videoLink').value,
       };
   
       const formData = new FormData();
@@ -324,6 +335,7 @@ export class CreateMarketNewsComponent implements OnInit {
     this.frmNews.get('summary').setValue(this.newsDetails[0]['summary']);
     this.frmNews.get('newsDesc').setValue(this.newsDetails[0]['newsDesc']);
     this.frmNews.get('id').setValue(this.newsDetails[0]['id']);
+    this.frmNews.get('videoLink').setValue(this.newsDetails[0]['videoLink']);
     // this.frmNews.get('status').setValue(this.newsDetails[0]['newsDesc']);
     // if(this.userTypeDetails){
     //   this.userTypeDetails.forEach(resp=>{

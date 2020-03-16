@@ -19,7 +19,8 @@ export class CreatePromisingInitiativeComponent implements OnInit {
   size:any;
   width:number;
   height:number;
-  errorImage: boolean
+  errorImage: boolean;
+  imageClick: boolean;
 
   @ViewChild('coverFilesInput', {static: false}) imgType:ElementRef;
 
@@ -115,10 +116,17 @@ export class CreatePromisingInitiativeComponent implements OnInit {
       userCreate: [''],
       userTypeId: ['',Validators.required],
       id: [''],
+      videoLink: ['']
       
     });
   }
-
+  imageCLik1(){
+    this.imageShow = '';
+    this.imageClick = true
+  }
+  imageCLik(){
+    this.imageClick = false
+  }
   onFileSelect(event) {
     console.log(event)
     if(event.type === "change"){
@@ -201,7 +209,8 @@ export class CreatePromisingInitiativeComponent implements OnInit {
       userTypeId: this.frmNews.get('userTypeId').value,
       flag: 'u',
       id: this.frmNews.get('id').value,
-      status: 1
+      status: 1,
+      videoLink: this.frmNews.get('videoLink').value,
     };
 
     const formData = new FormData();
@@ -255,7 +264,8 @@ export class CreatePromisingInitiativeComponent implements OnInit {
       newsDesc: this.frmNews.get('newsDesc').value,
       UserId : this.frmNews.get('userCreate').value,
       userTypeId: this.frmNews.get('userTypeId').value,
-      flag: 'i'
+      flag: 'i',
+      videoLink: this.frmNews.get('videoLink').value,
     };
 
     const formData = new FormData();
