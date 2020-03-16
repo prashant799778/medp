@@ -5349,7 +5349,154 @@ def allEventThread1():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
-        return output                 
+        return output
+
+
+
+@app.route('/commentsEventApproved', methods=['POST'])
+def commentsevent2():
+    try:
+        print("nnnnnnnnnnnn",request.get_data(),"===================",type(request.get_data()))
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        print("mmmmmmmmmmm")
+        startlimit,endlimit="",""
+        print("111111111111111111111111")
+        keyarr = ['id']
+        commonfile.writeLog("commentsEventApproved",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print("22222222222222222222222")
+        if msg == "1":
+            Id = inputdata["id"]
+            whereCondition=" id ='"+str(Id)+"'"
+            
+           
+           
+            
+            column = "status=1"                
+            
+            data = databasefile.UpdateQuery("eventComment",column,whereCondition)
+
+            if data!="0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg 
+
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+@app.route('/commentsEventRejected', methods=['POST'])
+def commentsevent1():
+    try:
+        print("nnnnnnnnnnnn",request.get_data(),"===================",type(request.get_data()))
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        print("mmmmmmmmmmm")
+        startlimit,endlimit="",""
+        print("111111111111111111111111")
+        keyarr = ['id']
+        commonfile.writeLog("commentsEventRejected",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print("22222222222222222222222")
+        if msg == "1":
+            Id = inputdata["id"]
+            whereCondition=" id ='"+str(Id)+"'"
+            
+           
+           
+            
+            column = "status=2"                
+            
+            data = databasefile.UpdateQuery("eventComment",column,whereCondition)
+
+            if data!="0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg 
+
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+@app.route('/commentsMarketApproved', methods=['POST'])
+def commentsevent222():
+    try:
+        print("nnnnnnnnnnnn",request.get_data(),"===================",type(request.get_data()))
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        print("mmmmmmmmmmm")
+        startlimit,endlimit="",""
+        print("111111111111111111111111")
+        keyarr = ['id']
+        commonfile.writeLog("commentsMarketApproved",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print("22222222222222222222222")
+        if msg == "1":
+            Id = inputdata["id"]
+            whereCondition=" id ='"+str(Id)+"'"
+            
+           
+           
+            
+            column = "status=1"                
+            
+            data = databasefile.UpdateQuery("marketingInsightComment",column,whereCondition)
+
+            if data!="0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg 
+
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+@app.route('/commentsMarketRejected', methods=['POST'])
+def commentsevent12():
+    try:
+        print("nnnnnnnnnnnn",request.get_data(),"===================",type(request.get_data()))
+        inputdata =  commonfile.DecodeInputdata(request.get_data()) 
+        print("mmmmmmmmmmm")
+        startlimit,endlimit="",""
+        print("111111111111111111111111")
+        keyarr = ['id']
+        commonfile.writeLog("commentsMarketRejected",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        print("22222222222222222222222")
+        if msg == "1":
+            Id = inputdata["id"]
+            whereCondition=" id ='"+str(Id)+"'"
+            
+           
+           
+            
+            column = "status=2"                
+            
+            data = databasefile.UpdateQuery("marketingInsightComment",column,whereCondition)
+
+            if data!="0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg 
+
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output        
+
+                         
 
 
 
