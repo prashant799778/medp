@@ -5367,7 +5367,7 @@ def commentsevent2():
         print("22222222222222222222222")
         if msg == "1":
             Id = inputdata["id"]
-            whereCondition=" id ='"+str(Id)+"'"
+            whereCondition=" and id ='"+str(Id)+"'"
             
            
            
@@ -5403,7 +5403,7 @@ def commentsevent1():
         print("22222222222222222222222")
         if msg == "1":
             Id = inputdata["id"]
-            whereCondition=" id ='"+str(Id)+"'"
+            whereCondition=" and id ='"+str(Id)+"'"
             
            
            
@@ -5439,7 +5439,7 @@ def commentsevent222():
         print("22222222222222222222222")
         if msg == "1":
             Id = inputdata["id"]
-            whereCondition=" id ='"+str(Id)+"'"
+            whereCondition=" and id ='"+str(Id)+"'"
             
            
            
@@ -5475,7 +5475,7 @@ def commentsevent12():
         print("22222222222222222222222")
         if msg == "1":
             Id = inputdata["id"]
-            whereCondition=" id ='"+str(Id)+"'"
+            whereCondition=" and id ='"+str(Id)+"'"
             
            
            
