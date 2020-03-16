@@ -8539,7 +8539,7 @@ def landingPageDashboard12():
 
         whereCondition2=WhereCondition+ " and dashboardId='3' "     
         column4 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath ,videoLink  "
-        data4 = databasefile.SelectQuery("dashboard",column4,whereCondition2,"",startlimit,endlimit)
+        data4 = databasefile.SelectQueryOrderby("dashboard",column4,whereCondition2,"",startlimit,endlimit)
         print(data4)
 
         if data4["result"]=="":
