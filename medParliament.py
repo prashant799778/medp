@@ -6574,9 +6574,13 @@ def galleryImages1():
                         inputdata1 = request.form.get('postImage')
                         print(inputdata1,"==========================================")
                         if  inputdata1 !=None: 
+                            print(inputdata1)
+
                             index=re.search("/gallery", inputdata1).start()
+                          
                             ImagePath=""
                             ImagePath=inputdata1[index:]
+
                         whereCondition=" and  id='" + str(Id) + "'"
                         column="videoLink='"+ str(videoLink)+  "',title='"+ str(title)+  "',imagePath='"+ str(ImagePath)+  "',status='"+ str(status)+  "'"
                         data=databasefile.UpdateQuery("gallery",column,whereCondition)
@@ -6906,7 +6910,7 @@ def getParliamentEvent():
 
             return data
         else:
-            return commonfile.Errormessage()
+            return data
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
