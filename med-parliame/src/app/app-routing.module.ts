@@ -56,6 +56,7 @@ import { EditContentComponent } from './user-content/edit-content/edit-content.c
 import { CreateOperationAdminComponent } from './operation-admin/create-operation-admin/create-operation-admin.component';
 import { EditOperationAdminComponent } from './operation-admin/edit-operation-admin/edit-operation-admin.component';
 import { EventPostComponent } from './event-post/event-post.component';
+import { ReplyEventPostComponent } from './event-post/reply-event-post.component';
 
 const routes: Routes = [
   { path: '',redirectTo: '/dashboard',pathMatch: 'full'},
@@ -69,6 +70,7 @@ const routes: Routes = [
   { path: 'marketInsightPost', component: ViewMarketInsightPostComponent,canActivate:[AuthGuard]},
   { path: 'replyPostMarketing', component: ReplyPostMarketComponent,canActivate:[AuthGuard]},
   { path: 'eventPost', component: EventPostComponent,canActivate:[AuthGuard]},
+  { path: 'eventReplyPost', component: ReplyEventPostComponent,canActivate:[AuthGuard]},
   { path: 'setting', 
   children: [                          //<---- child components declared here
     { path: '',redirectTo: '/Setting/add',pathMatch:'full'}, 

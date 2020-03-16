@@ -38,10 +38,18 @@
                                 </div>
                               <div class="ap-box d-flex">
                               <span>{{comment.commentDescription}}</span>
-                              <ul *ngIf="!studentAdmin">
-                                    <li><button type="button" class="btn-success">approved</button></li>
-                                    <li><button type="button" class="btn-danger">reject</button></li>
+                              <ul *ngIf="!studentAdmin && comment.Status == '0'">
+                                    <li><button type="button" class="btn-success" (click)="Approved(comment.id,1)">approve</button></li>
+                                    <li><button type="button" class="btn-danger" (click)="Approved(comment.id,2)">reject</button></li>
                                   </ul>
+                              <ul *ngIf="!studentAdmin && comment.Status == '1'">
+                                    <!-- <li><button type="button" class="btn-success" (click)="Approved(comment.id,1)">approved</button></li> -->
+                                    <li><button type="button" class="btn-danger" (click)="Approved(comment.id,2)">reject</button></li>
+                                 </ul>
+                                <ul *ngIf="!studentAdmin && comment.Status == '2'">
+                                <li><button type="button" class="btn-success" (click)="Approved(comment.id,1)">approve</button></li>
+                                <!-- <li><button type="button" class="btn-danger" (click)="Approved(comment.id,2)">reject</button></li> -->
+                                </ul>
                                   </div>
                             </div>
                                 <!-- <span>Posted on {{comment.DateCreate}}</span> -->
@@ -140,8 +148,8 @@
                                <div class="child-success"><img src="../../../assets/images/correct.svg"></div>
         
                                 
-                               <div *ngIf="approvedModal == 0" class="child-success"><h2> Rejected Successfully</h2></div> 
-                                            <div *ngIf="approvedModal == 1" class="child-success"><h2> Approved Successfully</h2></div> 
+                               <div *ngIf="approvedModal == 2" class="child-success"><h2> Rejected Successfully</h2></div> 
+                              <div *ngIf="approvedModal == 1" class="child-success"><h2> Approved Successfully</h2></div> 
                            </div>
                             
                         </div>

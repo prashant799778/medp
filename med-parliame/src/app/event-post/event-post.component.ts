@@ -197,7 +197,7 @@ export class EventPostComponent implements OnInit {
 	}
 	policyDetail(id,userTypeId){
 	  
-		  this.router.navigate(['/replyPostMarketing'],{queryParams: {id: id,userTypeId: userTypeId}})
+		  this.router.navigate(['/eventReplyPost'],{queryParams: {id: id,userTypeId: userTypeId}})
 	  }
   
   }

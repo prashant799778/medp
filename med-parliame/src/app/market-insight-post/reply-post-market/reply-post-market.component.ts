@@ -12,7 +12,8 @@ declare var jQuery: any;
   styleUrls: ['./reply-post-market.component.css']
 })
 export class ReplyPostMarketComponent implements OnInit {
-  id: any;
+	id: any;
+	apprejId: any;
 	userTypeId: any;
 	postDetails: any;
 	modalDescription: any;
@@ -89,6 +90,20 @@ export class ReplyPostMarketComponent implements OnInit {
 		}
 	}
 
+	reloadPost(){
+		let data = {
+		  'Id': this.id
+		}
+		this.userService.dataPostApi(data, AppSettings.allMarketingInsightThread).then(resp =>{
+		  this.postDetails = resp['result']['1']['0']
+		  this.comment = resp['result']['0']
+		  if(resp['result']['1'].status == 0 ){
+			console.log("onluy view")
+			this.onlyView = true;
+		  }
+		})
+	  }
+
 	replyPost(){
 		let data = {
 			'Id': this.id,
@@ -117,16 +132,16 @@ export class ReplyPostMarketComponent implements OnInit {
 		})
 	}
 	Approve(id){
-		if(id != '3'){
+		if(id == '1'){
 			console.log(this.local.get('userData1')[0].userId)
 			let data = {
-				'Id': this.id,
+				// 'id': this.id,
 				'userTypeId': this.local.get('userData1')[0].userTypeId,
 				'approvedUserId': this.local.get('userData1')[0].userId,
-				'id': id
+				'id': this.apprejId
 	
 			}
-			this.userService.dataPostApi(data, AppSettings.VerifyPost).then(resp =>{
+			this.userService.dataPostApi(data, AppSettings.approveMarketingComment).then(resp =>{
 				if(resp['status']== 'true'){
 					
 					// if(id == '1'){
@@ -139,12 +154,47 @@ export class ReplyPostMarketComponent implements OnInit {
 					this.activatedds = true;
 					setTimeout(()=>{
 						jQuery('#approv-pop').modal("hide")
+						setTimeout(()=>{
+							this.approvedModal = ""
+							this.apprejId = ""
+							this.activatedds = false;
+						},1000)
 					},2000)
+					this.reloadPost()
 				}
 			})
-		}else{
-			// jQuery('#approv-pop').modal('show')
-			// this.modalDescription = 'Post OnHold'
+		}
+		if(id == '2'){
+			console.log(this.local.get('userData1')[0].userId)
+			let data = {
+				// 'id': this.id,
+				'userTypeId': this.local.get('userData1')[0].userTypeId,
+				'approvedUserId': this.local.get('userData1')[0].userId,
+				'id': this.apprejId
+	
+			}
+			this.userService.dataPostApi(data, AppSettings.rejectMarketingComment).then(resp =>{
+				if(resp['status']== 'true'){
+					
+					// if(id == '1'){
+					// 	this.modalDescription = ' Post Approved Successfully'
+					// }else{
+					// 	this.modalDescription = ' Post Rejected Successfully'
+					// }
+					// this.beforeApproved = true;
+					this.onlyView = false;
+					this.activatedds = true;
+					setTimeout(()=>{
+						jQuery('#approv-pop').modal("hide")
+						setTimeout(()=>{
+							this.approvedModal = ""
+							this.apprejId = ""
+							this.activatedds = false;
+						},1000)
+					},2000)
+					this.reloadPost()
+				}
+			})
 		}
 		
 		
@@ -165,9 +215,10 @@ export class ReplyPostMarketComponent implements OnInit {
 	goto(id){
 		this.router.navigateByUrl(id)
 	}
-	Approved(id){
+	Approved(id,oc){
 		jQuery('#approv-pop').modal('show')
-		this.approvedModal = id
+		this.approvedModal = oc
+		this.apprejId = id;
 	}
 		
 	
