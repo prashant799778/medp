@@ -8320,7 +8320,7 @@ def dashboard():
        
         inputdata = request.form.get('data')    
         inputdata = json.loads(inputdata) 
-        print("announcements",inputdata)
+        print("dashboard",inputdata)
         commonfile.writeLog("dashboard",inputdata,0)
         keyarr = ["dashboardId","flag"]           
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
@@ -8339,6 +8339,7 @@ def dashboard():
 
             if "dashboardId" in inputdata:
                 dashboardId =inputdata["dashboardId"]
+                print(dashboard)
                 column=column+" dashboardId "
                 values=values+" '"+ str(dashboardId) +"'"
 
