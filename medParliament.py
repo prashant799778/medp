@@ -5150,8 +5150,18 @@ def commentsevent():
             column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             orderby=" id "
             data1 = databasefile.SelectQueryOrderby("eventComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
+            r=[]
+            r2=data1['result'][0]
+            r.append(r2)
+
+
+                
+
+
+
 
             if data!="0":
+                data1={"status":"true","result":r,"message":""}
                 return data1
             else:
                 return commonfile.Errormessage()
