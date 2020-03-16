@@ -8338,10 +8338,9 @@ def dashboard():
             #         values=" '"+ str(title) +"'"
 
             if "dashboardId" in inputdata:
-                if inputdata['dashboardId'] != "":
-                    dashboardId =inputdata["dashboardId"]
-                    column=column+" dashboardId "
-                    values=values+" '"+ str(dashboardId) +"'"
+                dashboardId =inputdata["dashboardId"]
+                column=column+" dashboardId "
+                values=values+" '"+ str(dashboardId) +"'"
 
 
             # if "summary" in inputdata:
@@ -8358,12 +8357,12 @@ def dashboard():
                     videoLink =inputdata["videoLink"]
                     if videoLink=="":
                         videoLink=""
-                        column=" videoLink,"
+                        column=" ,videoLink,"
                         values="'" +str(videoLink)+"',"
             
                       
                     else:
-                        column=" videoLink,"
+                        column=" ,videoLink,"
                         values="'" +str(videoLink)+"',"
             
             
