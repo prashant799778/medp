@@ -5151,7 +5151,7 @@ def commentsevent():
             orderby=" id "
             data1 = databasefile.SelectQueryOrderby("eventComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
             r=[]
-            r2=data1['result'][0]
+            r2=data1['result'][-1]
             r.append(r2)
 
 
