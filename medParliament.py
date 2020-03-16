@@ -5217,7 +5217,7 @@ def commentsMarketingInsight():
             data1 = databasefile.SelectQueryOrderby("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
             print(data1)
             r=[]
-            r2=data1['result'][0]
+            r2=data1['result'][-1]
             print(r2,"111111@@@@@@@@@@@@@@@@@@@@2")
             r.append(r2)
 
