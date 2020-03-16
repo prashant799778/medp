@@ -6573,7 +6573,7 @@ def galleryImages1():
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('postImage')
                         print(inputdata1,"==========================================")
-                        if  inputdata1 !=None: 
+                        if  inputdata1 !='': 
                             print(inputdata1)
 
                             index=re.search("/gallery", inputdata1).start()
