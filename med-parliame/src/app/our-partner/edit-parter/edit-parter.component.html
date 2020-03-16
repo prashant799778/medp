@@ -79,7 +79,7 @@
                                   <tbody> 
                                     <ng-container *ngFor="let news of allnews">
                                       <tr>
-                                        <td> <img src="{{news.imagePath}}" class="hash-img tab-shadow"> </td>
+                                        <td> <img *ngIf="news.imagePath  != ''"  src="{{news.imagePath}}" class="hash-img tab-shadow"> </td>
                                         <td>  {{news.DateCreate}} </td>
                                         <td>
                                               <div class="btn-edit-group">

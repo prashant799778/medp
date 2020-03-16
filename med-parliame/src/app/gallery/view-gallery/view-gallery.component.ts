@@ -98,7 +98,7 @@ export class ViewGalleryComponent implements OnInit {
     // Question,Answer,UserId
     this.frmNews = this.fb.group({
       // newsType: [''],
-      // newsTitle: [''],
+      newsTitle: [''],
       banner: [''],
       id:[''],
       videoLink: [''],
@@ -187,7 +187,7 @@ imageCLik(){
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
       // newsType : this.frmNews.get('newsType').value,
-      // newsTitle: this.frmNews.get('newsTitle').value,
+      title: this.frmNews.get('newsTitle').value,
       // summary: this.frmNews.get('summary').value,
       // newsDesc: this.frmNews.get('newsDesc').value,
       userId : this.frmNews.get('userCreate').value,
@@ -199,7 +199,7 @@ imageCLik(){
     };
 
     const formData = new FormData();
-    formData.append('postImage', this.frmNews.get('banner').value);
+    formData.append('NewsBanner', this.frmNews.get('banner').value ? this.frmNews.get('banner').value : 'NULL');
     formData.append('data', JSON.stringify(newsData));
 
     console.log(formData);
@@ -233,7 +233,7 @@ imageCLik(){
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
       // newsType : this.frmNews.get('newsType').value,
-      // newsTitle: this.frmNews.get('newsTitle').value,
+      title: this.frmNews.get('newsTitle').value,
       // summary: this.frmNews.get('summary').value,
       // newsDesc: this.frmNews.get('newsDesc').value,
       userId : this.frmNews.get('userCreate').value,
@@ -303,7 +303,7 @@ imageCLik(){
       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
     }
     // this.frmNews.get('newsType').setValue(this.newsDetails[0]['newsType']);
-    // this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['newsTitle']);
+    this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['title']);
     // this.frmNews.get('summary').setValue(this.newsDetails[0]['summary']);
     this.frmNews.get('videoLink').setValue(this.newsDetails[0]['videoLink']);
     this.frmNews.get('id').setValue(this.newsDetails[0]['id']);
