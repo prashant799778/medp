@@ -14,7 +14,7 @@ export class AppSettings {
     public static marketingInsights = 'marketingInsights';
     public static upSkillsOpportunity = 'upSkillsOpportunity';
     public static getUpSkillsOpportunity = 'getUpSkillsOpportunity';
-    public static allMarketingInsightThread = 'allMarketingInsightThread';
+    public static allMarketingInsightThread = 'allMarketingInsightThread1';
     public static deleteUpSkillsOpportunity = 'deleteUpSkillsOpportunity';
     public static deleteMarketingInsights = 'deleteMarketingInsights';
     public static ourPartnersImages = 'ourPartnersImages';

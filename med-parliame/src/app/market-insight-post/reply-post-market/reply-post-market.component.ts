@@ -75,7 +75,7 @@ export class ReplyPostMarketComponent implements OnInit {
 			this.postDetails = resp['result']['1']['0']
 			this.comment = resp['result']['0']
 			if(resp['result']['1'].status == 0 ){
-				console.log("onluy view")
+				console.log("only view")
 				this.onlyView = true;
 			}
 		})
