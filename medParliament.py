@@ -6620,6 +6620,7 @@ def getGalleryImages():
         
         column = "id,Status,title,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath,UserCreate  "
         data = databasefile.SelectQuery(" gallery ",column,WhereCondition,"",startlimit,endlimit)
+        print(data)
         
         if data != "0":
             for i in data['result']:
