@@ -8359,12 +8359,12 @@ def dashboard():
                     if videoLink=="":
                         videoLink=""
                         column=column+" ,videoLink,"
-                        values=values+"'" +str(videoLink)+"',"
+                        values=values+",'" +str(videoLink)+"',"
             
                       
                     else:
                         column=column+" ,videoLink,"
-                        values=values+"'" +str(videoLink)+"',"
+                        values=values+",'" +str(videoLink)+"',"
             
             
             if 'postImage' in request.files:      
