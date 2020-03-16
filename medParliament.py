@@ -8363,8 +8363,8 @@ def dashboard():
             
                       
                     else:
-                        column=" ,videoLink,"
-                        values="'" +str(videoLink)+"',"
+                        column=column+" ,videoLink,"
+                        values=values+"'" +str(videoLink)+"',"
             
             
             if 'postImage' in request.files:      
