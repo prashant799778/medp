@@ -14,12 +14,16 @@ export class AppSettings {
     public static marketingInsights = 'marketingInsights';
     public static upSkillsOpportunity = 'upSkillsOpportunity';
     public static getUpSkillsOpportunity = 'getUpSkillsOpportunity';
-    public static allMarketingInsightThread = 'allMarketingInsightThread';
+    public static allMarketingInsightThread = 'allMarketingInsightThread1';
     public static deleteUpSkillsOpportunity = 'deleteUpSkillsOpportunity';
     public static deleteMarketingInsights = 'deleteMarketingInsights';
     public static ourPartnersImages = 'ourPartnersImages';
     public static getOurPartners = 'getOurPartners';
     public static deleteOurPartners = 'deleteOurPartners';
+    public static approveMarketingComment = 'commentsMarketApproved';
+    public static rejectMarketingComment = 'commentsMarketRejected';
+    public static approveEventPostComment = 'commentsEventApproved';
+    public static rejectEventPostComment = 'commentsEventRejected';
     
     
 
@@ -57,6 +61,7 @@ export class AppSettings {
     public static getGalleryImages = 'getGalleryImages';
     public static getAnnouncement = 'getAnnouncement';
     public static getParliamentEvent = 'getParliamentEvent';
+    public static getEventReply = 'allEventThread1';
     public static AccountVerification = 'AccountVerification';
     public static promisingInitiatives = 'promisingInitiatives';
     public static getpromisingInitiatives = 'getpromisingInitiativesAdmin';

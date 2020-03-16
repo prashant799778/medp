@@ -6,11 +6,11 @@ import { AuthsService } from 'src/app/services/auths.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-view-market-insight-post',
-  templateUrl: './view-market-insight-post.component.html',
-  styleUrls: ['./view-market-insight-post.component.css']
+  selector: 'app-event-post',
+  templateUrl: './event-post.component.html',
+  styleUrls: ['./event-post.component.css']
 })
-export class ViewMarketInsightPostComponent implements OnInit {
+export class EventPostComponent implements OnInit {
 
 	postList=[];
 	postStatus = [];
@@ -32,7 +32,7 @@ export class ViewMarketInsightPostComponent implements OnInit {
 		  let datas = {
 			'userTypeId': this.id
 		  }
-		  this.userService.dataPostApi(datas, AppSettings.getMarketingInsights ).then(resp=>{
+		  this.userService.dataPostApi(datas, AppSettings.getParliamentEvent ).then(resp=>{
 			this.postList = resp['result']
 			console.log(this.postList)
 			this.postList.forEach(resp=>{
@@ -44,7 +44,7 @@ export class ViewMarketInsightPostComponent implements OnInit {
 			// let datas = {
 			//   'userTypeId': 5
 			// }
-			// this.userService.dataPostApi(datas, AppSettings.getMarketingInsights ).then(resp=>{
+			// this.userService.dataPostApi(datas, AppSettings.getParliamentEvent ).then(resp=>{
 			//   this.postList = resp['result']
 			//   console.log(this.postList)
 			//   this.postList.forEach(resp=>{
@@ -56,7 +56,7 @@ export class ViewMarketInsightPostComponent implements OnInit {
 			// let datas = {
 			//   'userTypeId': 6
 			// }
-			// this.userService.dataPostApi(datas, AppSettings.getMarketingInsights ).then(resp=>{
+			// this.userService.dataPostApi(datas, AppSettings.getParliamentEvent ).then(resp=>{
 			//   this.postList = resp['result']
 			//   console.log(this.postList)
 			//   this.postList.forEach(resp=>{
@@ -68,7 +68,7 @@ export class ViewMarketInsightPostComponent implements OnInit {
 			// let datas = {
 			//   'userTypeId': 7
 			// }
-			// this.userService.dataPostApi(datas, AppSettings.getMarketingInsights ).then(resp=>{
+			// this.userService.dataPostApi(datas, AppSettings.getParliamentEvent ).then(resp=>{
 			//   this.postList = resp['result']
 			//   console.log(this.postList)
 			//   this.postList.forEach(resp=>{
@@ -80,7 +80,7 @@ export class ViewMarketInsightPostComponent implements OnInit {
 			// let datas = {
 			//   'userTypeId': 8
 			// }
-			// this.userService.dataPostApi(datas, AppSettings.getMarketingInsights ).then(resp=>{
+			// this.userService.dataPostApi(datas, AppSettings.getParliamentEvent ).then(resp=>{
 			//   this.postList = resp['result']
 			//   console.log(this.postList)
 			//   this.postList.forEach(resp=>{
@@ -92,7 +92,7 @@ export class ViewMarketInsightPostComponent implements OnInit {
 			// let datas = {
 			//   'userTypeId': 9
 			// }
-			// this.userService.dataPostApi(datas, AppSettings.getMarketingInsights ).then(resp=>{
+			// this.userService.dataPostApi(datas, AppSettings.getParliamentEvent ).then(resp=>{
 			//   this.postList = resp['result']
 			//   console.log(this.postList)
 			//   this.postList.forEach(resp=>{
@@ -104,7 +104,7 @@ export class ViewMarketInsightPostComponent implements OnInit {
 			// let datas = {
 			//   'userTypeId': 9
 			// }
-			// this.userService.dataPostApi(datas, AppSettings.getMarketingInsights ).then(resp=>{
+			// this.userService.dataPostApi(datas, AppSettings.getParliamentEvent ).then(resp=>{
 			//   this.postList = resp['result']
 			//   console.log(this.postList)
 			//   this.postList.forEach(resp=>{
@@ -120,7 +120,7 @@ export class ViewMarketInsightPostComponent implements OnInit {
 		let datas = {
 		  'userTypeId': 6
 		}
-		this.userService.dataPostApi(datas, AppSettings.getMarketingInsights ).then(resp=>{
+		this.userService.dataPostApi(datas, AppSettings.getParliamentEvent ).then(resp=>{
 		  this.postList = resp['result']
 		  console.log(this.postList)
 		  this.postList.forEach(resp=>{
@@ -128,11 +128,11 @@ export class ViewMarketInsightPostComponent implements OnInit {
 		  })
 		})
 	  }else  if(this.local.get('userData1')[0].userTypeId == '2'){
-		this.titleHeading = 'Policy Maker'
+    this.titleHeading = 'Policy Maker'
 		let datas = {
 		  'userTypeId': 5
 		}
-		this.userService.dataPostApi(datas, AppSettings.getMarketingInsights ).then(resp=>{
+		this.userService.dataPostApi(datas, AppSettings.getParliamentEvent ).then(resp=>{
 		  this.postList = resp['result']
 		  console.log(this.postList)
 		  this.postList.forEach(resp=>{
@@ -145,7 +145,7 @@ export class ViewMarketInsightPostComponent implements OnInit {
 		let datas = {
 		  'userTypeId': 7
 		}
-		this.userService.dataPostApi(datas, AppSettings.getMarketingInsights ).then(resp=>{
+		this.userService.dataPostApi(datas, AppSettings.getParliamentEvent ).then(resp=>{
 		  this.postList = resp['result']
 		  console.log(this.postList)
 		  this.postList.forEach(resp=>{
@@ -158,7 +158,7 @@ export class ViewMarketInsightPostComponent implements OnInit {
 		let datas = {
 		  'userTypeId': 8
 		}
-		this.userService.dataPostApi(datas, AppSettings.getMarketingInsights ).then(resp=>{
+		this.userService.dataPostApi(datas, AppSettings.getParliamentEvent ).then(resp=>{
 		  this.postList = resp['result']
 		  console.log(this.postList)
 		  this.postList.forEach(resp=>{
@@ -171,7 +171,7 @@ export class ViewMarketInsightPostComponent implements OnInit {
 		let datas = {
 		  'userTypeId': 9
 		}
-		this.userService.dataPostApi(datas, AppSettings.getMarketingInsights ).then(resp=>{
+		this.userService.dataPostApi(datas, AppSettings.getParliamentEvent ).then(resp=>{
 		  this.postList = resp['result']
 		  console.log(this.postList)
 		  this.postList.forEach(resp=>{
@@ -197,7 +197,7 @@ export class ViewMarketInsightPostComponent implements OnInit {
 	}
 	policyDetail(id,userTypeId){
 	  
-		  this.router.navigate(['/replyPostMarketing'],{queryParams: {id: id,userTypeId: userTypeId}})
+		  this.router.navigate(['/eventReplyPost'],{queryParams: {id: id,userTypeId: userTypeId}})
 	  }
   
   }

@@ -76,6 +76,8 @@ import { EditContentComponent } from './user-content/edit-content/edit-content.c
 import { CreateOperationAdminComponent } from './operation-admin/create-operation-admin/create-operation-admin.component';
 import { EditOperationAdminComponent } from './operation-admin/edit-operation-admin/edit-operation-admin.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { EventPostComponent } from './event-post/event-post.component';
+import { ReplyEventPostComponent } from './event-post/reply-event-post.component';
 
 @NgModule({
   declarations: [
@@ -145,7 +147,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     ViewContentComponent,
     EditContentComponent,
     CreateOperationAdminComponent,
-    EditOperationAdminComponent
+    EditOperationAdminComponent,
+    EventPostComponent,
+    ReplyEventPostComponent
   ],
   imports: [
     BrowserModule,

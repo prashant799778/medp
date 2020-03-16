@@ -7,13 +7,13 @@ import { AppSettings } from 'src/app/utils/constant';
 declare var jQuery: any;
 
 @Component({
-  selector: 'app-reply-post-market',
-  templateUrl: './reply-post-market.component.html',
-  styleUrls: ['./reply-post-market.component.css']
+  selector: 'app-reply-event-post',
+  templateUrl: './reply-event-post.component.html',
+  styleUrls: ['./reply-event-post.component.css']
 })
-export class ReplyPostMarketComponent implements OnInit {
-	id: any;
-	apprejId: any;
+export class ReplyEventPostComponent implements OnInit {
+  apprejId: any;
+  id: any;
 	userTypeId: any;
 	postDetails: any;
 	modalDescription: any;
@@ -72,7 +72,7 @@ export class ReplyPostMarketComponent implements OnInit {
     }else{
       this.studentAdmin = false;
     }
-		this.userService.dataPostApi(data, AppSettings.allMarketingInsightThread).then(resp =>{
+		this.userService.dataPostApi(data, AppSettings.getEventReply).then(resp =>{
 			this.postDetails = resp['result']['1']['0']
 			this.comment = resp['result']['0']
 			if(resp['result']['1'].status == 0 ){
@@ -88,21 +88,21 @@ export class ReplyPostMarketComponent implements OnInit {
 		if(event.keyCode == 13){
 			this.replyPost()
 		}
-	}
-
-	reloadPost(){
-		let data = {
-		  'Id': this.id
-		}
-		this.userService.dataPostApi(data, AppSettings.allMarketingInsightThread).then(resp =>{
-		  this.postDetails = resp['result']['1']['0']
-		  this.comment = resp['result']['0']
-		  if(resp['result']['1'].status == 0 ){
-			console.log("onluy view")
-			this.onlyView = true;
-		  }
-		})
-	  }
+  }
+  
+  reloadPost(){
+    let data = {
+      'Id': this.id
+    }
+    this.userService.dataPostApi(data, AppSettings.getEventReply).then(resp =>{
+      this.postDetails = resp['result']['1']['0']
+      this.comment = resp['result']['0']
+      if(resp['result']['1'].status == 0 ){
+        console.log("onluy view")
+        this.onlyView = true;
+      }
+    })
+  }
 
 	replyPost(){
 		let data = {
@@ -120,7 +120,7 @@ export class ReplyPostMarketComponent implements OnInit {
 					// 'userTypeId': this.userTypeId,
 					'commentDescription': this.frmPost.get('commentDescription').value 
 				}
-				this.userService.dataPostApi(data, AppSettings.allMarketingInsightThread).then(resp =>{
+				this.userService.dataPostApi(data, AppSettings.getEventReply).then(resp =>{
 					this.postDetails = resp['result']['1']['0']
 					this.comment = resp['result']['0']
 					if(resp['result']['1'].status == 0 ){
@@ -135,13 +135,12 @@ export class ReplyPostMarketComponent implements OnInit {
 		if(id == '1'){
 			console.log(this.local.get('userData1')[0].userId)
 			let data = {
-				// 'id': this.id,
 				'userTypeId': this.local.get('userData1')[0].userTypeId,
 				'approvedUserId': this.local.get('userData1')[0].userId,
 				'id': this.apprejId
 	
 			}
-			this.userService.dataPostApi(data, AppSettings.approveMarketingComment).then(resp =>{
+			this.userService.dataPostApi(data, AppSettings.approveEventPostComment).then(resp =>{
 				if(resp['status']== 'true'){
 					
 					// if(id == '1'){
@@ -153,27 +152,26 @@ export class ReplyPostMarketComponent implements OnInit {
 					this.onlyView = false;
 					this.activatedds = true;
 					setTimeout(()=>{
-						jQuery('#approv-pop').modal("hide")
-						setTimeout(()=>{
+            jQuery('#approv-pop').modal("hide")
+            setTimeout(()=>{
 							this.approvedModal = ""
 							this.apprejId = ""
 							this.activatedds = false;
 						},1000)
-					},2000)
-					this.reloadPost()
+          },2000)
+          this.reloadPost()
 				}
 			})
-		}
-		if(id == '2'){
+    }
+    if(id == '2'){
 			console.log(this.local.get('userData1')[0].userId)
 			let data = {
-				// 'id': this.id,
 				'userTypeId': this.local.get('userData1')[0].userTypeId,
 				'approvedUserId': this.local.get('userData1')[0].userId,
 				'id': this.apprejId
 	
 			}
-			this.userService.dataPostApi(data, AppSettings.rejectMarketingComment).then(resp =>{
+			this.userService.dataPostApi(data, AppSettings.rejectEventPostComment).then(resp =>{
 				if(resp['status']== 'true'){
 					
 					// if(id == '1'){
@@ -185,17 +183,17 @@ export class ReplyPostMarketComponent implements OnInit {
 					this.onlyView = false;
 					this.activatedds = true;
 					setTimeout(()=>{
-						jQuery('#approv-pop').modal("hide")
-						setTimeout(()=>{
+            jQuery('#approv-pop').modal("hide")
+            setTimeout(()=>{
 							this.approvedModal = ""
 							this.apprejId = ""
 							this.activatedds = false;
 						},1000)
-					},2000)
-					this.reloadPost()
+          },2000)
+          this.reloadPost()
 				}
 			})
-		}
+    }
 		
 		
 	}
@@ -224,3 +222,4 @@ export class ReplyPostMarketComponent implements OnInit {
 	
 
 }
+
