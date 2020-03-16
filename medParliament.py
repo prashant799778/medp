@@ -6503,6 +6503,7 @@ def galleryImages1():
         if msg =="1":
             ImagePath=""
             flag=inputdata['flag']
+            title=""
 
             column,values="",""
 
