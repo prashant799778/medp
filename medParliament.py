@@ -8350,18 +8350,21 @@ def dashboard():
             #         column=column+", summary"
             #         values=values+ ",'"+str(summary)+"'"
         
-            if "videoLink" in inputdata :
+            
+            if "videoLink" in inputdata:
                 print("1111111111111111111")
-               
-                if (inputdata['videoLink'] != None) and (inputdata['videoLink'] != "") :
+                if (inputdata['videoLink'] != None) :
                     print("2222222222222222")
                     videoLink =inputdata["videoLink"]
-                    if videoLink[0:24]!="https://www.youtube.com/":
-                        print("3333333333333333333")
-                        return {"message":"Please upload only youtube Link","result":"","status":"False"}
+                    if videoLink=="":
+                        videoLink=""
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
+            
+                      
                     else:
-                        column=column+" ,videoLink"
-                        values=values+",'" +str(videoLink)+"'"
+                        column=" videoLink,"
+                        values="'" +str(videoLink)+"',"
             
             
             if 'postImage' in request.files:      
@@ -8465,7 +8468,14 @@ def landingPageDashboard12():
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
-                    m['videoId']=y[1]
+
+                    d=len(y)
+                    if d>1:
+                        m['videoId']=y[1]
+                    else:
+                        m['videoId']=y[0]
+
+                    
                 else:
                     m['videoId']=''
 
@@ -8487,7 +8497,13 @@ def landingPageDashboard12():
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
-                    m['videoId']=y[1]
+
+                    d=len(y)
+                    if d>1:
+                        m['videoId']=y[1]
+                    else:
+                        m['videoId']=y[0]
+                   
                 else:
                     m['videoId']=''
 
@@ -8510,7 +8526,13 @@ def landingPageDashboard12():
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
-                    m['videoId']=y[1]
+
+                    d=len(y)
+                    if d>1:
+                        m['videoId']=y[1]
+                    else:
+                        m['videoId']=y[0]
+           
                 else:
                     m['videoId']=''    
 
@@ -8530,7 +8552,12 @@ def landingPageDashboard12():
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
-                    m['videoId']=y[1]
+                    
+                    d=len(y)
+                    if d>1:
+                        m['videoId']=y[1]
+                    else:
+                        m['videoId']=y[0]
                 else:
                     m['videoId']=''
 
@@ -8550,7 +8577,12 @@ def landingPageDashboard12():
             if  m['videoLink']!=None:
                 y=m['videoLink'].split('=')
                 print(y,'++++++')
-                m['videoId']=y[1]
+                
+                d=len(y)
+                if d>1:
+                    m['videoId']=y[1]
+                else:
+                    m['videoId']=y[0]
 
             else:
                 m['videoId']=''
@@ -8573,7 +8605,12 @@ def landingPageDashboard12():
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
-                    m['videoId']=y[1]
+                   
+                    d=len(y)
+                    if d>1:
+                        m['videoId']=y[1]
+                    else:
+                        m['videoId']=y[0]
                 else:
                     m['videoId']=''
 
@@ -8595,7 +8632,12 @@ def landingPageDashboard12():
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
-                    m['videoId']=y[1]
+                   
+                    d=len(y)
+                    if d>1:
+                        m['videoId']=y[1]
+                    else:
+                        m['videoId']=y[0]
                 else:
                     m['videoId']=''
 
