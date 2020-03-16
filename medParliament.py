@@ -8340,8 +8340,8 @@ def dashboard():
             if "dashboardId" in inputdata:
                 dashboardId =inputdata["dashboardId"]
                 print(dashboardId)
-                column=column+" dashboardId ,"
-                values=values+" '"+ str(dashboardId) +"',"
+                column=column+" dashboardId "
+                values=values+" '"+ str(dashboardId) +"'"
 
 
             # if "summary" in inputdata:
