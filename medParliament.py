@@ -8457,7 +8457,7 @@ def landingPageDashboard12():
 
 
         column = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')dateCreate, imagePath,videoLink   "
-        data = databasefile.SelectQueryOrderby("dashboard ",column,whereCondition2,"","0","10",orderby)
+        data = databasefile.SelectQueryOrderby("dashboard ",column,whereCondition2,"",startlimit,endlimit,orderby)
         if data["result"]=="":
             data["result"]=[]
 
@@ -8485,7 +8485,7 @@ def landingPageDashboard12():
         
 
         column2 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, imagePath,videoLink  "
-        data2 = databasefile.SelectQueryOrderby("dashboard",column2,whereCondition2,"","0","10",orderby)
+        data2 = databasefile.SelectQueryOrderby("dashboard",column2,whereCondition2,"",startlimit,endlimit,orderby)
         
         if data2["result"]=="":
             data2["result"]=[]
@@ -8515,7 +8515,7 @@ def landingPageDashboard12():
         #event
         whereCondition2=WhereCondition+ " and dashboardId='5' " 
         column3 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoLink  "
-        data3 = databasefile.SelectQueryOrderby("dashboard ",column3,whereCondition2,"","0","10",orderby)
+        data3 = databasefile.SelectQueryOrderby("dashboard ",column3,whereCondition2,"",startlimit,endlimit,orderby)
         if data3["result"]=="":
             data3["result"]=[]
 
@@ -8540,7 +8540,7 @@ def landingPageDashboard12():
 
         whereCondition2=WhereCondition+ " and dashboardId='3' "     
         column4 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath ,videoLink  "
-        data4 = databasefile.SelectQuery("dashboard",column4,whereCondition2,"","0","10")
+        data4 = databasefile.SelectQuery("dashboard",column4,whereCondition2,"",startlimit,endlimit)
         print(data4)
 
         if data4["result"]=="":
@@ -8567,7 +8567,7 @@ def landingPageDashboard12():
         whereCondition2=WhereCondition+ " and dashboardId='4' "             
             
         column5 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath ,videoLink   "
-        data5 = databasefile.SelectQueryOrderby("dashboard",column5,whereCondition2,"","0","10",orderby)
+        data5 = databasefile.SelectQueryOrderby("dashboard",column5,whereCondition2,"",startlimit,endlimit,orderby)
         if data5["result"]=="":
             data5["result"]=[]
 
@@ -8594,7 +8594,7 @@ def landingPageDashboard12():
         whereCondition2=WhereCondition+ " and dashboardId='6' "  
 
         column6 = "mi.id,date_format(CONVERT_TZ(mi.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,mi.imagePath,videoLink   "
-        data6 = databasefile.SelectQueryOrderby("dashboard as mi ",column6,whereCondition2,"","0","10",orderby)
+        data6 = databasefile.SelectQueryOrderby("dashboard as mi ",column6,whereCondition2,"",startlimit,endlimit,orderby)
         if data6["result"]=="":
             data6["result"]=[]
 
@@ -8621,7 +8621,7 @@ def landingPageDashboard12():
                             
        
         column7 = "mi.id,date_format(CONVERT_TZ(mi.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,mi.imagePath,videoLink"
-        data7 = databasefile.SelectQueryOrderby("dashboard  as mi",column7,whereCondition2,"","0","10",orderby)
+        data7 = databasefile.SelectQueryOrderby("dashboard  as mi",column7,whereCondition2,"",startlimit,endlimit,orderby)
         if data7["result"]=="":
             data7["result"]=[]
 
