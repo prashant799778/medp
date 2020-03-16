@@ -6023,7 +6023,7 @@ def landingPageDashboardtest():
                         if  m['videoPath']!=None:
                             y=m['videoPath'].split('=')
                             print(y,'++++++')
-                            m['videoId']=y[1]
+                           
                             d=len(y)
                             if d>0:
                                 m['videoId']=y[1]
@@ -6146,8 +6146,7 @@ def landingPageDashboardtest():
                             m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                         if  m['videoPath']!=None:
                             y=m['videoPath'].split('=')
-                            print(y,'++++++')
-                            m['videoId']=y[1]
+                           
                             d=len(y)
                             if d>0:
                                 m['videoId']=y[1]
