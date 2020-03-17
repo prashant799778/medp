@@ -7435,6 +7435,7 @@ def promisingInitiatives():
                         inputdata1 = request.form.get('postImage')
                         print(inputdata1,"@##!!@@")
                         if  inputdata1 is not None:
+                            print("@@!!!@###################")
                             index=re.search("/promisingEvent", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
