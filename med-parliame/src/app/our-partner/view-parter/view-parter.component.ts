@@ -335,10 +335,13 @@ export class ViewParterComponent implements OnInit {
         },2000)
         this.getUsertype()
        
+        this.frmNews.get('banner').reset();
+        this.bannerArray=[];
+        this.bannerArray.push('')
         this.imageShow = [];
         console.log(this.file)
         this.file = [];
-        var elemsss = (<HTMLInputElement>document.getElementById('file12'))
+        var elemsss = (<HTMLInputElement>document.getElementById('coverFilesInput'))
         
         elemsss.value = '';
 
@@ -377,7 +380,8 @@ export class ViewParterComponent implements OnInit {
     console.log("news",this.newsDetails)
     if(this.newsDetails[0]['imagePath'] !== " "){
       this.showBanner = 1;
-      this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
+      this.frmNews.controls.banner['controls'][0]['controls']['imga'].push(this.newsDetails[0]['imagePath'])
+      // this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
     }
     // this.frmNews.get('newsType').setValue(this.newsDetails[0]['newsType']);
     // this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['newsTitle']);
