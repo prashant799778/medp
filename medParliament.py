@@ -2583,6 +2583,90 @@ def allPosts1():
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
 
+@app.route('/myInbox', methods=['POST'])
+def myInbox():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("myInbox",inputdata,0)
+        data1={"status":"true","message":"","result":[]}
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="pm.id"
+            postId,whereCondition="",""
+
+            
+            userTypeId=inputdata["userTypeId"]
+            
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId <> um.userId and pm.userTypeId='" + str(userTypeId) + "'" +whereCondition
+            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
+            
+            print("11111111111111")
+            print("data",data)
+           
+
+            
+
+            
+            if (data['result']!=""):
+                for i in data["result"]:
+                    Y=i["postId"]
+                    y2=i['userId']
+                    column="*"
+                    whereCondition=" and postId ='" + str(Y) + "'"
+                    data2=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
+                    i['like']=len(data2['result'])
+                    print(data2,'++++++++++++')
+                    columns="status"
+                    whereCondition1= " and userId='" + str(y2) + "' and postId= '" + str(Y) + "'"
+                    data22= databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
+                    if (data22["result"]!=""):
+                        y78=data22['result'][0]
+                        if y78['status'] == 0:
+                            i['likeStatus']=1
+                    if i['like'] ==0:
+                        i['likeStatus']=0
+
+
+                    # print(data2)
+                    # i['like']=data2['like']
+            #     for i in data["result"]:
+            #         if (i["status"] == 1):
+            #             print(i["postId"])
+            #             column="um.userName as approvedBy"
+            #             WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+            #             data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+            #             print(data1)
+            #             if "message" in data1:
+            #                 pass
+            #             else:
+            #                 i["approvedBy"]=data1["approvedBy"]
+            #             print(data1)
+            #         if (i["status"]==2):
+            #             column="um.userName as rejectedBy"
+            #             WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+            #             data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+            #             print(data1)
+            #             if "message" in data1:
+            #                 pass
+            #             else:
+            #                 i["rejectedBy"]=data1["rejectedBy"]
+                        
+                        
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":[data1["result"],data["result"]]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg         
+
 @app.route('/allPostsThread', methods=['POST'])
 def allPostsThread():
     try:
