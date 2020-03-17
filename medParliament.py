@@ -5186,7 +5186,7 @@ def verifyPost1231():
                 data = databasefile.InsertQuery("eventInterest",column,values)
                 if data!="0":
                     column="count(*) as count"
-                    whereCondition="  and eventId ='" + str(postId) + " "
+                    whereCondition="  and eventId ='" + str(postId) + "' "
                     data1=databasefile.SelectQuery("eventInterest",column,whereCondition,"",startlimit,endlimit)
                     if (data1["status"]!="false"):
                         o=[]
