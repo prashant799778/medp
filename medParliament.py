@@ -173,7 +173,7 @@ def gallery(image_name):
 
 
 @app.route("/ourPartners/<image_name>")
-def ourPartners(image_name):
+def ourPartners1(image_name):
     try:
         return send_from_directory('ourPartners', filename=image_name, as_attachment=False)
     except FileNotFoundError:
@@ -181,7 +181,7 @@ def ourPartners(image_name):
 
 
 @app.route("/contentimages/<image_name>")
-def contentimages(image_name):
+def contentimages1(image_name):
     try:
         return send_from_directory('contentimages', filename=image_name, as_attachment=False)
     except FileNotFoundError:
