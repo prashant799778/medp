@@ -2665,7 +2665,12 @@ def myInbox():
                 output = {"status":"false","message":"No Data Found","result":""}
                 return output
         else:
-            return msg         
+            return msg
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output 
+         
 
 @app.route('/allPostsThread', methods=['POST'])
 def allPostsThread():
