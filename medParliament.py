@@ -8933,13 +8933,15 @@ def ourPartners155():
                     filename = filename.replace("'","") 
                     print(filename,"++++++++++++++=")
                     imagelist.append(filename)
-                    for i in imagelist:
-                        FolderPath = ConstantData.getourPartners(i)  
-                        print(FolderPath,"9999999999999999999999999999999999999999")
-                        filepath = '/ourPartners/' + i
-                        l2.append(filepath)   
-                        file.save(FolderPath)
-                        ImagePath = filepath
+
+                print(imagelist,"immmmmmmmmmmmaggge")
+                for i in imagelist:
+                    FolderPath = ConstantData.getourPartners(i)  
+                    print(FolderPath,"9999999999999999999999999999999999999999")
+                    filepath = '/ourPartners/' + i
+                    l2.append(filepath)   
+                    file.save(FolderPath)
+                    ImagePath = filepath
 
             print(l2,"++11111111111111")
             l1=[]
