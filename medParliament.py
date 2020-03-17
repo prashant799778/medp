@@ -2670,7 +2670,7 @@ def myInbox():
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
-         
+
 
 @app.route('/allPostsThread', methods=['POST'])
 def allPostsThread():
@@ -8954,12 +8954,7 @@ def ourPartners155():
                                 values = " '"+ str(j)+ "','" + str(userId) + "'"
                                 data = databasefile.InsertQuery("ourPartners",column,values)
                     return data        
-                else:
-                    for i in l2:
-                        column = " imagePath "
-                        values = " '"+ str(i)+  "'"
-                        data = databasefile.InsertQuery("ourPartners",column,values)
-                        return data
+                
             if flag =="u":
                 
                 if "status" in inputdata:
