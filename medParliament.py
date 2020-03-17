@@ -7436,7 +7436,8 @@ def promisingInitiatives():
                         print(inputdata1,"@##!!@@")
                         y=type(inputdata1)
                         print(y)
-                        if  inputdata1 is not None:
+                        y2=len(inputdata1)
+                        if  y2>4:
                             print("@@!!!@###################")
                             index=re.search("/promisingEvent", inputdata1).start()
                             ImagePath=""
