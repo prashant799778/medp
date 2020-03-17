@@ -2583,6 +2583,95 @@ def allPosts1():
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
 
+@app.route('/myInbox', methods=['POST'])
+def myInbox():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("myInbox",inputdata,0)
+        data1={"status":"true","message":"","result":[]}
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="pm.id"
+            postId,whereCondition="",""
+
+            
+            userTypeId=inputdata["userTypeId"]
+            
+            column="um.userName,um.email,um.countryId,um.city,pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,um.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition=" and um.userTypeId=pm.userTypeId and pm.userId <> um.userId and pm.userTypeId='" + str(userTypeId) + "'" +whereCondition
+            data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
+            
+            print("11111111111111")
+            print("data",data)
+           
+
+            
+
+            
+            if (data['result']!=""):
+                for i in data["result"]:
+                    Y=i["postId"]
+                    y2=i['userId']
+                    column="*"
+                    whereCondition=" and postId ='" + str(Y) + "'"
+                    data2=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
+                    i['like']=len(data2['result'])
+                    print(data2,'++++++++++++')
+                    columns="status"
+                    whereCondition1= " and userId='" + str(y2) + "' and postId= '" + str(Y) + "'"
+                    data22= databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
+                    if (data22["result"]!=""):
+                        y78=data22['result'][0]
+                        if y78['status'] == 0:
+                            i['likeStatus']=1
+                    if i['like'] ==0:
+                        i['likeStatus']=0
+
+
+                    # print(data2)
+                    # i['like']=data2['like']
+            #     for i in data["result"]:
+            #         if (i["status"] == 1):
+            #             print(i["postId"])
+            #             column="um.userName as approvedBy"
+            #             WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+            #             data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+            #             print(data1)
+            #             if "message" in data1:
+            #                 pass
+            #             else:
+            #                 i["approvedBy"]=data1["approvedBy"]
+            #             print(data1)
+            #         if (i["status"]==2):
+            #             column="um.userName as rejectedBy"
+            #             WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
+            #             data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
+            #             print(data1)
+            #             if "message" in data1:
+            #                 pass
+            #             else:
+            #                 i["rejectedBy"]=data1["rejectedBy"]
+                        
+                        
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data["result"]}
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output 
+
+
 @app.route('/allPostsThread', methods=['POST'])
 def allPostsThread():
     try:
@@ -4136,11 +4225,14 @@ def promissingIntiatives():
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
                         print("inputdata=================",type(inputdata1))
-                        if ((inputdata1!=ConstantData.GetBaseURL()) and (inputdata1 !="")) :
-                            if  inputdata1 !=None: 
-                                index=re.search("/newsimages", inputdata1).start()
-                                ImagePath=""
-                                ImagePath=inputdata1[index:]
+                        y=type(inputdata1)
+                        print(y)
+                        y2=len(inputdata1)
+                        if  y2>4: 
+                            print(inputdata1)
+                            index=re.search("/newsimages", inputdata1).start()
+                            ImagePath=""
+                            ImagePath=inputdata1[index:]
 
 
                         whereCondition=" and id= '"+ str(Id) +"'"
@@ -4311,12 +4403,15 @@ def news():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        if inputdata1==ConstantData.GetBaseURL():
-                            ImagePath=""
-                        else : 
+                        y=type(inputdata1)
+                        print(y)
+                        y2=len(inputdata1)
+                        if  y2>4: 
                             index=re.search("/newsimages", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
+
+                            print(inputdata1)
 
 
                         whereCondition=" and id= '"+ str(Id) +"'"
@@ -4467,7 +4562,7 @@ def MarketingInsights():
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
                       
-                    column = column+",newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
+                    column = column+"newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate"
                     values =values+ " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
                     data = databasefile.InsertQuery("marketingInsights",column,values)        
                 else:
@@ -4490,9 +4585,10 @@ def MarketingInsights():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        if inputdata1==ConstantData.GetBaseURL():
-                            ImagePath=""
-                        else : 
+                        y=type(inputdata1)
+                        print(y)
+                        y2=len(inputdata1)
+                        if  y2>4:
                             index=re.search("/marketingInsights", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
@@ -4564,8 +4660,14 @@ def getMarketingInsights():
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
                 if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
-                    print(y)
-                    i['videoId']=y[1]
+                     
+                    d=len(y)
+                    if d>1:
+                        i['videoId']=y[1]
+                    else:
+                        i['videoId']=y[0]
+                else:
+                    i['videoId']=""
             return data
             
         else:
@@ -4707,9 +4809,10 @@ def upSkillsOpportunity():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        if inputdata1==ConstantData.GetBaseURL():
-                            ImagePath=""
-                        else : 
+                        y=type(inputdata1)
+                        print(y)
+                        y2=len(inputdata1)
+                        if  y2>4:
                             index=re.search("/UpSkillsOpportunity", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
@@ -5149,8 +5252,24 @@ def commentsevent():
                 values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription)+ "','" + str('0') + "'"
                 data = databasefile.InsertQuery("eventComment",column,values)
 
+
+            WhereCondition="  and pm.userId ='"+str(userId)+"'  and eventId='" + str(postId) + "' and pm.userId=um.userId"
+            column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            orderby=" id "
+            data1 = databasefile.SelectQueryOrderby("eventComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
+            r=[]
+            r2=data1['result'][-1]
+            r.append(r2)
+
+
+                
+
+
+
+
             if data!="0":
-                return data
+                data1={"status":"true","result":r,"message":""}
+                return data1
             else:
                 return commonfile.Errormessage()
         else:
@@ -5197,8 +5316,27 @@ def commentsMarketingInsight():
                 values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription)+ "','" + str('0') + "'"
                 data = databasefile.InsertQuery("marketingInsightComment",column,values)
 
+
+          
+            WhereCondition="  and pm.userId ='"+str(userId)+"'  and marketingInsightId='" + str(postId) + "' and um.userId=pm.userId"
+            column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            orderby=" id "
+            data1 = databasefile.SelectQueryOrderby("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
+            print(data1)
+            r=[]
+            r2=data1['result'][-1]
+            print(r2,"111111@@@@@@@@@@@@@@@@@@@@2")
+            r.append(r2)
+
+
+                
+
+
+
+
             if data!="0":
-                return data
+                data1={"status":"true","result":r,"message":""}
+                return data1
             else:
                 return commonfile.Errormessage()
         else:
@@ -5367,7 +5505,7 @@ def commentsevent2():
         print("22222222222222222222222")
         if msg == "1":
             Id = inputdata["id"]
-            whereCondition=" id ='"+str(Id)+"'"
+            whereCondition=" and id ='"+str(Id)+"'"
             
            
            
@@ -5403,7 +5541,7 @@ def commentsevent1():
         print("22222222222222222222222")
         if msg == "1":
             Id = inputdata["id"]
-            whereCondition=" id ='"+str(Id)+"'"
+            whereCondition=" and id ='"+str(Id)+"'"
             
            
            
@@ -5439,7 +5577,7 @@ def commentsevent222():
         print("22222222222222222222222")
         if msg == "1":
             Id = inputdata["id"]
-            whereCondition=" id ='"+str(Id)+"'"
+            whereCondition=" and id ='"+str(Id)+"'"
             
            
            
@@ -5475,7 +5613,7 @@ def commentsevent12():
         print("22222222222222222222222")
         if msg == "1":
             Id = inputdata["id"]
-            whereCondition=" id ='"+str(Id)+"'"
+            whereCondition=" and id ='"+str(Id)+"'"
             
            
            
@@ -5496,7 +5634,7 @@ def commentsevent12():
         output = {"status":"false","message":"something went wrong","result":""}
         return output        
 
-                         
+
 
 
 
@@ -6023,7 +6161,12 @@ def landingPageDashboardtest():
                         if  m['videoPath']!=None:
                             y=m['videoPath'].split('=')
                             print(y,'++++++')
-                            m['videoId']=y[1]
+                           
+                            d=len(y)
+                            if d>1:
+                                m['videoId']=y[1]
+                            else:
+                                m['videoId']=y[0]
                         else:
                             m['videoId']=""
 
@@ -6047,8 +6190,11 @@ def landingPageDashboardtest():
                             m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                         if  m['videoPath']!=None:
                             y=m['videoPath'].split('=')
-                            print(y,'++++++')
-                            m['videoId']=y[1]
+                            d=len(y)
+                            if d>1:
+                                m['videoId']=y[1]
+                            else:
+                                m['videoId']=y[0]
                         else:
                             m['videoId']=""
 
@@ -6071,7 +6217,11 @@ def landingPageDashboardtest():
                     if  i['videoPath']!=None:
                         y=i['videoPath'].split('=')
                         print(y,'++++++')
-                        i['videoId']=y[1]
+                        d=len(y)
+                        if d>1:
+                            i['videoId']=y[1]
+                        else:
+                            i['videoId']=y[0]
                     else:
                         i['videoId']=""
                     if 'userId' in inputdata:
@@ -6109,7 +6259,13 @@ def landingPageDashboardtest():
                         if  m['videoPath']!=None:
                             y=m['videoPath'].split('=')
                             print(y,'++++++')
-                            m['videoId']=y[1]
+                            d=len(y)
+                            print(d,"")
+                            
+                            if d>1:
+                                m['videoId']=y[1]
+                            else:
+                                m['videoId']=""
                         else:
                             m['videoId']=""
 
@@ -6130,8 +6286,12 @@ def landingPageDashboardtest():
                             m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                         if  m['videoPath']!=None:
                             y=m['videoPath'].split('=')
-                            print(y,'++++++')
-                            m['videoId']=y[1]
+                           
+                            d=len(y)
+                            if d>1:
+                                m['videoId']=y[1]
+                            else:
+                                m['videoId']=y[0]
                         else:
                             m['videoId']=""
 
@@ -6156,7 +6316,12 @@ def landingPageDashboardtest():
                     if  i['videoPath']!=None:
                         y=i['videoPath'].split('=')
                         print(y,'++++++')
-                        i['videoId']=y[1]
+                        
+                        d=len(y)
+                        if d>1:
+                            i['videoId']=y[1]
+                        else:
+                            i['videoId']=y[0]
                     else:
                         i['videoId']=""
                     if 'userId' in inputdata:
@@ -6210,7 +6375,12 @@ def landingPageDashboardtest():
                     if  i['videoPath']!=None:
                         y=i['videoPath'].split('=')
                         print(y,'++++++')
-                        i['videoId']=y[1]
+                        
+                        d=len(y)
+                        if d>1:
+                            i['videoId']=y[1]
+                        else:
+                            i['videoId']=y[0]
                     else:
                         i['videoId']=""
                     if 'userId' in inputdata:
@@ -6982,7 +7152,10 @@ def parliamentEvent1():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('postImage')
-                        if  inputdata1 !=None: 
+                        y=type(inputdata1)
+                        print(y)
+                        y2=len(inputdata1)
+                        if  y2>4:
                             index=re.search("/eventImages", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
@@ -7352,7 +7525,7 @@ def promisingInitiatives():
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
                     column = column+" UserCreate,text,imagePath"
-                    values = values+ ",'" + str(userId) + "','" + str(text) + "','" + str(ImagePath) + "'"
+                    values = values+ "'" + str(userId) + "','" + str(text) + "','" + str(ImagePath) + "'"
                     data = databasefile.InsertQuery("promisingInitiatives",column,values)        
                 
                 else:
@@ -7370,7 +7543,12 @@ def promisingInitiatives():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('postImage')
-                        if  inputdata1 !=None: 
+                        print(inputdata1,"@##!!@@")
+                        y=type(inputdata1)
+                        print(y)
+                        y2=len(inputdata1)
+                        if  y2>4:
+                            print("@@!!!@###################")
                             index=re.search("/promisingEvent", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
@@ -8288,7 +8466,7 @@ def dashboard():
        
         inputdata = request.form.get('data')    
         inputdata = json.loads(inputdata) 
-        print("announcements",inputdata)
+        print("dashboard",inputdata)
         commonfile.writeLog("dashboard",inputdata,0)
         keyarr = ["dashboardId","flag"]           
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
@@ -8306,10 +8484,10 @@ def dashboard():
             #         values=" '"+ str(title) +"'"
 
             if "dashboardId" in inputdata:
-                if inputdata['dashboardId'] != "":
-                    dashboardId =inputdata["dashboardId"]
-                    column=column+" dashboardId "
-                    values=values+" '"+ str(dashboardId) +"'"
+                dashboardId =inputdata["dashboardId"]
+                print(dashboardId)
+                column=column+" dashboardId "
+                values=values+" '"+ str(dashboardId) +"'"
 
 
             # if "summary" in inputdata:
@@ -8318,18 +8496,21 @@ def dashboard():
             #         column=column+", summary"
             #         values=values+ ",'"+str(summary)+"'"
         
-            if "videoLink" in inputdata :
+            
+            if "videoLink" in inputdata:
                 print("1111111111111111111")
-               
-                if (inputdata['videoLink'] != None) and (inputdata['videoLink'] != "") :
+                if (inputdata['videoLink'] != None) :
                     print("2222222222222222")
                     videoLink =inputdata["videoLink"]
-                    if videoLink[0:24]!="https://www.youtube.com/":
-                        print("3333333333333333333")
-                        return {"message":"Please upload only youtube Link","result":"","status":"False"}
+                    if videoLink=="":
+                        videoLink=""
+                        column=column+" ,videoLink,"
+                        values=values+",'" +str(videoLink)+"',"
+            
+                      
                     else:
-                        column=column+" ,videoLink"
-                        values=values+",'" +str(videoLink)+"'"
+                        column=column+", videoLink,"
+                        values=values+",'" +str(videoLink)+"',"
             
             
             if 'postImage' in request.files:      
@@ -8347,14 +8528,13 @@ def dashboard():
 
                     file.save(FolderPath)
                     ImagePath = filepath
-                    column=column+" ,imagePath"
-                    values=values+",'"+ str(ImagePath)+"'"
+                   
             if flag =="i":
                 if "UserId" in inputdata:
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
-                    column =column + ",UserCreate"
-                    values =   values+",'"+ str(UserId)+"'"
+                    column =column + "UserCreate,imagePath"
+                    values =   values+"'"+ str(UserId)+"','" + str(ImagePath)+"'"
                     data = databasefile.InsertQuery("dashboard",column,values)        
                 else:
                     column = column+ " "
@@ -8422,18 +8602,25 @@ def landingPageDashboard12():
 
 
         column = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')dateCreate, imagePath,videoLink   "
-        data = databasefile.SelectQueryOrderby("dashboard ",column,whereCondition2,"","0","10",orderby)
+        data = databasefile.SelectQueryOrderby("dashboard ",column,whereCondition2,"",startlimit,endlimit,orderby)
         if data["result"]=="":
             data["result"]=[]
 
 
         for m in data['result']:
-                if m['imagePath']!=None:
+                if m['imagePath']!='':
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
-                    m['videoId']=y[1]
+
+                    d=len(y)
+                    if d>1:
+                        m['videoId']=y[1]
+                    else:
+                        m['videoId']=y[0]
+
+                    
                 else:
                     m['videoId']=''
 
@@ -8443,19 +8630,25 @@ def landingPageDashboard12():
         
 
         column2 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, imagePath,videoLink  "
-        data2 = databasefile.SelectQueryOrderby("dashboard",column2,whereCondition2,"","0","10",orderby)
+        data2 = databasefile.SelectQueryOrderby("dashboard",column2,whereCondition2,"",startlimit,endlimit,orderby)
         
         if data2["result"]=="":
             data2["result"]=[]
 
 
         for m in data2['result']:
-                if m['imagePath']!=None :
+                if m['imagePath']!='' :
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
-                    m['videoId']=y[1]
+
+                    d=len(y)
+                    if d>1:
+                        m['videoId']=y[1]
+                    else:
+                        m['videoId']=y[0]
+                   
                 else:
                     m['videoId']=''
 
@@ -8467,18 +8660,24 @@ def landingPageDashboard12():
         #event
         whereCondition2=WhereCondition+ " and dashboardId='5' " 
         column3 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoLink  "
-        data3 = databasefile.SelectQueryOrderby("dashboard ",column3,whereCondition2,"","0","10",orderby)
+        data3 = databasefile.SelectQueryOrderby("dashboard ",column3,whereCondition2,"",startlimit,endlimit,orderby)
         if data3["result"]=="":
             data3["result"]=[]
 
         
         for m in data3['result']:
-                if m['imagePath']!=None:
+                if m['imagePath']!='':
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
-                    m['videoId']=y[1]
+
+                    d=len(y)
+                    if d>1:
+                        m['videoId']=y[1]
+                    else:
+                        m['videoId']=y[0]
+           
                 else:
                     m['videoId']=''    
 
@@ -8486,19 +8685,24 @@ def landingPageDashboard12():
 
         whereCondition2=WhereCondition+ " and dashboardId='3' "     
         column4 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath ,videoLink  "
-        data4 = databasefile.SelectQuery("dashboard",column4,whereCondition2,"","0","10")
+        data4 = databasefile.SelectQueryOrderby("dashboard",column4,whereCondition2,"",startlimit,endlimit,orderby)
         print(data4)
 
         if data4["result"]=="":
             data4["result"]=[]
 
         for m in data4['result']:
-                if m['imagePath']!=None:
+                if m['imagePath']!='':
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
-                    m['videoId']=y[1]
+                    
+                    d=len(y)
+                    if d>1:
+                        m['videoId']=y[1]
+                    else:
+                        m['videoId']=y[0]
                 else:
                     m['videoId']=''
 
@@ -8508,17 +8712,22 @@ def landingPageDashboard12():
         whereCondition2=WhereCondition+ " and dashboardId='4' "             
             
         column5 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath ,videoLink   "
-        data5 = databasefile.SelectQueryOrderby("dashboard",column5,whereCondition2,"","0","10",orderby)
+        data5 = databasefile.SelectQueryOrderby("dashboard",column5,whereCondition2,"",startlimit,endlimit,orderby)
         if data5["result"]=="":
             data5["result"]=[]
 
         for m in data5['result']:
-            if m['imagePath']!=None:
+            if m['imagePath']!='':
                 m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
             if  m['videoLink']!=None:
                 y=m['videoLink'].split('=')
                 print(y,'++++++')
-                m['videoId']=y[1]
+                
+                d=len(y)
+                if d>1:
+                    m['videoId']=y[1]
+                else:
+                    m['videoId']=y[0]
 
             else:
                 m['videoId']=''
@@ -8530,18 +8739,23 @@ def landingPageDashboard12():
         whereCondition2=WhereCondition+ " and dashboardId='6' "  
 
         column6 = "mi.id,date_format(CONVERT_TZ(mi.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,mi.imagePath,videoLink   "
-        data6 = databasefile.SelectQueryOrderby("dashboard as mi ",column6,whereCondition2,"","0","10",orderby)
+        data6 = databasefile.SelectQueryOrderby("dashboard as mi ",column6,whereCondition2,"",startlimit,endlimit,orderby)
         if data6["result"]=="":
             data6["result"]=[]
 
 
         for m in data6['result']:
-                if m['imagePath']!=None:
+                if m['imagePath']!='':
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
-                    m['videoId']=y[1]
+                   
+                    d=len(y)
+                    if d>1:
+                        m['videoId']=y[1]
+                    else:
+                        m['videoId']=y[0]
                 else:
                     m['videoId']=''
 
@@ -8552,18 +8766,23 @@ def landingPageDashboard12():
                             
        
         column7 = "mi.id,date_format(CONVERT_TZ(mi.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,mi.imagePath,videoLink"
-        data7 = databasefile.SelectQueryOrderby("dashboard  as mi",column7,whereCondition2,"","0","10",orderby)
+        data7 = databasefile.SelectQueryOrderby("dashboard  as mi",column7,whereCondition2,"",startlimit,endlimit,orderby)
         if data7["result"]=="":
             data7["result"]=[]
 
 
         for m in data7['result']:
-                if m['imagePath']!=None:
+                if m['imagePath']!='':
                     m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
                 if  m['videoLink']!=None:
                     y=m['videoLink'].split('=')
                     print(y,'++++++')
-                    m['videoId']=y[1]
+                   
+                    d=len(y)
+                    if d>1:
+                        m['videoId']=y[1]
+                    else:
+                        m['videoId']=y[0]
                 else:
                     m['videoId']=''
 
@@ -8706,19 +8925,23 @@ def ourPartners155():
             l2=[]
 
             if fileCount!=0:
+                print(fileCount)
                 for ll in range(fileCount):
+                    print(ll,"Timmmmmmmmmmmmmmmmmesssssss")
                     file= request.files.get('postImage_'+str(ll+1)+'')        
                     filename = file.filename or ''                 
                     filename = filename.replace("'","") 
                     print(filename,"++++++++++++++=")
                     imagelist.append(filename)
-                    for i in imagelist:
-                        FolderPath = ConstantData.getourPartners(i)  
-                        print(FolderPath)
-                        filepath = '/ourPartners/' + i
-                        l2.append(filepath)   
-                        file.save(FolderPath)
-                        ImagePath = filepath
+
+                print(imagelist,"immmmmmmmmmmmaggge")
+                for i in imagelist:
+                    FolderPath = ConstantData.getourPartners(i)  
+                    print(FolderPath,"9999999999999999999999999999999999999999")
+                    filepath = '/ourPartners/' + i
+                    l2.append(filepath)   
+                    file.save(FolderPath)
+                    ImagePath = filepath
 
             print(l2,"++11111111111111")
             l1=[]
@@ -8731,22 +8954,20 @@ def ourPartners155():
                     if inputdata['userId'] != "":
                         userId =inputdata["userId"]
                     print(l2,"@@@@@@@@@@@@@@@@2")
+                    l3=[]
                     
                     for m in l2:
                         if m not in l1:
                             l1.append(m)
-                            print(l1,"+++132wswew")
                             for j in l1:
+                                l3.append(j)
+                                print(l3,"!@!@@!@!@@!@!#!@!@@!!@!!")
+
                                 column = " imagePath,UserCreate"
                                 values = " '"+ str(j)+ "','" + str(userId) + "'"
                                 data = databasefile.InsertQuery("ourPartners",column,values)
                     return data        
-                else:
-                    for i in l2:
-                        column = " imagePath "
-                        values = " '"+ str(i)+  "'"
-                        data = databasefile.InsertQuery("ourPartners",column,values)
-                        return data
+                
             if flag =="u":
                 
                 if "status" in inputdata:
@@ -8758,7 +8979,7 @@ def ourPartners155():
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('postImage')
                         print(inputdata1,"==========================================")
-                        if  inputdata1 !=None: 
+                        if  inputdata1 is not None: 
                             index=re.search("/ourPartners", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
