@@ -4663,11 +4663,11 @@ def getMarketingInsights():
                      
                     d=len(y)
                     if d>1:
-                        m['videoId']=y[1]
+                        i['videoId']=y[1]
                     else:
-                        m['videoId']=y[0]
+                        i['videoId']=y[0]
                 else:
-                    m['videoId']=""
+                    i['videoId']=""
             return data
             
         else:
