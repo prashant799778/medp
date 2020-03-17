@@ -8933,7 +8933,7 @@ def ourPartners155():
                     imagelist.append(filename)
                     for i in imagelist:
                         FolderPath = ConstantData.getourPartners(i)  
-                        print(FolderPath)
+                        print(FolderPath,"9999999999999999999999999999999999999999")
                         filepath = '/ourPartners/' + i
                         l2.append(filepath)   
                         file.save(FolderPath)
