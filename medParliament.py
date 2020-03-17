@@ -173,7 +173,7 @@ def gallery(image_name):
 
 
 @app.route("/ourPartners/<image_name>")
-def ourPartners1(image_name):
+def ourPartners(image_name):
     try:
         return send_from_directory('ourPartners', filename=image_name, as_attachment=False)
     except FileNotFoundError:
@@ -181,7 +181,7 @@ def ourPartners1(image_name):
 
 
 @app.route("/contentimages/<image_name>")
-def ourPartners12(image_name):
+def contentimages(image_name):
     try:
         return send_from_directory('contentimages', filename=image_name, as_attachment=False)
     except FileNotFoundError:
@@ -8974,13 +8974,14 @@ def ourPartners155():
                     for m in l2:
                         if m not in l1:
                             l1.append(m)
-                            for j in l1:
-                                l3.append(j)
-                                print(l3,"!@!@@!@!@@!@!#!@!@@!!@!!")
+                    print(l1,"Lissssssttt")
+                    for j in l1:
+                        l3.append(j)
+                        print(l3,"!@!@@!@!@@!@!#!@!@@!!@!!")
 
-                                column = " imagePath,UserCreate"
-                                values = " '"+ str(j)+ "','" + str(userId) + "'"
-                                data = databasefile.InsertQuery("ourPartners",column,values)
+                        column = " imagePath,UserCreate"
+                        values = " '"+ str(j)+ "','" + str(userId) + "'"
+                        data = databasefile.InsertQuery("ourPartners",column,values)
                     return data        
                 
             if flag =="u":
