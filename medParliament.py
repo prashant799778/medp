@@ -175,7 +175,7 @@ def gallery(image_name):
 @app.route("/ourPartners/<image_name>")
 def ourPartners1(image_name):
     try:
-        return send_from_directory('ourPartners', filename=image_name, as_attachment=False)
+        return send_from_directory('ourPartners', filename=image_name, as_attachment=True)
     except FileNotFoundError:
         abort(404)
 
