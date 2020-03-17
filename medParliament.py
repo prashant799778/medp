@@ -4136,7 +4136,10 @@ def promissingIntiatives():
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
                         print("inputdata=================",type(inputdata1))
-                        if  inputdata1 is not None: 
+                        y=type(inputdata1)
+                        print(y)
+                        y2=len(inputdata1)
+                        if  y2>4: 
                             print(inputdata1)
                             index=re.search("/newsimages", inputdata1).start()
                             ImagePath=""
@@ -4311,7 +4314,10 @@ def news():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        if  inputdata1 is not None: 
+                        y=type(inputdata1)
+                        print(y)
+                        y2=len(inputdata1)
+                        if  y2>4: 
                             index=re.search("/newsimages", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
@@ -4490,7 +4496,10 @@ def MarketingInsights():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        if  inputdata1 is not None:
+                        y=type(inputdata1)
+                        print(y)
+                        y2=len(inputdata1)
+                        if  y2>4:
                             index=re.search("/marketingInsights", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
@@ -4705,7 +4714,10 @@ def upSkillsOpportunity():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('NewsBanner')
-                        if  inputdata1 is not None:
+                        y=type(inputdata1)
+                        print(y)
+                        y2=len(inputdata1)
+                        if  y2>4:
                             index=re.search("/UpSkillsOpportunity", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
@@ -7045,7 +7057,10 @@ def parliamentEvent1():
                     if inputdata['id'] != "":
                         Id =inputdata["id"]
                         inputdata1 = request.form.get('postImage')
-                        if  inputdata1 is not None:
+                        y=type(inputdata1)
+                        print(y)
+                        y2=len(inputdata1)
+                        if  y2>4:
                             index=re.search("/eventImages", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
