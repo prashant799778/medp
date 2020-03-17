@@ -8951,7 +8951,7 @@ def ourPartners155():
                             l1.append(m)
                             for j in l1:
                                 l3.append(j)
-                                print(l3)
+                                print(l3,"!@!@@!@!@@!@!#!@!@@!!@!!")
 
                                 column = " imagePath,UserCreate"
                                 values = " '"+ str(j)+ "','" + str(userId) + "'"
