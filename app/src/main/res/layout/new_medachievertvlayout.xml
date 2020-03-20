@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
+    android:layout_height="300dp"
     android:maxHeight="350dp">
-    <com.medparliament.Widget.Segow_UI_Bold_Font
+    <com.medparliament.Widget.Open_Sans_Regular_Font
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:textSize="16dp"
+        android:layout_marginTop="10dp"
         android:textColor="@color/solid_black"
-        android:textSize="18dp"
-        android:id="@+id/title"
-        android:text=""
-        android:paddingLeft="20dp">
-    </com.medparliament.Widget.Segow_UI_Bold_Font>
+        android:id="@+id/msg"
+        android:layout_height="wrap_content">
+    </com.medparliament.Widget.Open_Sans_Regular_Font>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_below="@+id/cup"
+        android:layout_below="@+id/msg"
         android:orientation="vertical"
         android:id="@+id/ll"
-        android:layout_marginTop="5dp"
-        android:layout_height="200dp">
+        android:layout_marginTop="15dp"
+        android:layout_height="300dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <View
+                android:elevation="23dp"
+                android:id="@+id/over_lay"
+                android:background="@color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </View>
             <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                android:layout_marginHorizontal="20dp"
                 android:layout_width="match_parent"
                 android:id="@+id/video"
                 android:layout_height="match_parent"
@@ -36,12 +42,12 @@
             </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
         </RelativeLayout>
     </LinearLayout>
-    <com.medparliament.Widget.Open_Sans_Regular_Font
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="20dp"
-        android:textColor="@color/solid_black"
-        android:id="@+id/msg"
-        android:layout_height="wrap_content">
-    </com.medparliament.Widget.Open_Sans_Regular_Font>
-</LinearLayout>
+        android:layout_below="@+id/msg"
+        android:scaleType="centerCrop"
+        android:id="@+id/main_img"
+        android:layout_marginTop="15dp"
+        android:layout_height="match_parent">
+    </ImageView>
+</RelativeLayout>

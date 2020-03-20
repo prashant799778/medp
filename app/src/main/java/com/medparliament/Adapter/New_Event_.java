@@ -24,6 +24,12 @@ import com.medparliament.Utility.PrettyTimeClass;
 import com.medparliament.Widget.Open_Sans_Regular_Font;
 import com.medparliament.Widget.Segow_UI_Bold_Font;
 import com.medparliament.Widget.Segow_UI_Semi_Font;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -56,8 +62,67 @@ public class New_Event_ extends RecyclerView.Adapter<New_Event_.NotificationHold
         if(result.getDateCreate()!=null)
 //        holder.time.setText(PrettyTimeClass.PrettyTime(Comman.timeInms(result.getDateCreate())));
         holder.place.setText(Html.fromHtml(result.getEventLocation()));
+        if(!result.getImagePath().equalsIgnoreCase(""))
+        {
+        holder.video.setVisibility(View.GONE);
         Comman.setImageWithCondition(context,holder.mainimg,result.getImagePath());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        }else {
+            holder.mainimg.setVisibility(View.GONE);
+            holder.video.setVisibility(View.VISIBLE);
+            holder.video.getPlayerUiController().showYouTubeButton(false);
+            holder.video.addYouTubePlayerListener(new YouTubePlayerListener() {
+                @Override
+                public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+                    youTubePlayer.cueVideo(result.getVideoId(),0);
+                }
+
+                @Override
+                public void onStateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerState playerState) {
+
+                }
+
+                @Override
+                public void onPlaybackQualityChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackQuality playbackQuality) {
+
+                }
+
+                @Override
+                public void onPlaybackRateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackRate playbackRate) {
+
+                }
+
+                @Override
+                public void onError(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerError playerError) {
+
+                }
+
+                @Override
+                public void onCurrentSecond(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoDuration(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoLoadedFraction(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoId(@NotNull YouTubePlayer youTubePlayer, @NotNull String s) {
+
+                }
+
+                @Override
+                public void onApiChange(@NotNull YouTubePlayer youTubePlayer) {
+
+                }
+            });
+        }
+        holder.layer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(Comman.Check_Login(context)){
@@ -85,12 +150,16 @@ public class New_Event_ extends RecyclerView.Adapter<New_Event_.NotificationHold
     public class NotificationHolder extends RecyclerView.ViewHolder {
         ImageView mainimg;
         Segow_UI_Bold_Font title;
+        YouTubePlayerView video;
+        View layer;
         Open_Sans_Regular_Font place;
         public NotificationHolder(@NonNull View itemView) {
             super(itemView);
             title=itemView.findViewById(R.id.title);
             place=itemView.findViewById(R.id.location);
             mainimg=itemView.findViewById(R.id.img);
+            video=itemView.findViewById(R.id.video);
+            layer=itemView.findViewById(R.id.layer);
 
         }
     }

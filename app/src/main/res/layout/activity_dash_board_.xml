@@ -43,7 +43,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RelativeLayout
-   android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:id="@+id/top1"
             android:layout_height="match_parent">
@@ -154,7 +153,7 @@
                     <com.medparliament.Widget.CustomViewPager
                         android:id="@+id/viewpager_announced"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="185dp"
                         android:layout_marginHorizontal="20dp"
                         app:isInfinite="true"
                         app:autoScroll="true"
@@ -164,7 +163,6 @@
                         app:itemAspectRatio="1.33"/>
 
                         <ImageView
-
                             android:layout_width="50dp"
                             android:id="@+id/arrow"
                             android:visibility="gone"
@@ -189,12 +187,16 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginHorizontal="20dp"
                     android:background="@color/divideColor">
                 </View>
             </LinearLayout>
             </LinearLayout>
+
+
+
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -204,11 +206,17 @@
                 android:layout_marginTop="0dp"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lineHeight"
+                    android:layout_below="@id/news"
+                    android:background="@color/textcolor">
+                </View>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="2"
-                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
                 <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
@@ -242,8 +250,7 @@
                 <com.medparliament.Widget.CustomViewPager
                     android:id="@+id/viewpager_news"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_height="185dp"
                     app:isInfinite="true"
                     app:autoScroll="true"
                     app:scrollInterval="5000"
@@ -257,7 +264,8 @@
                     android:textSize="14dp"
                     android:textStyle="bold"
                     android:layout_weight="1"
-                    android:id="@+id/morenews"
+                    android:id="@+id/newsmore"
+                    android:visibility="gone"
                     android:gravity="right"
                     android:layout_marginTop="10dp"
                     android:paddingRight="20dp"
@@ -267,8 +275,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginHorizontal="20dp"
+                    android:visibility="gone"
                     android:background="@color/divideColor">
                 </View>
             </LinearLayout>
@@ -285,11 +292,17 @@
                 android:layout_marginTop="0dp"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lineHeight"
+                    android:layout_below="@id/news"
+                    android:background="@color/textcolor">
+                </View>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="2"
-                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
                     <com.medparliament.Widget.Segow_UI_Semi_Font
                         android:layout_width="match_parent"
@@ -298,6 +311,7 @@
                         android:layout_weight="1"
                         android:textStyle="bold"
                         android:paddingLeft="20dp"
+                        android:visibility="gone"
                         android:layout_marginBottom="20dp"
                         android:text="@string/Market_Insights"
                         android:layout_height="wrap_content">
@@ -324,8 +338,7 @@
                     <com.medparliament.Widget.CustomViewPager
                         android:id="@+id/viewpager_market"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
+                        android:layout_height="185dp"
                         app:isInfinite="true"
                         app:autoScroll="true"
                         app:scrollInterval="5000"
@@ -339,9 +352,10 @@
                     android:textSize="14dp"
                     android:textStyle="bold"
                     android:layout_weight="1"
-                    android:id="@+id/v0"
+                    android:id="@+id/marketmore"
                     android:gravity="right"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:paddingRight="20dp"
                     android:text="@string/veiw"
                     android:layout_height="wrap_content">
@@ -350,6 +364,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="15dp"
+                    android:visibility="gone"
                     android:layout_marginHorizontal="20dp"
                     android:background="@color/divideColor">
                 </View>
@@ -367,11 +382,17 @@
                 android:visibility="gone"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lineHeight"
+                    android:layout_below="@id/news"
+                    android:background="@color/textcolor">
+                </View>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="2"
-                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
                     <com.medparliament.Widget.Segow_UI_Semi_Font
                         android:layout_width="match_parent"
@@ -379,6 +400,7 @@
                         android:textSize="16dp"
                         android:layout_weight="1"
                         android:textStyle="bold"
+                        android:visibility="gone"
                         android:paddingLeft="20dp"
                         android:layout_marginBottom="20dp"
                         android:text="@string/Latest_Video"
@@ -405,6 +427,7 @@
                  <ImageView
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
+                     android:visibility="gone"
                      android:layout_alignParentRight="true"
                      android:layout_centerVertical="true"
                      android:src="@drawable/ic_arrow_forward_ios">
@@ -414,6 +437,7 @@
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:layout_alignParentLeft="true"
+                     android:visibility="gone"
                      android:layout_centerVertical="true"
                      android:src="@drawable/ic_arrow_back_ios">
 
@@ -422,7 +446,7 @@
                     <com.medparliament.Widget.CustomViewPager
                         android:id="@+id/viewpager_video"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="185dp"
                         app:isInfinite="true"
                         app:autoScroll="true"
                         app:scrollInterval="5000"
@@ -437,8 +461,8 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/v3"
+                    android:visibility="gone"
+                    android:id="@+id/tvmore"
                     android:paddingRight="20dp"
                     android:text="@string/veiw"
                     android:layout_height="wrap_content">
@@ -446,7 +470,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
+                    android:visibility="gone"
                     android:layout_marginHorizontal="20dp"
                     android:background="@color/divideColor">
                 </View>
@@ -462,11 +486,17 @@
                 android:layout_marginTop="0dp"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lineHeight"
+                    android:layout_below="@id/news"
+                    android:background="@color/textcolor">
+                </View>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="2"
-                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
                     <com.medparliament.Widget.Segow_UI_Semi_Font
                         android:layout_width="match_parent"
@@ -483,27 +513,10 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_arrow_forward_ios"
-                        ></ImageView>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_arrow_back_ios"
-                        ></ImageView>
                     <com.medparliament.Widget.CustomViewPager
                         android:id="@+id/viewpager_promissing"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
+                        android:layout_height="185dp"
                         app:isInfinite="true"
                         app:autoScroll="true"
                         app:scrollInterval="5000"
@@ -511,27 +524,15 @@
                         app:viewpagerAspectRatio="1.78"
                         app:itemAspectRatio="1.33"/>
                 </RelativeLayout>
-                <!--<com.medparliament.Widget.Segow_UI_Semi_Font
-                    android:layout_width="match_parent"
-                    android:textColor="@color/textcolor"
-                    android:textSize="16dp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:id="@+id/morenews"
-                    android:gravity="right"
-                    android:layout_marginTop="5dp"
-                    android:paddingRight="20dp"
-                    android:text="@string/veiw"
-                    android:layout_height="wrap_content">
-                </com.medparliament.Widget.Segow_UI_Semi_Font>-->
                 <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14dp"
                     android:textStyle="bold"
                     android:layout_weight="1"
+                    android:id="@+id/high"
+                    android:visibility="gone"
                     android:gravity="right"
-                    android:id="@+id/v4"
                     android:layout_marginTop="10dp"
                     android:paddingRight="20dp"
                     android:text="@string/veiw"
@@ -540,11 +541,14 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginHorizontal="20dp"
+                    android:visibility="gone"
                     android:background="@color/divideColor">
                 </View>
             </LinearLayout>
+
+
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -554,40 +558,38 @@
                 android:layout_marginTop="0dp"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lineHeight"
+                    android:layout_below="@id/news"
+                    android:background="@color/textcolor">
+                </View>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:visibility="gone"
+                android:orientation="horizontal">
                 <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
                     android:textColor="@color/solid_black"
                     android:textSize="16dp"
                     android:textStyle="bold"
                     android:paddingLeft="20dp"
+                    android:visibility="gone"
                     android:text="@string/Event"
-                    android:layout_marginBottom="20dp"
                     android:layout_height="wrap_content">
                 </com.medparliament.Widget.Segow_UI_Semi_Font>
+            </LinearLayout>
 
                  <RelativeLayout
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_arrow_forward_ios"
-                        ></ImageView>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_arrow_back_ios"
-                        ></ImageView>
                     <com.medparliament.Widget.CustomViewPager
                         android:id="@+id/viewpager_events"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
+                        android:layout_height="185dp"
                         app:isInfinite="true"
                         app:autoScroll="true"
                         app:scrollInterval="5000"
@@ -602,16 +604,16 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:layout_marginTop="10dp"
                     android:paddingRight="20dp"
-                    android:id="@+id/v5"
+                    android:visibility="gone"
+                    android:id="@+id/eventmore"
                     android:text="@string/veiw"
                     android:layout_height="wrap_content">
                 </com.medparliament.Widget.Segow_UI_Semi_Font>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
+                    android:visibility="gone"
                     android:layout_marginHorizontal="20dp"
                     android:background="@color/divideColor">
                 </View>
@@ -627,6 +629,18 @@
                 android:layout_marginTop="0dp"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lineHeight"
+                    android:layout_below="@id/news"
+                    android:background="@color/textcolor">
+                </View>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:visibility="gone"
+                android:orientation="horizontal">
                 <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
                     android:textColor="@color/solid_black"
@@ -634,33 +648,19 @@
                     android:textStyle="bold"
                     android:paddingLeft="20dp"
                     android:text="@string/Up_Skill_Academy"
+                    android:visibility="gone"
                     android:layout_marginBottom="20dp"
                     android:layout_height="wrap_content">
                 </com.medparliament.Widget.Segow_UI_Semi_Font>
-
+            </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_arrow_forward_ios"
-                        ></ImageView>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_arrow_back_ios"
-                        ></ImageView>
                     <com.medparliament.Widget.CustomViewPager
                         android:id="@+id/viewpager_council"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="20dp"
+                        android:layout_height="185dp"
                         app:isInfinite="true"
                         app:autoScroll="true"
                         app:scrollInterval="5000"
@@ -675,16 +675,16 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:layout_marginTop="10dp"
                     android:paddingRight="20dp"
-                    android:id="@+id/v7"
+                    android:visibility="gone"
+                    android:id="@+id/acdmicmore"
                     android:text="@string/veiw"
                     android:layout_height="wrap_content">
                 </com.medparliament.Widget.Segow_UI_Semi_Font>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
+                    android:visibility="gone"
                     android:layout_marginHorizontal="20dp"
                     android:background="@color/divideColor">
                 </View>
@@ -698,35 +698,33 @@
                 android:layout_marginTop="0dp"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lineHeight"
+                    android:layout_below="@id/news"
+                    android:background="@color/textcolor">
+                </View>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:visibility="gone"
+                android:orientation="horizontal">
                 <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
                     android:textColor="@color/solid_black"
                     android:textSize="16dp"
                     android:textStyle="bold"
                     android:paddingLeft="20dp"
+                    android:visibility="gone"
                     android:text="@string/Gallery"
-                    android:layout_marginBottom="10dp"
                     android:layout_height="wrap_content">
                 </com.medparliament.Widget.Segow_UI_Semi_Font>
+            </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_arrow_forward_ios"
-                    ></ImageView>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_arrow_back_ios"
-                    ></ImageView>
                 <androidx.recyclerview.widget.RecyclerView
-
                     android:layout_width="match_parent"
                     android:id="@+id/recycle_gallery"
                     android:layout_height="wrap_content">
@@ -739,26 +737,25 @@
                     android:textStyle="bold"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:layout_marginTop="5dp"
                     android:paddingRight="20dp"
-                    android:id="@+id/v6"
+                    android:id="@+id/gallerymore"
+                    android:visibility="gone"
                     android:text="@string/veiw"
                     android:layout_height="wrap_content">
                 </com.medparliament.Widget.Segow_UI_Semi_Font>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_marginHorizontal="20dp"
                     android:background="@color/divideColor">
                 </View>
 
+
                 <com.medparliament.Widget.CustomViewPager
                     android:id="@+id/viewpager_gallery"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_height="185dp"
                     android:visibility="gone"
                     app:isInfinite="true"
                     app:autoScroll="true"
@@ -781,67 +778,38 @@
                 android:layout_marginTop="0dp"
                 android:orientation="vertical"
                 android:layout_height="wrap_content">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/lineHeight"
+                    android:layout_below="@id/news"
+                    android:background="@color/textcolor">
+                </View>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:visibility="gone"
+                android:orientation="horizontal">
                 <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"
                     android:textColor="@color/solid_black"
                     android:textSize="16dp"
                     android:textStyle="bold"
                     android:paddingLeft="20dp"
+                    android:visibility="visible"
                     android:text="@string/Our_Partners"
-                    android:layout_marginBottom="10dp"
                     android:layout_height="wrap_content">
                 </com.medparliament.Widget.Segow_UI_Semi_Font>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_arrow_forward_ios"
-                        ></ImageView>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/ic_arrow_back_ios"
-                        ></ImageView>
-                    <androidx.recyclerview.widget.RecyclerView
+            </LinearLayout>
 
-                        android:layout_width="match_parent"
-                        android:id="@+id/recycle_partner"
-                        android:layout_height="wrap_content">
-                    </androidx.recyclerview.widget.RecyclerView>
-                </RelativeLayout>
-                <com.medparliament.Widget.Segow_UI_Semi_Font
+                <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:layout_marginTop="5dp"
-                    android:paddingRight="20dp"
-                    android:id="@+id/partnerv"
-                    android:text="@string/veiw"
-                    android:layout_height="wrap_content">
-                </com.medparliament.Widget.Segow_UI_Semi_Font>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:visibility="gone"
-                    android:layout_marginHorizontal="20dp"
-                    android:background="@color/divideColor">
-                </View>
-
-                <com.medparliament.Widget.CustomViewPager
                     android:id="@+id/viewpager_partner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
+                    android:layout_height="wrap_content">
+                </androidx.recyclerview.widget.RecyclerView>
+                <com.medparliament.Widget.CustomViewPager
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:visibility="gone"
                     app:isInfinite="true"
                     app:autoScroll="true"
@@ -853,7 +821,9 @@
 
 
         </RelativeLayout>
+
     </androidx.core.widget.NestedScrollView>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
@@ -870,7 +840,25 @@
             app:tint="@null"
             android:layout_height="wrap_content">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:visibility="visible"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:scaleType="centerCrop"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            app:backgroundTint="@color/white"
+            app:rippleColor="@color/colorAccent"
+            android:layout_above="@id/cmnt"
+            android:id="@+id/share"
+            android:src="@drawable/ic_share"
+            app:tint="@null"
+            android:layout_height="wrap_content">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="240dp"
         android:layout_gravity="start"

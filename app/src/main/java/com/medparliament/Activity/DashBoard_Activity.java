@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -24,6 +25,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.text.Html;
 import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -43,6 +45,7 @@ import com.medparliament.Adapter.Dashboard_Promising_Adapter;
 import com.medparliament.Adapter.Dashboard_annoncement_adapter_new;
 import com.medparliament.Adapter.Dashboard_council_adapter_new;
 import com.medparliament.Adapter.Dashboard_events_adapter_new;
+import com.medparliament.Adapter.Dashboard_gallery_adapter_new;
 import com.medparliament.Adapter.Dashboard_market_adapter_new;
 import com.medparliament.Adapter.Dashboard_news_adapter_new;
 import com.medparliament.Adapter.Dashboard_video_adapter_new;
@@ -50,6 +53,7 @@ import com.medparliament.Adapter.DrawerI_Adapter;
 import com.medparliament.Adapter.Event_Adapter;
 import com.medparliament.Adapter.GalleryAdapter;
 import com.medparliament.Adapter.Gallery_adapter;
+import com.medparliament.Adapter.OurPartnersAdapter;
 import com.medparliament.Adapter.Post_Adapter;
 import com.medparliament.Internet.Api_Calling;
 import com.medparliament.Internet.Models.DashboardAnnouncedModel;
@@ -58,6 +62,7 @@ import com.medparliament.Internet.Models.Dashboard_News_Model;
 import com.medparliament.Internet.Models.Dashbooard_eventModel;
 import com.medparliament.Internet.Models.DrawerModel;
 import com.medparliament.Internet.Models.Video_Model;
+import com.medparliament.Internet.NewModel.NewModel;
 import com.medparliament.Internet.NewModel.Result;
 import com.medparliament.Internet.NewModel.up_skill_model;
 import com.medparliament.Internet.URLS;
@@ -86,14 +91,21 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class DashBoard_Activity extends AppCompatActivity implements onResult {
 
     private static final long DELAY_MS = 500;
-    private static final long PERIOD_MS = 10000;
+    private static final long PERIOD_MS = 1000;
     int currentPage=0;
     int currentPage1=0;
     int currentPage2=0;
     int currentPage3=0;
     int currentPage4=0;
     int currentPage5=0;
-    Segow_UI_Semi_Font v1,v2,v3,v4,v5,v7,v0,partner_view;
+    int currentPage6=0;
+    int count = 0;
+    int currentPage7=0;
+    private static final float SPEED = 4000f;// Change this value (default=25f)
+    int speedScroll = 0;
+    Segow_UI_Semi_Font v1;
+    Segow_UI_Semi_Font marketmore,newsmore,tvmore,highmore,eventmore,acdmicmore,gallarymore,partnermore;
+
     ListView listView;
     RelativeLayout about;
     ImageView arrow;
@@ -108,25 +120,25 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
     onResult onResult;
     RelativeLayout nodata;
     Post_Adapter adapterpost;
-    ArrayList<Dashboard_News_Model> newslist;
-    ArrayList<Result> marketlist;
-    ArrayList<Result> prolist;
-    ArrayList<DashboardAnnouncedModel> announcedlist;
-    ArrayList<DashboardGalleryModel>gallerylsit;
-    ArrayList<DashboardGalleryModel>partnarlist;
-    ArrayList<Dashbooard_eventModel>eventlist;
-    ArrayList<up_skill_model>councillist;
-    ArrayList<Video_Model> videolist;
+    ArrayList<NewModel> newslist;
+    ArrayList<NewModel> marketlist;
+    ArrayList<NewModel> prolist;
+    ArrayList<NewModel> announcedlist;
+    ArrayList<NewModel>gallerylsit;
+    ArrayList<NewModel>partnarlist;
+    ArrayList<NewModel>eventlist;
+    ArrayList<NewModel>councillist;
+    ArrayList<NewModel> videolist;
     MySharedPrefrence m;
     ViewPager viewPager_gallery,viewPager_news,viewPager_announced,viewPager_event,viewPager_video,viewPager_Promising,viewPager_council,viewPager_market;
-   RecyclerView recyclerView_gallery,recyclerView_partner;
+   RecyclerView recyclerView_gallery,viewpager_parten;
     String name;
     ImageView setting;
     CircleImageView profile;
     ProgressDialog progressDialog;
-    FloatingActionButton cmnt;
+    FloatingActionButton cmnt,share;
     Dashboard_News_Adapter dashboard_news_adapter;
-    LinearLayoutManager news_manager,gallery_Manager,announced_manage,event_manager,partner_manager;
+    LinearLayoutManager news_manager,gallery_Manager,announced_manage,partner_manager;
     GalleryAdapter galleryAdapter;
     AnnoucementsAdapter annoucementsAdapter;
     Event_Adapter event_adapter;
@@ -140,7 +152,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
 
     GalleryAdapter galleryAdapter1;
 
-    GalleryAdapter partnerAdapter;
+    OurPartnersAdapter partnerAdapter;
 
     Dashboard_annoncement_adapter_new viewpager_annoncemen_adapter;
     Dashboard_events_adapter_new viewpager_events_adapter;
@@ -192,19 +204,20 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
             about.setVisibility(View.GONE);
         }else{
             setting.setVisibility(View.VISIBLE);
-            cmnt.setVisibility(View.GONE);
+            cmnt.setVisibility(View.INVISIBLE);
 //            user_login.setVisibility(View.VISIBLE);
             login_signup.setVisibility(View.VISIBLE);
         }
         Animatoo.animateSwipeLeft(DashBoard_Activity.this);
         v1=findViewById(R.id.v1);
-        v2=findViewById(R.id.v3);
-        v3=findViewById(R.id.v4);
-        v4=findViewById(R.id.v5);
-        v5=findViewById(R.id.v6);
-        v7=findViewById(R.id.v7);
-        v0=findViewById(R.id.v0);
-        partner_view=findViewById(R.id.partnerv);
+        marketmore=findViewById(R.id.marketmore);
+        newsmore=findViewById(R.id.newsmore);
+        tvmore=findViewById(R.id.tvmore);
+        highmore=findViewById(R.id.high);
+        eventmore=findViewById(R.id.eventmore);
+        acdmicmore=findViewById(R.id.acdmicmore);
+        gallarymore=findViewById(R.id.gallerymore);
+        share=findViewById(R.id.share);
         this.onResult=this;
         Intent i=getIntent();
         if(i!=null)
@@ -222,7 +235,6 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
         partnarlist=new ArrayList<>();
 
         nodata=findViewById(R.id.nodata);
-
         m=MySharedPrefrence.instanceOf(DashBoard_Activity.this);
         View stub = (View) findViewById(R.id.toolbar);
 
@@ -240,7 +252,6 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
         userName=findViewById(R.id.username);
 
         profile=findViewById(R.id.profile);
-        moreNews=findViewById(R.id.morenews);
         Comman.setRoundedImage(DashBoard_Activity.this,profile,m.getUserProfile());
         progressDialog = new ProgressDialog(DashBoard_Activity.this);
         progressDialog.setMessage("Loading...");
@@ -253,9 +264,9 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
         drawerItem[0] = new DrawerModel(R.drawable.ic_internet_, "Home");
         drawerItem[1] = new DrawerModel(R.drawable.ic_note_new, "Inbox");
         drawerItem[2] = new DrawerModel(R.drawable.ic_sent,"Sent");
-        drawerItem[3] = new DrawerModel(R.drawable.ic_info, "About us");
+        drawerItem[3] = new DrawerModel(R.drawable.ic_info, "About Us");
         drawerItem[4] = new DrawerModel(R.drawable.ic_star, "Rate Now");
-        drawerItem[5] = new DrawerModel(R.drawable.ic_share, "Refer your friend");
+        drawerItem[5] = new DrawerModel(R.drawable.ic_share_1, "Refer your friend");
         v1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -263,14 +274,14 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
 //                finish();
             }
         });
-        v5.setOnClickListener(new View.OnClickListener() {
+        marketmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                startActivity(new Intent(DashBoard_Activity.this,Tabs_DashBoard_Activity.class));
                 if(Comman.Check_Login(DashBoard_Activity.this)) {
 
                     Intent intent = new Intent(DashBoard_Activity.this, Tabs_DashBoard_Activity.class);
-                    intent.putExtra("id", "5");
+                    intent.putExtra("id", "0");
                     startActivity(intent);
                 }else {
                     startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
@@ -279,7 +290,39 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
 //                finish();
             }
         });
-        v2.setOnClickListener(new View.OnClickListener() {
+        newsmore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                startActivity(new Intent(DashBoard_Activity.this,Tabs_DashBoard_Activity.class));
+
+                if(Comman.Check_Login(DashBoard_Activity.this)) {
+
+                    Intent intent = new Intent(DashBoard_Activity.this, Tabs_DashBoard_Activity.class);
+                    intent.putExtra("id", "1");
+                    startActivity(intent);
+                }else {
+                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
+                }
+//                finish();
+            }
+        });
+
+
+
+
+
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "MedParliament App");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.text)+"https://play.google.com/store/apps/details?id=com.medparliament");
+                emailIntent.setType("text/plain");
+                startActivity(Intent.createChooser(emailIntent, "Share via"));
+            }
+        });
+        tvmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                startActivity(new Intent(DashBoard_Activity.this,Tabs_DashBoard_Activity.class));
@@ -296,25 +339,8 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
             }
         });
 
-        partner_view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                startActivity(new Intent(DashBoard_Activity.this,Tabs_DashBoard_Activity.class));
 
-                if(Comman.Check_Login(DashBoard_Activity.this)) {
-
-                    Intent intent = new Intent(DashBoard_Activity.this, Tabs_DashBoard_Activity.class);
-                    intent.putExtra("id", "7");
-                    startActivity(intent);
-                }else {
-                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
-                }
-//                finish();
-            }
-        });
-
-
-        v3.setOnClickListener(new View.OnClickListener() {
+        highmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                startActivity(new Intent(DashBoard_Activity.this,Tabs_DashBoard_Activity.class));
@@ -329,7 +355,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
 //                finish();
             }
         });
-        v4.setOnClickListener(new View.OnClickListener() {
+        eventmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                startActivity(new Intent(DashBoard_Activity.this,Tabs_DashBoard_Activity.class));
@@ -348,7 +374,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
 //                finish();
             }
         });
-        v7.setOnClickListener(new View.OnClickListener() {
+        acdmicmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                startActivity(new Intent(DashBoard_Activity.this,Tabs_DashBoard_Activity.class));
@@ -365,12 +391,12 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
             }
         });
 
-        v0.setOnClickListener(new View.OnClickListener() {
+        gallarymore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(Comman.Check_Login(DashBoard_Activity.this)) {
                     Intent intent = new Intent(DashBoard_Activity.this, Tabs_DashBoard_Activity.class);
-                    intent.putExtra("id", "0");
+                    intent.putExtra("id", "6");
                     startActivity(intent);
                 }else {
                     startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
@@ -390,6 +416,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
 
         viewPager_announced=findViewById(R.id.viewpager_announced);
         viewPager_news=findViewById(R.id.viewpager_news);
+        viewpager_parten=findViewById(R.id.viewpager_partner);
         viewPager_market=findViewById(R.id.viewpager_market);
         viewPager_council=findViewById(R.id.viewpager_council);
         viewPager_event=findViewById(R.id.viewpager_events);
@@ -397,18 +424,36 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
         viewPager_video=findViewById(R.id.viewpager_video);
         viewPager_Promising=findViewById(R.id.viewpager_promissing);
         recyclerView_gallery=findViewById(R.id.recycle_gallery);
-        recyclerView_partner=findViewById(R.id.recycle_partner);
         gallery_Manager=new LinearLayoutManager(DashBoard_Activity.this);
         gallery_Manager.setOrientation(RecyclerView.HORIZONTAL);
 
 
-        partner_manager=new LinearLayoutManager(DashBoard_Activity.this);
+         partner_manager = new LinearLayoutManager(DashBoard_Activity.this) {
+            @Override
+            public void smoothScrollToPosition(RecyclerView recyclerView,RecyclerView.State state, int position) {
+                LinearSmoothScroller smoothScroller = new LinearSmoothScroller(DashBoard_Activity.this) {
+                    @Override
+                    protected float calculateSpeedPerPixel(DisplayMetrics displayMetrics) {
+                        Comman.log("Adapter",""+"parnerCountListner");
+                        return SPEED / displayMetrics.densityDpi;
+                    }
+                };
+                smoothScroller.setTargetPosition(position);
+                startSmoothScroll(smoothScroller);
+            }
+
+        };
+
+//        partner_manager=new LinearLayoutManager(DashBoard_Activity.this);
         partner_manager.setOrientation(RecyclerView.HORIZONTAL);
 
 
-        recyclerView_gallery.setLayoutManager(gallery_Manager);
 
-        recyclerView_partner.setLayoutManager(partner_manager);
+
+        recyclerView_gallery.setLayoutManager(gallery_Manager);
+        viewpager_parten.setLayoutManager(partner_manager);
+
+
 
         viewpager_Promising_adapter=new Dashboard_Promising_Adapter(DashBoard_Activity.this,prolist,true);
         viewpager_news_adapter=new Dashboard_news_adapter_new(DashBoard_Activity.this,newslist,true);
@@ -425,16 +470,17 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
         viewpager_council_adapter=new Dashboard_council_adapter_new(DashBoard_Activity.this,councillist,true);
 
         viewpager_gallery_adapter=new Gallery_adapter(DashBoard_Activity.this,gallerylsit, true);
-       galleryAdapter1=new GalleryAdapter(DashBoard_Activity.this,gallerylsit);
+        galleryAdapter1=new GalleryAdapter(DashBoard_Activity.this,gallerylsit);
 
-        partnerAdapter=new GalleryAdapter(DashBoard_Activity.this,partnarlist);
+        partnerAdapter=new OurPartnersAdapter(DashBoard_Activity.this,partnarlist);
 
-       recyclerView_gallery.setAdapter(galleryAdapter1);
+        viewpager_parten.setAdapter(partnerAdapter);
+        recyclerView_gallery.setAdapter(galleryAdapter1);
 
-        recyclerView_partner.setAdapter(partnerAdapter);
+
 
         viewPager_news.setAdapter(viewpager_news_adapter);
-
+//        viewpager_parten.setAdapter(partnerAdapter);
         viewPager_market.setAdapter(viewpager_market_adapter);
 
         viewPager_council.setAdapter(viewpager_council_adapter);
@@ -444,31 +490,17 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
         viewPager_announced.setAdapter(viewpager_annoncemen_adapter);
         viewPager_Promising.setAdapter(viewpager_Promising_adapter);
 
+
+
+//        news.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(DashBoard_Activity.this, Tabs_DashBoard_Activity.class);
+//                intent.putExtra("id", "7");
+//                startActivity(intent);
+//            }
+//        });
         setupToolbar();
-        moreNews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                startActivity(new Intent(DashBoard_Activity.this,Tabs_DashBoard_Activity.class));
-           if(Comman.Check_Login(DashBoard_Activity.this)) {
-               Intent intent = new Intent(DashBoard_Activity.this, Tabs_DashBoard_Activity.class);
-               intent.putExtra("id", "1");
-               startActivity(intent);
-           }else {
-               startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
-           }
-
-
-//                finish();
-//                startActivity(new Intent(DashBoard_Activity.this,All_News_Activity.class));
-//                if(Comman.Check_Login(DashBoard_Activity.this)){
-//
-//                    startActivity(new Intent(DashBoard_Activity.this,All_News_Activity.class));
-//                }else {
-//                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
-//                }
-
-            }
-        });
         cmnt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -532,44 +564,12 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
             try {
                 Comman.log("DashBoarding",""+jsonObject);
                 nodata.setVisibility(View.GONE);
-
-                if(jsonObject.getJSONArray("announcement").length()>0) {
-                    ArrayList<DashboardAnnouncedModel> dash_anounc_list = gson.fromJson(jsonObject.getString("announcement"), new TypeToken<ArrayList<DashboardAnnouncedModel>>() {
-                    }.getType());
-                    if(dash_anounc_list!=null){
-                        announcedlist.clear();
-                        announcedlist.addAll(dash_anounc_list);
-
-                        final Handler handler = new Handler();
-                        final Runnable Update = new Runnable() {
-
-                            public void run() {
-                                if (currentPage1 == announcedlist.size()-1) {
-                                    currentPage1 = 0;
-                                }
-                                viewPager_announced.setCurrentItem(currentPage1++, true);
-                            }
-                        };
-
-                        Timer   timer = new Timer(); // This will create a new Thread
-                        timer.schedule(new TimerTask() { // task to be scheduled
-                            @Override
-                            public void run() {
-                                handler.post(Update);
-                            }
-                        }, DELAY_MS, PERIOD_MS);
-
-
-
-
-                        announce.setVisibility(View.GONE);}
-                }
                 if(jsonObject.getJSONArray("news").length()>0){
-                ArrayList<Dashboard_News_Model> dash_news_list = gson.fromJson(jsonObject.getString("news"), new TypeToken<ArrayList<Dashboard_News_Model>>() {}.getType());
+                ArrayList<NewModel> dash_news_list = gson.fromJson(jsonObject.getString("news"), new TypeToken<ArrayList<NewModel>>() {}.getType());
                     if(newslist!=null){
                         newslist.clear();
-                        newslist.addAll(dash_news_list);
-
+                        newslist.add(dash_news_list.get(0));
+                        Comman.log("News","News_Inside__size"+newslist.size());
                         final Handler handler = new Handler();
                         final Runnable Update = new Runnable() {
 
@@ -590,145 +590,98 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
                         }, DELAY_MS, PERIOD_MS);
                      promising_layout.setVisibility(View.VISIBLE);
                     news.setVisibility(View.VISIBLE);
+                    viewpager_news_adapter.updateList(newslist);
                     }
                 }
-
-
                 if(jsonObject.getJSONArray("marketingInsights").length()>0){
-                    ArrayList<Result> dash_news_list = gson.fromJson(jsonObject.getString("marketingInsights"), new TypeToken<ArrayList<Result>>() {}.getType());
+                    ArrayList<NewModel> dash_news_list = gson.fromJson(jsonObject.getString("marketingInsights"), new TypeToken<ArrayList<NewModel>>() {}.getType());
                     if(marketlist!=null){
                         marketlist.clear();
-                        marketlist.addAll(dash_news_list);
+                        marketlist.add(dash_news_list.get(0));
                         viewpager_market_adapter=new Dashboard_market_adapter_new(DashBoard_Activity.this,marketlist,true);
-
-//                        final Handler handler = new Handler();
-//                        final Runnable Update = new Runnable() {
-//
-//                            public void run() {
-//                                if (currentPage == newslist.size()-1) {
-//                                    currentPage = 0;
-//                                }
-//                                viewPager_market.setCurrentItem(currentPage++, true);
-//                            }
-//                        };
-//
-//                        Timer   timer = new Timer(); // This will create a new Thread
-//                        timer.schedule(new TimerTask() { // task to be scheduled
-//                            @Override
-//                            public void run() {
-//                                handler.post(Update);
-//                            }
-//                        }, DELAY_MS, PERIOD_MS);
-//                        promising_layout.setVisibility(View.VISIBLE);
+                        Comman.log("EVENTEVNET","marketingInsights_Inside");
                         viewPager_market.setAdapter(viewpager_market_adapter);
                         viewpager_market_adapter.notifyDataSetChanged();
                         market.setVisibility(View.VISIBLE);
                     }
                 }
                 if((jsonObject.getJSONArray("event").length()>0)){
-                    ArrayList<Dashbooard_eventModel> dash_event_list = gson.fromJson(jsonObject.getString("event"), new TypeToken<ArrayList<Dashbooard_eventModel>>() {}.getType());
+                    Comman.log("EVENTEVNET","EVENTEVNET_Inside");
+                    ArrayList<NewModel> dash_event_list = gson.fromJson(jsonObject.getString("event"), new TypeToken<ArrayList<NewModel>>() {}.getType());
                     if(eventlist!=null){
                         eventlist.clear();
-                        eventlist.addAll(dash_event_list);
+                        eventlist.add(dash_event_list.get(0));
                         viewpager_events_adapter=new Dashboard_events_adapter_new(DashBoard_Activity.this,eventlist,true);
                         viewPager_event.setAdapter(viewpager_events_adapter);
-//                        Comman.log("AAAAAAA","DASHBOARD"+eventlist.get(0).getMakedone());
-//                        final Handler handler = new Handler();
-//                        final Runnable Update = new Runnable() {
-//
-//                            public void run() {
-//                                if (currentPage2 == eventlist.size()-1) {
-//                                    currentPage2 = 0;
-//                                }
-//                                viewPager_event.setCurrentItem(currentPage2++, true);
-//                            }
-//                        };
-//
-//                        Timer   timer = new Timer(); // This will create a new Thread
-//                        timer.schedule(new TimerTask() { // task to be scheduled
-//                            @Override
-//                            public void run() {
-//                                handler.post(Update);
-//                            }
-//                        }, DELAY_MS, PERIOD_MS);
-//                        Comman.log("AAAAAAA","DASHBOARD@@"+eventlist.get(0).getMakedone());
                         event.setVisibility(View.VISIBLE);
                         viewpager_events_adapter.updateList(eventlist);
                         viewpager_events_adapter.notifyDataSetChanged();
                     }
                 }
-
-
                 if((jsonObject.getJSONObject("upSkillsOpportunity").getJSONArray("featured Programs").length()>0)){
-                    ArrayList<up_skill_model> dash_event_list = gson.fromJson(jsonObject.getJSONObject("upSkillsOpportunity").getString("featured Programs"), new TypeToken<ArrayList<up_skill_model>>() {}.getType());
+                    ArrayList<NewModel> dash_event_list = gson.fromJson(jsonObject.getJSONObject("upSkillsOpportunity").getString("featured Programs"), new TypeToken<ArrayList<NewModel>>() {}.getType());
                     if(councillist!=null){
                         councillist.clear();
-                        councillist.addAll(dash_event_list);
-
-//                        final Handler handler = new Handler();
-//                        final Runnable Update = new Runnable() {
-
-//                            public void run() {
-//                                if (currentPage5 == councillist.size()-1) {
-//                                    currentPage5 = 0;
-//                                }
-//                                viewPager_council.setCurrentItem(currentPage5++, true);
-//                            }
-//                        };
-//                        Timer   timer = new Timer(); // This will create a new Thread
-//                        timer.schedule(new TimerTask() { // task to be scheduled
-//                            @Override
-//                            public void run() {
-//                                handler.post(Update);
-//                            }
-//                        }, DELAY_MS, PERIOD_MS);
+                        Comman.log("EVENTEVNET","upSkillsOpportunity_Inside");
+                        councillist.add(dash_event_list.get(0));
                         viewpager_council_adapter.notifyDataSetChanged();
                         council.setVisibility(View.VISIBLE);
                     }
                 }
-
-
-
-
-
                 if((jsonObject.getJSONArray("gallery").length()>0)){
-                ArrayList<DashboardGalleryModel> dash_gallery_list = gson.fromJson(jsonObject.getString("gallery"), new TypeToken<ArrayList<DashboardGalleryModel>>() {}.getType());
+                ArrayList<NewModel> dash_gallery_list = gson.fromJson(jsonObject.getString("gallery"), new TypeToken<ArrayList<NewModel>>() {}.getType());
                     if(gallerylsit!=null){
                         gallerylsit.clear();
-                        gallerylsit.addAll(dash_gallery_list);
-
-
-
-                        gallery.setVisibility(View.VISIBLE);}
+                        gallerylsit.add(dash_gallery_list.get(0));
+                        gallery.setVisibility(View.VISIBLE);
+                        Comman.log("EVENTEVNET","gallery_Inside");
+                    }
                 }
-
-
-                if((jsonObject.getJSONObject("ourPartners").getJSONArray("result").length()>0)){
-                    ArrayList<DashboardGalleryModel> dash_gallery_list = gson.fromJson(jsonObject.getJSONObject("ourPartners").getString("result"), new TypeToken<ArrayList<DashboardGalleryModel>>() {}.getType());
-                    if(partnarlist!=null){
+                if((jsonObject.getJSONArray("ourPartners").length()>0)){
+                    final ArrayList<NewModel> dash_gallery_list = gson.fromJson(jsonObject.getString("ourPartners"), new TypeToken<ArrayList<NewModel>>() {}.getType());
+                    if(partnarlist!=null) {
                         partnarlist.clear();
                         partnarlist.addAll(dash_gallery_list);
-
-
-
-                        our_partner.setVisibility(View.VISIBLE);}
+                        our_partner.setVisibility(View.VISIBLE);
+                        partnerAdapter.notifyDataSetChanged();
+                            final Handler handler = new Handler();
+                            final Runnable runnable = new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(count == partnerAdapter.getItemCount()){
+                                        count =0;
+                                        Comman.log("Adapter",""+"FFFFFFFFFFFFFF");
+                                        partnarlist.addAll(partnarlist);
+                                        partnerAdapter.notifyDataSetChanged();
+                                    }else {
+                                        Comman.log("Adapter",""+"ElLLLLLLLLLLLLLLLSEEEEEEEEEEEEe");
+                                    }
+                                    if(count < partnerAdapter.getItemCount()){
+                                        Comman.log("Adapter",""+"parnerCount!!!");
+                                        viewpager_parten.smoothScrollToPosition(++count);
+                                        handler.postDelayed(this,speedScroll);
+                                    }
+                                }
+                            };
+                            handler.postDelayed(runnable,speedScroll);
+                        }
                 }
-
-
-
-                if((jsonObject.getJSONArray("promisingInitiatives").length()>0)){
+                if((jsonObject.getJSONArray("medAchieversTv").length()>0)){
                     Log.d("videos",jsonObject.toString());
-                    ArrayList<Video_Model> dash_vid_list = gson.fromJson(jsonObject.getString("promisingInitiatives"), new TypeToken<ArrayList<Video_Model>>() {}.getType());
+                    ArrayList<NewModel> dash_vid_list = gson.fromJson(jsonObject.getString("medAchieversTv"), new TypeToken<ArrayList<NewModel>>() {}.getType());
                     if(videolist!=null){
                         //videolist.clear();
-                        videolist.addAll(dash_vid_list);
-                        video_layout.setVisibility(View.VISIBLE);}
+                        videolist.add(dash_vid_list.get(0));
+                        video_layout.setVisibility(View.VISIBLE);
+                        Comman.log("EVENTEVNET","medAchieversTv_Inside");
+                    }
                 }
-                if(jsonObject.getJSONArray("promissingIntiatives").length()>0){
-                    ArrayList<Result> dash_news_list = gson.fromJson(jsonObject.getString("promissingIntiatives"), new TypeToken<ArrayList<Result>>() {}.getType());
+                if(jsonObject.getJSONArray("highlightedIntiatives").length()>0){
+                    ArrayList<NewModel> dash_news_list = gson.fromJson(jsonObject.getString("highlightedIntiatives"), new TypeToken<ArrayList<NewModel>>() {}.getType());
                     if(prolist!=null){
                         prolist.clear();
-                        prolist.addAll(dash_news_list);
+                        prolist.add(dash_news_list.get(0));
+                        Comman.log("EVENTEVNET","highlightedIntiatives_Inside");
 
                         final Handler handler = new Handler();
                         final Runnable Update = new Runnable() {
@@ -751,13 +704,10 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
                      promising_layout.setVisibility(View.VISIBLE);
                     }
                 }
-
-
                 Comman.log("SizeAAA",""+announcedlist.size());
                 Comman.log("SizeNNN",""+newslist.size());
                 Comman.log("SizeGGG",""+gallerylsit.size());
                 viewpager_video_adapter.updateList(videolist);
-                viewpager_news_adapter.updateList(newslist);
                 viewpager_Promising_adapter.updateList(prolist);
                 Comman.log("SizeNNN",""+newslist.size());
                 viewpager_annoncemen_adapter.updateList(announcedlist);
@@ -786,7 +736,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
         Comman.log("OnStartMethod","onStartMethod");
         Comman.setRoundedImage(DashBoard_Activity.this,profile,m.getUserProfile());
         userName.setText(m.getUserName());
-        Api_Calling.postMethodCall_NO_MSG(DashBoard_Activity.this,getWindow().getDecorView().getRootView(),onResult, URLS.landingPageDashboard,myPostJson(),"MY_POST_LIST");
+        Api_Calling.postMethodCall_NO_MSG(DashBoard_Activity.this,getWindow().getDecorView().getRootView(),onResult, URLS.landingPageDashboard2,myPostJson(),"MY_POST_LIST");
     }
 
     @Override
@@ -818,7 +768,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult {
     private void selectItem(int position) {
         switch (position)
         {     case 0:
-            startActivity(new Intent(DashBoard_Activity.this, DashBoard_Activity.class));
+//            startActivity(new Intent(DashBoard_Activity.this, DashBoard_Activity.class));
 
             drawerLayout.closeDrawers();
             break;

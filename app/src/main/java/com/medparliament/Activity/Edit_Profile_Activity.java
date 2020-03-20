@@ -271,6 +271,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         {
             if(!isFinishing()) {
                 onBackPressed();
+                if(array1!=null && array1.size()>0)
                 m.setUserProfile(array1.get(0));
             }
         }
@@ -678,13 +679,13 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                         .put("mobileNo",""+mobile.getText().toString())
                         .put("email",""+email.getText().toString()).put("hospital",""+university_name.getText().toString())
                         .put("hospitalAddress",""+university_address.getText().toString()). put("userTypeId","8").put("userId",""+m.getUserId())
-                        .put("interestId",doctorIdArray) .put("qualfication",qualfication.getText().toString())
+                        .put("interestId",doctorIdArray) .put("qualification",qualfication.getText().toString())
                         .put("areaOfExpertise",""+address.getText().toString()).put("designation",""+batch.getText().toString());}else {
                 jsonObject.put("userName",""+name.getText().toString())
                         .put("mobileNo",""+mobile.getText().toString())
                         .put("email",""+email.getText().toString()).put("hospital",""+university_name.getText().toString())
                         .put("hospitalAddress",""+university_address.getText().toString()). put("userTypeId","8").put("userId",""+m.getUserId())
-                        .put("interestId","") .put("qualfication",qualfication.getText().toString())
+                        .put("interestId","") .put("qualification",qualfication.getText().toString())
                         .put("areaOfExpertise",""+address.getText().toString()).put("designation",""+batch.getText().toString());
 
             }

@@ -17,6 +17,12 @@ import com.medparliament.Utility.MySharedPrefrence;
 import com.medparliament.Utility.PrettyTimeClass;
 import com.medparliament.Widget.Segow_UI_Bold_Font;
 import com.medparliament.Widget.Segow_UI_Semi_Font;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+
+import org.jetbrains.annotations.NotNull;
 
 public class New_News_Details_Activity extends AppCompatActivity {
     MySharedPrefrence m;
@@ -24,6 +30,7 @@ public class New_News_Details_Activity extends AppCompatActivity {
     ImageButton bck;
     Segow_UI_Bold_Font title;
     ImageView img;
+    YouTubePlayerView video;
     Result result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +45,75 @@ public class New_News_Details_Activity extends AppCompatActivity {
         header = findViewById(R.id.header);
         created = findViewById(R.id.created);
         bck = findViewById(R.id.bck);
+        video=findViewById(R.id.video);
         img= findViewById(R.id.cover);
         if(i!=null)
         {
             result=(Result) i.getSerializableExtra("data");
             msg.setText(Html.fromHtml(result.getNewsDesc()));
             title.setText(Html.fromHtml(result.getNewsTitle()));
-            Comman.setImageWithCondition(New_News_Details_Activity.this,img,result.getImagePath());
-            if(result.getDateCreate1()!=null)
+            if(!result.getDateCreate1().equalsIgnoreCase(""))
             created.setText(PrettyTimeClass.PrettyTime(Comman.timeInms(result.getDateCreate1())));
 
+        }
+        if(!result.getImagePath().equalsIgnoreCase(""))
+        {
+            Comman.setImageWithCondition(New_News_Details_Activity.this,img,result.getImagePath());
+            video.setVisibility(View.GONE);
+        }else {
+            img.setVisibility(View.GONE);
+            video.getPlayerUiController().showYouTubeButton(false);
+            video.addYouTubePlayerListener(new YouTubePlayerListener() {
+                @Override
+                public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+                    youTubePlayer.cueVideo(result.getVideoId(),0);
+                }
+
+                @Override
+                public void onStateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerState playerState) {
+
+                }
+
+                @Override
+                public void onPlaybackQualityChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackQuality playbackQuality) {
+
+                }
+
+                @Override
+                public void onPlaybackRateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackRate playbackRate) {
+
+                }
+
+                @Override
+                public void onError(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerError playerError) {
+
+                }
+
+                @Override
+                public void onCurrentSecond(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoDuration(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoLoadedFraction(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoId(@NotNull YouTubePlayer youTubePlayer, @NotNull String s) {
+
+                }
+
+                @Override
+                public void onApiChange(@NotNull YouTubePlayer youTubePlayer) {
+
+                }
+            });
         }
         bck.setOnClickListener(new View.OnClickListener() {
             @Override

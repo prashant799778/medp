@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.medparliament.Adapter.GalleryAdapter;
+import com.medparliament.Adapter.GalleryAdapterFrag;
 import com.medparliament.Internet.Api_Calling;
 import com.medparliament.Internet.Models.DashboardGalleryModel;
 import com.medparliament.Internet.URLS;
@@ -34,7 +35,7 @@ public class Our_Partners_Fragments extends Base_Fragement implements onResult {
     ImageView mainImg;
     FloatingActionButton cmnt;
     RecyclerView recyclerView;
-    GalleryAdapter adapter;
+    GalleryAdapterFrag adapter;
     ArrayList<DashboardGalleryModel> gallerylsit;
     Segow_UI_Font summery;
     LinearLayoutManager manager;
@@ -60,11 +61,10 @@ public class Our_Partners_Fragments extends Base_Fragement implements onResult {
         summery = v.findViewById(R.id.summery);
         manager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
-        adapter = new GalleryAdapter(getContext(), gallerylsit);
+        adapter = new GalleryAdapterFrag(getContext(), gallerylsit);
         recyclerView.setAdapter(adapter);
         return v;
     }
-
     public JSONObject myPostJson() {
         JSONObject jsonObject = new JSONObject();
         try {

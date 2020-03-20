@@ -1,5 +1,9 @@
 [
     {
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_video_details.xml.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\activity_video_details.xml"
+    },
+    {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_alpha.xml.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable\\alpha.xml"
     },
@@ -144,20 +148,20 @@
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\activity_professor_signup_.xml"
     },
     {
-        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_pending_.xml.flat",
-        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\fragment_pending_.xml"
-    },
-    {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_building.xml.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable\\ic_building.xml"
     },
     {
-        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_write_to__us__fragments.xml.flat",
-        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\fragment_write_to__us__fragments.xml"
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_pending_.xml.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\fragment_pending_.xml"
     },
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_new_news_layout.xml.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\new_news_layout.xml"
+    },
+    {
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_write_to__us__fragments.xml.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\fragment_write_to__us__fragments.xml"
     },
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_highlighted_insight_layout.xml.flat",
@@ -262,6 +266,10 @@
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_contract.xml.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable\\ic_contract.xml"
+    },
+    {
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_view.xml.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable\\ic_view.xml"
     },
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
@@ -466,6 +474,10 @@
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_study.xml.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable\\ic_study.xml"
+    },
+    {
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_imagelayout.xml.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\imagelayout.xml"
     },
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_qualification.xml.flat",
@@ -696,6 +708,10 @@
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\test_layout.xml"
     },
     {
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_share_1.xml.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable\\ic_share_1.xml"
+    },
+    {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_login.png.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable-xxhdpi\\login.png"
     },
@@ -792,6 +808,10 @@
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\announced_layout.xml"
     },
     {
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_commentlayout.xml.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\commentlayout.xml"
+    },
+    {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_doctor.png.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable-xhdpi\\doctor.png"
     },
@@ -816,12 +836,12 @@
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable\\entreprenuerbgbg.png"
     },
     {
-        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_arrow_back_ios.png.flat",
-        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable-hdpi\\ic_arrow_back_ios.png"
-    },
-    {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_work.png.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable\\work.png"
+    },
+    {
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_arrow_back_ios.png.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable-hdpi\\ic_arrow_back_ios.png"
     },
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
@@ -892,6 +912,10 @@
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable\\entre.png"
     },
     {
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_dashboardhighlightedlayout.xml.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\dashboardhighlightedlayout.xml"
+    },
+    {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_skill__up_.xml.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\fragment_skill__up_.xml"
     },
@@ -910,6 +934,10 @@
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_arrow_back_ios.png.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable-xxhdpi\\ic_arrow_back_ios.png"
+    },
+    {
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_comment_draw.xml.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable\\comment_draw.xml"
     },
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_new_post.xml.flat",
@@ -1082,6 +1110,10 @@
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_setting.xml.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable\\ic_setting.xml"
+    },
+    {
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_partnerlayout.xml.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\partnerlayout.xml"
     },
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",

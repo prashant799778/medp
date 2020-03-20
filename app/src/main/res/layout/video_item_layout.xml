@@ -9,12 +9,11 @@
         android:layout_below="@+id/cup"
         android:orientation="vertical"
         android:id="@+id/ll"
-        android:layout_height="165dp">
+        android:layout_height="185dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:layout_marginHorizontal="20dp"
             android:layout_width="match_parent"
             android:id="@+id/video"
             android:layout_height="match_parent"

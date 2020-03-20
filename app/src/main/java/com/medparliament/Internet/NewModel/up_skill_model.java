@@ -12,7 +12,26 @@ public class up_skill_model implements Serializable {
             String language;
             String length;
             String level;
-            String  makedone;
+    String videoId;
+    String videoPath;
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
+    }
+
+    public String getVideoPath() {
+        return videoPath;
+    }
+
+    public void setVideoPath(String videoPath) {
+        this.videoPath = videoPath;
+    }
+
+    String  makedone;
 
     public String getMakedone() {
         return makedone;

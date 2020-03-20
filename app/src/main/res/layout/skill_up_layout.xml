@@ -18,15 +18,16 @@
             android:id="@+id/mainimg"
             android:scaleType="centerCrop">
         </ImageView>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:background="@drawable/alpha"
-            android:alpha=".6"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            android:id="@+id/imageView1" />
-        <LinearLayout
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:layout_width="match_parent"
+        android:id="@+id/video"
+        android:layout_height="140dp"
+        app:autoPlay="false"
+        android:background="@color/white"
+        app:showYouTubeButton="true">
+    </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"

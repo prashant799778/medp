@@ -3,6 +3,7 @@ package com.medparliament.Adapter;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -15,20 +16,29 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.medparliament.Activity.Login_Signup_Activity;
+import com.medparliament.Activity.Tabs_DashBoard_Activity;
 import com.medparliament.Internet.Models.DashboardGalleryModel;
+import com.medparliament.Internet.NewModel.NewModel;
 import com.medparliament.R;
 import com.medparliament.Utility.Comman;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 import com.stfalcon.frescoimageviewer.ImageViewer;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.NotificationHolder> {
-    ArrayList<DashboardGalleryModel>list;
+    ArrayList<NewModel>list;
     Context context;
     int a;
     String userName;
-    public GalleryAdapter(Context context, ArrayList<DashboardGalleryModel>arrayList)
+    public GalleryAdapter(Context context, ArrayList<NewModel>arrayList)
     {
         this.context=context;
         this.list=arrayList;
@@ -45,20 +55,75 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.Notifica
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull final NotificationHolder holder, final int position) {
-        final DashboardGalleryModel pm=list.get(position);
-        Comman.setRectangleImage(context,holder.imageView,pm.getImagePath());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        final NewModel pm=list.get(position);
+        if(!pm.getImagePath().equalsIgnoreCase("")){
+            holder.youTubePlayerView.setVisibility(View.GONE);
+        Comman.setRectangleImage(context,holder.imageView,pm.getImagePath());}else {
+            holder.imageView.setVisibility(View.GONE);
+            holder.youTubePlayerView.getPlayerUiController().showYouTubeButton(false);
+            holder.youTubePlayerView.addYouTubePlayerListener(new YouTubePlayerListener() {
+                @Override
+                public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+                    youTubePlayer.cueVideo(pm.getVideoId(),0);
+                }
+
+                @Override
+                public void onStateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerState playerState) {
+
+                }
+
+                @Override
+                public void onPlaybackQualityChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackQuality playbackQuality) {
+
+                }
+
+                @Override
+                public void onPlaybackRateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackRate playbackRate) {
+
+                }
+
+                @Override
+                public void onError(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerError playerError) {
+
+                }
+
+                @Override
+                public void onCurrentSecond(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoDuration(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoLoadedFraction(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoId(@NotNull YouTubePlayer youTubePlayer, @NotNull String s) {
+
+                }
+
+                @Override
+                public void onApiChange(@NotNull YouTubePlayer youTubePlayer) {
+
+                }
+            });
+        }
+        holder.layer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                new ImageViewer.Builder<DashboardGalleryModel>(context, list).setStartPosition(position)
-                        .setFormatter(new ImageViewer.Formatter<DashboardGalleryModel>() {
-                            @Override
-                            public String format(DashboardGalleryModel customImage) {
-                                return customImage.getImagePath();
-                            }
-                        })
-                        .show();
+                if(Comman.Check_Login(context)){
+                    Intent intent = new Intent(context, Tabs_DashBoard_Activity.class);
+                    intent.putExtra("id", "6");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);} else {
+                    Intent intent = new Intent(context, Login_Signup_Activity.class);
+                    context.startActivity(intent);
+                }
             }
         });
     }
@@ -69,9 +134,13 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.Notifica
 
     public class NotificationHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
+        View layer;
+        YouTubePlayerView youTubePlayerView;
         public NotificationHolder(@NonNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.main_img);
+            youTubePlayerView=itemView.findViewById(R.id.video);
+            layer=itemView.findViewById(R.id.layer);
         }
     }
     @RequiresApi(api = Build.VERSION_CODES.N)

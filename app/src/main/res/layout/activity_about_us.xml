@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
     tools:context=".Activity.AboutUsActivity">
     <RelativeLayout
         android:id="@+id/top"
-        android:background="@color/transparent"
+        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="52dp">
         <ImageView
@@ -47,7 +46,7 @@
     <com.medparliament.Widget.Segow_UI_Semi_Font
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/solid_black"
         android:layout_below="@+id/top"
         android:layout_marginTop="10dp"
         android:lineHeight="20dp"

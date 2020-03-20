@@ -50,11 +50,20 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center_vertical"
         android:orientation="horizontal">
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="100dp"
+                android:id="@+id/video"
+                android:layout_height="match_parent"
+                app:autoPlay="false"
+                android:visibility="gone"
+                android:background="@color/white"
+                app:showYouTubeButton="true">
+            </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
         <ImageView
             android:layout_width="100dp"
             android:id="@+id/mainimg"
             android:layout_marginLeft="5dp"
-            android:visibility="visible"
+            android:visibility="gone"
             android:scaleType="centerCrop"
             android:layout_height="match_parent">
         </ImageView>

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -30,6 +31,12 @@ import com.medparliament.Widget.Open_Sans_Regular_Font;
 import com.medparliament.Widget.Segow_UI_Bold_Font;
 import com.medparliament.Widget.Segow_UI_Font;
 import com.medparliament.Widget.Segow_UI_Semi_Font;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -56,14 +63,75 @@ public class MarketInsightsAdapter extends RecyclerView.Adapter<MarketInsightsAd
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
-    public void onBindViewHolder(@NonNull NotificationHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final NotificationHolder holder, int position) {
         final Result result=list.get(position);
         holder.title.setText(result.getNewsTitle());
         if(result.getDateCreate1()!=null)
         holder.time.setText(PrettyTimeClass.PrettyTime(Comman.timeInms(result.getDateCreate1())));
         holder.msg.setText(Html.fromHtml(result.getNewsDesc()));
-        Comman.setImageWithCondition(context,holder.mainimg,result.getImagePath());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        if(!result.getImagePath().equalsIgnoreCase(""))
+        {
+            Comman.log("Insde","ImageSegment"+result.getImagePath());
+            holder.rvideo.setVisibility(View.GONE);
+            Comman.setImageWithCondition(context,holder.mainimg,result.getImagePath());
+        }else {
+            Comman.log("Insde","VideoSegment"+result.getVideoId());
+            holder.mainimg.setVisibility(View.GONE);
+            holder.rvideo.setVisibility(View.VISIBLE);
+            holder.video.getPlayerUiController().showYouTubeButton(false);
+            holder.video.addYouTubePlayerListener(new YouTubePlayerListener() {
+                @Override
+                public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+                    youTubePlayer.cueVideo(result.getVideoId(),0);
+                }
+
+                @Override
+                public void onStateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerState playerState) {
+
+                }
+
+                @Override
+                public void onPlaybackQualityChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackQuality playbackQuality) {
+
+                }
+
+                @Override
+                public void onPlaybackRateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackRate playbackRate) {
+
+                }
+
+                @Override
+                public void onError(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerError playerError) {
+
+                }
+
+                @Override
+                public void onCurrentSecond(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoDuration(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoLoadedFraction(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoId(@NotNull YouTubePlayer youTubePlayer, @NotNull String s) {
+
+                }
+
+                @Override
+                public void onApiChange(@NotNull YouTubePlayer youTubePlayer) {
+
+                }
+            });
+        }
+        holder.layer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(Comman.Check_Login(context)){
@@ -98,12 +166,18 @@ public class MarketInsightsAdapter extends RecyclerView.Adapter<MarketInsightsAd
         Segow_UI_Font msg;
         ImageView mainimg;
         Segow_UI_Bold_Font time;
+        RelativeLayout rvideo;
+        View layer;
+        YouTubePlayerView video;
         public NotificationHolder(@NonNull View itemView) {
             super(itemView);
             mainimg=itemView.findViewById(R.id.mainimg);
             msg=itemView.findViewById(R.id.msg);
             time=itemView.findViewById(R.id.heading);
             title=itemView.findViewById(R.id.streme);
+            video=itemView.findViewById(R.id.video);
+            rvideo=itemView.findViewById(R.id.rvideo);
+            layer=itemView.findViewById(R.id.layer);
         }
     }
     @RequiresApi(api = Build.VERSION_CODES.N)

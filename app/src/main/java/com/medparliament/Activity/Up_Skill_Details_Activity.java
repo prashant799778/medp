@@ -1,19 +1,31 @@
 package com.medparliament.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -26,23 +38,33 @@ import com.medparliament.Utility.Comman;
 import com.medparliament.Utility.MySharedPrefrence;
 import com.medparliament.Widget.Segow_UI_Bold_Font;
 import com.medparliament.Widget.Segow_UI_Semi_Font;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+import com.razorpay.Checkout;
+import com.razorpay.CheckoutActivity;
+import com.razorpay.PaymentResultListener;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Up_Skill_Details_Activity extends AppCompatActivity implements onResult {
+public class Up_Skill_Details_Activity extends AppCompatActivity implements onResult, PaymentResultListener {
     Segow_UI_Semi_Font  msg;
     ImageButton bck;
     Button enroll,enroll1;
     Segow_UI_Bold_Font title;
+    YouTubePlayerView youTubePlayerView;
     ProgressDialog progressDialog;
     MySharedPrefrence m;
     onResult onResult;
     ImageView image;
     up_skill_model skill_model;
     String id="";
+    Checkout checkout;
     RelativeLayout nodata;
     Segow_UI_Semi_Font lenght,effort,price,institute,subject,level,language,videotext;
 
@@ -63,6 +85,7 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
         nodata=findViewById(R.id.nodata);
         this.onResult=this;
         lenght=findViewById(R.id.lenght);
+        youTubePlayerView=findViewById(R.id.video);
         effort=findViewById(R.id.effort);
         price=findViewById(R.id.price);
         institute=findViewById(R.id.institute);
@@ -77,6 +100,10 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
              onBackPressed();
             }
         });
+
+        Checkout.preload(getApplicationContext());
+
+
         Intent intent=getIntent();
         if(intent!=null)
         {
@@ -101,7 +128,8 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
                 progressDialog.setMessage("Loading...");
                 progressDialog.setCancelable(true);
                 progressDialog.show();
-             Api_Calling.postMethodCall_1(Up_Skill_Details_Activity.this,getWindow().getDecorView().getRootView(),URLS.enrollUpSkills,myPostJson(),"",enroll,enroll1,progressDialog);
+//                startPayment();
+                genetareOrderId(progressDialog);
             }
         });
         enroll1.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +139,9 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
                 progressDialog.setMessage("Loading...");
                 progressDialog.setCancelable(true);
                 progressDialog.show();
-                Api_Calling.postMethodCall_1(Up_Skill_Details_Activity.this,getWindow().getDecorView().getRootView(),URLS.enrollUpSkills,myPostJson(),"",enroll,enroll1,progressDialog);
+                genetareOrderId(progressDialog);
+//                startPayment();
+//                Api_Calling.postMethodCall_1(Up_Skill_Details_Activity.this,getWindow().getDecorView().getRootView(),URLS.enrollUpSkills,myPostJson(),"",enroll,enroll1,progressDialog);
             }
         });
     }
@@ -133,7 +163,7 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
             Gson gson = new GsonBuilder().create();
             try {
                 ArrayList<up_skill_model> rm = gson.fromJson(jsonObject.getString("result"), new TypeToken<ArrayList<up_skill_model>>(){}.getType());
-                up_skill_model r=rm.get(0);
+                final up_skill_model r=rm.get(0);
                 lenght.setText(r.getLength());
                 effort.setText(r.getEffort());
                 price.setText(r.getPrice());
@@ -143,11 +173,69 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
                 language.setText(r.getLanguage());
                 videotext.setText(r.getVideoTranscript());
                 msg.setText(Html.fromHtml(r.getNewsDesc()));
+                if(!r.getImagePath().equalsIgnoreCase("")){
                 Comman.setImageWithCondition(Up_Skill_Details_Activity.this,image,r.getImagePath());
+                youTubePlayerView.setVisibility(View.GONE);}else {
+                    image.setVisibility(View.GONE);
+                    youTubePlayerView.getPlayerUiController().showYouTubeButton(false);
+                    youTubePlayerView.addYouTubePlayerListener(new YouTubePlayerListener() {
+                        @Override
+                        public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+                            youTubePlayer.cueVideo(r.getVideoId(),0);
+                        }
+
+                        @Override
+                        public void onStateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerState playerState) {
+
+                        }
+
+                        @Override
+                        public void onPlaybackQualityChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackQuality playbackQuality) {
+
+                        }
+
+                        @Override
+                        public void onPlaybackRateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackRate playbackRate) {
+
+                        }
+
+                        @Override
+                        public void onError(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerError playerError) {
+
+                        }
+
+                        @Override
+                        public void onCurrentSecond(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                        }
+
+                        @Override
+                        public void onVideoDuration(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                        }
+
+                        @Override
+                        public void onVideoLoadedFraction(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                        }
+
+                        @Override
+                        public void onVideoId(@NotNull YouTubePlayer youTubePlayer, @NotNull String s) {
+
+                        }
+
+                        @Override
+                        public void onApiChange(@NotNull YouTubePlayer youTubePlayer) {
+
+                        }
+                    });
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
+        }else {
+            Api_Calling.postMethodCall(Up_Skill_Details_Activity.this,getWindow().getDecorView().getRootView(),onResult, URLS.getUpSkillsOpportunity,setJson(),"");
         }
 
     }
@@ -179,5 +267,173 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
     }
 
 
+    @Override
+    public void onPaymentSuccess(String s) {
+        Comman.log("PaymentInformation","OnSuccess "+s);
+        showDialogeBox(Up_Skill_Details_Activity.this,"Information","Your Payment Successfully Done!");
+        enroll1.setEnabled(false);
+        enroll.setEnabled(false);
+        enroll.setText("Already Done");
+        enroll1.setText("Already Done");
+        enroll.setBackgroundColor(Color.GRAY);
+        enroll1.setBackgroundColor(Color.GRAY);
+        Api_Calling.postMethodCall_1(Up_Skill_Details_Activity.this,getWindow().getDecorView().getRootView(),URLS.enrollUpSkills,myPostJson(),"",enroll,enroll1,progressDialog);
+    }
+
+    @Override
+    public void onPaymentError(int i, String s) {
+        Comman.log("PaymentInformation","OnError "+s);
+        showDialogeBox(Up_Skill_Details_Activity.this,"Information","Your Payment not Successfully Done!");
+    }
+
+    public void startPayment(String orderId) {
+        Comman.log("PaymentInformation","generatedOrderId "+orderId);
+
+        /**
+         * Instantiate Checkout
+         */
+        checkout = new Checkout();
+        checkout.setKeyID(getResources().getString(R.string.RazorKey));
+
+        /**
+         * Set your logo here
+         */
+
+        /**
+         * Reference to current activity
+         */
+        final Activity activity = this;
+
+        /**
+         * Pass your payment options to the Razorpay Checkout as a JSONObject
+         */
+        try {
+            JSONObject options = new JSONObject();
+
+            /**
+             * Merchant Name
+             * eg: ACME Corp || HasGeek etc.
+             */
+
+            /**
+             * Description can be anything
+             * eg: Reference No. #123123 - This order number is passed by you for your internal reference. This is not the `razorpay_order_id`.
+             *     Invoice Payment
+             *     etc.
+             */
+
+            options.put("order_id", orderId);
+            options.put("currency", "INR");
+
+            /**
+             * Amount is always passed in currency subunits
+             * Eg: "500" = INR 5.00
+             */
+            if(skill_model.getPrice()!=null){
+            try {
+                options.put("amount", ((Integer.parseInt(skill_model.getPrice()))*100));
+            }catch (NumberFormatException e)
+            {
+
+            }
+            }
+            Comman.log("PaymentInformation","Json"+options.toString());
+            checkout.open(activity, options);
+        } catch(Exception e) {
+            Comman.log("PaymentInformation","OnException "+e.getMessage());
+        }
+    }
+    public  void genetareOrderId(final ProgressDialog progressDialog)
+    {
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, "http://134.209.153.34:5031/generateOrder", orderIdJson(), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                Comman.log("PaymentInformation","OnResponseOrderID "+response);
+                try {
+                    if(Boolean.parseBoolean(response.getString("status")))
+                    {
+                        if (progressDialog != null && progressDialog.isShowing())
+                        progressDialog.dismiss();
+                        JSONObject jsonObject=response.getJSONObject("result");
+                        startPayment(Comman.getValueFromJsonObject(jsonObject,"id"));
+                    }else {
+                        if (progressDialog != null && progressDialog.isShowing())
+                        progressDialog.dismiss();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Comman.log("PaymentInformation","OnExceptionVolley "+error.getMessage());
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(Up_Skill_Details_Activity.this);
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    public JSONObject orderIdJson()
+    {
+        try {
+            JSONObject orderRequest = new JSONObject();
+            orderRequest.put("userId",""+m.getUserId());
+            orderRequest.put("course_id",""+skill_model.getId());
+            if(skill_model.getPrice()!=null){
+                try {
+                orderRequest.put("order_amount", ((Integer.parseInt(skill_model.getPrice()))*100)); // amount in the smallest currency unit
+                     }catch (NumberFormatException e)
+                {
+
+                }
+            }
+            Comman.log("PaymentInformation","JsonVolley "+orderRequest);
+            return  orderRequest;
+        } catch (JSONException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+
+    }
+
+    public void showDialogeBox(Context context, String title, String msg)
+    {
+        final MaterialAlertDialogBuilder alertDialogBuilder=new MaterialAlertDialogBuilder(context,R.style.custom_dialog);
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        final View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_layout, null, false);
+        Button yes=dialogView.findViewById(R.id.yes);
+        Button no=dialogView.findViewById(R.id.no);
+        ImageView mainimg=dialogView.findViewById(R.id.mainimg);
+        no.setVisibility(View.GONE);
+        Segow_UI_Bold_Font title1=dialogView.findViewById(R.id.title);
+        Segow_UI_Semi_Font msg1=dialogView.findViewById(R.id.msg);
+        title1.setText(title);
+        msg1.setText(msg);
+//        WindowManager.LayoutParams lp = alertDialog.getWindow().getAttributes();
+//        lp.dimAmount=0.7f;
+//        alertDialog.getWindow().setAttributes(lp);
+//        alertDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+        alertDialog.setView(dialogView);
+        alertDialog.show();
+        yes.setText("Ok");
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+//                m.clearData();
+//                startActivity(new Intent(Up_Skill_Details_Activity.this,DashBoard_Activity.class));
+//                finish();
+            }
+        });
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+    }
 
 }

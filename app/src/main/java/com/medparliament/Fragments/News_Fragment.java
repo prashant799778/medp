@@ -33,7 +33,12 @@ import com.medparliament.R;
 import com.medparliament.Utility.Comman;
 import com.medparliament.Utility.MySharedPrefrence;
 import com.medparliament.Widget.Segow_UI_Font;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -49,6 +54,10 @@ public class News_Fragment extends Base_Fragement implements onResult {
     RecyclerView recyclerView;
     NewNewsAdapter adapter;
     ArrayList<Result> arrayList;
+    View view;
+    RelativeLayout rvideo;
+    YouTubePlayerView youTubePlayerView;
+    RelativeLayout rimgage;
     Segow_UI_Font summery;
     LinearLayoutManager manager;
     RelativeLayout nodata;
@@ -67,11 +76,15 @@ public class News_Fragment extends Base_Fragement implements onResult {
         this.onResult=this;
         mainImg=v.findViewById(R.id.mainimg);
         relativeLayout=v.findViewById(R.id.r);
+        view=v.findViewById(R.id.layer);
         relativeLayout.setVisibility(View.GONE);
         nodata=v.findViewById(R.id.nodata);
+        rimgage=v.findViewById(R.id.rimage);
+        rvideo=v.findViewById(R.id.rvideo);
         recyclerView=v.findViewById(R.id.recycle);
         arrayList=new ArrayList<>();
         summery=v.findViewById(R.id.summery);
+        youTubePlayerView=v.findViewById(R.id.video);
         manager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
         adapter=new NewNewsAdapter(getContext(),arrayList,m.getUserName(),1);
@@ -106,10 +119,69 @@ public class News_Fragment extends Base_Fragement implements onResult {
             try {
                 Gson gson=new GsonBuilder().create();
                 result = gson.fromJson(jsonObject.getJSONObject("result").getString("headline"), new TypeToken<Result>(){}.getType());
+                if(!result.getImagePath().equalsIgnoreCase("")){
                 Comman.setRectangleImage(getContext(),mainImg,result.getImagePath());
+                rimgage.setVisibility(View.VISIBLE);
+                rvideo.setVisibility(View.GONE);
+                }else {
+                    rimgage.setVisibility(View.GONE);
+                    rvideo.setVisibility(View.VISIBLE);
+                    youTubePlayerView.getPlayerUiController().showYouTubeButton(false);
+                    youTubePlayerView.addYouTubePlayerListener(new YouTubePlayerListener() {
+                        @Override
+                        public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+                            youTubePlayer.cueVideo(result.getVideoId(),0);
+                        }
+
+                        @Override
+                        public void onStateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerState playerState) {
+
+                        }
+
+                        @Override
+                        public void onPlaybackQualityChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackQuality playbackQuality) {
+
+                        }
+
+                        @Override
+                        public void onPlaybackRateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackRate playbackRate) {
+
+                        }
+
+                        @Override
+                        public void onError(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerError playerError) {
+
+                        }
+
+                        @Override
+                        public void onCurrentSecond(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                        }
+
+                        @Override
+                        public void onVideoDuration(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                        }
+
+                        @Override
+                        public void onVideoLoadedFraction(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                        }
+
+                        @Override
+                        public void onVideoId(@NotNull YouTubePlayer youTubePlayer, @NotNull String s) {
+
+                        }
+
+                        @Override
+                        public void onApiChange(@NotNull YouTubePlayer youTubePlayer) {
+
+                        }
+                    });
+                }
                 summery.setText(result.getSummary());
                 relativeLayout.setVisibility(View.VISIBLE);
-                relativeLayout.setOnClickListener(new View.OnClickListener() {
+                view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if(Comman.Check_Login(getContext())){

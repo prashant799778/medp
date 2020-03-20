@@ -76,7 +76,7 @@ public class All_Post_Pending_Fragment extends Base_Fragement implements onResul
     @Override
     public void onStart() {
         super.onStart();
-        Api_Calling.postMethodCall_NO_MSG(getContext(),getActivity().getWindow().getDecorView().getRootView(), onResult, URLS.ALL_POSTS, myPostJson(), "MY_POST_LIST");
+        Api_Calling.postMethodCall_NO_MSG(getContext(),getActivity().getWindow().getDecorView().getRootView(), onResult, URLS.MY_POST, myPostJson(), "MY_POST_LIST");
     }
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {
@@ -88,7 +88,7 @@ public class All_Post_Pending_Fragment extends Base_Fragement implements onResul
             Log.d("res11111111",jsonObject.toString());
             Gson gson=new GsonBuilder().create();
             try {
-                ArrayList<Post_Modle> rm = gson.fromJson(jsonObject.getJSONArray("result").getJSONArray(1).toString(), new TypeToken<ArrayList<Post_Modle>>(){}.getType());
+                ArrayList<Post_Modle> rm = gson.fromJson(jsonObject.getString("result"), new TypeToken<ArrayList<Post_Modle>>(){}.getType());
                 arrayList.clear();
                 arrayList.addAll(rm);
                 adapter.notifyDataSetChanged();

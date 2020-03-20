@@ -42,6 +42,7 @@ import com.medparliament.Internet.onResult;
 import com.medparliament.R;
 import com.medparliament.Utility.Comman;
 import com.medparliament.Utility.MySharedPrefrence;
+import com.medparliament.Widget.CustomViewPageNew;
 import com.medparliament.Widget.Segow_UI_Bold_Font;
 import com.medparliament.Widget.Segow_UI_Semi_Font;
 
@@ -62,7 +63,7 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
 
     TabLayout tabLayout;
     DashBoardViewPagerAdapter pageadapter;
-    ViewPager viewPager;
+    CustomViewPageNew viewPager;
 
     ListView listView;
     RelativeLayout about;
@@ -84,7 +85,7 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
     ImageView setting;
     CircleImageView profile;
     ProgressDialog progressDialog;
-    FloatingActionButton cmnt;
+    FloatingActionButton cmnt,share;
     ImageButton bck;
     Dashboard_News_Adapter dashboard_news_adapter;
     LinearLayoutManager news_manager,gallery_Manager,announced_manage,event_manager;
@@ -101,14 +102,14 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs__dash_board_);
-        Animatoo.animateSwipeLeft(Tabs_DashBoard_Activity.this);
+        Animatoo.animateSlideLeft(Tabs_DashBoard_Activity.this);
         Intent i=getIntent();
         if(i!=null)
             id=i.getStringExtra("id");
         pageadapter = new DashBoardViewPagerAdapter(
                 getSupportFragmentManager(), Tabs_DashBoard_Activity.this,id);
         ////////////////////////////////////////////////references///////////////////////////////////////
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (CustomViewPageNew) findViewById(R.id.viewpager);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         viewPager.setAdapter(pageadapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -122,7 +123,7 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
 
         nodata=findViewById(R.id.nodata);
 
-        m= MySharedPrefrence.instanceOf(Tabs_DashBoard_Activity.this);
+          m= MySharedPrefrence.instanceOf(Tabs_DashBoard_Activity.this);
         View stub = (View) findViewById(R.id.toolbar);
 
 //        toolbar=stub.findViewById(R.id.toolbar_actionbar);
@@ -130,6 +131,7 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
 //        userName=findViewById(R.id.username);
         cmnt=findViewById(R.id.cmnt);
         cmnt.setVisibility(View.GONE);
+        share=findViewById(R.id.share);
 //        profile=findViewById(R.id.profile);
 //        moreNews=findViewById(R.id.morenews);
 //        userName.setText(m.getUserName());
@@ -150,8 +152,16 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
 //        setupDrawerToggle();
 //        setupToolbar();
 
-
-
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "MedParliament App");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.text)+"https://play.google.com/store/apps/details?id=com.medparliament");
+                emailIntent.setType("text/plain");
+                startActivity(Intent.createChooser(emailIntent, "Share via"));
+            }
+        });
 
         cmnt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,6 +169,7 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
                 startActivity(new Intent(Tabs_DashBoard_Activity.this,Comment_Activity.class));
             }
         });
+        viewPager.setEnableSwipe(false);
         if(Comman.Check_Login(Tabs_DashBoard_Activity.this))
         {
             Comman.log("Login","LoginTure");
@@ -358,7 +369,7 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Animatoo.animateSwipeRight(Tabs_DashBoard_Activity.this);
+        Animatoo.animateSlideRight(Tabs_DashBoard_Activity.this);
     }
 
 

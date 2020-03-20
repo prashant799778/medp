@@ -89,16 +89,29 @@
                     android:layout_height="wrap_content"
                     android:text="@string/Product_Management_Fundamentals">
                 </com.medparliament.Widget.Segow_UI_Bold_Font>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/r1"
+                android:layout_below="@+id/t1"
+                android:layout_marginVertical="30dp"
+                android:layout_height="200dp">
                 <ImageView
                     android:visibility="gone"
                     android:id="@+id/cover"
-                    android:layout_below="@+id/t1"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:scaleType="centerCrop"
-                    android:layout_marginVertical="30dp">
-
+                    android:scaleType="centerCrop">
                 </ImageView>
+                    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                        android:layout_width="match_parent"
+                        android:id="@+id/video"
+                        android:layout_height="match_parent"
+                        app:autoPlay="false"
+                        android:background="@color/white"
+                        app:showYouTubeButton="true">
+                    </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+            </RelativeLayout>
 
 <!--                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView-->
 <!--                    android:layout_marginHorizontal="20dp"-->
@@ -124,7 +137,7 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="20dp"
-                android:layout_below="@+id/cover"
+                android:layout_below="@+id/r1"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <com.medparliament.Widget.Segow_UI_Semi_Font
@@ -189,7 +202,7 @@
                             android:layout_width="match_parent"
                             android:textColor="@color/solid_black"
                             android:layout_weight="1"
-                            android:textSize="18dp"
+                            android:textSize="16dp"
                             android:gravity="left|center_vertical"
                             android:id="@+id/lenght"
                             android:layout_height="wrap_content"
@@ -230,7 +243,7 @@
                             android:layout_width="match_parent"
                             android:textColor="@color/solid_black"
                             android:layout_weight="1"
-                            android:textSize="18dp"
+                            android:textSize="16dp"
                             android:gravity="left|center_vertical"
                             android:id="@+id/effort"
                             android:textAlignment="center"
@@ -270,7 +283,7 @@
                             android:layout_width="match_parent"
                             android:textColor="@color/solid_black"
                             android:layout_weight="1"
-                            android:textSize="18dp"
+                            android:textSize="16dp"
                             android:gravity="left|center_vertical"
                             android:textAlignment="center"
                             tools:ignore="RtlCompat"
@@ -311,7 +324,7 @@
                             android:layout_width="match_parent"
                             android:textColor="@color/solid_black"
                             android:layout_weight="1"
-                            android:textSize="18dp"
+                            android:textSize="16dp"
                             android:gravity="left|center_vertical"
                             android:id="@+id/institute"
                             android:textAlignment="center"
@@ -351,7 +364,7 @@
                             android:layout_width="match_parent"
                             android:textColor="@color/solid_black"
                             android:layout_weight="1"
-                            android:textSize="18dp"
+                            android:textSize="16dp"
                             android:gravity="left|center_vertical"
                             android:id="@+id/subject"
                             android:textAlignment="center"
@@ -391,7 +404,7 @@
                             android:layout_width="match_parent"
                             android:textColor="@color/solid_black"
                             android:layout_weight="1"
-                            android:textSize="18dp"
+                            android:textSize="16dp"
                             android:gravity="left|center_vertical"
                             android:textAlignment="center"
                             tools:ignore="RtlCompat"
@@ -431,7 +444,7 @@
                             android:layout_width="match_parent"
                             android:textColor="@color/solid_black"
                             android:layout_weight="1"
-                            android:textSize="18dp"
+                            android:textSize="16dp"
                             android:gravity="left|center_vertical"
                             android:textAlignment="center"
                             tools:ignore="RtlCompat"
@@ -471,7 +484,7 @@
                             android:layout_width="match_parent"
                             android:textColor="@color/solid_black"
                             android:layout_weight="1"
-                            android:textSize="18dp"
+                            android:textSize="16dp"
                             android:gravity="left|center_vertical"
                             android:id="@+id/videotext"
                             android:textAlignment="center"

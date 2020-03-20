@@ -101,11 +101,9 @@ public class All_Post_Details extends AppCompatActivity  {
          }
          if(pm!=null) {
              title.setText(pm.getPostTitle());
-             created.setText("By :-" + pm.getUserName());
+             created.setText("By :-" + m.getUserName());
              date.setText("" + PrettyTimeClass.PrettyTime(Comman.timeInms(pm.getDateCreate())));
              msg.setText("" + pm.getPostDescription());
-
-
              likecount.setText("("+pm.getLike()+")");
 //        setRed(holder.likleCount,pm.getLike().toString()," Indorse");
              if(pm.getLikeStatus()!=null) {

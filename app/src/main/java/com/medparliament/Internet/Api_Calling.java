@@ -400,6 +400,44 @@ public class Api_Calling {
 
 
 
+    public static void postMethodCallForListData(final Context context, final View view, final OnListData onResult, String URL, JSONObject jsonObject, final String name)
+    {
+        if(!Comman.isConnectedToInternet(context))
+        {
+            Comman.topSnakBar(context,view, Constant.NO_INTERNET);
+            onResult.onListData(null,false);
+        }else {
+            JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Comman.log(name,"yyyyy"+response);
+                    try {
+                        if(Boolean.parseBoolean(response.getString("status"))){
+                            onResult.onListData(response,true);}else {
+                            onResult.onListData(null,false);
+                            Comman.topSnakBar(context,view, response.getString("message"));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Comman.topSnakBar(context,view, Constant.SOMETHING_WENT_WRONG);
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+            RequestQueue requestQueue=Volley.newRequestQueue(context);
+            requestQueue.add(jsonObjectRequest);
+
+        }
+
+    }
+
+
+
+
     public static void postMethodCall_1(final Context context, final View view, String URL, JSONObject jsonObject, final String name, final Button button1, final Button button2, final ProgressDialog progressDialog)
     {
         if(!Comman.isConnectedToInternet(context))
@@ -474,6 +512,35 @@ public class Api_Calling {
     public static void likePostMarket(Context context, JSONObject jsonObject, final ImageView imageView, final TextView textView, String counter)
     {
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URLS.likeMarketingInsight, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Comman.log("Result",""+response);
+                try {
+                    if(response.getString("status").equalsIgnoreCase("true")) {
+                        textView.setText(response.getJSONArray("result").getJSONObject(0).getString("count")+"  Endorse");
+                        imageView.setEnabled(false);
+                        imageView.setImageResource(R.drawable.ic_like_after);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue requestQueue=Volley.newRequestQueue(context);
+        requestQueue.add(jsonObjectRequest);
+    }
+
+
+
+
+    public static void likePostEvent(Context context, JSONObject jsonObject, final ImageView imageView, final TextView textView, String counter)
+    {
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URLS.eventInterest1, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Comman.log("Result",""+response);

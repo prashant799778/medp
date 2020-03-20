@@ -38,7 +38,7 @@ public class otpEditText extends AppCompatEditText {
         mLineStroke = multi * mLineStroke;
         mLinesPaint = new Paint(getPaint());
         mLinesPaint.setStrokeWidth(mLineStroke);
-        mLinesPaint.setColor(getResources().getColor(R.color.white));
+        mLinesPaint.setColor(getResources().getColor(R.color.solid_black));
         setBackgroundResource(0);
         mSpace = multi * mSpace; //convert to pixels for our density
         mLineSpacing = multi * mLineSpacing; //convert to pixels for our density

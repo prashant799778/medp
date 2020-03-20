@@ -19,5 +19,24 @@ public class DashboardGalleryModel {
         this.imagePath = imagePath;
     }
 
+    String videoId;
+    String videoPath;
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
+    }
+
+    public String getVideoPath() {
+        return videoPath;
+    }
+
+    public void setVideoPath(String videoPath) {
+        this.videoPath = videoPath;
+    }
+
     String imagePath;
 }

@@ -12,6 +12,36 @@ public class Dashbooard_eventModel implements Serializable {
     String imagePath;
     String likedId;
 
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
+    }
+
+    public String getVideoPath() {
+        return videoPath;
+    }
+
+    public void setVideoPath(String videoPath) {
+        this.videoPath = videoPath;
+    }
+
+    String videoId;
+    String videoPath;
+
+    public String getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(String likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    String likeCount;
+
+
     public String getMakedone() {
         return makedone;
     }

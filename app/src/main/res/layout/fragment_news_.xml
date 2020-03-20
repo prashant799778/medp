@@ -2,40 +2,58 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/r"
         android:layout_height="200dp">
-    <ImageView
-        android:layout_width="match_parent"
-        android:id="@+id/mainimg"
-        android:visibility="visible"
-        android:scaleType="centerCrop"
-        android:layout_height="200dp">
-    </ImageView>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/news"
-        android:alpha=".6"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:id="@+id/imageView1" />
-        <com.medparliament.Widget.Segow_UI_Font
-            android:layout_width="wrap_content"
-            android:text="@string/nopost"
-            android:id="@+id/summery"
-            android:layout_marginTop="160dp"
-            android:textColor="@color/white"
-            android:paddingLeft="10dp"
-            android:layout_height="wrap_content">
-        </com.medparliament.Widget.Segow_UI_Font>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/rimage"
+            android:layout_height="200dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/mainimg"
+                android:visibility="visible"
+                android:scaleType="centerCrop"
+                android:layout_height="200dp">
+            </ImageView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/rvideo"
+            android:layout_height="200dp">
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:layout_width="match_parent"
+                android:id="@+id/video"
+                android:layout_height="match_parent"
+                app:autoPlay="false"
+                android:layout_below="@+id/title"
+                android:background="@color/white"
+                app:showYouTubeButton="true">
+            </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:id="@+id/layer">
+        </View>
     </RelativeLayout>
+    <com.medparliament.Widget.Segow_UI_Font
+        android:layout_width="wrap_content"
+        android:id="@+id/summery"
+        android:layout_marginTop="210dp"
+        android:textColor="@color/solid_black"
+        android:paddingLeft="10dp"
+        android:layout_height="wrap_content">
+    </com.medparliament.Widget.Segow_UI_Font>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:id="@+id/recycle"
-        android:layout_below="@id/r"
+        android:layout_below="@id/summery"
         android:layout_above="@+id/bottom"
         android:layout_height="wrap_content">
     </androidx.recyclerview.widget.RecyclerView>

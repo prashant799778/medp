@@ -48,6 +48,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.medparliament.Activity.VideoDetailsActivity" />
         <activity android:name="com.medparliament.Activity.News_Activity_1" />
         <activity android:name="com.medparliament.Activity.New_News_Details_Activity" />
         <activity android:name="com.medparliament.Activity.Market_Insight_Detail_Activity" />
@@ -115,6 +116,9 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="ab1b6398303637b09aefc9f91cd879a9462c3095" />
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="@string/RazorKey" />
 
         <activity
             android:name="com.fxn.pix.Pix"
@@ -150,6 +154,24 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
+        <receiver android:name="com.razorpay.RzpTokenReceiver" >
+            <intent-filter>
+                <action android:name="rzp.device_token.share" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.razorpay.CheckoutActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:theme="@style/CheckoutTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <data
+                    android:host="rzp.io"
+                    android:scheme="io.rzp" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"

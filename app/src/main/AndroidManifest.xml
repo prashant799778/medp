@@ -26,7 +26,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:name">
-        <activity android:name=".Activity.News_Activity_1"></activity>
+        <activity android:name=".Activity.VideoDetailsActivity"></activity>
+        <activity android:name=".Activity.News_Activity_1" />
         <activity android:name=".Activity.New_News_Details_Activity" />
         <activity android:name=".Activity.Market_Insight_Detail_Activity" />
         <activity android:name=".Activity.Tabs_DashBoard_Activity" />
@@ -93,6 +94,9 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="ab1b6398303637b09aefc9f91cd879a9462c3095" />
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="@string/RazorKey" />
     </application>
 
 </manifest>

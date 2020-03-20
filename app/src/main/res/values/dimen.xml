@@ -10,4 +10,5 @@
     <dimen name="edittextsize">16dp</dimen>
     <dimen name="edittop">10dp</dimen>
     <dimen name="top">5dp</dimen>
+    <dimen name="lineHeight">2dp</dimen>
 </resources>

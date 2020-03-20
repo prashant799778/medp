@@ -76,7 +76,7 @@ public class Pending_Fragment extends Base_Fragement implements onResult{
     @Override
     public void onStart() {
         super.onStart();
-        Api_Calling.postMethodCall_NO_MSG(getContext(),getActivity().getWindow().getDecorView().getRootView(), onResult, URLS.MY_POST, myPostJson(), "MY_POST_LIST");
+        Api_Calling.postMethodCall_NO_MSG(getContext(),getActivity().getWindow().getDecorView().getRootView(), onResult, URLS.myInbox, myPostJson(), "MY_POST_LIST");
     }
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {

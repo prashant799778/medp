@@ -16,6 +16,25 @@ public class Result implements Serializable {
     private String imagePath;
     private String newsDesc;
     String likeCount;
+    String videoId;
+    String videoPath;
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
+    }
+
+    public String getVideoPath() {
+        return videoPath;
+    }
+
+    public void setVideoPath(String videoPath) {
+        this.videoPath = videoPath;
+    }
+
     String makedone;
 
     public String getMakedone() {

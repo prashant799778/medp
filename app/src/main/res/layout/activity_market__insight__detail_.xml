@@ -51,7 +51,7 @@
 
 
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_below="@id/top"
             android:layout_above="@id/l"
@@ -88,12 +88,34 @@
             android:layout_marginTop="11dp"
             android:src="@drawable/doctor"
             />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/rvideo"
+                    android:layout_marginTop="11dp"
+                    android:layout_height="200dp">
+                    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                        android:layout_width="match_parent"
+                        android:id="@+id/video"
+                        android:layout_height="match_parent"
+                        app:autoPlay="false"
+                        android:background="@color/white"
+                        app:showYouTubeButton="true">
+                    </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+
+                </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center_vertical"
+            android:weightSum="2"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
-
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:id="@+id/l1"
+                  android:layout_weight="1"
+                  android:layout_height="40dp">
             <ImageView
                 android:id="@+id/like"
                 android:layout_width="40dp"
@@ -107,12 +129,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="12dp"
                 android:textAlignment="gravity"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="3dp"
                 android:textColor="@color/c1c1"
                 android:text="1"/>
+              </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:layout_gravity="left"
+                android:layout_alignParentRight="true"
+                android:layout_height="40dp">
+            <ImageView
+                android:id="@+id/comnt"
+                android:layout_width="40dp"
+                android:padding="8dp"
+                android:layout_height="40dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_view"/>
+            <com.medparliament.Widget.Segow_UI_Bold_Font
+                android:id="@+id/counttext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:layout_marginTop="12dp"
+                android:textAlignment="gravity"
+                android:gravity="center_vertical|left"
+                android:layout_marginLeft="3dp"
+                android:textColor="@color/c1c1"
+                android:text="Share Your View"/>
+            </LinearLayout>
 
 <!--            <TextView-->
 <!--                android:layout_width="wrap_content"-->
@@ -140,10 +191,28 @@
             android:layout_marginRight="29dp"
             android:textColor="@color/solid_black">
         </com.medparliament.Widget.Open_Sans_Regular_Font>
+                <com.medparliament.Widget.Segow_UI_Font
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:text="@string/Comments"
+                    android:textColor="@color/solid_black">
+                </com.medparliament.Widget.Segow_UI_Font>
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="true"
+                        android:id="@+id/recycle">
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.core.widget.NestedScrollView>
             </LinearLayout>
-        </ScrollView>
-
-
+        </androidx.core.widget.NestedScrollView>
     <LinearLayout
         android:background="@drawable/layout"
         android:layout_width="match_parent"

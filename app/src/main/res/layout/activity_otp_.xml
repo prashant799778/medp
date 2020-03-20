@@ -93,7 +93,7 @@
             android:digits="1234567890"
             android:layout_marginTop="30dp"
             android:inputType="number"
-            android:textColor="@color/white"
+            android:textColor="@color/solid_black"
             android:layout_marginLeft="28.5dp"
             android:layout_marginRight="28.5dp"
             android:maxLength="4"

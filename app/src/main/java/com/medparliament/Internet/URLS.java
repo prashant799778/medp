@@ -24,6 +24,7 @@ public class URLS {
     public static String ALL_POSTS=BASE_URL+"allPosts";
     public static String ALL_POSTS_THREAD=BASE_URL+"allPostsThread";
     public static String landingPageDashboard=BASE_URL+"landingPageDashboard";
+    public static String landingPageDashboard2=BASE_URL+"landingPageDashboard2";
     public static String getNews=BASE_URL+"getNews";
     public static String ADD_USER=BASE_URL+"addUser";
     public static String LIKEPOST=BASE_URL+"likePost";
@@ -37,4 +38,9 @@ public class URLS {
     public static String getUpSkillsOpportunity=BASE_URL+"getUpSkillsOpportunity";
     public static  String enrollUpSkills=BASE_URL+"enrollUpSkills";
     public static String getuserContent=BASE_URL+"getuserContent";
+    public static String commentsEvent=BASE_URL+"commentsEvent";
+    public static String eventInterest1=BASE_URL+"eventInterest1";
+    public static String allMarketingInsightThread=BASE_URL+"allMarketingInsightThread";
+    public static String allEventThread=BASE_URL+"allEventThread";
+    public  static  String myInbox=BASE_URL+"myInbox";
 }

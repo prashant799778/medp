@@ -1,6 +1,8 @@
 package com.medparliament.Internet.NewModel;
 
-public class TvModel {
+import java.io.Serializable;
+
+public class TvModel implements Serializable {
     String DateCreate;
     String   UserCreate;
     String id;

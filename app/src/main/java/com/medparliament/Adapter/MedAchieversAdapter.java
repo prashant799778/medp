@@ -1,7 +1,9 @@
 package com.medparliament.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
+import android.media.Image;
 import android.os.Build;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -13,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.medparliament.Activity.Tabs_DashBoard_Activity;
+import com.medparliament.Activity.VideoDetailsActivity;
 import com.medparliament.Internet.NewModel.Result;
 import com.medparliament.Internet.NewModel.TvModel;
 import com.medparliament.R;
@@ -57,77 +61,78 @@ public class MedAchieversAdapter extends RecyclerView.Adapter<MedAchieversAdapte
     @Override
     public void onBindViewHolder(@NonNull NotificationHolder holder, int position) {
         final TvModel result=list.get(position);
-        holder.title.setVisibility(View.GONE);
         if(result.getDateCreate()!=null)
         holder.msg.setText(Html.fromHtml(result.getText()));
         holder.videoView.getPlayerUiController().showYouTubeButton(false);
-        holder.videoView.addYouTubePlayerListener(new YouTubePlayerListener() {
+        holder.over_lay.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onReady(@NotNull YouTubePlayer youTubePlayer) {
-                     if(result.getVideoId()!=null)
-                    youTubePlayer.cueVideo(result.getVideoId(), 0);
-
-            }
-
-            @Override
-            public void onStateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerState playerState) {
-
-            }
-
-            @Override
-            public void onPlaybackQualityChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackQuality playbackQuality) {
-
-            }
-
-            @Override
-            public void onPlaybackRateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackRate playbackRate) {
-
-            }
-
-            @Override
-            public void onError(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerError playerError) {
-
-            }
-
-            @Override
-            public void onCurrentSecond(@NotNull YouTubePlayer youTubePlayer, float v) {
-
-            }
-
-            @Override
-            public void onVideoDuration(@NotNull YouTubePlayer youTubePlayer, float v) {
-
-            }
-
-            @Override
-            public void onVideoLoadedFraction(@NotNull YouTubePlayer youTubePlayer, float v) {
-
-            }
-
-            @Override
-            public void onVideoId(@NotNull YouTubePlayer youTubePlayer, @NotNull String s) {
-
-            }
-
-            @Override
-            public void onApiChange(@NotNull YouTubePlayer youTubePlayer) {
-
+            public void onClick(View v) {
+                Intent intent = new Intent(context, VideoDetailsActivity.class);
+                intent.putExtra("data", result);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
-//        holder.videoView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
-//            @Override
-//            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-//                String videoId = null;
-//                    videoId =result.getVideoId();
-////                                        try {
-//////                                            videoId = json.getString("S0Q4gqBUs7c");
-//                if(videoId!=null)
-//                    youTubePlayer.cueVideo("I8w0WxRGU00", 0);
-////                                        } catch (JSONException e) {
-////                                            e.printStackTrace();
-////                                        }
-//            }
-//        });
+        if(!result.getImagePath().equalsIgnoreCase(""))
+        {
+         Comman.setRectangleImage(context,holder.img,result.getImagePath());
+         holder.videoView.setVisibility(View.GONE);
+        }else {
+            holder.img.setVisibility(View.GONE);
+            holder.videoView.addYouTubePlayerListener(new YouTubePlayerListener() {
+                @Override
+                public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+                    if (result.getVideoId() != null)
+                        youTubePlayer.cueVideo(result.getVideoId(), 0);
+
+                }
+
+                @Override
+                public void onStateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerState playerState) {
+
+                }
+
+                @Override
+                public void onPlaybackQualityChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackQuality playbackQuality) {
+
+                }
+
+                @Override
+                public void onPlaybackRateChange(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlaybackRate playbackRate) {
+
+                }
+
+                @Override
+                public void onError(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerError playerError) {
+
+                }
+
+                @Override
+                public void onCurrentSecond(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoDuration(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoLoadedFraction(@NotNull YouTubePlayer youTubePlayer, float v) {
+
+                }
+
+                @Override
+                public void onVideoId(@NotNull YouTubePlayer youTubePlayer, @NotNull String s) {
+
+                }
+
+                @Override
+                public void onApiChange(@NotNull YouTubePlayer youTubePlayer) {
+
+                }
+            });
+        }
     }
     @Override
     public int getItemCount() {
@@ -136,10 +141,14 @@ public class MedAchieversAdapter extends RecyclerView.Adapter<MedAchieversAdapte
     public class NotificationHolder extends RecyclerView.ViewHolder {
         Open_Sans_Regular_Font msg;
         Segow_UI_Bold_Font title;
+        ImageView img;
+        View over_lay;
         YouTubePlayerView videoView;
         public NotificationHolder(@NonNull View itemView) {
             super(itemView);
             msg=itemView.findViewById(R.id.msg);
+            img=itemView.findViewById(R.id.main_img);
+            over_lay=itemView.findViewById(R.id.over_lay);
             title=itemView.findViewById(R.id.title);
             videoView = (YouTubePlayerView) itemView.findViewById(R.id.video);
         }

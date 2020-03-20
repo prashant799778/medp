@@ -17,6 +17,7 @@
     <string name="Enter_Med">Enter MedParliament</string>
     <string name="From">From</string>
     <string name="TO">To</string>
+    <string name="RazorKey">rzp_test_4u8muzEpnmCqNG</string>
     <string name="Write">Write To MedParliament</string>
     <string name="Remember_Me">Remember Me</string>
     <string name="Password">Password</string>
@@ -116,7 +117,7 @@ Transcript</string>
     <string name="userName">UserName</string>
     <string name="MedParliament">MedParliament</string>
     <string name="Login_signup">Login/Signup</string>
-    <string name="AboutUs">About us</string>
+    <string name="AboutUs">About Us</string>
     <string name="Our_Partners">Our Partners</string>
     <string name="text"><string name="invite_default_msg">Hey there, Let\'s join one of the best healthcare community which connects everyone from Students to Entrepreneurs to Doctors to Decision makers which leads towards "Globalization and Transformation of Healthcare".  Download the App Now </string></string>
     <string name="Letgestarted">Let\'s get started</string>
@@ -130,12 +131,13 @@ Transcript</string>
     <string name="Dashboard">Dashboard</string>
     <string name="Global_Leadership">Global Parliament of Healthcare Leadership</string>
     <string name="title">Title</string>
-    <string name="NewsDetails">NewsDetails</string>
+    <string name="NewsDetails">News Details</string>
     <string name="msg">Message</string>
     <string name="ok">Ok</string>
     <string name="No">No</string>
+    <string name="Comments">Comments</string>
     <string name="AllPost">Sent</string>
-    <string name="AllPostDetails"> All Posts Details</string>
+    <string name="AllPostDetails">Posts Details</string>
     <!--    <string name="ForgotPassword">Forgot Password</string>-->
     <!--    <string name="Continue">Continue</string>-->
     <!--    <string name="Forgot1">Please enter your registered email id to reset-->

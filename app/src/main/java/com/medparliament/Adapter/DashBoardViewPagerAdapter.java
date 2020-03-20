@@ -19,14 +19,14 @@ import com.medparliament.Fragments.highlighted_initiative_Fragment;
 import com.medparliament.R;
 
 public   class DashBoardViewPagerAdapter extends FragmentPagerAdapter {
-    private static int NUM_ITEMS = 8;
+    private static int NUM_ITEMS = 7;
     private static  String title[];
     int id;
 
     public DashBoardViewPagerAdapter(FragmentManager fragmentManager, Context context,String id) {
         super(fragmentManager);
         this.id=Integer.parseInt(id);
-        title=new String[]{context.getResources().getString(R.string.Market_Insights),context.getResources().getString(R.string.News),context.getResources().getString(R.string.MedAchieversTv),context.getResources().getString(R.string.highlighted_initiative),context.getResources().getString(R.string.Event),context.getResources().getString(R.string.Up_Skill_Academy),context.getResources().getString(R.string.Gallery),context.getResources().getString(R.string.Our_Partners)};
+        title=new String[]{context.getResources().getString(R.string.Market_Insights),context.getResources().getString(R.string.News),context.getResources().getString(R.string.MedAchieversTv),context.getResources().getString(R.string.highlighted_initiative),context.getResources().getString(R.string.Event),context.getResources().getString(R.string.Up_Skill_Academy),context.getResources().getString(R.string.Gallery)};
 
     }
 
@@ -54,8 +54,6 @@ public   class DashBoardViewPagerAdapter extends FragmentPagerAdapter {
                 return new Skill_Up_Fragment();
             case 6: // Fragment # 0 - This will show FirstFragment
                 return new Gallery_Fragment();
-            case 7: // Fragment # 0 - This will show FirstFragment
-                return new Our_Partners_Fragments();
             default:
                 return null;
         }

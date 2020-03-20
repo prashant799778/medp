@@ -60,7 +60,6 @@ public class Dashboard_News_Adapter extends RecyclerView.Adapter<Dashboard_News_
             public void onClick(View v) {
                 Intent intent = new Intent(context, NewsDetails_Activity.class);
                 intent.putExtra("newses",pm);
-
                 context.startActivity(intent);
             }
         });
