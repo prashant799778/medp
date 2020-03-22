@@ -2583,6 +2583,7 @@ def allPosts1():
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
 
+
 @app.route('/myInbox', methods=['POST'])
 def myInbox():
     try:
@@ -2632,32 +2633,20 @@ def myInbox():
                     if i['like'] ==0:
                         i['likeStatus']=0
 
+                    column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                    WhereCondition= " and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
+                    data2 = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+                    for m in data2['result']:
+                        postId=m['postId']
+                        column1="pm.id,um.userName,pm.postId,um.email,pm.userId,pm.commentDescription as postDescription,(pm.approvedUserId)userId,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                        WhereCondition1="  and pm.approvedUserId=um.userId and pm.postId='" + str(postId) + "'" 
+                        orderby=" id "
+                        data1 = databasefile.SelectQueryOrderbyAsc("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                        for j in data1['result']:
+                            data['result'].append(j)
 
-                    # print(data2)
-                    # i['like']=data2['like']
-            #     for i in data["result"]:
-            #         if (i["status"] == 1):
-            #             print(i["postId"])
-            #             column="um.userName as approvedBy"
-            #             WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
-            #             data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
-            #             print(data1)
-            #             if "message" in data1:
-            #                 pass
-            #             else:
-            #                 i["approvedBy"]=data1["approvedBy"]
-            #             print(data1)
-            #         if (i["status"]==2):
-            #             column="um.userName as rejectedBy"
-            #             WhereCondition=" and pm.postId=ap.postId and pm.postId='"+ str(i["postId"])+"' and ap.approvedUserId=um.userId"
-            #             data1=databasefile.SelectQuery1("userMaster as um,approvedBy as ap,userPost as pm",column,WhereCondition)
-            #             print(data1)
-            #             if "message" in data1:
-            #                 pass
-            #             else:
-            #                 i["rejectedBy"]=data1["rejectedBy"]
-                        
-                        
+
+
                 
                 print("111111111111111")          
                 Data = {"status":"true","message":"","result":data["result"]}
@@ -2671,6 +2660,7 @@ def myInbox():
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
+
 
 
 @app.route('/allPostsThread', methods=['POST'])
