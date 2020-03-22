@@ -2584,7 +2584,7 @@ def allPosts1():
         return output 
 
 
-@app.route('/myInbox1', methods=['POST'])
+@app.route('/myInbox', methods=['POST'])
 def myInbox1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -2650,7 +2650,7 @@ def myInbox1():
         return output
 
 
-@app.route('/myInbox', methods=['POST'])
+@app.route('/myInbox1', methods=['POST'])
 def myInbox():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -2709,7 +2709,7 @@ def myInbox():
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
-         
+
 
 
 
