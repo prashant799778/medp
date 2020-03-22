@@ -2615,38 +2615,22 @@ def myInbox():
 
             
             if (data['result']!=""):
-                for i in data["result"]:
-                    Y=i["postId"]
-                    y2=i['userId']
-                    column="*"
-                    whereCondition=" and postId ='" + str(Y) + "'"
-                    data2=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
-                    i['like']=len(data2['result'])
-                    print(data2,'++++++++++++')
-                    columns="status"
-                    whereCondition1= " and userId='" + str(y2) + "' and postId= '" + str(Y) + "'"
-                    data22= databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
-                    if (data22["result"]!=""):
-                        y78=data22['result'][0]
-                        if y78['status'] == 0:
-                            i['likeStatus']=1
-                    if i['like'] ==0:
-                        i['likeStatus']=0
+                
 
-                    column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-                    WhereCondition= " and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
-                    data2 = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
-                    print(data2)
-                    if data2['result'] !="":
-                        for m in data2['result']:
-                            postId=m['postId']
-                            column1="pm.id,um.userName,pm.postId,um.email,pm.approvedUserId as userId,pm.commentDescription as postDescription,(pm.approvedUserId)userId,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-                            WhereCondition1="  and pm.approvedUserId=um.userId and pm.postId='" + str(postId) + "'" 
-                            orderby=" id "
-                            data1 = databasefile.SelectQueryOrderbyAsc("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
-                            if data1['result']!="":
-                                for j in data1['result']:
-                                    data['result'].append(j)
+                column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                WhereCondition= " and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
+                data2 = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+                print(data2,"data2")
+                if data2['result'] !="":
+                    for m in data2['result']:
+                        postId=m['postId']
+                        column1="pm.id,um.userName,pm.postId,um.email,pm.approvedUserId as userId,pm.commentDescription as postDescription,(pm.approvedUserId)userId,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                        WhereCondition1="  and pm.approvedUserId=um.userId and pm.postId='" + str(postId) + "'" 
+                        orderby=" id "
+                        data1 = databasefile.SelectQueryOrderbyAsc("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                        if data1['result']!="":
+                            for j in data1['result']:
+                                data['result'].append(j)
 
 
 
