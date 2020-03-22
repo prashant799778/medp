@@ -2584,8 +2584,8 @@ def allPosts1():
         return output 
 
 
-@app.route('/myInbox', methods=['POST'])
-def myInbox():
+@app.route('/myInbox1', methods=['POST'])
+def myInbox1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
@@ -2647,7 +2647,69 @@ def myInbox():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+
+@app.route('/myInbox', methods=['POST'])
+def myInbox():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("myInbox",inputdata,0)
+        data1={"status":"true","message":"","result":[]}
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="pm.id"
+            postId,whereCondition="",""
+
+            
+            userTypeId=inputdata["userTypeId"]
+            userId=inputdata['userId']
+            
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition= " and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            print(data,"data2")
+           
+
+            
+
+            
+            if (data['result']!=""):
+                
+
+                
+                
+                for m in data['result']:
+                    postId=m['postId']
+                    column1="pm.id,um.userName,pm.postId,um.email,pm.approvedUserId as userId,pm.commentDescription as postDescription,(pm.approvedUserId)userId,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                    WhereCondition1="  and pm.approvedUserId=um.userId and pm.postId='" + str(postId) + "'" 
+                    orderby=" id "
+                    data1 = databasefile.SelectQueryOrderbyAsc("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                    if data1['result']!="":
+                        data1['result']=[]
+                       
+
+
+
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data1["result"],"totalcount":len(data1['result'])}
+                print(Data,"@@@@@@@@@@@@@@@@@@")
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
         return output 
+         
 
 
 
