@@ -122,7 +122,7 @@ export class AppComponent {
 			this.authsService.login(userData).subscribe(resp =>{
 
 				if(resp['status'] == 'true'){
-					if(resp['result'][0].userTypeId <= 11 || resp['result'][0].userTypeId == 12){
+					if(resp['result'][0].userTypeId != 5  && (resp['result'][0].userTypeId <= 11 || resp['result'][0].userTypeId == 12) ){
 						this.loginSuccess= true;
 						this.getSaveCustomer(resp['result'])
 
@@ -147,12 +147,15 @@ export class AppComponent {
 		  // this.session.set(this.KEY, data);
 		  this.local.set('userData1',(data))
 		  console.log(this.loginForm)
-		  if(data[0].userTypeId == 1){
-			let datas = {
-				'superLogin': 'yes'
-			}  
-			this.local.set('userData2',(datas))
+		  if(data[0].userTypeId != 5){
+			if(data[0].userTypeId == 1){
+				let datas = {
+					'superLogin': 'yes'
+				}  
+				this.local.set('userData2',(datas))
+			  }
 		  }
+		  
 	}
 	logout(){
 		this.authsService.logout()
