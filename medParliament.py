@@ -2636,7 +2636,7 @@ def myInbox():
 
                 
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":data["result"]}
+                Data = {"status":"true","message":"","result":data["result"],"totalcount":len(data['result'])}
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
             else:
