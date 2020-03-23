@@ -122,9 +122,10 @@ export class AppComponent {
 			this.authsService.login(userData).subscribe(resp =>{
 
 				if(resp['status'] == 'true'){
-					if(resp['result'][0].userTypeId != 5  && (resp['result'][0].userTypeId <= 11 || resp['result'][0].userTypeId == 12) ){
+					if(resp['result'][0].userTypeId != 5  && resp['result'][0].userTypeId != 6 && resp['result'][0].userTypeId != 7 && resp['result'][0].userTypeId != 8 && resp['result'][0].userTypeId != 9 && resp['result'][0].userTypeId != 13 && (resp['result'][0].userTypeId <= 11 || resp['result'][0].userTypeId == 12) ){
 						this.loginSuccess= true;
 						this.getSaveCustomer(resp['result'])
+						this.errors = '';
 
 					}else{
 						this.errors = 'you are not authorized Admin'
