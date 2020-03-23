@@ -12,120 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="057774c7-5fa3-4b9d-827a-ff5daa39f94a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileContent/fileContent.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sw600dp-v13.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values-sw600dp-v13.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/values.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug-mergeJavaRes/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug-mergeJavaRes/merge-state" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug-mergeNativeLibs/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug-mergeNativeLibs/merge-state" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/instant_app_manifest/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/instant_app_manifest/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_java_res/debug/out.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_java_res/debug/out.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_activity_dash_board_.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_activity_dash_board_.xml.flat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_activity_post__details_.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_activity_post__details_.xml.flat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_drawer_item_layout.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/layout_drawer_item_layout.xml.flat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sw600dp-v13_values-sw600dp-v13.arsc.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values-sw600dp-v13_values-sw600dp-v13.arsc.flat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values_values.arsc.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values_values.arsc.flat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/All_Post_Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/All_Post_Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/All_Post_Details.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/All_Post_Details.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/DashBoard_Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/DashBoard_Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/Edit_Profile_Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/Edit_Profile_Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/Market_Insight_Detail_Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/Market_Insight_Detail_Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/New_News_Details_Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/New_News_Details_Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/NewsDetails_Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/NewsDetails_Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/News_Activity_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/News_Activity_1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/Tabs_DashBoard_Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/Tabs_DashBoard_Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/Up_Skill_Details_Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Activity/Up_Skill_Details_Activity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/DashBoardViewPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/DashBoardViewPagerAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_News_Adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_News_Adapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_Promising_Adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_Promising_Adapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_annoncement_adapter_new.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_annoncement_adapter_new.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_council_adapter_new.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_council_adapter_new.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_events_adapter_new.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_events_adapter_new.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_gallery_adapter_new.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_gallery_adapter_new.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_market_adapter_new.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_market_adapter_new.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_news_adapter_new.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_news_adapter_new.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_video_adapter_new.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Dashboard_video_adapter_new.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/GalleryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/GalleryAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Gallery_adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/Gallery_adapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/HighlightedInsightsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/HighlightedInsightsAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/MarketInsightsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/MarketInsightsAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/MedAchieversAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/MedAchieversAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/NewNewsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/NewNewsAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/New_Event_.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Adapter/New_Event_.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Fragments/All_Post_Pending_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Fragments/All_Post_Pending_Fragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Fragments/Gallery_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Fragments/Gallery_Fragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Fragments/News_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Fragments/News_Fragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Fragments/Our_Partners_Fragments.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Fragments/Our_Partners_Fragments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Fragments/Pending_Fragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Fragments/Pending_Fragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/Api_Calling.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/Api_Calling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/Models/DashboardGalleryModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/Models/DashboardGalleryModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/Models/Dashbooard_eventModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/Models/Dashbooard_eventModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/NewModel/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/NewModel/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/NewModel/TvModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/NewModel/TvModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/NewModel/up_skill_model.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/NewModel/up_skill_model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/URLS.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Internet/URLS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Utility/Comman.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Utility/Comman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Widget/otpEditText.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/Widget/otpEditText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/medparliament/carouselrecyclerview/CarouselAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/medparliament/carouselrecyclerview/CarouselAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/alpha.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/alpha.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_share.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_share.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_about_us.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about_us.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_all__post__details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_all__post__details.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dash_board_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dash_board_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_market__insight__detail_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_market__insight__detail_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_new__news__details_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_new__news__details_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_news__1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_news__1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_news_details_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_news_details_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_otp_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_otp_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_post__details_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_post__details_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tabs__dash_board_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tabs__dash_board_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_up__skill__details_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_up__skill__details_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dashboard_event_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dashboard_event_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/drawer_item_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/drawer_item_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_news_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_news_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/gallery_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/gallery_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/highlighted_insight_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/highlighted_insight_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/market_insight_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/market_insight_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/new_event_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/new_event_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/new_medachievertvlayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/new_medachievertvlayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/new_news_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/new_news_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/password_change_popup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/password_change_popup.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/reply_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/reply_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/skill_up_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/skill_up_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/video_item_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/video_item_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimen.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +76,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../med_ambulance" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
