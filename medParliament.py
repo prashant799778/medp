@@ -2662,7 +2662,7 @@ def myInbox():
         data1={"status":"true","message":"","result":[]}
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
-            orderby="pm.id"
+            orderby="Id"
             postId,whereCondition="",""
 
             
@@ -2696,6 +2696,7 @@ def myInbox():
                     if data1['result']!="":
                         for l in data1['result']:
                             data55.append(l)
+                            data55=sorted(1,key=itemgetter('DateCreate'),reverse=True)
 
                    
                        
