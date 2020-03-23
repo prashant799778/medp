@@ -499,6 +499,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
             e.printStackTrace();
         }
         Comman.log("likejson",""+jsonObject);
+
         return jsonObject;
     }
 }

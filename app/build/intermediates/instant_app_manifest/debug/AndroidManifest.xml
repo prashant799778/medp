@@ -47,7 +47,9 @@
         android:persistent="false"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.medparliament.Activity.NotificationActivity" />
         <activity android:name="com.medparliament.Activity.VideoDetailsActivity" />
         <activity android:name="com.medparliament.Activity.News_Activity_1" />
         <activity android:name="com.medparliament.Activity.New_News_Details_Activity" />

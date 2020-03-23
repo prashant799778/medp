@@ -43,4 +43,9 @@ public class URLS {
     public static String allMarketingInsightThread=BASE_URL+"allMarketingInsightThread";
     public static String allEventThread=BASE_URL+"allEventThread";
     public  static  String myInbox=BASE_URL+"myInbox";
+    public  static  String Notification=BASE_URL+"myNotificationCount";
+    public  static  String Notification2=BASE_URL+"myNotification";
+
+
+
 }

@@ -16,6 +16,7 @@ import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.request.SimpleMultiPartRequest;
 import com.android.volley.toolbox.Volley;
+import com.medparliament.Internet.NewModel.onNotificationResult;
 import com.medparliament.R;
 import com.medparliament.Utility.Comman;
 import com.medparliament.Utility.Constant;
@@ -397,6 +398,40 @@ public class Api_Calling {
 
     }
 
+    public static void postMethodCall_NO_MSG2(final Context context, final View view, final onNotificationResult onNotificationResult, String URL, JSONObject jsonObject, final String name)
+    {
+        if(!Comman.isConnectedToInternet(context))
+        {
+            Comman.topSnakBar(context,view, Constant.NO_INTERNET);
+            onNotificationResult.onNotificationResult(null,false);
+        }else {
+            JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Comman.log(name,"yyyyy"+response);
+                    try {
+                        if(Boolean.parseBoolean(response.getString("status"))){
+                            onNotificationResult.onNotificationResult(response,true);}else {
+                            onNotificationResult.onNotificationResult(null,false);
+                            Comman.topSnakBar(context,view, response.getString("message"));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Comman.topSnakBar(context,view, Constant.SOMETHING_WENT_WRONG);
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+            RequestQueue requestQueue=Volley.newRequestQueue(context);
+            requestQueue.add(jsonObjectRequest);
+
+        }
+
+    }
 
 
 

@@ -23,7 +23,9 @@
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
             android:background="@color/transparent"
-            android:src="@drawable/ic_back"></ImageButton>
+            android:src="@drawable/ic_back">
+
+        </ImageButton>
         <com.medparliament.Widget.Segow_UI_Semi_Font
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
@@ -72,14 +74,14 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:background="@color/transparent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/bottom"
         android:layout_alignParentBottom="true">
     </RelativeLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_alignParentRight="true"
