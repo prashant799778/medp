@@ -2697,6 +2697,10 @@ def myInbox():
                     if data1['result']!="":
                         for l in data1['result']:
                             data55.append(l)
+                            whereCondition=" and status='0' and postId='" + str(postId) + "' "
+                            column="status=1"
+                            up=databasefile.UpdateQuery('approvedBy',column,whereCondition)
+
                 data55=sorted(data55, key = lambda i: i['DateCreate'])
                 data55=data55[::-1]
                         
@@ -2725,6 +2729,163 @@ def myInbox():
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
+
+
+
+@app.route('/myNotification', methods=['POST'])
+def myNotification():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("myNotification",inputdata,0)
+        data1={"status":"true","message":"","result":[]}
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="Id"
+            postId,whereCondition="",""
+
+            
+            userTypeId=inputdata["userTypeId"]
+            userId=inputdata['userId']
+            
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition= " and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            print(data,"data2")
+            data55=[]
+           
+
+            
+
+            
+            if (data['result']!=""):
+                
+
+                
+                
+                for m in data['result']:
+                    postId=m['postId']
+                    column1="pm.id,um.userName,pm.postId,um.email,pm.status,pm.approvedUserId as userId,pm.commentDescription as postDescription,(pm.approvedUserId)userId,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                    WhereCondition1=" and pm.status='0' and pm.approvedUserId=um.userId and pm.postId='" + str(postId) + "'" 
+                    orderby=" id "
+                    data1 = databasefile.SelectQueryOrderby("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                    print(data1,"@@!!!")
+                    
+
+                    if data1['result']!="":
+                        for l in data1['result']:
+                            whereCondition=" and postId='" + str(postId) + "' "
+                            column=" status='1' "
+                            up=databasefile.UpdateQuery('approvedBy ',column,whereCondition)
+
+                            data55.append(l)
+                data55=sorted(data55, key = lambda i: i['DateCreate'])
+                data55=data55[::-1]
+                        
+
+                            
+                            
+
+                           
+
+                   
+                       
+
+
+
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data55,"totalcount":len(data55)}
+                print(Data,"@@@@@@@@@@@@@@@@@@")
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output 
+
+
+@app.route('/myNotificationCount', methods=['POST'])
+def myNotificationCount():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("myNotificationCount",inputdata,0)
+        data1={"status":"true","message":"","result":[]}
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="Id"
+            postId,whereCondition="",""
+
+            
+            userTypeId=inputdata["userTypeId"]
+            userId=inputdata['userId']
+            
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition= " and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            print(data,"data2")
+            data55=[]
+           
+
+            
+
+            
+            if (data['result']!=""):
+                
+
+                
+                
+                for m in data['result']:
+                    postId=m['postId']
+                    column1="pm.id,um.userName,pm.postId,um.email,pm.status,pm.approvedUserId as userId,pm.commentDescription as postDescription,(pm.approvedUserId)userId,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                    WhereCondition1=" and pm.status='0' and pm.approvedUserId=um.userId and pm.postId='" + str(postId) + "'" 
+                    orderby=" id "
+                    data1 = databasefile.SelectQueryOrderby("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                    print(data1,"@@!!!")
+                    
+
+                    if data1['result']!="":
+                        for l in data1['result']:
+                            data55.append(l)
+                data55=sorted(data55, key = lambda i: i['DateCreate'])
+                data55=data55[::-1]
+                        
+
+                            
+                            
+
+                           
+
+                   
+                       
+
+
+
+                
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data55,"totalcount":len(data55)}
+                print(Data,"@@@@@@@@@@@@@@@@@@")
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output         
 
 
 
