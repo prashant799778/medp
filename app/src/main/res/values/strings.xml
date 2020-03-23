@@ -182,6 +182,7 @@ your password</string>
     <string name="base_url">https://api.instagram.com/</string>
     <string name="post1">Post</string>
     <string name="Add">Add Your Views...</string>
+    <string name="Notifications">Notifications</string>
 
 
 </resources>

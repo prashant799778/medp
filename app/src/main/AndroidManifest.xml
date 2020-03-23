@@ -26,7 +26,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:name">
-        <activity android:name=".Activity.VideoDetailsActivity"></activity>
+        <activity android:name=".Activity.NotificationActivity"></activity>
+        <activity android:name=".Activity.VideoDetailsActivity" />
         <activity android:name=".Activity.News_Activity_1" />
         <activity android:name=".Activity.New_News_Details_Activity" />
         <activity android:name=".Activity.Market_Insight_Detail_Activity" />

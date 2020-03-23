@@ -40,21 +40,18 @@ public class All_Post_Details extends AppCompatActivity  {
     Segow_UI_Bold_Font title;
     Segow_UI_Font  likecount;
     ImageView likeImg;
-
     FloatingActionButton cmnts;
     ProgressDialog progressDialog;
     ArrayList<Reply_Model> arrayList;
     RecyclerView recyclerView;
     ThreadAdapter threadAdapter;
     Post_Modle pm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all__post__details);
-
-
         m=MySharedPrefrence.instanceOf(getApplicationContext());
-
         Animatoo.animateSwipeLeft(All_Post_Details.this);
 //        Window window = getWindow();
 //        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -94,7 +91,6 @@ public class All_Post_Details extends AppCompatActivity  {
     }
 
     public void onResult() {
-
         Intent i = getIntent();
          if(i!=null){
               pm= (Post_Modle) i.getSerializableExtra("postn");
@@ -120,9 +116,6 @@ public class All_Post_Details extends AppCompatActivity  {
                  }
              });
          }
-
-
-
     }
 
     public JSONObject likeJson(String postId)

@@ -843,7 +843,7 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
-            android:visibility="visible"
+            android:visibility="gone"
             style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:scaleType="centerCrop"
             android:layout_marginRight="30dp"
@@ -870,17 +870,17 @@
             android:id="@+id/top"
             android:layout_marginTop="70dp"
             android:orientation="horizontal">
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="20dp"
-                android:visibility="gone"
-                android:padding="12dp"
-                android:id="@+id/setting"
-                android:layout_toLeftOf="@+id/profile"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_setting">
-            </ImageView>
+<!--            <ImageView-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginRight="20dp"-->
+<!--                android:visibility="gone"-->
+<!--                android:padding="12dp"-->
+<!--                android:id="@+id/setting"-->
+<!--                android:layout_toLeftOf="@+id/profile"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:src="@drawable/ic_setting">-->
+<!--            </ImageView>-->
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile"

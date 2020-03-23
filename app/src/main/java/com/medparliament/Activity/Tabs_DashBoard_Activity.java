@@ -74,7 +74,7 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
     ActionBarDrawerToggle actionBarDrawerToggle;
 //    DrawerLayout drawerLayout;
     Segow_UI_Semi_Font userName;
-    ImageView logout;
+    ImageView logout,Tab_bell;
     Toolbar toolbar;
     onResult onResult;
     RelativeLayout nodata;
@@ -132,6 +132,15 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
         cmnt=findViewById(R.id.cmnt);
         cmnt.setVisibility(View.GONE);
         share=findViewById(R.id.share);
+
+        Tab_bell=findViewById(R.id.tab_bell_icon);
+        Tab_bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Tabs_DashBoard_Activity.this,NotificationActivity.class));
+                Animatoo.animateSlideLeft(Tabs_DashBoard_Activity.this);
+            }
+        });
 //        profile=findViewById(R.id.profile);
 //        moreNews=findViewById(R.id.morenews);
 //        userName.setText(m.getUserName());

@@ -65,11 +65,12 @@ public class Pending_Fragment extends Base_Fragement implements onResult{
     {
         JSONObject jsonObject=new JSONObject();
         try {
-            jsonObject.put("userTypeId",""+m.getUserTypeId()).put("userId",""+m.getUserId());
+            jsonObject.put("userTypeId",""+m.getUserTypeId())
+                    .put("userId",""+m.getUserId());
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Comman.log("MyPOSTJSON",""+jsonObject);
+        Comman.log("MyPOSTJSONsxsacasc",""+jsonObject);
         return jsonObject;
     }
 
@@ -91,8 +92,7 @@ public class Pending_Fragment extends Base_Fragement implements onResult{
                 ArrayList<Post_Modle> rm = gson.fromJson(jsonObject.getString("result"), new TypeToken<ArrayList<Post_Modle>>(){}.getType());
                 arrayList.clear();
                 arrayList.addAll(rm);
-                adapter.notifyDataSetChanged();}else {
-                    nodata.setVisibility(View.VISIBLE);
+                adapter.notifyDataSetChanged();}else { nodata.setVisibility(View.VISIBLE);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

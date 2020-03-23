@@ -84,6 +84,8 @@ public class My_Post_Activity extends Base_Activity implements onResult {
                 onBackPressed();
             }
         });
+
+
         cmnt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

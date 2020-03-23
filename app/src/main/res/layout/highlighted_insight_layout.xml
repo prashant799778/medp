@@ -19,7 +19,9 @@
             android:paddingLeft="10dp"
             android:text=""
             android:textColor="@color/c1c1"
-            android:textSize="20dp"></com.medparliament.Widget.Open_Sans_Regular_Font>
+            android:textSize="20dp">
+
+        </com.medparliament.Widget.Open_Sans_Regular_Font>
 
         <com.medparliament.Widget.Segow_UI_Bold_Font
             android:layout_width="match_parent"
