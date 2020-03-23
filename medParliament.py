@@ -2689,7 +2689,7 @@ def myInbox():
                     WhereCondition1="  and pm.approvedUserId=um.userId and pm.postId='" + str(postId) + "'" 
                     orderby=" id "
                     data1 = databasefile.SelectQueryOrderbyAsc("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
-                    if data1['result']!="":
+                    if data1['result']=="":
                         data1['result']=[]
                        
 
