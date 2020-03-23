@@ -2690,6 +2690,10 @@ def myInbox():
                     orderby=" id "
                     data1 = databasefile.SelectQueryOrderby("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
                     print(data1,"@@!!!")
+
+                    if data1['result']!="":
+                        data55=data1['result']
+
                    
                        
 
@@ -2697,7 +2701,7 @@ def myInbox():
 
                 
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":data1["result"],"totalcount":len(data1['result'])}
+                Data = {"status":"true","message":"","result":data55,"totalcount":len(data55)}
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
             else:
