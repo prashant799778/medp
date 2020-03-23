@@ -2697,9 +2697,9 @@ def myInbox():
                     if data1['result']!="":
                         for l in data1['result']:
                             data55.append(l)
-                    data55=sorted(data55, key = lambda i: i['DateCreate'])
-                    data55=data55[::-1]
-                            
+                data55=sorted(data55, key = lambda i: i['DateCreate'])
+                data55=data55[::-1]
+                        
 
                             
                             
