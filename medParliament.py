@@ -2688,7 +2688,7 @@ def myInbox():
                     column1="pm.id,um.userName,pm.postId,um.email,pm.approvedUserId as userId,pm.commentDescription as postDescription,(pm.approvedUserId)userId,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                     WhereCondition1="  and pm.approvedUserId=um.userId and pm.postId='" + str(postId) + "'" 
                     orderby=" id "
-                    data1 = databasefile.SelectQueryOrderbyAsc("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                    data1 = databasefile.SelectQueryOrderby("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
                     print(data1,"@@!!!")
                     if data1['result']=="":
                         data1['result']=[]
