@@ -1,5 +1,6 @@
 from flask import Flask,request,abort
 from flask import Flask, send_from_directory, abort
+
 import uuid
 import json
 import json
@@ -2694,9 +2695,9 @@ def myInbox():
                     
 
                     if data1['result']!="":
-                        for l in data1['result']:
+                        for l in data1['result']:s
                             data55.append(l)
-                            data55=sorted(1,key=itemgetter('DateCreate'),reverse=True)
+                            # data55=sorted(1,key=itemgetter('DateCreate'),reverse=True)
 
                    
                        
