@@ -2673,6 +2673,7 @@ def myInbox():
             WhereCondition= " and pm.userId='" + str(userId) + "'and pm.userTypeId='" + str(userTypeId) + "'"
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
             print(data,"data2")
+            data55=[]
            
 
             
@@ -2690,7 +2691,7 @@ def myInbox():
                     orderby=" id "
                     data1 = databasefile.SelectQueryOrderby("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
                     print(data1,"@@!!!")
-                    data55=[]
+                    
 
                     if data1['result']!="":
                         for l in data1['result']:
