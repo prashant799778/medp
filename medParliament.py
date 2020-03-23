@@ -2690,8 +2690,7 @@ def myInbox():
                     orderby=" id "
                     data1 = databasefile.SelectQueryOrderby("approvedBy as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
                     print(data1,"@@!!!")
-                    if data1['result']=="":
-                        data1['result']=[]
+                   
                        
 
 
