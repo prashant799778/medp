@@ -86,7 +86,7 @@
                 android:layout_alignParentRight="true"
                 android:textSize="8dp"
                 android:id="@+id/noti_count"
-                android:textColor="@color/red"/>
+                android:textColor="@color/white"/>
         </LinearLayout>
 
 

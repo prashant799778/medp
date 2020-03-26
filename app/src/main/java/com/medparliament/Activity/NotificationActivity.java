@@ -44,7 +44,7 @@ public class NotificationActivity extends AppCompatActivity implements com.medpa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
-
+        Animatoo.animateSlideLeft(NotificationActivity.this);
         m=MySharedPrefrence.instanceOf(NotificationActivity.this);
         progressDialog = new ProgressDialog(NotificationActivity.this);
         progressDialog.setMessage("Loading...");

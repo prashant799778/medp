@@ -12,13 +12,13 @@
         android:layout_marginHorizontal="10dp"
         android:scaleType="centerCrop">
     </ImageView>
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-        android:layout_width="match_parent"
-        android:id="@+id/video"
-        android:layout_height="match_parent"
-        app:autoPlay="false"
-        android:visibility="gone"
-        android:background="@color/white"
-        app:showYouTubeButton="true">
-    </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+<!--    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:id="@+id/video"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:autoPlay="false"-->
+<!--        android:visibility="gone"-->
+<!--        android:background="@color/white"-->
+<!--        app:showYouTubeButton="true">-->
+<!--    </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>-->
 </RelativeLayout>

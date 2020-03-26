@@ -38,6 +38,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.fxn.utility.Utility;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -140,6 +146,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
     ArrayList<NewModel> councillist;
     ArrayList<NewModel> videolist;
     MySharedPrefrence m;
+    Handler ha;
     ViewPager viewPager_gallery, viewPager_news, viewPager_announced, viewPager_event, viewPager_video, viewPager_Promising, viewPager_council, viewPager_market;
     RecyclerView recyclerView_gallery, viewpager_parten;
     String name;
@@ -201,13 +208,13 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
         this.onNotificationResult = this;
         adapter = new Post_Adapter(DashBoard_Activity.this, MarrayList, m.getUserName(), 1);
 
-        final Handler ha=new Handler();
+         ha=new Handler();
         ha.postDelayed(new Runnable() {
             @Override
             public void run() {
                 Comman.log("tdgfhvjgkfg","v bnm,,l;'lk;jhkhjgchfxgchgvjkbnl;;jhgfgdrsdytfuygiuhiljk");
                 if (Comman.Check_Login(DashBoard_Activity.this)){
-                    Api_Calling.postMethodCall_NO_MSG2(DashBoard_Activity.this, getWindow().getDecorView().getRootView(), onNotificationResult, URLS.Notification, myPostJson2(), "Notifications");
+                    apiCall(URLS.Notification, myPostJson2());
                 }
                 ha.postDelayed(this, 10000);
             }
@@ -277,7 +284,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
         market = findViewById(R.id.market);
         council = findViewById(R.id.council);
         our_partner = findViewById(R.id.partner);
-
+        circle.setVisibility(View.GONE);
         toolbar = stub.findViewById(R.id.toolbar_actionbar);
 
         bell.setOnClickListener(new View.OnClickListener() {
@@ -285,7 +292,22 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
             public void onClick(View v) {
 
                 Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(DashBoard_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(DashBoard_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
 
+                }
+
+
+            }
+        });
+        circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(DashBoard_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(DashBoard_Activity.this, NotificationActivity.class));
@@ -517,6 +539,13 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
             }
 
         };
+
+
+
+
+
+
+
 
 //        partner_manager=new LinearLayoutManager(DashBoard_Activity.this);
         partner_manager.setOrientation(RecyclerView.HORIZONTAL);
@@ -822,27 +851,27 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
 
     @Override
     public void onNotificationResult(JSONObject jsonObject, Boolean status) {
-        if (jsonObject != null && status) {
-            nodata.setVisibility(View.GONE);
-            Gson gson = new GsonBuilder().create();
-            try {
-                if (jsonObject.getJSONArray("result").length() > 0) {
-                    Comman.log("Counter","Cadsfcnadmvcbjhds"+jsonObject.toString());
-                    ArrayList<Post_Modle> rm = gson.fromJson(jsonObject.getString("result"), new TypeToken<ArrayList<Post_Modle>>() {
-                    }.getType());
-                    MarrayList.clear();
-                    MarrayList.addAll(rm);
-                    adapter.notifyDataSetChanged();
-                    noti_counter.setVisibility(View.VISIBLE);
-                    noti_counter.setText(Html.fromHtml(Comman.getValueFromJsonObject(jsonObject,"totalcount")));
-                } else {
-                    noti_counter.setVisibility(View.GONE);
-                    circle.setVisibility(View.GONE);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
+//        if (jsonObject != null && status) {
+//            nodata.setVisibility(View.GONE);
+//            Gson gson = new GsonBuilder().create();
+//            try {
+//                if (jsonObject.getJSONArray("result").length() > 0) {
+//                    Comman.log("Counter","Cadsfcnadmvcbjhds"+jsonObject.toString());
+//                    ArrayList<Post_Modle> rm = gson.fromJson(jsonObject.getString("result"), new TypeToken<ArrayList<Post_Modle>>() {
+//                    }.getType());
+//                    MarrayList.clear();
+//                    MarrayList.addAll(rm);
+//                    adapter.notifyDataSetChanged();
+//                    noti_counter.setVisibility(View.VISIBLE);
+//                    noti_counter.setText(Html.fromHtml(Comman.getValueFromJsonObject(jsonObject,"totalcount")));
+//                } else {
+//                    noti_counter.setVisibility(View.GONE);
+//                    circle.setVisibility(View.GONE);
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -1060,6 +1089,35 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
         }
         Comman.log("MyPOSTJSON", "" + jsonObject);
         return jsonObject;
+
+    }
+    private void apiCall(String URL,JSONObject jsonObject)
+    {
+        Comman.log("NotificationApi","Callling");
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Comman.log("NotificationApi","Response"+response);
+                try {
+                    if(response.getString("status").equalsIgnoreCase("true") && (!Comman.getValueFromJsonObject(response,"totalcount").equalsIgnoreCase("0")) )
+                    {
+                        noti_counter.setText(Comman.getValueFromJsonObject(response,"totalcount"));
+                        circle.setVisibility(View.VISIBLE);
+                    }else {
+                        circle.setVisibility(View.GONE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(DashBoard_Activity.this);
+        requestQueue.add(jsonObjectRequest);
 
     }
 }
