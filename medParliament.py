@@ -4695,8 +4695,9 @@ def getNews():
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
                 if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
-                    print(y)
-                    i['videoId']=y[1]
+                    print(y,len(y))
+                    if len(y)>0:
+                        i['videoId']=y[1]
             return data
         else:
             return commonfile.Errormessage()
