@@ -4696,7 +4696,7 @@ def getNews():
                 if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
                     print(y,len(y))
-                    if len(y)>0:
+                    if y[0]!="":
                         i['videoId']=y[1]
             return data
         else:
