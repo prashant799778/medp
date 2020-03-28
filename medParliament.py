@@ -4697,8 +4697,11 @@ def getNews():
                 if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
                     print(y,len(y))
-                    if y[0]!="":
+                    d=len(y)
+                    if d>1:
                         i['videoId']=y[1]
+                    else:
+                        i['videoId']=y[0]
             return data
         else:
             return commonfile.Errormessage()
