@@ -4456,7 +4456,7 @@ def promissingIntiatives():
 
 
                         whereCondition=" and id= '"+ str(Id) +"'"
-                        column="videoLink='"+ str(newsTitle) +"', newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
+                        column="videoLink='"+ str(videoLink) +"', newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"'"
                         data=databasefile.UpdateQuery("promissingIntiatives",column,whereCondition)
 
 
