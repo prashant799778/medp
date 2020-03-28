@@ -4688,6 +4688,7 @@ def getNews():
         data = databasefile.SelectQueryOrderby("news n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
         data2 = databasefile.SelectTotalCountQuery("news","","")
         print(data2,"=====================")
+        print(data['result'])
         if data != "0":
             data["totalCount"]=data2
             for i in data['result']:
