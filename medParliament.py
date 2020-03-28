@@ -7190,8 +7190,13 @@ def getGalleryImages():
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
                 if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
-                    print(y)
-                    i['videoId']=y[1]
+                    d=len(y)
+                    if d>1:
+                        i['videoId']=y[1]
+                    else:
+                        i['videoId']=y[0]
+                else:
+                    i['videoId']=""
             return data
         else:
             return commonfile.Errormessage()
@@ -7454,9 +7459,16 @@ def getParliamentEvent():
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
                 if i['videoLink']!=None:
+                   if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
-                    print(y)
-                    i['videoId']=y[1]
+                     
+                    d=len(y)
+                    if d>1:
+                        i['videoId']=y[1]
+                    else:
+                        i['videoId']=""
+                else:
+                    i['videoId']=""
 
                 y2=i['id']
                 column="userId"
@@ -7889,6 +7901,17 @@ def getpromisingInitiatives1():
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                if i['videoPath']!=None:
+                   if i['videoPath']!=None:
+                    y=i['videoPath'].split('=')
+                     
+                    d=len(y)
+                    if d>1:
+                        i['videoId']=y[1]
+                    else:
+                        i['videoId']=""
+                else:
+                    i['videoId']=""
             return data
 
         else:
@@ -8051,10 +8074,17 @@ def getSignUpVideo():
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
-                if i['videoLink']!='':
+                if i['videoLink']!=None:
+                   if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
-                    print(y)
-                    i['videoId']=y[1]
+                     
+                    d=len(y)
+                    if d>1:
+                        i['videoId']=y[1]
+                    else:
+                        i['videoId']=""
+                else:
+                    i['videoId']=""
             return data
         else:
             return commonfile.Errormessage()
@@ -8099,6 +8129,17 @@ def getSignUpVideo1():
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                if i['videoLink']!=None:
+                   if i['videoLink']!=None:
+                    y=i['videoLink'].split('=')
+                     
+                    d=len(y)
+                    if d>1:
+                        i['videoId']=y[1]
+                    else:
+                        i['videoId']=""
+                else:
+                    i['videoId']=""
             return data
         else:
             return commonfile.Errormessage()
