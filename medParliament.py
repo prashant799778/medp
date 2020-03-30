@@ -4251,7 +4251,8 @@ def userProfile():
                     return data3
                 else:
                     return commonfile.Errormessage()
-            if userTypeId==13:
+                    
+            if userTypeId==13 or userTypeId=='13':
                 column="um.mobileNo as mobileNo, um.userName as userName, um.userTypeId,um.password as password, um.profilePic as profilePic, um.userId,um.gender,um.email,um.status,"
                 column=column+"um.countryId,(cm.Name)countryName"
                 startlimit,endlimit="",""
