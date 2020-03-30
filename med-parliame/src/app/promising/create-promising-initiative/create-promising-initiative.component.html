@@ -22,11 +22,11 @@
                     </g>
               </svg>
                 </div>
-                <h2 class="main-hading">Highlighted Initiative Master</h2>
+                <h2 class="main-hading">Global Initiatives Master</h2>
             </div>
               <div class="card-header-actions crd-bnt">
                 <!-- <a [routerLink]="['/news/createNews']" class="btn" target="_self">Create News</a> -->
-                <a [routerLink]="['/news/editNews']" class="btn" target="_self">View Highlighted Initiative </a>
+                <a [routerLink]="['/news/editNews']" class="btn" target="_self">View Global Initiatives </a>
               </div>
             </div>
             <!-- <i class="fa fa-list"></i>Create News Data
@@ -42,12 +42,12 @@
                     <div class="card-body p-4 border-rd">
                         <form [formGroup]="frmNews" autocomplete="off">
                           <div class="form-group">
-                           <label for="newsType">Highlighted Initiative category</label>
+                           <label for="newsType">Global Initiatives category</label>
                             <select formControlName="userTypeId">
                                 <option *ngFor="let userType of userTypeDetails" [value]="userType.id">{{userType.userName}}</option>
                             </select>
                             <div class="error" *ngIf="frmNews.get('userTypeId').errors && (frmNews.get('userTypeId').touched || frmNews.get('userTypeId').dirty)">
-                                <p>Highlighted Initiative category is required</p>
+                                <p>Global Initiatives category is required</p>
                               </div>
                             <!--  <ng-select 
                                      [items]="categoryList"
@@ -88,16 +88,16 @@
                                    </div>
                                 </ng-container>
                         <br>
-                            <label for="summary">Highlighted Initiative Shots</label>
+                            <label for="summary">Global Initiatives Shots</label>
                                 <textarea type="text" class="form-control" formControlName="summary" placeholder="Enter News Summary..." rows="4"></textarea>
                                 <div class=error *ngIf="frmNews.get('summary').errors && (frmNews.get('summary').touched || frmNews.get('summary').dirty)">
-                                    <p>Highlighted Initiative Summary is required</p>
+                                    <p>Global Initiatives Summary is required</p>
                                   </div>
                             <br>
-                            <label for="newsDesc">Highlighted Initiative Description</label>
+                            <label for="newsDesc">Global Initiatives Description</label>
                             <angular-editor formControlName="newsDesc" [config]="config"></angular-editor>
                             <div class=error *ngIf="frmNews.get('newsDesc').errors && (frmNews.get('newsDesc').touched || frmNews.get('newsDesc').dirty)">
-                                <p>Highlighted Initiative Description is required</p>
+                                <p>Global Initiatives Description is required</p>
                               </div>
                           </div>
                           <button *ngIf="!updateCheck" type="submit" class="btn btn-success pull-right" (click)="submitNews()">Submit</button>
