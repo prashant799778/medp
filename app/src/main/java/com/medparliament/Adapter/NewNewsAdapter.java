@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -74,7 +75,7 @@ public class NewNewsAdapter extends RecyclerView.Adapter<NewNewsAdapter.Notifica
             holder.youTubePlayerView.addYouTubePlayerListener(new YouTubePlayerListener() {
                 @Override
                 public void onReady(@NotNull YouTubePlayer youTubePlayer) {
-                 youTubePlayer.cueVideo(result.getVideoId(),0);
+                 youTubePlayer.cueVideo(result.getVideoId(),1);
                 }
 
                 @Override
@@ -95,6 +96,8 @@ public class NewNewsAdapter extends RecyclerView.Adapter<NewNewsAdapter.Notifica
                 @Override
                 public void onError(@NotNull YouTubePlayer youTubePlayer, @NotNull PlayerConstants.PlayerError playerError) {
 
+                    Toast toast=Toast.makeText(context,"Faild",Toast.LENGTH_LONG);
+                    toast.show();
                 }
 
                 @Override

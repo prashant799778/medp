@@ -126,6 +126,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                 Pix.start(Edit_Profile_Activity.this, Options.init().setRequestCode(100).setCount(1));
             }
         });
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -152,7 +153,12 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                 {
                     Api_Calling.multiPartCall1(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(),URLS.UpdateUser,setProfessional(),onResult,"Student",array1);
 
+                }else if(m.getUserTypeId().equalsIgnoreCase("13"))
+                {
+                    Api_Calling.multiPartCall1(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(),URLS.UpdateUser,setDecisionMaker(),onResult,"Student",array1);
+
                 }
+
             }
         });
 //        qualfication.setOnClickListener(new View.OnClickListener() {
@@ -235,6 +241,8 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         });
         checkUserType(m.getUserTypeId());
     }
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -268,7 +276,10 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         if(progressDialog!=null &&  progressDialog.isShowing())
         progressDialog.dismiss();
         if(jsonObject!=null)
+
         {
+            Comman.log("abcdef","cc"+jsonObject.toString());
+
             if(!isFinishing()) {
                 onBackPressed();
                 if(array1!=null && array1.size()>0)
@@ -294,7 +305,8 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                 break;
             case "9":
                 professional(userId);
-                break;
+            case "13":
+                decisionMaker(userId);
         }
     }
 
@@ -414,14 +426,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         address.setFocusableInTouchMode(true);
         address.setClickable(true);
 
-
-
-
-
-
         l_iterest.setText(getResources().getString(R.string.Interests));
-
-
         interest.setText(m.getInterest());
     }
     public void professional(String key)
@@ -464,20 +469,46 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         address.setFocusable(true);
         address.setFocusableInTouchMode(true);
         address.setClickable(true);
-
-
-
-
-
-
-
         l_iterest.setText(getResources().getString(R.string.Interests));
-
-
         interest.setText(m.getInterest());
 
 
     }
+
+    public void decisionMaker(String key)
+    {
+        Comman.log("DecisionMaker","Name : "+m.getUserName());
+        Comman.log("DecisionMaker","Mobile : "+m.getMobile2());
+        Comman.log("DecisionMaker","Email"+m.getUserEmail2());
+        Api_Calling.getStudentIntrestList(Edit_Profile_Activity.this, getWindow().getDecorView().getRootView(),URLS.INTEREST,interestJSon("2"));
+//        Api_Calling.getALLCATEGORY(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(),URLS.ALL_CATEGORY);
+        l4.setVisibility(View.GONE);
+        l3.setVisibility(View.GONE);
+        l6.setVisibility(View.GONE);
+        l7.setVisibility(View.GONE);
+        l5.setVisibility(View.VISIBLE);
+        l8.setVisibility(View.VISIBLE);
+        l9.setVisibility(View.VISIBLE);
+        l10.setVisibility(View.GONE);
+        lll.setVisibility(View.GONE);
+        l_name.setText(getResources().getString(R.string.Name));
+        name.setText(m.getUserName());
+        l_email.setText(getResources().getString(R.string.email));
+        email.setText(m.getUserEmail());
+        l_mobile.setText(getResources().getString(R.string.Mobile_No));
+        mobile.setText(m.getMobile2());
+        l_batch.setText(getResources().getString(R.string.Gender));
+        batch.setText(m.getGender());
+        batch.setFocusable(true);
+        batch.setFocusableInTouchMode(true);
+        batch.setClickable(true);
+        l_address.setText(getResources().getString(R.string.Country));
+        address.setText(m.getCountry());
+        address.setFocusable(true);
+        address.setFocusableInTouchMode(true);
+        address.setClickable(true);
+    }
+
     public JSONObject interestJSon(String id)
     {
         JSONObject jsonObject=new JSONObject();
@@ -722,4 +753,31 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         return jsonObject;
     }
 
+    public JSONObject setDecisionMaker()
+    {
+        JSONObject jsonObject=new JSONObject();
+        try {
+            if(doctorIdArray!=null && doctorIdArray.length()!=0){
+                jsonObject.put("userName",""+name.getText().toString())
+                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("email",""+email.getText().toString()).put("companyName",""+university_name.getText().toString())
+                        .put("companyAddress",""+university_address.getText().toString()). put("userTypeId","9").put("userId",""+m.getUserId())
+                        .put("interestId",doctorIdArray) .put("occupation", qualfication.getText().toString())
+                        .put("address",""+address.getText().toString()).put("designation",""+batch.getText().toString());
+            }
+            else {
+                         jsonObject.put("userName",""+name.getText().toString())
+                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("email",""+email.getText().toString()).put("companyName",""+university_name.getText().toString())
+                        .put("companyAddress",""+university_address.getText().toString()). put("userTypeId","9").put("userId",""+m.getUserId())
+                        .put("interestId","") .put("occupation", qualfication.getText().toString())
+                        .put("address",""+address.getText().toString()).put("designation",""+batch.getText().toString());
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Comman.log("SignIpJSon",""+jsonObject);
+        return jsonObject;
+    }
 }

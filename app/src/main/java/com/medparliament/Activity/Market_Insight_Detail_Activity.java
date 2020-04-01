@@ -5,7 +5,9 @@ package com.medparliament.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
@@ -17,6 +19,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -38,6 +46,7 @@ import com.medparliament.Utility.PrettyTimeClass;
 import com.medparliament.Widget.Open_Sans_Regular_Font;
 import com.medparliament.Widget.Segow_UI_Bold_Font;
 import com.medparliament.Widget.Segow_UI_EditText;
+import com.medparliament.Widget.Segow_UI_Semi_Font;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerListener;
@@ -69,6 +78,11 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
     RecyclerView recyclerView;
     RelativeLayout rvideo;
     YouTubePlayerView video;
+    Segow_UI_Semi_Font noti_counter;
+    LinearLayout circle;
+    ImageView share;
+    ImageView bell;
+    Handler ha;
     LinearLayoutManager manager;
     CommentListAdapter adapter;
     ArrayList<ListDataModel>arrayList;
@@ -77,7 +91,70 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market__insight__detail_);
+        m=MySharedPrefrence.instanceOf(Market_Insight_Detail_Activity.this);
+        noti_counter = findViewById(R.id.noti_count);
+        apiCall(URLS.Notification, myPostJson2());
+        noti_counter.setText(m.getCounterValue());
         Animatoo.animateSwipeLeft(Market_Insight_Detail_Activity.this);
+
+        bell = findViewById(R.id.bell);
+        if (Comman.Check_Login(Market_Insight_Detail_Activity.this))
+            bell.setVisibility(View.VISIBLE);
+
+
+        circle=findViewById(R.id.circle);
+        share=findViewById(R.id.share_tool);
+
+
+
+        bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(Market_Insight_Detail_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(Market_Insight_Detail_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+        circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(Market_Insight_Detail_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(Market_Insight_Detail_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "MedParliament App");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.text) + "https://play.google.com/store/apps/details?id=com.medparliament");
+                emailIntent.setType("text/plain");
+                startActivity(Intent.createChooser(emailIntent, "Share via"));
+            }
+        });
+
+
+
+
+
         title=findViewById(R.id.title);
         date=findViewById(R.id.date);
         msg=findViewById(R.id.msg);
@@ -94,7 +171,6 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
         editTextcmnt=findViewById(R.id.add_view);
         arrayList=new ArrayList<>();
         this.onResult=this;
-        m=MySharedPrefrence.instanceOf(Market_Insight_Detail_Activity.this);
         recyclerView=findViewById(R.id.recycle);
         manager=new LinearLayoutManager(Market_Insight_Detail_Activity.this);
         recyclerView.setLayoutManager(manager);
@@ -246,7 +322,7 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
                     if (!jsonObject.getString("result").equalsIgnoreCase("")) {
                         ArrayList<ListDataModel> rm = gson.fromJson(jsonObject.getString("result"), new TypeToken<ArrayList<ListDataModel>>() {
                         }.getType());
-                        arrayList.addAll(0,rm);
+                        arrayList.addAll(rm);
                         adapter.notifyDataSetChanged();
                     }
                 } catch (JSONException e) {
@@ -313,5 +389,49 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
                 e.printStackTrace();
             }
         }
+    }
+
+    private void apiCall(String URL,JSONObject jsonObject)
+    {
+        Comman.log("NotificationApi","Callling");
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Comman.log("NotificationApi","Response"+response);
+                try {
+                    if(response.getString("status").equalsIgnoreCase("true") && (!Comman.getValueFromJsonObject(response,"totalcount").equalsIgnoreCase("0")) )
+                    {
+                        m.setCounterValue(Comman.getValueFromJsonObject(response,"totalcount"));
+//                        noti_counter.setText(Comman.getValueFromJsonObject(response,"totalcount"));
+                        circle.setVisibility(View.VISIBLE);
+                    }else {
+                        circle.setVisibility(View.GONE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(Market_Insight_Detail_Activity.this);
+        requestQueue.add(jsonObjectRequest);
+
+    }
+    private JSONObject myPostJson2() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            if (Comman.Check_Login(Market_Insight_Detail_Activity.this)) {
+                jsonObject.put("userTypeId", m.getUserTypeId());
+                jsonObject.put("userId", m.getUserId());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
+        return jsonObject;
     }
 }

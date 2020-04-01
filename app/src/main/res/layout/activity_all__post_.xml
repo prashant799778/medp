@@ -16,6 +16,7 @@
         android:id="@+id/top"
         android:background="@color/colorPrimary"
         android:layout_width="match_parent"
+        android:paddingRight="20dp"
         android:layout_height="52dp">
         <ImageButton
             android:id="@+id/bck"
@@ -24,7 +25,9 @@
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
             android:background="@color/transparent"
-            android:src="@drawable/ic_back"></ImageButton>
+            android:src="@drawable/ic_back">
+
+        </ImageButton>
         <com.medparliament.Widget.Segow_UI_Semi_Font
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
@@ -47,10 +50,56 @@
             android:visibility="gone"
             android:textSize="14dp"
             android:textColor="@color/white"
-            android:text="@string/done"
-            >
-
+            android:text="@string/done">
         </com.medparliament.Widget.Segow_UI_Semi_Font>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/bell"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_alignParentRight="true"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_notifications_bell_button" />
+
+            <LinearLayout
+                android:id="@+id/circle"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/notification_view"
+                android:gravity="center"
+                android:padding="1dp"
+                android:visibility="gone">
+
+                <com.medparliament.Widget.Segow_UI_Semi_Font
+                    android:id="@+id/noti_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/white"
+                    android:textSize="8dp" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/share_tool"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="18dp"
+            android:layout_alignParentRight="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_share_1" />
     </RelativeLayout>
 
     <com.google.android.material.tabs.TabLayout

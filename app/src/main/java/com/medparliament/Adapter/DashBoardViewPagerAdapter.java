@@ -26,7 +26,7 @@ public   class DashBoardViewPagerAdapter extends FragmentPagerAdapter {
     public DashBoardViewPagerAdapter(FragmentManager fragmentManager, Context context,String id) {
         super(fragmentManager);
         this.id=Integer.parseInt(id);
-        title=new String[]{context.getResources().getString(R.string.Market_Insights),context.getResources().getString(R.string.News),context.getResources().getString(R.string.MedAchieversTv),context.getResources().getString(R.string.highlighted_initiative),context.getResources().getString(R.string.Event),context.getResources().getString(R.string.Up_Skill_Academy),context.getResources().getString(R.string.Gallery)};
+        title=new String[]{context.getResources().getString(R.string.Market_Insights),context.getResources().getString(R.string.News),context.getResources().getString(R.string.MedAchieversTv),context.getResources().getString(R.string.GlobalInitiatives),context.getResources().getString(R.string.Event),context.getResources().getString(R.string.Up_Skill_Academy),context.getResources().getString(R.string.HallGallery)};
 
     }
 

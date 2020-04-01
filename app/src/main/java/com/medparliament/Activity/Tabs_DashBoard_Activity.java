@@ -14,6 +14,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +27,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -38,6 +46,7 @@ import com.medparliament.Adapter.Event_Adapter;
 import com.medparliament.Adapter.GalleryAdapter;
 import com.medparliament.Adapter.ThreadAdapter;
 import com.medparliament.Internet.Models.DrawerModel;
+import com.medparliament.Internet.URLS;
 import com.medparliament.Internet.onResult;
 import com.medparliament.R;
 import com.medparliament.Utility.Comman;
@@ -46,6 +55,7 @@ import com.medparliament.Widget.CustomViewPageNew;
 import com.medparliament.Widget.Segow_UI_Bold_Font;
 import com.medparliament.Widget.Segow_UI_Semi_Font;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -60,6 +70,11 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
     int currentPage3=0;
     int currentPage4=0;
 
+    Segow_UI_Semi_Font noti_counter;
+    LinearLayout circle;
+    ImageView share2;
+    ImageView bell;
+    Handler ha;
 
     TabLayout tabLayout;
     DashBoardViewPagerAdapter pageadapter;
@@ -93,7 +108,7 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
     AnnoucementsAdapter annoucementsAdapter;
     Event_Adapter event_adapter;
     int counter=0;
-    ImageView bell,user_login;
+    ImageView user_login;
     LinearLayout video_layout,promising_layout;
     Dashboard_news_adapter_new viewpager_news_adapter;
     GalleryAdapter galleryAdapter1;
@@ -102,8 +117,84 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs__dash_board_);
+        m= MySharedPrefrence.instanceOf(Tabs_DashBoard_Activity.this);
+        noti_counter = findViewById(R.id.noti_count);
+        apiCall(URLS.Notification, myPostJson2());
+        noti_counter.setText(m.getCounterValue());
+
         Animatoo.animateSlideLeft(Tabs_DashBoard_Activity.this);
         Intent i=getIntent();
+        circle=findViewById(R.id.circle);
+
+        bell = findViewById(R.id.bell);
+        if (Comman.Check_Login(Tabs_DashBoard_Activity.this))
+            bell.setVisibility(View.VISIBLE);
+        circle=findViewById(R.id.circle);
+
+        share2=findViewById(R.id.share_tool);
+
+
+
+        bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(Tabs_DashBoard_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(Tabs_DashBoard_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+        circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(Tabs_DashBoard_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(Tabs_DashBoard_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+
+        share2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "MedParliament App");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.text) + "https://play.google.com/store/apps/details?id=com.medparliament");
+                emailIntent.setType("text/plain");
+                startActivity(Intent.createChooser(emailIntent, "Share via"));
+            }
+        });
+
+
+
+        ha=new Handler();
+        ha.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Comman.log("tdgfhvjgkfg","v bnm,,l;'lk;jhkhjgchfxgchgvjkbnl;;jhgfgdrsdytfuygiuhiljk");
+                if (Comman.Check_Login(Tabs_DashBoard_Activity.this)){
+                    apiCall(URLS.Notification, myPostJson2());
+                }
+                ha.postDelayed(this, 10000);
+            }
+        }, 10000);
+
+
+
         if(i!=null)
             id=i.getStringExtra("id");
         pageadapter = new DashBoardViewPagerAdapter(
@@ -123,7 +214,6 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
 
         nodata=findViewById(R.id.nodata);
 
-          m= MySharedPrefrence.instanceOf(Tabs_DashBoard_Activity.this);
         View stub = (View) findViewById(R.id.toolbar);
 
 //        toolbar=stub.findViewById(R.id.toolbar_actionbar);
@@ -133,14 +223,7 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
         cmnt.setVisibility(View.GONE);
         share=findViewById(R.id.share);
 
-        Tab_bell=findViewById(R.id.tab_bell_icon);
-        Tab_bell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Tabs_DashBoard_Activity.this,NotificationActivity.class));
-                Animatoo.animateSlideLeft(Tabs_DashBoard_Activity.this);
-            }
-        });
+
 //        profile=findViewById(R.id.profile);
 //        moreNews=findViewById(R.id.morenews);
 //        userName.setText(m.getUserName());
@@ -226,6 +309,51 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
             }
         });
     }
+
+    private void apiCall(String URL,JSONObject jsonObject)
+    {
+        Comman.log("NotificationApi","Callling");
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Comman.log("NotificationApi","Response"+response);
+                try {
+                    if(response.getString("status").equalsIgnoreCase("true") && (!Comman.getValueFromJsonObject(response,"totalcount").equalsIgnoreCase("0")) )
+                    {
+                     //   noti_counter.setText(Comman.getValueFromJsonObject(response,"totalcount"));
+                        circle.setVisibility(View.VISIBLE);
+                    }else {
+                        circle.setVisibility(View.GONE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(Tabs_DashBoard_Activity.this);
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
+    private JSONObject myPostJson2() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            if (Comman.Check_Login(Tabs_DashBoard_Activity.this)) {
+                jsonObject.put("userTypeId", m.getUserTypeId());
+                jsonObject.put("userId", m.getUserId());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
+        return jsonObject;
+    }
+
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {
 
@@ -381,5 +509,9 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
         Animatoo.animateSlideRight(Tabs_DashBoard_Activity.this);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+    }
 }

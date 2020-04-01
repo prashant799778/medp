@@ -22,11 +22,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class User_profile_Activity extends Base_Activity implements onResult {
     MySharedPrefrence m;
      onResult onResult;
-    LinearLayout l1,l2,l3,l4,l5,l6,l7,new_linearLayout,l3_new,l5_new;
+    LinearLayout l1,l2,l3,l4,l5,l6,l7,new_linearLayout,l3_new,l5_new,gender_lauout;
     ImageView profile_category_image,home1,new_image;
     ImageButton bck;
     Segow_UI_Semi_Font expertises ,userName,u_address,userEmail,i_name,u_name,universityAddress,mobile,qualification,batch,interest,new_location;
-    Segow_UI_Semi_Font l_expert,l_u_add, l_i_name,l_u_name,l_university_name,l_mobile,l_qualifiacation,l_batch_qualification,l_interest,l_new_location;
+    Segow_UI_Semi_Font l_expert,l_u_add, l_i_name,l_u_name,l_university_name,l_mobile,l_qualifiacation,l_batch_qualification,l_interest,l_new_location,dec_gender,dec_gender_value;
     ImageView edit;
     ProgressDialog progressDialog;
     CircleImageView profileImage;
@@ -47,7 +47,11 @@ public class User_profile_Activity extends Base_Activity implements onResult {
         progressDialog.show();
         userName=findViewById(R.id.user_name);
         userEmail=findViewById(R.id.user_email);
+        gender_lauout=findViewById(R.id.layout_gender);
+
         new_linearLayout=findViewById(R.id.new_l3);
+        dec_gender=findViewById(R.id.des_gender);
+        dec_gender_value=findViewById(R.id.des_gender_value);
         l5_new=findViewById(R.id.l5_new);
         l_new_location=findViewById(R.id.new_l_u_location);
         new_location=findViewById(R.id.new_location);
@@ -111,7 +115,7 @@ public class User_profile_Activity extends Base_Activity implements onResult {
     {
         JSONObject jsonObject=new JSONObject();
         try {
-            jsonObject.put("userTypeId",""+m.getUserTypeId()).put("userId",""+m.getUserId());
+            jsonObject.put("userTypeId",m.getUserTypeId()).put("userId",""+m.getUserId());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -132,10 +136,13 @@ public class User_profile_Activity extends Base_Activity implements onResult {
 
         if(progressDialog!=null &&  progressDialog.isShowing())
         progressDialog.dismiss();
+
         ArrayList <String>arrayList=new ArrayList<>();
         if(jsonObject!=null && status)
         {
+            Comman.log("MyProfile","wdqfeqsd"+jsonObject.toString());
             JSONObject jo=new JSONObject();
+            Comman.log("MyProfile","wdqfeqsd"+jsonObject.toString());
             try {
                 if(m.getUserTypeId().equalsIgnoreCase("9")){
 
@@ -161,19 +168,6 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                    u_address.setText(Comman.getValueFromJsonObject(jo,"address"));
                     l_interest.setText(getResources().getString(R.string.Interests));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //                    if(!isFinishing())
 //                        Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
 
@@ -195,7 +189,47 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     m.setQualication(Comman.getValueFromJsonObject(jo,"occupation"));
                     m.setInterest(arrayList.toString().replace("[","").replace("]",""));
                 }
-               else   if(m.getUserTypeId().equalsIgnoreCase("8")){
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                else if (m.getUserTypeId().equalsIgnoreCase("13")){
+                    Comman.log("MyPROFILEDATA",""+jo.toString());
+                    jo=jsonObject.getJSONObject("result").getJSONArray("userProfile").getJSONObject(0);
+                    new_linearLayout.setVisibility(View.GONE);
+                    l2.setVisibility(View.GONE);
+                    l1.setVisibility(View.GONE);
+                    l5.setVisibility(View.GONE);
+                    l6.setVisibility(View.GONE);
+                    l7.setVisibility(View.GONE);
+                    gender_lauout.setVisibility(View.VISIBLE);
+                    l3_new.setVisibility(View.GONE);
+                    userName.setText(Comman.getValueFromJsonObject(jo,"userName"));
+                    userEmail.setText(Comman.getValueFromJsonObject(jo,"email"));
+                    l_university_name.setText(getResources().getString(R.string.Country));
+                    dec_gender.setText(getResources().getString(R.string.Gender));
+                    dec_gender_value.setText(Comman.getValueFromJsonObject(jo,"gender"));
+                    universityAddress.setText(Comman.getValueFromJsonObject(jo,"countryName"));
+                    l_mobile.setText(getResources().getString(R.string.Mobile_Number));
+                    mobile.setText(Comman.getValueFromJsonObject(jo,"mobileNo"));
+                   if(!isFinishing())
+                       Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
+                    if(jo.getJSONArray("userInterest")!=null && jo.getJSONArray("userInterest").length()>0)
+                        for (int i=0;i<jo.getJSONArray("userInterest").length();i++)
+                        {
+                            arrayList.add(String.valueOf(jo.getJSONArray("userInterest").get(i)));
+                        }
+                    if(arrayList!=null && arrayList.size()>0)
+//                        interest.setText(arrayList.toString().replace("[","").replace("]",""));
+                    m.setUserName(Comman.getValueFromJsonObject(jo,"userName"));
+                    m.setMobile2(Comman.getValueFromJsonObject(jo,"mobileNo"));
+                    m.setUserEmail2(Comman.getValueFromJsonObject(jo,"email"));
+                    m.setCountry(Comman.getValueFromJsonObject(jo,"countryName"));
+                    m.setGender(Comman.getValueFromJsonObject(jo,"gender"));
+                }
+
+               //// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+               else if(m.getUserTypeId().equalsIgnoreCase("8")){
 
                     jo=jsonObject.getJSONObject("result").getJSONArray("userProfile").getJSONObject(0);
                     new_linearLayout.setVisibility(View.GONE);
@@ -221,20 +255,6 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     Comman.log("Experties",""+Comman.getValueFromJsonObject(jo,"areaOfExpertise"));
                     expertises.setText(Comman.getValueFromJsonObject(jo,"areaOfExpertise"));
                     l_interest.setText(getResources().getString(R.string.Interests));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //                    if(!isFinishing())
 //                        Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
 
@@ -256,6 +276,9 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     m.setQualication(Comman.getValueFromJsonObject(jo,"qualificationName"));
                     m.setInterest(arrayList.toString().replace("[","").replace("]",""));
                 }
+
+
+
                 else if(m.getUserTypeId().equalsIgnoreCase("7")){
                 jo=jsonObject.getJSONObject("result").getJSONArray("userProfile").getJSONObject(0);
                     new_linearLayout.setVisibility(View.GONE);
@@ -296,6 +319,8 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     m.setQualication(Comman.getValueFromJsonObject(jo,"qualificationName"));
                     m.setInterest(arrayList.toString().replace("[","").replace("]",""));
                 }
+
+
                 else if(m.getUserTypeId().equalsIgnoreCase("5")){
                          if(!isFinishing())
                     Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
@@ -324,6 +349,11 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     m.setCountry(Comman.getValueFromJsonObject(jo,"countryName"));
                     m.setDescription(Comman.getValueFromJsonObject(jo,"aboutProfile"));
                 }
+
+
+
+
+
                 else if(m.getUserTypeId().equalsIgnoreCase("6")){
                     jo=jsonObject.getJSONObject("result").getJSONArray("userProfile").getJSONObject(0);
                     if(!isFinishing())

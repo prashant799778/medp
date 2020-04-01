@@ -43,6 +43,14 @@ public class MySharedPrefrence {
 
     }
 
+    public String getCounterValue(){
+        return sharedPreferences.getString("totalcount", "");
+    }
+    public void setCounterValue(String count) {
+        prefEditor.putString("totalcount", count);
+        prefEditor.commit();
+    }
+
     public void setUserId(String id) {
         prefEditor.putString("id", id);
         prefEditor.commit();
@@ -57,6 +65,14 @@ public class MySharedPrefrence {
         prefEditor.commit();
     }
 
+    public String getGender(){
+        return sharedPreferences.getString("gender", "");
+
+    }
+    public void setGender(String gender) {
+        prefEditor.putString("gender", gender);
+        prefEditor.commit();
+    }
     public String getUserProfile() {
         return sharedPreferences.getString("profile", "");
     }
@@ -89,13 +105,20 @@ public class MySharedPrefrence {
         prefEditor.commit();
     }
 
+    public String getUserEmail2() {
+        return sharedPreferences.getString("email", "");
+    }
 
+    public void setUserEmail2(String email) {
+        prefEditor.putString("email", email);
+        prefEditor.commit();
+    }
     public String getCountry() {
-        return sharedPreferences.getString("country", "");
+        return sharedPreferences.getString("countryName", "");
     }
 
     public void setCountry(String country) {
-        prefEditor.putString("country", country);
+        prefEditor.putString("countryName", country);
         prefEditor.commit();
     }
 
@@ -137,6 +160,15 @@ public class MySharedPrefrence {
 
     public void setMobili(String mobile) {
         prefEditor.putString("mobile", mobile);
+        prefEditor.commit();
+    }
+
+    public String getMobile2() {
+        return sharedPreferences.getString("mobileNo", "");
+    }
+
+    public void setMobile2(String mobile) {
+        prefEditor.putString("mobileNo", mobile);
         prefEditor.commit();
     }
     public String getOrgatination() {
