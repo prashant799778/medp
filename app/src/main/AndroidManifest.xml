@@ -48,8 +48,10 @@
         <activity android:name=".Activity.All_News_Activity" />
         <activity android:name=".Activity.ChangePassword_Activity" />
         <activity android:name=".Activity.About_us_Activity" />
-        <activity android:name=".Activity.Edit_Profile_Activity" />
-        <activity android:name=".Activity.User_profile_Activity" />
+        <activity android:name=".Activity.Edit_Profile_Activity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Activity.User_profile_Activity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Activity.Post_Details_Activity" />
         <activity android:name=".Activity.My_Post_Activity" />
         <activity android:name=".Activity.Comment_Activity" />

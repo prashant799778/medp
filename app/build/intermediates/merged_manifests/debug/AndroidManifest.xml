@@ -46,7 +46,6 @@
         android:persistent="false"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity android:name="com.medparliament.Activity.NotificationActivity" />
         <activity android:name="com.medparliament.Activity.VideoDetailsActivity" />
@@ -70,8 +69,12 @@
         <activity android:name="com.medparliament.Activity.All_News_Activity" />
         <activity android:name="com.medparliament.Activity.ChangePassword_Activity" />
         <activity android:name="com.medparliament.Activity.About_us_Activity" />
-        <activity android:name="com.medparliament.Activity.Edit_Profile_Activity" />
-        <activity android:name="com.medparliament.Activity.User_profile_Activity" />
+        <activity
+            android:name="com.medparliament.Activity.Edit_Profile_Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.medparliament.Activity.User_profile_Activity"
+            android:screenOrientation="portrait" />
         <activity android:name="com.medparliament.Activity.Post_Details_Activity" />
         <activity android:name="com.medparliament.Activity.My_Post_Activity" />
         <activity android:name="com.medparliament.Activity.Comment_Activity" />

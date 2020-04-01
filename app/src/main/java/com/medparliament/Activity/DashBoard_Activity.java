@@ -335,6 +335,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
 
         profile = findViewById(R.id.profile);
         Comman.setRoundedImage(DashBoard_Activity.this, profile, m.getUserProfile());
+        Comman.log("ProfilePath","--DashBoard---"+m.getUserProfile());
         progressDialog = new ProgressDialog(DashBoard_Activity.this);
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(true);

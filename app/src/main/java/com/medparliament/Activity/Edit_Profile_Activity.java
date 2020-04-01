@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
@@ -55,6 +56,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
     String s1="";
     String s2="";
     MySharedPrefrence m;
+    ArrayList<String> genderList=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +69,10 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
 //        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 //        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         bck=findViewById(R.id.bckii);
+
+        genderList.add("Male");
+        genderList.add("Female");
+        genderList.add("Other");
         save=findViewById(R.id.save);
         l1=findViewById(R.id.l1);
         l2=findViewById(R.id.l2);
@@ -112,8 +118,6 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         l_iterest=findViewById(R.id.l_interest);
         interest=findViewById(R.id.interest);
         profile_image=findViewById(R.id.profile_image);
-        if(!isFinishing())
-            Comman.setRoundedImage(Edit_Profile_Activity.this,profile_image,m.getUserProfile());
         bck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -183,6 +187,19 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
 //                }
 //            }
 //        });
+
+
+        address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(m.getUserTypeId().equalsIgnoreCase("13"))
+                {
+                    showPopup(Api_Calling.CountrytList,"Select Country",address);
+                    spinnerDialog.showSpinerDialog();
+                }
+            }
+        });
+
         university_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -193,11 +210,10 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
 
                 }else if(m.getUserTypeId().equalsIgnoreCase("6"))
                 {
-//                    showPopup(Api_Calling.ProfileList,"Select Profile Category",university_name);
-//                    spinnerDialog.showSpinerDialog();
+                    showPopup(Api_Calling.ProfileList,"Select Profile Category",university_name);
+                    spinnerDialog.showSpinerDialog();
                 }else if(m.getUserTypeId().equalsIgnoreCase("5"))
                 {
-
                     showPopup(Api_Calling.CountrytList,"Select Country",university_name);
                     spinnerDialog.showSpinerDialog();
                 }
@@ -211,9 +227,10 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                 }else if(m.getUserTypeId().equalsIgnoreCase("6"))
                 {
 
-                }else if(m.getUserTypeId().equalsIgnoreCase("5"))
+                }else if(m.getUserTypeId().equalsIgnoreCase("13"))
                 {
-
+                    showPopup(genderList,"Select Gender",batch);
+                    spinnerDialog.showSpinerDialog();
                 }
             }
         });
@@ -249,7 +266,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         if (resultCode == RESULT_OK && requestCode == 100) {
             array1 = data.getStringArrayListExtra(Pix.IMAGE_RESULTS);
             if(!isFinishing()) {
-                Glide.with(Edit_Profile_Activity.this).load(array1.get(0).trim()).into(profile_image);
+                Comman.setRoundedImage(Edit_Profile_Activity.this,profile_image,array1.get(0).trim());
             }
         }
     }
@@ -270,20 +287,24 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         Animatoo.animateSwipeRight(Edit_Profile_Activity.this);
     }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Comman.log("ProfilePicPath","----"+m.getUserProfile());
+//        Glide.with(Edit_Profile_Activity.this).load(m.getUserProfile()).into(profile_image);
+        Comman.setRoundedImage(Edit_Profile_Activity.this,profile_image,m.getUserProfile());
+    }
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {
         if(progressDialog!=null &&  progressDialog.isShowing())
         progressDialog.dismiss();
-        if(jsonObject!=null)
-
+        if(jsonObject!=null && status)
         {
             Comman.log("abcdef","cc"+jsonObject.toString());
-
             if(!isFinishing()) {
-                onBackPressed();
                 if(array1!=null && array1.size()>0)
                 m.setUserProfile(array1.get(0));
+                onBackPressed();
             }
         }
     }
@@ -305,8 +326,10 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                 break;
             case "9":
                 professional(userId);
+                break;
             case "13":
                 decisionMaker(userId);
+                break;
         }
     }
 
@@ -385,6 +408,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         mobile.setText(m.getMobile());
         interest.setText(m.getInterest());
         newE.setText(m.getDasignation());
+        university_name.setFocusable(true);
     }
     public void  doctor(String key)
     {
@@ -477,6 +501,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
 
     public void decisionMaker(String key)
     {
+        Api_Calling.getALLCountry(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(),URLS.ALL_COUNTRY);
         Comman.log("DecisionMaker","Name : "+m.getUserName());
         Comman.log("DecisionMaker","Mobile : "+m.getMobile2());
         Comman.log("DecisionMaker","Email"+m.getUserEmail2());
@@ -499,13 +524,12 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         mobile.setText(m.getMobile2());
         l_batch.setText(getResources().getString(R.string.Gender));
         batch.setText(m.getGender());
+        setGender(batch,m.getGender());
         batch.setFocusable(true);
-        batch.setFocusableInTouchMode(true);
         batch.setClickable(true);
         l_address.setText(getResources().getString(R.string.Country));
         address.setText(m.getCountry());
         address.setFocusable(true);
-        address.setFocusableInTouchMode(true);
         address.setClickable(true);
     }
 
@@ -620,7 +644,6 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         });
         builder.show();
     }
-
     public JSONObject setStudentJson()
     {
         JSONObject jsonObject=new JSONObject();
@@ -737,7 +760,8 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                         .put("email",""+email.getText().toString()).put("companyName",""+university_name.getText().toString())
                         .put("companyAddress",""+university_address.getText().toString()). put("userTypeId","9").put("userId",""+m.getUserId())
                         .put("interestId",doctorIdArray) .put("occupation", qualfication.getText().toString())
-                        .put("address",""+address.getText().toString()).put("designation",""+batch.getText().toString());}else {
+                        .put("address",""+address.getText().toString()).put("designation",""+batch.getText().toString());
+            }else {
                 jsonObject.put("userName",""+name.getText().toString())
                         .put("mobileNo",""+mobile.getText().toString())
                         .put("email",""+email.getText().toString()).put("companyName",""+university_name.getText().toString())
@@ -757,27 +781,45 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
     {
         JSONObject jsonObject=new JSONObject();
         try {
-            if(doctorIdArray!=null && doctorIdArray.length()!=0){
+//            if(doctorIdArray!=null && doctorIdArray.length()!=0){
                 jsonObject.put("userName",""+name.getText().toString())
                         .put("mobileNo",""+mobile.getText().toString())
-                        .put("email",""+email.getText().toString()).put("companyName",""+university_name.getText().toString())
-                        .put("companyAddress",""+university_address.getText().toString()). put("userTypeId","9").put("userId",""+m.getUserId())
-                        .put("interestId",doctorIdArray) .put("occupation", qualfication.getText().toString())
+                        .put("email",""+email.getText().toString()).put("companyName","")
+                        .put("companyAddress",""). put("userTypeId","13").put("userId",""+m.getUserId())
+                        .put("gender",""+batch.getTag().toString()) .put("country", ""+Api_Calling.CountryHash.get(address.getText().toString()))
                         .put("address",""+address.getText().toString()).put("designation",""+batch.getText().toString());
-            }
-            else {
-                         jsonObject.put("userName",""+name.getText().toString())
-                        .put("mobileNo",""+mobile.getText().toString())
-                        .put("email",""+email.getText().toString()).put("companyName",""+university_name.getText().toString())
-                        .put("companyAddress",""+university_address.getText().toString()). put("userTypeId","9").put("userId",""+m.getUserId())
-                        .put("interestId","") .put("occupation", qualfication.getText().toString())
-                        .put("address",""+address.getText().toString()).put("designation",""+batch.getText().toString());
-
-            }
+//            }
+//            else {
+//                jsonObject.put("userName",""+name.getText().toString())
+//                        .put("mobileNo",""+mobile.getText().toString())
+//                        .put("email",""+email.getText().toString()).put("companyName",""+university_name.getText().toString())
+//                        .put("companyAddress",""+university_address.getText().toString()). put("userTypeId","9").put("userId",""+m.getUserId())
+//                        .put("interestId","") .put("occupation", qualfication.getText().toString())
+//                        .put("address",""+address.getText().toString()).put("designation",""+batch.getText().toString());
+//
+//            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Comman.log("SignIpJSon",""+jsonObject);
+        Comman.log("SignIpJSon777777777777",""+jsonObject);
         return jsonObject;
+    }
+
+    private void  setGender(Segow_UI_EditText textView, String value)
+    {
+        Comman.log("GenderValue","----"+value);
+        switch (value)
+        {
+            case "Male":
+                textView.setTag("0");
+                break;
+            case "Female":
+                textView.setTag("1");
+                break;
+            case "Other":
+                textView.setTag("2");
+                break;
+        }
+
     }
 }

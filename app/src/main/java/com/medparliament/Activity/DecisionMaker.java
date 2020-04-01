@@ -109,7 +109,7 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
         videoView = (YouTubePlayerView) findViewById(R.id.video);
         title = findViewById(R.id.videoTitle);
 
-        Api_Calling.getALLCountry(DecisionMaker.this,getWindow().getDecorView().getRootView(), URLS.ALL_COUNTRY);
+        Api_Calling.getALLCountry(DecisionMaker.this,getWindow().getDecorView().getRootView(),URLS.ALL_COUNTRY);
         Comman.setMandatory(name,DecisionMaker.this.getResources().getString(R.string.Name));
         Comman.setMandatory(designation,DecisionMaker.this.getResources().getString(R.string.Designation));
         Comman.setMandatory(organization,DecisionMaker.this.getResources().getString(R.string.Organisation));

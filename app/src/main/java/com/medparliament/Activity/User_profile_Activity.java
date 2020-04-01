@@ -7,6 +7,9 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.medparliament.Internet.Api_Calling;
 import com.medparliament.Internet.URLS;
@@ -165,12 +168,15 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     l_batch_qualification.setText(getResources().getString(R.string.Designation));
                     batch.setText(Comman.getValueFromJsonObject(jo,"designation"));
                     l_u_add.setText(getResources().getString(R.string.Address));
+                    Comman.log("AAAAAAAAAAAAAAAAA","---"+Comman.getValueFromJsonObject(jo,"address"));
+                    u_address.setVisibility(View.VISIBLE);
                    u_address.setText(Comman.getValueFromJsonObject(jo,"address"));
                     l_interest.setText(getResources().getString(R.string.Interests));
 
-//                    if(!isFinishing())
-//                        Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
-
+                    if(!isFinishing())
+                        Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
+                    m.setUserProfile(Comman.getValueFromJsonObject(jo,"profilePic"));
+                    Comman.log("ProfilePicPath__9","----"+Comman.getValueFromJsonObject(jo,"profilePic"));
                     if(jo.getJSONArray("userInterest")!=null && jo.getJSONArray("userInterest").length()>0)
                         for (int i=0;i<jo.getJSONArray("userInterest").length();i++)
                         {
@@ -206,36 +212,32 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     userEmail.setText(Comman.getValueFromJsonObject(jo,"email"));
                     l_university_name.setText(getResources().getString(R.string.Country));
                     dec_gender.setText(getResources().getString(R.string.Gender));
-                    dec_gender_value.setText(Comman.getValueFromJsonObject(jo,"gender"));
+                    setGender(dec_gender_value,Comman.getValueFromJsonObject(jo,"gender"));
                     universityAddress.setText(Comman.getValueFromJsonObject(jo,"countryName"));
                     l_mobile.setText(getResources().getString(R.string.Mobile_Number));
                     mobile.setText(Comman.getValueFromJsonObject(jo,"mobileNo"));
                    if(!isFinishing())
                        Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
-                    if(jo.getJSONArray("userInterest")!=null && jo.getJSONArray("userInterest").length()>0)
-                        for (int i=0;i<jo.getJSONArray("userInterest").length();i++)
-                        {
-                            arrayList.add(String.valueOf(jo.getJSONArray("userInterest").get(i)));
-                        }
-                    if(arrayList!=null && arrayList.size()>0)
+                    m.setUserProfile(Comman.getValueFromJsonObject(jo,"profilePic"));
+                    Comman.log("ProfilePicPath__13","----"+Comman.getValueFromJsonObject(jo,"profilePic"));
+//                    if(jo.getJSONArray("userInterest")!=null && jo.getJSONArray("userInterest").length()>0)
+//                        for (int i=0;i<jo.getJSONArray("userInterest").length();i++)
+//                        {
+//                            arrayList.add(String.valueOf(jo.getJSONArray("userInterest").get(i)));
+//                        }
+//                    if(arrayList!=null && arrayList.size()>0)
 //                        interest.setText(arrayList.toString().replace("[","").replace("]",""));
                     m.setUserName(Comman.getValueFromJsonObject(jo,"userName"));
                     m.setMobile2(Comman.getValueFromJsonObject(jo,"mobileNo"));
                     m.setUserEmail2(Comman.getValueFromJsonObject(jo,"email"));
                     m.setCountry(Comman.getValueFromJsonObject(jo,"countryName"));
-                    m.setGender(Comman.getValueFromJsonObject(jo,"gender"));
                 }
-
                //// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
                else if(m.getUserTypeId().equalsIgnoreCase("8")){
-
                     jo=jsonObject.getJSONObject("result").getJSONArray("userProfile").getJSONObject(0);
                     new_linearLayout.setVisibility(View.GONE);
                     l2.setVisibility(View.GONE);
                     l5_new.setVisibility(View.VISIBLE);
-
                     userName.setText(Comman.getValueFromJsonObject(jo,"userName"));
                     userEmail.setText(Comman.getValueFromJsonObject(jo,"email"));
                     l_i_name.setText(getResources().getString(R.string.institute));
@@ -255,8 +257,10 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     Comman.log("Experties",""+Comman.getValueFromJsonObject(jo,"areaOfExpertise"));
                     expertises.setText(Comman.getValueFromJsonObject(jo,"areaOfExpertise"));
                     l_interest.setText(getResources().getString(R.string.Interests));
-//                    if(!isFinishing())
-//                        Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
+                    if(!isFinishing())
+                        Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
+                    m.setUserProfile(Comman.getValueFromJsonObject(jo,"profilePic"));
+                    Comman.log("ProfilePicPath__8","----"+Comman.getValueFromJsonObject(jo,"profilePic"));
 
                     if(jo.getJSONArray("userInterest")!=null && jo.getJSONArray("userInterest").length()>0)
                         for (int i=0;i<jo.getJSONArray("userInterest").length();i++)
@@ -275,6 +279,7 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     m.setDasignation(Comman.getValueFromJsonObject(jo,"designation"));
                     m.setQualication(Comman.getValueFromJsonObject(jo,"qualificationName"));
                     m.setInterest(arrayList.toString().replace("[","").replace("]",""));
+//                    m.setUserProfile(Comman.getValueFromJsonObject(jo,"profilePic"));
                 }
 
 
@@ -299,6 +304,8 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     mobile.setText(Comman.getValueFromJsonObject(jo,"mobileNo"));
                     if(!isFinishing())
                         Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
+                    m.setUserProfile(Comman.getValueFromJsonObject(jo,"profilePic"));
+                    Comman.log("ProfilePicPath__7","----"+m.getUserProfile());
                     batch.setText(Comman.getValueFromJsonObject(jo,"batchOfQualification"));
                     if(jo.getJSONArray("userInterest")!=null && jo.getJSONArray("userInterest").length()>0)
                         for (int i=0;i<jo.getJSONArray("userInterest").length();i++)
@@ -348,10 +355,12 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     m.setMobili(Comman.getValueFromJsonObject(jo,"mobileNo"));
                     m.setCountry(Comman.getValueFromJsonObject(jo,"countryName"));
                     m.setDescription(Comman.getValueFromJsonObject(jo,"aboutProfile"));
+                    m.setUserProfile(Comman.getValueFromJsonObject(jo,"profilePic"));
+                    if(!isFinishing())
+                        Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
+                    Comman.log("ProfilePicPath__5","----"+Comman.getValueFromJsonObject(jo,"profilePic"));
+
                 }
-
-
-
 
 
                 else if(m.getUserTypeId().equalsIgnoreCase("6")){
@@ -390,10 +399,15 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     m.setDescription(Comman.getValueFromJsonObject(jo,"areaOfActivity"));
                     m.setProfileCategory(Comman.getValueFromJsonObject(jo,"profileCategory"));
                     m.setCompanyName(Comman.getValueFromJsonObject(jo,"companyName"));
+                    if(!isFinishing())
+                        Comman.setRoundedImage(User_profile_Activity.this,profileImage,Comman.getValueFromJsonObject(jo,"profilePic"));
+                    m.setUserProfile(Comman.getValueFromJsonObject(jo,"profilePic"));
+                    Comman.log("ProfilePicPath__6","----"+m.getUserProfile());
                     m.setInterest(arrayList.toString().replace("[","").replace("]",""));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
+                Comman.log("EXCEPTION",""+e.getMessage());
             }
         }
     }
@@ -407,5 +421,25 @@ public class User_profile_Activity extends Base_Activity implements onResult {
         }
         Comman.log("Interst json",""+jsonObject);
         return jsonObject;
+    }
+    public void  setGender(TextView textView, String value)
+    {
+        Comman.log("GenderValue","----"+value);
+        switch (value)
+        {
+            case "0":
+                textView.setText("Male");
+                m.setGender("Male");
+                break;
+            case "1":
+                textView.setText("Female");
+                m.setGender("Female");
+                break;
+            case "2":
+                textView.setText("Other");
+                m.setGender("Other");
+                break;
+        }
+
     }
 }

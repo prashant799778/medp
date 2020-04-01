@@ -113,6 +113,7 @@ public class Login_Activity extends Base_Activity implements View.OnClickListene
                     m.setUserId(Comman.getValueFromJsonObject(jo,"userId"));
                     m.setUserTypeId(Comman.getValueFromJsonObject(jo,"userTypeId"));
                     m.setUserProfile(Comman.getValueFromJsonObject(jo,"profilePic"));
+                    Comman.log("ProfilePicPath-","Login---"+Comman.getValueFromJsonObject(jo,"profilePic"));
                     Intent i = new Intent(Login_Activity.this, DashBoard_Activity.class);
                     i.putExtra("username", "" + Comman.getValueFromJsonObject(jo, "userName"));
                     startActivity(i);
