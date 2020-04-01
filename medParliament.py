@@ -2225,20 +2225,30 @@ def UpdateUser1():
                 WhereCondition = " and userId = '" + str(UserId) + "'"
                 column="qualificationId ='" + str(qualification) + "', designation ='" + str(designation) + "',areaOfExpertise='" + str(areaOfExpertise) + "',hospital ='" + str(hospital) + "',hospitalAddress='" + str(hospitalAddress) + "'"
                 output11=databasefile.UpdateQuery("doctorMaster",column,WhereCondition)
-                for i in interestId:
-                    column="userId,interestId,userTypeId"
-                    values=" '" + str(UserId) + "','" + str(i) + "','" + str('8') + "'"
-                    output9=databasefile.InsertQuery("userInterestMapping",column,values)
+                
+                if interestId!="":
+                    WhereCondition1 = " and userId = '" + str(UserId) + "' and userTypeId='8'"
+                    output8=databasefile.DeleteQuery("userInterestMapping",WhereCondition1)
 
+                    for i in interestId:
+                        column="userId,interestId,userTypeId"
+                        values=" '" + str(UserId) + "','" + str(i) + "','" + str('8') + "'"
+                        
+                        output9=databasefile.InsertQuery("userInterestMapping",column,values)
             if (UserTypeId == 9):
                 WhereCondition = " and userId = '" + str(UserId) + "'"
                 column=" designation='" + str(designation) + "',occupation='" + str(occupation) + "',companyName='" + str(CompanyName) + "',companyAddress= '" + str(companyAddress) + "',address='" + str(address) + "'"
                 output11=databasefile.UpdateQuery("professionalMaster",column,WhereCondition)
-                for i in interestId:
-                    column="userId,interestId,userTypeId"
-                    values=" '" + str(UserId) + "','" + str(i) + "','" + str('9') + "'"
-                    output9=databasefile.InsertQuery("userInterestMapping",column,values)
+               
+                if interestId!="":
+                    WhereCondition1 = " and userId = '" + str(UserId) + "' and userTypeId='9'"
+                    output8=databasefile.DeleteQuery("userInterestMapping",WhereCondition1)
 
+                    for i in interestId:
+                        column="userId,interestId,userTypeId"
+                        values=" '" + str(UserId) + "','" + str(i) + "','" + str('9') + "'"
+                        
+                        output9=databasefile.InsertQuery("userInterestMapping",column,values)
 
             if data != "0":
                 column = 'userId,userName,userTypeId'
