@@ -228,6 +228,50 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:id="@+id/layout_gender"
+            android:layout_height="wrap_content">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="2dp"
+                app:cardCornerRadius="50dp"
+                app:cardBackgroundColor="@color/textcolor"
+                app:cardElevation="2dp">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_unisex"
+                    android:id="@+id/desi_gender"
+                    android:layout_height="50dp">
+                </ImageView>
+            </com.google.android.material.card.MaterialCardView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <com.medparliament.Widget.Segow_UI_Semi_Font
+                    android:layout_width="match_parent"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/hintColor"
+                    android:id="@+id/des_gender"
+                    android:layout_height="wrap_content">
+                </com.medparliament.Widget.Segow_UI_Semi_Font>
+                <com.medparliament.Widget.Segow_UI_Semi_Font
+                    android:layout_width="match_parent"
+                    android:paddingLeft="20dp"
+                    android:textSize="16dp"
+                    android:textColor="@color/c1c1"
+                    android:id="@+id/des_gender_value"
+                    android:layout_height="wrap_content">
+                </com.medparliament.Widget.Segow_UI_Semi_Font>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
             android:id="@+id/new_l3"
             android:visibility="gone"
             android:layout_height="wrap_content">
@@ -330,6 +374,14 @@
                     android:padding="10dp"
                     android:id="@+id/qualifiaction"
                     android:src="@drawable/ic_qualification"
+                    android:layout_height="50dp">
+                </ImageView>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:padding="10dp"
+                    android:visibility="gone"
+                    android:id="@+id/gender"
+                    android:src="@drawable/ic_unisex"
                     android:layout_height="50dp">
                 </ImageView>
             </com.google.android.material.card.MaterialCardView>

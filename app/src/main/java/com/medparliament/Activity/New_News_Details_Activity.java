@@ -4,13 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.medparliament.Internet.NewModel.Result;
+import com.medparliament.Internet.URLS;
 import com.medparliament.R;
 import com.medparliament.Utility.Comman;
 import com.medparliament.Utility.MySharedPrefrence;
@@ -23,6 +33,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.You
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class New_News_Details_Activity extends AppCompatActivity {
     MySharedPrefrence m;
@@ -30,14 +42,82 @@ public class New_News_Details_Activity extends AppCompatActivity {
     ImageButton bck;
     Segow_UI_Bold_Font title;
     ImageView img;
+    Segow_UI_Semi_Font noti_counter;
+    LinearLayout circle;
+    ImageView share;
+    ImageView bell;
+    Handler ha;
     YouTubePlayerView video;
     Result result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new__news__details_);
+        noti_counter = findViewById(R.id.noti_count);
+        m = MySharedPrefrence.instanceOf(New_News_Details_Activity.this);
+        apiCall(URLS.Notification, myPostJson2());
+        noti_counter.setText(m.getCounterValue());
         Animatoo.animateSwipeLeft(New_News_Details_Activity.this);
         Intent i=getIntent();
+        bell = findViewById(R.id.bell);
+        if (Comman.Check_Login(New_News_Details_Activity.this))
+            bell.setVisibility(View.VISIBLE);
+
+
+        circle=findViewById(R.id.circle);
+        share=findViewById(R.id.share_tool);
+
+
+
+        bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(New_News_Details_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(New_News_Details_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+        circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(New_News_Details_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(New_News_Details_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "MedParliament App");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.text) + "https://play.google.com/store/apps/details?id=com.medparliament");
+                emailIntent.setType("text/plain");
+                startActivity(Intent.createChooser(emailIntent, "Share via"));
+            }
+        });
+
+
+
+        ha=new Handler();
+
+
         title = findViewById(R.id.title);
         date = findViewById(R.id.date);
         loc = findViewById(R.id.loc);
@@ -121,12 +201,56 @@ public class New_News_Details_Activity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        m = MySharedPrefrence.instanceOf(New_News_Details_Activity.this);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         Animatoo.animateSwipeRight(New_News_Details_Activity.this);
+    }
+
+
+    private void apiCall(String URL, JSONObject jsonObject)
+    {
+        Comman.log("NotificationApi","Callling");
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Comman.log("NotificationApi","Response"+response);
+                try {
+                    if(response.getString("status").equalsIgnoreCase("true") && (!Comman.getValueFromJsonObject(response,"totalcount").equalsIgnoreCase("0")) )
+                    {
+                        m.setCounterValue(Comman.getValueFromJsonObject(response,"totalcount"));
+//                        noti_counter.setText(Comman.getValueFromJsonObject(response,"totalcount"));
+                        circle.setVisibility(View.VISIBLE);
+                    }else {
+                        circle.setVisibility(View.GONE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(New_News_Details_Activity.this);
+        requestQueue.add(jsonObjectRequest);
+
+    }
+    private JSONObject myPostJson2() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            if (Comman.Check_Login(New_News_Details_Activity.this)) {
+                jsonObject.put("userTypeId", m.getUserTypeId());
+                jsonObject.put("userId", m.getUserId());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
+        return jsonObject;
     }
 }

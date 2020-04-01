@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -18,6 +19,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -58,6 +65,11 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
     Segow_UI_Semi_Font date, created, msg,loc,header;
     ImageButton bck;
     Segow_UI_Bold_Font title;
+    Segow_UI_Semi_Font noti_counter;
+    LinearLayout circle;
+    ImageView share;
+    ImageView bell;
+    Handler ha;
     Segow_UI_Bold_Font counter;
     ProgressDialog progressDialog;
     NewsModelList pm;
@@ -88,11 +100,73 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_details_);
+        m = MySharedPrefrence.instanceOf(NewsDetails_Activity.this);
+        noti_counter = findViewById(R.id.noti_count);
+        apiCall(URLS.Notification, myPostJson2());
+        noti_counter.setText(m.getCounterValue());
+
         Animatoo.animateSwipeLeft(NewsDetails_Activity.this);
 //        Window window = getWindow();
 //        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 //        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         this.onResult = this;
+        bell = findViewById(R.id.bell);
+        if (Comman.Check_Login(NewsDetails_Activity.this))
+            bell.setVisibility(View.VISIBLE);
+
+
+        circle=findViewById(R.id.circle);
+        share=findViewById(R.id.share_tool);
+
+
+
+        bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(NewsDetails_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(NewsDetails_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+        circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(NewsDetails_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(NewsDetails_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "MedParliament App");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.text) + "https://play.google.com/store/apps/details?id=com.medparliament");
+                emailIntent.setType("text/plain");
+                startActivity(Intent.createChooser(emailIntent, "Share via"));
+            }
+        });
+
+
+
+
         ab = findViewById(R.id.interest);
         if (!Comman.Check_Login(getApplicationContext())) {
 
@@ -137,7 +211,6 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
                 onBackPressed();
             }
         });
-        m = MySharedPrefrence.instanceOf(NewsDetails_Activity.this);
          i = getIntent();
         if (i != null) {
             pm = (NewsModelList) i.getSerializableExtra("news");
@@ -215,7 +288,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
                 if (!jsonObject.getString("result").equalsIgnoreCase("")) {
                     ArrayList<ListDataModel> rm = gson.fromJson(jsonObject.getString("result"), new TypeToken<ArrayList<ListDataModel>>() {
                     }.getType());
-                    arrayList.addAll(0,rm);
+                    arrayList.addAll(rm);
                     adapter.notifyDataSetChanged();
                 }
             } catch (JSONException e) {
@@ -500,6 +573,50 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
         }
         Comman.log("likejson",""+jsonObject);
 
+        return jsonObject;
+    }
+
+    private void apiCall(String URL,JSONObject jsonObject)
+    {
+        Comman.log("NotificationApi","Callling");
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Comman.log("NotificationApi","Response"+response);
+                try {
+                    if(response.getString("status").equalsIgnoreCase("true") && (!Comman.getValueFromJsonObject(response,"totalcount").equalsIgnoreCase("0")) )
+                    {
+//                        noti_counter.setText(Comman.getValueFromJsonObject(response,"totalcount"));
+                        m.setCounterValue(Comman.getValueFromJsonObject(response,"totalcount"));
+                        circle.setVisibility(View.VISIBLE);
+                    }else {
+                        circle.setVisibility(View.GONE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(NewsDetails_Activity.this);
+        requestQueue.add(jsonObjectRequest);
+
+    }
+    private JSONObject myPostJson2() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            if (Comman.Check_Login(NewsDetails_Activity.this)) {
+                jsonObject.put("userTypeId", m.getUserTypeId());
+                jsonObject.put("userId", m.getUserId());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
         return jsonObject;
     }
 }

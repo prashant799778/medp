@@ -805,6 +805,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:id="@+id/viewpager_partner"
+                    android:visibility="gone"
                     android:layout_height="wrap_content">
                 </androidx.recyclerview.widget.RecyclerView>
                 <com.medparliament.Widget.CustomViewPager
@@ -828,7 +829,7 @@
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:visibility="visible"
+            android:visibility="gone"
             style="@style/Widget.MaterialComponents.FloatingActionButton"
             android:scaleType="centerCrop"
             android:layout_marginRight="30dp"
@@ -836,6 +837,7 @@
             app:rippleColor="@color/colorAccent"
             android:layout_marginBottom="50dp"
             android:id="@+id/cmnt"
+            app:maxImageSize="22dp"
             android:src="@drawable/new_post"
             app:tint="@null"
             android:layout_height="wrap_content">

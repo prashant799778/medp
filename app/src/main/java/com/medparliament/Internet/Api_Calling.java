@@ -49,6 +49,8 @@ public class Api_Calling {
 
     public static ArrayList<String>UniversityList=new ArrayList<>();
     public static HashMap<String ,String>UniversityHashMap=new HashMap<>();
+
+
     public static void getMethodCall(final Context context, String URL, final View view, final onResult onResult, final String name)
     {
         if(!Comman.isConnectedToInternet(context))
@@ -739,4 +741,5 @@ public class Api_Calling {
             requestQueue.add(jsonObjectRequest);
         }
     }
+
 }

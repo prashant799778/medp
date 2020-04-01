@@ -287,6 +287,7 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
         JSONObject jsonObject=new JSONObject();
         try {
             String id="";
+            int userid=13;
             if((gender!=null && gender.getTag()!=null)){
                 id=gender.getTag().toString();}else {
                 id="";

@@ -83,7 +83,7 @@ public class MedAchieversAdapter extends RecyclerView.Adapter<MedAchieversAdapte
                 @Override
                 public void onReady(@NotNull YouTubePlayer youTubePlayer) {
                     if (result.getVideoId() != null)
-                        youTubePlayer.cueVideo(result.getVideoId(), 0);
+                        youTubePlayer.cueVideo(result.getVideoId(), 1);
 
                 }
 

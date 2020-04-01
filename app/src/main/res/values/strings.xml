@@ -159,13 +159,15 @@ your password</string>
     <string name="OTP">Enter OTP</string>
     <string name="DecisionMaker">As Decision Maker</string>
     <string name="DM">Decision Maker</string>
+    <string name="HallGallery"> Hall Of Moment </string>
     <string name="DontGet">Didn\'t get OTP ?</string>
     <string name="Resend">Resend OTP</string>
+    <string name="GlobalInitiatives">Global Initiatives</string>
     <string name="ResetPassword">Reset Password</string>
     <string name="done3">Password Changed Successfully</string>
     <string name="done2">Go to Login</string>
     <string name="Promising_Initiative">Promising Initiative </string>
-
+    <string name="Gender">Gender</string>
 
     <string name="newPassword">New Password</string>
     <string name="Conform">Conform Password</string>
@@ -183,6 +185,5 @@ your password</string>
     <string name="post1">Post</string>
     <string name="Add">Add Your Views...</string>
     <string name="Notifications">Notifications</string>
-
 
 </resources>

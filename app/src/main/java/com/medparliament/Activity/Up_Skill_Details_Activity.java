@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.android.volley.Request;
@@ -61,6 +63,11 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
     ProgressDialog progressDialog;
     MySharedPrefrence m;
     onResult onResult;
+    Segow_UI_Semi_Font noti_counter;
+    LinearLayout circle;
+    ImageView share;
+    ImageView bell;
+    Handler ha;
     ImageView image;
     up_skill_model skill_model;
     String id="";
@@ -72,9 +79,70 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_up__skill__details_);
-        Animatoo.animateSwipeLeft(Up_Skill_Details_Activity.this);
-        msg=findViewById(R.id.msg);
+        noti_counter = findViewById(R.id.noti_count);
         m=MySharedPrefrence.instanceOf(Up_Skill_Details_Activity.this);
+        apiCall(URLS.Notification, myPostJson2());
+        noti_counter.setText(m.getCounterValue());
+
+        Animatoo.animateSwipeLeft(Up_Skill_Details_Activity.this);
+        bell = findViewById(R.id.bell);
+        if (Comman.Check_Login(Up_Skill_Details_Activity.this))
+            bell.setVisibility(View.VISIBLE);
+
+
+        circle=findViewById(R.id.circle);
+        share=findViewById(R.id.share_tool);
+
+
+
+        bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(Up_Skill_Details_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(Up_Skill_Details_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+        circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(Up_Skill_Details_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(Up_Skill_Details_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "MedParliament App");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.text) + "https://play.google.com/store/apps/details?id=com.medparliament");
+                emailIntent.setType("text/plain");
+                startActivity(Intent.createChooser(emailIntent, "Share via"));
+            }
+        });
+
+
+
+
+        msg=findViewById(R.id.msg);
         bck=findViewById(R.id.bck);
         enroll=findViewById(R.id.enroll);
         enroll1=findViewById(R.id.enroll_1);
@@ -434,6 +502,49 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
             }
         });
 
+    }
+
+    private void apiCall(String URL,JSONObject jsonObject)
+    {
+        Comman.log("NotificationApi","Callling");
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Comman.log("NotificationApi","Response"+response);
+                try {
+                    if(response.getString("status").equalsIgnoreCase("true") && (!Comman.getValueFromJsonObject(response,"totalcount").equalsIgnoreCase("0")) )
+                    {
+                        noti_counter.setText(Comman.getValueFromJsonObject(response,"totalcount"));
+                        circle.setVisibility(View.VISIBLE);
+                    }else {
+                        circle.setVisibility(View.GONE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(Up_Skill_Details_Activity.this);
+        requestQueue.add(jsonObjectRequest);
+
+    }
+    private JSONObject myPostJson2() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            if (Comman.Check_Login(Up_Skill_Details_Activity.this)) {
+                jsonObject.put("userTypeId", m.getUserTypeId());
+                jsonObject.put("userId", m.getUserId());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
+        return jsonObject;
     }
 
 }

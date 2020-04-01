@@ -202,17 +202,14 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
         setContentView(R.layout.activity_dash_board_);
         noti_counter = findViewById(R.id.noti_count);
         m = MySharedPrefrence.instanceOf(DashBoard_Activity.this);
-
+        noti_counter.setText(m.getCounterValue());
+        apiCall(URLS.Notification, myPostJson2());
         circle=findViewById(R.id.circle);
-
-        this.onNotificationResult = this;
-        adapter = new Post_Adapter(DashBoard_Activity.this, MarrayList, m.getUserName(), 1);
-
-         ha=new Handler();
+        ha=new Handler();
         ha.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Comman.log("tdgfhvjgkfg","v bnm,,l;'lk;jhkhjgchfxgchgvjkbnl;;jhgfgdrsdytfuygiuhiljk");
+              //  Comman.log("tdgfhvjgkfg","v bnm,,l;'lk;jhkhjgchfxgchgvjkbnl;;jhgfgdrsdytfuygiuhiljk");
                 if (Comman.Check_Login(DashBoard_Activity.this)){
                     apiCall(URLS.Notification, myPostJson2());
                 }
@@ -220,8 +217,9 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
             }
         }, 10000);
 
-
-        Comman.log("OnStartMethod", "onCreare");
+        this.onNotificationResult = this;
+        adapter = new Post_Adapter(DashBoard_Activity.this, MarrayList, m.getUserName(), 1);
+     //   Comman.log("OnStartMethod", "onCreare");
         video_layout = findViewById(R.id.video_layout);
         View stub = (View) findViewById(R.id.toolbar);
         promising_layout = findViewById(R.id.promissingInitiative);
@@ -236,7 +234,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
         arrow = findViewById(R.id.arrow);
         if (Comman.Check_Login(DashBoard_Activity.this)) {
             bell.setVisibility(View.VISIBLE);
-            cmnt.setVisibility(View.VISIBLE);
+//            cmnt.setVisibility(View.VISIBLE);
             circle.setVisibility(View.VISIBLE);
             logout.setVisibility(View.VISIBLE);
 //            setting.setVisibility(View.VISIBLE);
@@ -307,7 +305,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+             //   Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(DashBoard_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(DashBoard_Activity.this, NotificationActivity.class));
@@ -690,7 +688,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
                     if (newslist != null) {
                         newslist.clear();
                         newslist.add(dash_news_list.get(0));
-                        Comman.log("News", "News_Inside__size" + newslist.size());
+                 //       Comman.log("News", "News_Inside__size" + newslist.size());
                         final Handler handler = new Handler();
                         final Runnable Update = new Runnable() {
 
@@ -721,7 +719,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
                         marketlist.clear();
                         marketlist.add(dash_news_list.get(0));
                         viewpager_market_adapter = new Dashboard_market_adapter_new(DashBoard_Activity.this, marketlist, true);
-                        Comman.log("EVENTEVNET", "marketingInsights_Inside");
+               //         Comman.log("EVENTEVNET", "marketingInsights_Inside");
                         viewPager_market.setAdapter(viewpager_market_adapter);
                         viewpager_market_adapter.notifyDataSetChanged();
                         market.setVisibility(View.VISIBLE);
@@ -746,7 +744,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
                     }.getType());
                     if (councillist != null) {
                         councillist.clear();
-                        Comman.log("EVENTEVNET", "upSkillsOpportunity_Inside");
+                //        Comman.log("EVENTEVNET", "upSkillsOpportunity_Inside");
                         councillist.add(dash_event_list.get(0));
                         viewpager_council_adapter.notifyDataSetChanged();
                         council.setVisibility(View.VISIBLE);
@@ -759,7 +757,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
                         gallerylsit.clear();
                         gallerylsit.add(dash_gallery_list.get(0));
                         gallery.setVisibility(View.VISIBLE);
-                        Comman.log("EVENTEVNET", "gallery_Inside");
+                 //       Comman.log("EVENTEVNET", "gallery_Inside");
                     }
                 }
                 if ((jsonObject.getJSONArray("ourPartners").length() > 0)) {
@@ -776,14 +774,14 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
                             public void run() {
                                 if (count == partnerAdapter.getItemCount()) {
                                     count = 0;
-                                    Comman.log("Adapter", "" + "FFFFFFFFFFFFFF");
+                     //               Comman.log("Adapter", "" + "FFFFFFFFFFFFFF");
                                     partnarlist.addAll(partnarlist);
                                     partnerAdapter.notifyDataSetChanged();
                                 } else {
-                                    Comman.log("Adapter", "" + "ElLLLLLLLLLLLLLLLSEEEEEEEEEEEEe");
+                        //            Comman.log("Adapter", "" + "ElLLLLLLLLLLLLLLLSEEEEEEEEEEEEe");
                                 }
                                 if (count < partnerAdapter.getItemCount()) {
-                                    Comman.log("Adapter", "" + "parnerCount!!!");
+                          //          Comman.log("Adapter", "" + "parnerCount!!!");
                                     viewpager_parten.smoothScrollToPosition(++count);
                                     handler.postDelayed(this, speedScroll);
                                 }
@@ -800,7 +798,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
                         //videolist.clear();
                         videolist.add(dash_vid_list.get(0));
                         video_layout.setVisibility(View.VISIBLE);
-                        Comman.log("EVENTEVNET", "medAchieversTv_Inside");
+                    //    Comman.log("EVENTEVNET", "medAchieversTv_Inside");
                     }
                 }
                 if (jsonObject.getJSONArray("highlightedIntiatives").length() > 0) {
@@ -809,7 +807,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
                     if (prolist != null) {
                         prolist.clear();
                         prolist.add(dash_news_list.get(0));
-                        Comman.log("EVENTEVNET", "highlightedIntiatives_Inside");
+                    //    Comman.log("EVENTEVNET", "highlightedIntiatives_Inside");
 
                         final Handler handler = new Handler();
                         final Runnable Update = new Runnable() {
@@ -832,12 +830,12 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
                         promising_layout.setVisibility(View.VISIBLE);
                     }
                 }
-                Comman.log("SizeAAA", "" + announcedlist.size());
-                Comman.log("SizeNNN", "" + newslist.size());
-                Comman.log("SizeGGG", "" + gallerylsit.size());
+//                Comman.log("SizeAAA", "" + announcedlist.size());
+//                Comman.log("SizeNNN", "" + newslist.size());
+//                Comman.log("SizeGGG", "" + gallerylsit.size());
                 viewpager_video_adapter.updateList(videolist);
                 viewpager_Promising_adapter.updateList(prolist);
-                Comman.log("SizeNNN", "" + newslist.size());
+           //  Comman.log("SizeNNN", "" + newslist.size());
                 viewpager_annoncemen_adapter.updateList(announcedlist);
                 viewpager_gallery_adapter.updateList(gallerylsit);
                 galleryAdapter1.notifyDataSetChanged();
@@ -888,7 +886,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
     protected void onStart() {
         super.onStart();
 
-        Comman.log("OnStartMethod", "onStartMethod");
+     //   Comman.log("OnStartMethod", "onStartMethod");
         Comman.setRoundedImage(DashBoard_Activity.this, profile, m.getUserProfile());
         userName.setText(m.getUserName());
         Api_Calling.postMethodCall_NO_MSG(DashBoard_Activity.this, getWindow().getDecorView().getRootView(), onResult, URLS.landingPageDashboard2, myPostJson(), "MY_POST_LIST");
@@ -897,7 +895,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Comman.log("SSSS", "SSSSSS");
+     //   Comman.log("SSSS", "SSSSSS");
 //        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
 //            return true;
 //        }
@@ -1097,11 +1095,14 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Comman.log("NotificationApi","Response"+response);
+              //  Comman.log("NotificationApi","Response"+response);
                 try {
                     if(response.getString("status").equalsIgnoreCase("true") && (!Comman.getValueFromJsonObject(response,"totalcount").equalsIgnoreCase("0")) )
                     {
+
+                        m.setCounterValue(Comman.getValueFromJsonObject(response,"totalcount"));
                         noti_counter.setText(Comman.getValueFromJsonObject(response,"totalcount"));
+
                         circle.setVisibility(View.VISIBLE);
                     }else {
                         circle.setVisibility(View.GONE);

@@ -7,33 +7,57 @@ import androidx.viewpager.widget.ViewPager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.medparliament.Adapter.Post_Adapter;
 import com.medparliament.Adapter.Post_Page_Adapter;
 import com.medparliament.Internet.Models.Post_Modle;
+import com.medparliament.Internet.NewModel.onNotificationResult;
+import com.medparliament.Internet.URLS;
 import com.medparliament.Internet.onResult;
 import com.medparliament.R;
 import com.medparliament.Utility.Comman;
 import com.medparliament.Utility.MySharedPrefrence;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.medparliament.Widget.Segow_UI_Semi_Font;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class My_Post_Activity extends Base_Activity implements onResult {
+public class My_Post_Activity extends Base_Activity implements onResult , onNotificationResult {
     ImageButton bck;
     FloatingActionButton cmnt;
     RecyclerView recyclerView;
+
+////////////////////////////////////////////////////////////////////////
+    Segow_UI_Semi_Font noti_counter;
+    LinearLayout circle;
+    ImageView share;
+    ImageView bell;
+    Handler ha;
+/////////////////////////////////////////////////////////////////
+
     MySharedPrefrence m;
+    onNotificationResult onNotificationResult;
     Post_Adapter adapter;
+
     ArrayList<Post_Modle>arrayList;
     LinearLayoutManager manager;
     onResult onResult;
@@ -52,7 +76,80 @@ public class My_Post_Activity extends Base_Activity implements onResult {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my__post_);
         m=MySharedPrefrence.instanceOf(My_Post_Activity.this);
+        noti_counter = findViewById(R.id.noti_count);
+        apiCall(URLS.Notification, myPostJson2());
+        noti_counter.setText(m.getCounterValue());
+
         this.onResult=this;
+        this.onNotificationResult = this;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+        bell = findViewById(R.id.bell);
+        if (Comman.Check_Login(My_Post_Activity.this))
+            bell.setVisibility(View.VISIBLE);
+
+
+        circle=findViewById(R.id.circle);
+        share=findViewById(R.id.share_tool);
+
+
+
+        bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(My_Post_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(My_Post_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+        circle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d(" belliconTAG", "onClick: bell icon ");
+                if (Comman.Check_Login(My_Post_Activity.this)){
+                    circle.setVisibility(View.GONE);
+                    startActivity(new Intent(My_Post_Activity.this, NotificationActivity.class));
+                }else {
+                    circle.setVisibility(View.GONE);
+
+                }
+
+
+            }
+        });
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(Intent.ACTION_SEND);
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "MedParliament App");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.text) + "https://play.google.com/store/apps/details?id=com.medparliament");
+                emailIntent.setType("text/plain");
+                startActivity(Intent.createChooser(emailIntent, "Share via"));
+            }
+        });
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
         Window window = getWindow();
         nodata=findViewById(R.id.nodata);
         viewPager=findViewById(R.id.viewpager);
@@ -153,5 +250,62 @@ public class My_Post_Activity extends Base_Activity implements onResult {
 //        tabLayout.getTabAt(1).setIcon(tabIcons[1]);
 //        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
     }
+
+    @Override
+    public void onNotificationResult(JSONObject jsonObject, Boolean status) {
+
+    }
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void apiCall(String URL,JSONObject jsonObject)
+    {
+        Comman.log("NotificationApi","Callling");
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Comman.log("NotificationApi","Response"+response);
+                try {
+                    if(response.getString("status").equalsIgnoreCase("true") && (!Comman.getValueFromJsonObject(response,"totalcount").equalsIgnoreCase("0")) )
+                    {
+//                        noti_counter.setText(Comman.getValueFromJsonObject(response,"totalcount"));
+                        m.setCounterValue(Comman.getValueFromJsonObject(response,"totalcount"));
+                        circle.setVisibility(View.VISIBLE);
+                    }else {
+                        circle.setVisibility(View.GONE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(My_Post_Activity.this);
+        requestQueue.add(jsonObjectRequest);
+
+    }
+    private JSONObject myPostJson2() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            if (Comman.Check_Login(My_Post_Activity.this)) {
+                jsonObject.put("userTypeId", m.getUserTypeId());
+                jsonObject.put("userId", m.getUserId());
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
+        return jsonObject;
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 }

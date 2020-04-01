@@ -121,14 +121,14 @@
                     android:textSize="14dp"/>
                 <com.medparliament.Widget.Segow_UI_EditText
                     android:layout_width="match_parent"
-                    android:textSize="14dp"
-                    android:hint="@string/Email__Mobile_No"
-                    android:paddingLeft="@dimen/leftpadding"
-                    android:id="@+id/email"
-                    android:textColor="@color/solid_black"
-                    android:textColorHint="@color/hintColor"
-                    android:textCursorDrawable="@drawable/curcos"
-                    android:background="@drawable/edit_text_boarder"
+                        android:textSize="14dp"
+                        android:hint="@string/Email__Mobile_No"
+                        android:paddingLeft="@dimen/leftpadding"
+                        android:id="@+id/email"
+                        android:textColor="@color/solid_black"
+                        android:textColorHint="@color/hintColor"
+                        android:textCursorDrawable="@drawable/curcos"
+                        android:background="@drawable/edit_text_boarder"
                     android:layout_height="@dimen/fieldHeight"/>
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
