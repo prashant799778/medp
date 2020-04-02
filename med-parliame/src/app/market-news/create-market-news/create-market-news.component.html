@@ -122,7 +122,7 @@
                               </div>
                         <br>
                         <label for="newsDesc">News Description</label>
-                        <angular-editor formControlName="newsDesc" [config]="config"></angular-editor>
+                        <angular-editor formControlName="newsDesc" [config]="configs"></angular-editor>
                         <div class=error *ngIf="frmNews.get('newsDesc').errors && (frmNews.get('newsDesc').touched || frmNews.get('newsDesc').dirty)">
                             <p>News Description is required</p>
                           </div>
