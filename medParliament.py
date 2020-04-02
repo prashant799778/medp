@@ -2053,6 +2053,7 @@ def UpdateUser1():
         if msg == "1":
             print('3')
             column2=""
+            column3=""
             organization,aboutProfile,designation,areaofActivity,profileCategoryId,interestId= "","","","","",""
             address,qualification,batchofQualification,institutionName,universityName,universityAddress="","","","","",""
             filename,PicPath,Password,Gender,Country,City,MobileNo="","","123","","","",""
@@ -2069,8 +2070,10 @@ def UpdateUser1():
             # Password = inputdata["password"]
             
             UserTypeId= int(inputdata["userTypeId"])
+            
             if 'password' in inputdata:                    
-                Password = inputdata["password"]   
+                Password = inputdata["password"] 
+
             if 'mobileNo' in inputdata:               
 
                 MobileNo = inputdata["mobileNo"]
@@ -2082,17 +2085,24 @@ def UpdateUser1():
                 Country = inputdata["country"]  
             if 'city' in inputdata:                    
                 City = inputdata["city"]  
+            
             if 'userTypeId' in inputdata:                                    
                 userTypeId = int(inputdata['userTypeId'])
+            
             if 'gender' in inputdata:                    
-                Gender = inputdata['gender']                  
+                Gender = inputdata['gender'] 
+                column3= column3+" ,gender= '" + str(Gender) + "' "                     
+            
             if 'deviceid' in inputdata:                   
                 DeviceId = inputdata['deviceid'] 
+            
             if 'deviceType' in inputdata:                    
                 DeviceType = inputdata['deviceType']
                 DeviceType = ConstantData.GetDeviceTypeId(DeviceType)
+            
             if 'os' in inputdata:                    
                 Os = inputdata['os'] 
+            
             if 'ImeiNo' in inputdata:                    
                ImeiNo = inputdata['ImeiNo']
             if 'ipAddress' in inputdata:                    
@@ -2175,7 +2185,7 @@ def UpdateUser1():
             print('A')
             WhereCondition = " and userId = '" + str(UserId) + "' and  userTypeId = '" + str(userTypeId) + "'"
             column = " email = '" + str(Email) + "',countryId = '" + str(Country) + "', "
-            column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'" +column2
+            column = column +  " userName = '" + str(UserName) + "',city = '" + str(City) + "',mobileNo = '" + str(MobileNo) + "'" +column2+column3
             data = databasefile.UpdateQuery("userMaster",column,WhereCondition)
             print(data,'B')
             if (UserTypeId == 5):
@@ -2215,20 +2225,30 @@ def UpdateUser1():
                 WhereCondition = " and userId = '" + str(UserId) + "'"
                 column="qualificationId ='" + str(qualification) + "', designation ='" + str(designation) + "',areaOfExpertise='" + str(areaOfExpertise) + "',hospital ='" + str(hospital) + "',hospitalAddress='" + str(hospitalAddress) + "'"
                 output11=databasefile.UpdateQuery("doctorMaster",column,WhereCondition)
-                for i in interestId:
-                    column="userId,interestId,userTypeId"
-                    values=" '" + str(UserId) + "','" + str(i) + "','" + str('8') + "'"
-                    output9=databasefile.InsertQuery("userInterestMapping",column,values)
+                
+                if interestId!="":
+                    WhereCondition1 = " and userId = '" + str(UserId) + "' and userTypeId='8'"
+                    output8=databasefile.DeleteQuery("userInterestMapping",WhereCondition1)
 
+                    for i in interestId:
+                        column="userId,interestId,userTypeId"
+                        values=" '" + str(UserId) + "','" + str(i) + "','" + str('8') + "'"
+                        
+                        output9=databasefile.InsertQuery("userInterestMapping",column,values)
             if (UserTypeId == 9):
                 WhereCondition = " and userId = '" + str(UserId) + "'"
                 column=" designation='" + str(designation) + "',occupation='" + str(occupation) + "',companyName='" + str(CompanyName) + "',companyAddress= '" + str(companyAddress) + "',address='" + str(address) + "'"
                 output11=databasefile.UpdateQuery("professionalMaster",column,WhereCondition)
-                for i in interestId:
-                    column="userId,interestId,userTypeId"
-                    values=" '" + str(UserId) + "','" + str(i) + "','" + str('9') + "'"
-                    output9=databasefile.InsertQuery("userInterestMapping",column,values)
+               
+                if interestId!="":
+                    WhereCondition1 = " and userId = '" + str(UserId) + "' and userTypeId='9'"
+                    output8=databasefile.DeleteQuery("userInterestMapping",WhereCondition1)
 
+                    for i in interestId:
+                        column="userId,interestId,userTypeId"
+                        values=" '" + str(UserId) + "','" + str(i) + "','" + str('9') + "'"
+                        
+                        output9=databasefile.InsertQuery("userInterestMapping",column,values)
 
             if data != "0":
                 column = 'userId,userName,userTypeId'
@@ -4179,6 +4199,7 @@ def userProfile():
                     return data3
                 else:
                     return commonfile.Errormessage()
+
             if userTypeId == 8:
                 column="um.userName,um.email,um.status,um.userId,um.userTypeId,um.mobileNo,um.profilePic as profilePic,"
                 column=column+"dm.userId,dm.qualificationId as qualificationName,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress"
