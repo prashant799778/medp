@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
+import { CropperComponent } from 'angular-cropperjs';
 declare var jQuery: any;
 @Component({
   selector: 'app-create-info',
@@ -12,6 +13,38 @@ declare var jQuery: any;
   styleUrls: ['./create-info.component.css']
 })
 export class CreateInfoComponent implements OnInit {
+  @ViewChild('angularCropper', {static: false}) public angularCropper: CropperComponent;
+ 
+  configs = {
+    aspectRatio : 4/3,
+    dragMode : 'move',
+    background : true,
+    movable: true,
+    rotatable : true,
+    scalable: true,
+    zoomable: true,
+    viewMode: 1,
+    checkImageOrigin : true,
+    // cropmove:this.cropMoved.bind(this),
+    checkCrossOrigin: true
+  };
+  isCropDone: boolean;
+  isCropDone2: boolean;
+
+  cropMoved(data){
+    console.log(this.angularCropper.cropper)
+    
+    console.log(this.imageShow)
+  }
+  cropingDone(){
+    this.imageShow = this.angularCropper.cropper.getCroppedCanvas().toDataURL();
+    this.isCropDone= true;
+  }
+  
+  
+ 
+
+
   data: [];
   httpError: boolean;
   userTypeDetails= []
@@ -92,13 +125,13 @@ export class CreateInfoComponent implements OnInit {
     this.frmNews = this.fb.group({
       // newsType: [''],
       newsTitle: [''],
-      videoLink: [''],
+      videoLink: ['',Validators.required],
       banner: [''],
       id:[''],
       // summary: [''],
       // newsDesc: [''],
       userCreate: [''],
-      userTypeId: ['']
+      userTypeId: ['',Validators.required]
     });
   }
 
@@ -112,6 +145,8 @@ export class CreateInfoComponent implements OnInit {
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (event) => {
           this.imageShow = (<FileReader>event.target).result;
+          this.isCropDone2 = true;
+         this.isCropDone = false;
           this.frmNews.get('banner').setValue(this.file);
           this.showBanner = 0;
         }
@@ -123,6 +158,7 @@ export class CreateInfoComponent implements OnInit {
  
   }
   UpdateNews(){
+    if(this.frmNews.valid){
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
       // newsType : this.frmNews.get('newsType').value,
@@ -164,10 +200,21 @@ export class CreateInfoComponent implements OnInit {
 
       }
     });
+  }else{
+    const controls = this.frmNews.controls;
+  
+    Object.keys(controls).forEach(controlName => {
+      console.log(controls)
+      controls[controlName].markAllAsTouched();
+    });
+    console.log(this.frmNews)
+    return false;
+  }
   }
 
 
   submitNews() {
+    if(this.frmNews.valid){
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     if(this.videoCheck == false && this.videoTextCheck == false){
       let imageCheck = this.frmNews.get('newsTitle').value
@@ -226,6 +273,16 @@ export class CreateInfoComponent implements OnInit {
 
       }
     });
+  }else{
+    const controls = this.frmNews.controls;
+  
+    Object.keys(controls).forEach(controlName => {
+      console.log(controls)
+      controls[controlName].markAllAsTouched();
+    });
+    console.log(this.frmNews)
+    return false;
+  }
 
   }
 
@@ -288,6 +345,15 @@ export class CreateInfoComponent implements OnInit {
     this.videoTextCheck = false
     this.videoCheck = false;
     this.frmNews.get('videoLink').setValue('')
+    this.imageShow = '';
+    // this.imageClick = true
+    this.frmNews.get('newsTitle').clearValidators()
+    this.frmNews.get('newsTitle').updateValueAndValidity();
+    this.frmNews.get('videoLink').clearValidators();
+    this.frmNews.get('videoLink').updateValueAndValidity();
+    this.frmNews.get('banner').setValidators(Validators.required)
+    this.frmNews.get('banner').updateValueAndValidity();
+    console.log("Image UPload",this.frmNews)
   }
   imageCLik(){
     this.videoCheck = true;
@@ -295,6 +361,18 @@ export class CreateInfoComponent implements OnInit {
     this.frmNews.get('newsTitle').setValue('');
     this.imageShow = ''
     this.frmNews.get('banner').setValue('');
+
+
+    this.frmNews.get('videoLink').setValue('');
+    // this.frmNews.get('videoLink').validator
+    this.frmNews.get('banner').clearValidators()
+    this.frmNews.get('banner').updateValueAndValidity();
+    this.frmNews.get('newsTitle').setValidators(Validators.required)
+    this.frmNews.get('newsTitle').updateValueAndValidity();
+    this.frmNews.get('videoLink').setValidators(Validators.required)
+    this.frmNews.get('videoLink').updateValueAndValidity();
+    console.log("Video UPload",this.frmNews)
+    
   }
   imageCLik2(){
     this.videoCheck = false;
@@ -302,5 +380,14 @@ export class CreateInfoComponent implements OnInit {
     this.frmNews.get('newsTitle').setValue('');
     this.imageShow = ''
     this.frmNews.get('banner').setValue('');
+
+    this.frmNews.get('videoLink').setValue('');
+    // this.frmNews.get('videoLink').validator
+    this.frmNews.get('banner').clearValidators()
+    this.frmNews.get('banner').updateValueAndValidity();
+    this.frmNews.get('videoLink').clearValidators();
+    this.frmNews.get('videoLink').updateValueAndValidity();
+    this.frmNews.get('newsTitle').setValidators(Validators.required)
+    this.frmNews.get('newsTitle').updateValueAndValidity();
   }
 }

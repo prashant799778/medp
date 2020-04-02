@@ -68,17 +68,34 @@
                             </div>
                             <br>
                             <button class="btn btn-success pull-right buttonsss " (click)="imageCLik()">Video Upload</button>
+                            <p style="display: inline-block;">&nbsp;&nbsp;&nbsp; OR </p>
                             <button class="btn btn-success pull-right buttonsss ml-3 "(click)="imageCLik1()">Image Upload</button>
                             <br>
                             <ng-container *ngIf="!imageClick">
                                 <label for="newsTitle"> Video Link</label>
                                     <input type="text" class="form-control" formControlName="videoLink">
+                                    
+                                  <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
+                                    <p>Please upload Video Link</p>
+                                  </div>
+
                                 </ng-container>
                                 
                                 <ng-container *ngIf="imageClick">
                                         <label for="banner">Image</label>
                                         <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
-                                        <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
+                                        
+                                        <ng-container *ngIf="!isCropDone">
+                                          <angular-cropper #angularCropper [cropperOptions]="config" [imageUrl]="imageShow"></angular-cropper>
+                                          <!-- <button (click)="resizeed(1)">plus</button>
+                                          <button (click)="resizeed(-1)">minus</button> -->
+                                          <button class="btn" (click)="cropingDone()">Crop done</button>
+                                          <!-- <img [src]="imageShow" id="img"/> -->
+                                        </ng-container>
+                                        
+                                        <ng-container *ngIf="isCropDone">
+
+                                          <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
                                             <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
                                             <div *ngIf="errorImage" class="error">
                                                 <p>Please Upload Image In 4:3</p>
@@ -89,7 +106,13 @@
                                         <div *ngIf="errorImage" class="error">
                                             <p>Please Upload Image In 4:3</p>
                                         </div>
+
+                                        <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
+                                          <p>Please upload Image</p>
+                                        </div>
                                    </div>
+                                        </ng-container>
+                                        
                                 </ng-container>
                         <br>
                         <label for="summary">News Summary</label>

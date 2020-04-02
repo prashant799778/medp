@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, RequiredValidator } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
+import { CropperComponent } from 'angular-cropperjs';
 declare var jQuery: any;
 
 @Component({
@@ -13,7 +14,43 @@ declare var jQuery: any;
   styleUrls: ['./create-market-news.component.css']
 })
 export class CreateMarketNewsComponent implements OnInit {
+  @ViewChild('angularCropper', {static: false}) public angularCropper: CropperComponent;
 
+  config = {
+    aspectRatio : 4/3,
+    dragMode : 'move',
+    background : true,
+    movable: true,
+    rotatable : true,
+    scalable: true,
+    zoomable: true,
+    viewMode: 1,
+    checkImageOrigin : true,
+    // cropmove:this.cropMoved.bind(this),
+    checkCrossOrigin: true
+  };
+  cropMoved(data){
+    console.log(this.angularCropper.cropper)
+    
+    console.log(this.imageShow)
+  }
+  cropingDone(){
+    this.imageShow = this.angularCropper.cropper.getCroppedCanvas().toDataURL();
+    this.isCropDone= true;
+  }
+
+  resizeed(direction) {
+    console.log(direction)
+    var delta = 100 * direction;
+  
+    var element = document.getElementById('img');
+    console.log(element)
+    var positionInfo = element.getBoundingClientRect();
+  
+    element.style.width = positionInfo.width+delta+'px';
+    element.style.height = positionInfo.height+delta+'px';
+  }
+  isCropDone: boolean;
   percentDone: number;
   uploadSuccess: boolean;
   size:any;
@@ -38,7 +75,7 @@ export class CreateMarketNewsComponent implements OnInit {
   imageShow: any= '';
   showBanner: number;
   updateCheck: boolean;
-  config: AngularEditorConfig = {
+  configs: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
     height: '15rem',
@@ -97,10 +134,24 @@ export class CreateMarketNewsComponent implements OnInit {
   imageCLik1(){
     this.imageShow = '';
     this.imageClick = true
+    
+    this.frmNews.get('videoLink').clearValidators();
+    this.frmNews.get('videoLink').updateValueAndValidity();
+    this.frmNews.get('banner').setValidators(Validators.required)
+    this.frmNews.get('banner').updateValueAndValidity();
+    console.log("Image UPload",this.frmNews)
   }
+  
   imageCLik(){
     this.imageClick = false;
     this.frmNews.get('videoLink').setValue('');
+    // this.frmNews.get('videoLink').validator
+    this.frmNews.get('banner').clearValidators()
+    this.frmNews.get('banner').updateValueAndValidity();
+    this.frmNews.get('videoLink').setValidators(Validators.required)
+    this.frmNews.get('videoLink').updateValueAndValidity();
+    console.log("Video UPload",this.frmNews)
+    // this.frmNews.get('videoLink')
   }
 
   initializeForm() {
@@ -114,7 +165,7 @@ export class CreateMarketNewsComponent implements OnInit {
       userCreate: [''],
       userTypeId: ['',Validators.required],
       id: [''],
-      videoLink: ['']
+      videoLink: ['',Validators.required]
       
     });
     this.frmNews.valueChanges.subscribe(()=>{
@@ -132,6 +183,7 @@ export class CreateMarketNewsComponent implements OnInit {
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (event) => {
           this.imageShow = (<FileReader>event.target).result;
+          this.isCropDone= false;
           this.frmNews.get('banner').setValue(this.file);
           this.showBanner = 0;
         }
@@ -157,12 +209,12 @@ export class CreateMarketNewsComponent implements OnInit {
               //  console.log(this.width)
                this.height = img.height;
                let rat = this.gcds(this.width,this.height)
-                if(rat == '4:3'){
-                  this.errorImage = false;
-                }else{
-                  this.errorImage = true;
-                  this.imageShow = ''
-                }
+                // if(rat == '4:3'){
+                //   this.errorImage = false;
+                // }else{
+                //   this.errorImage = true;
+                //   this.imageShow = ''
+                // }
            };
            const csv = fr.result;
            if(typeof csv == 'string'){

@@ -51,7 +51,9 @@
               <div class="col-lg-12">
                 <div class="card-body p-4  border-rd">
                         <button class="btn btn-success pull-right buttonsss" (click)="imageCLik()">Video Upload</button>
+                        <p style="display: inline-block;">&nbsp;&nbsp;&nbsp; OR &nbsp;&nbsp;&nbsp;</p>
                         <button class="btn btn-success pull-right buttonsss"(click)="imageCLik1()">Image Upload</button>
+                        <p style="display: inline-block;">&nbsp;&nbsp;&nbsp; OR &nbsp;&nbsp;&nbsp;</p>
                         <button class="btn btn-success pull-right buttonsss"(click)="imageCLik2()">Text Upload</button>
                     <form [formGroup]="frmNews" autocomplete="off">
                       <div class="form-group">
@@ -59,6 +61,9 @@
                         <select formControlName="userTypeId">
                             <option *ngFor="let userType of userTypeDetails" [value]="userType.id">{{userType.userName}}</option>
                         </select>
+                        <div class="error" *ngIf="frmNews.get('userTypeId').errors && (frmNews.get('userTypeId').touched || frmNews.get('userTypeId').dirty)">
+                          <p>Please upload Video Link</p>
+                        </div>
                         <!--  <ng-select 
                                  [items]="categoryList"
                                  bindLabel="category"
@@ -72,23 +77,52 @@
                         <ng-container *ngIf="!videoCheck || videoTextCheck">
                                 <label for="newsTitle">Description</label>
                                 <input type="text" class="form-control" formControlName="newsTitle">
+                                <div class="error" *ngIf="frmNews.get('newsTitle').errors && (frmNews.get('newsTitle').touched || frmNews.get('newsTitle').dirty)">
+                                  <p>Please Enter Description</p>
+                                </div>
+
                             <br>
                         </ng-container>
                         <ng-container *ngIf="videoCheck">
                         <label for="newsTitle">Video Link</label>
                             <input type="text" class="form-control" formControlName="videoLink">
+                            <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
+                              <p>Please upload Video Link</p>
+                            </div>
                         <br>
                         </ng-container>
                         <ng-container *ngIf="!videoCheck && !videoTextCheck">
+                                
+                              <ng-container >
                                 <label for="banner">Image</label>
-                                <input id="file12" type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
-                                <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
+                                <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
+                                
+                                <ng-container *ngIf="!isCropDone && isCropDone2">
+                                  <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
+                                  <!-- <button (click)="resizeed(1)">plus</button>
+                                  <button (click)="resizeed(-1)">minus</button> -->
+                                  <button class="btn btn-success" (click)="cropingDone()">Crop done</button>
+                                  <!-- <img [src]="imageShow" id="img"/> -->
+                                </ng-container>
+                                
+                                <ng-container *ngIf="isCropDone">
+
+                                  <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
                                     <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
+                                    
                                </div>
                                <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
                                 <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
+                                
+
+                                
                            </div>
-                            <br>
+                                </ng-container>
+                                <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
+                                  <p>Please upload Image</p>
+                                </div>
+                                
+                        </ng-container>
                         </ng-container>
                         
                         <!-- <label for="summary">Gallery Shots</label>

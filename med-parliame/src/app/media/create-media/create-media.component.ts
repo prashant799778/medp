@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
+import { CropperComponent } from 'angular-cropperjs';
 declare var jQuery: any;
 @Component({
   selector: 'app-create-media',
@@ -12,12 +13,40 @@ declare var jQuery: any;
   styleUrls: ['./create-media.component.css']
 })
 export class CreateMediaComponent implements OnInit {
+  @ViewChild('angularCropper', {static: false}) public angularCropper: CropperComponent;
+ 
+  configs = {
+    aspectRatio : 4/3,
+    dragMode : 'move',
+    background : true,
+    movable: true,
+    rotatable : true,
+    scalable: true,
+    zoomable: true,
+    viewMode: 1,
+    checkImageOrigin : true,
+    // cropmove:this.cropMoved.bind(this),
+    checkCrossOrigin: true
+  };
+  cropMoved(data){
+    console.log(this.angularCropper.cropper)
+    
+    console.log(this.imageShow)
+  }
+  cropingDone(){
+    this.imageShow = this.angularCropper.cropper.getCroppedCanvas().toDataURL();
+    this.isCropDone= true;
+  }
+ 
+  isCropDone: boolean;
   percentDone: number;
   uploadSuccess: boolean;
   size:any;
   width:number;
   height:number;
   errorImage: boolean
+  isCropDone2: boolean;
+
 
   @ViewChild('coverFilesInput', {static: false}) imgType:ElementRef;
   data: [];
@@ -97,10 +126,10 @@ export class CreateMediaComponent implements OnInit {
     // Question,Answer,UserId
     this.frmNews = this.fb.group({
       // newsType: [''],
-      newsTitle: [''],
+      newsTitle: ['',Validators.required],
       banner: [''],
       id:[''],
-      videoLink: [''],
+      videoLink: ['',Validators.required],
       // summary: [''],
       // newsDesc: [''],
       userCreate: [''],
@@ -118,6 +147,8 @@ export class CreateMediaComponent implements OnInit {
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (event) => {
           this.imageShow = (<FileReader>event.target).result;
+         this.isCropDone2 = true;
+         this.isCropDone = false;
           this.frmNews.get('banner').setValue(this.file);
           this.showBanner = 0;
         }
@@ -144,12 +175,12 @@ export class CreateMediaComponent implements OnInit {
               //  console.log(this.width)
                this.height = img.height;
                let rat = this.gcds(this.width,this.height)
-                if(rat == '4:3'){
-                  this.errorImage = false;
-                }else{
-                  this.errorImage = true;
-                  this.imageShow = ''
-                }
+                // if(rat == '4:3'){
+                //   this.errorImage = false;
+                // }else{
+                //   this.errorImage = true;
+                //   this.imageShow = ''
+                // }
            };
            const csv = fr.result;
            if(typeof csv == 'string'){
@@ -232,6 +263,7 @@ export class CreateMediaComponent implements OnInit {
 
 
   submitNews() {
+    if(this.frmNews.valid){
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     if(this.imageClick == true){
       let imageCheck = this.frmNews.get('newsTitle').value
@@ -282,6 +314,17 @@ export class CreateMediaComponent implements OnInit {
 
       }
     });
+  }else{
+    const controls = this.frmNews.controls;
+  
+    Object.keys(controls).forEach(controlName => {
+      console.log(controls)
+      controls[controlName].markAllAsTouched();
+    });
+    console.log(this.frmNews)
+    return false;
+  }
+  
 
   }
 
@@ -340,9 +383,23 @@ export class CreateMediaComponent implements OnInit {
   imageCLik1(){
     this.imageShow = '';
     this.imageClick = true
+    
+    this.frmNews.get('videoLink').clearValidators();
+    this.frmNews.get('videoLink').updateValueAndValidity();
+    this.frmNews.get('banner').setValidators(Validators.required)
+    this.frmNews.get('banner').updateValueAndValidity();
+    console.log("Image UPload",this.frmNews)
   }
+  
   imageCLik(){
     this.imageClick = false;
     this.frmNews.get('videoLink').setValue('');
+    // this.frmNews.get('videoLink').validator
+    this.frmNews.get('banner').clearValidators()
+    this.frmNews.get('banner').updateValueAndValidity();
+    this.frmNews.get('videoLink').setValidators(Validators.required)
+    this.frmNews.get('videoLink').updateValueAndValidity();
+    console.log("Video UPload",this.frmNews)
+    // this.frmNews.get('videoLink')
   }
 }

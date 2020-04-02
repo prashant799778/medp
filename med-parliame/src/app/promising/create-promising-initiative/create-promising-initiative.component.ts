@@ -5,6 +5,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
+import { CropperComponent } from 'angular-cropperjs';
 declare var jQuery: any;
 
 @Component({
@@ -13,6 +14,33 @@ declare var jQuery: any;
   styleUrls: ['./create-promising-initiative.component.css']
 })
 export class CreatePromisingInitiativeComponent implements OnInit {
+  @ViewChild('angularCropper', {static: false}) public angularCropper: CropperComponent;
+ 
+  configs = {
+    aspectRatio : 4/3,
+    dragMode : 'move',
+    background : true,
+    movable: true,
+    rotatable : true,
+    scalable: true,
+    zoomable: true,
+    viewMode: 1,
+    checkImageOrigin : true,
+    // cropmove:this.cropMoved.bind(this),
+    checkCrossOrigin: true
+  };
+  cropMoved(data){
+    console.log(this.angularCropper.cropper)
+    
+    console.log(this.imageShow)
+  }
+  cropingDone(){
+    this.imageShow = this.angularCropper.cropper.getCroppedCanvas().toDataURL();
+    this.isCropDone= true;
+  }
+ 
+  isCropDone: boolean;
+  isCropDone2: boolean;
 
   percentDone: number;
   uploadSuccess: boolean;
@@ -123,10 +151,24 @@ export class CreatePromisingInitiativeComponent implements OnInit {
   imageCLik1(){
     this.imageShow = '';
     this.imageClick = true
+    
+    this.frmNews.get('videoLink').clearValidators();
+    this.frmNews.get('videoLink').updateValueAndValidity();
+    this.frmNews.get('banner').setValidators(Validators.required)
+    this.frmNews.get('banner').updateValueAndValidity();
+    console.log("Image UPload",this.frmNews)
   }
+  
   imageCLik(){
     this.imageClick = false;
     this.frmNews.get('videoLink').setValue('');
+    // this.frmNews.get('videoLink').validator
+    this.frmNews.get('banner').clearValidators()
+    this.frmNews.get('banner').updateValueAndValidity();
+    this.frmNews.get('videoLink').setValidators(Validators.required)
+    this.frmNews.get('videoLink').updateValueAndValidity();
+    console.log("Video UPload",this.frmNews)
+    // this.frmNews.get('videoLink')
   }
   onFileSelect(event) {
     console.log(event)
@@ -138,6 +180,9 @@ export class CreatePromisingInitiativeComponent implements OnInit {
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (event) => {
           this.imageShow = (<FileReader>event.target).result;
+          this.isCropDone2 = true;
+         this.isCropDone = false;
+         
           this.frmNews.get('banner').setValue(this.file);
           this.showBanner = 0;
           this.removeButton = true;

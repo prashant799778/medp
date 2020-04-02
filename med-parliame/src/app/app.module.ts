@@ -78,6 +78,7 @@ import { EditOperationAdminComponent } from './operation-admin/edit-operation-ad
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { EventPostComponent } from './event-post/event-post.component';
 import { ReplyEventPostComponent } from './event-post/reply-event-post.component';
+import { AngularCropperjsModule } from 'angular-cropperjs';
 
 @NgModule({
   declarations: [
@@ -152,6 +153,7 @@ import { ReplyEventPostComponent } from './event-post/reply-event-post.component
     ReplyEventPostComponent
   ],
   imports: [
+    AngularCropperjsModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
