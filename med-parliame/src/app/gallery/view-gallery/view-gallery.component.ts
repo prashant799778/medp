@@ -258,12 +258,12 @@ resizeed(direction) {
       return;
     }
     if(!this.frmNews.get('videoLink').valid){
-      this.errorMessage = "Please Upload Video Link"
+      this.errorMessage = "Please Upload Video Link or Image"
       jQuery("#errorModal").modal('show')
       return;
     }
     if(!this.frmNews.get('banner').valid){
-      this.errorMessage = "Please Upload Image"
+      this.errorMessage = "Please Upload Video Link or Image"
       jQuery("#errorModal").modal('show')
       return;
     }
@@ -335,12 +335,12 @@ resizeed(direction) {
       return;
     }
     if(!this.frmNews.get('videoLink').valid){
-      this.errorMessage = "Please Upload Video Link"
+      this.errorMessage = "Please Upload Video Link or Image"
       jQuery("#errorModal").modal('show')
       return;
     }
     if(!this.frmNews.get('banner').valid){
-      this.errorMessage = "Please Upload Image"
+      this.errorMessage = "Please Upload Video Link or Image"
       jQuery("#errorModal").modal('show')
       return;
     }

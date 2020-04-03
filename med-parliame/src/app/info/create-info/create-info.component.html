@@ -62,7 +62,7 @@
                             <option *ngFor="let userType of userTypeDetails" [value]="userType.id">{{userType.userName}}</option>
                         </select>
                         <div class="error" *ngIf="frmNews.get('userTypeId').errors && (frmNews.get('userTypeId').touched || frmNews.get('userTypeId').dirty)">
-                          <p>Please upload Video Link</p>
+                          <p>Please Upload Video Link or Image</p>
                         </div>
                         <!--  <ng-select 
                                  [items]="categoryList"
@@ -87,7 +87,7 @@
                         <label for="newsTitle">Video Link</label>
                             <input type="text" class="form-control" formControlName="videoLink">
                             <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
-                              <p>Please upload Video Link</p>
+                              <p>Please Upload Video Link or Image</p>
                             </div>
                         <br>
                         </ng-container>
@@ -126,7 +126,7 @@
                            </div>
                                 </ng-container>
                                 <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
-                                  <p>Please upload Image</p>
+                                  <p>Please Upload Video Link or Image</p>
                                 </div>
                                 
                         </ng-container>

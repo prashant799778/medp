@@ -84,7 +84,7 @@
                                 <input type="text" class="form-control" formControlName="videoLink">
                                 
                               <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
-                                <p>Please upload Video Link</p>
+                                <p>Please Upload Video Link or Image</p>
                               </div>
 
                             </ng-container>
@@ -114,20 +114,20 @@
                                       <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
                                         <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
                                         <div *ngIf="errorImage" class="error">
-                                            <p>Please Upload Image In 4:3</p>
+                                            <p>Please Upload Video Link or Image In 4:3</p>
                                         </div>
                                    </div>
                                    <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
                                     <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
                                     <div *ngIf="errorImage" class="error">
-                                        <p>Please Upload Image In 4:3</p>
+                                        <p>Please Upload Video Link or Image In 4:3</p>
                                     </div>
 
                                     
                                </div>
                                     </ng-container>
                                     <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
-                                      <p>Please upload Image</p>
+                                      <p>Please Upload Video Link or Image</p>
                                     </div>
                                     
                             </ng-container>

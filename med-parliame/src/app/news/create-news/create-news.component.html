@@ -76,14 +76,14 @@
                                   <input type="text" class="form-control" formControlName="videoLink">
                                   
                                 <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
-                                  <p>Please upload Video Link</p>
+                                  <p>Please Upload Video Link or Image</p>
                                 </div>
   
                               </ng-container>
                               
                               <ng-container *ngIf="imageClick">
                                       <label for="banner">Image</label>
-                                      <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
+                                      <input  type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                                       
                                       <ng-container *ngIf="!isCropDone && isCropDone2">
                                         <div id="imageFFFF">
@@ -114,7 +114,7 @@
                                  </div>
                                       </ng-container>
                                       <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
-                                        <p>Please upload Image</p>
+                                        <p>Please Upload Video Link or Image</p>
                                       </div>
                                       
                               </ng-container>

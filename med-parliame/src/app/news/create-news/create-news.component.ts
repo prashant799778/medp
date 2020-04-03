@@ -184,38 +184,38 @@ errorMessage: any;
       }
       
     }
-    let image:any = event.target.files[0];
-    console.log(image)
-          this.size = image.size;
-          console.log(this.size)
-          let fr = new FileReader;
-          console.log(fr)
-          fr.onload = () => { // when file has loaded
-            console.log("hello")
-            let img = new Image()
-           console.log(img)
+    // let image:any = event.target.files[0];
+    // console.log(image)
+    //       this.size = image.size;
+    //       console.log(this.size)
+    //       let fr = new FileReader;
+    //       console.log(fr)
+    //       fr.onload = () => { // when file has loaded
+    //         console.log("hello")
+    //         let img = new Image()
+    //        console.log(img)
        
-           img.onload = () => {
-             console.log(img.width)
-               this.width = img.width;
-              //  console.log(this.width)
-               this.height = img.height;
-               let rat = this.gcds(this.width,this.height)
-                // if(rat == '4:3'){
-                //   this.errorImage = false;
-                // }else{
-                //   this.errorImage = true;
-                //   this.imageShow = ''
-                // }
-           };
-           const csv = fr.result;
-           if(typeof csv == 'string'){
-            img.src = csv
-           }
-      }
+    //        img.onload = () => {
+    //          console.log(img.width)
+    //            this.width = img.width;
+    //           //  console.log(this.width)
+    //            this.height = img.height;
+    //            let rat = this.gcds(this.width,this.height)
+    //             // if(rat == '4:3'){
+    //             //   this.errorImage = false;
+    //             // }else{
+    //             //   this.errorImage = true;
+    //             //   this.imageShow = ''
+    //             // }
+    //        };
+    //        const csv = fr.result;
+    //        if(typeof csv == 'string'){
+    //         img.src = csv
+    //        }
+    //   }
       
-      fr.readAsDataURL(image);
-      this.imgType.nativeElement.value = "";
+    //   fr.readAsDataURL(image);
+    //   this.imgType.nativeElement.value = "";
     
     
  
@@ -264,12 +264,12 @@ resizeed(direction) {
       return;
     }
     if(!this.frmNews.get('videoLink').valid){
-      this.errorMessage = "Please Upload Video Link"
+      this.errorMessage = "Please Upload Video Link or Image"
       jQuery("#errorModal").modal('show')
       return;
     }
     if(!this.frmNews.get('banner').valid){
-      this.errorMessage = "Please Upload Image"
+      this.errorMessage = "Please Upload Video Link or Image"
       jQuery("#errorModal").modal('show')
       return;
     }
@@ -352,12 +352,12 @@ resizeed(direction) {
       return;
     }
     if(!this.frmNews.get('videoLink').valid){
-      this.errorMessage = "Please Upload Video Link"
+      this.errorMessage = "Please Upload Video Link or Image"
       jQuery("#errorModal").modal('show')
       return;
     }
     if(!this.frmNews.get('banner').valid){
-      this.errorMessage = "Please Upload Image"
+      this.errorMessage = "Please Upload Video Link or Image"
       jQuery("#errorModal").modal('show')
       return;
     }

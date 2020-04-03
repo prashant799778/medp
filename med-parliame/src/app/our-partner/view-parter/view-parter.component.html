@@ -76,13 +76,13 @@
                                 <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
                                     <img [src]="imageShow[i]"  class="img-fluid  mx-auto d-block">
                                     <div *ngIf="errorImage[i]" class="error">
-                                      <p>Please Upload Image In 4:3</p>
+                                      <p>Please Upload Video Link or Image In 4:3</p>
                                     </div>
                                </div>
                                <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
                                   <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
                                   <div *ngIf="errorImage[i]" class="error">
-                                    <p>Please Upload Image In 4:3</p>
+                                    <p>Please Upload Video Link or Image In 4:3</p>
                                   </div>
                               </div>
                               

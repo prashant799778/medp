@@ -121,7 +121,7 @@ export class CreateAboutComponent implements OnInit {
   }
   UpdateNews(){
     if(!this.frmNews.get('newsDesc').valid){
-      this.errorMessage = "Please Upload Image"
+      this.errorMessage = "Please Upload Video Link or Image"
       jQuery("#errorModal").modal('show')
       return;
     }
