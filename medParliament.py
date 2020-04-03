@@ -7110,8 +7110,8 @@ def galleryImages1():
             if "title" in inputdata:
                 if inputdata['title'] != "":
                     title =inputdata["title"]
-                    column=" title "
-                    values=" '"+ str(title) +"'"
+                    column=column+" title ,"
+                    values=values+" '"+ str(title) +"',"
 
             if 'postImage' in request.files:      
                 file = request.files.get('postImage')        
@@ -8892,7 +8892,7 @@ def landingPageDashboard12():
         data1={"message":"","status":"true","result":[]}
         orderby=" id "
         inputdata={}
-        if request.get_data():
+        if request.get_data():ASSDSD
             inputdata =  commonfile.DecodeInputdata(request.get_data())
             print(inputdata,"++++++++++++++++++")        
         
