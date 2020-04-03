@@ -535,8 +535,16 @@ button.togg:focus {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: calc(100% - 260px);
     z-index: 2;
+    margin-left:260px;
+    transition: all 500ms linear;
+}
+.top-bar.active .inner-top-bar{
+    width: calc(100% - 100px);
+    z-index: 2;
+    margin-left:100px;
+    transition: all 500ms linear;
 }
 .search-box .form-control {
     background-color: #fff;
@@ -569,9 +577,6 @@ button.togg:focus {
 .logout-box img {
     width: 24px;
     cursor: pointer;
-}
-.toggle-button-section {
-    margin-left: 260px;
 }
 /* End Topbar Section*/
 
