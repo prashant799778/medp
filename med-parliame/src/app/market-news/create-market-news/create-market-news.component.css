@@ -35,4 +35,12 @@
     left: 0;
     top:0;
 }
+.red-icon {
+    fill: red;
+    width: 14px;
+}
+.close-oth{
+    font-size: unset;
+    opacity: unset !important;
+}
 /* plus - minus button End */
