@@ -94,10 +94,14 @@
                                         <div id="imageFFFF">
                                           <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
                                         </div>
+                                        <div class="wrap-button-section d-flex justify-content-between">
+                                          <button class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</button>
+                                          <div class="inner-wrap-button-section mt-3">
+                                            <button (click)="resizeed(1)" class="lti-spc"><img class="mag-button" src="../../../assets/images/plus.svg"></button>
+                                            <button (click)="resizeed(-1)"><img class="mag-button" src="../../../assets/images/ui.svg"></button>
+                                          </div>
                                         
-                                        <button (click)="resizeed(1)">plus</button>
-                                        <button (click)="resizeed(-1)">minus</button>
-                                        <button class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</button>
+                                      </div>
                                         <!-- <img [src]="imageShow" id="img"/> -->
                                       </ng-container>
                                       
