@@ -982,3 +982,6 @@ ul.ant-pagination li {
     font-size: unset;
     opacity: unset !important;
 }
+.nex-sdc h2 {
+    position: unset !important;
+}
