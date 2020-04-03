@@ -11,3 +11,25 @@
         font-size: 12px;
     
 }
+
+/* plus - minus button */
+.mag-button {
+    width: 18px;
+    object-fit: cover;
+    object-position: center;
+}
+.inner-wrap-button-section button {
+    background: no-repeat;
+    border: 0;
+    padding: 4px 11px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+.inner-wrap-button-section button:active {
+    background: #ced4da !important;
+}
+.lti-spc {
+    margin-right: 5px;
+}
+
+/* plus - minus button End */
