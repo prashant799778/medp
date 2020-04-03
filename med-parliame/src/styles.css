@@ -973,3 +973,12 @@ ul.ant-pagination li {
     justify-content: center;
 }
 /* change side bar End */
+
+.red-icon {
+    fill: red;
+    width: 14px;
+}
+.close-oth{
+    font-size: unset;
+    opacity: unset !important;
+}
