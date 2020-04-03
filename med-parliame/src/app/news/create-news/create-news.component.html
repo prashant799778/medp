@@ -86,10 +86,13 @@
                                       <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                                       
                                       <ng-container *ngIf="!isCropDone && isCropDone2">
-                                        <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
-                                        <!-- <button (click)="resizeed(1)">plus</button>
-                                        <button (click)="resizeed(-1)">minus</button> -->
-                                        <button class="btn btn-success" (click)="cropingDone()">Crop done</button>
+                                        <div id="imageFFFF">
+                                          <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
+                                        </div>
+                                        
+                                        <button (click)="resizeed(1)">plus</button>
+                                        <button (click)="resizeed(-1)">minus</button>
+                                        <button class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</button>
                                         <!-- <img [src]="imageShow" id="img"/> -->
                                       </ng-container>
                                       
@@ -156,4 +159,24 @@
               </div>
             </div>
         
-          
+            <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <!-- <template> -->
+                      <div class="modal-header border-remo paddign-remove">
+                      <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                          <img src="../../../assets/images/close-im.svg">
+                      </button>
+                      </div>
+                  <!-- </template> -->
+                  
+                  <div class="modal-body" >
+                          <div class="success-parent">
+                                  <!-- <div class="child-success"><img src="../../../assets/images/correct.svg"></div>                            -->
+                                  <div class="child-success"><h2>{{errorMessage}}</h2></div> 
+                              </div>
+                      </div>
+                </div>
+              </div>
+            </div>
+        

@@ -38,7 +38,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
     this.imageShow = this.angularCropper.cropper.getCroppedCanvas().toDataURL();
     this.isCropDone= true;
   }
- 
+  errorMessage: any;
   isCropDone: boolean;
   isCropDone2: boolean;
 
@@ -144,9 +144,28 @@ export class CreatePromisingInitiativeComponent implements OnInit {
       userCreate: [''],
       userTypeId: ['',Validators.required],
       id: [''],
-      videoLink: ['']
+      videoLink: ['',Validators.required]
       
     });
+  }
+
+  resizeed(direction) {
+    console.log(direction)
+    var delta = 10 * direction;
+  
+    var element = jQuery('#imageFFFF').find('img')[1]
+    var element2 = jQuery('#imageFFFF').find('img')[2]
+    console.log(element)
+
+    var positionInfo1 = element2.getBoundingClientRect();
+  
+    element2.style.width = positionInfo1.width+delta+'px';
+    element2.style.height = positionInfo1.height+delta+'px';
+ 
+    var positionInfo = element.getBoundingClientRect();
+  
+    element.style.width = positionInfo.width+delta+'px';
+    element.style.height = positionInfo.height+delta+'px';
   }
   imageCLik1(){
     this.imageShow = '';
@@ -243,6 +262,36 @@ export class CreatePromisingInitiativeComponent implements OnInit {
 
 
   UpdateNews(){
+    if(!this.frmNews.get('userTypeId').valid){
+      this.errorMessage = "Please select  Category"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('newsTitle').valid){
+      this.errorMessage = "Please Enter Title"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('videoLink').valid){
+      this.errorMessage = "Please Upload Video Link"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('banner').valid){
+      this.errorMessage = "Please Upload Image"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('summary').valid){
+      this.errorMessage = "Please Enter Summary"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('newsDesc').valid){
+      this.errorMessage = "Please Enter Description"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
     if(this.frmNews.valid){
       console.log(this.frmNews.value)
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
@@ -301,6 +350,36 @@ export class CreatePromisingInitiativeComponent implements OnInit {
   }
 
   submitNews() {
+    if(!this.frmNews.get('userTypeId').valid){
+      this.errorMessage = "Please select  Category"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('newsTitle').valid){
+      this.errorMessage = "Please Enter Title"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('videoLink').valid){
+      this.errorMessage = "Please Upload Video Link"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('banner').valid){
+      this.errorMessage = "Please Upload Image"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('summary').valid){
+      this.errorMessage = "Please Enter Summary"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('newsDesc').valid){
+      this.errorMessage = "Please Enter Description"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
     if(this.frmNews.valid){
       this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {

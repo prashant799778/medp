@@ -79,21 +79,25 @@
                               <label for="newsTitle"> Video Link</label>
                                   <input type="text" class="form-control" formControlName="videoLink">
                                   
-                                <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
+                                <!-- <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
                                   <p>Please upload Video Link</p>
-                                </div>
+                                </div> -->
   
                               </ng-container>
                               
                               <ng-container *ngIf="imageClick">
                                       <label for="banner">Image</label>
+
                                       <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                                       
                                       <ng-container *ngIf="!isCropDone && isCropDone2">
-                                        <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
-                                        <!-- <button (click)="resizeed(1)">plus</button>
-                                        <button (click)="resizeed(-1)">minus</button> -->
-                                        <span class="btn btn-success" (click)="cropingDone()">Crop done</span>
+                                        <div id="imageFFFF">
+                                            <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
+                                        </div>
+                                        
+                                        <button (click)="resizeed(1)">plus</button>
+                                        <button (click)="resizeed(-1)">minus</button>
+                                        <span class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</span>
                                         <!-- <img [src]="imageShow" id="img"/> -->
                                       </ng-container>
                                       
@@ -110,9 +114,9 @@
                                       
                                  </div>
                                       </ng-container>
-                                      <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
+                                      <!-- <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
                                         <p>Please upload Image</p>
-                                      </div>
+                                      </div> -->
                                       
                               </ng-container>
                                             
@@ -131,9 +135,9 @@
                               <label for="newsTitle"> Video Link</label>
                                   <input type="text" class="form-control" formControlName="videoLink">
                                   
-                                <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
+                                <!-- <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
                                   <p>Please upload Video Link</p>
-                                </div>
+                                </div> -->
   
                               </ng-container>
                               
@@ -142,10 +146,12 @@
                                       <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                                       
                                       <ng-container *ngIf="!isCropDone && isCropDone2">
-                                        <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
-                                        <!-- <button (click)="resizeed(1)">plus</button>
-                                        <button (click)="resizeed(-1)">minus</button> -->
-                                        <button class="btn btn-success" (click)="cropingDone()">Crop done</button>
+                                        <div id="imageFFFF1">
+                                            <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
+                                        </div>
+                                        <button (click)="resizeed1(1)">plus</button>
+                                        <button (click)="resizeed1(-1)">minus</button>
+                                        <button class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</button>
                                         <!-- <img [src]="imageShow" id="img"/> -->
                                       </ng-container>
                                       
@@ -162,9 +168,9 @@
                                       
                                  </div>
                                       </ng-container>
-                                      <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
+                                      <!-- <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
                                         <p>Please upload Image</p>
-                                      </div>
+                                      </div> -->
                                       
                               </ng-container>
                                             
@@ -183,9 +189,9 @@
                                       <label for="newsTitle"> Video Link</label>
                                           <input type="text" class="form-control" formControlName="videoLink">
                                           
-                                        <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
+                                        <!-- <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
                                           <p>Please upload Video Link</p>
-                                        </div>
+                                        </div> -->
           
                                       </ng-container>
                                       
@@ -194,10 +200,12 @@
                                               <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                                               
                                               <ng-container *ngIf="!isCropDone && isCropDone2">
-                                                <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
-                                                <!-- <button (click)="resizeed(1)">plus</button>
-                                                <button (click)="resizeed(-1)">minus</button> -->
-                                                <span class="btn btn-success" (click)="cropingDone()">Crop done</span>
+                                                <div id="imageFFFF2">
+                                                    <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
+                                                </div>
+                                                <button (click)="resizeed2(1)">plus</button>
+                                                <button (click)="resizeed2(-1)">minus</button>
+                                                <span class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</span>
                                                 <!-- <img [src]="imageShow" id="img"/> -->
                                               </ng-container>
                                               
@@ -214,15 +222,15 @@
                                               
                                          </div>
                                               </ng-container>
-                                              <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
+                                              <!-- <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
                                                 <p>Please upload Image</p>
-                                              </div>
+                                              </div> -->
                                               
                                       </ng-container>
                                                     
                                                 </div>
                                                
-                                        <button  type="submit" class="btn btn-success pull-right mt-4" (click)="submitNews(1)">Submit</button>
+                                        <button  type="submit" class="btn btn-success pull-right mt-4" (click)="submitNews(3)">Submit</button>
                                     </tab>
                                 
                             <tab heading="Global Initiatives" >
@@ -235,9 +243,9 @@
                                       <label for="newsTitle"> Video Link</label>
                                           <input type="text" class="form-control" formControlName="videoLink">
                                           
-                                        <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
+                                        <!-- <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
                                           <p>Please upload Video Link</p>
-                                        </div>
+                                        </div> -->
           
                                       </ng-container>
                                       
@@ -246,10 +254,12 @@
                                               <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                                               
                                               <ng-container *ngIf="!isCropDone && isCropDone2">
-                                                <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
-                                                <!-- <button (click)="resizeed(1)">plus</button>
-                                                <button (click)="resizeed(-1)">minus</button> -->
-                                                <span class="btn btn-success" (click)="cropingDone()">Crop done</span>
+                                                <div id="imageFFFF3">
+                                                    <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
+                                                </div>
+                                                <button (click)="resizeed3(1)">plus</button>
+                                                <button (click)="resizeed3(-1)">minus</button>
+                                                <span class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</span>
                                                 <!-- <img [src]="imageShow" id="img"/> -->
                                               </ng-container>
                                               
@@ -266,15 +276,15 @@
                                               
                                          </div>
                                               </ng-container>
-                                              <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
+                                              <!-- <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
                                                 <p>Please upload Image</p>
-                                              </div>
+                                              </div> -->
                                               
                                       </ng-container>
                                                     
                                                 </div>
                                                
-                                        <button  type="submit" class="btn btn-success pull-right mt-4" (click)="submitNews(1)">Submit</button>
+                                        <button  type="submit" class="btn btn-success pull-right mt-4" (click)="submitNews(4)">Submit</button>
                                     </tab>
                                 
                             
@@ -288,9 +298,9 @@
                               <label for="newsTitle"> Video Link</label>
                                   <input type="text" class="form-control" formControlName="videoLink">
                                   
-                                <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
+                                <!-- <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
                                   <p>Please upload Video Link</p>
-                                </div>
+                                </div> -->
   
                               </ng-container>
                               
@@ -299,10 +309,12 @@
                                       <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                                       
                                       <ng-container *ngIf="!isCropDone && isCropDone2">
-                                        <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
-                                        <!-- <button (click)="resizeed(1)">plus</button>
-                                        <button (click)="resizeed(-1)">minus</button> -->
-                                        <button class="btn btn-success" (click)="cropingDone()">Crop done</button>
+                                        <div id="imageFFFF4">
+                                            <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
+                                        </div>
+                                        <button (click)="resizeed4(1)">plus</button>
+                                        <button (click)="resizeed4(-1)">minus</button>
+                                        <button class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</button>
                                         <!-- <img [src]="imageShow" id="img"/> -->
                                       </ng-container>
                                       
@@ -319,9 +331,9 @@
                                       
                                  </div>
                                       </ng-container>
-                                      <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
+                                      <!-- <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
                                         <p>Please upload Image</p>
-                                      </div>
+                                      </div> -->
                                       
                               </ng-container>
                                             
@@ -340,9 +352,9 @@
                               <label for="newsTitle"> Video Link</label>
                                   <input type="text" class="form-control" formControlName="videoLink">
                                   
-                                <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
+                                <!-- <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
                                   <p>Please upload Video Link</p>
-                                </div>
+                                </div> -->
   
                               </ng-container>
                               
@@ -351,10 +363,12 @@
                                       <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                                       
                                       <ng-container *ngIf="!isCropDone && isCropDone2">
-                                        <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
-                                        <!-- <button (click)="resizeed(1)">plus</button>
-                                        <button (click)="resizeed(-1)">minus</button> -->
-                                        <button class="btn btn-success" (click)="cropingDone()">Crop done</button>
+                                        <div id="imageFFFF5">
+                                            <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
+                                        </div>
+                                        <button (click)="resizeed5(1)">plus</button>
+                                        <button (click)="resizeed5(-1)">minus</button>
+                                        <button class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</button>
                                         <!-- <img [src]="imageShow" id="img"/> -->
                                       </ng-container>
                                       
@@ -371,9 +385,9 @@
                                       
                                  </div>
                                       </ng-container>
-                                      <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
+                                      <!-- <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
                                         <p>Please upload Image</p>
-                                      </div>
+                                      </div> -->
                                       
                               </ng-container>
                                             
@@ -393,9 +407,9 @@
                               <label for="newsTitle"> Video Link</label>
                                   <input type="text" class="form-control" formControlName="videoLink">
                                   
-                                <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
+                                <!-- <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
                                   <p>Please upload Video Link</p>
-                                </div>
+                                </div> -->
   
                               </ng-container>
                               
@@ -404,10 +418,12 @@
                                       <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                                       
                                       <ng-container *ngIf="!isCropDone && isCropDone2">
-                                        <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
-                                        <!-- <button (click)="resizeed(1)">plus</button>
-                                        <button (click)="resizeed(-1)">minus</button> -->
-                                        <button class="btn btn-success" (click)="cropingDone()">Crop done</button>
+                                        <div id="imageFFFF6">
+                                            <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
+                                        </div>
+                                        <button (click)="resizeed6(1)">plus</button>
+                                        <button (click)="resizeed6(-1)">minus</button>
+                                        <button class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</button>
                                         <!-- <img [src]="imageShow" id="img"/> -->
                                       </ng-container>
                                       
@@ -424,9 +440,9 @@
                                       
                                  </div>
                                       </ng-container>
-                                      <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
+                                      <!-- <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
                                         <p>Please upload Image</p>
-                                      </div>
+                                      </div> -->
                                       
                               </ng-container>
                                             
@@ -620,4 +636,24 @@
         </div>
   
       
+        <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                  <!-- <template> -->
+                    <div class="modal-header border-remo paddign-remove">
+                    <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                        <img src="../../../assets/images/close-im.svg">
+                    </button>
+                    </div>
+                <!-- </template> -->
+                
+                <div class="modal-body" >
+                        <div class="success-parent">
+                                <!-- <div class="child-success"><img src="../../../assets/images/correct.svg"></div>                            -->
+                                <div class="child-success"><h2>{{errorMessage}}</h2></div> 
+                            </div>
+                    </div>
+              </div>
+            </div>
+          </div>
       

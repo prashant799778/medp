@@ -1,11 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'angular-web-storage';
 import { AppSettings } from 'src/app/utils/constant';
 import { Observable } from 'rxjs';
+import { CropperComponent } from 'angular-cropperjs';
 declare var jQuery: any;
 
 @Component({
@@ -14,6 +15,75 @@ declare var jQuery: any;
   styleUrls: ['./view-content.component.css']
 })
 export class ViewContentComponent implements OnInit {
+  @ViewChild('angularCropper', {static: false}) public angularCropper: CropperComponent;
+ 
+  configs = {
+    aspectRatio : 4/3,
+    dragMode : 'move',
+    background : true,
+    movable: true,
+    rotatable : true,
+    scalable: true,
+    zoomable: true,
+    viewMode: 1,
+    checkImageOrigin : true,
+    // cropmove:this.cropMoved.bind(this),
+    checkCrossOrigin: true
+  };
+  isCropDone: boolean;
+  isCropDone2: boolean;
+
+  cropMoved(data){
+    console.log(this.angularCropper.cropper)
+    
+    console.log(this.imageShow)
+  }
+  cropingDone(){
+    this.imageShow = this.angularCropper.cropper.getCroppedCanvas().toDataURL();
+    this.isCropDone= true;
+  }
+  imageCLik1(){
+    this.imageShow = '';
+    this.imageClick = true
+    
+    this.frmNews.get('videoLink').clearValidators();
+    this.frmNews.get('videoLink').updateValueAndValidity();
+    this.frmNews.get('banner').setValidators(Validators.required)
+    this.frmNews.get('banner').updateValueAndValidity();
+    console.log("Image UPload",this.frmNews)
+  }
+  
+  imageCLik(){
+    this.imageClick = false;
+    this.frmNews.get('videoLink').setValue('');
+    // this.frmNews.get('videoLink').validator
+    this.frmNews.get('banner').clearValidators()
+    this.frmNews.get('banner').updateValueAndValidity();
+    this.frmNews.get('videoLink').setValidators(Validators.required)
+    this.frmNews.get('videoLink').updateValueAndValidity();
+    console.log("Video UPload",this.frmNews)
+    // this.frmNews.get('videoLink')
+  }
+  resizeed(direction) {
+    console.log(direction)
+    var delta = 10 * direction;
+  
+    var element = jQuery('#imageFFFF').find('img')[1]
+    var element2 = jQuery('#imageFFFF').find('img')[2]
+    console.log(element)
+
+    var positionInfo1 = element2.getBoundingClientRect();
+  
+    element2.style.width = positionInfo1.width+delta+'px';
+    element2.style.height = positionInfo1.height+delta+'px';
+ 
+    var positionInfo = element.getBoundingClientRect();
+  
+    element.style.width = positionInfo.width+delta+'px';
+    element.style.height = positionInfo.height+delta+'px';
+  }
+ 
+  errorMessage: any;
 
   percentDone: number;
   uploadSuccess: boolean;
@@ -22,6 +92,7 @@ export class ViewContentComponent implements OnInit {
   height:number;
   errorImage: boolean;
   imageClick: boolean;
+  // errorMessage: any;
 
   @ViewChild('coverFilesInput', {static: false}) imgType:ElementRef;
 
@@ -74,14 +145,14 @@ export class ViewContentComponent implements OnInit {
     //   document.getElementById("demo").innerHTML = x;
     // }
    }
-   imageCLik1(){
-    this.imageShow = '';
-    this.imageClick = true
-  }
-  imageCLik(){
-    this.imageClick = false;
-    this.frmNews.get('videoLink').setValue('');
-  }
+  //  imageCLik1(){
+  //   this.imageShow = '';
+  //   this.imageClick = true
+  // }
+  // imageCLik(){
+  //   this.imageClick = false;
+  //   this.frmNews.get('videoLink').setValue('');
+  // }
 
    ngOnInit() {
     console.log("step 1")
@@ -111,14 +182,14 @@ export class ViewContentComponent implements OnInit {
   initializeForm() {
     // Question,Answer,UserId
     this.frmNews = this.fb.group({
-      content: [''],
+      content: ['',Validators.required],
       // newsTitle: [''],
       banner: [''],
       id:[''],
       // summary: [''],
-      videoLink: [''],
+      videoLink: ['',Validators.required],
       userCreate: [''],
-      userTypeId: ['']
+      userTypeId: ['',Validators.required]
     });
   }
 
@@ -132,6 +203,8 @@ export class ViewContentComponent implements OnInit {
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (event) => {
           this.imageShow = (<FileReader>event.target).result;
+          this.isCropDone2 = true;
+         this.isCropDone = false;
           this.frmNews.get('banner').setValue(this.file);
           this.showBanner = 0;
 
@@ -162,12 +235,12 @@ export class ViewContentComponent implements OnInit {
               //  console.log(this.width)
                this.height = img.height;
                let rat = this.gcds(this.width,this.height)
-                if(rat == '4:3'){
-                  this.errorImage = false;
-                }else{
-                  this.errorImage = true;
-                  this.imageShow = ''
-                }
+                // if(rat == '4:3'){
+                //   this.errorImage = false;
+                // }else{
+                //   this.errorImage = true;
+                //   this.imageShow = ''
+                // }
            };
            const csv = fr.result;
            if(typeof csv == 'string'){
@@ -215,6 +288,26 @@ export class ViewContentComponent implements OnInit {
 
 
   UpdateNews(){
+    if(!this.frmNews.get('userTypeId').valid){
+      this.errorMessage = "Please select  Category"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('content').valid){
+      this.errorMessage = "Please Enter Content"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('videoLink').valid){
+      this.errorMessage = "Please Upload Video Link"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('banner').valid){
+      this.errorMessage = "Please Upload Image"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
       content : this.frmNews.get('content').value,
@@ -261,6 +354,26 @@ export class ViewContentComponent implements OnInit {
 
 
   submitNews() {
+    if(!this.frmNews.get('userTypeId').valid){
+      this.errorMessage = "Please select  Category"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('content').valid){
+      this.errorMessage = "Please Enter Content"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('videoLink').valid){
+      this.errorMessage = "Please Upload Video Link"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('banner').valid){
+      this.errorMessage = "Please Upload Image"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
       content : this.frmNews.get('content').value,

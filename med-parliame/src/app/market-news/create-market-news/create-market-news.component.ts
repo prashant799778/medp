@@ -15,7 +15,8 @@ declare var jQuery: any;
 })
 export class CreateMarketNewsComponent implements OnInit {
   @ViewChild('angularCropper', {static: false}) public angularCropper: CropperComponent;
-
+  errorMessage: any;
+  isCropDone2: boolean;
   config = {
     aspectRatio : 4/3,
     dragMode : 'move',
@@ -27,7 +28,8 @@ export class CreateMarketNewsComponent implements OnInit {
     viewMode: 1,
     checkImageOrigin : true,
     // cropmove:this.cropMoved.bind(this),
-    checkCrossOrigin: true
+    checkCrossOrigin: true,
+    
   };
   cropMoved(data){
     console.log(this.angularCropper.cropper)
@@ -41,10 +43,25 @@ export class CreateMarketNewsComponent implements OnInit {
 
   resizeed(direction) {
     console.log(direction)
-    var delta = 100 * direction;
+    var delta = 10 * direction;
   
-    var element = document.getElementById('img');
+    var element = jQuery('#imageFFFF').find('img')[1]
+    var element2 = jQuery('#imageFFFF').find('img')[2]
     console.log(element)
+
+    var positionInfo1 = element2.getBoundingClientRect();
+  
+    element2.style.width = positionInfo1.width+delta+'px';
+    element2.style.height = positionInfo1.height+delta+'px';
+  //   jQuery('#imageFFFF').find('img').each(function () {
+  //     alert(jQuery(this).attr('src'));
+  // });
+  //   for (let i = 0; i <= element.childNodes.length - 1; i++) {
+  //     if (element.childNodes[i].tagName == 'IMG')     // Check if element is an IMG (image).
+  //     {
+  //         alert(element.childNodes.item(i).id);       // Showthe id of each image.
+  //     }
+  // }
     var positionInfo = element.getBoundingClientRect();
   
     element.style.width = positionInfo.width+delta+'px';
@@ -183,7 +200,8 @@ export class CreateMarketNewsComponent implements OnInit {
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = (event) => {
           this.imageShow = (<FileReader>event.target).result;
-          this.isCropDone= false;
+          this.isCropDone2 = true;
+         this.isCropDone = false;
           this.frmNews.get('banner').setValue(this.file);
           this.showBanner = 0;
         }
@@ -241,6 +259,36 @@ export class CreateMarketNewsComponent implements OnInit {
 }
   
   UpdateNews(){
+    if(!this.frmNews.get('userTypeId').valid){
+      this.errorMessage = "Please select News Category"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('newsTitle').valid){
+      this.errorMessage = "Please Enter Title"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('videoLink').valid){
+      this.errorMessage = "Please Upload Video Link"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('banner').valid){
+      this.errorMessage = "Please Upload Image"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('summary').valid){
+      this.errorMessage = "Please Enter Summary"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('newsDesc').valid){
+      this.errorMessage = "Please Enter Description"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
     if(this.frmNews.valid){
       console.log(this.frmNews.value)
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
@@ -299,6 +347,42 @@ export class CreateMarketNewsComponent implements OnInit {
   }
 
   submitNews() {
+    if(!this.frmNews.get('userTypeId').valid){
+      this.errorMessage = "Please select News Category"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('newsTitle').valid){
+      this.errorMessage = "Please Enter Title"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('videoLink').valid){
+      this.errorMessage = "Please Upload Video Link"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('banner').valid){
+      this.errorMessage = "Please Upload Image"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('summary').valid){
+      this.errorMessage = "Please Enter Summary"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('newsDesc').valid){
+      this.errorMessage = "Please Enter Description"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    
+
+
+
+
+
     if(this.frmNews.valid){
       this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
       const newsData = {

@@ -46,9 +46,9 @@
                             <select formControlName="userTypeId">
                                 <option *ngFor="let userType of userTypeDetails" [value]="userType.id">{{userType.userName}}</option>
                             </select>
-                            <div class="error" *ngIf="frmNews.get('userTypeId').errors && (frmNews.get('userTypeId').touched || frmNews.get('userTypeId').dirty)">
+                            <!-- <div class="error" *ngIf="frmNews.get('userTypeId').errors && (frmNews.get('userTypeId').touched || frmNews.get('userTypeId').dirty)">
                                 <p>Global Initiatives category is required</p>
-                              </div>
+                              </div> -->
                             <!--  <ng-select 
                                      [items]="categoryList"
                                      bindLabel="category"
@@ -71,9 +71,9 @@
                               <label for="newsTitle"> Video Link</label>
                                   <input type="text" class="form-control" formControlName="videoLink">
                                   
-                                <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
+                                <!-- <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
                                   <p>Please upload Video Link</p>
-                                </div>
+                                </div> -->
   
                               </ng-container>
                               
@@ -82,10 +82,13 @@
                                       <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
                                       
                                       <ng-container *ngIf="!isCropDone && isCropDone2">
-                                        <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
-                                        <!-- <button (click)="resizeed(1)">plus</button>
-                                        <button (click)="resizeed(-1)">minus</button> -->
-                                        <button class="btn btn-success" (click)="cropingDone()">Crop done</button>
+                                        <div id="imageFFFF">
+                                          <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
+                                        </div>
+                                       
+                                        <button (click)="resizeed(1)">plus</button>
+                                        <button (click)="resizeed(-1)">minus</button>
+                                        <button class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</button>
                                         <!-- <img [src]="imageShow" id="img"/> -->
                                       </ng-container>
                                       
@@ -102,23 +105,23 @@
                                       
                                  </div>
                                       </ng-container>
-                                      <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
+                                      <!-- <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
                                         <p>Please upload Image</p>
-                                      </div>
+                                      </div> -->
                                       
                               </ng-container>
                         <br>
                             <label for="summary">Global Initiatives Shots</label>
                                 <textarea type="text" class="form-control" formControlName="summary" placeholder="Enter News Summary..." rows="4"></textarea>
-                                <div class=error *ngIf="frmNews.get('summary').errors && (frmNews.get('summary').touched || frmNews.get('summary').dirty)">
+                                <!-- <div class=error *ngIf="frmNews.get('summary').errors && (frmNews.get('summary').touched || frmNews.get('summary').dirty)">
                                     <p>Global Initiatives Summary is required</p>
-                                  </div>
+                                  </div> -->
                             <br>
                             <label for="newsDesc">Global Initiatives Description</label>
                             <angular-editor formControlName="newsDesc" [config]="config"></angular-editor>
-                            <div class=error *ngIf="frmNews.get('newsDesc').errors && (frmNews.get('newsDesc').touched || frmNews.get('newsDesc').dirty)">
+                            <!-- <div class=error *ngIf="frmNews.get('newsDesc').errors && (frmNews.get('newsDesc').touched || frmNews.get('newsDesc').dirty)">
                                 <p>Global Initiatives Description is required</p>
-                              </div>
+                              </div> -->
                           </div>
                           <button *ngIf="!updateCheck" type="submit" class="btn btn-success pull-right" (click)="submitNews()">Submit</button>
                           <button *ngIf="updateCheck" type="submit" class="btn btn-success pull-right" (click)="UpdateNews()">Update</button>
@@ -146,6 +149,26 @@
                           <div class="success-parent">
                                   <div class="child-success"><img src="../../../assets/images/correct.svg"></div>                           
                                   <div class="child-success"><h2>{{messageShow}} Successfully</h2></div> 
+                              </div>
+                      </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <!-- <template> -->
+                      <div class="modal-header border-remo paddign-remove">
+                      <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                          <img src="../../../assets/images/close-im.svg">
+                      </button>
+                      </div>
+                  <!-- </template> -->
+                  
+                  <div class="modal-body" >
+                          <div class="success-parent">
+                                  <!-- <div class="child-success"><img src="../../../assets/images/correct.svg"></div>                            -->
+                                  <div class="child-success"><h2>{{errorMessage}}</h2></div> 
                               </div>
                       </div>
                 </div>

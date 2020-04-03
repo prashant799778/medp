@@ -15,7 +15,7 @@ declare var jQuery: any;
 })
 export class EditOperationAdminComponent implements OnInit {
   @ViewChild('angularCropper', {static: false}) public angularCropper: CropperComponent;
- 
+  errorMessage: any;
   configs = {
     aspectRatio : 4/3,
     dragMode : 'move',
@@ -152,7 +152,7 @@ export class EditOperationAdminComponent implements OnInit {
     this.frmNews = this.fb.group({
       // newsType: [''],
       // newsTitle: [''],
-      banner: ['',Validators.required],
+      banner: [''],
       id:[''],
       // summary: [''],
       // newsDesc: [''],
@@ -243,9 +243,136 @@ export class EditOperationAdminComponent implements OnInit {
   return ratio;
 }
     
+resizeed(direction) {
+  console.log(direction)
+  var delta = 10 * direction;
 
+  var element = jQuery('#imageFFFF').find('img')[1]
+  var element2 = jQuery('#imageFFFF').find('img')[2]
+  console.log(element)
 
-    
+  var positionInfo1 = element2.getBoundingClientRect();
+
+  element2.style.width = positionInfo1.width+delta+'px';
+  element2.style.height = positionInfo1.height+delta+'px';
+
+  var positionInfo = element.getBoundingClientRect();
+
+  element.style.width = positionInfo.width+delta+'px';
+  element.style.height = positionInfo.height+delta+'px';
+}
+
+resizeed1(direction) {
+  console.log(direction)
+  var delta = 10 * direction;
+
+  var element = jQuery('#imageFFFF1').find('img')[1]
+  var element2 = jQuery('#imageFFFF1').find('img')[2]
+  console.log(element)
+
+  var positionInfo1 = element2.getBoundingClientRect();
+
+  element2.style.width = positionInfo1.width+delta+'px';
+  element2.style.height = positionInfo1.height+delta+'px';
+
+  var positionInfo = element.getBoundingClientRect();
+
+  element.style.width = positionInfo.width+delta+'px';
+  element.style.height = positionInfo.height+delta+'px';
+}
+resizeed2(direction) {
+  console.log(direction)
+  var delta = 10 * direction;
+
+  var element = jQuery('#imageFFFF2').find('img')[1]
+  var element2 = jQuery('#imageFFFF2').find('img')[2]
+  console.log(element)
+
+  var positionInfo1 = element2.getBoundingClientRect();
+
+  element2.style.width = positionInfo1.width+delta+'px';
+  element2.style.height = positionInfo1.height+delta+'px';
+
+  var positionInfo = element.getBoundingClientRect();
+
+  element.style.width = positionInfo.width+delta+'px';
+  element.style.height = positionInfo.height+delta+'px';
+}
+
+resizeed3(direction) {
+  console.log(direction)
+  var delta = 10 * direction;
+
+  var element = jQuery('#imageFFFF3').find('img')[1]
+  var element2 = jQuery('#imageFFFF3').find('img')[2]
+  console.log(element)
+
+  var positionInfo1 = element2.getBoundingClientRect();
+
+  element2.style.width = positionInfo1.width+delta+'px';
+  element2.style.height = positionInfo1.height+delta+'px';
+
+  var positionInfo = element.getBoundingClientRect();
+
+  element.style.width = positionInfo.width+delta+'px';
+  element.style.height = positionInfo.height+delta+'px';
+}
+
+resizeed4(direction) {
+  console.log(direction)
+  var delta = 10 * direction;
+
+  var element = jQuery('#imageFFFF4').find('img')[1]
+  var element2 = jQuery('#imageFFFF4').find('img')[2]
+  console.log(element)
+
+  var positionInfo1 = element2.getBoundingClientRect();
+
+  element2.style.width = positionInfo1.width+delta+'px';
+  element2.style.height = positionInfo1.height+delta+'px';
+
+  var positionInfo = element.getBoundingClientRect();
+
+  element.style.width = positionInfo.width+delta+'px';
+  element.style.height = positionInfo.height+delta+'px';
+}
+resizeed5(direction) {
+  console.log(direction)
+  var delta = 10 * direction;
+
+  var element = jQuery('#imageFFFF5').find('img')[1]
+  var element2 = jQuery('#imageFFFF5').find('img')[2]
+  console.log(element)
+
+  var positionInfo1 = element2.getBoundingClientRect();
+
+  element2.style.width = positionInfo1.width+delta+'px';
+  element2.style.height = positionInfo1.height+delta+'px';
+
+  var positionInfo = element.getBoundingClientRect();
+
+  element.style.width = positionInfo.width+delta+'px';
+  element.style.height = positionInfo.height+delta+'px';
+}
+ 
+resizeed6(direction) {
+  console.log(direction)
+  var delta = 10 * direction;
+
+  var element = jQuery('#imageFFFF6').find('img')[1]
+  var element2 = jQuery('#imageFFFF6').find('img')[2]
+  console.log(element)
+
+  var positionInfo1 = element2.getBoundingClientRect();
+
+  element2.style.width = positionInfo1.width+delta+'px';
+  element2.style.height = positionInfo1.height+delta+'px';
+
+  var positionInfo = element.getBoundingClientRect();
+
+  element.style.width = positionInfo.width+delta+'px';
+  element.style.height = positionInfo.height+delta+'px';
+}
     
  
   
@@ -307,6 +434,17 @@ this.imageShow=''
 
 
   submitNews(id) {
+    
+    if(!this.frmNews.get('videoLink').valid){
+      this.errorMessage = "Please Upload Video Link"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('banner').valid){
+      this.errorMessage = "Please Upload Image"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
     if(this.frmNews.valid){
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {

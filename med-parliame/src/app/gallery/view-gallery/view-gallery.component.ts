@@ -63,7 +63,7 @@ export class ViewGalleryComponent implements OnInit {
     // this.frmNews.get('videoLink')
   }
  
-
+  errorMessage: any;
   percentDone: number;
   uploadSuccess: boolean;
   size:any;
@@ -226,10 +226,47 @@ export class ViewGalleryComponent implements OnInit {
   return ratio;
 }
    
-    
+resizeed(direction) {
+  console.log(direction)
+  var delta = 10 * direction;
+
+  var element = jQuery('#imageFFFF').find('img')[1]
+  var element2 = jQuery('#imageFFFF').find('img')[2]
+  console.log(element)
+
+  var positionInfo1 = element2.getBoundingClientRect();
+
+  element2.style.width = positionInfo1.width+delta+'px';
+  element2.style.height = positionInfo1.height+delta+'px';
+
+  var positionInfo = element.getBoundingClientRect();
+
+  element.style.width = positionInfo.width+delta+'px';
+  element.style.height = positionInfo.height+delta+'px';
+}  
  
   
   UpdateNews(){
+    // if(!this.frmNews.get('userTypeId').valid){
+    //   this.errorMessage = "Please select News Category"
+    //   jQuery("#errorModal").modal('show')
+    //   return;
+    // }
+    if(!this.frmNews.get('newsTitle').valid){
+      this.errorMessage = "Please Enter Title"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('videoLink').valid){
+      this.errorMessage = "Please Upload Video Link"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('banner').valid){
+      this.errorMessage = "Please Upload Image"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
     if(this.frmNews.valid){
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
@@ -287,6 +324,26 @@ export class ViewGalleryComponent implements OnInit {
 
 
   submitNews() {
+    // if(!this.frmNews.get('userTypeId').valid){
+    //   this.errorMessage = "Please select News Category"
+    //   jQuery("#errorModal").modal('show')
+    //   return;
+    // }
+    if(!this.frmNews.get('newsTitle').valid){
+      this.errorMessage = "Please Enter Title"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('videoLink').valid){
+      this.errorMessage = "Please Upload Video Link"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
+    if(!this.frmNews.get('banner').valid){
+      this.errorMessage = "Please Upload Image"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
     if(this.frmNews.valid){
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {

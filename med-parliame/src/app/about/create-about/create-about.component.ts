@@ -21,6 +21,7 @@ export class CreateAboutComponent implements OnInit {
   categoryList: [];
   htmlContent = '';
   newsId: number;
+  errorMessage: any;
   file: any;
   imageShow: any= '';
   showBanner: number;
@@ -119,6 +120,11 @@ export class CreateAboutComponent implements OnInit {
  
   }
   UpdateNews(){
+    if(!this.frmNews.get('newsDesc').valid){
+      this.errorMessage = "Please Upload Image"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
     console.log(this.frmNews.value)
     this.frmNews.get('userCreate').setValue(this.local.get('userData1')[0].userId)
     const newsData = {
