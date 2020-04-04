@@ -29,7 +29,6 @@
           <h2 class="main-hading">Dashboard</h2>
       </div>
         <div class="card-header-actions crd-bnt">
-          <!-- <a [routerLink]="['/ourPartner/editPartner']" class="btn" target="_self">View Our Partner</a> -->
         </div>
       </div>
       </div>
@@ -37,13 +36,8 @@
       <div class="card-header">
         <i class="fa fa-list"></i>Create Our Partner Data
         <div class="card-header-actions d-flex">
-               
-                <!-- <a  class="btn btn-block btn-outline-dark" target="_self">Create Gallery</a> -->
                 <a [routerLink]="['/ourPartner/editPartner']" class="btn btn-block btn-outline-dark" target="_self">View Gallery</a>
              </div>
-        <!-- <div class="card-header-actions">
-          <a [routerLink]="['/gallery/editGallery']" class="btn btn-block btn-outline-dark" target="_self">View Gallery</a>
-       </div> -->
     </div>
   </template>
      <div class="card-body">
@@ -52,22 +46,6 @@
                 <div class="card-body p-4  border-rd">
                     <form [formGroup]="frmNews" autocomplete="off">
                       <div class="form-group">
-                       <!-- <label for="newsType">Gallery category</label>
-                        <select formControlName="userTypeId">
-                            <option *ngFor="let userType of userTypeDetails" [value]="userType.id">{{userType.userName}}</option>
-                        </select> -->
-                        <!--  <ng-select 
-                                 [items]="categoryList"
-                                 bindLabel="category"
-                                 bindValue="id"
-                                 labelForId="newsType"
-                                 placeholder="Please select News Category"
-                                 clearAllText="Clear"
-                                 formControlName="newsType">
-                        </ng-select> -->
-
-
-
                         <tabset #tabset>
                             <tab heading="Market Insight" (tabChange)="changeEvent($event)">
                                     <div class="mt-3">
@@ -491,154 +469,8 @@
 
 
                         <br>
-                        <!-- <label for="newsTitle">Gallery Title</label>
-                            <input type="text" class="form-control" formControlName="newsTitle">
-                        <br> -->
-                        <!-- <label for="banner">Market Insight Banner</label>
-                            <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
-                            <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
-                                <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
-                                <div *ngIf="errorImage" class="error">
-                                        <p>Please Upload Video Link or Image In 4:3</p>
-                                    </div>
-                           </div>
-                           <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
-                            <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
-                            <div *ngIf="errorImage" class="error">
-                                    <p>Please Upload Video Link or Image In 4:3</p>
-                                </div>
-                       </div>
-                        <br>
-                        <label for="banner">News Banner</label>
-                            <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
-                            <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
-                                <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
-                                <div *ngIf="errorImage" class="error">
-                                        <p>Please Upload Video Link or Image In 4:3</p>
-                                    </div>
-                           </div>
-                           <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
-                            <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
-                            <div *ngIf="errorImage" class="error">
-                                    <p>Please Upload Video Link or Image In 4:3</p>
-                                </div>
-                       </div>
-                        <br>
-                        <label for="banner">MedAcheiver.TV</label>
-                        <br>
-                        <button class="btn btn-success pull-right buttonsss " (click)="imageCLik()">Video Upload</button>
-                        <button class="btn btn-success pull-right buttonsss ml-3"(click)="imageCLik1()">Image Upload</button>
-                        <br>
-                        <ng-container *ngIf="!imageClick">
-                            <label for="newsTitle"> Video Link</label>
-                                <input type="text" class="form-control" formControlName="videoLink">
-                            </ng-container>
-                            
-                            <ng-container *ngIf="imageClick">
-                                    <label for="banner">Image</label>
-                                    <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
-                                    <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
-                                        <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
-                                        <div *ngIf="errorImage" class="error">
-                                            <p>Please Upload Video Link or Image In 4:3</p>
-                                        </div>
-                                   </div>
-                                   <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
-                                    <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
-                                    <div *ngIf="errorImage" class="error">
-                                        <p>Please Upload Video Link or Image In 4:3</p>
-                                    </div>
-                               </div>
-                            </ng-container>
-                           
                         
-                        <br>
-                        <label for="banner">Highilighted Initiative Banner</label>
-                        <br>
-                        <button class="btn btn-success pull-right buttonsss " (click)="imageCLik()">Video Upload</button>
-                        <button class="btn btn-success pull-right buttonsss ml-3"(click)="imageCLik1()">Image Upload</button>
-                        <br>
-                        <ng-container *ngIf="!imageClick">
-                            <label for="newsTitle"> Video Link</label>
-                                <input type="text" class="form-control" formControlName="videoLink">
-                            </ng-container>
-                            
-                            <ng-container *ngIf="imageClick">
-                                    <label for="banner">Image</label>
-                                    <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
-                                    <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
-                                        <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
-                                        <div *ngIf="errorImage" class="error">
-                                            <p>Please Upload Video Link or Image In 4:3</p>
-                                        </div>
-                                   </div>
-                                   <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
-                                    <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
-                                    <div *ngIf="errorImage" class="error">
-                                        <p>Please Upload Video Link or Image In 4:3</p>
-                                    </div>
-                               </div>
-                            </ng-container>
-                           
-                        
-                        <br>
-
-                        
-                        <label for="banner">Event</label>
-                            <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
-                            <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
-                                <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
-                                <div *ngIf="errorImage" class="error">
-                                        <p>Please Upload Video Link or Image In 4:3</p>
-                                    </div>
-                           </div>
-                           <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
-                            <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
-                            <div *ngIf="errorImage" class="error">
-                                    <p>Please Upload Video Link or Image In 4:3</p>
-                                </div>
-                       </div>
-                        <br>
-                        <label for="banner">Academic Council</label>
-                            <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
-                            <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
-                                <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
-                                <div *ngIf="errorImage" class="error">
-                                        <p>Please Upload Video Link or Image In 4:3</p>
-                                    </div>
-                           </div>
-                           <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
-                            <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
-                            <div *ngIf="errorImage" class="error">
-                                    <p>Please Upload Video Link or Image In 4:3</p>
-                                </div>
-                       </div>
-                        <br>
-                        <label for="banner">Gallery</label>
-                            <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
-                            <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
-                                <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
-                                <div *ngIf="errorImage" class="error">
-                                        <p>Please Upload Video Link or Image In 4:3</p>
-                                    </div>
-                           </div>
-                           <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
-                            <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
-                            <div *ngIf="errorImage" class="error">
-                                    <p>Please Upload Video Link or Image In 4:3</p>
-                                </div>
-                       </div>
-                        <br>
- -->
-
-                        <!-- <label for="summary">Gallery Shots</label>
-                            <textarea type="text" class="form-control" formControlName="summary" placeholder="Enter Gallery Summary..." rows="4"></textarea>
-                        <br>
-                        <label for="newsDesc">Gallery Description</label>
-                        <angular-editor formControlName="newsDesc" [config]="config"></angular-editor> -->
                       </div>
-                      <!-- <button *ngIf="!updateCheck" type="submit" class="btn btn-success pull-right" (click)="submitNews()">Submit</button> -->
-                      <!-- <button *ngIf="updateCheck" type="submit" class="btn btn-success pull-right" (click)="UpdateNews()">Update</button> -->
                     </form>
                   </div>
               </div>
