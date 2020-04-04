@@ -465,8 +465,10 @@ export class CreateMarketNewsComponent implements OnInit {
     console.log("news",this.newsDetails)
     if(this.newsDetails[0]['imagePath'] !== " "){
       this.showBanner = 1;
-this.isCropDone = true;
-      // this.isCropDone= true;
+this.imageClick = true;
+      this.isCropDone = true;
+      this.imageClick = true;
+      
       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
     }
     this.frmNews.get('newsType').setValue(this.newsDetails[0]['newsType']);

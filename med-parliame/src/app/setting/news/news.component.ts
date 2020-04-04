@@ -173,6 +173,7 @@ export class NewsComponent implements OnInit {
     console.log("news",this.newsDetails)
     if(this.newsDetails[0]['imagePath'] !== " "){
       this.showBanner = 1;
+// this.imageClick = true;
 // this.isCropDone = true;
       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
     }
