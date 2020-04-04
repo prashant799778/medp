@@ -233,6 +233,7 @@ export class ViewAnnocementComponent implements OnInit {
     console.log("news",this.newsDetails)
     if(this.newsDetails[0]['imagePath'] !== " "){
       this.showBanner = 1;
+// this.isCropDone = true;
       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
     }
     this.frmNews.get('id').setValue(this.newsDetails[0]['id']);
