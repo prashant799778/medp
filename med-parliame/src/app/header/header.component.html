@@ -2,13 +2,7 @@
     <div class="row">
                       <div class="col-sm-12 col-md-12">
     <div class="top-wrap-box d-flex space-between-flx">
-        <template>
-             <div class="form-group search-box mr-remove d-flex">
-                <img src="../../assets/images/search.svg">
-              <input type="email" class="form-control" placeholder="Search Project">
-            </div>
-        </template>
-        <div class="toggle-button-section">
+        <div class="toggle-button-section md-toggle">
             <button type="button" class="togg" onclick="toggleside()">
                 <div class="toggle-bar">
                     <span class="line-bar"></span>
@@ -18,18 +12,15 @@
             </button>
         </div>
         <div class="top-bar-option">
-            <ul class="d-flex">
+            <ul class="d-flex end-flx">
                 <li>
                     <div class="profile-box mr-remove">
                         <div class="image-section">
                             <img src="../../assets/images/man.svg">
                         </div>
-                        <!-- <div class="user-description">
-                            <h3 class="cursor">{{userName}}</h3>
-                        </div> -->
                     </div>
                 </li>
-                <li>
+                <li class="m-0">
                     <div class="logout-box">
                         <img (click)="logouts()" src="../../assets/images/logout.svg">
                     </div>
