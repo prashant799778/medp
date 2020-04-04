@@ -162,6 +162,10 @@ export class EditOperationAdminComponent implements OnInit {
     });
   }
 
+  changeEvent(event){
+    console.log(event.target)
+  }
+
   onFileSelect(event) {
     console.log(event)
     if(event.type === "change"){
