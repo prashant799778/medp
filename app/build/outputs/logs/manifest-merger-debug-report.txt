@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-105:12
-INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-105:12
-INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-105:12
-INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-105:12
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-118:12
+INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-118:12
+INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-118:12
+INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-118:12
 MERGED from [com.github.mohammadatif:Animatoo:master] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\91b4f06bffa9fc781cfad0ed87185833\jetified-Animatoo-master\AndroidManifest.xml:2:1-11:12
 MERGED from [com.sun.easysnackbar:easysnackbar:1.0.1] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f629e9e0d22107caebf0d530c0ea7cdd\jetified-easysnackbar-1.0.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:2:1-25:12
@@ -54,7 +54,7 @@ MERGED from [androidx.loader:loader:1.0.0] C:\Users\fourbrick\.gradle\caches\tra
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\201520ec0a185ec8f3b8dab96cf35d1d\jetified-gifdecoder-4.10.0\AndroidManifest.xml:2:1-11:12
 MERGED from [io.fotoapparat:fotoapparat:2.7.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\14983eed2515c07f892f617c5ccf6529\jetified-fotoapparat-2.7.0\AndroidManifest.xml:2:1-13:12
 MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a14ae2a393856b1c4222776799827fd2\exifinterface-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core-ktx:1.3.0-alpha02] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\cc8a7f0eafb01fdc2294a8837ce84607\jetified-core-ktx-1.3.0-alpha02\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.core:core-ktx:1.3.0-beta01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4f2920078645e82b3fc11f7b0ea4d638\jetified-core-ktx-1.3.0-beta01\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\8024d43f2ec98c58159e4490c7c84830\jetified-activity-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.jakewharton:butterknife-runtime:10.2.1] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\5f34cc4402d989e7ca9f3daae5d3da56\jetified-butterknife-runtime-10.2.1\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ad12b5d47f95c8d2598703c1b1f7c267\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -63,7 +63,7 @@ MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\fourbrick\.gradl
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\223ae8e78f23f48ba5d96a1dcabe1834\customview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\98533a75c963d389d2db7b5a19727bc5\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\48d198bece9830d2bf28cd51b05742db\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core:1.3.0-alpha02] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\dd84d74b717d5e64a2a5f46d0814ca9c\core-1.3.0-alpha02\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.core:core:1.3.0-beta01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4351357e4852555581d7e139d20b709f\core-1.3.0-beta01\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\e2041232485bdf4d2a09c36930218fc5\lifecycle-runtime-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\929ec10604c047a76453df3294ada6ae\versionedparcelable-1.1.0\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\1d3d300991201f0272c309154f6a5e44\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -95,22 +95,22 @@ MERGED from [com.crashlytics.sdk.android:beta:1.2.10] C:\Users\fourbrick\.gradle
 MERGED from [com.crashlytics.sdk.android:answers:1.4.7] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\43b2d37096d5de1fa6a1370db257730f\jetified-answers-1.4.7\AndroidManifest.xml:2:1-13:12
 MERGED from [io.fabric.sdk.android:fabric:1.4.8] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\66f1ec1ba12b5e736f3860e41909e6c3\jetified-fabric-1.4.8\AndroidManifest.xml:22:1-33:12
 MERGED from [com.facebook.soloader:annotation:0.8.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4ed76752fd29e7ed50dc1eacda209dea\jetified-annotation-0.8.0\AndroidManifest.xml:2:1-13:12
-INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-105:12
-INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-105:12
-INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-105:12
+INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-118:12
+INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-118:12
+INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-118:12
 	package
 		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:4:5-32
 		INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml
 		INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-105:12
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-118:12
 		INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-105:12
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:1-118:12
 		INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:2:11-69
@@ -168,14 +168,20 @@ MERGED from [io.fotoapparat:fotoapparat:2.7.0] C:\Users\fourbrick\.gradle\caches
 MERGED from [io.fotoapparat:fotoapparat:2.7.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\14983eed2515c07f892f617c5ccf6529\jetified-fotoapparat-2.7.0\AndroidManifest.xml:9:5-65
 	android:name
 		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:14:22-62
+uses-permission#android.permission.MANAGE_DOCUMENTS
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:15:5-16:47
+	tools:ignore
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:16:9-44
+	android:name
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:15:22-72
 uses-feature#android.hardware.camera
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:16:5-60
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:19:5-60
 MERGED from [com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:11:5-13:36
 MERGED from [com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:11:5-13:36
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:16:19-57
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:19:19-57
 application
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:18:5-103:19
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:20:5-116:19
 MERGED from [com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:16:5-23:19
 MERGED from [com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:16:5-23:19
 MERGED from [com.google.android.material:material:1.2.0-alpha05] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\2dfacce0be1cfee478b941995f3b252e\material-1.2.0-alpha05\AndroidManifest.xml:22:5-20
@@ -214,8 +220,8 @@ MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\fourbrick\.gr
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\201520ec0a185ec8f3b8dab96cf35d1d\jetified-gifdecoder-4.10.0\AndroidManifest.xml:9:5-20
 MERGED from [io.fotoapparat:fotoapparat:2.7.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\14983eed2515c07f892f617c5ccf6529\jetified-fotoapparat-2.7.0\AndroidManifest.xml:11:5-20
 MERGED from [io.fotoapparat:fotoapparat:2.7.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\14983eed2515c07f892f617c5ccf6529\jetified-fotoapparat-2.7.0\AndroidManifest.xml:11:5-20
-MERGED from [androidx.core:core:1.3.0-alpha02] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\dd84d74b717d5e64a2a5f46d0814ca9c\core-1.3.0-alpha02\AndroidManifest.xml:24:5-89
-MERGED from [androidx.core:core:1.3.0-alpha02] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\dd84d74b717d5e64a2a5f46d0814ca9c\core-1.3.0-alpha02\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.0-beta01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4351357e4852555581d7e139d20b709f\core-1.3.0-beta01\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.0-beta01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4351357e4852555581d7e139d20b709f\core-1.3.0-beta01\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\929ec10604c047a76453df3294ada6ae\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\929ec10604c047a76453df3294ada6ae\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
 MERGED from [com.facebook.soloader:soloader:0.8.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\29559a6b812e65b7b60a254ca3ab5a48\jetified-soloader-0.8.0\AndroidManifest.xml:11:5-20
@@ -231,223 +237,249 @@ MERGED from [io.fabric.sdk.android:fabric:1.4.8] C:\Users\fourbrick\.gradle\cach
 MERGED from [com.facebook.soloader:annotation:0.8.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4ed76752fd29e7ed50dc1eacda209dea\jetified-annotation-0.8.0\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.soloader:annotation:0.8.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4ed76752fd29e7ed50dc1eacda209dea\jetified-annotation-0.8.0\AndroidManifest.xml:11:5-20
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.3.0-alpha02] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\dd84d74b717d5e64a2a5f46d0814ca9c\core-1.3.0-alpha02\AndroidManifest.xml:24:18-86
+		ADDED from [androidx.core:core:1.3.0-beta01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4351357e4852555581d7e139d20b709f\core-1.3.0-beta01\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:26:9-35
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:28:9-35
 	android:label
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:22:9-41
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:24:9-41
 	android:roundIcon
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:25:9-54
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:27:9-54
 	android:largeHeap
 		ADDED from [com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:17:9-33
 	android:persistent
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:24:9-35
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:26:9-35
 	android:icon
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:21:9-43
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:23:9-43
 	android:allowBackup
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:20:9-35
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:22:9-35
 	android:theme
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:27:9-40
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:29:9-40
 	android:networkSecurityConfig
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:23:9-69
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:25:9-69
 	tools:replace
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:28:9-37
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:30:9-38
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:19:9-38
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:21:9-38
+provider#androidx.core.content.FileProvider
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:31:9-41:20
+MERGED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:16:9-24:20
+MERGED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:16:9-24:20
+	android:grantUriPermissions
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:35:13-47
+	android:authorities
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:33:13-65
+		REJECTED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:18:13-65
+	android:exported
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:34:13-37
+	tools:replace
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:36:13-48
+	android:name
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:32:13-62
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:37:13-40:58
+MERGED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:21:13-23:54
+MERGED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:21:13-23:54
+	android:resource
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:40:17-55
+		REJECTED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:23:17-51
+	tools:replace
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:39:17-49
+	android:name
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:38:17-67
 activity#com.medparliament.Activity.NotificationActivity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:29:9-76
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:42:9-76
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:29:19-64
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:42:19-64
 activity#com.medparliament.Activity.VideoDetailsActivity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:30:9-67
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:43:9-67
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:30:19-64
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:43:19-64
 activity#com.medparliament.Activity.News_Activity_1
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:31:9-62
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:44:9-62
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:31:19-59
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:44:19-59
 activity#com.medparliament.Activity.New_News_Details_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:32:9-72
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:45:9-72
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:32:19-69
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:45:19-69
 activity#com.medparliament.Activity.Market_Insight_Detail_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:33:9-77
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:46:9-77
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:33:19-74
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:46:19-74
 activity#com.medparliament.Activity.Tabs_DashBoard_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:34:9-70
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:47:9-70
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:34:19-67
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:47:19-67
 activity#com.medparliament.Activity.Up_Skill_Details_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:35:9-72
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:48:9-72
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:35:19-69
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:48:19-69
 activity#com.medparliament.Temp.CameraActivity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:36:9-57
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:49:9-57
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:36:19-54
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:49:19-54
 activity#com.medparliament.Activity.FaceDetectionActivity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:37:9-68
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:50:9-68
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:37:19-65
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:50:19-65
 activity#com.medparliament.Activity.AboutUsActivity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:38:9-62
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:51:9-62
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:38:19-59
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:51:19-59
 activity#com.medparliament.Activity.DecisionMaker
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:39:9-60
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:52:9-60
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:39:19-57
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:52:19-57
 activity#com.medparliament.Activity.Forgot_Password_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:40:9-71
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:53:9-71
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:40:19-68
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:53:19-68
 activity#com.medparliament.Activity.OTP_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:41:9-59
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:54:9-59
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:41:19-56
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:54:19-56
 activity#com.medparliament.Activity.All_Post_Details
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:42:9-63
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:55:9-63
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:42:19-60
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:55:19-60
 activity#com.medparliament.Activity.All_Post_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:43:9-64
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:56:9-64
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:43:19-61
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:56:19-61
 activity#com.medparliament.Activity.ReplyActivity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:44:9-60
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:57:9-60
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:44:19-57
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:57:19-57
 activity#com.medparliament.Activity.Professonal_signup_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:45:9-74
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:58:9-74
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:45:19-71
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:58:19-71
 activity#com.medparliament.Activity.DoctorSignupActivity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:46:9-67
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:59:9-67
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:46:19-64
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:59:19-64
 activity#com.medparliament.Activity.NewsDetails_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:47:9-67
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:60:9-67
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:47:19-64
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:60:19-64
 activity#com.medparliament.Activity.All_News_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:48:9-64
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:61:9-64
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:48:19-61
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:61:19-61
 activity#com.medparliament.Activity.ChangePassword_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:49:9-70
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:62:9-70
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:49:19-67
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:62:19-67
 activity#com.medparliament.Activity.About_us_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:50:9-64
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:63:9-64
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:50:19-61
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:63:19-61
 activity#com.medparliament.Activity.Edit_Profile_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:51:9-52:51
-	android:screenOrientation
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:52:13-49
-	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:51:19-65
-activity#com.medparliament.Activity.User_profile_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:53:9-54:51
-	android:screenOrientation
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:54:13-49
-	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:53:19-65
-activity#com.medparliament.Activity.Post_Details_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:55:9-68
-	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:55:19-65
-activity#com.medparliament.Activity.My_Post_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:56:9-63
-	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:56:19-60
-activity#com.medparliament.Activity.Comment_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:57:9-63
-	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:57:19-60
-uses-library#org.apache.http.legacy
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:59:9-61:40
-	android:required
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:61:13-37
-	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:60:13-50
-activity#com.medparliament.Activity.DashBoard_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:63:9-65:52
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:64:9-65:51
 	android:screenOrientation
 		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:65:13-49
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:64:13-56
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:64:19-65
+activity#com.medparliament.Activity.User_profile_Activity
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:66:9-67:51
+	android:screenOrientation
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:67:13-49
+	android:name
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:66:19-65
+activity#com.medparliament.Activity.Post_Details_Activity
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:68:9-68
+	android:name
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:68:19-65
+activity#com.medparliament.Activity.My_Post_Activity
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:69:9-63
+	android:name
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:69:19-60
+activity#com.medparliament.Activity.Comment_Activity
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:70:9-63
+	android:name
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:70:19-60
+uses-library#org.apache.http.legacy
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:72:9-74:40
+	android:required
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:74:13-37
+	android:name
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:73:13-50
+activity#com.medparliament.Activity.DashBoard_Activity
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:76:9-78:52
+	android:screenOrientation
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:78:13-49
+	android:name
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:77:13-56
 activity#com.medparliament.Activity.Entrepreneur_SignUp_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:66:9-68:52
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:79:9-81:52
 	android:screenOrientation
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:68:13-49
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:81:13-49
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:67:13-66
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:80:13-66
 activity#com.medparliament.Activity.Policy_Maker_SignUp_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:69:9-71:52
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:82:9-84:52
 	android:screenOrientation
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:71:13-49
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:84:13-49
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:70:13-66
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:83:13-66
 activity#com.medparliament.Activity.Student_SignUp_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:72:9-74:52
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:85:9-87:52
 	android:screenOrientation
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:74:13-49
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:87:13-49
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:73:13-61
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:86:13-61
 activity#com.medparliament.Activity.SignUp_type_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:75:9-77:52
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:88:9-90:52
 	android:screenOrientation
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:77:13-49
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:90:13-49
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:76:13-58
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:89:13-58
 activity#com.medparliament.Activity.Login_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:78:9-80:52
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:91:9-93:52
 	android:screenOrientation
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:80:13-49
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:93:13-49
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:79:13-52
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:92:13-52
 activity#com.medparliament.Activity.Login_Signup_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:81:9-83:52
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:94:9-96:52
 	android:screenOrientation
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:83:13-49
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:96:13-49
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:82:13-59
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:95:13-59
 activity#com.medparliament.Activity.Base_Activity
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:84:9-86:52
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:97:9-99:52
 	android:screenOrientation
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:86:13-49
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:99:13-49
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:85:13-51
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:98:13-51
 activity#com.medparliament.Activity.Splace
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:87:9-95:20
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:100:9-108:20
 	android:screenOrientation
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:89:13-49
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:102:13-49
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:88:13-44
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:101:13-44
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:90:13-94:29
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:103:13-107:29
 action#android.intent.action.MAIN
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:91:17-69
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:104:17-69
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:91:25-66
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:104:25-66
 category#android.intent.category.LAUNCHER
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:93:17-77
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:106:17-77
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:93:27-74
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:106:27-74
 meta-data#io.fabric.ApiKey
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:97:9-99:72
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:110:9-112:72
 	android:value
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:99:13-69
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:112:13-69
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:98:13-44
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:111:13-44
 meta-data#com.razorpay.ApiKey
-ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:100:9-102:48
+ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:113:9-115:48
 	android:value
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:102:13-45
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:115:13-45
 	android:name
-		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:101:13-47
+		ADDED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:114:13-47
 uses-sdk
 INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml
@@ -552,8 +584,8 @@ MERGED from [io.fotoapparat:fotoapparat:2.7.0] C:\Users\fourbrick\.gradle\caches
 MERGED from [io.fotoapparat:fotoapparat:2.7.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\14983eed2515c07f892f617c5ccf6529\jetified-fotoapparat-2.7.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a14ae2a393856b1c4222776799827fd2\exifinterface-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a14ae2a393856b1c4222776799827fd2\exifinterface-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core-ktx:1.3.0-alpha02] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\cc8a7f0eafb01fdc2294a8837ce84607\jetified-core-ktx-1.3.0-alpha02\AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.core:core-ktx:1.3.0-alpha02] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\cc8a7f0eafb01fdc2294a8837ce84607\jetified-core-ktx-1.3.0-alpha02\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.3.0-beta01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4f2920078645e82b3fc11f7b0ea4d638\jetified-core-ktx-1.3.0-beta01\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.3.0-beta01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4f2920078645e82b3fc11f7b0ea4d638\jetified-core-ktx-1.3.0-beta01\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\8024d43f2ec98c58159e4490c7c84830\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\8024d43f2ec98c58159e4490c7c84830\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.jakewharton:butterknife-runtime:10.2.1] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\5f34cc4402d989e7ca9f3daae5d3da56\jetified-butterknife-runtime-10.2.1\AndroidManifest.xml:5:5-44
@@ -570,8 +602,8 @@ MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\four
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\98533a75c963d389d2db7b5a19727bc5\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\48d198bece9830d2bf28cd51b05742db\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\48d198bece9830d2bf28cd51b05742db\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.3.0-alpha02] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\dd84d74b717d5e64a2a5f46d0814ca9c\core-1.3.0-alpha02\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.3.0-alpha02] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\dd84d74b717d5e64a2a5f46d0814ca9c\core-1.3.0-alpha02\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.0-beta01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4351357e4852555581d7e139d20b709f\core-1.3.0-beta01\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.0-beta01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4351357e4852555581d7e139d20b709f\core-1.3.0-beta01\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\e2041232485bdf4d2a09c36930218fc5\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\e2041232485bdf4d2a09c36930218fc5\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\929ec10604c047a76453df3294ada6ae\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
@@ -712,22 +744,6 @@ ADDED from [com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\c
 		ADDED from [com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:22:9-33
 	android:name
 		ADDED from [com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:21:9-51
-provider#androidx.core.content.FileProvider
-ADDED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:16:9-24:20
-	android:grantUriPermissions
-		ADDED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:20:13-47
-	android:authorities
-		ADDED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:18:13-65
-	android:exported
-		ADDED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:19:13-37
-	android:name
-		ADDED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:17:13-62
-meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:21:13-23:54
-	android:resource
-		ADDED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:23:17-51
-	android:name
-		ADDED from [com.mindorks:paracamera:0.2.2] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f7df6f914ca76dec1bd6b29813826c29\jetified-paracamera-0.2.2\AndroidManifest.xml:22:17-67
 receiver#com.razorpay.RzpTokenReceiver
 ADDED from [com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:12:9-16:20
 	android:name

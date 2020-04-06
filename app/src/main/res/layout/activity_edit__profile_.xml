@@ -88,6 +88,7 @@
             android:layout_below="@+id/ttt"
             android:layout_marginTop="20dp"
             android:layout_margin="30dp"
+            android:id="@+id/ttttt"
             android:orientation="vertical">
 
             <LinearLayout

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
@@ -35,6 +37,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -50,7 +54,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
     Segow_UI_Font l_name,l_email,l_institute_name,l_university_name,l_mobile,l_university_address,l_qulafication,l_batch,l_address,l_iterest,l_new;
     ProgressDialog progressDialog;
     Segow_UI_EditText name,email,institute_name,university_name,mobile,university_address,qualfication,batch,address,interest,newE;
-    public  static  ArrayList<String>array1;
+    public ArrayList<String>array1;
     onResult onResult;
     SpinnerDialog spinnerDialog;
     String s1="";
@@ -109,6 +113,8 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         batch=findViewById(R.id.bach);
        batch.setFocusable(false);
        batch.setFocusableInTouchMode(false);
+        university_name.setFocusable(false);
+        university_name.setFocusableInTouchMode(false);
         l_name=findViewById(R.id.l_name);
         name=findViewById(R.id.name);
         l_address=findViewById(R.id.l_personal);
@@ -127,7 +133,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Pix.start(Edit_Profile_Activity.this, Options.init().setRequestCode(100).setCount(1));
+                Pix.start(Edit_Profile_Activity.this, Options.init().setRequestCode(500).setCount(1));
             }
         });
 
@@ -263,11 +269,19 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == 100) {
+        if (resultCode == RESULT_OK && requestCode == 500) {
             array1 = data.getStringArrayListExtra(Pix.IMAGE_RESULTS);
-            if(!isFinishing()) {
+//            if(!isFinishing()) {
+                if(array1.size()>0){
                 Comman.setRoundedImage(Edit_Profile_Activity.this,profile_image,array1.get(0).trim());
-            }
+//                    Toast.makeText(this, "ImagePath"+array1.get(0), Toast.LENGTH_SHORT).show();
+                }else {
+//                    Toast.makeText(this, "ArraySize"+array1.size(), Toast.LENGTH_SHORT).show();
+                }
+//            }
+        }
+        else {
+//            Toast.makeText(this, "Request Code Not Match", Toast.LENGTH_SHORT).show();
         }
     }
     public JSONObject setJson()
@@ -404,11 +418,12 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         name.setText(m.getUserName());
         email.setText(m.getUserEmail());
         institute_name.setText(m.getDescription());
+        university_name.setClickable(true);
+        university_name.setFocusable(true);
         university_name.setText(m.getProfileCategory());
         mobile.setText(m.getMobile());
         interest.setText(m.getInterest());
         newE.setText(m.getDasignation());
-        university_name.setFocusable(true);
     }
     public void  doctor(String key)
     {
@@ -498,7 +513,6 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
 
 
     }
-
     public void decisionMaker(String key)
     {
         Api_Calling.getALLCountry(Edit_Profile_Activity.this,getWindow().getDecorView().getRootView(),URLS.ALL_COUNTRY);
@@ -532,7 +546,6 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         address.setFocusable(true);
         address.setClickable(true);
     }
-
     public JSONObject interestJSon(String id)
     {
         JSONObject jsonObject=new JSONObject();
@@ -822,4 +835,17 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         }
 
     }
+
+
+    public  Drawable LoadImageFromWebOperations(String url) {
+        try {
+            Comman.log("Path",""+url);
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, "src name");
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

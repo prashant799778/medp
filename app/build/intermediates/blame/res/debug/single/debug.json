@@ -36,12 +36,12 @@
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable-v24\\placeholder.png"
     },
     {
-        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_work.png.flat",
-        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable-xhdpi\\work.png"
-    },
-    {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_reply.xml.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\activity_reply.xml"
+    },
+    {
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_work.png.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\drawable-xhdpi\\work.png"
     },
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_downarrow.png.flat",
@@ -146,6 +146,10 @@
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_professor_signup_.xml.flat",
         "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\layout\\activity_professor_signup_.xml"
+    },
+    {
+        "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\xml_provider_paths.xml.flat",
+        "source": "E:\\New_Git_4_03_2020\\med_parliament\\app\\src\\main\\res\\xml\\provider_paths.xml"
     },
     {
         "merged": "E:\\New_Git_4_03_2020\\med_parliament\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_building.xml.flat",

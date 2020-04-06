@@ -42,7 +42,7 @@
                     android:gravity="center_vertical"
                     android:textSize="17dp"
                     android:lineHeight="17dp"
-                    android:text="@string/highlighted_initiative"
+                    android:text="@string/GlobalInitiatives"
                     >
                 </com.medparliament.Widget.Segow_UI_Semi_Font>
                 <com.medparliament.Widget.Segow_UI_Semi_Font

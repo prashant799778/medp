@@ -257,9 +257,11 @@ public class Comman {
     }
     public static void setRoundedImage(Context context, CircleImageView circleImageView, String path)
     {
-      Glide.with(context).load(path).
+//        Toast.makeText(context, "Before", Toast.LENGTH_SHORT).show();
+        Glide.with(context).load(path).
                 apply(RequestOptions.skipMemoryCacheOf(true)).apply(RequestOptions.encodeQualityOf(100))
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE)).into(circleImageView);
+//        Toast.makeText(context, "After", Toast.LENGTH_SHORT).show();
     }
     public static void ChangeFocus(final EditText edittext) {
         edittext.setOnFocusChangeListener(
