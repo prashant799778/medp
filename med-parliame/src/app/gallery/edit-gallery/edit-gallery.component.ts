@@ -55,7 +55,8 @@ export class EditGalleryComponent implements OnInit {
     this.apiService.dataPostApi(null,AppSettings.userDropDown).then(resp=>{
       console.log(resp)
       if(resp['status'] == 'true'){
-        this.userTypeDetails = resp['result']
+        this.userTypeDetails = []
+this.userTypeDetails = resp['result']
       }
     })
   }

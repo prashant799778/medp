@@ -354,6 +354,8 @@ export class ViewContentComponent implements OnInit {
 
 
   submitNews() {
+    console.log(this.frmNews.get('userTypeId').value)
+
     if(!this.frmNews.get('userTypeId').valid){
       this.errorMessage = "Please select  Category"
       jQuery("#errorModal").modal('show')
@@ -460,12 +462,15 @@ this.isCropDone = true;
     this.apiService.dataPostApi(null,AppSettings.userDropDown).then(resp=>{
       console.log(resp)
       if(resp['status'] == 'true'){
-        // this.userTypeDetails = resp['result']
-        for(let i = 0; i<resp['result'].length - 1; i++){
-            console.log("cheeeekkkk",i)
-            this.userTypeDetails.push(resp['result'][i])
+        this.userTypeDetails = []
+        // this.userTypeDetails = []
+this.userTypeDetails = resp['result']
+        // for(let i = 0; i<resp['result'].length - 1; i++){
+        //   console.log(resp['result'].length)
+        //     console.log("cheeeekkkk",i)
+        //     this.userTypeDetails.push(resp['result'][i])
             
-        }
+        // }
       }
     })
   }
