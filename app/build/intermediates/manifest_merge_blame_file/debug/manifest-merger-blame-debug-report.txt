@@ -6,376 +6,377 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="26"
-8-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml
+8-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="29" />
-9-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml
+9-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-11-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:6:5-79
-11-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:6:22-76
+11-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:6:5-79
+11-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:6:22-76
 12    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
 13    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-13-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:8:5-75
-13-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:8:22-72
+13-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:8:5-75
+13-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:8:22-72
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:9:5-67
-14-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:9:22-64
+14-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:9:5-67
+14-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:9:22-64
 15    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
 16    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
 17    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-17-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:12:5-81
-17-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:12:22-78
+17-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:12:5-81
+17-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:12:22-78
 18    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-18-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:13:5-80
-18-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:13:22-77
+18-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:13:5-80
+18-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:13:22-77
 19    <uses-permission android:name="android.permission.CAMERA" />
-19-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:14:5-65
-19-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:14:22-62
+19-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:14:5-65
+19-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:14:22-62
 20    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
-20-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:15:5-16:47
-20-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:15:22-72
+20-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:15:5-16:47
+20-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:15:22-72
 21
 22    <uses-feature android:name="android.hardware.camera" />
-22-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:19:5-60
-22-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:19:19-57
+22-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:19:5-60
+22-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:19:19-57
 23
 24    <uses-permission android:name="android.permission.VIBRATE" />
-24-->[com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:13:5-66
-24-->[com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:13:22-63
+24-->[com.fxn769:pix:1.4.4] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:13:5-66
+24-->[com.fxn769:pix:1.4.4] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:13:22-63
 25    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-25-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:8:5-71
-25-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:8:22-68
+25-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:8:5-71
+25-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:8:22-68
 26
 27    <uses-feature
-27-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:14:5-16:36
+27-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:14:5-16:36
 28        android:name="android.hardware.camera.front"
-28-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:15:9-53
+28-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:15:9-53
 29        android:required="false" />
-29-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:16:9-33
+29-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:16:9-33
 30    <uses-feature
-30-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:17:5-19:36
+30-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:17:5-19:36
 31        android:name="android.hardware.camera.autofocus"
-31-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:18:9-57
+31-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:18:9-57
 32        android:required="false" />
-32-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:19:9-33
+32-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:19:9-33
 33    <uses-feature
-33-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:20:5-22:36
+33-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:20:5-22:36
 34        android:name="android.hardware.microphone"
-34-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:21:9-51
+34-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:21:9-51
 35        android:required="false" />
-35-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:22:9-33
+35-->[com.camerakit:camerakit:1.0.0-beta3.11] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\0ac7454421d52d6dfbc8d0726892b141\jetified-camerakit-1.0.0-beta3.11\AndroidManifest.xml:22:9-33
 36
 37    <application
-37-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:20:5-116:19
+37-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:20:5-116:19
 38        android:name="com.medparliament.MyApplication"
-38-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:21:9-38
+38-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:21:9-38
 39        android:allowBackup="true"
-39-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:22:9-35
+39-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:22:9-35
 40        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-40-->[androidx.core:core:1.3.0-beta01] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\4351357e4852555581d7e139d20b709f\core-1.3.0-beta01\AndroidManifest.xml:24:18-86
+40-->[androidx.core:core:1.3.0-beta01] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\4351357e4852555581d7e139d20b709f\core-1.3.0-beta01\AndroidManifest.xml:24:18-86
 41        android:debuggable="true"
 42        android:extractNativeLibs="false"
 43        android:icon="@mipmap/ic_launcher"
-43-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:23:9-43
+43-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:23:9-43
 44        android:label="@string/app_name"
-44-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:24:9-41
+44-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:24:9-41
 45        android:largeHeap="true"
-45-->[com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:17:9-33
+45-->[com.fxn769:pix:1.4.4] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:17:9-33
 46        android:networkSecurityConfig="@xml/network_security_config"
-46-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:25:9-69
+46-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:25:9-69
 47        android:persistent="false"
-47-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:26:9-35
+47-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:26:9-35
 48        android:roundIcon="@mipmap/ic_launcher_round"
-48-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:27:9-54
+48-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:27:9-54
 49        android:supportsRtl="true"
-49-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:28:9-35
-50        android:theme="@style/AppTheme" >
-50-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:29:9-40
-51        <provider
-51-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:31:9-41:20
-52            android:name="androidx.core.content.FileProvider"
-52-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:32:13-62
-53            android:authorities="com.medparliament.fileprovider"
-53-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:33:13-65
-54            android:exported="false"
-54-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:34:13-37
-55            android:grantUriPermissions="true" >
-55-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:35:13-47
-56            <meta-data
-56-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:37:13-40:58
-57                android:name="android.support.FILE_PROVIDER_PATHS"
-57-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:38:17-67
-58                android:resource="@xml/provider_paths" />
-58-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:40:17-55
-59        </provider>
-60
-61        <activity android:name="com.medparliament.Activity.NotificationActivity" />
-61-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:42:9-76
-61-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:42:19-64
-62        <activity android:name="com.medparliament.Activity.VideoDetailsActivity" />
-62-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:43:9-67
-62-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:43:19-64
-63        <activity android:name="com.medparliament.Activity.News_Activity_1" />
-63-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:44:9-62
-63-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:44:19-59
-64        <activity android:name="com.medparliament.Activity.New_News_Details_Activity" />
-64-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:45:9-72
-64-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:45:19-69
-65        <activity android:name="com.medparliament.Activity.Market_Insight_Detail_Activity" />
-65-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:46:9-77
-65-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:46:19-74
-66        <activity android:name="com.medparliament.Activity.Tabs_DashBoard_Activity" />
-66-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:47:9-70
-66-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:47:19-67
-67        <activity android:name="com.medparliament.Activity.Up_Skill_Details_Activity" />
-67-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:48:9-72
-67-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:48:19-69
-68        <activity android:name="com.medparliament.Temp.CameraActivity" />
-68-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:49:9-57
-68-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:49:19-54
-69        <activity android:name="com.medparliament.Activity.FaceDetectionActivity" />
-69-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:50:9-68
-69-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:50:19-65
-70        <activity android:name="com.medparliament.Activity.AboutUsActivity" />
-70-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:51:9-62
-70-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:51:19-59
-71        <activity android:name="com.medparliament.Activity.DecisionMaker" />
-71-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:52:9-60
-71-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:52:19-57
-72        <activity android:name="com.medparliament.Activity.Forgot_Password_Activity" />
-72-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:53:9-71
-72-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:53:19-68
-73        <activity android:name="com.medparliament.Activity.OTP_Activity" />
-73-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:54:9-59
-73-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:54:19-56
-74        <activity android:name="com.medparliament.Activity.All_Post_Details" />
-74-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:55:9-63
-74-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:55:19-60
-75        <activity android:name="com.medparliament.Activity.All_Post_Activity" />
-75-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:56:9-64
-75-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:56:19-61
-76        <activity android:name="com.medparliament.Activity.ReplyActivity" />
-76-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:57:9-60
-76-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:57:19-57
-77        <activity android:name="com.medparliament.Activity.Professonal_signup_Activity" />
-77-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:58:9-74
-77-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:58:19-71
-78        <activity android:name="com.medparliament.Activity.DoctorSignupActivity" />
-78-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:59:9-67
-78-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:59:19-64
-79        <activity android:name="com.medparliament.Activity.NewsDetails_Activity" />
-79-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:60:9-67
-79-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:60:19-64
-80        <activity android:name="com.medparliament.Activity.All_News_Activity" />
-80-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:61:9-64
-80-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:61:19-61
-81        <activity android:name="com.medparliament.Activity.ChangePassword_Activity" />
-81-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:62:9-70
-81-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:62:19-67
-82        <activity android:name="com.medparliament.Activity.About_us_Activity" />
-82-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:63:9-64
-82-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:63:19-61
-83        <activity
-83-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:64:9-65:51
-84            android:name="com.medparliament.Activity.Edit_Profile_Activity"
-84-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:64:19-65
-85            android:screenOrientation="portrait" />
-85-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:65:13-49
-86        <activity
-86-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:66:9-67:51
-87            android:name="com.medparliament.Activity.User_profile_Activity"
-87-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:66:19-65
-88            android:screenOrientation="portrait" />
-88-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:67:13-49
-89        <activity android:name="com.medparliament.Activity.Post_Details_Activity" />
-89-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:68:9-68
-89-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:68:19-65
-90        <activity android:name="com.medparliament.Activity.My_Post_Activity" />
-90-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:69:9-63
-90-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:69:19-60
-91        <activity android:name="com.medparliament.Activity.Comment_Activity" />
-91-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:70:9-63
-91-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:70:19-60
-92
-93        <uses-library
-93-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:72:9-74:40
-94            android:name="org.apache.http.legacy"
-94-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:73:13-50
-95            android:required="false" />
-95-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:74:13-37
-96
-97        <activity
-97-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:76:9-78:52
-98            android:name="com.medparliament.Activity.DashBoard_Activity"
-98-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:77:13-56
-99            android:screenOrientation="portrait" />
-99-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:78:13-49
-100        <activity
-100-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:79:9-81:52
-101            android:name="com.medparliament.Activity.Entrepreneur_SignUp_Activity"
-101-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:80:13-66
-102            android:screenOrientation="portrait" />
-102-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:81:13-49
-103        <activity
-103-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:82:9-84:52
-104            android:name="com.medparliament.Activity.Policy_Maker_SignUp_Activity"
-104-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:83:13-66
-105            android:screenOrientation="portrait" />
-105-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:84:13-49
-106        <activity
-106-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:85:9-87:52
-107            android:name="com.medparliament.Activity.Student_SignUp_Activity"
-107-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:86:13-61
-108            android:screenOrientation="portrait" />
-108-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:87:13-49
-109        <activity
-109-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:88:9-90:52
-110            android:name="com.medparliament.Activity.SignUp_type_Activity"
-110-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:89:13-58
-111            android:screenOrientation="portrait" />
-111-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:90:13-49
-112        <activity
-112-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:91:9-93:52
-113            android:name="com.medparliament.Activity.Login_Activity"
-113-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:92:13-52
-114            android:screenOrientation="portrait" />
-114-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:93:13-49
-115        <activity
-115-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:94:9-96:52
-116            android:name="com.medparliament.Activity.Login_Signup_Activity"
-116-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:95:13-59
-117            android:screenOrientation="portrait" />
-117-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:96:13-49
-118        <activity
-118-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:97:9-99:52
-119            android:name="com.medparliament.Activity.Base_Activity"
-119-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:98:13-51
-120            android:screenOrientation="portrait" />
-120-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:99:13-49
-121        <activity
-121-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:100:9-108:20
-122            android:name="com.medparliament.Activity.Splace"
-122-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:101:13-44
-123            android:screenOrientation="portrait" >
-123-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:102:13-49
-124            <intent-filter>
-124-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:103:13-107:29
-125                <action android:name="android.intent.action.MAIN" />
-125-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:104:17-69
-125-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:104:25-66
-126
-127                <category android:name="android.intent.category.LAUNCHER" />
-127-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:106:17-77
-127-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:106:27-74
-128            </intent-filter>
-129        </activity>
-130
-131        <meta-data
-131-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:110:9-112:72
-132            android:name="io.fabric.ApiKey"
-132-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:111:13-44
-133            android:value="ab1b6398303637b09aefc9f91cd879a9462c3095" />
-133-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:112:13-69
-134        <meta-data
-134-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:113:9-115:48
-135            android:name="com.razorpay.ApiKey"
-135-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:114:13-47
-136            android:value="@string/RazorKey" />
-136-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:115:13-45
-137
-138        <activity
-138-->[com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:19:9-22:52
-139            android:name="com.fxn.pix.Pix"
-139-->[com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:20:13-43
-140            android:noHistory="true"
-140-->[com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:21:13-37
-141            android:screenOrientation="portrait" />
-141-->[com.fxn769:pix:1.4.4] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:22:13-49
-142        <activity android:name="com.shantanudeshmukh.linkedinsdk.LinkedInAuthenticationActivity" />
-142-->[com.shantanudeshmukh:linkedinsdk:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\282f20003e2792f54c3af9742bcb0880\jetified-linkedinsdk-1.0.0\AndroidManifest.xml:12:9-100
-142-->[com.shantanudeshmukh:linkedinsdk:1.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\282f20003e2792f54c3af9742bcb0880\jetified-linkedinsdk-1.0.0\AndroidManifest.xml:12:19-97
-143        <activity
-143-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:23:9-27:75
-144            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-144-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:24:13-93
-145            android:excludeFromRecents="true"
-145-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:25:13-46
-146            android:exported="false"
-146-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:26:13-37
-147            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-147-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:27:13-72
-148        <!--
-149            Service handling Google Sign-In user revocation. For apps that do not integrate with
-150            Google Sign-In, this service will never be started.
-151        -->
-152        <service
-152-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:33:9-36:110
-153            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-153-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:34:13-89
-154            android:exported="true"
-154-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:35:13-36
-155            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
-155-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:36:13-107
-156
-157        <provider
-157-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f2c8b4e528199516c565966773d2b182\jetified-crashlytics-2.10.1\AndroidManifest.xml:19:9-23:38
-158            android:name="com.crashlytics.android.CrashlyticsInitProvider"
-158-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f2c8b4e528199516c565966773d2b182\jetified-crashlytics-2.10.1\AndroidManifest.xml:20:13-75
-159            android:authorities="com.medparliament.crashlyticsinitprovider"
-159-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f2c8b4e528199516c565966773d2b182\jetified-crashlytics-2.10.1\AndroidManifest.xml:21:13-75
-160            android:exported="false"
-160-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f2c8b4e528199516c565966773d2b182\jetified-crashlytics-2.10.1\AndroidManifest.xml:22:13-37
-161            android:initOrder="90" />
-161-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\f2c8b4e528199516c565966773d2b182\jetified-crashlytics-2.10.1\AndroidManifest.xml:23:13-35
-162
-163        <receiver android:name="com.razorpay.RzpTokenReceiver" >
-163-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:12:9-16:20
-163-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:12:19-63
-164            <intent-filter>
-164-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:13:13-15:29
-165                <action android:name="rzp.device_token.share" />
-165-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:14:17-65
-165-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:14:25-62
-166            </intent-filter>
-167        </receiver>
-168
-169        <activity
-169-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:18:9-29:20
-170            android:name="com.razorpay.CheckoutActivity"
-170-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:19:13-57
-171            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-171-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:20:13-83
-172            android:theme="@style/CheckoutTheme" >
-172-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:21:13-49
-173            <intent-filter>
-173-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:22:13-28:29
-174                <action android:name="android.intent.action.MAIN" />
-174-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:104:17-69
-174-->E:\New_Git_4_03_2020\med_parliament\app\src\main\AndroidManifest.xml:104:25-66
-175
-176                <data
-176-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:25:17-27:47
-177                    android:host="rzp.io"
-177-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:26:21-42
-178                    android:scheme="io.rzp" />
-178-->[com.razorpay:checkout:1.5.16] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:27:21-44
-179            </intent-filter>
-180        </activity>
-181        <activity
-181-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\6fb3f6cd2b75dfe7dd10f87d94351f9e\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
-182            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-182-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\6fb3f6cd2b75dfe7dd10f87d94351f9e\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
-183            android:exported="false"
-183-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\6fb3f6cd2b75dfe7dd10f87d94351f9e\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
-184            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-184-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\6fb3f6cd2b75dfe7dd10f87d94351f9e\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
-185
-186        <meta-data
-186-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\c39f27975e2128f358c90a3c3f9b8fee\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-187            android:name="com.google.android.gms.version"
-187-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\c39f27975e2128f358c90a3c3f9b8fee\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-188            android:value="@integer/google_play_services_version" />
-188-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\fourbrick\.gradle\caches\transforms-2\files-2.1\c39f27975e2128f358c90a3c3f9b8fee\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
-189    </application>
-190
-191</manifest>
+49-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:28:9-35
+50        android:testOnly="true"
+51        android:theme="@style/AppTheme" >
+51-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:29:9-40
+52        <provider
+52-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:31:9-41:20
+53            android:name="androidx.core.content.FileProvider"
+53-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:32:13-62
+54            android:authorities="com.medparliament.fileprovider"
+54-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:33:13-65
+55            android:exported="false"
+55-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:34:13-37
+56            android:grantUriPermissions="true" >
+56-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:35:13-47
+57            <meta-data
+57-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:37:13-40:58
+58                android:name="android.support.FILE_PROVIDER_PATHS"
+58-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:38:17-67
+59                android:resource="@xml/provider_paths" />
+59-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:40:17-55
+60        </provider>
+61
+62        <activity android:name="com.medparliament.Activity.NotificationActivity" />
+62-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:42:9-76
+62-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:42:19-64
+63        <activity android:name="com.medparliament.Activity.VideoDetailsActivity" />
+63-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:43:9-67
+63-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:43:19-64
+64        <activity android:name="com.medparliament.Activity.News_Activity_1" />
+64-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:44:9-62
+64-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:44:19-59
+65        <activity android:name="com.medparliament.Activity.New_News_Details_Activity" />
+65-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:45:9-72
+65-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:45:19-69
+66        <activity android:name="com.medparliament.Activity.Market_Insight_Detail_Activity" />
+66-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:46:9-77
+66-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:46:19-74
+67        <activity android:name="com.medparliament.Activity.Tabs_DashBoard_Activity" />
+67-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:47:9-70
+67-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:47:19-67
+68        <activity android:name="com.medparliament.Activity.Up_Skill_Details_Activity" />
+68-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:48:9-72
+68-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:48:19-69
+69        <activity android:name="com.medparliament.Temp.CameraActivity" />
+69-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:49:9-57
+69-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:49:19-54
+70        <activity android:name="com.medparliament.Activity.FaceDetectionActivity" />
+70-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:50:9-68
+70-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:50:19-65
+71        <activity android:name="com.medparliament.Activity.AboutUsActivity" />
+71-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:51:9-62
+71-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:51:19-59
+72        <activity android:name="com.medparliament.Activity.DecisionMaker" />
+72-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:52:9-60
+72-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:52:19-57
+73        <activity android:name="com.medparliament.Activity.Forgot_Password_Activity" />
+73-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:53:9-71
+73-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:53:19-68
+74        <activity android:name="com.medparliament.Activity.OTP_Activity" />
+74-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:54:9-59
+74-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:54:19-56
+75        <activity android:name="com.medparliament.Activity.All_Post_Details" />
+75-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:55:9-63
+75-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:55:19-60
+76        <activity android:name="com.medparliament.Activity.All_Post_Activity" />
+76-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:56:9-64
+76-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:56:19-61
+77        <activity android:name="com.medparliament.Activity.ReplyActivity" />
+77-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:57:9-60
+77-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:57:19-57
+78        <activity android:name="com.medparliament.Activity.Professonal_signup_Activity" />
+78-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:58:9-74
+78-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:58:19-71
+79        <activity android:name="com.medparliament.Activity.DoctorSignupActivity" />
+79-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:59:9-67
+79-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:59:19-64
+80        <activity android:name="com.medparliament.Activity.NewsDetails_Activity" />
+80-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:60:9-67
+80-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:60:19-64
+81        <activity android:name="com.medparliament.Activity.All_News_Activity" />
+81-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:61:9-64
+81-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:61:19-61
+82        <activity android:name="com.medparliament.Activity.ChangePassword_Activity" />
+82-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:62:9-70
+82-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:62:19-67
+83        <activity android:name="com.medparliament.Activity.About_us_Activity" />
+83-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:63:9-64
+83-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:63:19-61
+84        <activity
+84-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:64:9-65:51
+85            android:name="com.medparliament.Activity.Edit_Profile_Activity"
+85-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:64:19-65
+86            android:screenOrientation="portrait" />
+86-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:65:13-49
+87        <activity
+87-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:66:9-67:51
+88            android:name="com.medparliament.Activity.User_profile_Activity"
+88-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:66:19-65
+89            android:screenOrientation="portrait" />
+89-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:67:13-49
+90        <activity android:name="com.medparliament.Activity.Post_Details_Activity" />
+90-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:68:9-68
+90-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:68:19-65
+91        <activity android:name="com.medparliament.Activity.My_Post_Activity" />
+91-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:69:9-63
+91-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:69:19-60
+92        <activity android:name="com.medparliament.Activity.Comment_Activity" />
+92-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:70:9-63
+92-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:70:19-60
+93
+94        <uses-library
+94-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:72:9-74:40
+95            android:name="org.apache.http.legacy"
+95-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:73:13-50
+96            android:required="false" />
+96-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:74:13-37
+97
+98        <activity
+98-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:76:9-78:52
+99            android:name="com.medparliament.Activity.DashBoard_Activity"
+99-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:77:13-56
+100            android:screenOrientation="portrait" />
+100-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:78:13-49
+101        <activity
+101-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:79:9-81:52
+102            android:name="com.medparliament.Activity.Entrepreneur_SignUp_Activity"
+102-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:80:13-66
+103            android:screenOrientation="portrait" />
+103-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:81:13-49
+104        <activity
+104-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:82:9-84:52
+105            android:name="com.medparliament.Activity.Policy_Maker_SignUp_Activity"
+105-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:83:13-66
+106            android:screenOrientation="portrait" />
+106-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:84:13-49
+107        <activity
+107-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:85:9-87:52
+108            android:name="com.medparliament.Activity.Student_SignUp_Activity"
+108-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:86:13-61
+109            android:screenOrientation="portrait" />
+109-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:87:13-49
+110        <activity
+110-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:88:9-90:52
+111            android:name="com.medparliament.Activity.SignUp_type_Activity"
+111-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:89:13-58
+112            android:screenOrientation="portrait" />
+112-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:90:13-49
+113        <activity
+113-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:91:9-93:52
+114            android:name="com.medparliament.Activity.Login_Activity"
+114-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:92:13-52
+115            android:screenOrientation="portrait" />
+115-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:93:13-49
+116        <activity
+116-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:94:9-96:52
+117            android:name="com.medparliament.Activity.Login_Signup_Activity"
+117-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:95:13-59
+118            android:screenOrientation="portrait" />
+118-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:96:13-49
+119        <activity
+119-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:97:9-99:52
+120            android:name="com.medparliament.Activity.Base_Activity"
+120-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:98:13-51
+121            android:screenOrientation="portrait" />
+121-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:99:13-49
+122        <activity
+122-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:100:9-108:20
+123            android:name="com.medparliament.Activity.Splace"
+123-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:101:13-44
+124            android:screenOrientation="portrait" >
+124-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:102:13-49
+125            <intent-filter>
+125-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:103:13-107:29
+126                <action android:name="android.intent.action.MAIN" />
+126-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:104:17-69
+126-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:104:25-66
+127
+128                <category android:name="android.intent.category.LAUNCHER" />
+128-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:106:17-77
+128-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:106:27-74
+129            </intent-filter>
+130        </activity>
+131
+132        <meta-data
+132-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:110:9-112:72
+133            android:name="io.fabric.ApiKey"
+133-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:111:13-44
+134            android:value="ab1b6398303637b09aefc9f91cd879a9462c3095" />
+134-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:112:13-69
+135        <meta-data
+135-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:113:9-115:48
+136            android:name="com.razorpay.ApiKey"
+136-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:114:13-47
+137            android:value="@string/RazorKey" />
+137-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:115:13-45
+138
+139        <activity
+139-->[com.fxn769:pix:1.4.4] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:19:9-22:52
+140            android:name="com.fxn.pix.Pix"
+140-->[com.fxn769:pix:1.4.4] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:20:13-43
+141            android:noHistory="true"
+141-->[com.fxn769:pix:1.4.4] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:21:13-37
+142            android:screenOrientation="portrait" />
+142-->[com.fxn769:pix:1.4.4] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\a57dd7f0f0449f0796a52ac15cad301b\jetified-pix-1.4.4\AndroidManifest.xml:22:13-49
+143        <activity android:name="com.shantanudeshmukh.linkedinsdk.LinkedInAuthenticationActivity" />
+143-->[com.shantanudeshmukh:linkedinsdk:1.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\282f20003e2792f54c3af9742bcb0880\jetified-linkedinsdk-1.0.0\AndroidManifest.xml:12:9-100
+143-->[com.shantanudeshmukh:linkedinsdk:1.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\282f20003e2792f54c3af9742bcb0880\jetified-linkedinsdk-1.0.0\AndroidManifest.xml:12:19-97
+144        <activity
+144-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:23:9-27:75
+145            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+145-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:24:13-93
+146            android:excludeFromRecents="true"
+146-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:25:13-46
+147            android:exported="false"
+147-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:26:13-37
+148            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+148-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:27:13-72
+149        <!--
+150            Service handling Google Sign-In user revocation. For apps that do not integrate with
+151            Google Sign-In, this service will never be started.
+152        -->
+153        <service
+153-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:33:9-36:110
+154            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+154-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:34:13-89
+155            android:exported="true"
+155-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:35:13-36
+156            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+156-->[com.google.android.gms:play-services-auth:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\54dde7a2203d4c4d5e5287bd5fda0ac6\jetified-play-services-auth-17.0.0\AndroidManifest.xml:36:13-107
+157
+158        <provider
+158-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\f2c8b4e528199516c565966773d2b182\jetified-crashlytics-2.10.1\AndroidManifest.xml:19:9-23:38
+159            android:name="com.crashlytics.android.CrashlyticsInitProvider"
+159-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\f2c8b4e528199516c565966773d2b182\jetified-crashlytics-2.10.1\AndroidManifest.xml:20:13-75
+160            android:authorities="com.medparliament.crashlyticsinitprovider"
+160-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\f2c8b4e528199516c565966773d2b182\jetified-crashlytics-2.10.1\AndroidManifest.xml:21:13-75
+161            android:exported="false"
+161-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\f2c8b4e528199516c565966773d2b182\jetified-crashlytics-2.10.1\AndroidManifest.xml:22:13-37
+162            android:initOrder="90" />
+162-->[com.crashlytics.sdk.android:crashlytics:2.10.1] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\f2c8b4e528199516c565966773d2b182\jetified-crashlytics-2.10.1\AndroidManifest.xml:23:13-35
+163
+164        <receiver android:name="com.razorpay.RzpTokenReceiver" >
+164-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:12:9-16:20
+164-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:12:19-63
+165            <intent-filter>
+165-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:13:13-15:29
+166                <action android:name="rzp.device_token.share" />
+166-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:14:17-65
+166-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:14:25-62
+167            </intent-filter>
+168        </receiver>
+169
+170        <activity
+170-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:18:9-29:20
+171            android:name="com.razorpay.CheckoutActivity"
+171-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:19:13-57
+172            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+172-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:20:13-83
+173            android:theme="@style/CheckoutTheme" >
+173-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:21:13-49
+174            <intent-filter>
+174-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:22:13-28:29
+175                <action android:name="android.intent.action.MAIN" />
+175-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:104:17-69
+175-->F:\WORKING -DIR\Android\med_parliament\app\src\main\AndroidManifest.xml:104:25-66
+176
+177                <data
+177-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:25:17-27:47
+178                    android:host="rzp.io"
+178-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:26:21-42
+179                    android:scheme="io.rzp" />
+179-->[com.razorpay:checkout:1.5.16] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\ef2f9c6ce002c660df180caa5111c7c5\jetified-checkout-1.5.16\AndroidManifest.xml:27:21-44
+180            </intent-filter>
+181        </activity>
+182        <activity
+182-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\6fb3f6cd2b75dfe7dd10f87d94351f9e\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+183            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+183-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\6fb3f6cd2b75dfe7dd10f87d94351f9e\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+184            android:exported="false"
+184-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\6fb3f6cd2b75dfe7dd10f87d94351f9e\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+185            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+185-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\6fb3f6cd2b75dfe7dd10f87d94351f9e\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+186
+187        <meta-data
+187-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\c39f27975e2128f358c90a3c3f9b8fee\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+188            android:name="com.google.android.gms.version"
+188-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\c39f27975e2128f358c90a3c3f9b8fee\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+189            android:value="@integer/google_play_services_version" />
+189-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Basant\.gradle\caches\transforms-2\files-2.1\c39f27975e2128f358c90a3c3f9b8fee\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+190    </application>
+191
+192</manifest>

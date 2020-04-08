@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
+import com.hbb20.CountryCodePicker;
 import com.medparliament.Internet.Api_Calling;
 import com.medparliament.Internet.URLS;
 import com.medparliament.Internet.VideoListener;
@@ -78,7 +79,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
     ImageButton bck;
     String userTypeId = "";
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
+    CountryCodePicker ccpLoadNumber;
     ImageButton login_button;
     Segow_UI_Bold_Font login_txt;
     ScrollView scrollView;
@@ -97,6 +98,8 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
         Intent i = getIntent();
         if (i != null)
             userTypeId = i.getStringExtra("userType");
+
+        ccpLoadNumber=findViewById(R.id.ccp);
         name = findViewById(R.id.name);
         mobile = findViewById(R.id.mobile);
         interest = findViewById(R.id.interest);
@@ -106,6 +109,8 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
         address = findViewById(R.id.address);
         qualifiaction = findViewById(R.id.qualificatin);
         bacth = findViewById(R.id.bach);
+
+        ccpLoadNumber.registerCarrierNumberEditText(mobile);
 
         //linkdien
         login_button=findViewById(R.id.login_button);
@@ -183,25 +188,6 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
         Comman.ChangeFocus(university);
 
 
-//        email.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//              if(email.getText().toString().trim().matches(emailPattern) && email.getText().toString().length()>0){}else {
-//                  Comman.topSnakBar(Student_SignUp_Activity.this, getWindow().getDecorView().getRootView(), Constant.INVALIDE_MAIL);
-//              }
-//            }
-//        });
-
         login_button=findViewById(R.id.login_button);
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,6 +209,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
     }
 
     public JSONObject setStudentJson() {
+        ccpLoadNumber.setFullNumber(mobile.getText().toString());
         JSONObject jsonObject = new JSONObject();
         try {
             String id = "";
@@ -232,7 +219,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
                 id = "";
             }
             jsonObject.put("userName", "" + name.getText().toString())
-                    .put("mobileNo", "" + mobile.getText().toString())
+                    .put("mobileNo", "" + ccpLoadNumber.getFullNumber())//mobile.getText().toString())
                     .put("email", "" + email.getText().toString()).
                     put("userTypeId", "7")
                     .put("gender", "" + id)
@@ -287,6 +274,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
                                 progressDialog.setMessage("Loading...");
                                 progressDialog.setCancelable(true);
                                 progressDialog.show();
+
                                 Api_Calling.postMethodCall(Student_SignUp_Activity.this, getWindow().getDecorView().getRootView(), onResult, URLS.SIGNUP, setStudentJson(), "SignUp");
                                 break;
                             } else {
