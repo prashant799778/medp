@@ -262,6 +262,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
 
 
   UpdateNews(){
+    console.log(this.frmNews)
     if(!this.frmNews.get('userTypeId').valid){
       this.errorMessage = "Please select  Category"
       jQuery("#errorModal").modal('show')
@@ -282,6 +283,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
       jQuery("#errorModal").modal('show')
       return;
     }
+    console.log(this.frmNews)
     if(!this.frmNews.get('summary').valid){
       this.errorMessage = "Please Enter Summary"
       jQuery("#errorModal").modal('show')
@@ -370,6 +372,7 @@ export class CreatePromisingInitiativeComponent implements OnInit {
       jQuery("#errorModal").modal('show')
       return;
     }
+    
     if(!this.frmNews.get('summary').valid){
       this.errorMessage = "Please Enter Summary"
       jQuery("#errorModal").modal('show')
@@ -466,6 +469,8 @@ export class CreatePromisingInitiativeComponent implements OnInit {
 this.imageClick = true;
 this.isCropDone = true;
       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
+this.frmNews.get('videoLink').clearValidators();
+    this.frmNews.get('videoLink').updateValueAndValidity();
       this.removeButton = true;
     }
     this.frmNews.get('newsType').setValue(this.newsDetails[0]['newsType']);

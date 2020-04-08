@@ -449,6 +449,8 @@ export class ViewContentComponent implements OnInit {
 this.imageClick = true;
 this.isCropDone = true;
       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
+this.frmNews.get('videoLink').clearValidators();
+    this.frmNews.get('videoLink').updateValueAndValidity();
       
     }
     this.frmNews.get('content').setValue(this.newsDetails[0]['content']);

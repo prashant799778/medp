@@ -406,6 +406,8 @@ export class CreateMediaComponent implements OnInit {
 this.imageClick = true;
 this.isCropDone = true;
       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
+this.frmNews.get('videoLink').clearValidators();
+    this.frmNews.get('videoLink').updateValueAndValidity();
     }
     if(this.newsDetails[0]['videoPath']){
       console.log("news if")

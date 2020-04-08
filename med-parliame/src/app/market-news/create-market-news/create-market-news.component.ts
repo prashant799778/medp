@@ -270,7 +270,7 @@ export class CreateMarketNewsComponent implements OnInit {
       return;
     }
     if(!this.frmNews.get('videoLink').valid){
-      this.errorMessage = "Please Upload Video Link or Image"
+      this.errorMessage = "Please Upload Video Link or Image 11"
       jQuery("#errorModal").modal('show')
       return;
     }
@@ -470,6 +470,10 @@ this.imageClick = true;
       this.imageClick = true;
       
       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
+this.frmNews.get('videoLink').clearValidators();
+    this.frmNews.get('videoLink').updateValueAndValidity();
+      this.frmNews.get('videoLink').clearValidators();
+    this.frmNews.get('videoLink').updateValueAndValidity();
     }
     this.frmNews.get('newsType').setValue(this.newsDetails[0]['newsType']);
     this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['newsTitle']);

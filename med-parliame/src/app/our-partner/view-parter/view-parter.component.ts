@@ -384,6 +384,8 @@ export class ViewParterComponent implements OnInit {
 // this.isCropDone = true;
       this.frmNews.controls.banner['controls'][0]['controls']['imga'].push(this.newsDetails[0]['imagePath'])
       // this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
+this.frmNews.get('videoLink').clearValidators();
+    this.frmNews.get('videoLink').updateValueAndValidity();
     }
     // this.frmNews.get('newsType').setValue(this.newsDetails[0]['newsType']);
     // this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['newsTitle']);
