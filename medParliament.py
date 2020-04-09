@@ -4639,6 +4639,7 @@ def news():
                     values = " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) +  "'"
                     data = databasefile.InsertQuery("news",column,values)
             if flag =='u':
+                print("  update news ")
                 
                 if "status" in inputdata:
                     if inputdata['status'] != "":
@@ -4656,12 +4657,14 @@ def news():
                         inputdata1 = request.form.get('NewsBanner')
                         y=type(inputdata1)
                         print(y)
+                        print("  update news1 ")
                         y2=len(inputdata1)
                         if  y2>4: 
+                            print("  update news ")
                             index=re.search("/newsimages", inputdata1).start()
                             ImagePath=""
                             ImagePath=inputdata1[index:]
-
+                            print("  update news 2")
                             print(inputdata1)
 
 
