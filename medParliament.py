@@ -9108,6 +9108,32 @@ def landingPageDashboard12():
         if data99["result"]=="":
             data99["result"]=[]
 
+
+        whereCondition2=WhereCondition+ " and dashboardId='8' "             
+            
+        column51 = "id, date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath ,videoLink   "
+        data51 = databasefile.SelectQueryOrderby("dashboard",column51,whereCondition2,"",startlimit,endlimit,orderby)
+        if data51["result"]=="":
+            data51["result"]=[]
+
+        for m in data51['result']:
+            if m['imagePath']!='':
+                m['imagePath']=str(ConstantData.GetBaseURL())+ str(m['imagePath'])
+            if  m['videoLink']!=None:
+                y=m['videoLink'].split('=')
+                print(y,'++++++')
+                
+                d=len(y)
+                if d>1:
+                    m['videoId']=y[1]
+                else:
+                    m['videoId']=y[0]
+
+            else:
+                m['videoId']=''
+    
+        
+
                         
 
 
@@ -9122,7 +9148,7 @@ def landingPageDashboard12():
 
         if data != "0":
             
-            return {"message":"","status":"true","marketingInsights":data['result'],"upSkillsOpportunity":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"highlightedIntiatives":data5["result"],"news":data2["result"],"gallery":data6["result"],"event":data3["result"],"medAchieversTv":data4["result"],"ourPartners":data99['result']}
+            return {"message":"","status":"true","marketingInsights":data['result'],"upSkillsOpportunity":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"highlightedIntiatives":data5["result"],"news":data2["result"],"gallery":data6["result"],"event":data3["result"],"medAchieversTv":data4["result"],"ourPartners":data99['result'],"publicAffairs":data51['result']}
             
         else:
             return commonfile.Errormessage()
