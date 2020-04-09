@@ -94,7 +94,7 @@ errorMessage: any;
     spellcheck: true,
     height: '15rem',
     minHeight: '5rem',
-    placeholder: 'Enter News Description...',
+    placeholder: 'Enter  Description...',
     translate: 'no',
     defaultFontName: 'Arial',
     customClasses: [

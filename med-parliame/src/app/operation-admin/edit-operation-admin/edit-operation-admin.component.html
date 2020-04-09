@@ -47,7 +47,7 @@
                     <form [formGroup]="frmNews" autocomplete="off">
                       <div class="form-group">
                         <tabset #tabset>
-                            <tab heading="Market Insight" (tabChange)="changeEvent($event)">
+                            <tab heading="Fact and Impact" (tabChange)="changeEvent($event)">
                                     <div class="mt-3">
                                             <button class="btn btn-success pull-right buttonsss " (click)="imageCLik()">Video Upload</button>
                             <p style="display: inline-block;">&nbsp;&nbsp;&nbsp; OR </p>
@@ -462,6 +462,66 @@
                                     
                                     <button  type="submit" class="btn btn-success pull-right mt-4" (click)="submitNews(6)">Submit</button>
                             </tab>
+
+
+                            <tab heading="Public Affairs">
+                              <div class="mt-3">
+                                      <button class="btn btn-success pull-right buttonsss " (click)="imageCLik()">Video Upload</button>
+                      <p style="display: inline-block;">&nbsp;&nbsp;&nbsp; OR </p>
+                      <button class="btn btn-success pull-right buttonsss ml-3 "(click)="imageCLik1()">Image Upload</button>
+                      <br>
+                      <ng-container *ngIf="!imageClick">
+                        <label for="newsTitle"> Video Link</label>
+                            <input type="text" class="form-control" formControlName="videoLink">
+                            
+                          <!-- <div class="error" *ngIf="frmNews.get('videoLink').errors && (frmNews.get('videoLink').touched || frmNews.get('videoLink').dirty)">
+                            <p>Please Upload Video Link or Image</p>
+                          </div> -->
+
+                        </ng-container>
+                        
+                        <ng-container *ngIf="imageClick">
+                                <label for="banner">Image</label>
+                                <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
+                                
+                                <ng-container *ngIf="!isCropDone && isCropDone2">
+                                  <div id="imageFFFF6">
+                                      <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
+                                  </div>
+                                  <div class="wrap-button-section d-flex justify-content-between">
+                                      <button class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</button>
+                                      <div class="inner-wrap-button-section mt-3">
+                                        <button (click)="resizeed6(1)" class="lti-spc"><img class="mag-button" src="../../../assets/images/plus.svg"></button>
+                                        <button (click)="resizeed6(-1)"><img class="mag-button" src="../../../assets/images/ui.svg"></button>
+                                      </div>
+                                    
+                                  </div>
+                                  <!-- <img [src]="imageShow" id="img"/> -->
+                                </ng-container>
+                                
+                                <ng-container *ngIf="isCropDone">
+
+                                  <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
+                                    <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
+                                    
+                               </div>
+                               <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
+                                <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
+                                
+
+                                
+                           </div>
+                                </ng-container>
+                                <!-- <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
+                                  <p>Please Upload Video Link or Image</p>
+                                </div> -->
+                                
+                        </ng-container>
+                                      
+                                  </div>
+                              
+                              <button  type="submit" class="btn btn-success pull-right mt-4" (click)="submitNews(8)">Submit</button>
+                      </tab>
                                         
                             
                       </tabset>

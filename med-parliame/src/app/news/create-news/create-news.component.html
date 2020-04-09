@@ -22,11 +22,11 @@
                     </g>
               </svg>
                 </div>
-                <h2 class="main-hading">Market Insights Master</h2>
+                <h2 class="main-hading">Fact and Impact</h2>
             </div>
               <div class="card-header-actions crd-bnt">
                 <!-- <a [routerLink]="['/news/createNews']" class="btn" target="_self">Create News</a> -->
-                <a [routerLink]="['/news/editNews']" class="btn" target="_self">View Market Insights</a>
+                <a [routerLink]="['/news/editNews']" class="btn" target="_self">View Fact and Impact</a>
               </div>
             </div>
             <!-- <i class="fa fa-list"></i>Create News Data
@@ -42,14 +42,14 @@
                     <div class="card-body p-4 border-rd">
                         <form [formGroup]="frmNews" autocomplete="off">
                           <div class="form-group">
-                           <label for="newsType">Market Insights category</label>
+                           <label for="newsType">Fact and Impact category</label>
                             <select formControlName="userTypeId">
                                 <option *ngFor="let userType of userTypeDetails" [value]="userType.id">{{userType.userName}}</option>
                             </select>
                             
                             <!-- {{frmNews.get('userTypeId').errors | json}} -->
                             <div class="error" *ngIf="frmNews.get('userTypeId').errors && (frmNews.get('userTypeId').touched || frmNews.get('userTypeId').dirty)">
-                                <p>Market Insights category is required</p>
+                                <p>Fact and Impact category is required</p>
                               </div>
                             <!--  <ng-select 
                                      [items]="categoryList"
@@ -61,10 +61,10 @@
                                      formControlName="newsType">
                             </ng-select> -->
                             <br>
-                            <label for="newsTitle">Market Insights Title</label>
+                            <label for="newsTitle">Fact and Impact Title</label>
                                 <input type="text" class="form-control" formControlName="newsTitle">
                                 <div class=error *ngIf="frmNews.get('newsTitle').errors && (frmNews.get('newsTitle').touched || frmNews.get('newsTitle').dirty)">
-                                  <p>Market Insights Title is required</p>
+                                  <p>Fact and Impact Title is required</p>
                                 </div>
                             <br>
                             <button class="btn btn-success pull-right buttonsss " (click)="imageCLik()">Video Upload</button>
@@ -119,16 +119,16 @@
                                       
                               </ng-container>
                             <br>
-                            <label for="summary">Market Insights Summary</label>
-                                <textarea maxlength="64" type="text" class="form-control" formControlName="summary" placeholder="Enter News Summary..." rows="4"></textarea>
+                            <label for="summary">Fact and Impact Summary</label>
+                                <textarea maxlength="64" type="text" class="form-control" formControlName="summary" placeholder="Enter  Summary..." rows="4"></textarea>
                                 <div class=error *ngIf="frmNews.get('summary').errors && (frmNews.get('summary').touched || frmNews.get('summary').dirty)">
-                                    <p>Market Insights Summary is required</p>
+                                    <p>Fact and Impact Summary is required</p>
                                   </div>
                             <br>
-                            <label for="newsDesc">Market Insights Description</label>
+                            <label for="newsDesc">Fact and Impact Description</label>
                             <angular-editor formControlName="newsDesc" [config]="config"></angular-editor>
                             <div class=error *ngIf="frmNews.get('newsDesc').errors && (frmNews.get('newsDesc').touched || frmNews.get('newsDesc').dirty)">
-                                <p>Market Insights Description is required</p>
+                                <p>Fact and Impact Description is required</p>
                               </div>
                           </div>
                           <button *ngIf="!updateCheck" type="submit" class="btn btn-success pull-right" (click)="submitNews()">Submit</button>
