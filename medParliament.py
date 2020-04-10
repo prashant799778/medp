@@ -9583,7 +9583,7 @@ def getParliamentEvent1():
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
             
             column = " us.userName"
-            WhereCondition=" and pm.id=ei.id and us.userId=ei.userId"
+            WhereCondition=" and pm.id=ei.eventId and us.userId=ei.userId"
 
             data = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition)
             print(data)
