@@ -9527,8 +9527,7 @@ def getmarketingInsightslikes():
     try:        
        startlimit,endlimit="",""
        WhereCondition=""
-       
-        if request.get_data():
+       if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
             if "startLimit" in inputdata:
