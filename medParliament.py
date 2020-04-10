@@ -9546,7 +9546,7 @@ def getmarketingInsightslikes():
         
             WhereCondition=" and mi.id=lki.marketingInsightId and us.userId=lki.userId "
 
-            data = databasefile.SelectQuery4("marketingInsights as mi,likeMarketingInsight as lki,userMaster as us",column,WhereCondition,"",startlimit,endlimit)
+            data = databasefile.SelectQuery4("marketingInsights as mi,likeMarketingInsight as lki,userMaster as us",column,WhereCondition)
             print(data)
             
             if data['status'] != "false":
@@ -9585,7 +9585,7 @@ def getParliamentEvent1():
             column = " us.userName"
             WhereCondition=" and pm.id=ei.id and us.userId=ei.userId"
 
-            data = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition,"",startlimit,endlimit)
+            data = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition)
             print(data)
             if data['status'] != "false":
                 return data
