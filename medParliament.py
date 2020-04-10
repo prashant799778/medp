@@ -4927,6 +4927,9 @@ def getMarketingInsights():
                         i['videoId']=y[0]
                 else:
                     i['videoId']=""
+
+
+
             return data
             
         else:
@@ -5749,7 +5752,7 @@ def allEventThread1():
         return output
 
 
-
+#comments
 @app.route('/commentsEventApproved', methods=['POST'])
 def commentsevent2():
     try:
@@ -9134,7 +9137,7 @@ def landingPageDashboard12():
 
             else:
                 m['videoId']=''
-    
+
         
 
                         
@@ -9340,6 +9343,257 @@ def ourPartners155():
             return msg
 
     except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+@app.route('/getMarketingInsights1', methods=['POST'])
+def getMarketingInsights1111():
+
+    try:
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and n.Status<2 "
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
+                
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"]
+                    WhereCondition=WhereCondition+"  and n.userTypeId IN(0,'"+str(userTypeId)+"')"
+
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+" and n.id='"+str(Id)+"'"
+        
+       
+        
+        
+
+        orderby=" n.id "
+        WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
+        column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath ,um.userName "
+        data = databasefile.SelectQueryOrderby("marketingInsights n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data2 = databasefile.SelectTotalCountQuery("marketingInsights","","")
+
+        if data != "0":
+            data["totalCount"]=data2
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                if i['videoLink']!=None:
+                    y=i['videoLink'].split('=')
+                     
+                    d=len(y)
+                    if d>1:
+                        i['videoId']=y[1]
+                    else:
+                        i['videoId']=y[0]
+                else:
+                    i['videoId']=""
+                
+                marketingInsightId=i['id']
+                whereCondition="and lki.marketingInsightId='"+str(marketingInsightId)+"'"
+                columns="count(*) as count"
+                likeCount=databasefile.SelectQuery('likeMarketingInsight as lki',columns,whereCondition,"","","")
+                print(likeCount)
+                if likeCount['status']!='false':
+                    lki=likeCount['result'][0]['count']
+
+                        
+
+                    i['likeCount']=lki
+                    
+                        
+                    
+                else:
+                    i['likeCount']=0
+                whereCondition="and lki.status<>'2' and  lki.marketingInsightId='"+str(marketingInsightId)+"'"
+                commentCount=databasefile.SelectQuery('marketingInsightComment as lki',columns,whereCondition,"","","")
+                if commentCount['status']!='false':
+                    com=commentCount['result'][0]['count']
+
+                        
+
+                    i['commentCount']=com
+                    
+                        
+                    
+                else:
+                    i['commentCount']=0
+                   
+
+
+            return data
+            
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+@app.route('/getParliamentEvent1', methods=['POST'])
+def getParliamentEventa():
+
+    try:        
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+" and Status<2"
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startLimit" in inputdata:
+                if inputdata['startLimit'] != "":
+                    startlimit =str(inputdata["startLimit"])
+                
+            if "endLimit" in inputdata:
+                if inputdata['endLimit'] != "":
+                    endlimit =str(inputdata["endLimit"])
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+            if "userTypeId" in inputdata:
+                if inputdata['userTypeId'] != "":
+                    userTypeId =inputdata["userTypeId"] 
+                    WhereCondition=WhereCondition+" and userTypeId='"+str(userTypeId)+"'"
+        
+        column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(CONVERT_TZ(eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath   "
+        data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
+        print(data)
+        if data['result'] != "":
+
+
+            for i in data['result']:
+                if i['imagePath']!='':
+                    i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
+                if i['videoLink']!=None:
+                   if i['videoLink']!=None:
+                    y=i['videoLink'].split('=')
+                     
+                    d=len(y)
+                    if d>1:
+                        i['videoId']=y[1]
+                    else:
+                        i['videoId']=""
+                else:
+                    i['videoId']=""
+
+                y2=i['id']
+                columns="count(*) as count"
+                whereCondition=" and eventId='"+str(y2)+"'"
+                dat=databasefile.SelectQuery('eventInterest',column,whereCondition,"",startlimit,endlimit)
+                print(dat,'++++++++++++++++++++++++++++')
+                if dat['status']!='false':
+                    lki=dat['result'][0]['count']
+                    i['likeCount']=lki
+                else:
+                    i['likeCount']=0
+
+                columns="count(*) as count"
+                whereCondition=" and eventId='"+str(y2)+"'"
+                dat1=databasefile.SelectQuery('eventComment',column,whereCondition,"",startlimit,endlimit)
+                print(dat1,'++++++++++++++++++++++++++++')
+                if dat1['status']!='false':
+                    com=dat1['result'][0]['count']
+                    i['commentCount']=com
+                else:
+                    i['commentCount']=0
+
+
+            return data
+        else:
+            return data
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+@app.route('/getmarketingInsightslikes', methods=['POST'])
+def getmarketingInsightslikes():
+
+    try:        
+       startlimit,endlimit="",""
+       WhereCondition=""
+       
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startLimit" in inputdata:
+                if inputdata['startLimit'] != "":
+                    startlimit =str(inputdata["startLimit"])
+                
+            if "endLimit" in inputdata:
+                if inputdata['endLimit'] != "":
+                    endlimit =str(inputdata["endLimit"])
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+" and mi.id='"+str(Id)+"'"
+            
+        column = " us.userName"
+        WhereCondition=" and mi.id=lki.marketingInsightId and us.userId=lki.userId "
+
+        data = databasefile.SelectQuery4("marketingInsights as mi,likeMarketingInsight as lki,userMaster as us",column,WhereCondition,"",startlimit,endlimit)
+        print(data)
+        
+        if data['status'] != "false":
+            return data
+        else:
+            return data
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+@app.route('/getParliamentEventlikes', methods=['POST'])
+def getParliamentEvent1():
+
+    try:        
+       startlimit,endlimit="",""
+       
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startLimit" in inputdata:
+                if inputdata['startLimit'] != "":
+                    startlimit =str(inputdata["startLimit"])
+                
+            if "endLimit" in inputdata:
+                if inputdata['endLimit'] != "":
+                    endlimit =str(inputdata["endLimit"])
+            
+            if "id" in inputdata:
+                if inputdata['id'] != "":
+                    Id =inputdata["id"] 
+                    WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+            
+        column = " us.userName"
+        WhereCondition=" and pm.id=ei.id and us.userId=ei.userId"
+
+        data = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition,"",startlimit,endlimit)
+        print(data)
+        if data['status'] != "false":
+            return data
+        else:
+            return data
+
+    except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()                                     
 
