@@ -9542,17 +9542,17 @@ def getmarketingInsightslikes():
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+" and mi.id='"+str(Id)+"'"
-            
-        column = " us.userName"
-        WhereCondition=" and mi.id=lki.marketingInsightId and us.userId=lki.userId "
-
-        data = databasefile.SelectQuery4("marketingInsights as mi,likeMarketingInsight as lki,userMaster as us",column,WhereCondition,"",startlimit,endlimit)
-        print(data)
+            column = " us.userName"
         
-        if data['status'] != "false":
-            return data
-        else:
-            return data
+            WhereCondition=" and mi.id=lki.marketingInsightId and us.userId=lki.userId "
+
+            data = databasefile.SelectQuery4("marketingInsights as mi,likeMarketingInsight as lki,userMaster as us",column,WhereCondition,"",startlimit,endlimit)
+            print(data)
+            
+            if data['status'] != "false":
+                return data
+            else:
+                return data
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
