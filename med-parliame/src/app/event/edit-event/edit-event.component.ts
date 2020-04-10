@@ -59,6 +59,9 @@ this.userTypeDetails = resp['result']
       }
     })
   }
+  endorse(NewsId){
+    this.router.navigate(['/event/endorse1'], { queryParams: {NewsId: NewsId}});
+  }
 
   pageChanged(event){
     console.log(event)

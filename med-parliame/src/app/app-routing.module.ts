@@ -58,6 +58,7 @@ import { EditOperationAdminComponent } from './operation-admin/edit-operation-ad
 import { EventPostComponent } from './event-post/event-post.component';
 import { ReplyEventPostComponent } from './event-post/reply-event-post.component';
 import { EndorseComponent } from './news/endorse/endorse.component';
+import { Endorse1Component } from './event/endorse1/endorse1.component';
 
 const routes: Routes = [
   { path: '',redirectTo: '/dashboard',pathMatch: 'full'},
@@ -341,6 +342,11 @@ const routes: Routes = [
         component: EditEventComponent,
         canActivate: [AuthGuard],
     },
+    {
+      path:'endorse1',
+      component: Endorse1Component,
+      canActivate: [AuthGuard],
+  },
     
   
     

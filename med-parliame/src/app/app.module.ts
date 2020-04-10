@@ -80,6 +80,7 @@ import { EventPostComponent } from './event-post/event-post.component';
 import { ReplyEventPostComponent } from './event-post/reply-event-post.component';
 import { AngularCropperjsModule } from 'angular-cropperjs';
 import { EndorseComponent } from './news/endorse/endorse.component';
+import { Endorse1Component } from './event/endorse1/endorse1.component';
 
 @NgModule({
   declarations: [
@@ -152,7 +153,8 @@ import { EndorseComponent } from './news/endorse/endorse.component';
     EditOperationAdminComponent,
     EventPostComponent,
     ReplyEventPostComponent,
-    EndorseComponent
+    EndorseComponent,
+    Endorse1Component
   ],
   imports: [
     AngularCropperjsModule,

@@ -12,7 +12,7 @@ export class AppSettings {
     public static AdminDropDown = 'adminDropdown';
     public static getMarketingInsights = 'getMarketingInsights1';
     public static getmarketingInsightslikes = 'getmarketingInsightslikes';
-    public static likesgetParliamentEventlikes = 'likesgetParliamentEventlikes';
+    public static likesgetParliamentEventlikes = 'getParliamentEventlikes';
     
     
     public static marketingInsights = 'marketingInsights';
@@ -64,7 +64,7 @@ export class AppSettings {
     public static announcements1 = 'announcements1';
     public static getGalleryImages = 'getGalleryImages';
     public static getAnnouncement = 'getAnnouncement';
-    public static getParliamentEvent = 'getParliamentEvent';
+    public static getParliamentEvent = 'getParliamentEvent1';
     public static getEventReply = 'allEventThread1';
     public static AccountVerification = 'AccountVerification';
     public static promisingInitiatives = 'promisingInitiatives';
