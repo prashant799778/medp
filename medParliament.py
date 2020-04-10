@@ -9565,8 +9565,8 @@ def getParliamentEvent1():
 
     try:        
        startlimit,endlimit="",""
-       
-        if request.get_data():
+       WhereCondition=""
+       if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
             if "startLimit" in inputdata:
@@ -9582,15 +9582,15 @@ def getParliamentEvent1():
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
             
-        column = " us.userName"
-        WhereCondition=" and pm.id=ei.id and us.userId=ei.userId"
+            column = " us.userName"
+            WhereCondition=" and pm.id=ei.id and us.userId=ei.userId"
 
-        data = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition,"",startlimit,endlimit)
-        print(data)
-        if data['status'] != "false":
-            return data
-        else:
-            return data
+            data = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition,"",startlimit,endlimit)
+            print(data)
+            if data['status'] != "false":
+                return data
+            else:
+                return data
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
