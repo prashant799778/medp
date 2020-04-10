@@ -9538,9 +9538,9 @@ def getmarketingInsightslikes():
                 if inputdata['endLimit'] != "":
                     endlimit =str(inputdata["endLimit"])
             
-            if "id" in inputdata:
-                if inputdata['id'] != "":
-                    Id =inputdata["id"] 
+            if "Id" in inputdata:
+                if inputdata['Id'] != "":
+                    Id =inputdata["Id"] 
                     WhereCondition=WhereCondition+" and mi.id='"+str(Id)+"'"
             column = " us.userName"
         
@@ -9577,9 +9577,9 @@ def getParliamentEvent1():
                 if inputdata['endLimit'] != "":
                     endlimit =str(inputdata["endLimit"])
             
-            if "id" in inputdata:
-                if inputdata['id'] != "":
-                    Id =inputdata["id"] 
+            if "Id" in inputdata:
+                if inputdata['Id'] != "":
+                    Id =inputdata["Id"] 
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
             
             column = " us.userName"
