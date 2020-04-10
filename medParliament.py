@@ -9492,7 +9492,7 @@ def getParliamentEventa():
                 y2=i['id']
                 columns="count(*) as count"
                 whereCondition=" and eventId='"+str(y2)+"'"
-                dat=databasefile.SelectQuery('eventInterest',column,whereCondition,"",startlimit,endlimit)
+                dat=databasefile.SelectQuery('eventInterest',columns,whereCondition,"",startlimit,endlimit)
                 print(dat,'++++++++++++++++++++++++++++')
                 if dat['status']!='false':
                     lki=dat['result'][0]['count']
@@ -9502,7 +9502,7 @@ def getParliamentEventa():
 
                 columns="count(*) as count"
                 whereCondition=" and eventId='"+str(y2)+"'"
-                dat1=databasefile.SelectQuery('eventComment',column,whereCondition,"",startlimit,endlimit)
+                dat1=databasefile.SelectQuery('eventComment',columns,whereCondition,"",startlimit,endlimit)
                 print(dat1,'++++++++++++++++++++++++++++')
                 if dat1['status']!='false':
                     com=dat1['result'][0]['count']
