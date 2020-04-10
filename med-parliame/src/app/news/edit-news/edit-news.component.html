@@ -46,13 +46,14 @@
                                   
                               <thead>
                                 <tr>
-                                  <th> Image</th>
+                                  <th> User Name</th>
                                   <th> Title</th>
                                   <th>Video Link</th>
                                   <th> Summary</th>
                                   <th> Description</th>
                                   <th> Date</th>
                                   <th>Created By</th>
+                                  <th>Endorse</th>
                                   <th>Action</th>
                                 </tr>
                               </thead>
@@ -67,6 +68,9 @@
                                       <td> <p [innerHtml]="news.newsDesc " class="inline-blk"></p> </td>
                                       <td> {{news.DateCreate}}</td>
                                       <td>  <p>{{news.userName}} </p></td> 
+                                      <td (click)="endorse(news.id)">
+                                        <button  type="button" class="btn ab-btn dc-bg-color-active border-round-rem">{{news.likeCount}}</button>
+                                        </td>
                                       <td>
                                             <div class="btn-edit-group">
                                                     <button type="button" class="edit-btn" (click)="editNews(news.id)" >  <img src="../../../assets/images/edit-im.svg"></button>
@@ -92,6 +96,8 @@
           </div>
         </div>
       </div>
+      </div>
+</div>
 
 
           <div class="modal fade" id="addAdmin-news" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

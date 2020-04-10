@@ -57,6 +57,7 @@ import { CreateOperationAdminComponent } from './operation-admin/create-operatio
 import { EditOperationAdminComponent } from './operation-admin/edit-operation-admin/edit-operation-admin.component';
 import { EventPostComponent } from './event-post/event-post.component';
 import { ReplyEventPostComponent } from './event-post/reply-event-post.component';
+import { EndorseComponent } from './news/endorse/endorse.component';
 
 const routes: Routes = [
   { path: '',redirectTo: '/dashboard',pathMatch: 'full'},
@@ -123,6 +124,11 @@ const routes: Routes = [
         component: EditNewsComponent,
         canActivate: [AuthGuard],
     },
+    {
+      path:'endorse',
+      component: EndorseComponent,
+      canActivate: [AuthGuard],
+  },
     
   
     

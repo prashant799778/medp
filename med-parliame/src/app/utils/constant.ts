@@ -10,7 +10,11 @@ export class AppSettings {
     public static AddSubAdmins = 'addSubAdmins';
     public static AllSubAdmins = 'allSubAdmins';
     public static AdminDropDown = 'adminDropdown';
-    public static getMarketingInsights = 'getMarketingInsights';
+    public static getMarketingInsights = 'getMarketingInsights1';
+    public static getmarketingInsightslikes = 'getmarketingInsightslikes';
+    public static likesgetParliamentEventlikes = 'likesgetParliamentEventlikes';
+    
+    
     public static marketingInsights = 'marketingInsights';
     public static upSkillsOpportunity = 'upSkillsOpportunity';
     public static getUpSkillsOpportunity = 'getUpSkillsOpportunity';

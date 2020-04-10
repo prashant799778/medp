@@ -51,6 +51,10 @@ export class EditNewsComponent implements OnInit {
     this.getNews();
   }
 
+  endorse(NewsId){
+    this.router.navigate(['/news/endorse'], { queryParams: {NewsId: NewsId}});
+  }
+
   getUsertype(){
     this.apiService.dataPostApi(null,AppSettings.userDropDown).then(resp=>{
       console.log(resp)
