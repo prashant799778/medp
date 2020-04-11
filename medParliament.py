@@ -9580,7 +9580,7 @@ def getParliamentEvent1():
             if "Id" in inputdata:
                 if inputdata['Id'] != "":
                     Id =inputdata["Id"] 
-                    WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
+                    WhereCondition=WhereCondition+" and pm.id='"+str(Id)+"'"
             
             column = " us.userName"
             WhereCondition=WhereCondition+" and pm.id=ei.eventId and us.userId=ei.userId"
