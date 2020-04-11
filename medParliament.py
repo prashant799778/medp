@@ -9544,7 +9544,7 @@ def getmarketingInsightslikes():
                     WhereCondition=WhereCondition+" and mi.id='"+str(Id)+"'"
             column = " us.userName"
         
-            WhereCondition=" and mi.id=lki.marketingInsightId and us.userId=lki.userId "
+            WhereCondition= WhereCondition+" and mi.id=lki.marketingInsightId and us.userId=lki.userId "
 
             data = databasefile.SelectQuery4("marketingInsights as mi,likeMarketingInsight as lki,userMaster as us",column,WhereCondition)
             print(data)
@@ -9583,7 +9583,7 @@ def getParliamentEvent1():
                     WhereCondition=WhereCondition+" and id='"+str(Id)+"'"
             
             column = " us.userName"
-            WhereCondition=" and pm.id=ei.eventId and us.userId=ei.userId"
+            WhereCondition=WhereCondition+" and pm.id=ei.eventId and us.userId=ei.userId"
 
             data = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition)
             print(data)
