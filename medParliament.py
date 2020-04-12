@@ -5139,8 +5139,15 @@ def getupSkillsOpportunity():
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
                 if i['videoLink']!=None:
                     y=i['videoLink'].split('=')
-                    print(y)
-                    i['videoId']=y[1]
+                     
+                    d=len(y)
+                    if d>1:
+                        i['videoId']=y[1]
+                    else:
+                        i['videoId']=y[0]
+                else:
+                    i['videoId']=""
+
             return data
         else:
             return commonfile.Errormessage()
