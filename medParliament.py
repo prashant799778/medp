@@ -5177,7 +5177,7 @@ def allMarketingInsightThread():
                 marketingInsightId=inputdata['Id']
                 if inputdata['userId'] != "":
                     userId =inputdata["userId"]
-                    WhereCondition="  and pm.userId ='"+str(userId)+"' and pm.marketingInsightId='" + str(marketingInsightId) + "' "
+                    WhereCondition="  and pm.userId ='"+str(userId)+"' and pm.userId=um.userId pm.marketingInsightId='" + str(marketingInsightId) + "' "
                     column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                     orderby=" pm.id "
                     data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
