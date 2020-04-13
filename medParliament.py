@@ -9476,7 +9476,7 @@ def getParliamentEventa():
                     WhereCondition=WhereCondition+" and userTypeId IN(0,'"+str(userTypeId)+"')"
         
         column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(CONVERT_TZ(eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath   "
-        data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
         print(data)
         if data['result'] != "":
 
