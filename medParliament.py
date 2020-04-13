@@ -9549,7 +9549,7 @@ def getmarketingInsightslikes():
                 if inputdata['Id'] != "":
                     Id =inputdata["Id"] 
                     WhereCondition=WhereCondition+" and mi.id='"+str(Id)+"'"
-            column = " us.userName"
+            column = " us.userName,us.email"
         
             WhereCondition= WhereCondition+" and mi.id=lki.marketingInsightId and us.userId=lki.userId "
 
@@ -9589,7 +9589,7 @@ def getParliamentEvent1():
                     Id =inputdata["Id"] 
                     WhereCondition=WhereCondition+" and pm.id='"+str(Id)+"'"
             
-            column = " us.userName"
+            column = " us.userName,us.email"
             WhereCondition=WhereCondition+" and pm.id=ei.eventId and us.userId=ei.userId"
 
             data = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition)
