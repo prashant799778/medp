@@ -21,6 +21,7 @@
                         <thead>
                             <tr>
                                     <th> Image</th>
+                                    <th>Video Link</th>
                                     <th> Title</th>
                                     <th> Summary</th>
                                     <th> Description</th>
@@ -33,6 +34,7 @@
                             <ng-container *ngIf="postList && postList.length > 0">
                                 <tr *ngFor="let subAdmin of postList ; let i =  index">
                                         <td> <img  src="../../../assets/images/no-image-available.png" class="hash-img tab-shadow"> </td>
+                                        <td> <p>{{subAdmin.videoLink}} </p></td>
                                         <td> <p>{{subAdmin.newsTitle}} </p></td> 
                                         <td> <p>{{subAdmin.summary}} </p></td>                                       
                                         <td> <p [innerHtml]="subAdmin.newsDesc " class="inline-blk"></p> </td>
