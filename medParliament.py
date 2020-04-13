@@ -5183,8 +5183,9 @@ def allMarketingInsightThread():
                     data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
                     WhereCondition="  and pm.userId =um.userId and pm.status='1' and pm.marketingInsightId='" + str(marketingInsightId) + "' "
                     data2=databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
-                    for i in data2['result']:
-                        data1['result'].append(i)
+                    print(data2['result'],"@@@@@@@@@@@@")
+                    # for i in data2['result']:
+                    #     data1['result'].append(i)
 
 
                     print(data1,"!!!!!!!!!!!")
