@@ -5184,9 +5184,9 @@ def allMarketingInsightThread():
                     WhereCondition1="  and  pm.userId =um.userId and pm.status='1' and pm.marketingInsightId='" + str(marketingInsightId) + "' "
                     data2=databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
                     print(data2,'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-                    for i in data2['result']:
-                        if i not in data1['result']['id']:
-                            data1['result'].append(i)
+                    # for i in data2['result']:
+                    #     if i not in data1['result']['id']:
+                    #         data1['result'].append(i)
 
                    
 
