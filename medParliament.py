@@ -5240,9 +5240,9 @@ def allMarketingInsightThread():
                     WhereCondition="  and pm.userId ='"+str(userId)+"' and pm.userId=um.userId and  pm.marketingInsightId='" + str(marketingInsightId) + "' "
                     column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                     orderby=" pm.id "
-                    data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",startlimit,endlimit,orderby)
+                    data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
                     WhereCondition1="  and  pm.userId =um.userId and pm.status='1' and pm.marketingInsightId='" + str(marketingInsightId) + "' "
-                    data2=databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition1,"",startlimit,endlimit,orderby)
+                    data2=databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
                     print(data2['result'],'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
                     print(data1['result'],"!!!332")
                     if data1['result'] == "":
@@ -5715,12 +5715,12 @@ def allEventThread():
                     WhereCondition="  and pm.userId ='"+str(userId)+"' and  pm.userId=um.userId and pm.eventId='" + str(eventId) + "' "
                     column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                     orderby=" pm.id "
-                    data1 = databasefile.SelectQueryOrderbyAsc("eventComment as pm,userMaster as um",column1,WhereCondition,"",startlimit,endlimit,orderby)
+                    data1 = databasefile.SelectQueryOrderbyAsc("eventComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
 
                     WhereCondition=" and  pm.userId =um.userId and pm.status='1' and  pm.eventId='" + str(eventId) + "' "
                     column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                     orderby=" pm.id "
-                    data2 = databasefile.SelectQueryOrderbyAsc("eventComment as pm,userMaster as um",column1,WhereCondition,"",startlimit,endlimit,orderby)
+                    data2 = databasefile.SelectQueryOrderbyAsc("eventComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
                     if data1['result'] == "":
                         data1['result']=[]
                     for i in data2['result']:
