@@ -5179,7 +5179,7 @@ def allMarketingInsightThread():
                     userId =inputdata["userId"]
                     WhereCondition="  and pm.userId ='"+str(userId)+"' and pm.marketingInsightId='" + str(marketingInsightId) + "' and pm.status='1' or um.userId=pm.userId and pm.marketingInsightId=n.id"
                     column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-                    orderby=" id "
+                    orderby=" pm.id "
                     data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um,marketingInsights n",column1,WhereCondition,"",orderby,startlimit,endlimit)
                     print(data1,"!!!!!!!!!!!")
                     WhereCondition=" and n.id='"+str(marketingInsightId)+"'"
