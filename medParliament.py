@@ -5102,6 +5102,8 @@ def upSkillsOpportunity():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
+
+
 @app.route('/getUpSkillsOpportunity', methods=['POST'])
 def getupSkillsOpportunity():
 
@@ -5153,6 +5155,16 @@ def getupSkillsOpportunity():
                         i['videoId']=y[0]
                 else:
                     i['videoId']=""
+                y2=i['id']
+                columns="count(*) as count"
+                whereCondition=" and upSkillsId='"+str(y2)+"'"
+                dat=databasefile.SelectQuery('enrollUpskills',columns,whereCondition,"",startlimit,endlimit)
+                print(dat,'++++++++++++++++++++++++++++')
+                if dat['status']!='false':
+                    lki=dat['result'][0]['count']
+                    i['enrollCount']=lki
+                else:
+                    i['enrollCount']=0
 
             return data
         else:
@@ -5160,7 +5172,45 @@ def getupSkillsOpportunity():
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
-        return commonfile.Errormessage()                 
+        return commonfile.Errormessage()
+
+
+
+@app.route('/getUpSkillsOpportunityEnrolled', methods=['POST'])
+def getParliamentEvent111():
+
+    try:        
+       startlimit,endlimit="",""
+       WhereCondition=""
+       if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startLimit" in inputdata:
+                if inputdata['startLimit'] != "":
+                    startlimit =str(inputdata["startLimit"])
+                
+            if "endLimit" in inputdata:
+                if inputdata['endLimit'] != "":
+                    endlimit =str(inputdata["endLimit"])
+            
+            if "Id" in inputdata:
+                if inputdata['Id'] != "":
+                    Id =inputdata["Id"] 
+                    WhereCondition=WhereCondition+" and pm.id='"+str(Id)+"'"
+            
+            column = " us.userName,us.email"
+            WhereCondition=WhereCondition+" and pm.id=ei.upSkillsId and us.userId=ei.userId"
+
+            data = databasefile.SelectQuery4("upSkillsOpportunity as pm,enrollUpskills as ei,userMaster as us",column,WhereCondition)
+            print(data)
+            if data['status'] != "false":
+                return data
+            else:
+                return data
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()                           
 
 
 @app.route('/allMarketingInsightThread', methods=['POST'])
