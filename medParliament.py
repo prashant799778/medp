@@ -5180,7 +5180,7 @@ def allMarketingInsightThread():
                     WhereCondition="  and pm.userId ='"+str(userId)+"' and pm.marketingInsightId='" + str(marketingInsightId) + "' and pm.userId=um.userId and pm.status='1'"
                     column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                     orderby=" id "
-                    data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                    data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
                     print(data1,"!!!!!!!!!!!")
                     WhereCondition=" and n.id='"+str(marketingInsightId)+"'"
                     column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
