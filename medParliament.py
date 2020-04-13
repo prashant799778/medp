@@ -9437,7 +9437,7 @@ def getMarketingInsights1111():
                     
                 else:
                     i['likeCount']=0
-                whereCondition="and lki.status<>'2' and  lki.marketingInsightId='"+str(marketingInsightId)+"'"
+                whereCondition=" and  lki.marketingInsightId='"+str(marketingInsightId)+"'"
                 commentCount=databasefile.SelectQuery('marketingInsightComment as lki',columns,whereCondition,"","","")
                 if commentCount['status']!='false':
                     com=commentCount['result'][0]['count']
