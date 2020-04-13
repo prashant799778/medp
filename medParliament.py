@@ -7244,9 +7244,10 @@ def getGalleryImages():
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
+            orderby="id"
         
         column = "id,Status,title,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath,UserCreate  "
-        data = databasefile.SelectQuery(" gallery ",column,WhereCondition,"",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby(" gallery ",column,WhereCondition,"",startlimit,endlimit,orderby)
         print(data)
         
         if data != "0":
@@ -7956,10 +7957,11 @@ def getpromisingInitiatives1():
                 if inputdata['id'] != "":
                     Id =inputdata["id"] 
                     WhereCondition=WhereCondition+"  and id='"+str(Id)+"'"
+            orderby='id'
         
         
         column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
-        data = databasefile.SelectQuery("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit,orderby)
         
          
         if data['result'] != "":
