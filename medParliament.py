@@ -5316,6 +5316,14 @@ def allMarketingInsightThread1():
             orderby="pm.id"
             postId,WhereCondition1="",""
 
+            if "startLimit" in inputdata:
+                if inputdata['startLimit'] != "":
+                    startlimit =str(inputdata["startLimit"])
+                
+            if "endLimit" in inputdata:
+                if inputdata['endLimit'] != "":
+                    endlimit =str(inputdata["endLimit"])
+
             if "userId" in inputdata and 'Id' in inputdata:
                 marketingInsightId=inputdata['Id']
                 if inputdata['userId'] != "":
@@ -5339,6 +5347,8 @@ def allMarketingInsightThread1():
 
                 data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
                 WhereCondition=" and n.id='"+str(marketingInsightId)+"'"
+
+                data2=databasefile.SelectQuery4("marketingInsightComment as pm,userMaster as um",column1,WhereCondition)
                 column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
                 data = databasefile.SelectQuery1("marketingInsights n,userMaster um",column,WhereCondition)
                 print(data,"111111111111111111")
@@ -5354,7 +5364,7 @@ def allMarketingInsightThread1():
                         
                 
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":[data1['result'],[data['result']]]}
+                Data = {"status":"true","message":"","result":[data1['result'],[data['result']]],"totalcount":len(data2['result'])}
                 return Data
             else:
                 output = {"status":"false","message":"No Data Found","result":""}
@@ -5708,6 +5718,9 @@ def allEventThread():
             orderby="pm.id"
             postId,WhereCondition1="",""
 
+
+            
+
             if "userId" in inputdata and 'Id' in inputdata:
                 eventId=inputdata['Id']
                 if inputdata['userId'] != "":
@@ -5780,6 +5793,15 @@ def allEventThread1():
             orderby="pm.id"
             postId,WhereCondition1="",""
 
+            if "startLimit" in inputdata:
+                if inputdata['startLimit'] != "":
+                    startlimit =str(inputdata["startLimit"])
+                
+            if "endLimit" in inputdata:
+                if inputdata['endLimit'] != "":
+                    endlimit =str(inputdata["endLimit"])
+            
+
             if "userId" in inputdata and 'Id' in inputdata:
                 eventId=inputdata['Id']
                 if inputdata['userId'] != "":
@@ -5802,6 +5824,7 @@ def allEventThread1():
                 orderby=" id "
 
                 data1 = databasefile.SelectQueryOrderbyAsc("eventComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
+                data2= databasefile.SelectQuery4("eventComment as pm,userMaster as um",column1,WhereCondition)
                
                 WhereCondition=" and ev.id='"+str(eventId)+"'"
                 column = " ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(CONVERT_TZ(ev.eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate, date_format(CONVERT_TZ(ev.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,um.userName "
@@ -5820,7 +5843,7 @@ def allEventThread1():
                         
                 
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":[data1['result'],[data['result']]]}
+                Data = {"status":"true","message":"","result":[data1['result'],[data['result']]],"totalcount":len(data2['result'])}
                 return Data
             else:
                 output = {"status":"false","message":"No Data Found","result":""}
