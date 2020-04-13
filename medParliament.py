@@ -9779,7 +9779,7 @@ def getParliamentEvent1():
 
 
             data1 = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition)
-            print(data)
+        
             data2= databasefile.SelectQueryOrderby("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition,'',startlimit,endlimit,orderby)
             if data1['status'] != "false":
                 data={"status":"true","result":data2['result'],"totalcount":len(data1['result'])}
