@@ -5183,15 +5183,16 @@ def allMarketingInsightThread():
                     data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
                     WhereCondition1="  and  pm.userId =um.userId and pm.status='1' and pm.marketingInsightId='" + str(marketingInsightId) + "' "
                     data2=databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
-                    print(data2,'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-                    # for i in data2['result']:
-                    #     if i not in data1['result']['id']:
-                    #         data1['result'].append(i)
+                    print(data2['result'],'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+                    print(data1['result'],"!!!332")
+                    for i in data2['result']:
+                        if i not in data1['result']:
+                            data1['result'].append(i)
 
                    
 
 
-                    print(data1,"!!!!!!!!!!!")
+                    
                     WhereCondition=" and n.id='"+str(marketingInsightId)+"'"
                     column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
                     data = databasefile.SelectQuery1("marketingInsights n,userMaster um",column,WhereCondition)
