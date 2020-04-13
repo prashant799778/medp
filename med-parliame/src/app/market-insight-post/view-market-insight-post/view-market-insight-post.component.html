@@ -33,7 +33,7 @@
                         <tbody>
                             <ng-container *ngIf="postList && postList.length > 0">
                                 <tr *ngFor="let subAdmin of postList ; let i =  index">
-                                        <td> <img  src="../../../assets/images/no-image-available.png" class="hash-img tab-shadow"> </td>
+                                    <td> <img *ngIf="subAdmin.imagePath != ''" src="{{subAdmin.imagePath}}" class="hash-img tab-shadow">  </td>
                                         <td> <p>{{subAdmin.videoLink}} </p></td>
                                         <td> <p>{{subAdmin.newsTitle}} </p></td> 
                                         <td> <p>{{subAdmin.summary}} </p></td>                                       
