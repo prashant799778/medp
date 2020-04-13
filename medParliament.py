@@ -9472,6 +9472,7 @@ def getMarketingInsights1111():
 
 
 
+
 @app.route('/getParliamentEvent1', methods=['POST'])
 def getParliamentEventa():
 
@@ -9533,6 +9534,16 @@ def getParliamentEventa():
 
                 columns="count(*) as count"
                 whereCondition=" and eventId='"+str(y2)+"'"
+                dat3=databasefile.SelectQuery('eventInterest1',columns,whereCondition,"",startlimit,endlimit)
+                print(dat,'++++++++++++++++++++++++++++')
+                if dat3['status']!='false':
+                    lkii=dat3['result'][0]['count']
+                    i['interestCount']=lkii
+                else:
+                    i['interestCount']=0
+
+                columns="count(*) as count"
+                whereCondition=" and eventId='"+str(y2)+"'"
                 dat1=databasefile.SelectQuery('eventComment',columns,whereCondition,"",startlimit,endlimit)
                 print(dat1,'++++++++++++++++++++++++++++')
                 if dat1['status']!='false':
@@ -9549,6 +9560,48 @@ def getParliamentEventa():
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
+
+
+
+
+
+
+
+@app.route('/getParliamentEventInterest', methods=['POST'])
+def getParliamentEvent11():
+
+    try:        
+       startlimit,endlimit="",""
+       WhereCondition=""
+       if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+        
+            if "startLimit" in inputdata:
+                if inputdata['startLimit'] != "":
+                    startlimit =str(inputdata["startLimit"])
+                
+            if "endLimit" in inputdata:
+                if inputdata['endLimit'] != "":
+                    endlimit =str(inputdata["endLimit"])
+            
+            if "Id" in inputdata:
+                if inputdata['Id'] != "":
+                    Id =inputdata["Id"] 
+                    WhereCondition=WhereCondition+" and pm.id='"+str(Id)+"'"
+            
+            column = " us.userName,us.email"
+            WhereCondition=WhereCondition+" and pm.id=ei.eventId and us.userId=ei.userId"
+
+            data = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest1 as ei,userMaster as us",column,WhereCondition)
+            print(data)
+            if data['status'] != "false":
+                return data
+            else:
+                return data
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()  
 
 
 
