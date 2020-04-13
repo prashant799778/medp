@@ -5197,13 +5197,17 @@ def getParliamentEvent111():
                 if inputdata['Id'] != "":
                     Id =inputdata["Id"] 
                     WhereCondition=WhereCondition+" and pm.id='"+str(Id)+"'"
+
+            orderby="ei.id"
             
             column = " us.userName,us.email"
             WhereCondition=WhereCondition+" and pm.id=ei.upSkillsId and us.userId=ei.userId"
+            data2=databasefile.SelectQueryOrderby("upSkillsOpportunity as pm,enrollUpskills as ei,userMaster as us",column,WhereCondition,"",startlimit,endlimit,orderby)
 
-            data = databasefile.SelectQuery4("upSkillsOpportunity as pm,enrollUpskills as ei,userMaster as us",column,WhereCondition)
+            data1 = databasefile.SelectQuery4("upSkillsOpportunity as pm,enrollUpskills as ei,userMaster as us",column,WhereCondition)
             print(data)
-            if data['status'] != "false":
+            if data1['status'] != "false":
+                data={"status":"true","result":data2['result'],"totalcount":len(data1['result'])}
                 return data
             else:
                 return data
@@ -5236,9 +5240,9 @@ def allMarketingInsightThread():
                     WhereCondition="  and pm.userId ='"+str(userId)+"' and pm.userId=um.userId and  pm.marketingInsightId='" + str(marketingInsightId) + "' "
                     column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                     orderby=" pm.id "
-                    data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
+                    data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",startlimit,endlimit,orderby)
                     WhereCondition1="  and  pm.userId =um.userId and pm.status='1' and pm.marketingInsightId='" + str(marketingInsightId) + "' "
-                    data2=databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                    data2=databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition1,"",startlimit,endlimit,orderby)
                     print(data2['result'],'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
                     print(data1['result'],"!!!332")
                     if data1['result'] == "":
@@ -5688,7 +5692,6 @@ def commentsMarketingInsight():
         return output
 
 
-
 @app.route('/allEventThread', methods=['POST'])
 def allEventThread():
     try:
@@ -5709,30 +5712,31 @@ def allEventThread():
                 eventId=inputdata['Id']
                 if inputdata['userId'] != "":
                     userId =inputdata["userId"]
-                    WhereCondition="  and pm.userId ='"+str(userId)+"' or pm.userId=um.userId and pm.eventId='" + str(eventId) + "' and pm.status='1'"
+                    WhereCondition="  and pm.userId ='"+str(userId)+"' and  pm.userId=um.userId and pm.eventId='" + str(eventId) + "' "
                     column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-                    orderby=" id "
-                    data1 = databasefile.SelectQueryOrderbyAsc("eventComment as pm,userMaster as um",column1,WhereCondition1,"",orderby,startlimit,endlimit)
+                    orderby=" pm.id "
+                    data1 = databasefile.SelectQueryOrderbyAsc("eventComment as pm,userMaster as um",column1,WhereCondition,"",startlimit,endlimit,orderby)
+
+                    WhereCondition=" and  pm.userId =um.userId and pm.status='1' and  pm.eventId='" + str(eventId) + "' "
+                    column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                    orderby=" pm.id "
+                    data2 = databasefile.SelectQueryOrderbyAsc("eventComment as pm,userMaster as um",column1,WhereCondition,"",startlimit,endlimit,orderby)
+                    if data1['result'] == "":
+                        data1['result']=[]
+                    for i in data2['result']:
+                        if i not in data1['result']:
+                            data1['result'].append(i)
+
+
+
+
                     WhereCondition=" and ev.id='"+str(eventId)+"'"
                     column = " ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(CONVERT_TZ(ev.eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate, date_format(CONVERT_TZ(ev.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,um.userName "
                     data = databasefile.SelectQuery1("parliamentEvent as ev,userMaster um",column,WhereCondition)
 
                   
             
-            if 'Id' in inputdata:
-                eventId=inputdata['Id']
-              
-                column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-                WhereCondition="  and pm.userId=um.userId and pm.eventId='" + str(eventId) + "'" 
-                orderby=" id "
-
-                data1 = databasefile.SelectQueryOrderbyAsc("eventComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
-               
-                WhereCondition=" and ev.id='"+str(eventId)+"'"
-                column = " ev.id,ev.Status,ev.UserCreate,ev.eventTitle,ev.eventSummary,ev.eventLocation,date_format(CONVERT_TZ(ev.eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate, date_format(CONVERT_TZ(ev.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',imagePath)imagePath ,um.userName "
-                data = databasefile.SelectQuery1("parliamentEvent as ev,userMaster um",column,WhereCondition)
-                print(data,"111111111111111111")
-
+           
             print(data,"22222222222222")
 
 
@@ -9663,10 +9667,15 @@ def getParliamentEvent11():
             
             column = " us.userName,us.email"
             WhereCondition=WhereCondition+" and pm.id=ei.eventId and us.userId=ei.userId"
+            orderby='ei.id'
 
-            data = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest1 as ei,userMaster as us",column,WhereCondition)
-            print(data)
-            if data['status'] != "false":
+            data1 = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest1 as ei,userMaster as us",column,WhereCondition)
+            
+            data2 = databasefile.SelectQueryOrderby("parliamentEvent as pm,eventInterest1 as ei,userMaster as us",column,WhereCondition,"",startlimit,endlimit,orderby)
+            
+          
+            if data1['status'] != "false":
+                data={"status":"true","result":data2['result'],"totalcount":len(data1['result'])}
                 return data
             else:
                 return data
@@ -9701,11 +9710,14 @@ def getmarketingInsightslikes():
             column = " us.userName,us.email"
         
             WhereCondition= WhereCondition+" and mi.id=lki.marketingInsightId and us.userId=lki.userId "
+            orderby="lki.id"
 
-            data = databasefile.SelectQuery4("marketingInsights as mi,likeMarketingInsight as lki,userMaster as us",column,WhereCondition)
-            print(data)
+            data1 = databasefile.SelectQuery4("marketingInsights as mi,likeMarketingInsight as lki,userMaster as us",column,WhereCondition)
             
-            if data['status'] != "false":
+            data2= databasefile.SelectQueryOrderby("marketingInsights as mi,likeMarketingInsight as lki,userMaster as us",column,WhereCondition,"",startlimit,endlimit,orderby)
+            
+            if data1['status'] != "false":
+                data={"status":"true","result":data2['result'],"totalcount":len(data1['result'])}
                 return data
             else:
                 return data
@@ -9740,10 +9752,14 @@ def getParliamentEvent1():
             
             column = " us.userName,us.email"
             WhereCondition=WhereCondition+" and pm.id=ei.eventId and us.userId=ei.userId"
+            orderby="ei.id"
 
-            data = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition)
+
+            data1 = databasefile.SelectQuery4("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition)
             print(data)
-            if data['status'] != "false":
+            data2= databasefile.SelectQueryOrderby("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition,'',startlimit,endlimit,orderby)
+            if data1['status'] != "false":
+                data={"status":"true","result":data2['result'],"totalcount":len(data1['result'])}
                 return data
             else:
                 return data
