@@ -5177,7 +5177,7 @@ def allMarketingInsightThread():
                 marketingInsightId=inputdata['Id']
                 if inputdata['userId'] != "":
                     userId =inputdata["userId"]
-                    WhereCondition="  and pm.userId ='"+str(userId)+"' and pm.marketingInsightId='" + str(marketingInsightId) + "' and pm.userId=um.userId and pm.status='1'"
+                    WhereCondition="  and pm.userId ='"+str(userId)+"' and pm.marketingInsightId='" + str(marketingInsightId) + "' or pm.userId=um.userId and pm.status='1'"
                     column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                     orderby=" id "
                     data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
@@ -5189,19 +5189,19 @@ def allMarketingInsightThread():
 
                   
             
-            if 'Id' in inputdata:
-                marketingInsightId=inputdata['Id']
+            # if 'Id' in inputdata:
+            #     marketingInsightId=inputdata['Id']
               
-                column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-                WhereCondition="  and pm.userId=um.userId and pm.marketingInsightId='" + str(marketingInsightId) + "'" 
-                orderby=" id "
+            #     column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            #     WhereCondition="  and pm.userId=um.userId and pm.marketingInsightId='" + str(marketingInsightId) + "'" 
+            #     orderby=" id "
 
-                data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
-                WhereCondition=" and n.id='"+str(marketingInsightId)+"'"
-                column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
-                data = databasefile.SelectQuery1("marketingInsights n,userMaster um",column,WhereCondition)
-                print(data,"111111111111111111")
-            print(data,"22222222222222")
+            #     data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
+            #     WhereCondition=" and n.id='"+str(marketingInsightId)+"'"
+            #     column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
+            #     data = databasefile.SelectQuery1("marketingInsights n,userMaster um",column,WhereCondition)
+            #     print(data,"111111111111111111")
+            # print(data,"22222222222222")
 
 
 
