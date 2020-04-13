@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener, } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
@@ -190,9 +190,15 @@ export class CreateUpSkillComponent implements OnInit {
       newsLength: [''],
       
     });
-    this.frmNews.valueChanges.subscribe(()=>{
-      console.log(this.frmNews)
+    this.frmNews.get('newsPrice').valueChanges.subscribe(value=>{
+      if(value > 0){
+console.log(value)
+      }else{
+        console.log(value)
+        return false;
+      }
     })
+    
   }
 
   onFileSelect(event) {

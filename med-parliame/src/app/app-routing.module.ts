@@ -59,6 +59,8 @@ import { EventPostComponent } from './event-post/event-post.component';
 import { ReplyEventPostComponent } from './event-post/reply-event-post.component';
 import { EndorseComponent } from './news/endorse/endorse.component';
 import { Endorse1Component } from './event/endorse1/endorse1.component';
+import { CommentssComponent } from './news/commentss/commentss.component';
+import { Commentss1Component } from './event/commentss1/commentss1.component';
 
 const routes: Routes = [
   { path: '',redirectTo: '/dashboard',pathMatch: 'full'},
@@ -130,7 +132,11 @@ const routes: Routes = [
       component: EndorseComponent,
       canActivate: [AuthGuard],
   },
-    
+  {
+    path:'comment',
+    component: CommentssComponent,
+    canActivate: [AuthGuard],
+},
   
     
       
@@ -347,7 +353,11 @@ const routes: Routes = [
       component: Endorse1Component,
       canActivate: [AuthGuard],
   },
-    
+  {
+    path:'comment1',
+    component: Commentss1Component,
+    canActivate: [AuthGuard],
+},
   
     
       

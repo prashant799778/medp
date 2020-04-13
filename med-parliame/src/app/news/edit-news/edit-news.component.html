@@ -54,6 +54,7 @@
                                   <th> Date</th>
                                   <th>Created By</th>
                                   <th>Endorse</th>
+                                  <th>Comment</th>
                                   <th>Action</th>
                                 </tr>
                               </thead>
@@ -70,6 +71,9 @@
                                       <td>  <p>{{news.userName}} </p></td> 
                                       <td (click)="endorse(news.id)">
                                         <button  type="button" class="btn ab-btn dc-bg-color-active border-round-rem">{{news.likeCount}}</button>
+                                        </td>
+                                        <td (click)="commenta(news.id)">
+                                          <button  type="button" class="btn ab-btn dc-bg-color-active border-round-rem">{{news.commentCount}}</button>
                                         </td>
                                       <td>
                                             <div class="btn-edit-group">

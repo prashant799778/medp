@@ -147,7 +147,7 @@
                             
                         <br>
                         <label for="newsTitle">Academic Council Price</label>
-                            <input type="text" class="form-control" formControlName="newsPrice">
+                            <input type="text" numberOnly class="form-control" formControlName="newsPrice">
                             <div class=error *ngIf="frmNews.get('newsPrice').errors && (frmNews.get('newsPrice').touched || frmNews.get('newsPrice').dirty)">
                                 <p>Academic Council Price is required</p>
                             </div>

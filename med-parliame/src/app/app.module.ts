@@ -81,6 +81,9 @@ import { ReplyEventPostComponent } from './event-post/reply-event-post.component
 import { AngularCropperjsModule } from 'angular-cropperjs';
 import { EndorseComponent } from './news/endorse/endorse.component';
 import { Endorse1Component } from './event/endorse1/endorse1.component';
+import { CustomDirective,ChangeTextDirective } from './custom.directive';
+import { CommentssComponent } from './news/commentss/commentss.component';
+import { Commentss1Component } from './event/commentss1/commentss1.component';
 
 @NgModule({
   declarations: [
@@ -154,7 +157,11 @@ import { Endorse1Component } from './event/endorse1/endorse1.component';
     EventPostComponent,
     ReplyEventPostComponent,
     EndorseComponent,
-    Endorse1Component
+    Endorse1Component,
+    CustomDirective,
+    ChangeTextDirective,
+    CommentssComponent,
+    Commentss1Component
   ],
   imports: [
     AngularCropperjsModule,

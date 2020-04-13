@@ -13,6 +13,9 @@ export class AppSettings {
     public static getMarketingInsights = 'getMarketingInsights1';
     public static getmarketingInsightslikes = 'getmarketingInsightslikes';
     public static likesgetParliamentEventlikes = 'getParliamentEventlikes';
+    public static commentsEventRejected = 'commentsEventRejected';
+    public static commentsEventApproved = 'commentsEventApproved';
+    
     
     
     public static marketingInsights = 'marketingInsights';

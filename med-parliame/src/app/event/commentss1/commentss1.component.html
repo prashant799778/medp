@@ -1,0 +1,138 @@
+<div class="animated fadeIn">
+
+    <div class="card card-default crd-box">
+      <div class="card-header border-remo">
+        <div class="flx-ed">
+        <div class="upper-wrap">
+          <div class="image-section-set bg-color">
+            <svg class="image-set" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 477.867 477.867" xml:space="preserve">
+              <g>
+                <g>
+                  <path d="M460.8,119.467h-85.333v-102.4C375.467,7.641,367.826,0,358.4,0H17.067C7.641,0,0,7.641,0,17.067V409.6
+                    c0,37.703,30.564,68.267,68.267,68.267H409.6c37.703,0,68.267-30.564,68.267-68.267V136.533
+                    C477.867,127.108,470.226,119.467,460.8,119.467z M136.533,85.333h102.4c9.426,0,17.067,7.641,17.067,17.067
+                    s-7.641,17.067-17.067,17.067h-102.4c-9.426,0-17.067-7.641-17.067-17.067S127.108,85.333,136.533,85.333z M290.133,409.6h-204.8
+                    c-9.426,0-17.067-7.641-17.067-17.067s7.641-17.067,17.067-17.067h204.8c9.426,0,17.067,7.641,17.067,17.067
+                    S299.559,409.6,290.133,409.6z M290.133,341.333h-204.8c-9.426,0-17.067-7.641-17.067-17.067c0-9.426,7.641-17.067,17.067-17.067
+                    h204.8c9.426,0,17.067,7.641,17.067,17.067C307.2,333.692,299.559,341.333,290.133,341.333z M290.133,273.067h-204.8
+                    c-9.426,0-17.067-7.641-17.067-17.067c0-9.426,7.641-17.067,17.067-17.067h204.8c9.426,0,17.067,7.641,17.067,17.067
+                    C307.2,265.426,299.559,273.067,290.133,273.067z M290.133,204.8h-204.8c-9.426,0-17.067-7.641-17.067-17.067
+                    c0-9.426,7.641-17.067,17.067-17.067h204.8c9.426,0,17.067,7.641,17.067,17.067C307.2,197.159,299.559,204.8,290.133,204.8z
+                     M443.733,409.6c0,18.851-15.282,34.133-34.133,34.133s-34.133-15.282-34.133-34.133v-256h68.267V409.6z"/>
+                </g>
+              </g>
+        </svg>
+          </div>
+          <h2 class="main-hading">Fact and Impact</h2>
+      </div>
+        <div class="card-header-actions crd-bnt">
+          <!-- <a [routerLink]="['/news/createNews']" class="btn" target="_self">Create Fact and Impact</a> -->
+          <a [routerLink]="['/news/editNews']" class="btn" target="_self">View Fact and Impact</a>
+          <!-- <a  class="btn btn-block btn-outline-dark" target="_self">View News</a> -->
+        </div>
+      </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            
+                   <div class="tab-container-body mrtop-spc">
+               <div class="bg-white">
+          <!-- End list html -->
+          <div  class="tab-content border-remo ">
+            <ng-container *ngIf="allnews.length">
+                <span *ngFor="let comment of allnews" >
+                    <div class="wrap-inr-bx border-rd">
+                    <div class="wrap-box d-flex al-item mr-bottom">
+                        <img src="../../../assets/images/profile.png" class="image-section">
+                        <h3 class="title-name" >{{comment.userName}}</h3>
+                        <h3 class="title-name"> {{comment.DateCreate}}</h3>
+                      </div>
+                    <div class="ap-box d-flex">
+                    <span>{{comment.commentDescription}}</span>
+                    <ul *ngIf="comment.Status == '0'">
+                          <li><button type="button" class="btn-success" (click)="Approved(comment.id,1)">approve</button></li>
+                          <li><button type="button" class="btn-danger" (click)="Approved(comment.id,2)">reject</button></li>
+                        </ul>
+                    <ul *ngIf=" comment.Status == '1'">
+                          <!-- <li><button type="button" class="btn-success" (click)="Approved(comment.id,1)">approved</button></li> -->
+                          <li><button type="button" class="btn-danger" (click)="Approved(comment.id,2)">reject</button></li>
+                       </ul>
+                      <ul *ngIf="comment.Status == '2'">
+                      <li><button type="button" class="btn-success" (click)="Approved(comment.id,1)">approve</button></li>
+                      <!-- <li><button type="button" class="btn-danger" (click)="Approved(comment.id,2)">reject</button></li> -->
+                      </ul>
+                        </div>
+                  </div>
+                      <!-- <span>Posted on {{comment.DateCreate}}</span> -->
+                </span>
+            </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="approv-pop" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <template>
+            <div class="modal-header border-remo">
+            <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                <!-- <span aria-hidden="true">&times;</span> -->
+                <img src="../../../assets/images/close-im.svg">
+            </button>
+            </div>
+        </template>
+        <div class="modal-body" *ngIf="!activatedds">
+           
+            <div class="inner-model-box same-margin" *ngIf="approvedModal == 2">
+                <div class="d-flex al-item">
+                    <img src="../../../assets/images/caution.svg" class="altr">
+                    <div class="dc-act">
+                        <h3>Post Rejection </h3>
+                        <span >Are you want to reject this post ?</span>
+                    </div>
+                </div>
+                <div class="grp-btn text-center">
+                    <button *ngIf="approvedModal == 2" (click)="closeMOdal()" class="mod-btn dc-bg-color-gray">Cancel</button>
+                    <button *ngIf="approvedModal == 2" (click)="Approve(2)" class="mod-btn fill-back">Reject</button>
+                </div>
+                </div>
+            <div class="inner-model-box" *ngIf="approvedModal == 1">
+                    <div class="d-flex al-item">
+                            <img src="../../../assets/images/caution-ac.svg" class="altr">
+                            <div class="dc-act">
+                                <h3>Post Approval</h3>
+                                <span >Are you want to approve this post ?</span>
+                            </div>
+                        </div>
+
+                        <div class="grp-btn text-center">
+                                <button *ngIf="approvedModal == 1" (click)="closeMOdal()" class="mod-btn dc-bg-color-gray">Cancel</button>
+                                <button *ngIf="approvedModal == 1" (click)="Approve(1)" class="mod-btn fill-back-ac">Approve</button>
+                        </div>
+                </div>
+            <!-- <h2>{{modalDescription}}</h2> -->
+        </div>
+        <div class="modal-body" *ngIf="activatedds" class="successful-modal">
+                <!-- <span *ngIf="userProfile && userProfile.status == 0">Are you what to sure Deactivated</span>
+                <span *ngIf="userProfile && userProfile.status == 1">Are you what to sure activated</span>
+                <button *ngIf="userProfile && userProfile.status == 0" (click)="ActiveStudent()">Deactivated</button>
+                <button *ngIf="userProfile && userProfile.status == 1" (click)="ActiveStudent()">Activated</button> -->
+               <div class="success-parent">
+                   <div class="child-success"><img src="../../../assets/images/correct.svg"></div>
+
+                    
+                   <div *ngIf="approvedModal == 2" class="child-success"><h2> Rejected Successfully</h2></div> 
+                  <div *ngIf="approvedModal == 1" class="child-success"><h2> Approved Successfully</h2></div> 
+               </div>
+                
+            </div>
+      </div>
+    </div>
+  </div>

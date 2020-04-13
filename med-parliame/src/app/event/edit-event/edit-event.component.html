@@ -65,6 +65,7 @@
                                       <th>Event Location</th>
                                       <th>Date of Creation</th>
                                       <th>Endorse</th>
+                                      <th>Comment</th>
                                       <th>Action</th>
                                     </tr>
                                 </thead>
@@ -79,7 +80,10 @@
                                       <td>  {{news.DateCreate}} </td>
                                       <td (click)="endorse(news.id)">
                                         <button  type="button" class="btn ab-btn dc-bg-color-active border-round-rem">{{news.likeCount}}</button>
-                                        </td>
+                                      </td>
+                                      <td (click)="commenta(news.id)">
+                                        <button  type="button" class="btn ab-btn dc-bg-color-active border-round-rem">{{news.likeCount}}</button>
+                                      </td>  
                                       <td>
                                           <div class="btn-edit-group">
                                             <button type="button" class="edit-btn" (click)="editNews(news.id)" >  <img src="../../../assets/images/edit-im.svg"></button>
