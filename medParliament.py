@@ -5177,10 +5177,16 @@ def allMarketingInsightThread():
                 marketingInsightId=inputdata['Id']
                 if inputdata['userId'] != "":
                     userId =inputdata["userId"]
-                    WhereCondition="  and pm.userId ='"+str(userId)+"' and pm.marketingInsightId='" + str(marketingInsightId) + "' and pm.status='1' or um.userId=pm.userId and pm.marketingInsightId=n.id"
+                    WhereCondition="  and pm.userId ='"+str(userId)+"' and pm.marketingInsightId='" + str(marketingInsightId) + "' "
                     column1="pm.id,um.userName,um.email,pm.Status,pm.commentDescription,(pm.userId)commentedBy,pm.userTypeId, date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                     orderby=" pm.id "
-                    data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um,marketingInsights n",column1,WhereCondition,"",orderby,startlimit,endlimit)
+                    data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
+                    WhereCondition="  and pm.userId =um.userId and pm.status='1' and pm.marketingInsightId='" + str(marketingInsightId) + "' "
+                    data2=databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
+                    for i in data2['result']:
+                        data1['result'].append(i)
+
+
                     print(data1,"!!!!!!!!!!!")
                     WhereCondition=" and n.id='"+str(marketingInsightId)+"'"
                     column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',n.imagePath)imagePath ,um.userName "
