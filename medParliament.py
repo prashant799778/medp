@@ -1518,13 +1518,14 @@ def  professionalsMasterPannel():
 @app.route('/allpolicyMakers', methods=['GET'])
 def allpolicyMakers():
     try:
-        column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
+        orderby=" um.id"
+        column=" um.id,um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
         column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,(cm.Name)countryName,um.emailVerificationStatus as emailStatus"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId  and um.countryId=cm.Id"
 
         
-        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,CountryMasterNew as cm",column,WhereCondition,""," ",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,CountryMasterNew as cm",column,WhereCondition,"",startlimit,endlimit,orderby)
 
       
         
@@ -1599,13 +1600,14 @@ def allDoctorMaster():
         msg="1"
        
         if msg =="1":
+            orderby=" um.id"
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
             column=column+" dm.qualificationId as qualificationName,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress,um.emailVerificationStatus as emailStatus"
             startlimit,endlimit="",""
             WhereCondition=" and um.usertypeId='8' and dm.userId=um.userId  "
 
             
-            data = databasefile.SelectQueryOrderby("userMaster as um,doctorMaster as dm",column,WhereCondition,""," ",startlimit,endlimit)
+            data = databasefile.SelectQueryOrderby("userMaster as um,doctorMaster as dm",column,WhereCondition,"",startlimit,endlimit,orderby)
 
           
             
@@ -1644,13 +1646,14 @@ def allprofessionalsMaster():
     try:
         msg="1"
         if msg =="1":
+            orderby=" um.id"
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
             column=column+"pm.userId,pm.designation,pm.occupation,pm.companyName,pm.companyAddress,pm.address,um.emailVerificationStatus as emailStatus"
             startlimit,endlimit="",""
             WhereCondition=" and um.userTypeId='9' and pm.userId=um.userId  "
 
             
-            data = databasefile.SelectQueryOrderby("userMaster as um,professionalMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
+            data = databasefile.SelectQueryOrderby("userMaster as um,professionalMaster as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
 
           
             
@@ -1690,13 +1693,14 @@ def allDecisionMaker():
     try:
         msg="1"
         if msg =="1":
+            orderby=" um.id"
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
             column=column+"um.countryId,(cm.Name)countryName,um.emailVerificationStatus as emailStatus"
             startlimit,endlimit="",""
             WhereCondition=" and um.usertypeId='13' and cm.Id=um.countryId  "
 
             
-            data = databasefile.SelectQueryOrderby("userMaster as um,CountryMasterNew as cm",column,WhereCondition,""," ",startlimit,endlimit)
+            data = databasefile.SelectQueryOrderby("userMaster as um,CountryMasterNew as cm",column,WhereCondition,"",startlimit,endlimit,orderby)
 
           
             
@@ -1760,12 +1764,13 @@ def enterprenuerMasterPannel():
 @app.route('/allenterprenuers', methods=['GET'])
 def allenterprenuer():
     try:
+        orderby=" um.id"
         column="um.mobileNo as mobileNo,um.email ,um.userName as userName,um.password as password,um.userId,um.gender,um.countryId,um.city,"
         column=column+"pm.areaOfActivity,pm.profileCategoryId,pm.designation,um.status,pm.companyName,um.emailVerificationStatus as emailStatus"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='6' and pm.userId=um.userId "
         
-        data = databasefile.SelectQueryOrderby("userMaster as um,enterprenuerMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("userMaster as um,enterprenuerMaster as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
 
         if (data!=0):
             for i in data["result"]:
@@ -1879,12 +1884,13 @@ def studentMasterPannel():
 @app.route('/allstudents', methods=['GET'])
 def allstudents():
     try:
+        orderby=" um.id"
         column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
         column=column+" pm.address,pm.qualificationId as qualificationName,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId as universityName,um.status,um.emailVerificationStatus as emailStatus"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId  "
         
-        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm",column,WhereCondition,""," ",startlimit,endlimit)
+        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
       
         
         
