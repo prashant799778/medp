@@ -6380,6 +6380,7 @@ def landingPageDashboard1():
 
 
 
+
 @app.route('/landingPageDashboardtest', methods=['POST'])
 def landingPageDashboardtest():
 
@@ -6520,6 +6521,7 @@ def landingPageDashboardtest():
                         whereCondition="and lki.eventId='"+str(marketingInsightId)+"'"
                         columns="count(*) as count"
                         likeCount=databasefile.SelectQuery('eventInterest as lki',columns,whereCondition,"","","")
+                        likeCount1=databasefile.SelectQuery('eventInterest1 as lki',columns,whereCondition,"","","")
                         print(likeCount)
                         if likeCount['status']!='false':
 
@@ -6539,6 +6541,26 @@ def landingPageDashboardtest():
                         else:
                             i['likeCount']=0
                             i['makedone']=0
+                        if likeCount1['status']!='false':
+
+                            lki=likeCount1['result'][0]['count']
+
+                                
+
+                            i['interestCount']=1
+                            
+                            whereCondition999="and lki.eventId='"+str(marketingInsightId)+"' and lki.userId='"+str(userId)+"'"
+                            column999="lki.status"
+                            makedone=databasefile.SelectQuery('eventInterest1 as lki',column999,whereCondition999,"","","")
+                            if makedone['status']!="false":
+                                i['interestCount']=1
+                            else:
+                                i['interestCount']=0
+                        else:
+                            i['interestCount']=0
+                            
+
+
 
                     else:
                         i['makedone']=0    
@@ -6732,7 +6754,7 @@ def landingPageDashboardtest():
 
     except Exception as e :
         print("Exception--->" + str(e))                                  
-        return commonfile.Errormessage()        
+        return commonfile.Errormessage()
 
 # @app.route('/getNewsCategory', methods=['POST'])
 # def getNewsCategoryMaster():
