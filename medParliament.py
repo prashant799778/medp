@@ -5183,7 +5183,7 @@ def allMarketingInsightThread():
                     data1 = databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
                     WhereCondition="  and  pm.userId =um.userId and pm.status='1' and pm.marketingInsightId='" + str(marketingInsightId) + "' "
                     data2=databasefile.SelectQueryOrderbyAsc("marketingInsightComment as pm,userMaster as um",column1,WhereCondition,"",orderby,startlimit,endlimit)
-                    print(data2['result'],"@@@@@@@@@!!!!!!!!!!!!!@@@")
+                    print(data2,'@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
 
                     # if data2['result']['userId'] not in data1['result']['userId']:
                     #     for i in data2['result']:
