@@ -6646,12 +6646,13 @@ def landingPageDashboardtest():
                 return data22
             
             if key ==5:
+                orderby="id"
 
 
 
                 column4 = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
                 WhereCondition2= " and Status<2"
-                data4 = databasefile.SelectQuery("promisingInitiatives",column4,WhereCondition2,"",startlimit,endlimit)
+                data4 = databasefile.SelectQueryOrderby("promisingInitiatives",column4,WhereCondition2,"",startlimit,endlimit,orderby)
                 print(data4)
 
                 if data4["result"]=="":
