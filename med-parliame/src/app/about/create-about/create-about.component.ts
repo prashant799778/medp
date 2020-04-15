@@ -229,14 +229,14 @@ export class CreateAboutComponent implements OnInit {
   setNewsDetails(){
     let NewsCount = 0;
     console.log("news",this.newsDetails)
-    if(this.newsDetails[0]['imagePath'] !== " "){
-      this.showBanner = 1;
-// this.imageClick = true;
-// this.isCropDone = true;
-      this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
-this.frmNews.get('videoLink').clearValidators();
-    this.frmNews.get('videoLink').updateValueAndValidity();
-    }
+//     if(this.newsDetails[0]['imagePath'] !== " "){
+//       this.showBanner = 1;
+// // this.imageClick = true;
+// // this.isCropDone = true;
+//       this.frmNews.get('banner').setValue(this.newsDetails[0]['imagePath']);
+// this.frmNews.get('videoLink').clearValidators();
+//     this.frmNews.get('videoLink').updateValueAndValidity();
+//     }
     // this.frmNews.get('newsType').setValue(this.newsDetails[0]['newsType']);
     // this.frmNews.get('newsTitle').setValue(this.newsDetails[0]['newsTitle']);
     // this.frmNews.get('summary').setValue(this.newsDetails[0]['summary']);
