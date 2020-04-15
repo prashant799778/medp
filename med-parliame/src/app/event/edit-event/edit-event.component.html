@@ -54,6 +54,7 @@
                 <ng-container >
                     <div  role="tabpanel" aria-labelledby="home-tab" class="mr-top-spc tab-pane fade show active">
                       <ng-container >
+                        <div class="table-impact">
                           <table class="table table-striped ch-tabl table-responsive-sm new-tbls">
                                   
                               <thead> 
@@ -98,8 +99,9 @@
                                     </tr>
                                     </ng-container>
                                     </tbody>
-                              </table>
-                              <div class="card-footer pb-0 pt-3" *ngIf = "paginationDisplay">
+                          </table>
+                          </div>
+                              <div class="card-footer pt-3 bg-white" *ngIf = "paginationDisplay">
                                 <nz-pagination [nzPageIndex]="1" [nzTotal]="totalRecords" (nzPageIndexChange)="pageChanged($event)" [nzPageSize]="pageSize"></nz-pagination>
                               </div>
                       </ng-container>  

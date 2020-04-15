@@ -58,3 +58,7 @@ p.inline-blk div {
     vertical-align: middle;
     width: 300px;
 }
+.table-impact {
+    width: 100%;
+    overflow-x: scroll;
+}
