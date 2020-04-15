@@ -5200,7 +5200,7 @@ def getParliamentEvent111():
 
             orderby="ei.id"
             
-            column = " us.userName,us.email"
+            column = " us.userName,us.email,us.mobileNo, date_format(CONVERT_TZ(ei.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=WhereCondition+" and pm.id=ei.upSkillsId and us.userId=ei.userId"
             data2=databasefile.SelectQueryOrderby("upSkillsOpportunity as pm,enrollUpskills as ei,userMaster as us",column,WhereCondition,"",startlimit,endlimit,orderby)
 
@@ -9689,7 +9689,7 @@ def getParliamentEvent11():
                     Id =inputdata["Id"] 
                     WhereCondition=WhereCondition+" and pm.id='"+str(Id)+"'"
             
-            column = " us.userName,us.email"
+            column = " us.userName,us.email,us.mobileNo, date_format(CONVERT_TZ(ei.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=WhereCondition+" and pm.id=ei.eventId and us.userId=ei.userId"
             orderby='ei.id'
 
@@ -9731,7 +9731,7 @@ def getmarketingInsightslikes():
                 if inputdata['Id'] != "":
                     Id =inputdata["Id"] 
                     WhereCondition=WhereCondition+" and mi.id='"+str(Id)+"'"
-            column = " us.userName,us.email"
+            column = " us.userName,us.email,us.mobileNo, date_format(CONVERT_TZ(lki.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
         
             WhereCondition= WhereCondition+" and mi.id=lki.marketingInsightId and us.userId=lki.userId "
             orderby="lki.id"
@@ -9774,7 +9774,7 @@ def getParliamentEvent1():
                     Id =inputdata["Id"] 
                     WhereCondition=WhereCondition+" and pm.id='"+str(Id)+"'"
             
-            column = " us.userName,us.email"
+            column = " us.userName,us.email,us.mobileNo, date_format(CONVERT_TZ(ei.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition=WhereCondition+" and pm.id=ei.eventId and us.userId=ei.userId"
             orderby="ei.id"
 
