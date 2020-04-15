@@ -5279,8 +5279,8 @@ def allMarketingInsightThread():
             #     print(data,"111111111111111111")
             # print(data,"22222222222222")
 
-            # data1['result']=sorted(data1['result'], key = lambda i: i['DateCreate'])
-            # data1['result']=data1['result'][::-1]
+            data1['result']=sorted(data1['result'], key = lambda i: i['DateCreate'])
+            data1['result']=data1['result'][::-1]
 
 
 
