@@ -7,11 +7,11 @@ import { AppSettings } from 'src/app/utils/constant';
 declare var jQuery: any;
 
 @Component({
-  selector: 'app-edit-up-skill',
-  templateUrl: './edit-up-skill.component.html',
-  styleUrls: ['./edit-up-skill.component.css']
+  selector: 'app-enrolled',
+  templateUrl: './enrolled.component.html',
+  styleUrls: ['./enrolled.component.css']
 })
-export class EditUpSkillComponent implements OnInit {
+export class EnrolledComponent implements OnInit {
 
   allnews = [];
   httpError: boolean;
@@ -45,21 +45,35 @@ export class EditUpSkillComponent implements OnInit {
   iconCollapse: string = 'icon-arrow-up';
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      console.log(params);
+      this.newsId = params['NewsId'];
+      console.log(this.newsId);
+      let data ={
+        'Id': this.newsId
+      }
+      this.apiService.dataPostApi(data, AppSettings.getUpSkillsOpportunityEnrolled).then(resp=>{
+        console.log(resp)
+        if(resp && resp['status']=='true'){
+          this.allnews = resp['result']
+        }
+      })
+    });
     // this.route.queryParams.subscribe(x => this.loadPage(x.page || 1));
     //       console.log("Page")
-    this.getUsertype();
-    this.getNews();
+    // this.getUsertype();
+    // this.getNews();
   }
 
-  getUsertype(){
-    this.apiService.dataPostApi(null,AppSettings.userDropDown).then(resp=>{
-      console.log(resp)
-      if(resp['status'] == 'true'){
-        this.userTypeDetails = []
-this.userTypeDetails = resp['result']
-      }
-    })
-  }
+//   getUsertype(){
+//     this.apiService.dataPostApi(null,AppSettings.userDropDown).then(resp=>{
+//       console.log(resp)
+//       if(resp['status'] == 'true'){
+//         this.userTypeDetails = []
+// this.userTypeDetails = resp['result']
+//       }
+//     })
+//   }
 
   pageChanged(event){
     console.log(event)
@@ -79,7 +93,7 @@ this.userTypeDetails = resp['result']
     // this.frmShowNews.get('CategoryId').setValue(this.CategoryId)
     let data = this.frmShowNews.getRawValue();
     
-    this.apiService.dataPostApi(data,AppSettings.getUpSkillsOpportunity).then((data: any[]) => {
+    this.apiService.dataPostApi(data,AppSettings.getUpSkillsOpportunityEnrolled).then((data: any[]) => {
       this.totalRecords = data['totalCount']
       console.log(this.totalRecords)
       if(this.totalRecords > this.pageSize){
@@ -105,7 +119,7 @@ this.userTypeDetails = resp['result']
       endlimit: this.pageSize,
       // UserCreate: AppSettings.getLoggedInUser()                
     };
-      this.apiService.dataPostApi(params,AppSettings.getUpSkillsOpportunity).then((data: any[]) => {
+      this.apiService.dataPostApi(params,AppSettings.getUpSkillsOpportunityEnrolled).then((data: any[]) => {
         this.totalRecords = data['totalCount']
 
         if(this.totalRecords > this.pageSize){

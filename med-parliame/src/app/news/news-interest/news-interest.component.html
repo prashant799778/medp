@@ -23,10 +23,11 @@
               </g>
         </svg>
           </div>
-          <h2 class="main-hading">Academic Council Master</h2>
+          <h2 class="main-hading">Fact and Impact</h2>
       </div>
         <div class="card-header-actions crd-bnt">
-          <a [routerLink]="['/upSkill/createUpSkill']" class="btn" target="_self">Create Academic Council </a>
+          <!-- <a [routerLink]="['/news/createNews']" class="btn" target="_self">Create Fact and Impact</a> -->
+          <a [routerLink]="['/news/editNews']" class="btn" target="_self">View Fact and Impact</a>
           <!-- <a  class="btn btn-block btn-outline-dark" target="_self">View News</a> -->
         </div>
       </div>
@@ -46,39 +47,38 @@
                               
                           <thead>
                             <tr>
-                              <th> Image</th>
-                              <th>Video</th>
-                              <th> Title</th>
-                              <th> Subject</th>
+                              <th> User Name</th>
+                              <th>Email</th>
+                              <!-- <th> Title</th>
+                              <th>Video Link</th>
+                              <th> Summary</th>
                               <th> Description</th>
                               <th> Date</th>
                               <th>Created By</th>
-                              <th>Enrolls</th>
-                              <th>Action</th>
+                              <th>Endorse</th>
+                              <th>Action</th> -->
                             </tr>
                           </thead>
                               <tbody> 
                                 <ng-container *ngFor="let news of allnews">
                                      <tr >
 
-                                  <td> <img *ngIf="news.imagePath != ''" src="{{news.imagePath}}" class="hash-img tab-shadow"> <img *ngIf="news.imagePath == 'http://134.209.153.34:5031'" src="../../../assets/images/no-image-available.png" class="hash-img tab-shadow"> </td>
-                                  <td> {{news.videoLink}} </td>
-                                  <td> <p>{{news.newsTitle}} </p></td> 
+                                  <!-- <td> <img *ngIf="news.imagePath != ''" src="{{news.imagePath}}" class="hash-img tab-shadow">  </td> -->
+                                  <td> <p>{{news.userName}} </p></td> 
+                                  <td> <p>{{news.email}} </p></td> 
+                                  <!-- <td> <p>{{news.videoLink}} </p></td> 
                                   <td> <p>{{news.summary}} </p></td>                                       
                                   <td> <p [innerHtml]="news.newsDesc " class="inline-blk"></p> </td>
                                   <td> {{news.DateCreate}}</td>
                                   <td>  <p>{{news.userName}} </p></td> 
-                                  <td (click)="enroll(news.id)">
-                                    <button  type="button" class="btn ab-btn dc-bg-color-active border-round-rem">{{news.enrollCount}}</button>
-                                  </td>
+                                  <td (click)="endorse(news.id)">{{news.likeCount}}</td>
                                   <td>
                                         <div class="btn-edit-group">
                                                 <button type="button" class="edit-btn" (click)="editNews(news.id)" >  <img src="../../../assets/images/edit-im.svg"></button>
                                                 <button type="button" class="delet-btn" (click)="deleteNews(news.id)">  <img src="../../../assets/images/bin.svg"></button>
                                             </div>
-                                      <!-- <a role="button" (click)="editNews(news.id)" class="card-header-action" target="_blank"><i class="fa fa-pencil-square-o"></i> </a>
-                                      <a role="button" (click)="deleteNews(news.id)" class="card-header-action" target="_blank"><i class="fa fa-trash-o"></i> </a> -->
-                                  </td>
+                                     
+                                  </td> -->
                                 </tr>
                                 </ng-container>
                                 </tbody>
@@ -96,39 +96,5 @@
       </div>
     </div>
   </div>
-
-
-      <div class="modal fade" id="addAdmin-news" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-              <template>
-                <div class="modal-header border-remo paddign-remove">
-                <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
-                    <img src="../../../assets/images/close-im.svg">
-                </button>
-                </div>
-            </template>
-            <div class="modal-body" *ngIf="!activatedds">
-                <div class="inner-model-box same-margin" >
-                    <div class="d-flex al-item">
-                        <img src="../../../assets/images/caution.svg" class="altr">
-                        <div class="dc-act">
-                            <h3>Delete Market Insights</h3>
-                            <span >Are you sure you want to delete ?</span>
-                        </div>
-                    </div>
-                    <div class="grp-btn text-center">
-                        <button  (click)="closeModal()" class="mod-btn dc-bg-color-gray">Cancel</button>
-                        <button  (click)="deletedNewss()" class="mod-btn fill-back">Delete</button>
-                    </div>
-                    </div>
-            </div>
-            <div class="modal-body" *ngIf="activatedds">
-                    <div class="success-parent">
-                            <div class="child-success"><img src="../../../assets/images/correct.svg"></div>                           
-                            <div class="child-success"><h2>Deleted Successfully</h2></div> 
-                        </div>
-                </div>
-          </div>
-        </div>
-      </div>
+  </div>
+</div>

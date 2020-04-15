@@ -57,6 +57,7 @@ export class EditNewsComponent implements OnInit {
   commenta(NewsId){
     this.router.navigate(['/news/comment'], { queryParams: {NewsId: NewsId}});
   }
+  
 
   getUsertype(){
     this.apiService.dataPostApi(null,AppSettings.userDropDown).then(resp=>{

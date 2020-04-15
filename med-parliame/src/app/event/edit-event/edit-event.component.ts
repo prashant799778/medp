@@ -65,6 +65,9 @@ this.userTypeDetails = resp['result']
   commenta(NewsId){
     this.router.navigate(['/event/comment1'], { queryParams: {NewsId: NewsId}});
   }
+  interest(NewsId){
+    this.router.navigate(['/event/interest'], { queryParams: {NewsId: NewsId}});
+  }
 
   pageChanged(event){
     console.log(event)

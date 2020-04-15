@@ -84,6 +84,9 @@ import { Endorse1Component } from './event/endorse1/endorse1.component';
 import { CustomDirective,ChangeTextDirective } from './custom.directive';
 import { CommentssComponent } from './news/commentss/commentss.component';
 import { Commentss1Component } from './event/commentss1/commentss1.component';
+import { EventInterestComponent } from './event/event-interest/event-interest.component';
+import { NewsInterestComponent } from './news/news-interest/news-interest.component';
+import { EnrolledComponent } from './up-skill/enrolled/enrolled.component';
 
 @NgModule({
   declarations: [
@@ -161,7 +164,10 @@ import { Commentss1Component } from './event/commentss1/commentss1.component';
     CustomDirective,
     ChangeTextDirective,
     CommentssComponent,
-    Commentss1Component
+    Commentss1Component,
+    EventInterestComponent,
+    NewsInterestComponent,
+    EnrolledComponent
   ],
   imports: [
     AngularCropperjsModule,

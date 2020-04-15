@@ -61,6 +61,9 @@ import { EndorseComponent } from './news/endorse/endorse.component';
 import { Endorse1Component } from './event/endorse1/endorse1.component';
 import { CommentssComponent } from './news/commentss/commentss.component';
 import { Commentss1Component } from './event/commentss1/commentss1.component';
+import { NewsInterestComponent } from './news/news-interest/news-interest.component';
+import { EventInterestComponent } from './event/event-interest/event-interest.component';
+import { EnrolledComponent } from './up-skill/enrolled/enrolled.component';
 
 const routes: Routes = [
   { path: '',redirectTo: '/dashboard',pathMatch: 'full'},
@@ -137,7 +140,11 @@ const routes: Routes = [
     component: CommentssComponent,
     canActivate: [AuthGuard],
 },
-  
+{
+  path:'interest',
+  component: NewsInterestComponent,
+  canActivate: [AuthGuard],
+},
     
       
   ]
@@ -156,7 +163,11 @@ const routes: Routes = [
         component: EditUpSkillComponent,
         canActivate: [AuthGuard],
     },
-    
+    {
+      path:'enrolls',
+      component: EnrolledComponent,
+      canActivate: [AuthGuard],
+  },
   
     
       
@@ -358,7 +369,11 @@ const routes: Routes = [
     component: Commentss1Component,
     canActivate: [AuthGuard],
 },
-  
+{
+  path:'interest',
+  component: EventInterestComponent,
+  canActivate: [AuthGuard],
+},
     
       
   ]

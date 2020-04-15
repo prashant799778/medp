@@ -77,6 +77,9 @@ export class AppSettings {
     public static deleteSignUpVideo = 'deleteSignUpVideo';
     public static deletePromisingInitiatives = 'deletePromisingInitiatives';
     public static deletePromissingInitiatives = 'deletePromissingInitiatives';
+    public static getParliamentEventInterest = 'getParliamentEventInterest';
+    public static getUpSkillsOpportunityEnrolled = 'getUpSkillsOpportunityEnrolled';
+    
     
     public static deleteGallery = 'deleteGallery';
     public static deleteEvent = 'deleteEvent';
