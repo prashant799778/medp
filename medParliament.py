@@ -5121,7 +5121,7 @@ def getupSkillsOpportunity():
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
                     endlimit =str(inputdata["endlimit"])
-                    
+
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
@@ -9710,7 +9710,7 @@ def getParliamentEvent11():
             
           
             if data1['status'] != "false":
-                data={"status":"true","result":data2['result'],"totalcount":len(data1['result'])}
+                data={"status":"true","result":data2['result'],"totalCount":len(data1['result'])}
                 return data
             else:
                 return data
@@ -9753,7 +9753,7 @@ def getmarketingInsightslikes():
             data2= databasefile.SelectQueryOrderby("marketingInsights as mi,likeMarketingInsight as lki,userMaster as us",column,WhereCondition,"",startlimit,endlimit,orderby)
             
             if data1['status'] != "false":
-                data={"status":"true","result":data2['result'],"totalcount":len(data1['result'])}
+                data={"status":"true","result":data2['result'],"totalCount":len(data1['result'])}
                 return data
             else:
                 return data
@@ -9796,7 +9796,7 @@ def getParliamentEvent1():
         
             data2= databasefile.SelectQueryOrderby("parliamentEvent as pm,eventInterest as ei,userMaster as us",column,WhereCondition,'',startlimit,endlimit,orderby)
             if data1['status'] != "false":
-                data={"status":"true","result":data2['result'],"totalcount":len(data1['result'])}
+                data={"status":"true","result":data2['result'],"totalCount":len(data1['result'])}
                 return data
             else:
                 return data
