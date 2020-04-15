@@ -5210,7 +5210,7 @@ def getParliamentEvent111():
             data1 = databasefile.SelectQuery4("upSkillsOpportunity as pm,enrollUpskills as ei,userMaster as us",column,WhereCondition)
             
             if data1['status'] != "false":
-                data={"status":"true","result":data2['result'],"totalcount":len(data1['result'])}
+                data={"status":"true","result":data2['result'],"totalCount":len(data1['result'])}
                 return data
             else:
                 return data
