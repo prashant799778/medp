@@ -4517,13 +4517,14 @@ def getPromissingIntiatives():
             print('B')
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startLimit" in inputdata:
-                if inputdata['startLimit'] != "":
-                    startlimit =str(inputdata["startLimit"])
+            
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
                 
-            if "endLimit" in inputdata:
-                if inputdata['endLimit'] != "":
-                    endlimit =str(inputdata["endLimit"])
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
@@ -5120,6 +5121,7 @@ def getupSkillsOpportunity():
             if "endlimit" in inputdata:
                 if inputdata['endlimit'] != "":
                     endlimit =str(inputdata["endlimit"])
+                    
             if "userTypeId" in inputdata:
                 if inputdata['userTypeId'] != "":
                     userTypeId =inputdata["userTypeId"]
@@ -5185,13 +5187,14 @@ def getParliamentEvent111():
        if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startLimit" in inputdata:
-                if inputdata['startLimit'] != "":
-                    startlimit =str(inputdata["startLimit"])
+           
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
                 
-            if "endLimit" in inputdata:
-                if inputdata['endLimit'] != "":
-                    endlimit =str(inputdata["endLimit"])
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
             
             if "Id" in inputdata:
                 if inputdata['Id'] != "":
@@ -5316,13 +5319,14 @@ def allMarketingInsightThread1():
             orderby="pm.id"
             postId,WhereCondition1="",""
 
-            if "startLimit" in inputdata:
-                if inputdata['startLimit'] != "":
-                    startlimit =str(inputdata["startLimit"])
+           
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
                 
-            if "endLimit" in inputdata:
-                if inputdata['endLimit'] != "":
-                    endlimit =str(inputdata["endLimit"])
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
 
             if "userId" in inputdata and 'Id' in inputdata:
                 marketingInsightId=inputdata['Id']
@@ -5795,14 +5799,14 @@ def allEventThread1():
             orderby="pm.id"
             postId,WhereCondition1="",""
 
-            if "startLimit" in inputdata:
-                if inputdata['startLimit'] != "":
-                    startlimit =str(inputdata["startLimit"])
+           
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
                 
-            if "endLimit" in inputdata:
-                if inputdata['endLimit'] != "":
-                    endlimit =str(inputdata["endLimit"])
-            
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
 
             if "userId" in inputdata and 'Id' in inputdata:
                 eventId=inputdata['Id']
@@ -7334,13 +7338,14 @@ def getGalleryImages():
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startLimit" in inputdata:
+           
+            if "startlimit" in inputdata:
                 if inputdata['startlimit'] != "":
-                    startlimit =str(inputdata["startLimit"])
+                    startlimit =str(inputdata["startlimit"])
                 
-            if "endLimit" in inputdata:
-                if inputdata['endLimit'] != "":
-                    endlimit =str(inputdata["endLimit"])
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
             
             if "id" in inputdata:
                 if inputdata['id'] != "":
@@ -7600,13 +7605,14 @@ def getParliamentEvent():
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startLimit" in inputdata:
-                if inputdata['startLimit'] != "":
-                    startlimit =str(inputdata["startLimit"])
+           
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
                 
-            if "endLimit" in inputdata:
-                if inputdata['endLimit'] != "":
-                    endlimit =str(inputdata["endLimit"])
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
             
             if "id" in inputdata:
                 if inputdata['id'] != "":
@@ -8273,13 +8279,14 @@ def getSignUpVideo1():
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startLimit" in inputdata:
-                if inputdata['startLimit'] != "":
-                    startlimit =str(inputdata["startLimit"])
+            
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
                 
-            if "endLimit" in inputdata:
-                if inputdata['endLimit'] != "":
-                    endlimit =str(inputdata["endLimit"])
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
             
             if "id" in inputdata:
                 if inputdata['id'] != "":
@@ -9584,13 +9591,14 @@ def getParliamentEventa():
         if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startLimit" in inputdata:
-                if inputdata['startLimit'] != "":
-                    startlimit =str(inputdata["startLimit"])
+          
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
                 
-            if "endLimit" in inputdata:
-                if inputdata['endLimit'] != "":
-                    endlimit =str(inputdata["endLimit"])
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
             
             if "id" in inputdata:
                 if inputdata['id'] != "":
@@ -9678,13 +9686,14 @@ def getParliamentEvent11():
        if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startLimit" in inputdata:
-                if inputdata['startLimit'] != "":
-                    startlimit =str(inputdata["startLimit"])
+           
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
                 
-            if "endLimit" in inputdata:
-                if inputdata['endLimit'] != "":
-                    endlimit =str(inputdata["endLimit"])
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
             
             if "Id" in inputdata:
                 if inputdata['Id'] != "":
@@ -9721,13 +9730,14 @@ def getmarketingInsightslikes():
        if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startLimit" in inputdata:
-                if inputdata['startLimit'] != "":
-                    startlimit =str(inputdata["startLimit"])
+           
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
                 
-            if "endLimit" in inputdata:
-                if inputdata['endLimit'] != "":
-                    endlimit =str(inputdata["endLimit"])
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
             
             if "Id" in inputdata:
                 if inputdata['Id'] != "":
@@ -9763,13 +9773,14 @@ def getParliamentEvent1():
        if request.get_data():
             inputdata =  commonfile.DecodeInputdata(request.get_data())        
         
-            if "startLimit" in inputdata:
-                if inputdata['startLimit'] != "":
-                    startlimit =str(inputdata["startLimit"])
+           
+            if "startlimit" in inputdata:
+                if inputdata['startlimit'] != "":
+                    startlimit =str(inputdata["startlimit"])
                 
-            if "endLimit" in inputdata:
-                if inputdata['endLimit'] != "":
-                    endlimit =str(inputdata["endLimit"])
+            if "endlimit" in inputdata:
+                if inputdata['endlimit'] != "":
+                    endlimit =str(inputdata["endlimit"])
             
             if "Id" in inputdata:
                 if inputdata['Id'] != "":
