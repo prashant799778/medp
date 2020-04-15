@@ -5205,7 +5205,7 @@ def getParliamentEvent111():
             data2=databasefile.SelectQueryOrderby("upSkillsOpportunity as pm,enrollUpskills as ei,userMaster as us",column,WhereCondition,"",startlimit,endlimit,orderby)
 
             data1 = databasefile.SelectQuery4("upSkillsOpportunity as pm,enrollUpskills as ei,userMaster as us",column,WhereCondition)
-            print(data)
+            
             if data1['status'] != "false":
                 data={"status":"true","result":data2['result'],"totalcount":len(data1['result'])}
                 return data
