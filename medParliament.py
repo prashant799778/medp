@@ -4539,7 +4539,7 @@ def getPromissingIntiatives():
         column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("promissingIntiatives n,userMaster um",column,WhereCondition,"","0","10",orderby)
         print(data,"-------------------------------------------")
-        data2 = databasefile.SelectTotalCountQuery("promissingIntiatives","","")
+        data2 = databasefile.SelectTotalCountQuery("promissingIntiatives",WhereCondition,"")
         data["totalCount"]=data2
         if data != "0":
             
@@ -4727,7 +4727,7 @@ def getNews():
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,n.imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("news n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
-        data2 = databasefile.SelectTotalCountQuery("news","","")
+        data2 = databasefile.SelectTotalCountQuery("news",WhereCondition,"")
         print(data2,"=====================")
         print(data['result'])
         if data != "0":
@@ -4917,7 +4917,7 @@ def getMarketingInsights():
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("marketingInsights n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
-        data2 = databasefile.SelectTotalCountQuery("marketingInsights","","")
+        data2 = databasefile.SelectTotalCountQuery("marketingInsights",WhereCondition,"")
 
         if data != "0":
             data["totalCount"]=data2
@@ -5140,7 +5140,7 @@ def getupSkillsOpportunity():
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath,n.videoLink ,um.userName,n.length,n.effort,n.price,n.institutions,n.level,n.language,n.videoTranscript"
         data = databasefile.SelectQueryOrderby("upSkillsOpportunity n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
-        data2 = databasefile.SelectTotalCountQuery("upSkillsOpportunity","","")
+        data2 = databasefile.SelectTotalCountQuery("upSkillsOpportunity",WhereCondition,"")
 
         if data != "0":
             data["totalCount"]=data2
@@ -5278,6 +5278,9 @@ def allMarketingInsightThread():
             #     data = databasefile.SelectQuery1("marketingInsights n,userMaster um",column,WhereCondition)
             #     print(data,"111111111111111111")
             # print(data,"22222222222222")
+
+            # data1['result']=sorted(data1['result'], key = lambda i: i['DateCreate'])
+            # data1['result']=data1['result'][::-1]
 
 
 
@@ -5757,6 +5760,8 @@ def allEventThread():
             
            
             print(data,"22222222222222")
+            data1['result']=sorted(data1['result'], key = lambda i: i['DateCreate'])
+            data1['result']=data1['result'][::-1]
 
 
 
@@ -7356,8 +7361,11 @@ def getGalleryImages():
         column = "id,Status,title,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath,UserCreate  "
         data = databasefile.SelectQueryOrderby(" gallery ",column,WhereCondition,"",startlimit,endlimit,orderby)
         print(data)
+        data2 = databasefile.SelectTotalCountQuery("gallery",WhereCondition,"")
+       
         
         if data != "0":
+            data["totalCount"]=data2
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
@@ -7626,6 +7634,7 @@ def getParliamentEvent():
         column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(CONVERT_TZ(eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath   "
         data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
         print(data)
+
         if data['result'] != "":
 
 
