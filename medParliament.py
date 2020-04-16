@@ -9988,7 +9988,7 @@ def adminNotification():
         
         column="pm.postDescription,pm.postId,um.userName,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
         WhereCondition= " and  pm.status='0' and pm.userTypeId='" + str(userTypeId) + "' and pm.userId=um.userId"
-        data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
        
        
 
