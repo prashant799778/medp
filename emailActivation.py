@@ -165,9 +165,9 @@ def getactivationmailforDecisionMaker(userName):#userName, link
                    Congratulations! Your account has been activated successfully </strong> <br> <br>\
                <strong>It is my pleasure to welcome you to MEDPARLIAMENT, the Global Parliament of<br>\
                    Healthcare leadership.\
-</strong><br><br>Today, the nature of healthcare is very dynamic, global and interactive.<br>\
-This is era of genomics, personalized medicine, hospitals with hospitality,artificial  <br>\
-intelligence,wearable devices and IoT. We at MedAchievers with our strong international<br>\
+</strong><br><br>Today, the nature of healthcare is very dynamic, global and interactive. This is era of <br>\
+genomics, personalized medicine, hospitals with hospitality, artificial intelligence, <br>\
+wearable devices and IoT. We at MedAchievers with our strong international<br>\
 presence since 2014, including in India, Australia, USA, UK, Israel and Singapore<br>\
 have mastered the art of transactions. We have found that transformation can be<br> \
 achieved if done uniformly through discussions, idea sharing, strength transfer and<br>\
@@ -186,10 +186,10 @@ already in the medical sciences as business owners, policy makers, academics<br>
 and employees must become more robust. MedParliament is the coming together <br>\
 of our industry to achieve that end. <br><br>\
 <strong>The Process</strong><br><br>\
-MedParliament addresses each of the critical areas associated with medical<br>\
-sciences,healthcare practice and management. With emerging trends highlighted,new opportunities<br>\
-opportunities presented and practical information passed on from the leaders shaping  <br>\
-healthcare in India and around the world, Medparliament is the premier platform for collaboration.<br>\
+MedParliament addresses each of the critical areas associated with medical sciences,<br>\
+healthcare practice and management. With emerging trends highlighted, new opportunities<br>\
+presented and practical information passed on from the leaders shaping healthcare in <br>\
+India and around the world, Medparliament is the premier platform for collaboration.<br>\
 Our Medparliamentarians include healthcare professionals, clinicians, senior management <br>\
 of businesses related to healthcare, education organisations, funds, investors, government<br>\
 and start-ups with innovative ideas in healthcare.<br><br>\
