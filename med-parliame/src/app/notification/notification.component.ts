@@ -30,6 +30,7 @@ export class NotificationComponent implements OnInit {
   newsId: any;
   activatedds: boolean;
   noData: boolean;
+  userTypeId: any;
   constructor(public fb: FormBuilder,public local: LocalStorageService, private apiService: UserServiceService, private route: ActivatedRoute, private router: Router) { 
         this.activatedds = false;
         this.tabsIndex = 0;
@@ -91,9 +92,20 @@ export class NotificationComponent implements OnInit {
     const userData = this.local.get('userData1');
     const userType = userData[0]['userTypeId'];
     const userId = userData[0]['userId'];
+    if(userType == 4){
+      this.userTypeId = 7
+    }else if(userType == 3){
+      this.userTypeId = 6
+    }else if(userType == 2){
+      this.userTypeId = 5
+    }else if(userType == 10){
+      this.userTypeId = 8
+    }else if(userType == 11){
+      this.userTypeId = 9
+    }
     if (userType === 1) {
       const params = { 
-        userTypeId: userType,
+        userTypeId: this.userTypeId,
       // CategoryId : this.frmShowNews.get('CategoryId').value,
       startlimit: 0,
       endlimit: this.pageSize,
@@ -118,7 +130,7 @@ export class NotificationComponent implements OnInit {
     } else {
       const params = { 
       // CategoryId : this.frmShowNews.get('CategoryId').value,
-      userTypeId: userType,
+      userTypeId: this.userTypeId,
       startlimit: 0,
       endlimit: this.pageSize
     };    

@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   notification: boolean;
   totalNotification: any;
   userTypeId: any;
+  showNotification: boolean;
   constructor(public authsService: AuthsService,
               public userService: UserServiceService,
              public local: LocalStorageService) {
@@ -30,9 +31,14 @@ export class HeaderComponent implements OnInit {
     // let data = {
     //   'userTypeId':
     // }
-    setInterval(()=>{
-      this.getDatA()
-    },2000)
+    if(this.userTypeId != 12){
+      setInterval(()=>{
+        this.getDatA()
+      },2000)
+    }else{
+      this.showNotification = true;
+    }
+    
     
     
   }
@@ -47,10 +53,21 @@ export class HeaderComponent implements OnInit {
         }
       })
     }else{
-      let data ={
-        "userTypeId": this.userTypeId
+      if(this.userTypeId == 4){
+        this.userTypeId = 7
+      }else if(this.userTypeId == 3){
+        this.userTypeId = 6
+      }else if(this.userTypeId == 2){
+        this.userTypeId = 5
+      }else if(this.userTypeId == 10){
+        this.userTypeId = 8
+      }else if(this.userTypeId == 11){
+        this.userTypeId = 9
       }
-      this.userService.dataPostApi(data,AppSettings.superAdminNotificationCount).then(resp=>{
+      let data ={
+        "userTypeId": this.userTypeId 
+      }
+      this.userService.dataPostApi(data,AppSettings.adminNotificationCount).then(resp=>{
         console.log(resp)
         if(resp && resp['totalcount'] > 0){
           this.notification = true;
