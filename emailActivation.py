@@ -210,7 +210,7 @@ ways. Some of these include: </p>\
     <li style="margin-left: 20px;">Submitting any requirements you have to help improve healthcare</li>\
     <li style="margin-left: 20px;">Attending our exclusive events around India and abroad</li>\
 </ul>\
-<p style="text-align: left;padding: 0 20px; margin: 0;">We eagerly await your contributions to this forum for leaders and supporting you in \
+<p style="text-align: left; margin: 0;">We eagerly await your contributions to this forum for leaders and supporting you in \
 promoting your perspectives on healthcare related matters. Do feel free to contact us <br>\
 at anytime.<br><br>\
 THANKS & REGARDS<br>\
