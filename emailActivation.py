@@ -202,15 +202,15 @@ draw common solutions and methods for improved healthcare delivery, more fruitfu
 transactions and enhanced skilling opportunities. A glittery constellation of Ministers, <br>\
 Diplomats, Healthcare CEOs, Research and tech titans, venture capitalists from different <br>\
 parts of the globe are now sharing deeper ways of collaboration and Transaction.<br>\
-<h4 style="text-align: left; padding: 0 20px;">HOW TO ENAGE WITH MEDPARLIAMENT ? </h4>\
-<p style="text-align: left;padding: 0 30px; margin: 0;">As a MedParliamentarian, you are able to engage with the community in a variety of <br> \
+<h4 style="text-align: left; padding: 0 10px;">HOW TO ENAGE WITH MEDPARLIAMENT ? </h4>\
+<p style="text-align: left;padding: 0 10px; margin: 0;">As a MedParliamentarian, you are able to engage with the community in a variety of <br> \
 ways. Some of these include: </p>\
 <ul style="text-align: left; margin: 0;">\
     <li style="margin-left: 20px;">Commenting on recent healthcare news inside our app</li>\
     <li style="margin-left: 20px;">Submitting any requirements you have to help improve healthcare</li>\
     <li style="margin-left: 20px;">Attending our exclusive events around India and abroad</li>\
 </ul>\
-<p style="text-align: left;padding: 0 30px; margin: 0;">We eagerly await your contributions to this forum for leaders and supporting you in \
+<p style="text-align: left;padding: 0 20px; margin: 0;">We eagerly await your contributions to this forum for leaders and supporting you in \
 promoting your perspectives on healthcare related matters. Do feel free to contact us <br>\
 at anytime.<br><br>\
 THANKS & REGARDS<br>\
