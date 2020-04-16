@@ -2557,6 +2557,7 @@ def allPosts1():
                     column="*"
                     whereCondition=" and postId ='" + str(Y) + "'"
                     data2=databasefile.SelectQuery("likeMaster",column,whereCondition,"",startlimit,endlimit)
+
                     i['like']=len(data2['result'])
                     print(data2,'++++++++++++')
                     columns="status"
@@ -2568,6 +2569,10 @@ def allPosts1():
                             i['likeStatus']=1
                     if i['like'] ==0:
                         i['likeStatus']=0
+
+                    whereCondition=" and  postId= '"+str(postId) +"'"
+                    column="status='1'"
+                    data1=databasefile.UpdateQuery('userPost',column,whereCondition)
 
 
                     # print(data2)
@@ -5761,7 +5766,7 @@ def allEventThread():
            
             print(data,"22222222222222")
             data1['result']=sorted(data1['result'], key = lambda i: i['DateCreate'])
-            # data1['result']=data1['result'][::-1]
+    
 
 
 
@@ -9881,6 +9886,175 @@ def verifyPost12312():
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
+
+
+@app.route('/superAdminNotification', methods=['POST'])
+def superAdminNotification():
+    try:
+       inputdata =  commonfile.DecodeInputdata(request.get_data())
+       startlimit,endlimit="",""
+       data1={"status":"true","message":"","result":[]}
+       msg = "1"
+        if msg =="1":
+            orderby="Id"
+            postId,whereCondition="",""
+
+            
+            # userTypeId=inputdata["userTypeId"]
+            # userId=inputdata['userId']
+            
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition= "and pm.status='0'"
+            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            print(data,"data2")
+            if data['status'] !='false':
+                for i in data['result']:
+                    postId=i['postId']
+                    whereCondition=" and  postId= '"+str(postId) +"'"
+                    column="status='1'"
+                    data1=databasefile.UpdateQuery('userPost',column,whereCondition)
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data['result'],"totalcount":len(data['result'])}
+                print(Data,"@@@@@@@@@@@@@@@@@@")
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output 
+
+
+@app.route('/superAdminNotificationCount', methods=['POST'])
+def superAdminNotificationCount():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+       
+        data={"status":"true","message":"","result":[]}
+        msg = "1"
+        if msg =="1":
+            orderby="Id"
+            postId,whereCondition="",""
+
+          
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition= "and pm.status='0'"
+            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            print(data,"data2")
+            if data['status'] !='false':
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
+                print(Data,"@@@@@@@@@@@@@@@@@@")
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output
+
+#_______________
+
+
+@app.route('/adminNotification', methods=['POST'])
+def adminNotification():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("adminNotification",inputdata,0)
+        data1={"status":"true","message":"","result":[]}
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="Id"
+            postId,whereCondition="",""
+
+            
+            userTypeId=inputdata["userTypeId"]
+            
+            
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition= " pm.status='0' and pm.userTypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+           
+           
+
+            
+
+            
+            if (data['status']!="false"):
+                for i in data['result']:
+                    postId=i['postId']
+                    whereCondition=" and  postId= '"+str(postId) +"'"
+                    column="status='1'"
+                    data1=databasefile.UpdateQuery('userPost',column,whereCondition)
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":data['result'],"totalcount":len(data['result'])}
+                print(Data,"@@@@@@@@@@@@@@@@@@")
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output 
+
+
+@app.route('/adminNotificationCount', methods=['POST'])
+def adminNotificationCount():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        keyarr = ['userTypeId']
+        print(inputdata,"B")
+        commonfile.writeLog("adminNotificationCount",inputdata,0)
+        data1={"status":"true","message":"","result":[]}
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            orderby="Id"
+            postId,whereCondition="",""
+
+            
+            userTypeId=inputdata["userTypeId"]
+           
+            
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition= " pm.status='0' and pm.userTypeId='" + str(userTypeId) + "'"
+            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+           
+           
+
+            
+
+            
+            if (data['status']!="false"):
+                print("111111111111111")          
+                Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
+                print(Data,"@@@@@@@@@@@@@@@@@@")
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":""}
+                return output
+        else:
+            return msg
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output         
 
 
 if __name__ == "__main__":
