@@ -1522,7 +1522,7 @@ def allpolicyMakers():
         column=" um.id,um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.city,um.countryId,um.email,"
         column=column+"pm.aboutProfile,pm.organization,pm.designation,um.status,(cm.Name)countryName,um.emailVerificationStatus as emailStatus"
         startlimit,endlimit="",""
-        WhereCondition=" and um.usertypeId='5' and pm.userId=um.userId  and um.countryId=cm.Id"
+        WhereCondition=" and um.usertypeId='5' and um.userId=pm.userId  and um.countryId=cm.Id"
 
         
         data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,CountryMasterNew as cm",column,WhereCondition,"",startlimit,endlimit,orderby)
