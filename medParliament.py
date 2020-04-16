@@ -1848,19 +1848,19 @@ def studentMasterPannel():
         column="count(*) as count"
         startlimit,endlimit="",""
         WhereCondition=" and usertypeId='7'"
-        whereCondition="and status='1' and  approvedUserId='" + str(userId) + "'"
-        whereCondition2="and status='2' and  approvedUserId='" + str(userId) + "'"
+        whereCondition="and status='0' and  userId='" + str(userId) + "'"
+        whereCondition2="and status='2' and  userId='" + str(userId) + "'"
 
         
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
         data2 = databasefile.SelectQueryOrderby("userPost",column,WhereCondition,""," ",startlimit,endlimit)
-        data3 = databasefile.SelectQueryOrderby("approvedBy",column,whereCondition,""," ",startlimit,endlimit)
-        data4= databasefile.SelectQueryOrderby("approvedBy",column,whereCondition2,""," ",startlimit,endlimit)
+        data3 = databasefile.SelectQueryOrderby("userMaster",column,whereCondition,""," ",startlimit,endlimit)
+        data4= databasefile.SelectQueryOrderby("userMaster",column,whereCondition2,""," ",startlimit,endlimit)
         policyMakerMasterCount=data["result"][0]
         postCounts=data2["result"][0]
         approvedPosts=data3["result"][0]
         rejectedPost=data4["result"][0]
-        data2=[ {"totalUsers":policyMakerMasterCount,"totalpostCounts":postCounts,"approvedPost":approvedPosts,"rejectedPost":rejectedPost}]
+        data2=[ {"totalUsers":policyMakerMasterCount,"totalpostCounts":postCounts,"approvedUser":approvedPosts,"rejectedUser":rejectedPost}]
         # data2.append({"totalpostCounts":postCounts})
         # data2.append({"approvedPost":approvedPosts})
         # data2.append({"rejectedPost":rejectedPost})
