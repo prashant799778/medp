@@ -9895,7 +9895,7 @@ def superAdminNotification():
        startlimit,endlimit="",""
        data1={"status":"true","message":"","result":[]}
        msg = "1"
-        if msg =="1":
+       if msg =="1":
             orderby="Id"
             postId,whereCondition="",""
 
