@@ -9894,10 +9894,10 @@ def superAdminNotification():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        startlimit,endlimit="",""
 
         commonfile.writeLog("superAdminNotification",inputdata,0)
         data={"status":"true","message":"","result":[]}
+        
         msg = "1"
         if msg =="1":
             orderby="Id"
@@ -9926,11 +9926,11 @@ def superAdminNotification():
                     column=" superadminStatus ='1'"
                     data1=databasefile.UpdateQuery('userPost',column,whereCondition)
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":data['result'],"totalcount":len(data['result'])}
+                Data = {"status":"true","message":"","result":data['result'],"totalCount":len(data['result'])}
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
             else:
-                output = {"status":"false","message":"No Data Found","result":""}
+                output = {"status":"false","message":"No Data Found","result":"","totalCount":0}
                 return output
         else:
             return msg
@@ -9942,7 +9942,7 @@ def superAdminNotification():
 @app.route('/superAdminNotificationCount', methods=['POST'])
 def superAdminNotificationCount():
     try:
-       
+
           
         column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
         WhereCondition= "and pm.superadminStatus='0'"
@@ -9950,11 +9950,11 @@ def superAdminNotificationCount():
         print(data,"data2")
         if data['status'] !='false':
             print("111111111111111")          
-            Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
+            Data = {"status":"true","message":"","result":"","totalCount":len(data['result'])}
             print(Data,"@@@@@@@@@@@@@@@@@@")
             return Data
         else:
-            output = {"status":"false","message":"No Data Found","result":""}
+            output = {"status":"false","message":"No Data Found","result":"","totalCount":0}
             return output
       
     except Exception as e :
@@ -10008,11 +10008,11 @@ def adminNotification():
                     column="status='1'"
                     data1=databasefile.UpdateQuery('userPost',column,whereCondition)
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":data['result'],"totalcount":len(data['result'])}
+                Data = {"status":"true","message":"","result":data['result'],"totalCount":len(data['result'])}
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
             else:
-                output = {"status":"false","message":"No Data Found","result":""}
+                output = {"status":"false","message":"No Data Found","result":"","totalCount":0}
                 return output
         else:
             return msg
@@ -10052,11 +10052,11 @@ def adminNotificationCount():
             
             if (data['status']!="false"):
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
+                Data = {"status":"true","message":"","result":"","totalCount":len(data['result'])}
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
             else:
-                output = {"status":"false","message":"No Data Found","result":""}
+                output = {"status":"false","message":"No Data Found","result":"","totalCount":0}
                 return output
         else:
             return msg
