@@ -9915,9 +9915,9 @@ def superAdminNotification():
                 if inputdata['endlimit'] != "":
                     endlimit =str(inputdata["endlimit"])
             
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition= "and pm.superadminStatus ='0'"
-            data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
+            column="pm.postDescription,um.userName,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition= "and pm.superadminStatus ='0' and pm.userId=um.userId"
+            data = databasefile.SelectQuery4("userPost as pm,userMaster as um",column,WhereCondition)
             print(data,"data2")
             if data['status'] !='false':
                 for i in data['result']:
@@ -9992,8 +9992,8 @@ def adminNotification():
                     endlimit =str(inputdata["endlimit"])
             
             
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition= " pm.status='0' and pm.userTypeId='" + str(userTypeId) + "'"
+            column="pm.postDescription,pm.postId,um.userName,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition= " pm.status='0' and pm.userTypeId='" + str(userTypeId) + "' and pm.userId=um.userId"
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
            
            
