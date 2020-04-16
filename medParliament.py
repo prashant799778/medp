@@ -9887,15 +9887,15 @@ def verifyPost12312():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
-'''
+
 @app.route('/superAdminNotification', methods=['POST'])
 def superAdminNotification():
     try:
-       inputdata =  commonfile.DecodeInputdata(request.get_data())
-       startlimit,endlimit="",""
-       data1={"status":"true","message":"","result":[]}
-       msg = "1"
-       if msg =="1":
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        data1={"status":"true","message":"","result":[]}
+        msg = "1"
+        if msg =="1":
             orderby="Id"
             postId,whereCondition="",""
 
@@ -9926,9 +9926,7 @@ def superAdminNotification():
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
-
-'''
-
+        
 @app.route('/superAdminNotificationCount', methods=['POST'])
 def superAdminNotificationCount():
     try:
