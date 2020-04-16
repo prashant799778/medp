@@ -178,8 +178,8 @@ MedParliament is the launch of interactive platform that facilitates the<br>\
 globalization and transformation of healthcare.<br><br>\
 <strong>The Intention</strong><br>\
 <br>What it means to be a healthcare practitioner in 2020 is vastly different<br>\
-to what it will be in 2025, let alone to how it was in 2010.Training and skilling<br>\
-opportunities for healthcare professionals <br>\
+to what it will be in 2025, let alone to how it was in 2010.<br>\
+Training and skilling opportunities for healthcare professionals <br>\
 must evolve and should allow them to get exposed to needed technology<br>\
 and apply the same in their practice. Moreover, the support for those <br>\
 already in the medical sciences as business owners, policy makers, academics<br>\
