@@ -9926,7 +9926,7 @@ def superAdminNotification():
                     column=" superadminStatus ='1'"
                     data1=databasefile.UpdateQuery('userPost',column,whereCondition)
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":data['result'],"totalCount":len(data['result'])}
+                Data = {"status":"true","message":"","result":data['result'],"totalcount":len(data['result'])}
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
             else:
@@ -9950,11 +9950,11 @@ def superAdminNotificationCount():
         print(data,"data2")
         if data['status'] !='false':
             print("111111111111111")          
-            Data = {"status":"true","message":"","result":"","totalCount":len(data['result'])}
+            Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
             print(Data,"@@@@@@@@@@@@@@@@@@")
             return Data
         else:
-            output = {"status":"false","message":"No Data Found","result":"","totalCount":0}
+            output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
             return output
       
     except Exception as e :
@@ -10008,11 +10008,11 @@ def adminNotification():
                     column="status='1'"
                     data1=databasefile.UpdateQuery('userPost',column,whereCondition)
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":data['result'],"totalCount":len(data['result'])}
+                Data = {"status":"true","message":"","result":data['result'],"totalcount":len(data['result'])}
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
             else:
-                output = {"status":"false","message":"No Data Found","result":"","totalCount":0}
+                output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
                 return output
         else:
             return msg
@@ -10052,11 +10052,11 @@ def adminNotificationCount():
             
             if (data['status']!="false"):
                 print("111111111111111")          
-                Data = {"status":"true","message":"","result":"","totalCount":len(data['result'])}
+                Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
             else:
-                output = {"status":"false","message":"No Data Found","result":"","totalCount":0}
+                output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
                 return output
         else:
             return msg
