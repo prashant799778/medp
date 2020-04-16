@@ -593,6 +593,9 @@ button.togg:focus {
     align-items: center;
     font-weight: 600;
 }
+.top-bar-option ul li:focus {
+    outline: none;
+}
 /* End Topbar Section*/
 
 
