@@ -9894,7 +9894,10 @@ def superAdminNotification():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
-        data1={"status":"true","message":"","result":[]}
+        startlimit,endlimit="",""
+
+        commonfile.writeLog("superAdminNotification",inputdata,0)
+        data={"status":"true","message":"","result":[]}
         msg = "1"
         if msg =="1":
             orderby="Id"
@@ -9942,9 +9945,9 @@ def superAdminNotificationCount():
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
 
-       
+        commonfile.writeLog("superAdminNotificationCount",inputdata,0)
         data={"status":"true","message":"","result":[]}
-        msg = "1"
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
             orderby="Id"
             postId,whereCondition="",""
