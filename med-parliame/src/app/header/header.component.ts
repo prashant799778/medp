@@ -53,22 +53,32 @@ export class HeaderComponent implements OnInit {
         }
       })
     }else{
+      let data 
       if(this.userTypeId == 4){
-        this.userTypeId = 7
+         data ={
+          "userTypeId": 7
+        }
+        
       }else if(this.userTypeId == 3){
-        this.userTypeId = 6
+        data ={
+          "userTypeId": 6
+        }
       }else if(this.userTypeId == 2){
-        this.userTypeId = 5
+        data ={
+          "userTypeId": 5
+        }
       }else if(this.userTypeId == 10){
-        this.userTypeId = 8
+        data ={
+          "userTypeId": 8
+        }
       }else if(this.userTypeId == 11){
-        this.userTypeId = 9
+        data ={
+          "userTypeId": 9
+        }
       }
-      let data ={
-        "userTypeId": this.userTypeId 
-      }
+      
       this.userService.dataPostApi(data,AppSettings.adminNotificationCount).then(resp=>{
-        console.log(resp)
+        // console.log(resp)
         if(resp && resp['totalcount'] > 0){
           this.notification = true;
           this.totalNotification = resp['totalcount']

@@ -33,6 +33,7 @@ export class NotificationComponent implements OnInit {
   userTypeId: any;
   constructor(public fb: FormBuilder,public local: LocalStorageService, private apiService: UserServiceService, private route: ActivatedRoute, private router: Router) { 
         this.activatedds = false;
+        this.noData = false;
         this.tabsIndex = 0;
         this.frmShowNews = this.fb.group({
           startlimit: [''],
@@ -112,7 +113,7 @@ export class NotificationComponent implements OnInit {
       // UserCreate: AppSettings.getLoggedInUser()                
     };
       this.apiService.dataPostApi(params,AppSettings.superAdminNotification).then((data: any[]) => {
-        this.totalRecords = data['totalCount']
+        this.totalRecords = data['totalcount']
 
         if(this.totalRecords > this.pageSize){
           console.log("inside if",this.totalRecords)
@@ -121,6 +122,7 @@ export class NotificationComponent implements OnInit {
             console.log("inside else",this.totalRecords)
           this.paginationDisplay = false;
           }
+          console.log(this.totalRecords)
           if(this.totalRecords == 0){
             this.noData = true
           }
@@ -135,7 +137,7 @@ export class NotificationComponent implements OnInit {
       endlimit: this.pageSize
     };    
       this.apiService.dataPostApi(params,AppSettings.adminNotification).then((data: any[]) => {
-        this.totalRecords = data['totalCount']
+        this.totalRecords = data['totalcount']
 
         if(this.totalRecords > this.pageSize){
           console.log("inside if",this.totalRecords)
@@ -144,11 +146,12 @@ export class NotificationComponent implements OnInit {
             console.log("inside else",this.totalRecords)
           this.paginationDisplay = false;
           }
+          console.log(this.totalRecords)
           if(this.totalRecords == 0){
             this.noData = true
           }
         this.allnews = data['result'];
-        console.log(this.allnews)
+        // console.log(this.allnews)
       });
     }
   }
