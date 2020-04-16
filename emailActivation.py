@@ -160,7 +160,7 @@ def getactivationmailforDecisionMaker(userName):#userName, link
                              </h4> </td></tr></table>\
              </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
-               <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
+               <div style="min-height: 250px; text-align:left;background: #ffffff;"> \
                <p style="margin: 0"><h4 style="margin: 0">Hello Mr. ' + str(userName) + '</h4><br>\
                    Congratulations! Your account has been activated successfully </strong> <br> <br>\
                <strong>It is my pleasure to welcome you to MEDPARLIAMENT, the Global Parliament of<br>\
