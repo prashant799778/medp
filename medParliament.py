@@ -9887,7 +9887,7 @@ def verifyPost12312():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
 
-
+'''
 @app.route('/superAdminNotification', methods=['POST'])
 def superAdminNotification():
     try:
@@ -9927,6 +9927,7 @@ def superAdminNotification():
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
 
+'''
 
 @app.route('/superAdminNotificationCount', methods=['POST'])
 def superAdminNotificationCount():
