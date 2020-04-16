@@ -202,8 +202,8 @@ draw common solutions and methods for improved healthcare delivery, more fruitfu
 transactions and enhanced skilling opportunities. A glittery constellation of Ministers, <br>\
 Diplomats, Healthcare CEOs, Research and tech titans, venture capitalists from different <br>\
 parts of the globe are now sharing deeper ways of collaboration and Transaction.<br>\
-<h4 style="text-align: left; padding: 0 10px;">HOW TO ENAGE WITH MEDPARLIAMENT ? </h4>\
-<p style="text-align: left;padding: 0 10px; margin: 0;">As a MedParliamentarian, you are able to engage with the community in a variety of <br> \
+<h4 style="text-align: left;">HOW TO ENAGE WITH MEDPARLIAMENT ? </h4>\
+<p style="text-align: left; margin: 0;">As a MedParliamentarian, you are able to engage with the community in a variety of <br> \
 ways. Some of these include: </p>\
 <ul style="text-align: left; margin: 0;">\
     <li style="margin-left: 20px;">Commenting on recent healthcare news inside our app</li>\
