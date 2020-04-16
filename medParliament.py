@@ -9949,6 +9949,7 @@ def superAdminNotificationCount():
         commonfile.writeLog("superAdminNotificationCount",inputdata,0)
         data={"status":"true","message":"","result":[]}
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        msg="1"
         if msg =="1":
             orderby="Id"
             postId,whereCondition="",""
