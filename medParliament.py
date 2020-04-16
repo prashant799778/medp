@@ -9912,14 +9912,14 @@ def superAdminNotification():
                     endlimit =str(inputdata["endlimit"])
             
             column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition= "and pm.status='0'"
+            WhereCondition= "and pm.superadminStatus ='0'"
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
             print(data,"data2")
             if data['status'] !='false':
                 for i in data['result']:
                     postId=i['postId']
                     whereCondition=" and  postId= '"+str(postId) +"'"
-                    column="status='1'"
+                    column=" superadminStatus ='1'"
                     data1=databasefile.UpdateQuery('userPost',column,whereCondition)
                 print("111111111111111")          
                 Data = {"status":"true","message":"","result":data['result'],"totalcount":len(data['result'])}
@@ -9950,7 +9950,7 @@ def superAdminNotificationCount():
 
           
             column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition= "and pm.status='0'"
+            WhereCondition= "and pm.superadminStatus='0'"
             data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
             print(data,"data2")
             if data['status'] !='false':
