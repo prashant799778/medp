@@ -1526,6 +1526,7 @@ def allpolicyMakers():
 
         
         data = databasefile.SelectQueryOrderby("userMaster as um,policyMakerMaster as pm,CountryMasterNew as cm",column,WhereCondition,"",startlimit,endlimit,orderby)
+        print(data['result'],"++++++++++++")
 
       
         
