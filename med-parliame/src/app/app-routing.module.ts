@@ -64,6 +64,7 @@ import { Commentss1Component } from './event/commentss1/commentss1.component';
 import { NewsInterestComponent } from './news/news-interest/news-interest.component';
 import { EventInterestComponent } from './event/event-interest/event-interest.component';
 import { EnrolledComponent } from './up-skill/enrolled/enrolled.component';
+import { NotificationComponent } from './notification/notification.component';
 
 const routes: Routes = [
   { path: '',redirectTo: '/dashboard',pathMatch: 'full'},
@@ -78,39 +79,40 @@ const routes: Routes = [
   { path: 'replyPostMarketing', component: ReplyPostMarketComponent,canActivate:[AuthGuard]},
   { path: 'eventPost', component: EventPostComponent,canActivate:[AuthGuard]},
   { path: 'eventReplyPost', component: ReplyEventPostComponent,canActivate:[AuthGuard]},
+  { path: 'notification', component: NotificationComponent,canActivate:[AuthGuard]},
   { path: 'setting', 
-  children: [                          //<---- child components declared here
-    { path: '',redirectTo: '/Setting/add',pathMatch:'full'}, 
-   
-       {
-          path:'add',
-          component: CountryComponent,
+    children: [                          //<---- child components declared here
+      { path: '',redirectTo: '/Setting/add',pathMatch:'full'}, 
+    
+        {
+            path:'add',
+            component: CountryComponent,
+            canActivate: [AuthGuard],
+        },
+        {
+          path:'news',
+          component: NewsComponent,
           canActivate: [AuthGuard],
       },
       {
-        path:'news',
-        component: NewsComponent,
+        path:'annocement',
+        component: AnnouncementComponent,
         canActivate: [AuthGuard],
     },
     {
-      path:'annocement',
-      component: AnnouncementComponent,
+      path:'event',
+      component: EventsComponent,
       canActivate: [AuthGuard],
   },
   {
-    path:'event',
-    component: EventsComponent,
+    path:'gallery',
+    component: GalleryComponent,
     canActivate: [AuthGuard],
-},
-{
-  path:'gallery',
-  component: GalleryComponent,
-  canActivate: [AuthGuard],
-},
-  
+  },
     
       
-  ]
+        
+    ]
   },
   
   

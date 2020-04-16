@@ -16,6 +16,8 @@ export class AppSettings {
     public static commentsEventRejected = 'commentsEventRejected';
     public static commentsEventApproved = 'commentsEventApproved';
     public static superAdminNotificationCount = 'superAdminNotificationCount';
+    public static superAdminNotification = 'superAdminNotification';
+    public static adminNotificationCount = 'adminNotificationCount';
     
     
     public static marketingInsights = 'marketingInsights';
@@ -79,6 +81,7 @@ export class AppSettings {
     public static deletePromissingInitiatives = 'deletePromissingInitiatives';
     public static getParliamentEventInterest = 'getParliamentEventInterest';
     public static getUpSkillsOpportunityEnrolled = 'getUpSkillsOpportunityEnrolled';
+    public static adminNotification = 'adminNotification';
     
     
     public static deleteGallery = 'deleteGallery';

@@ -581,7 +581,7 @@ button.togg:focus {
 .num-lit {
     width: 17px;
     height: 17px;
-    background: #3b8cf6;
+    background: red;
     color: #fff;
     border-radius: 30px;
     position: absolute;

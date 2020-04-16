@@ -13,11 +13,11 @@
         </div>
         <div class="top-bar-option">
             <ul class="d-flex align-items-center top-right-lst">
-                <li>
+                <li [routerLink]="['/notification']" (click)="gotOPage()">
                     <div class="logout-box">
                         <img src="../../assets/images/notificationbell.svg">
                     </div>
-                    <span class="num-lit">200</span>
+                    <span *ngIf="notification" class="num-lit">{{totalNotification}}</span>
                 </li>
                 <li>
                     <div class="profile-box mr-remove">

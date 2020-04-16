@@ -60,7 +60,7 @@ import { EditAboutComponent } from './about/edit-about/edit-about.component';
 import { UserDecisionComponent } from './user/user-decision/user-decision.component';
 import { CreatePromisingInitiativeComponent } from './promising/create-promising-initiative/create-promising-initiative.component';
 import { EditPromisingInitiativeComponent } from './promising/edit-promising-initiative/edit-promising-initiative.component';
-import { PipesPipe } from './pipes.pipe';
+import { PipesPipe, UserTypeId } from './pipes.pipe';
 import { SanitizeHtmlPipe } from './pipes.pipe';
 import { ViewMarketInsightPostComponent } from './market-insight-post/view-market-insight-post/view-market-insight-post.component';
 import { EditMarketNewsComponent } from './market-news/edit-market-news/edit-market-news.component';
@@ -87,6 +87,7 @@ import { Commentss1Component } from './event/commentss1/commentss1.component';
 import { EventInterestComponent } from './event/event-interest/event-interest.component';
 import { NewsInterestComponent } from './news/news-interest/news-interest.component';
 import { EnrolledComponent } from './up-skill/enrolled/enrolled.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -143,6 +144,7 @@ import { EnrolledComponent } from './up-skill/enrolled/enrolled.component';
     CreatePromisingInitiativeComponent,
     EditPromisingInitiativeComponent,
     PipesPipe,
+    UserTypeId,
     SanitizeHtmlPipe,
     ViewMarketInsightPostComponent,
     EditMarketNewsComponent,
@@ -167,7 +169,8 @@ import { EnrolledComponent } from './up-skill/enrolled/enrolled.component';
     Commentss1Component,
     EventInterestComponent,
     NewsInterestComponent,
-    EnrolledComponent
+    EnrolledComponent,
+    NotificationComponent
   ],
   imports: [
     AngularCropperjsModule,
