@@ -9971,51 +9971,44 @@ def adminNotification():
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
 
-        keyarr = ['userTypeId']
-        print(inputdata,"B")
-        commonfile.writeLog("adminNotification",inputdata,0)
-        data1={"status":"true","message":"","result":[]}
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        if msg =="1":
-            orderby="Id"
-            postId,whereCondition="",""
+        orderby="Id"
+        postId,whereCondition="",""
 
-            
-            userTypeId=inputdata["userTypeId"]
+        
+        userTypeId=inputdata["userTypeId"]
 
-            if "startlimit" in inputdata:
-                if inputdata['startlimit'] != "":
-                    startlimit =str(inputdata["startlimit"])
-                
-            if "endlimit" in inputdata:
-                if inputdata['endlimit'] != "":
-                    endlimit =str(inputdata["endlimit"])
+        if "startlimit" in inputdata:
+            if inputdata['startlimit'] != "":
+                startlimit =str(inputdata["startlimit"])
             
-            
-            column="pm.postDescription,pm.postId,um.userName,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition= " pm.status='0' and pm.userTypeId='" + str(userTypeId) + "' and pm.userId=um.userId"
-            data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
-           
-           
+        if "endlimit" in inputdata:
+            if inputdata['endlimit'] != "":
+                endlimit =str(inputdata["endlimit"])
+        
+        
+        column="pm.postDescription,pm.postId,um.userName,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+        WhereCondition= " pm.status='0' and pm.userTypeId='" + str(userTypeId) + "' and pm.userId=um.userId"
+        data = databasefile.SelectQueryOrderby("userPost as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+       
+       
 
-            
+        
 
-            
-            if (data['status']!="false"):
-                for i in data['result']:
-                    postId=i['postId']
-                    whereCondition=" and  postId= '"+str(postId) +"'"
-                    column="status='1'"
-                    data1=databasefile.UpdateQuery('userPost',column,whereCondition)
-                print("111111111111111")          
-                Data = {"status":"true","message":"","result":data['result'],"totalcount":len(data['result'])}
-                print(Data,"@@@@@@@@@@@@@@@@@@")
-                return Data
-            else:
-                output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
-                return output
+        
+        if (data['status']!="false"):
+            for i in data['result']:
+                postId=i['postId']
+                whereCondition=" and  postId= '"+str(postId) +"'"
+                column="status='1'"
+                data1=databasefile.UpdateQuery('userPost',column,whereCondition)
+            print("111111111111111")          
+            Data = {"status":"true","message":"","result":data['result'],"totalcount":len(data['result'])}
+            print(Data,"@@@@@@@@@@@@@@@@@@")
+            return Data
         else:
-            return msg
+            output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
+            return output
+       
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
