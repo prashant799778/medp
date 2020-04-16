@@ -10028,38 +10028,32 @@ def adminNotificationCount():
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
 
-        keyarr = ['userTypeId']
-        print(inputdata,"B")
-        commonfile.writeLog("adminNotificationCount",inputdata,0)
-        data1={"status":"true","message":"","result":[]}
-        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        if msg =="1":
-            orderby="Id"
-            postId,whereCondition="",""
+       
+        orderby="Id"
+        postId,whereCondition="",""
 
-            
-            userTypeId=inputdata["userTypeId"]
-           
-            
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition= " pm.status='0' and pm.userTypeId='" + str(userTypeId) + "'"
-            data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
-           
-           
+        
+        userTypeId=inputdata["userTypeId"]
+       
+        
+        column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+        WhereCondition= " pm.status='0' and pm.userTypeId='" + str(userTypeId) + "'"
+        data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
+       
+       
 
-            
+        
 
-            
-            if (data['status']!="false"):
-                print("111111111111111")          
-                Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
-                print(Data,"@@@@@@@@@@@@@@@@@@")
-                return Data
-            else:
-                output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
-                return output
+        
+        if (data['status']!="false"):
+            print("111111111111111")          
+            Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
+            print(Data,"@@@@@@@@@@@@@@@@@@")
+            return Data
         else:
-            return msg
+            output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
+            return output
+      
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
