@@ -572,10 +572,26 @@ button.togg:focus {
 }
 .top-bar-option ul li {
     margin-right: 2rem;
+    position: relative;
 }
 .logout-box img {
     width: 24px;
     cursor: pointer;
+}
+.num-lit {
+    width: 13px;
+    height: 13px;
+    background: #3b8cf6;
+    color: #fff;
+    border-radius: 30px;
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    font-size: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
 }
 /* End Topbar Section*/
 
