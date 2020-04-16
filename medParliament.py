@@ -9944,6 +9944,7 @@ def superAdminNotificationCount():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
+        keyarr=[""]
 
         commonfile.writeLog("superAdminNotificationCount",inputdata,0)
         data={"status":"true","message":"","result":[]}
