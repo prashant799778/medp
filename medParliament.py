@@ -9989,6 +9989,7 @@ def adminNotification():
         column="pm.postDescription,pm.postId,um.userName,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
         WhereCondition= " and  pm.status='0' and pm.userTypeId='" + str(userTypeId) + "' and pm.userId=um.userId"
         data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data2 = databasefile.SelectQuery4("userPost as pm,userMaster as um",column,WhereCondition)
        
        
 
@@ -10002,7 +10003,7 @@ def adminNotification():
                 column="status='1'"
                 data1=databasefile.UpdateQuery('userPost',column,whereCondition)
             print("111111111111111")          
-            Data = {"status":"true","message":"","result":data['result'],"totalcount":len(data['result'])}
+            Data = {"status":"true","message":"","result":data['result'],"totalcount":len(data2['result'])}
             print(Data,"@@@@@@@@@@@@@@@@@@")
             return Data
         else:
