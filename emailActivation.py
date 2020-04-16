@@ -160,7 +160,7 @@ def getactivationmailforDecisionMaker(userName):#userName, link
                              </h4> </td></tr></table>\
              </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
-               <div style="min-height: 250px; text-align:left;background: #ffffff;"> \
+               <div style="min-height: 250px; text-align:left ; padding: 0 20px;background: #ffffff;"> \
                <p style="margin: 0"><h4 style="margin: 0">Hello Mr. ' + str(userName) + '</h4><br>\
                    Congratulations! Your account has been activated successfully </strong> <br> <br>\
                <strong>It is my pleasure to welcome you to MEDPARLIAMENT, the Global Parliament of<br>\
@@ -206,9 +206,9 @@ parts of the globe are now sharing deeper ways of collaboration and Transaction.
 <p style="text-align: left;padding: 0 30px; margin: 0;">As a MedParliamentarian, you are able to engage with the community in a variety of <br> \
 ways. Some of these include: </p>\
 <ul style="text-align: left; margin: 0;">\
-    <li style="margin-left: 10px;">Commenting on recent healthcare news inside our app</li>\
-    <li style="margin-left: 10px;">Submitting any requirements you have to help improve healthcare</li>\
-    <li style="margin-left: 10px;">Attending our exclusive events around India and abroad</li>\
+    <li style="margin-left: 20px;">Commenting on recent healthcare news inside our app</li>\
+    <li style="margin-left: 20px;">Submitting any requirements you have to help improve healthcare</li>\
+    <li style="margin-left: 20px;">Attending our exclusive events around India and abroad</li>\
 </ul>\
 <p style="text-align: left;padding: 0 30px; margin: 0;">We eagerly await your contributions to this forum for leaders and supporting you in \
 promoting your perspectives on healthcare related matters. Do feel free to contact us <br>\
