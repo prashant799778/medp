@@ -15,7 +15,7 @@ export class AppSettings {
     public static likesgetParliamentEventlikes = 'getParliamentEventlikes';
     public static commentsEventRejected = 'commentsEventRejected';
     public static commentsEventApproved = 'commentsEventApproved';
-    
+    public static superAdminNotificationCount = 'superAdminNotificationCount';
     
     
     public static marketingInsights = 'marketingInsights';
