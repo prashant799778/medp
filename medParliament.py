@@ -1848,8 +1848,8 @@ def studentMasterPannel():
         column="count(*) as count"
         startlimit,endlimit="",""
         WhereCondition=" and usertypeId='7'"
-        whereCondition="and status='0' and  userId='" + str(userId) + "'"
-        whereCondition2="and status='2' and  userId='" + str(userId) + "'"
+        whereCondition="and status='0' and   usertypeId='7'"
+        whereCondition2="and status='2' and   usertypeId='7' "
 
         
         data = databasefile.SelectQueryOrderby("userMaster",column,WhereCondition,""," ",startlimit,endlimit)
