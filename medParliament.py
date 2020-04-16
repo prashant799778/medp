@@ -10037,7 +10037,7 @@ def adminNotificationCount():
        
         
         column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-        WhereCondition= " pm.status='0' and pm.userTypeId='" + str(userTypeId) + "'"
+        WhereCondition= " and  pm.status='0' and pm.userTypeId='" + str(userTypeId) + "'"
         data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
        
        
