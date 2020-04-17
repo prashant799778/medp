@@ -10076,11 +10076,11 @@ def superAdminNotificationCount1():
             data22 = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
             a=[]
             if data22['status'] !='false':
-                print(data22['result'],"__________________________________-")
+                print(data22,"____________________________________________________-")
 
                 for i in data22['result']:
                     postId=i['postId']
-                    print(postId,'wwwwwwwwwwww')
+                    print(postId,'wwwwwwwwwwww9999999999999999999999999999999999999')
                     print("111111111111111")
 
                     column= "pm.commentDescription as postDescription,um.userName,pm.postId,up.userId,pm.status,pm.id as Id,up.postTitle,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
@@ -10092,7 +10092,7 @@ def superAdminNotificationCount1():
                         print('sggggggggggggggggggggggg',data2['result'])
                         for m in data2['result']:
                             a.append(m)
-                            t1=len(a)
+                        
                         
                         
                         
