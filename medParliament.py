@@ -10079,6 +10079,7 @@ def superAdminNotificationCount1():
                 print(data22,"____________________________________________________-")
 
                 for i in data22['result']:
+                    print(i)
                     
                     print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
                     print("111111111111111")
