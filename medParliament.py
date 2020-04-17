@@ -10082,7 +10082,7 @@ def superAdminNotificationCount1():
                     print("111111111111111")
 
                     column= "pm.commentDescription as postDescription,um.userName,pm.postId,up.userId,pm.status,pm.id as Id,up.postTitle,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-                    whereCondition= " and pm.approvedUserId=um.userId and pm.superstatus='0'  and pm.postId=up.postId and pm.postId= '"+str(i['postId'])+"'"
+                    whereCondition= " and pm.approvedUserId=um.userId and pm.superstatus='0'  and pm.postId=up.postId and pm.postId= '"+str(postId)+"'"
                     data2=databasefile.SelectQuery4('approvedBy as pm,userPost as up,userMaster as um',column,whereCondition)
                     print(data2,"@@@@@@@@$%9999999999999999999999999999999999976666666")
 
