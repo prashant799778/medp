@@ -10076,9 +10076,9 @@ def superAdminNotificationCount1():
             data22 = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
             a=[]
             if data22['status'] !='false':
-                print(data22,"____________________________________________________-")
+                print(data22['result'],"____________________________________________________-")
 
-                for i in data22['result']:
+                for i in data22['result'][0]:
                     print(i)
                     
                     print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
