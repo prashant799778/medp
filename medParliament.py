@@ -10071,11 +10071,12 @@ def superAdminNotificationCount1():
         else:  
             column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition= "and pm.superadminStatus='1'"
-            data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
-            print(data,"data2777777777777777777777")
-            if data['status'] !='false':
+            data22 = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
+            print(data22,"data2777777777777777777777")
+            if data22['status'] !='false':
 
-                for i in data['result']:
+                for i in data22['result']:
+                    a=[]
                     postId=i['postId']
                     print("111111111111111")  
                     column= "pm.commentDescription as postDescription,um.userName,pm.postId,up.userId,pm.status,pm.id as Id,up.postTitle,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
@@ -10084,9 +10085,11 @@ def superAdminNotificationCount1():
                     print(data2,"@@@@@@@@$%76666666")
 
                     if data2['status']!='false':
-                        t1=len(data2['result'])  
+                        for i in data2['result']:
+                            a.append(i)
+                            t1=len(a)  
                     else:
-                        t1=len(data2['result'])
+                        t1=0
                 Data = {"status":"true","message":"","result":"","totalcount":t1}
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
