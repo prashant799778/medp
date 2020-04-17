@@ -10064,25 +10064,37 @@ def superAdminNotificationCount1():
         data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
         print(data,"data2")
         if data['status'] !='false':
-            for i in data['result']:
-                postId=i['postId']
-                print("111111111111111")  
-                column= "pm.commentDescription as postDescription,um.userName,pm.postId,up.userId,pm.status,pm.id as Id,up.postTitle,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-                whereCondition= " and pm.approvedUserId=um.userId and pm.superstatus='0'  and pm.postId=up.postId and pm.postId= '"+str(postId)+"'"
-                data2=databasefile.SelectQuery4('approvedBy as pm,userPost as up,userMaster as um',column,whereCondition)
-                print(data2,"@@@@@@@@$%76666666")
-                if data2['status']!='false':
-                    for k in data2['result']:
-                        data['result'].append(k)
-                        t1=len(data['result'])  
-                else:
-                    t1=len(data['result'])        
-            Data = {"status":"true","message":"","result":"","totalcount":t1}
+            print("111111111111111")          
+            Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
             print(Data,"@@@@@@@@@@@@@@@@@@")
             return Data
-        else:
-            output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
-            return output
+        else:  
+            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            WhereCondition= "and pm.superadminStatus='1'"
+            data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
+            print(data,"data2")
+            if data['status'] !='false':
+
+                for i in data['result']:
+                    postId=i['postId']
+                    print("111111111111111")  
+                    column= "pm.commentDescription as postDescription,um.userName,pm.postId,up.userId,pm.status,pm.id as Id,up.postTitle,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                    whereCondition= " and pm.approvedUserId=um.userId and pm.superstatus='0'  and pm.postId=up.postId and pm.postId= '"+str(postId)+"'"
+                    data2=databasefile.SelectQuery4('approvedBy as pm,userPost as up,userMaster as um',column,whereCondition)
+                    print(data2,"@@@@@@@@$%76666666")
+
+                    if data2['status']!='false':
+                        for k in data2['result']:
+                            data['result'].append(k)
+                            t1=len(data['result'])  
+                    else:
+                        t1=len(data['result'])
+                Data = {"status":"true","message":"","result":"","totalcount":t1}
+                print(Data,"@@@@@@@@@@@@@@@@@@")
+                return Data
+            else:
+                output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
+                return output
       
     except Exception as e :
         print("Exception---->" + str(e))    
