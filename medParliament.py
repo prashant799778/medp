@@ -10072,7 +10072,7 @@ def superAdminNotificationCount1():
         else:  
             
             column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition= "and pm.superadminStatus='1'"
+            WhereCondition= "and pm.superadminStatus='1' "
             data229 = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
             a=[]
             if data229['status'] !='false':
@@ -10081,7 +10081,9 @@ def superAdminNotificationCount1():
 
 
                 for i in data229['result']:
-                    print(i,"_+9djjd")
+                    a.append(i)
+                    for n in a:
+                        print(n,"_+9djjd")
                     
                     
                     print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
