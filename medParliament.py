@@ -10077,8 +10077,10 @@ def superAdminNotificationCount1():
             a=[]
             if data22['status'] !='false':
                 print(data22['result'],"____________________________________________________-")
+                print(type(data22['result']),"99999999999999999")
 
-                for i in data22['result'][0]:
+
+                for i in data22['result']:
                     print(i)
                     
                     print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
@@ -10103,7 +10105,7 @@ def superAdminNotificationCount1():
 
                     Data = {"status":"true","message":"","result":"","totalcount":len(a)}
                     print(Data,"@@@@@@@@@@@@@@@@@@")
-                    return Data  
+                    return Data
 
                
             else:
@@ -10113,7 +10115,8 @@ def superAdminNotificationCount1():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
-        return output       
+        return output                     
+
 
 
 if __name__ == "__main__":
