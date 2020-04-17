@@ -10072,9 +10072,10 @@ def superAdminNotificationCount1():
             column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
             WhereCondition= "and pm.superadminStatus='1'"
             data22 = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
+            a=[]
             
             if data22['status'] !='false':
-                a=[]
+               
                 for i in data22['result']:
 
                     postId=i['postId']
