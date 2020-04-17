@@ -10086,20 +10086,16 @@ def superAdminNotificationCount1():
                     data2=databasefile.SelectQuery4('approvedBy as pm,userPost as up,userMaster as um',column,whereCondition)
                     print(data2,"@@@@@@@@$%9999999999999999999999999999999999976666666")
 
-                    if data2['result']!="":
+                    if data2['result']== "":
+                        data2['result']=[]
                         print('sggggggggggggggggggggggg')
-                        for m in data2['result']:
-                            a.append(m)
-                            t1=len(a) 
-                        Data = {"status":"true","message":"","result":"","totalcount":t1}
-                        print(Data,"@@@@@@@@@@@@@@@@@@")
-                        return Data 
-
-                    else:
-                        t1=0
-                        Data = {"status":"true","message":"","result":"","totalcount":t1}
-                        print(Data,"@@@@@@@@@@@@@@@@@@")
-                        return Data 
+                    for m in data2['result']:
+                        a.append(m)
+                        t1=len(a) 
+                    
+                    Data = {"status":"true","message":"","result":"","totalcount":t1}
+                    print(Data,"@@@@@@@@@@@@@@@@@@")
+                    return Data 
 
                
             else:
