@@ -10087,6 +10087,7 @@ def superAdminNotificationCount1():
                     print(data2,"@@@@@@@@$%9999999999999999999999999999999999976666666")
 
                     if data2['result']!="":
+                        print('sggggggggggggggggggggggg')
                         for m in data2['result']:
                             a.append(m)
                             t1=len(a) 
