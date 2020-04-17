@@ -10076,7 +10076,7 @@ def superAdminNotificationCount1():
                         data['result'].append(k)
                         t1=len(data['result'])  
                 else:
-                    t1=len(data1['result'])        
+                    t1=len(data['result'])        
             Data = {"status":"true","message":"","result":"","totalcount":t1}
             print(Data,"@@@@@@@@@@@@@@@@@@")
             return Data
