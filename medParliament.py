@@ -10076,20 +10076,22 @@ def superAdminNotificationCount1():
             if data22['status'] !='false':
                 a=[]
                 for i in data22['result']:
-                    
+
                     postId=i['postId']
-                    print("111111111111111")  
+                    print("111111111111111")
+
                     column= "pm.commentDescription as postDescription,um.userName,pm.postId,up.userId,pm.status,pm.id as Id,up.postTitle,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
                     whereCondition= " and pm.approvedUserId=um.userId and pm.superstatus='0'  and pm.postId=up.postId and pm.postId= '"+str(i['postId'])+"'"
                     data2=databasefile.SelectQuery4('approvedBy as pm,userPost as up,userMaster as um',column,whereCondition)
-                    print(data2,"@@@@@@@@$%76666666")
+                    print(data2,"@@@@@@@@$%9999999999999999999999999999999999976666666")
 
                     if data2['result']!="":
-                        for i in data2['result']:
-                            a.append(i)
+                        for m in data2['result']:
+                            a.append(m)
                             t1=len(a)  
                     else:
                         t1=0
+
                 Data = {"status":"true","message":"","result":"","totalcount":t1}
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
