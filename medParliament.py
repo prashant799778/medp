@@ -10087,19 +10087,20 @@ def superAdminNotificationCount1():
                     print(data2,"@@@@@@@@$%9999999999999999999999999999999999976666666")
 
                     if data2['result']!= "":
+                        print('sggggggggggggggggggggggg',data2['result'])
                         for m in data2['result']:
                             a.append(m)
-                            t1=len(a) 
+                            t1=len(a)
+                        Data = {"status":"true","message":"","result":"","totalcount":len(a)}
+                        print(Data,"@@@@@@@@@@@@@@@@@@")
+                        return Data  
                         
-                        print('sggggggggggggggggggggggg')
+                        
                     else:
                         data2['result']=[]
-
-
-                    
-                    Data = {"status":"true","message":"","result":"","totalcount":len(a)}
-                    print(Data,"@@@@@@@@@@@@@@@@@@")
-                    return Data 
+                        Data = {"status":"true","message":"","result":"","totalcount":len(a)}
+                        print(Data,"@@@@@@@@@@@@@@@@@@")
+                        return Data 
 
                
             else:
