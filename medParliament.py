@@ -10080,7 +10080,7 @@ def superAdminNotificationCount1():
                 print(type(data229['result']),"99999999999999999")
 
 
-                for i in data229['result']:
+                for i in data229['result'][0:]:
                     print(i,"y373vedvsfswsf")
 
                     
