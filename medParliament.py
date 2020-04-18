@@ -10139,6 +10139,107 @@ def adminNotificationCount1():
 
 
 
+@app.route('/adminNotification1', methods=['POST'])
+def adminNotification1():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+
+        orderby="Id"
+        postId,whereCondition="",""
+
+        
+        userTypeId=inputdata["userTypeId"]
+
+        if "startlimit" in inputdata:
+            if inputdata['startlimit'] != "":
+                startlimit =str(inputdata["startlimit"])
+            
+        if "endlimit" in inputdata:
+            if inputdata['endlimit'] != "":
+                endlimit =str(inputdata["endlimit"])
+        
+        
+        column="pm.postDescription,pm.postId,um.userName,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+        WhereCondition= " and  pm.status='0' and pm.userTypeId='" + str(userTypeId) + "' and pm.userId=um.userId"
+        data = databasefile.SelectQueryOrderby("userPost as pm,userMaster as um",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data2 = databasefile.SelectQuery4("userPost as pm,userMaster as um",column,WhereCondition)
+       
+       
+
+        
+
+        
+        if (data['status']!="false"):
+            for i in data['result']:
+                postId=i['postId']
+                whereCondition=" and  postId= '"+str(postId) +"'"
+                column="status='1'"
+                data1=databasefile.UpdateQuery('userPost',column,whereCondition)
+            print("111111111111111")          
+            Data = {"status":"true","message":"","result":data['result'],"totalcount":len(data2['result'])}
+            print(Data,"@@@@@@@@@@@@@@@@@@")
+            return Data
+        else:
+            column="pm.postId"
+            WhereCondition= "and pm.status='1' and pm.userTypeId='" + str(userTypeId) + "' "
+            data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
+            a=[]
+            
+
+            if data['status'] !='false':
+                
+                print(data['result'],"____________________________________________________-")
+                print(type(data['result']),"99999999999999999")
+            
+                
+             
+
+
+                for i in data['result']:
+
+                    print("22222222222222222222222222222y373vedvsfswsf",i)
+                
+                    print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
+                    print("111111111111111")
+
+                    column= "pm.commentDescription as postDescription,um.userName,pm.postId,up.userId,pm.status,pm.id as Id,up.postTitle,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                    whereCondition= " and pm.approvedUserId=um.userId and pm.userTypeId='" + str(userTypeId) + "' and  pm.adminstatus='0'  and pm.postId=up.postId and pm.postId= '"+str(i['postId'])+"'"
+                    data2=databasefile.SelectQuery4('approvedBy as pm,userPost as up,userMaster as um',column,whereCondition)
+                    print(data2['result'],"@@@@@@@@$%9999999999999999999999999999999999976666666")
+
+                    
+                    
+                    if data2['result']!= "":
+                        print('sggggggggggggggggggggggg',data2['result'])
+                        for m in data2['result']:
+                            a.append(m)
+                        for i in a:
+                            postId=i['postId']
+                            whereCondition=" and  postId= '"+str(postId) +"'"
+                            column=" adminstatus='1' "
+                            data1=databasefile.UpdateQuery('approvedBy',column,whereCondition)
+                        
+                        
+                        
+                        
+                    
+
+                Data = {"status":"true","message":"","result":a,"totalcount":len(a)}
+                print(Data,"@@@@@@@@@@@@@@@@@@")
+                return Data
+
+               
+            else:
+                output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
+                return output
+       
+    except Exception as e :
+        print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output 
+
+
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
     app.run(host='0.0.0.0',port=5031,debug=True)
