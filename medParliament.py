@@ -10153,14 +10153,15 @@ def adminNotificationCount1():
             column="pm.postId"
             WhereCondition= "and pm.status='1' and pm.userTypeId='" + str(userTypeId) + "' "
             data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
-            a=[]
+
             if data['status'] !='false':
                 print(data['result'],"____________________________________________________-")
                 print(type(data['result']),"99999999999999999")
                 y=data['result']
+                a=data[::-1]
 
 
-                for i in y:
+                for i in a:
 
                     print(i,"y373vedvsfswsf")
                 
