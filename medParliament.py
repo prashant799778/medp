@@ -10190,9 +10190,9 @@ def adminNotificationCount1():
                         print("ssssssssss")
                         data2['result']=b
 
-                    Data = {"status":"true","message":"","result":"","totalcount":len(b)}
-                    print(Data,"@@@@@@@@@@@@@@@@@@")
-                    return Data
+                Data = {"status":"true","message":"","result":"","totalcount":len(b)}
+                print(Data,"@@@@@@@@@@@@@@@@@@")
+                return Data
 
                
             else:
