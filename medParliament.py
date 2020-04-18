@@ -9965,7 +9965,7 @@ def superAdminNotificationCount():
 #_______________
 
 
-@app.route('/adminNotification', methods=['POST'])
+@app.route('/adminNotification1', methods=['POST'])
 def adminNotification():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -10017,7 +10017,7 @@ def adminNotification():
         return output 
 
 
-@app.route('/adminNotificationCount', methods=['POST'])
+@app.route('/adminNotificationCount1', methods=['POST'])
 def adminNotificationCount():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -10054,7 +10054,7 @@ def adminNotificationCount():
         output = {"status":"false","message":"something went wrong","result":""}
         return output  
 
-@app.route('/adminNotificationCount1', methods=['POST'])
+@app.route('/adminNotificationCount', methods=['POST'])
 def adminNotificationCount1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
@@ -10139,7 +10139,7 @@ def adminNotificationCount1():
 
 
 
-@app.route('/adminNotification1', methods=['POST'])
+@app.route('/adminNotification', methods=['POST'])
 def adminNotification1():
     try:
         inputdata =  commonfile.DecodeInputdata(request.get_data())
