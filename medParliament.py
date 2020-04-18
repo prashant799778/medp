@@ -10164,7 +10164,7 @@ def adminNotificationCount1():
 
                 for i in y:
 
-                    print(i,"y373vedvsfswsf")
+                    print(i,"22222222222222222222222222222y373vedvsfswsf")
                 
                     print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
                     print("111111111111111")
@@ -10174,6 +10174,7 @@ def adminNotificationCount1():
                     data2=databasefile.SelectQuery4('approvedBy as pm,userPost as up,userMaster as um',column,whereCondition)
                     print(data2['result'],"@@@@@@@@$%9999999999999999999999999999999999976666666")
 
+                    
                     if data2['result']!= "":
                         print('sggggggggggggggggggggggg',data2['result'])
                         for m in data2['result']:
