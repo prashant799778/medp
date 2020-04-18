@@ -10219,6 +10219,7 @@ def adminNotification1():
                             whereCondition=" and  postId= '"+str(postId) +"'"
                             column=" adminstatus='1' "
                             data=databasefile.UpdateQuery('approvedBy',column,whereCondition)
+                a=sorted(a, key = lambda i: i['DateCreate'])
                         
                         
                         
