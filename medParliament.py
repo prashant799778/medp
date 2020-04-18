@@ -10161,12 +10161,12 @@ def adminNotificationCount1():
                 
                 print(data['result'],"____________________________________________________-")
                 print(type(data['result']),"99999999999999999")
-                a=data['result']
+            
                 
              
 
 
-                for i in a:
+                for i in data['result']:
 
                     print("22222222222222222222222222222y373vedvsfswsf",i)
                 
@@ -10179,19 +10179,20 @@ def adminNotificationCount1():
                     print(data2['result'],"@@@@@@@@$%9999999999999999999999999999999999976666666")
 
                     
+                    
                     if data2['result']!= "":
                         print('sggggggggggggggggggggggg',data2['result'])
                         for m in data2['result']:
-                            b.append(m)
+                            a.append(m)
                         
                         
                         
                         
                     else:
                         print("ssssssssss")
-                        data2['result']=b
+                        data2['result']=a
 
-                Data = {"status":"true","message":"","result":"","totalcount":len(b)}
+                Data = {"status":"true","message":"","result":"","totalcount":len(a)}
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
 
