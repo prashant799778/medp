@@ -10162,7 +10162,7 @@ def adminNotificationCount1():
              
 
 
-                for i in data['result']:
+                for i in list(data['result']):
 
                     print("22222222222222222222222222222y373vedvsfswsf",i)
                 
