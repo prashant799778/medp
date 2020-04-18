@@ -10158,7 +10158,7 @@ def adminNotificationCount1():
                 print(data['result'],"____________________________________________________-")
                 print(type(data['result']),"99999999999999999")
                 y=data['result']
-                a=data[::-1]
+                a=y[::-1]
 
 
                 for i in a:
