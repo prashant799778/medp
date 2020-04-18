@@ -10078,13 +10078,13 @@ def superAdminNotificationCount1():
             if data229['status'] !='false':
                 print(data229['result'],"____________________________________________________-")
                 print(type(data229['result']),"99999999999999999")
+                y=data229['result']
 
 
-                for i in data229['result']:
+                for i in y:
+
                     print(i,"y373vedvsfswsf")
                     print('11')
-
-                    
                     print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
                     print("111111111111111")
 
