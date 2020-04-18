@@ -10170,7 +10170,7 @@ def adminNotification1():
         
 
         
-        if (data['status']!="false"):
+        if (data['result']!=""):
             for i in data['result']:
                 postId=i['postId']
                 whereCondition=" and  postId= '"+str(postId) +"'"
@@ -10218,7 +10218,7 @@ def adminNotification1():
                             postId=i['postId']
                             whereCondition=" and  postId= '"+str(postId) +"'"
                             column=" adminstatus='1' "
-                            data1=databasefile.UpdateQuery('approvedBy',column,whereCondition)
+                            data=databasefile.UpdateQuery('approvedBy',column,whereCondition)
                         
                         
                         
