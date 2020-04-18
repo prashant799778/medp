@@ -10155,6 +10155,7 @@ def adminNotificationCount1():
             data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
 
             if data['status'] !='false':
+                b=[]
                 print(data['result'],"____________________________________________________-")
                 print(type(data['result']),"99999999999999999")
                 y=data['result']
@@ -10176,16 +10177,16 @@ def adminNotificationCount1():
                     if data2['result']!= "":
                         print('sggggggggggggggggggggggg',data2['result'])
                         for m in data2['result']:
-                            a.append(m)
+                            b.append(m)
                         
                         
                         
                         
                     else:
                         print("ssssssssss")
-                        data2['result']=a
+                        data2['result']=b
 
-                    Data = {"status":"true","message":"","result":"","totalcount":len(a)}
+                    Data = {"status":"true","message":"","result":"","totalcount":len(b)}
                     print(Data,"@@@@@@@@@@@@@@@@@@")
                     return Data
 
