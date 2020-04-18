@@ -10007,6 +10007,7 @@ def adminNotification():
             print(Data,"@@@@@@@@@@@@@@@@@@")
             return Data
         else:
+
             output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
             return output
        
@@ -10053,75 +10054,6 @@ def adminNotificationCount():
         output = {"status":"false","message":"something went wrong","result":""}
         return output  
 
-
-@app.route('/superAdminNotificationCount1', methods=['POST'])
-def superAdminNotificationCount1():
-    try:
-
-          
-        column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-        WhereCondition= "and pm.superadminStatus='0'"
-        data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
-        print(data,"data2")
-        if data['status'] !='false':
-            print("111111111111111")          
-            Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
-            print(Data,"@@@@@@@@@@@@@@@@@@")
-            return Data
-
-        else:  
-            
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-            WhereCondition= "and pm.superadminStatus='1' "
-            data229 = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
-            a=[]
-            if data229['status'] !='false':
-                print(data229['result'],"____________________________________________________-")
-                print(type(data229['result']),"99999999999999999")
-                y=data229['result']
-
-
-                for i in y:
-
-                    print(i,"y373vedvsfswsf")
-                    print('11')
-                    print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
-                    print("111111111111111")
-
-                    column= "pm.commentDescription as postDescription,um.userName,pm.postId,up.userId,pm.status,pm.id as Id,up.postTitle,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-                    whereCondition= " and pm.approvedUserId=um.userId and pm.superstatus='0'  and pm.postId=up.postId and pm.postId= '"+str(i['postId'])+"'"
-                    data2=databasefile.SelectQuery4('approvedBy as pm,userPost as up,userMaster as um',column,whereCondition)
-                    print(data2['result'],"@@@@@@@@$%9999999999999999999999999999999999976666666")
-
-                    if data2['result']!= "":
-                        print('sggggggggggggggggggggggg',data2['result'])
-                        for m in data2['result']:
-                            a.append(m)
-                        
-                        
-                        
-                        
-                    else:
-                        print("ssssssssss")
-                        data2['result']=a
-
-                
-                Data = {"status":"true","message":"","result":"","totalcount":len(a)}
-                print(Data,"@@@@@@@@@@@@@@@@@@")
-                return Data
-
-               
-            else:
-                output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
-                return output
-      
-    except Exception as e :
-        print("Exception---->" + str(e))    
-        output = {"status":"false","message":"something went wrong","result":""}
-        return output
-
-
-
 @app.route('/adminNotificationCount1', methods=['POST'])
 def adminNotificationCount1():
     try:
@@ -10155,7 +10087,7 @@ def adminNotificationCount1():
             WhereCondition= "and pm.status='1' and pm.userTypeId='" + str(userTypeId) + "' "
             data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
             a=[]
-            b=[]
+            
 
             if data['status'] !='false':
                 
@@ -10190,7 +10122,7 @@ def adminNotificationCount1():
                         
                     
 
-                Data = {"status":"true","message":"","result":a,"totalcount":len(a)}
+                Data = {"status":"true","message":"","result":"","totalcount":len(a)}
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
 
