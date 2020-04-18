@@ -10150,7 +10150,7 @@ def adminNotificationCount1():
             print(Data,"@@@@@@@@@@@@@@@@@@")
             return Data
         else:
-            column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+            column="pm.postId"
             WhereCondition= "and pm.status='1' and pm.userTypeId='" + str(userTypeId) + "' "
             data229 = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
             a=[]
@@ -10163,7 +10163,7 @@ def adminNotificationCount1():
                 for i in y:
 
                     print(i,"y373vedvsfswsf")
-                    print('11')
+                
                     print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
                     print("111111111111111")
 
