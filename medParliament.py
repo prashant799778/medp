@@ -10157,7 +10157,7 @@ def adminNotificationCount1():
             if data229['status'] !='false':
                 print(data229['result'],"____________________________________________________-")
                 print(type(data229['result']),"99999999999999999")
-                y=data229['result'][1:]
+                y=data229['result'][3:]
 
 
                 for i in y:
