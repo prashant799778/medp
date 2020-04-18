@@ -10105,9 +10105,10 @@ def superAdminNotificationCount1():
                         print("ssssssssss")
                         data2['result']=a
 
-                    Data = {"status":"true","message":"","result":"","totalcount":len(a)}
-                    print(Data,"@@@@@@@@@@@@@@@@@@")
-                    return Data
+                
+                Data = {"status":"true","message":"","result":"","totalcount":len(a)}
+                print(Data,"@@@@@@@@@@@@@@@@@@")
+                return Data
 
                
             else:
