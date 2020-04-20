@@ -2728,7 +2728,9 @@ def myInbox():
 
                     if data1['result']!="":
                         for l in data1['result']:
-                            data55.append(l)
+                            if (l['userId']!=userId):
+                                data55.append(l)
+                                
                             whereCondition=" and status='0' and postId='" + str(postId) + "' "
                             column="status=1"
                             up=databasefile.UpdateQuery('approvedBy',column,whereCondition)
