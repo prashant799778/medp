@@ -9338,7 +9338,7 @@ def landingPageDashboard12():
 
         if data != "0":
             
-            return {"message":"","status":"true","marketingInsights":data['result'],"upSkillsOpportunity":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"highlightedIntiatives":data5["result"],"news":data2["result"],"gallery":data6["result"],"event":data3["result"],"medAchieversTv":data4["result"],"ourPartners":data99['result'],"publicAffairs":data51['result'],"medMarket":data512['result']}
+            return {"message":"","status":"true","marketingInsights":data['result'],"upSkillsOpportunity":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"highlightedIntiatives":data5["result"],"news":data2["result"],"gallery":data6["result"],"event":data3["result"],"medAchieversTv":data4["result"],"ourPartners":data99['result'],"publicAffairs":data51['result'],"medStreet":data512['result']}
             
         else:
             return commonfile.Errormessage()
