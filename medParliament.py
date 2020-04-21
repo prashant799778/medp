@@ -8898,7 +8898,7 @@ def generateOrder():
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         #startlimit,endlimit="",""
         keyarr = ['order_amount',"userId"]
-        order_currency = 'INR'
+        order_currency = 'USD'
         print(inputdata,"B")
         commonfile.writeLog("generateOrder",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
