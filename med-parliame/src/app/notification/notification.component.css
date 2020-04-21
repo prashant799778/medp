@@ -62,3 +62,18 @@ p.inline-blk div {
     width: 100%;
     overflow-x: scroll;
 }
+
+.tbl-notification tr th{
+    padding: 10px 8px!important;
+    color: #707070;
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+.tbl-notification tr td {
+    padding: 10px 8px;
+    font-size: 13px;
+    vertical-align: middle;
+}
+.tbl-notification tr td p{
+    margin: 0;
+}
