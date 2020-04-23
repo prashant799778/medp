@@ -9053,7 +9053,7 @@ def landingPageDashboard12():
         WhereCondition,startlimit,endlimit="","",""
         WhereCondition=WhereCondition+" and status<2"
         whereCondition2=""
-        startlimit,endlimit="",""
+        startlimit,endlimit="0","1"
         
         data1={"message":"","status":"true","result":[]}
         orderby=" id "
@@ -10217,7 +10217,7 @@ def adminNotification1():
             a=[]
             
 
-            if data['status'] !='false':
+           if data['status'] !='false':
                 
                 print(data['result'],"____________________________________________________-")
                 print(type(data['result']),"99999999999999999")
