@@ -10215,9 +10215,7 @@ def adminNotification1():
             WhereCondition= "and pm.status='1' and pm.userTypeId='" + str(userTypeId) + "' "
             data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
             a=[]
-            
-
-           if data['status'] !='false':
+            if data['status'] !='false':
                 
                 print(data['result'],"____________________________________________________-")
                 print(type(data['result']),"99999999999999999")
