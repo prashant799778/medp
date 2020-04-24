@@ -9962,7 +9962,7 @@ def superAdminNotification():
             else:
                 print('2')
                 column="pm.postId"
-                WhereCondition= "and pm.status='1' "
+                WhereCondition= "and pm.superadminStatus='1' "
                 data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
                 print(data,"1bguifesuy")
                 a=[]
@@ -10038,7 +10038,7 @@ def superAdminNotificationCount():
         else:
             print('1')
             column="pm.postId"
-            WhereCondition= "and pm.status='1'  "
+            WhereCondition= "and pm.superadminStatus='1'  "
             data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
             print(data,'11111111111111111111111')
             a=[]
@@ -10065,7 +10065,7 @@ def superAdminNotificationCount():
 
                     
                     
-                    if data2['status']=='true':
+                    if data2['status']=='false':
                         print('sggggggggggggggggggggggg',data2['result'])
                         for m in data2['result']:
                             a.append(m)
