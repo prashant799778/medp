@@ -10028,11 +10028,10 @@ def superAdminNotificationCount():
         WhereCondition= "and pm.superadminStatus='0'"
         data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
         print(data,"999999999999999999")
-        print(data,"data2")
-        if data['result'] !='':
-            print("111111111111111")          
+        
+        if data['status'] !='false':
+                   
             Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
-            print(Data,"@@@@@@@@@@@@@@@@@@")
             return Data
         else:
             print('1')
