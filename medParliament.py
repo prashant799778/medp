@@ -10027,8 +10027,9 @@ def superAdminNotificationCount():
         column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
         WhereCondition= "and pm.superadminStatus='0'"
         data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
+        print(data,"999999999999999999")
         print(data,"data2")
-        if data['result'] != '':
+        if data['result'] !=:
             print("111111111111111")          
             Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
             print(Data,"@@@@@@@@@@@@@@@@@@")
