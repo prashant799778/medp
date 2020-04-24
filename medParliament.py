@@ -9998,6 +9998,7 @@ def superAdminNotification():
                                 column=" adminstatus='1' "
                                 data=databasefile.UpdateQuery('approvedBy',column,whereCondition)
                     a=sorted(a, key = lambda i: i['DateCreate'])
+                    print(a,"aaaaaaaaaaa")
                             
                             
                             
