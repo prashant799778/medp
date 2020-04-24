@@ -9964,6 +9964,7 @@ def superAdminNotification():
                 column="pm.postId"
                 WhereCondition= "and pm.status='1' "
                 data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
+                print(data,"1bguifesuy")
                 a=[]
                 if data['status'] !='false':
                 
