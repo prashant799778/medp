@@ -9960,8 +9960,56 @@ def superAdminNotification():
                 print(Data,"@@@@@@@@@@@@@@@@@@")
                 return Data
             else:
-                output = {"status":"false","message":"No Data Found","result":"","totalCount":0}
-                return output
+                column="pm.postId"
+                WhereCondition= "and pm.status='1' and pm.userTypeId='" + str(userTypeId) + "' "
+                data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
+                a=[]
+                if data['status'] !='false':
+                
+                    print(data['result'],"____________________________________________________-")
+                    
+                    print(type(data['result']),"99999999999999999")
+                
+                    
+                 
+
+
+                    for i in data['result']:
+
+                        print("22222222222222222222222222222y373vedvsfswsf",i)
+                    
+                        print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
+                        print("111111111111111")
+
+                        column= "pm.commentDescription as postDescription,um.userName,pm.postId,up.userId,pm.status,pm.id as Id,up.postTitle,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                        whereCondition= " and pm.approvedUserId=um.userId  and  pm.adminstatus='0'  and pm.postId=up.postId and pm.postId= '"+str(i['postId'])+"'"
+                        data2=databasefile.SelectQuery4('approvedBy as pm,userPost as up,userMaster as um',column,whereCondition)
+                        print(data2['result'],"@@@@@@@@$%9999999999999999999999999999999999976666666")
+
+                        
+                        
+                        if data2['result']!= "":
+                            print('sggggggggggggggggggggggg',data2['result'])
+                            for m in data2['result']:
+                                a.append(m)
+                            for i in a:
+                                postId=i['postId']
+                                whereCondition=" and  postId= '"+str(postId) +"'"
+                                column=" adminstatus='1' "
+                                data=databasefile.UpdateQuery('approvedBy',column,whereCondition)
+                    a=sorted(a, key = lambda i: i['DateCreate'])
+                            
+                            
+                            
+                            
+                        
+
+                    Data = {"status":"true","message":"","result":a,"totalcount":len(a)}
+                    print(Data,"@@@@@@@@@@@@@@@@@@")
+                    return Data
+                else:
+                    output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
+                    return output
         else:
             return msg
     except Exception as e :
@@ -9984,8 +10032,57 @@ def superAdminNotificationCount():
             print(Data,"@@@@@@@@@@@@@@@@@@")
             return Data
         else:
-            output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
-            return output
+            column="pm.postId"
+            WhereCondition= "and pm.status='1' and pm.userTypeId='" + str(userTypeId) + "' "
+            data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
+            a=[]
+            if data['status'] !='false':
+                
+                print(data['result'],"____________________________________________________-")
+                print(type(data['result']),"99999999999999999")
+            
+                
+             
+
+
+                for i in data['result']:
+
+                    print("22222222222222222222222222222y373vedvsfswsf",i)
+                
+                    print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
+                    print("111111111111111")
+
+                    column= "pm.commentDescription as postDescription,um.userName,pm.postId,up.userId,pm.status,pm.id as Id,up.postTitle,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+                    whereCondition= " and pm.approvedUserId=um.userId  and  pm.adminstatus='0'  and pm.postId=up.postId and pm.postId= '"+str(i['postId'])+"'"
+                    data2=databasefile.SelectQuery4('approvedBy as pm,userPost as up,userMaster as um',column,whereCondition)
+                    print(data2['result'],"@@@@@@@@$%9999999999999999999999999999999999976666666")
+
+                    
+                    
+                    if data2['result']!= "":
+                        print('sggggggggggggggggggggggg',data2['result'])
+                        for m in data2['result']:
+                            a.append(m)
+                        for i in a:
+                            postId=i['postId']
+                            whereCondition=" and  postId= '"+str(postId) +"'"
+                            column=" adminstatus='1' "
+                            data=databasefile.UpdateQuery('approvedBy',column,whereCondition)
+                a=sorted(a, key = lambda i: i['DateCreate'])
+                        
+                        
+                        
+                        
+                    
+
+                Data = {"status":"true","message":"","result":"","totalcount":len(a)}
+                print(Data,"@@@@@@@@@@@@@@@@@@")
+                return Data
+
+               
+            else:
+                output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
+                return output
       
     except Exception as e :
         print("Exception---->" + str(e))    
