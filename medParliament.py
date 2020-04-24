@@ -9997,7 +9997,7 @@ def superAdminNotification():
                             for i in a:
                                 postId=i['postId']
                                 whereCondition=" and  postId= '"+str(postId) +"'"
-                                column=" adminstatus='1' "
+                                column=" superstatus='1' "
                                 data=databasefile.UpdateQuery('approvedBy',column,whereCondition)
                     a=sorted(a, key = lambda i: i['DateCreate'])
                     print(a,"aaaaaaaaaaa")
@@ -10068,12 +10068,7 @@ def superAdminNotificationCount():
                         print('sggggggggggggggggggggggg',data2['result'])
                         for m in data2['result']:
                             a.append(m)
-                        for i in a:
-                            postId=i['postId']
-                            whereCondition=" and  postId= '"+str(postId) +"'"
-                            column=" superstatus='1' "
-                            data=databasefile.UpdateQuery('approvedBy',column,whereCondition)
-                a=sorted(a, key = lambda i: i['DateCreate'])
+                
                         
                         
                         
