@@ -10065,7 +10065,7 @@ def superAdminNotificationCount():
 
                     
                     
-                    if data2['status']!='false':
+                    if data2['status']=='true':
                         print('sggggggggggggggggggggggg',data2['result'])
                         for m in data2['result']:
                             a.append(m)
