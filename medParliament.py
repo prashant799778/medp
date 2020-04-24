@@ -10028,6 +10028,7 @@ def superAdminNotificationCount():
         WhereCondition= "and pm.superadminStatus='0'"
         data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
         print(data,"999999999999999999")
+        print('11111111')
         
         if data['status'] !='false':
                    
