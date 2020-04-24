@@ -9949,7 +9949,7 @@ def superAdminNotification():
             WhereCondition= "and pm.superadminStatus ='0' and pm.userId=um.userId"
             data = databasefile.SelectQuery4("userPost as pm,userMaster as um",column,WhereCondition)
             print(data,"data2")
-            if data['status'] !='false':
+            if data['result'] !='':
                 for i in data['result']:
                     postId=i['postId']
                     whereCondition=" and  postId= '"+str(postId) +"'"
@@ -10027,7 +10027,7 @@ def superAdminNotificationCount():
         WhereCondition= "and pm.superadminStatus='0'"
         data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
         print(data,"data2")
-        if data['status'] !='false':
+        if data['result'] !='':
             print("111111111111111")          
             Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
             print(Data,"@@@@@@@@@@@@@@@@@@")
