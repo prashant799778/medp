@@ -6616,10 +6616,10 @@ def landingPageDashboardtest():
                         d=len(y)
                         if d>1:
                             if d == 2:
-                                    m['videoId']=y[1]
+                                i['videoId']=y[1]
                             if d ==3:
                                 k9=y[1].split('&')
-                                m['videoId']=k9[0]
+                                i['videoId']=k9[0]
                         else:
                             i['videoId']=y[0]
                     else:
@@ -6767,10 +6767,10 @@ def landingPageDashboardtest():
                         d=len(y)
                         if d>1:
                             if d == 2:
-                                    m['videoId']=y[1]
+                                i['videoId']=y[1]
                             if d ==3:
                                 k9=y[1].split('&')
-                                m['videoId']=k9[0]
+                                i['videoId']=k9[0]
                             
                         else:
                             i['videoId']=y[0]
@@ -6831,10 +6831,10 @@ def landingPageDashboardtest():
                         d=len(y)
                         if d>1:
                             if d == 2:
-                                m['videoId']=y[1]
+                                i['videoId']=y[1]
                             if d ==3:
                                 k9=y[1].split('&')
-                                m['videoId']=k9[0]
+                                i['videoId']=k9[0]
                             
                         else:
                             i['videoId']=y[0]
