@@ -1,12 +1,12 @@
 
 def GetBaseURL():
  
-    path = "http://134.209.153.34:5031"
+    path = "http://54.169.46.109:5031"
     return path
 
 def getwebBaseurl():
  
-    path = "http://134.209.153.34:4200"
+    path = "http://54.169.46.109:4200"
     return path
 
 
