@@ -6,7 +6,7 @@ import { SessionStorageService, LocalStorageService } from 'angular-web-storage'
 	providedIn: 'root'
 })
 export class UserServiceService {
-	baseUrl= 'http://134.209.153.34:5031/';
+	baseUrl= 'http://54.169.46.109:5031/';
 	user: any;
 	KEY = 'value';
 	superLogin: boolean;

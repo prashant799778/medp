@@ -23,7 +23,7 @@ export class AuthsService {
     // port = (this.window.location.port) ? ':' + this.window.location.port : '';
     // baseUrl = `${this.window.location.protocol}//${this.window.location.hostname}${this.port}`;
     // authUrl = this.baseUrl + '/api/auth';
-    baseUrl= 'http://134.209.153.34:5031/';
+    baseUrl= 'http://54.169.46.109:5031/';
     // baseUrl = `http://139.59.78.54:5021/`;
     isAuthenticated = false;
     loginSuccess: number;
