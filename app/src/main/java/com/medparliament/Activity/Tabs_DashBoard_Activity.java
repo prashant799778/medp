@@ -139,7 +139,7 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(Tabs_DashBoard_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(Tabs_DashBoard_Activity.this, NotificationActivity.class));
@@ -155,7 +155,7 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(Tabs_DashBoard_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(Tabs_DashBoard_Activity.this, NotificationActivity.class));

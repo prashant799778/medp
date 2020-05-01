@@ -11,12 +11,29 @@
         android:id="@+id/main_img"
         android:scaleType="centerCrop">
     </ImageView>
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+    <RelativeLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:id="@+id/video"
-        android:layout_height="match_parent"
-        app:autoPlay="false"
-        android:background="@color/white"
-        app:showYouTubeButton="true">
-    </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+        android:layout_height="match_parent">
+        <View
+            android:elevation="23dp"
+            android:id="@+id/over_lay"
+            android:background="@color/transparent"
+            
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </View>
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:layout_width="match_parent"
+
+            android:id="@+id/video"
+            android:layout_height="match_parent"
+            app:autoPlay="false"
+            android:background="@color/white"
+            app:showYouTubeButton="true">
+        </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+
+
+</RelativeLayout>
 </RelativeLayout>

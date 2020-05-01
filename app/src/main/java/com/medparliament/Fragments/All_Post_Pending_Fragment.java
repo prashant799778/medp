@@ -85,7 +85,7 @@ public class All_Post_Pending_Fragment extends Base_Fragement implements onResul
         nodata.setVisibility(View.VISIBLE);
         if(jsonObject!=null && status){
             nodata.setVisibility(View.GONE);
-            Log.d("res11111111",jsonObject.toString());
+            //Log.d("res11111111",jsonObject.toString());
             Gson gson=new GsonBuilder().create();
             try {
                 ArrayList<Post_Modle> rm = gson.fromJson(jsonObject.getString("result"), new TypeToken<ArrayList<Post_Modle>>(){}.getType());

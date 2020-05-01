@@ -11,6 +11,6 @@ public class CameraErrorCallback implements Camera.ErrorCallback {
 
     @Override
     public void onError(int error, Camera camera) {
-        Log.e(TAG, "Encountered an unexpected camera error: " + error);
+       // //Log.e(TAG, "Encountered an unexpected camera error: " + error);
     }
 }

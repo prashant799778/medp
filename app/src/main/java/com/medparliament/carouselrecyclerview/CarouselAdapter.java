@@ -49,8 +49,8 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.Carous
     public void addAll( ArrayList<up_skill_model>arrayList) {
        this.arrayList.clear();
         this.arrayList.addAll(arrayList);
-        Log.d("new_size....",arrayList.size()+"");
-        Log.d("new_size....",arrayList.get(0).getNewsDesc());
+        //Log.d("new_size....",arrayList.size()+"");
+        //Log.d("new_size....",arrayList.get(0).getNewsDesc());
         notifyDataSetChanged();
     }
     @NonNull

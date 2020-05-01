@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
@@ -66,17 +67,21 @@ public class HighlightedInsightsAdapter extends RecyclerView.Adapter<Highlighted
             holder.time.setText(PrettyTimeClass.PrettyTime(Comman.timeInms(result.getDateCreate1())));
         holder.msg.setText(Html.fromHtml(result.getNewsDesc()));
         if(!result.getImagePath().equalsIgnoreCase(""))
-        {
+        {     Comman.log("newtest in ","if");
             holder.rvideo.setVisibility(View.GONE);
             Comman.setImageWithCondition(context,holder.mainimg,result.getImagePath());
         }else {
+
+
+
             holder.mainimg.setVisibility(View.GONE);
-            holder.rvideo.setVisibility(View.VISIBLE);
+
             holder.video.getPlayerUiController().showYouTubeButton(false);
             holder.video.addYouTubePlayerListener(new YouTubePlayerListener() {
                 @Override
                 public void onReady(@NotNull YouTubePlayer youTubePlayer) {
-                    youTubePlayer.cueVideo(result.getVideoId(),0);
+
+                    youTubePlayer.cueVideo(result.getVideoId(),1);
                 }
 
                 @Override
@@ -147,7 +152,7 @@ public class HighlightedInsightsAdapter extends RecyclerView.Adapter<Highlighted
         Segow_UI_Font msg;
         ImageView mainimg;
         Segow_UI_Bold_Font time;
-        RelativeLayout rvideo;
+        LinearLayout  rvideo;
         View layer;
         YouTubePlayerView video;
         public NotificationHolder(@NonNull View itemView) {

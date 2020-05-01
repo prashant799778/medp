@@ -45,7 +45,7 @@ public class Dashboard_news_adapter_new  extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup collection, int position) {
 
-        Log.d("aaa","aaaaa");
+//        //Log.d("aaa","aaaaa");
         final NewModel pm = itemList.get(position);
         LayoutInflater inflater = LayoutInflater.from(context);
         ViewGroup convertView = (ViewGroup) inflater.inflate(R.layout.dashboardhighlightedlayout, collection, false);

@@ -89,7 +89,6 @@
                         android:id="@+id/new_logo"
                         android:layout_width="30dp"
                         android:layout_height="25dp"
-                        android:layout_centerVertical="true"
                         android:src="@drawable/new_ic_logo"></ImageView>
 
                     <com.medparliament.Widget.Segow_UI_Bold_Font

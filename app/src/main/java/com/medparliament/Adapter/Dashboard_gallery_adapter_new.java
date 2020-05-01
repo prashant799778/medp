@@ -29,14 +29,14 @@ public class Dashboard_gallery_adapter_new  extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup collection, final int position) {
 
-        Log.d("Test Gallery","Test Gallery"+itemList.size());
+        //Log.d("Test Gallery","Test Gallery"+itemList.size());
         final NewModel pm = itemList.get(position);
         LayoutInflater inflater = LayoutInflater.from(context);
         ViewGroup convertView = (ViewGroup) inflater.inflate(R.layout.partnerlayout, collection, false);
         ImageView imageView;
         imageView=convertView.findViewById(R.id.main_img);
         Comman.setRectangleImage(context,imageView,pm.getImagePath());
-        Log.d("Test Gallery","Test Gallery"+pm.getImagePath());
+        //Log.d("Test Gallery","Test Gallery"+pm.getImagePath());
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +76,7 @@ public class Dashboard_gallery_adapter_new  extends PagerAdapter {
     }
 
     public void updateList(ArrayList<NewModel> itemList){
-        Log.d("gallery","gallery"+itemList.size());
+        //Log.d("gallery","gallery"+itemList.size());
         this.itemList=itemList;
         super.notifyDataSetChanged();
     }

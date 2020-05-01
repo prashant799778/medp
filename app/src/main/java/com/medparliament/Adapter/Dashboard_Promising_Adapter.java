@@ -45,13 +45,13 @@ public class Dashboard_Promising_Adapter  extends PagerAdapter {
 
         this.context = context;
         this.itemList=itemList;
-        Log.d("aaa1","aaaaa"+itemList.size());
+        //Log.d("aaa1","aaaaa"+itemList.size());
     }
 
     @Override
     public Object instantiateItem(ViewGroup collection, int position) {
 
-        Log.d("aaa","aaaaa");
+        //Log.d("aaa","aaaaa");
         final NewModel pm = itemList.get(position);
         LayoutInflater inflater = LayoutInflater.from(context);
         ViewGroup convertView = (ViewGroup) inflater.inflate(R.layout.dashboardhighlightedlayout, collection, false);
@@ -131,7 +131,7 @@ public class Dashboard_Promising_Adapter  extends PagerAdapter {
             public void onClick(View v) {
                 if(Comman.Check_Login(context)){
                     Intent intent = new Intent(context, Tabs_DashBoard_Activity.class);
-                    intent.putExtra("id", "3");
+                    intent.putExtra("id", "4");
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);} else {
                     Intent intent = new Intent(context, Login_Signup_Activity.class);

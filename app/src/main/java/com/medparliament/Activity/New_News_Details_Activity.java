@@ -73,7 +73,7 @@ public class New_News_Details_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(New_News_Details_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(New_News_Details_Activity.this, NotificationActivity.class));
@@ -89,7 +89,7 @@ public class New_News_Details_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(New_News_Details_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(New_News_Details_Activity.this, NotificationActivity.class));
@@ -146,6 +146,7 @@ public class New_News_Details_Activity extends AppCompatActivity {
             video.addYouTubePlayerListener(new YouTubePlayerListener() {
                 @Override
                 public void onReady(@NotNull YouTubePlayer youTubePlayer) {
+
                     youTubePlayer.cueVideo(result.getVideoId(),0);
                 }
 

@@ -95,7 +95,15 @@
             android:src="@drawable/ic_share_1" />
 
     </RelativeLayout>
+    <WebView
+        android:layout_below="@id/top"
+        android:id="@+id/webViews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </WebView>
     <com.medparliament.Widget.Segow_UI_Semi_Font
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/solid_black"
@@ -107,6 +115,7 @@
         android:id="@+id/msg">
     </com.medparliament.Widget.Segow_UI_Semi_Font>
     <androidx.appcompat.widget.AppCompatButton
+         android:visibility="gone"
         android:layout_weight="1"
         android:layout_marginTop="10dp"
         android:id="@+id/enter"

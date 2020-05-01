@@ -89,8 +89,8 @@ public class SignUp_type_Activity extends Base_Activity implements View.OnClickL
 //        Api_Calling.getUniversityListData(SignUp_type_Activity.this,getWindow().getDecorView().getRootView(), URLS.ALL_UNIVERSITY);
 
 
-//        Log.d("scroll....",relativeLayout.getBottom()+"-"+relativeLayout.getMeasuredHeight()+"-"+relativeLayout.getBottom()+"-"+relativeLayout.getChildAt(0).getVisibility());
-//        Log.d("scroll....",scrollView.getBottom()+"-"+scrollView.getMeasuredHeight()+"-"+scrollView.getBottom()+"-"+scrollView.getChildAt(scrollView.getChildCount()-1).getVisibility());
+//        //Log.d("scroll....",relativeLayout.getBottom()+"-"+relativeLayout.getMeasuredHeight()+"-"+relativeLayout.getBottom()+"-"+relativeLayout.getChildAt(0).getVisibility());
+//        //Log.d("scroll....",scrollView.getBottom()+"-"+scrollView.getMeasuredHeight()+"-"+scrollView.getBottom()+"-"+scrollView.getChildAt(scrollView.getChildCount()-1).getVisibility());
     }
 
     @Override
@@ -154,13 +154,13 @@ public class SignUp_type_Activity extends Base_Activity implements View.OnClickL
 
     @Override
     public void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy) {
-        //Log.d("scroll....",y+"");
+        ////Log.d("scroll....",y+"");
         if((relativeLayout.getMeasuredHeight()-scrollView.getMeasuredHeight())==y){
 
             bIcon.setVisibility(View.GONE);
 //            uIcon.setVisibility(View.VISIBLE);
         }else if(y>3) {
-           // Log.d("scroll....","need");
+           // //Log.d("scroll....","need");
             bIcon.setVisibility(View.VISIBLE);
 //            uIcon.setVisibility(View.VISIBLE);
 

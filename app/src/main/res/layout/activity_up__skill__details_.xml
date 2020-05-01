@@ -251,6 +251,7 @@
                             android:gravity="left|center_vertical"
                             android:layout_height="match_parent">
                         </com.medparliament.Widget.Segow_UI_Semi_Font>
+
                         <com.medparliament.Widget.Segow_UI_Semi_Font
                             android:layout_width="match_parent"
                             android:textColor="@color/solid_black"
@@ -258,10 +259,9 @@
                             android:textSize="16dp"
                             android:gravity="left|center_vertical"
                             android:id="@+id/lenght"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="gravity"
-                            android:layout_gravity="center_vertical"
-                            tools:ignore="RtlCompat">
+                            android:textAlignment="center"
+                            tools:ignore="RtlCompat"
+                            android:layout_height="wrap_content">
                         </com.medparliament.Widget.Segow_UI_Semi_Font>
                     </LinearLayout>
                     <View

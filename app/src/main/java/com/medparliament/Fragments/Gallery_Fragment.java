@@ -7,11 +7,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -78,14 +80,22 @@ public class Gallery_Fragment extends Base_Fragement implements onResult {
         try {
             jsonObject.put("userTypeId",""+m.getUserTypeId()).put("userId",""+m.getUserId()).put("key",3);
         } catch (JSONException e) {
-            e.printStackTrace();
+            e   .printStackTrace();
         }
         Comman.log("MyPOSTJSON",""+jsonObject);
         return jsonObject;
     }
 
     @Override
+    public void onResume() {
+        Comman.log("onnn",""+"resume ");
+        super.onResume();
+
+    }
+
+    @Override
     public void onStart() {
+        Comman.log("onnn","start");
         super.onStart();
         Api_Calling.postMethodCall_NO_MSG(getContext(),getActivity().getWindow().getDecorView().getRootView(), onResult, URLS.landingPageDashboardtest, myPostJson(), "MY_POST_LIST");
     }

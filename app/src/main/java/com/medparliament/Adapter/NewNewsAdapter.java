@@ -20,6 +20,7 @@ import com.medparliament.Activity.New_News_Details_Activity;
 import com.medparliament.Activity.NewsDetails_Activity;
 import com.medparliament.Activity.News_Activity_1;
 import com.medparliament.Internet.NewModel.Result;
+import com.medparliament.MyApplication;
 import com.medparliament.R;
 import com.medparliament.Utility.Comman;
 import com.medparliament.Utility.PrettyTimeClass;
@@ -131,7 +132,8 @@ public class NewNewsAdapter extends RecyclerView.Adapter<NewNewsAdapter.Notifica
             public void onClick(View v) {
                 if(Comman.Check_Login(context)){
                 Intent intent = new Intent(context, News_Activity_1.class);
-                intent.putExtra("data", result);
+               // intent.putExtra("data", result);
+                    MyApplication.result=result;
                 context.startActivity(intent);} else {
 
                     Intent intent = new Intent(context, Login_Signup_Activity.class);

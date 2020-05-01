@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
+import com.hbb20.CountryCodePicker;
 import com.medparliament.Internet.Api_Calling;
 import com.medparliament.Internet.URLS;
 import com.medparliament.Internet.VideoListener;
@@ -60,7 +61,9 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
     ImageButton bck;
     MySharedPrefrence m;
     ArrayList<String> genderList=new ArrayList<>();
+    String countrycode="91";
 
+    CountryCodePicker ccpLoadNumber;
 
     VideoListener videoListener;
     ImageView image;
@@ -82,6 +85,14 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
         designation=findViewById(R.id.desgination);
         organization=findViewById(R.id.organization);
         mobile=findViewById(R.id.mobile);
+        ccpLoadNumber=findViewById(R.id.ccp);
+        ccpLoadNumber.registerCarrierNumberEditText(mobile);
+        ccpLoadNumber.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                countrycode= ccpLoadNumber.getSelectedCountryCode();
+            }
+        });
         about_profile=findViewById(R.id.about_profile);
         email=findViewById(R.id.email);
         bck=findViewById(R.id.bck);
@@ -283,7 +294,7 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
         });
     }
     public JSONObject setStudentJson()
-    {
+    {   //ccpLoadNumber.setFullNumber(mobile.getText().toString());
         JSONObject jsonObject=new JSONObject();
         try {
             String id="";
@@ -293,7 +304,7 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
                 id="";
             }
             jsonObject.put("userName",""+name.getText().toString())
-                    .put("mobileNo",""+mobile.getText().toString())
+                    .put("mobileNo",countrycode+"-"+  mobile.getText().toString())
                     .put("email",""+email.getText().toString()).
                     put("userTypeId","13")
                     .put("gender",""+id)
@@ -398,7 +409,7 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
                 } else if (data.getIntExtra("err_code", 0) == LinkedInBuilder.ERROR_FAILED) {
                     Comman.topSnakBar(getApplicationContext(),getWindow().getDecorView().getRootView(),data.getStringExtra("err_message"));
                     //Handle : Error in API : see logcat output for detai
-                    Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
+                    //Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
                 }
             }
         }

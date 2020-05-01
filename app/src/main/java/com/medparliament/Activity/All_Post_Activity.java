@@ -90,7 +90,7 @@ public class All_Post_Activity extends Base_Activity implements onResult {
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(All_Post_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(All_Post_Activity.this, NotificationActivity.class));
@@ -106,7 +106,7 @@ public class All_Post_Activity extends Base_Activity implements onResult {
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(All_Post_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(All_Post_Activity.this, NotificationActivity.class));

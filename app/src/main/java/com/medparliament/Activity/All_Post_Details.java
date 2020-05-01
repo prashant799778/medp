@@ -90,7 +90,7 @@ public class All_Post_Details extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+//                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(All_Post_Details.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(All_Post_Details.this, NotificationActivity.class));
@@ -106,7 +106,7 @@ public class All_Post_Details extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+//                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(All_Post_Details.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(All_Post_Details.this, NotificationActivity.class));

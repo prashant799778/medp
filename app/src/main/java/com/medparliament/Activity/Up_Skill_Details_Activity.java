@@ -19,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -99,7 +100,7 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(Up_Skill_Details_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(Up_Skill_Details_Activity.this, NotificationActivity.class));
@@ -115,7 +116,7 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(Up_Skill_Details_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(Up_Skill_Details_Activity.this, NotificationActivity.class));
@@ -232,9 +233,11 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
             try {
                 ArrayList<up_skill_model> rm = gson.fromJson(jsonObject.getString("result"), new TypeToken<ArrayList<up_skill_model>>(){}.getType());
                 final up_skill_model r=rm.get(0);
+                Segow_UI_Bold_Font t1=    findViewById(R.id.t1);
+                 t1.setText(r.getNewsTitle());
                 lenght.setText(r.getLength());
                 effort.setText(r.getEffort());
-                price.setText(r.getPrice());
+                price.setText("USD "+r.getPrice());
                 institute.setText(r.getInstitutions());
                 subject.setText(r.getSummary());
                 level.setText(r.getLevel());
@@ -351,7 +354,7 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
     @Override
     public void onPaymentError(int i, String s) {
         Comman.log("PaymentInformation","OnError "+s);
-        showDialogeBox(Up_Skill_Details_Activity.this,"Information","Your Payment not Successfully Done!");
+        showDialogeBox(Up_Skill_Details_Activity.this,"Information","Sorry! Unsuccessful payment. Please try again or contact MedParliament for assistance.");
     }
 
     public void startPayment(String orderId) {
@@ -391,7 +394,8 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
              */
 
             options.put("order_id", orderId);
-            options.put("currency", "INR");
+            options.put("currency", "USD");
+             //Log.d("test.........","order_iiiii");
 
             /**
              * Amount is always passed in currency subunits
@@ -413,7 +417,7 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
     }
     public  void genetareOrderId(final ProgressDialog progressDialog)
     {
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, "http://134.209.153.34:5031/generateOrder", orderIdJson(), new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, "http://54.169.46.109:5031/generateOrder", orderIdJson(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
@@ -449,6 +453,7 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
             JSONObject orderRequest = new JSONObject();
             orderRequest.put("userId",""+m.getUserId());
             orderRequest.put("course_id",""+skill_model.getId());
+            orderRequest.put("currency", "USD");
             if(skill_model.getPrice()!=null){
                 try {
                 orderRequest.put("order_amount", ((Integer.parseInt(skill_model.getPrice()))*100)); // amount in the smallest currency unit

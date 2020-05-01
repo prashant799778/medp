@@ -55,11 +55,13 @@ public class highlighted_initiative_Fragment extends Base_Fragement implements o
         progressDialog.setCancelable(true);
         progressDialog.show();
         this.onResult = this;
+
         nodata = v.findViewById(R.id.nodata);
         recyclerView = v.findViewById(R.id.recycle);
         arrayList = new ArrayList<>();
         manager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
+
         adapter = new HighlightedInsightsAdapter(getContext(), arrayList, m.getUserName(), 1);
         recyclerView.setAdapter(adapter);
         return v;

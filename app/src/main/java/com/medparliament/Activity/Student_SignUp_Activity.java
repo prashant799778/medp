@@ -78,6 +78,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
     Segow_UI_EditText name, mobile, email, pwd, cnfpwd, address, instuteName, universityaddress, define, qualifiaction, university;
     ImageButton bck;
     String userTypeId = "";
+    String countrycode="91";
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     CountryCodePicker ccpLoadNumber;
     ImageButton login_button;
@@ -118,7 +119,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
 //        login_button.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Log.d("user_detail","on click");
+//                //Log.d("user_detail","on click");
 //          loginHandle();
 //            }
 //        });
@@ -199,6 +200,13 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
                         .authenticate(Comman.LINKDIN_CODE);
             }
         });
+
+      ccpLoadNumber.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                  countrycode= ccpLoadNumber.getSelectedCountryCode();
+            }
+        });
     }
 
     @Override
@@ -209,7 +217,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
     }
 
     public JSONObject setStudentJson() {
-        ccpLoadNumber.setFullNumber(mobile.getText().toString());
+       // ccpLoadNumber.setFullNumber(mobile.getText().toString());
         JSONObject jsonObject = new JSONObject();
         try {
             String id = "";
@@ -218,8 +226,10 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
             } else {
                 id = "";
             }
+
+
             jsonObject.put("userName", "" + name.getText().toString())
-                    .put("mobileNo", "" + ccpLoadNumber.getFullNumber())//mobile.getText().toString())
+                    .put("mobileNo", countrycode+"-"+  mobile.getText().toString())//mobile.getText().toString())
                     .put("email", "" + email.getText().toString()).
                     put("userTypeId", "7")
                     .put("gender", "" + id)
@@ -539,7 +549,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
                 } else if (data.getIntExtra("err_code", 0) == LinkedInBuilder.ERROR_FAILED) {
                     Comman.topSnakBar(getApplicationContext(),getWindow().getDecorView().getRootView(),data.getStringExtra("err_message"));
                     //Handle : Error in API : see logcat output for details
-                    Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
+                    //Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
                 }
             }
         }

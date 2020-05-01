@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
+import com.hbb20.CountryCodePicker;
 import com.medparliament.Internet.Api_Calling;
 import com.medparliament.Internet.URLS;
 import com.medparliament.Internet.VideoListener;
@@ -59,7 +60,7 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
     JSONArray doctorIdArray;
     SpinnerDialog spinnerDialog;
     ImageButton bck;
-
+    CountryCodePicker ccpLoadNumber;
     VideoListener videoListener;
     ImageView image;
     YouTubePlayerView videoView;
@@ -69,6 +70,7 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
     ImageButton login_button;
     Segow_UI_Bold_Font login_txt;
     MySharedPrefrence m;
+    String countrycode="91";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +81,7 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
         this.onResult=this;
         define=findViewById(R.id.define);
         companyName=findViewById(R.id.companyname);
+        ccpLoadNumber=findViewById(R.id.ccp);
         expertise=findViewById(R.id.expertise);
         name=findViewById(R.id.name);
         address=findViewById(R.id.address);
@@ -86,6 +89,7 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
         googleLogin=findViewById(R.id.login);
         designation=findViewById(R.id.desgination);
         mobile=findViewById(R.id.mobile);
+        ccpLoadNumber.registerCarrierNumberEditText(mobile);
         email=findViewById(R.id.email);
         pwd=findViewById(R.id.pswd);
         profile_category=findViewById(R.id.profilecatogery);
@@ -155,6 +159,14 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
                         .setClientSecret(Comman.CLIENT_SECRET)
                         .setRedirectURI(Comman.REDIRECT_URL)
                         .authenticate(Comman.LINKDIN_CODE);
+            }
+        });
+
+
+        ccpLoadNumber.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                countrycode= ccpLoadNumber.getSelectedCountryCode();
             }
         });
     }
@@ -265,7 +277,7 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
 
 
     public JSONObject setStudentJson()
-    {
+    {     //ccpLoadNumber.setFullNumber(mobile.getText().toString());
         JSONObject jsonObject=new JSONObject();
         try {
             String id="";
@@ -274,7 +286,7 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
                 id="";
             }
             jsonObject.put("userName",""+name.getText().toString())
-                    .put("mobileNo",""+mobile.getText().toString())
+                    .put("mobileNo",countrycode+"-"+ mobile.getText().toString())
                     .put("email",""+email.getText().toString()) .put("address",""+address.getText().toString()).
                     put("userTypeId","9")
                     .put("gender",""+id).put("companyName",""+companyName.getText().toString())
@@ -448,7 +460,7 @@ public class Professonal_signup_Activity extends AppCompatActivity implements Vi
                 } else if (data.getIntExtra("err_code", 0) == LinkedInBuilder.ERROR_FAILED) {
                     Comman.topSnakBar(getApplicationContext(),getWindow().getDecorView().getRootView(),data.getStringExtra("err_message"));
                     //Handle : Error in API : see logcat output for details
-                    Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
+                    //Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
                 }
             }
         }

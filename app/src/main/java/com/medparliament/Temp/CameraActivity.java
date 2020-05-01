@@ -51,7 +51,7 @@ public class CameraActivity extends Activity
     private FaceDetectionListener faceDetectionListener = new FaceDetectionListener() {
         @Override
         public void onFaceDetection(Face[] faces, Camera camera) {
-            Log.d("onFaceDetection", "Number of Faces:" + faces.length);
+            //Log.d("onFaceDetection", "Number of Faces:" + faces.length);
             // Update the view now!
             mFaceView.setFaces(faces);
         }
@@ -98,7 +98,7 @@ public class CameraActivity extends Activity
         try {
             mCamera.setPreviewDisplay(surfaceHolder);
         } catch (Exception e) {
-            Log.e(TAG, "Could not preview the image.", e);
+            ////Log.e(TAG, "Could not preview the image.", e);
         }
     }
 

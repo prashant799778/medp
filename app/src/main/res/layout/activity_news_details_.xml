@@ -288,20 +288,20 @@
     <androidx.appcompat.widget.AppCompatButton
         android:layout_alignParentBottom="true"
         android:id="@+id/interest"
-        android:visibility="gone"
+
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fieldHeight"
         android:text="@string/interest"
         android:background="@drawable/rounded_btn_bodr"
         android:textColor="@color/white"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="0dp"
         android:textAllCaps="false">
     </androidx.appcompat.widget.AppCompatButton>
     <LinearLayout
         android:background="@drawable/layout"
         android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
+     android:layout_above="@id/interest"
         android:paddingLeft="15dp"
         android:id="@+id/l"
         android:elevation="5dp"

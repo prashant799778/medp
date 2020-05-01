@@ -23,12 +23,13 @@
     <com.medparliament.Widget.Segow_UI_Bold_Font
         android:layout_width="match_parent"
         android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
         android:textSize="18dp"
         android:layout_weight="1"
         android:textStyle="bold"
         android:id="@+id/t1"
         android:layout_below="@id/img1"
-        android:paddingLeft="20dp"
+        android:paddingLeft="0dp"
         android:textAlignment="center"
         android:text="@string/MED_PARLIAMENT"
         android:layout_height="wrap_content">

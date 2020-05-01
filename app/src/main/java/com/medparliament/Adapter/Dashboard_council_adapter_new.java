@@ -48,7 +48,7 @@ public class Dashboard_council_adapter_new extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup collection, int position) {
 
-        Log.d("aaa","aaaaa");
+        //Log.d("aaa","aaaaa");
         final NewModel pm = itemList.get(position);
         LayoutInflater inflater = LayoutInflater.from(context);
         ViewGroup convertView = (ViewGroup) inflater.inflate(R.layout.dashboardhighlightedlayout, collection, false);
@@ -128,7 +128,7 @@ public class Dashboard_council_adapter_new extends PagerAdapter {
             public void onClick(View v) {
                 if(Comman.Check_Login(context)){
                     Intent intent = new Intent(context, Tabs_DashBoard_Activity.class);
-                    intent.putExtra("id", "5");
+                    intent.putExtra("id", "6");
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);} else {
                     Intent intent = new Intent(context, Login_Signup_Activity.class);

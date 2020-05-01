@@ -118,7 +118,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.Notifica
             public void onClick(View v) {
                 if(Comman.Check_Login(context)){
                     Intent intent = new Intent(context, Tabs_DashBoard_Activity.class);
-                    intent.putExtra("id", "6");
+                    intent.putExtra("id", "7");
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);} else {
                     Intent intent = new Intent(context, Login_Signup_Activity.class);

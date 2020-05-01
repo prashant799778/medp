@@ -87,11 +87,15 @@ public class NotificationActivity extends AppCompatActivity implements com.medpa
 
     }
 
+
+
+
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {
         if(progressDialog!=null &&  progressDialog.isShowing())
             progressDialog.dismiss();
-        nodata.setVisibility(View.VISIBLE);
+
+
         if(jsonObject!=null && status){
             nodata.setVisibility(View.GONE);
             Gson gson=new GsonBuilder().create();
@@ -101,11 +105,21 @@ public class NotificationActivity extends AppCompatActivity implements com.medpa
                     arrayList.clear();
                     arrayList.addAll(rm);
                     adapter.notifyDataSetChanged();}else {
+                    arrayList.clear();
+                    adapter.notifyDataSetChanged();
+
                     nodata.setVisibility(View.VISIBLE);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        }
+
+         else{
+            arrayList.clear();
+            adapter.notifyDataSetChanged();
+
+            nodata.setVisibility(View.VISIBLE);
         }
     }
 

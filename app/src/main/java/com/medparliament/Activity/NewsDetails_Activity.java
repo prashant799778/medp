@@ -1,5 +1,6 @@
 package com.medparliament.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,8 +14,10 @@ import android.os.Handler;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,6 +29,7 @@ import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -124,7 +128,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(NewsDetails_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(NewsDetails_Activity.this, NotificationActivity.class));
@@ -140,7 +144,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(NewsDetails_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(NewsDetails_Activity.this, NotificationActivity.class));
@@ -243,7 +247,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
             like.setEnabled(false);
             like.setImageResource(R.drawable.ic_like_after);
         }
-        counter.setText(eventModel.getLikeCount()+"  Endorse");
+        counter.setText(eventModel.getLikeCount()+"  Like");
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -296,27 +300,26 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
             }
         }
 
-    }
-//        if(jsonObject!=null)
-//        {
-//            Comman.log("EVENT$$$$$",""+jsonObject.toString());
-//        }
-//        progressDialog.dismiss();
+
 //        if(status){
-//        ab.setText("Already Intrested");
-//        ab.setBackgroundResource(R.color.hintColor);}
-////        if (jsonObject != null && status) {
-////            try {
-////                JSONObject jo = jsonObject.getJSONArray("result").getJSONObject(0);
-////                m.setLoggedIn(true);
-////                title.setText(Comman.getValueFromJsonObject(jo, "postTitle"));
-////                created.setText("By :-" + Comman.getValueFromJsonObject(jo, "userName"));
-////                date.setText("" + PrettyTimeClass.PrettyTime(Comman.timeInms(Comman.getValueFromJsonObject(jo, "DateCreate"))));
-////                msg.setText("" + Comman.getValueFromJsonObject(jo, "postDescription"));
-////            } catch (JSONException e) {
-////                e.printStackTrace();
-////            }
-////        }
+//            ab.setText("Already Intrested");
+//            ab.setBackgroundResource(R.color.hintColor);}
+//        if (jsonObject != null && status) {
+//            try {
+//                JSONObject jo = jsonObject.getJSONArray("result").getJSONObject(0);
+//                m.setLoggedIn(true);
+//                title.setText(Comman.getValueFromJsonObject(jo, "postTitle"));
+//                created.setText("By :-" + Comman.getValueFromJsonObject(jo, "userName"));
+//                date.setText("" + PrettyTimeClass.PrettyTime(Comman.timeInms(Comman.getValueFromJsonObject(jo, "DateCreate"))));
+//                msg.setText("" + Comman.getValueFromJsonObject(jo, "postDescription"));
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+
+    }
+
 
 
 
@@ -336,13 +339,14 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
 
  }
  if(eventModel != null){
-       Log.d("AAAAAAA",eventModel.getMakedone());
+       //Log.d("AAAAAAA",eventModel.getInterestCount());
      ab.setVisibility(View.VISIBLE );
-     if(eventModel.getMakedone()!=null &&  !eventModel.getMakedone().equalsIgnoreCase("0")){
-         ab.setText("Already Intrested");
+     if(eventModel.getInterestCount()!=null &&  !eventModel.getInterestCount().equalsIgnoreCase("0")){
+         ab.setText("Already Registered");
          ab.setBackgroundResource(R.color.hintColor);
          ab.setEnabled(false);
       }else{
+
          ab.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
@@ -351,7 +355,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
                      progressDialog.setMessage("Loading...");
                      progressDialog.setCancelable(true);
                      progressDialog.show();
-                     Api_Calling.postMethodCall_NO_MSG(getApplicationContext(), getWindow().getDecorView().getRootView(), onResult, URLS.seteventInterest, myPostJson(), "eventinterest");
+                     Api_Calling.postMethodCall_Interest(NewsDetails_Activity.this , getWindow().getDecorView().getRootView(), onResult, URLS.seteventInterest, myPostJson(), "eventinterest",ab,progressDialog);
                  }else{
                      startActivity(new Intent(NewsDetails_Activity.this,Login_Signup_Activity.class));
                      finish();
@@ -618,5 +622,42 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
         }
         Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
         return jsonObject;
+    }
+    public static void showDialogeBox(Context context, String title, String msg)
+    {
+        final MaterialAlertDialogBuilder alertDialogBuilder=new MaterialAlertDialogBuilder(context,R.style.custom_dialog);
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        final View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_layout, null, false);
+        Button yes=dialogView.findViewById(R.id.yes);
+        Button no=dialogView.findViewById(R.id.no);
+        ImageView mainimg=dialogView.findViewById(R.id.mainimg);
+        no.setVisibility(View.GONE);
+        Segow_UI_Bold_Font title1=dialogView.findViewById(R.id.title);
+        Segow_UI_Semi_Font msg1=dialogView.findViewById(R.id.msg);
+        title1.setText(title);
+        msg1.setText(msg);
+//        WindowManager.LayoutParams lp = alertDialog.getWindow().getAttributes();
+//        lp.dimAmount=0.7f;
+//        alertDialog.getWindow().setAttributes(lp);
+//        alertDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+        alertDialog.setView(dialogView);
+        alertDialog.show();
+        yes.setText("Ok");
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+//                m.clearData();
+//                startActivity(new Intent(Up_Skill_Details_Activity.this,DashBoard_Activity.class));
+//                finish();
+            }
+        });
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
     }
 }

@@ -89,7 +89,7 @@ public class Post_Details_Activity extends AppCompatActivity implements onResult
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(Post_Details_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(Post_Details_Activity.this, NotificationActivity.class));
@@ -105,7 +105,7 @@ public class Post_Details_Activity extends AppCompatActivity implements onResult
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(Post_Details_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(Post_Details_Activity.this, NotificationActivity.class));

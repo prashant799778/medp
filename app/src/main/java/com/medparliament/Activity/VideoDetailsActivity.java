@@ -72,7 +72,7 @@ public class VideoDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(VideoDetailsActivity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(VideoDetailsActivity.this, NotificationActivity.class));
@@ -88,7 +88,7 @@ public class VideoDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(VideoDetailsActivity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(VideoDetailsActivity.this, NotificationActivity.class));

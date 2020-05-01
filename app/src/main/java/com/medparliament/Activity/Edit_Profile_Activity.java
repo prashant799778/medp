@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.bumptech.glide.Glide;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
+import com.hbb20.CountryCodePicker;
 import com.medparliament.Internet.Api_Calling;
 import com.medparliament.Internet.URLS;
 import com.medparliament.Internet.onResult;
@@ -61,6 +63,9 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
     String s2="";
     MySharedPrefrence m;
     ArrayList<String> genderList=new ArrayList<>();
+    String countrycode="91";
+
+    CountryCodePicker ccpLoadNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +77,8 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         m=MySharedPrefrence.instanceOf(Edit_Profile_Activity.this);
 //        window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 //        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
+
         bck=findViewById(R.id.bckii);
 
         genderList.add("Male");
@@ -103,6 +110,23 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
 //        university_name.setFocusableInTouchMode(false);
         l_mobile=findViewById(R.id.l_mobile);
         mobile=findViewById(R.id.mobile);
+        ccpLoadNumber=findViewById(R.id.ccp);
+        ccpLoadNumber.registerCarrierNumberEditText(mobile);
+        ccpLoadNumber.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                 try{
+                countrycode= ccpLoadNumber.getSelectedCountryCode();}catch (Exception e){
+                      e.printStackTrace();
+                 }
+            }
+        });
+        countrycode =getMobileCode(m.getMobile());
+        ccpLoadNumber.setAutoDetectedCountry(false);
+
+        //Log.d("mobiless ==",countrycode+","+m.getMobile()+","+getMobileCode(m.getMobile()));
+        ccpLoadNumber.setDefaultCountryUsingPhoneCode(Integer.valueOf(getMobileCode(m.getMobile())));
+        ccpLoadNumber.resetToDefaultCountry();
         l_university_address=findViewById(R.id.l_University_address);
         university_address=findViewById(R.id.university_address);
         l_qulafication=findViewById(R.id.l_qualification);
@@ -272,7 +296,9 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         if (resultCode == RESULT_OK && requestCode == 500) {
             array1 = data.getStringArrayListExtra(Pix.IMAGE_RESULTS);
 //            if(!isFinishing()) {
+            Comman.log("ProfileUpdate",""+array1);
                 if(array1.size()>0){
+                    Comman.log("ProfileUpdate",""+ array1.get(0).trim());
                 Comman.setRoundedImage(Edit_Profile_Activity.this,profile_image,array1.get(0).trim());
 //                    Toast.makeText(this, "ImagePath"+array1.get(0), Toast.LENGTH_SHORT).show();
                 }else {
@@ -306,7 +332,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         super.onStart();
         Comman.log("ProfilePicPath","----"+m.getUserProfile());
 //        Glide.with(Edit_Profile_Activity.this).load(m.getUserProfile()).into(profile_image);
-        Comman.setRoundedImage(Edit_Profile_Activity.this,profile_image,m.getUserProfile());
+        //Comman.setRoundedImage(Edit_Profile_Activity.this,profile_image,m.getUserProfile());
     }
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {
@@ -318,12 +344,13 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
             if(!isFinishing()) {
                 if(array1!=null && array1.size()>0)
                 m.setUserProfile(array1.get(0));
+               ;
                 onBackPressed();
             }
         }
     }
     public void checkUserType(String userId)
-    {
+    {    Comman.setRoundedImage(Edit_Profile_Activity.this,profile_image,m.getUserProfile());
         switch (userId)
         {
             case "5":
@@ -371,7 +398,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         institute_name.setText(m.getInstituteName());
         university_name.setText(m.getUniversityName());
         university_name.setClickable(false);
-        mobile.setText(m.getMobile());
+        mobile.setText(getMobile(m.getMobile()));
         university_address.setText(m.getUniversityAddress());
         qualfication.setText(m.getQualification());
         batch.setText(m.getQualificationBatch());
@@ -395,7 +422,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         email.setText(m.getUserEmail());
         institute_name.setText(m.getDasignation());
         university_name.setText(m.getCountry());
-        mobile.setText(m.getMobile());
+        mobile.setText(getMobile(m.getMobile()));
         university_address.setText(m.getOrgatination());
         newE.setText(m.getDescription());
 
@@ -421,7 +448,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         university_name.setClickable(true);
         university_name.setFocusable(true);
         university_name.setText(m.getProfileCategory());
-        mobile.setText(m.getMobile());
+        mobile.setText(getMobile(m.getMobile()));
         interest.setText(m.getInterest());
         newE.setText(m.getDasignation());
     }
@@ -441,7 +468,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         name.setText(m.getUserName());
         email.setText(m.getUserEmail());
         l_mobile.setText(getResources().getString(R.string.Mobile_No));
-        mobile.setText(m.getMobile());
+        mobile.setText(getMobile(m.getMobile()));
         l_university_name.setText(getResources().getString(R.string.institute));
         university_name.setText(m.getCompanyNAame());
         university_name.setFocusable(true);
@@ -484,7 +511,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         name.setText(m.getUserName());
         email.setText(m.getUserEmail());
         l_mobile.setText(getResources().getString(R.string.Mobile_No));
-        mobile.setText(m.getMobile());
+        mobile.setText(getMobile(m.getMobile()));
         l_university_name.setText(getResources().getString(R.string.Comapny_Name));
         university_name.setText(m.getCompanyNAame());
        university_name.setFocusable(true);
@@ -535,7 +562,10 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         l_email.setText(getResources().getString(R.string.email));
         email.setText(m.getUserEmail());
         l_mobile.setText(getResources().getString(R.string.Mobile_No));
-        mobile.setText(m.getMobile2());
+        countrycode =getMobileCode(m.getMobile());
+        ccpLoadNumber.setDefaultCountryUsingPhoneCode(Integer.valueOf(getMobileCode(m.getMobile2())));
+        ccpLoadNumber.resetToDefaultCountry();
+        mobile.setText(getMobile(m.getMobile2()));
         l_batch.setText(getResources().getString(R.string.Gender));
         batch.setText(m.getGender());
         setGender(batch,m.getGender());
@@ -658,12 +688,13 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         builder.show();
     }
     public JSONObject setStudentJson()
-    {
+    {   // ccpLoadNumber.setFullNumber(mobile.getText().toString());
+        //Log.d("student_number",countrycode+"-"+ mobile.getText().toString());
         JSONObject jsonObject=new JSONObject();
         try {
             if(doctorIdArray!=null && doctorIdArray.length()>0){
             jsonObject.put("userName",""+name.getText().toString())
-                    .put("mobileNo",""+mobile.getText().toString())
+                    .put("mobileNo",   countrycode+"-"+ mobile.getText().toString())
                     .put("email",""+email.getText().toString()).
                     put("userTypeId","7")
                     .put("userId",""+m.getUserId())
@@ -673,7 +704,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
                     .put("universityName",""+university_name.getText().toString()).put("universityAddress",""+university_address.getText().toString())
                     .put("interestId",doctorIdArray);}else {
                 jsonObject.put("userName",""+name.getText().toString())
-                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("mobileNo",""+countrycode+"-"+ mobile.getText().toString())
                         .put("email",""+email.getText().toString()).
                         put("userTypeId","7")
                         .put("userId",""+m.getUserId())
@@ -696,7 +727,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         JSONObject jsonObject=new JSONObject();
         try {
             jsonObject.put("userName",""+name.getText().toString())
-                    .put("mobileNo",""+mobile.getText().toString())
+                    .put("mobileNo",""+countrycode+"-"+ mobile.getText().toString())
                     .put("email",""+email.getText().toString()).
                     put("userTypeId","5").put("userId",""+m.getUserId()).
                     put("country",""+Api_Calling.CountryHash.get(university_name.getText().toString()))
@@ -716,13 +747,13 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         try {
             if(doctorIdArray!=null && doctorIdArray.length()!=0){
             jsonObject.put("userName",""+name.getText().toString())
-                    .put("mobileNo",""+mobile.getText().toString())
+                    .put("mobileNo",""+countrycode+"-"+ mobile.getText().toString())
                     .put("email",""+email.getText().toString()).
                     put("userTypeId","6").put("userId",""+m.getUserId())
                     .put("interestId",doctorIdArray).put("profileCategoryId",""+Api_Calling.ProfileHash.get(university_name.getText().toString()))
                     .put("areaofActivity",""+institute_name.getText().toString()).put("designation",""+newE.getText().toString());}else {
                 jsonObject.put("userName",""+name.getText().toString())
-                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("mobileNo",""+countrycode+"-"+ mobile.getText().toString() )
                         .put("email",""+email.getText().toString()).
                         put("userTypeId","6").put("userId",""+m.getUserId())
                         .put("interestId","").put("profileCategoryId",""+Api_Calling.ProfileHash.get(university_name.getText().toString()))
@@ -743,13 +774,13 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         try {
             if(doctorIdArray!=null && doctorIdArray.length()!=0){
                 jsonObject.put("userName",""+name.getText().toString())
-                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("mobileNo",""+countrycode+"-"+ mobile.getText().toString())
                         .put("email",""+email.getText().toString()).put("hospital",""+university_name.getText().toString())
                         .put("hospitalAddress",""+university_address.getText().toString()). put("userTypeId","8").put("userId",""+m.getUserId())
                         .put("interestId",doctorIdArray) .put("qualification",qualfication.getText().toString())
                         .put("areaOfExpertise",""+address.getText().toString()).put("designation",""+batch.getText().toString());}else {
                 jsonObject.put("userName",""+name.getText().toString())
-                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("mobileNo",""+countrycode+"-"+ mobile.getText().toString())
                         .put("email",""+email.getText().toString()).put("hospital",""+university_name.getText().toString())
                         .put("hospitalAddress",""+university_address.getText().toString()). put("userTypeId","8").put("userId",""+m.getUserId())
                         .put("interestId","") .put("qualification",qualfication.getText().toString())
@@ -769,14 +800,14 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         try {
             if(doctorIdArray!=null && doctorIdArray.length()!=0){
                 jsonObject.put("userName",""+name.getText().toString())
-                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("mobileNo",""+countrycode+"-"+ mobile.getText().toString())
                         .put("email",""+email.getText().toString()).put("companyName",""+university_name.getText().toString())
                         .put("companyAddress",""+university_address.getText().toString()). put("userTypeId","9").put("userId",""+m.getUserId())
                         .put("interestId",doctorIdArray) .put("occupation", qualfication.getText().toString())
                         .put("address",""+address.getText().toString()).put("designation",""+batch.getText().toString());
             }else {
                 jsonObject.put("userName",""+name.getText().toString())
-                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("mobileNo",""+countrycode+"-"+ mobile.getText().toString())
                         .put("email",""+email.getText().toString()).put("companyName",""+university_name.getText().toString())
                         .put("companyAddress",""+university_address.getText().toString()). put("userTypeId","9").put("userId",""+m.getUserId())
                         .put("interestId","") .put("occupation", qualfication.getText().toString())
@@ -796,7 +827,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
         try {
 //            if(doctorIdArray!=null && doctorIdArray.length()!=0){
                 jsonObject.put("userName",""+name.getText().toString())
-                        .put("mobileNo",""+mobile.getText().toString())
+                        .put("mobileNo",""+countrycode+"-"+ mobile.getText().toString())
                         .put("email",""+email.getText().toString()).put("companyName","")
                         .put("companyAddress",""). put("userTypeId","13").put("userId",""+m.getUserId())
                         .put("gender",""+batch.getTag().toString()) .put("country", ""+Api_Calling.CountryHash.get(address.getText().toString()))
@@ -839,7 +870,7 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
 
     public  Drawable LoadImageFromWebOperations(String url) {
         try {
-            Comman.log("Path",""+url);
+
             InputStream is = (InputStream) new URL(url).getContent();
             Drawable d = Drawable.createFromStream(is, "src name");
             return d;
@@ -847,5 +878,40 @@ public class Edit_Profile_Activity extends Base_Activity implements onResult {
             return null;
         }
     }
+    public  String getMobile(String st){
+         if(st !=null){
+            String[]  s=   st.split("-");
+              if( s.length >=2){
+                  return  s[1];
 
+              }else if(s.length==1) {
+                  return  s[0];
+               }else {
+                   return  "";
+              }
+
+              }
+        return  "";
+
+    }
+    public  String getMobileCode(String st){
+
+        if(st !=null){
+            //Log.d("mobiless",st);
+            String[]  s=   st.split("-");
+            if( s.length >=2){
+
+                //Log.d("mobiless", s[0]);
+                return  s[0];
+
+
+            }else {
+                return  "91";
+            }
+
+        }
+
+        return  "91";
+
+    }
 }

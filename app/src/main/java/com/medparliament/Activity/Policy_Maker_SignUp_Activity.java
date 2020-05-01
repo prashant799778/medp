@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
+import com.hbb20.CountryCodePicker;
 import com.medparliament.Internet.Api_Calling;
 import com.medparliament.Internet.URLS;
 import com.medparliament.Internet.VideoListener;
@@ -72,7 +73,9 @@ public class Policy_Maker_SignUp_Activity extends Base_Activity implements View.
 
 
     ArrayList<String> genderList=new ArrayList<>();
+    String countrycode="91";
 
+    CountryCodePicker ccpLoadNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +89,8 @@ public class Policy_Maker_SignUp_Activity extends Base_Activity implements View.
         login_txt=findViewById(R.id.login_text);
         organization=findViewById(R.id.organization);
         mobile=findViewById(R.id.mobile);
+        ccpLoadNumber=findViewById(R.id.ccp);
+        ccpLoadNumber.registerCarrierNumberEditText(mobile);
         about_profile=findViewById(R.id.about_profile);
         email=findViewById(R.id.email);
         bck=findViewById(R.id.bck);
@@ -148,6 +153,14 @@ public class Policy_Maker_SignUp_Activity extends Base_Activity implements View.
                         .authenticate(Comman.LINKDIN_CODE);
             }
         });
+
+        ccpLoadNumber.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                countrycode= ccpLoadNumber.getSelectedCountryCode();
+            }
+        });
+
     }
 
     @Override
@@ -292,7 +305,7 @@ public class Policy_Maker_SignUp_Activity extends Base_Activity implements View.
         });
     }
     public JSONObject setStudentJson()
-    {
+    {      //ccpLoadNumber.setFullNumber(mobile.getText().toString());
         JSONObject jsonObject=new JSONObject();
         try {
             String id="";
@@ -301,7 +314,7 @@ public class Policy_Maker_SignUp_Activity extends Base_Activity implements View.
                 id="";
             }
             jsonObject.put("userName",""+name.getText().toString())
-                    .put("mobileNo",""+mobile.getText().toString())
+                    .put("mobileNo",countrycode+"-"+ mobile.getText().toString())
                     .put("email",""+email.getText().toString()).
                     put("userTypeId","5")
 
@@ -406,7 +419,7 @@ public class Policy_Maker_SignUp_Activity extends Base_Activity implements View.
                 } else if (data.getIntExtra("err_code", 0) == LinkedInBuilder.ERROR_FAILED) {
                     Comman.topSnakBar(getApplicationContext(),getWindow().getDecorView().getRootView(),data.getStringExtra("err_message"));
                     //Handle : Error in API : see logcat output for details
-                    Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
+                    //Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
                 }
             }
         }

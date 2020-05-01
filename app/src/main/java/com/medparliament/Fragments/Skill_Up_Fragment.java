@@ -134,7 +134,7 @@ public class Skill_Up_Fragment extends Base_Fragement implements onResult {
                         adapter1.addAll(rm1);
                         manager.scrollToPositionWithOffset(rm1.size() / 2, 55);
                         adapter1.notifyDataSetChanged();
-                        //Log.d(TAG, "Response succeeded!!!");
+                        ////Log.d(TAG, "Response succeeded!!!");
 //                ultraViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
 //                //initialize UltraPagerAdapter，and add child view to UltraViewPager
 //                adapter = new UltraViewPagerAdapterNew(true,arrayList,getContext());

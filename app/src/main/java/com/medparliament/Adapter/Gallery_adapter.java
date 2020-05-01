@@ -29,7 +29,7 @@ public class Gallery_adapter  extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup collection, int position) {
 
-        Log.d("aaa","aaaaa");
+        //Log.d("aaa","aaaaa");
         final NewModel pm = itemList.get(position);
         LayoutInflater inflater = LayoutInflater.from(context);
         ViewGroup convertView = (ViewGroup) inflater.inflate(R.layout.gallery_layout, collection, false);

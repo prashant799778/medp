@@ -29,6 +29,7 @@ import com.medparliament.Internet.Models.Post_Modle;
 import com.medparliament.Internet.NewModel.Result;
 import com.medparliament.Internet.URLS;
 import com.medparliament.Internet.onResult;
+import com.medparliament.MyApplication;
 import com.medparliament.R;
 import com.medparliament.Utility.Comman;
 import com.medparliament.Utility.MySharedPrefrence;
@@ -186,7 +187,8 @@ public class News_Fragment extends Base_Fragement implements onResult {
                     public void onClick(View v) {
                         if(Comman.Check_Login(getContext())){
                             Intent intent = new Intent(getContext(), News_Activity_1.class);
-                            intent.putExtra("data", result);
+                            MyApplication.result=result;
+                            //intent.putExtra("data", result);
                             getContext().startActivity(intent);} else {
                             Intent intent = new Intent(getContext(), Login_Signup_Activity.class);
                             getContext().startActivity(intent);

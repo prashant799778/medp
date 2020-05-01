@@ -111,7 +111,7 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+//                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(Market_Insight_Detail_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(Market_Insight_Detail_Activity.this, NotificationActivity.class));
@@ -127,7 +127,7 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(Market_Insight_Detail_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(Market_Insight_Detail_Activity.this, NotificationActivity.class));
@@ -196,6 +196,7 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
 
         }else {
             pic_img.setVisibility(View.GONE);
+             video.getPlayerUiController().showYouTubeButton(false);
             video.addYouTubePlayerListener(new YouTubePlayerListener() {
                 @Override
                 public void onReady(@NotNull YouTubePlayer youTubePlayer) {

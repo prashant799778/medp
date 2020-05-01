@@ -11,6 +11,15 @@ public class Dashbooard_eventModel implements Serializable {
     String eventSummary;
     String imagePath;
     String likedId;
+    String interestCount;
+
+    public String getInterestCount() {
+        return interestCount;
+    }
+
+    public void setInterestCount(String interestCount) {
+        this.interestCount = interestCount;
+    }
 
     public String getVideoId() {
         return videoId;

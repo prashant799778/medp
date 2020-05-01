@@ -42,7 +42,7 @@ public class Dashboard_annoncement_adapter_new extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup collection, int position) {
 
-        Log.d("aaa","aaaaa");
+        //Log.d("aaa","aaaaa");
         final NewModel pm = itemList.get(position);
 
         LayoutInflater inflater = LayoutInflater.from(context);

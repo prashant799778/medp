@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.crowdfire.cfalertdialog.CFAlertDialog;
+import com.hbb20.CountryCodePicker;
 import com.medparliament.Internet.Api_Calling;
 import com.medparliament.Internet.URLS;
 import com.medparliament.Internet.VideoListener;
@@ -69,7 +70,9 @@ public class DoctorSignupActivity extends AppCompatActivity implements View.OnCl
     JSONObject jsonObject1 = new JSONObject();
     ImageButton login_button;
     Segow_UI_Bold_Font login_txt;
+    String countrycode="91";
 
+    CountryCodePicker ccpLoadNumber;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +90,14 @@ public class DoctorSignupActivity extends AppCompatActivity implements View.OnCl
         login_txt=findViewById(R.id.login_text);
         designation=findViewById(R.id.desgination);
         mobile=findViewById(R.id.mobile);
+        ccpLoadNumber=findViewById(R.id.ccp);
+        ccpLoadNumber.registerCarrierNumberEditText(mobile);
+        ccpLoadNumber.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                countrycode= ccpLoadNumber.getSelectedCountryCode();
+            }
+        });
         email=findViewById(R.id.email);
         pwd=findViewById(R.id.pswd);
         counrty=findViewById(R.id.country);
@@ -264,7 +275,7 @@ public class DoctorSignupActivity extends AppCompatActivity implements View.OnCl
 
 
     public JSONObject setStudentJson()
-    {
+    {    // ccpLoadNumber.setFullNumber(mobile.getText().toString());
         JSONObject jsonObject=new JSONObject();
         try {
             String id="";
@@ -273,7 +284,7 @@ public class DoctorSignupActivity extends AppCompatActivity implements View.OnCl
                 id="";
             }
             jsonObject.put("userName",""+name.getText().toString())
-                    .put("mobileNo",""+mobile.getText().toString())
+                    .put("mobileNo",""+"+"+countrycode+"-"+   mobile.getText().toString())
                     .put("email",""+email.getText().toString()).
                     put("userTypeId","8")
                     .put("gender",""+id).put("hospital",""+companyName.getText().toString())
@@ -450,7 +461,7 @@ public class DoctorSignupActivity extends AppCompatActivity implements View.OnCl
                 } else if (data.getIntExtra("err_code", 0) == LinkedInBuilder.ERROR_FAILED) {
                     Comman.topSnakBar(getApplicationContext(),getWindow().getDecorView().getRootView(),data.getStringExtra("err_message"));
                     //Handle : Error in API : see logcat output for details
-                    Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
+                    //Log.e("LINKEDIN ERROR", data.getStringExtra("err_message"));
                 }
             }
         }

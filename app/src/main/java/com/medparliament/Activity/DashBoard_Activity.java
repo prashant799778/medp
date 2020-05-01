@@ -61,8 +61,10 @@ import com.medparliament.Adapter.DrawerI_Adapter;
 import com.medparliament.Adapter.Event_Adapter;
 import com.medparliament.Adapter.GalleryAdapter;
 import com.medparliament.Adapter.Gallery_adapter;
+import com.medparliament.Adapter.MedStreetAdapter;
 import com.medparliament.Adapter.OurPartnersAdapter;
 import com.medparliament.Adapter.Post_Adapter;
+import com.medparliament.Adapter.publicForumAdapter;
 import com.medparliament.Internet.Api_Calling;
 import com.medparliament.Internet.Models.DashboardAnnouncedModel;
 import com.medparliament.Internet.Models.DashboardGalleryModel;
@@ -126,7 +128,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
     private ArrayList<Post_Modle> MarrayList;
 
     Segow_UI_Semi_Font moreNews;
-    LinearLayout news, announce, event, gallery, council, market, our_partner;
+    LinearLayout news, announce, event, gallery, council, market, our_partner,public_forum,med_street;
     Button login_signup;
     ActionBarDrawerToggle actionBarDrawerToggle;
     DrawerLayout drawerLayout;
@@ -141,21 +143,23 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
     ArrayList<NewModel> prolist;
     ArrayList<NewModel> announcedlist;
     ArrayList<NewModel> gallerylsit;
+    ArrayList<NewModel> publiclist;
+    ArrayList<NewModel> medStreetist;
     ArrayList<NewModel> partnarlist;
     ArrayList<NewModel> eventlist;
     ArrayList<NewModel> councillist;
     ArrayList<NewModel> videolist;
     MySharedPrefrence m;
     Handler ha;
-    ViewPager viewPager_gallery, viewPager_news, viewPager_announced, viewPager_event, viewPager_video, viewPager_Promising, viewPager_council, viewPager_market;
-    RecyclerView recyclerView_gallery, viewpager_parten;
+    ViewPager  viewPager_med_street, viewPager_public, viewPager_gallery, viewPager_news, viewPager_announced, viewPager_event, viewPager_video, viewPager_Promising, viewPager_council, viewPager_market;
+    RecyclerView recyclerView_gallery, viewpager_parten ,recyclerView_public,recyclerView_medstreet;
     String name;
     ImageView setting;
     CircleImageView profile;
     ProgressDialog progressDialog;
     FloatingActionButton cmnt, share;
     Dashboard_News_Adapter dashboard_news_adapter;
-    LinearLayoutManager news_manager, gallery_Manager, announced_manage, partner_manager;
+    LinearLayoutManager news_manager, gallery_Manager, announced_manage, partner_manager,public_Manager,medStreet_Manager;
     GalleryAdapter galleryAdapter;
     AnnoucementsAdapter annoucementsAdapter;
     Event_Adapter event_adapter;
@@ -168,6 +172,8 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
     Dashboard_market_adapter_new viewpager_market_adapter;
 
     GalleryAdapter galleryAdapter1;
+    publicForumAdapter  publicAdapter;
+    MedStreetAdapter medStreetAdapter;
 
     OurPartnersAdapter partnerAdapter;
 
@@ -175,6 +181,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
     Dashboard_events_adapter_new viewpager_events_adapter;
     Dashboard_council_adapter_new viewpager_council_adapter;
     Gallery_adapter viewpager_gallery_adapter;
+    Gallery_adapter viewpager_public_adapter;
     Dashboard_video_adapter_new viewpager_video_adapter;
     Dashboard_Promising_Adapter viewpager_Promising_adapter;
 
@@ -189,9 +196,9 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
                 Log.i("hashkey", "printHashKey() Hash Key: " + hashKey);
             }
         } catch (NoSuchAlgorithmException e) {
-            Log.e("hashkey", "printHashKey()", e);
+            //Log.e("hashkey", "printHashKey()", e);
         } catch (Exception e) {
-            Log.e("hashkey", "printHashKey()", e);
+            //Log.e("hashkey", "printHashKey()", e);
         }
     }
 
@@ -270,6 +277,8 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
         councillist = new ArrayList<>();
         videolist = new ArrayList<>();
         gallerylsit = new ArrayList<>();
+        publiclist = new ArrayList<>();
+        medStreetist = new ArrayList<>();
         partnarlist = new ArrayList<>();
 
         nodata = findViewById(R.id.nodata);
@@ -279,6 +288,8 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
         news = findViewById(R.id.news);
         event = findViewById(R.id.Event);
         gallery = findViewById(R.id.gallery);
+       public_forum = findViewById(R.id.public_forum);
+       med_street =findViewById(R.id.med_street);
         market = findViewById(R.id.market);
         council = findViewById(R.id.council);
         our_partner = findViewById(R.id.partner);
@@ -289,7 +300,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(DashBoard_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(DashBoard_Activity.this, NotificationActivity.class));
@@ -305,7 +316,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
             @Override
             public void onClick(View v) {
 
-             //   Log.d(" belliconTAG", "onClick: bell icon ");
+             //   //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(DashBoard_Activity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(DashBoard_Activity.this, NotificationActivity.class));
@@ -516,11 +527,20 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
         viewPager_council = findViewById(R.id.viewpager_council);
         viewPager_event = findViewById(R.id.viewpager_events);
         viewPager_gallery = findViewById(R.id.viewpager_gallery);
+        viewPager_public=  findViewById(R.id.viewpager_public);
+        viewPager_med_street =findViewById(R.id.viewpager_med_street) ;
         viewPager_video = findViewById(R.id.viewpager_video);
         viewPager_Promising = findViewById(R.id.viewpager_promissing);
         recyclerView_gallery = findViewById(R.id.recycle_gallery);
+        recyclerView_public = findViewById(R.id.recycle_public);
+        recyclerView_medstreet = findViewById(R.id.recycle_med_street);
         gallery_Manager = new LinearLayoutManager(DashBoard_Activity.this);
         gallery_Manager.setOrientation(RecyclerView.HORIZONTAL);
+       public_Manager = new LinearLayoutManager(DashBoard_Activity.this);
+        public_Manager.setOrientation(RecyclerView.HORIZONTAL);
+
+       medStreet_Manager = new LinearLayoutManager(DashBoard_Activity.this);
+        medStreet_Manager.setOrientation(RecyclerView.HORIZONTAL);
 
 
         partner_manager = new LinearLayoutManager(DashBoard_Activity.this) {
@@ -551,6 +571,8 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
 
 
         recyclerView_gallery.setLayoutManager(gallery_Manager);
+        recyclerView_public.setLayoutManager(public_Manager );
+        recyclerView_medstreet.setLayoutManager(medStreet_Manager );
         viewpager_parten.setLayoutManager(partner_manager);
 
 
@@ -570,11 +592,14 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
 
         viewpager_gallery_adapter = new Gallery_adapter(DashBoard_Activity.this, gallerylsit, true);
         galleryAdapter1 = new GalleryAdapter(DashBoard_Activity.this, gallerylsit);
-
+         publicAdapter = new publicForumAdapter(DashBoard_Activity.this, publiclist);
+          medStreetAdapter = new MedStreetAdapter(DashBoard_Activity.this, medStreetist);
         partnerAdapter = new OurPartnersAdapter(DashBoard_Activity.this, partnarlist);
 
         viewpager_parten.setAdapter(partnerAdapter);
         recyclerView_gallery.setAdapter(galleryAdapter1);
+        recyclerView_public.setAdapter(publicAdapter);
+        recyclerView_medstreet.setAdapter(medStreetAdapter);
 
 
         viewPager_news.setAdapter(viewpager_news_adapter);
@@ -681,7 +706,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
         if (jsonObject != null && status) {
             Gson gson = new GsonBuilder().create();
             try {
-                Comman.log("DashBoarding", "" + jsonObject);
+                Comman.log("DashBoarding", "" + jsonObject );
                 nodata.setVisibility(View.GONE);
                 if (jsonObject.getJSONArray("news").length() > 0) {
                     ArrayList<NewModel> dash_news_list = gson.fromJson(jsonObject.getString("news"), new TypeToken<ArrayList<NewModel>>() {
@@ -761,38 +786,58 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
                  //       Comman.log("EVENTEVNET", "gallery_Inside");
                     }
                 }
-                if ((jsonObject.getJSONArray("ourPartners").length() > 0)) {
-                    final ArrayList<NewModel> dash_gallery_list = gson.fromJson(jsonObject.getString("ourPartners"), new TypeToken<ArrayList<NewModel>>() {
+                if ((jsonObject.getJSONArray("publicAffairs").length() > 0)) {
+                    ArrayList<NewModel> dash_gallery_list = gson.fromJson(jsonObject.getString("publicAffairs"), new TypeToken<ArrayList<NewModel>>() {
                     }.getType());
-                    if (partnarlist != null) {
-                        partnarlist.clear();
-                        partnarlist.addAll(dash_gallery_list);
-                        our_partner.setVisibility(View.VISIBLE);
-                        partnerAdapter.notifyDataSetChanged();
-                        final Handler handler = new Handler();
-                        final Runnable runnable = new Runnable() {
-                            @Override
-                            public void run() {
-                                if (count == partnerAdapter.getItemCount()) {
-                                    count = 0;
-                     //               Comman.log("Adapter", "" + "FFFFFFFFFFFFFF");
-                                    partnarlist.addAll(partnarlist);
-                                    partnerAdapter.notifyDataSetChanged();
-                                } else {
-                        //            Comman.log("Adapter", "" + "ElLLLLLLLLLLLLLLLSEEEEEEEEEEEEe");
-                                }
-                                if (count < partnerAdapter.getItemCount()) {
-                          //          Comman.log("Adapter", "" + "parnerCount!!!");
-                                    viewpager_parten.smoothScrollToPosition(++count);
-                                    handler.postDelayed(this, speedScroll);
-                                }
-                            }
-                        };
-                        handler.postDelayed(runnable, speedScroll);
+                    if (publiclist != null) {
+                        publiclist.clear();
+                        publiclist.add(dash_gallery_list.get(0));
+                       public_forum.setVisibility(View.VISIBLE);
+                        //       Comman.log("EVENTEVNET", "gallery_Inside");
                     }
                 }
+                if ((jsonObject.getJSONArray("medStreet").length() > 0)) {
+                    ArrayList<NewModel> dash_gallery_list = gson.fromJson(jsonObject.getString("medStreet"), new TypeToken<ArrayList<NewModel>>() {
+                    }.getType());
+                    if (medStreetist != null) {
+                        medStreetist.clear();
+                        medStreetist.add(dash_gallery_list.get(0));
+                        med_street.setVisibility(View.VISIBLE);
+                        //       Comman.log("EVENTEVNET", "gallery_Inside");
+                    }
+                }
+//                if ((jsonObject.getJSONArray("ourPartners").length() > 0)) {
+//                    final ArrayList<NewModel> dash_gallery_list = gson.fromJson(jsonObject.getString("ourPartners"), new TypeToken<ArrayList<NewModel>>() {
+//                    }.getType());
+//                    if (partnarlist != null) {
+//                        partnarlist.clear();
+//                        partnarlist.addAll(dash_gallery_list);
+//                        our_partner.setVisibility(View.VISIBLE);
+//                        partnerAdapter.notifyDataSetChanged();
+//                        final Handler handler = new Handler();
+//                        final Runnable runnable = new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                if (count == partnerAdapter.getItemCount()) {
+//                                    count = 0;
+//                     //               Comman.log("Adapter", "" + "FFFFFFFFFFFFFF");
+//                                    partnarlist.addAll(partnarlist);
+//                                    partnerAdapter.notifyDataSetChanged();
+//                                } else {
+//                        //            Comman.log("Adapter", "" + "ElLLLLLLLLLLLLLLLSEEEEEEEEEEEEe");
+//                                }
+//                                if (count < partnerAdapter.getItemCount()) {
+//                          //          Comman.log("Adapter", "" + "parnerCount!!!");
+//                                    viewpager_parten.smoothScrollToPosition(++count);
+//                                    handler.postDelayed(this, speedScroll);
+//                                }
+//                            }
+//                        };
+//                        handler.postDelayed(runnable, speedScroll);
+//                    }
+//                }
                 if ((jsonObject.getJSONArray("medAchieversTv").length() > 0)) {
-                    Log.d("videos", jsonObject.toString());
+                    //Log.d("videos", jsonObject.toString());
                     ArrayList<NewModel> dash_vid_list = gson.fromJson(jsonObject.getString("medAchieversTv"), new TypeToken<ArrayList<NewModel>>() {
                     }.getType());
                     if (videolist != null) {
@@ -838,8 +883,9 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
                 viewpager_Promising_adapter.updateList(prolist);
            //  Comman.log("SizeNNN", "" + newslist.size());
                 viewpager_annoncemen_adapter.updateList(announcedlist);
-                viewpager_gallery_adapter.updateList(gallerylsit);
-                galleryAdapter1.notifyDataSetChanged();
+               // viewpager_gallery_adapter.updateList(gallerylsit);
+//                galleryAdapter1.notifyDataSetChanged();
+              //  publicAdapter.notifyDataSetChanged();
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -964,12 +1010,15 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
                 break;
 
             case 3:
-//                if(Comman.Check_Login(DashBoard_Activity.this)) {
+//                Uri uri = Uri.parse("https://www.medachievers.com/"); // missing 'http://' will cause crashed
+//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//                startActivity(intent);
+                if(Comman.Check_Login(DashBoard_Activity.this)) {
                 startActivity(new Intent(DashBoard_Activity.this, AboutUsActivity.class));
 
-//                }else{
-//                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
-//                }
+                }else{
+                    startActivity(new Intent(DashBoard_Activity.this, Login_Signup_Activity.class));
+                }
                 drawerLayout.closeDrawers();
                 break;
             case 4:

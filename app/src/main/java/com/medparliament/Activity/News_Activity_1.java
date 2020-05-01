@@ -23,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.medparliament.Internet.NewModel.Result;
 import com.medparliament.Internet.URLS;
+import com.medparliament.MyApplication;
 import com.medparliament.R;
 import com.medparliament.Utility.Comman;
 import com.medparliament.Utility.MySharedPrefrence;
@@ -77,7 +78,7 @@ public class News_Activity_1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(News_Activity_1.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(News_Activity_1.this, NotificationActivity.class));
@@ -93,7 +94,7 @@ public class News_Activity_1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(News_Activity_1.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(News_Activity_1.this, NotificationActivity.class));
@@ -129,9 +130,11 @@ public class News_Activity_1 extends AppCompatActivity {
         bck = findViewById(R.id.bck);
         youTubePlayerView=findViewById(R.id.video);
         img= findViewById(R.id.cover);
-        if(i!=null)
+        if(MyApplication.result !=null)
         {
-            result=(Result) i.getSerializableExtra("data");
+            result= MyApplication.result;
+
+                    //i.getSerializableExtra("data");
             msg.setText(Html.fromHtml(result.getNewsDesc()));
             title.setText(Html.fromHtml(result.getNewsTitle()));
             if(result.getDateCreate1()!=null)

@@ -8,6 +8,9 @@ import android.os.Handler;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,6 +45,7 @@ public class AboutUsActivity extends AppCompatActivity implements onResult {
     ImageView bell;
     Handler ha;
     MySharedPrefrence m;
+    WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,14 +68,27 @@ public class AboutUsActivity extends AppCompatActivity implements onResult {
 
         circle=findViewById(R.id.circle);
         share=findViewById(R.id.share_tool);
-
-
-
+         webView =findViewById(R.id.webViews);
+        webView.clearCache(true);
+        webView.clearHistory();
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        webView.loadUrl("https://www.medachievers.com/");
+         webView .setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                view.loadUrl(request.getUrl().toString());
+                return false;
+            }
+        });
+        webView.getSettings().setLoadWithOverviewMode(true);
+         webView.getSettings().setUseWideViewPort(true);
+        WebView.setWebContentsDebuggingEnabled(false);
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(AboutUsActivity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(AboutUsActivity.this, NotificationActivity.class));
@@ -87,7 +104,7 @@ public class AboutUsActivity extends AppCompatActivity implements onResult {
             @Override
             public void onClick(View v) {
 
-                Log.d(" belliconTAG", "onClick: bell icon ");
+                //Log.d(" belliconTAG", "onClick: bell icon ");
                 if (Comman.Check_Login(AboutUsActivity.this)){
                     circle.setVisibility(View.GONE);
                     startActivity(new Intent(AboutUsActivity.this, NotificationActivity.class));

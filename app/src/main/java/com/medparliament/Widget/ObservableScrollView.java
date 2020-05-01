@@ -40,7 +40,7 @@ public class ObservableScrollView extends ScrollView {
         if (child != null) {
 
             int childHeight = child.getHeight();
-            Log.d("scroll....",getHeight()+"-"+childHeight);
+            //Log.d("scroll....",getHeight()+"-"+childHeight);
             return getHeight() < childHeight ;
         }
         return false;

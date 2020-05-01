@@ -58,6 +58,7 @@
                </com.example.MedParliament.Widget.Segow_UI_Semi_Font>
            </RelativeLayout>
            <com.example.MedParliament.Widget.Segow_UI_Semi_Font
+
                android:layout_width="match_parent"
                android:id="@+id/msg"
                android:layout_below="@+id/imageViewplaces"

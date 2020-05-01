@@ -47,7 +47,7 @@ public class Dashboard_market_adapter_new extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup collection, int position) {
 
-//        Log.d("Market","InsideMarket");
+//        //Log.d("Market","InsideMarket");
 //        final NewModel pm = itemList.get(position);
 //
 //        LayoutInflater inflater = LayoutInflater.from(context);
@@ -69,7 +69,7 @@ public class Dashboard_market_adapter_new extends PagerAdapter {
 //                }
 //            }
 //        });
-        Log.d("aaa","aaaaa");
+        //Log.d("aaa","aaaaa");
         final NewModel pm = itemList.get(position);
         LayoutInflater inflater = LayoutInflater.from(context);
         ViewGroup convertView = (ViewGroup) inflater.inflate(R.layout.dashboardhighlightedlayout, collection, false);

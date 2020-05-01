@@ -162,6 +162,7 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     universityAddress.setText(Comman.getValueFromJsonObject(jo,"companyAddress"));
                     l_mobile.setText(getResources().getString(R.string.Mobile_Number));
                     mobile.setText(Comman.getValueFromJsonObject(jo,"mobileNo"));
+
                     l_qualifiacation.setText(getResources().getString(R.string.Occupation));
                     qualification.setText(Comman.getValueFromJsonObject(jo,"occupation"));
 
@@ -194,6 +195,7 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     m.setDasignation(Comman.getValueFromJsonObject(jo,"designation"));
                     m.setQualication(Comman.getValueFromJsonObject(jo,"occupation"));
                     m.setInterest(arrayList.toString().replace("[","").replace("]",""));
+
                 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -321,6 +323,7 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                     m.setUniversityName(Comman.getValueFromJsonObject(jo,"universityName"));
                     m.setUniversityAddress(Comman.getValueFromJsonObject(jo,"universityAddress"));
                     m.setMobili(Comman.getValueFromJsonObject(jo,"mobileNo"));
+                    Comman.log("ProfilePicPath__99",Comman.getValueFromJsonObject(jo,"mobileNo"));
                     m.setUserPersonalAddress(Comman.getValueFromJsonObject(jo,"address"));
                     m.setQualicationBatch(Comman.getValueFromJsonObject(jo,"batchOfQualification"));
                     m.setQualication(Comman.getValueFromJsonObject(jo,"qualificationName"));
@@ -410,6 +413,8 @@ public class User_profile_Activity extends Base_Activity implements onResult {
                 Comman.log("EXCEPTION",""+e.getMessage());
             }
         }
+
+
     }
     public JSONObject interestJSon(String id)
     {

@@ -54,7 +54,7 @@ public class Dashboard_video_adapter_new1 extends LoopingPagerAdapter<Video_Mode
              over_lay.setVisibility(View.GONE);
 
             if(pm.getVideoId()!=null && pm.getVideoId()!=""){
-                Log.d("vie" ,pm.getVideoId());
+                //Log.d("vie" ,pm.getVideoId());
                 if(listPosition>=1 && !Comman.Check_Login(context)) {
 
                     over_lay.setVisibility(View.VISIBLE);

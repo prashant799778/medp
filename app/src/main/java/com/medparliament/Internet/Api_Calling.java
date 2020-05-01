@@ -3,10 +3,14 @@ package com.medparliament.Internet;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -16,10 +20,13 @@ import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.request.SimpleMultiPartRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.medparliament.Internet.NewModel.onNotificationResult;
 import com.medparliament.R;
 import com.medparliament.Utility.Comman;
 import com.medparliament.Utility.Constant;
+import com.medparliament.Widget.Segow_UI_Bold_Font;
+import com.medparliament.Widget.Segow_UI_Semi_Font;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -583,7 +590,7 @@ public class Api_Calling {
                 Comman.log("Result",""+response);
                 try {
                     if(response.getString("status").equalsIgnoreCase("true")) {
-                        textView.setText(response.getJSONArray("result").getJSONObject(0).getString("count")+"  Endorse");
+                        textView.setText(response.getJSONArray("result").getJSONObject(0).getString("count")+"  Like");
                         imageView.setEnabled(false);
                         imageView.setImageResource(R.drawable.ic_like_after);
                     }
@@ -600,7 +607,6 @@ public class Api_Calling {
         RequestQueue requestQueue=Volley.newRequestQueue(context);
         requestQueue.add(jsonObjectRequest);
     }
-
 
 
     public static void postMethodCall_NO_MSG(final Context context, final View view, final onResult onResult, String URL, JSONObject jsonObject, final String name)
@@ -630,6 +636,48 @@ public class Api_Calling {
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
+                }
+            });
+            RequestQueue requestQueue=Volley.newRequestQueue(context);
+            requestQueue.add(jsonObjectRequest);
+
+        }
+
+    }
+    public static void postMethodCall_Interest(final Context context, final View view, final onResult onResult, String URL, JSONObject jsonObject, final String name, final AppCompatButton btn, final ProgressDialog progressDialog)
+    {
+        if(!Comman.isConnectedToInternet(context))
+        {
+            Comman.topSnakBar(context,view, Constant.NO_INTERNET);
+            onResult.onResult(null,false);
+        }else {
+            Comman.log(name,"yyyyy");
+            JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+
+                      progressDialog.cancel();
+                    Comman.log(name,"yyyyy"+response);
+                    try {
+                        if(Boolean.parseBoolean(response.getString("status"))){
+                            btn.setText("Already Registered");
+                          btn.setBackgroundResource(R.color.hintColor);
+                            btn.setOnClickListener(null);
+   showDialogeBox(context,"Information","Thank you for registering, the MedParliament Team will reach out to you with a confirmation!");
+                        }else {
+                     ;   showDialogeBox(context,"Error","Something went wrong!");
+//                            Comman.topSnakBar(context,view, response.getString("message"));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Comman.topSnakBar(context,view, Constant.SOMETHING_WENT_WRONG);
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                     progressDialog.cancel();
+                    showDialogeBox(context,"Error","Something went wrong!");
                 }
             });
             RequestQueue requestQueue=Volley.newRequestQueue(context);
@@ -740,6 +788,45 @@ public class Api_Calling {
             RequestQueue requestQueue=Volley.newRequestQueue(context);
             requestQueue.add(jsonObjectRequest);
         }
+    }
+
+
+    public static void showDialogeBox(Context context, String title, String msg)
+    {
+        final MaterialAlertDialogBuilder alertDialogBuilder=new MaterialAlertDialogBuilder(context,R.style.custom_dialog);
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        final View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_layout, null, false);
+        Button yes=dialogView.findViewById(R.id.yes);
+        Button no=dialogView.findViewById(R.id.no);
+        ImageView mainimg=dialogView.findViewById(R.id.mainimg);
+        no.setVisibility(View.GONE);
+        Segow_UI_Bold_Font title1=dialogView.findViewById(R.id.title);
+        Segow_UI_Semi_Font msg1=dialogView.findViewById(R.id.msg);
+        title1.setText(title);
+        msg1.setText(msg);
+//        WindowManager.LayoutParams lp = alertDialog.getWindow().getAttributes();
+//        lp.dimAmount=0.7f;
+//        alertDialog.getWindow().setAttributes(lp);
+//        alertDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+        alertDialog.setView(dialogView);
+        alertDialog.show();
+        yes.setText("Ok");
+        yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+//                m.clearData();
+//                startActivity(new Intent(Up_Skill_Details_Activity.this,DashBoard_Activity.class));
+//                finish();
+            }
+        });
+        no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
     }
 
 }

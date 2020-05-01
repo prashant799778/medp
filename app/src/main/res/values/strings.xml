@@ -8,7 +8,7 @@
     <string name="Login_with_Google">Login with Google</string>
     <string name="Email__Mobile_No">Email / Mobile No</string>
     <string name="Login">Login</string>
-    <string name="interest"> I Am Intrested</string>
+    <string name="interest">  I want to Register</string>
     <string name="Forgot_password">Forgot password ?</string>
     <string name="nopost">No Data yet !!</string>
     <string name="nothread">No Thread yet !!</string>
@@ -17,7 +17,8 @@
     <string name="Enter_Med">Enter MedParliament</string>
     <string name="From">From</string>
     <string name="TO">To</string>
-    <string name="RazorKey">rzp_test_4u8muzEpnmCqNG</string>
+<!--    <string name="RazorKey">rzp_test_4u8muzEpnmCqNG</string>-->
+    <string name="RazorKey">rzp_live_OsvYv63WTYaI4c</string>
     <string name="Write">Write To MedParliament</string>
     <string name="Remember_Me">Remember Me</string>
     <string name="Password">Password</string>
@@ -26,7 +27,7 @@
 Healthcare Leadership </string>
     <string name="Signup">Sign up</string>
     <string name="Title_Here">Title Here</string>
-    <string name="MED_PARLIAMENT">MED PARLIAMENT</string>
+    <string name="MED_PARLIAMENT">MedParliament</string>
     <string name="selectType">Select Type</string>
     <string name="done">Done</string>
     <string name="welcome">Welcome To MedParliament</string>
@@ -70,7 +71,9 @@ Transcript</string>
     <string name="Mobile_No">Mobile No</string>
     <string name="email">Email Id</string>
     <string name="Up_Skill_Academy">Academic Council</string>
-    <string name="Market_Insights">Market Insights</string>
+    <string name="Med_Street">Med Street</string>
+    <string name="Market_Insights">Fact And Impact</string>
+    <string name="Public_forum">Public Affairs</string>
     <string name="MedAchieversTv">MedAchievers.TV</string>
     <string name="Institute_Name">Institute Name</string>
     <string name="University_name">University name</string>
@@ -185,5 +188,9 @@ your password</string>
     <string name="post1">Post</string>
     <string name="Add">Add Your Views...</string>
     <string name="Notifications">Notifications</string>
+
+    <string name="title_activity_video_viewer">VideoViewerActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>
