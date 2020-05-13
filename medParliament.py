@@ -4547,7 +4547,7 @@ def getPromissingIntiatives():
         column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("promissingIntiatives n,userMaster um",column,WhereCondition,"","0","10",orderby)
         print(data,"-------------------------------------------")
-        data2 = databasefile.SelectTotalCountQuery("promissingIntiatives",WhereCondition,"")
+        data2 = databasefile.SelectTotalCountQuery("promissingIntiatives n,userMaster um",WhereCondition,"")
         data["totalCount"]=data2
         if data != "0":
             
@@ -4735,7 +4735,7 @@ def getNews():
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,n.imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("news n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
-        data2 = databasefile.SelectTotalCountQuery("news",WhereCondition,"")
+        data2 = databasefile.SelectTotalCountQuery("news n,userMaster um ",WhereCondition,"")
         print(data2,"=====================")
         print(data['result'])
         if data != "0":
@@ -4925,7 +4925,7 @@ def getMarketingInsights():
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("marketingInsights n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
-        data2 = databasefile.SelectTotalCountQuery("marketingInsights",WhereCondition,"")
+        data2 = databasefile.SelectTotalCountQuery("marketingInsights n,userMaster um",WhereCondition,"")
 
         if data != "0":
             data["totalCount"]=data2
@@ -5148,7 +5148,7 @@ def getupSkillsOpportunity():
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath,n.videoLink ,um.userName,n.length,n.effort,n.price,n.institutions,n.level,n.language,n.videoTranscript"
         data = databasefile.SelectQueryOrderby("upSkillsOpportunity n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
-        data2 = databasefile.SelectTotalCountQuery("upSkillsOpportunity",WhereCondition,"")
+        data2 = databasefile.SelectTotalCountQuery("upSkillsOpportunity n,userMaster um",WhereCondition,"")
 
         if data != "0":
             data["totalCount"]=data2
