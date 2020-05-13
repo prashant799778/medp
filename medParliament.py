@@ -7675,8 +7675,10 @@ def getParliamentEvent():
         column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(CONVERT_TZ(eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath   "
         data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
         print(data)
+        data2 = databasefile.SelectTotalCountQuery("parliamentEvent ",WhereCondition,"")
 
         if data['result'] != "":
+            data["totalCount"]=data2
 
 
             for i in data['result']:
@@ -8074,6 +8076,7 @@ def getpromisingInitiatives():
         
         column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
         data = databasefile.SelectQuery("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit)
+
         
          
         if data['result'] != "":
@@ -8120,9 +8123,11 @@ def getpromisingInitiatives1():
         
         column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
         data = databasefile.SelectQueryOrderby("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data2 = databasefile.SelectTotalCountQuery("promisingInitiatives ",WhereCondition,"")
         
          
         if data['result'] != "":
+            data["totalCount"]=data2
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
