@@ -7678,7 +7678,7 @@ def getParliamentEvent():
         data2 = databasefile.SelectTotalCountQuery("parliamentEvent ",WhereCondition,"")
 
         if data['result'] != "":
-            data["totalCount"]=data2
+
 
 
             for i in data['result']:
@@ -9695,8 +9695,10 @@ def getParliamentEventa():
         
         column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(CONVERT_TZ(eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath   "
         data = databasefile.SelectQueryOrderby("parliamentEvent",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data2 = databasefile.SelectTotalCountQuery("parliamentEvent ",WhereCondition,"")
         print(data)
         if data['result'] != "":
+            data['totalcount']=data2
 
 
             for i in data['result']:
