@@ -6824,11 +6824,13 @@ def landingPageDashboardtest():
 
 
                     
-                column7 = "mi.id,mi.Status,mi.videoLink as videoPath,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
+                column7 = "mi.id,mi.Status,mi.videoLink as videoPath,mi.isFeatured,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition229,"",startlimit,endlimit,orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
                 for i in data7['result']:
+                    a=[]
+                    b=[]
 
                     if i['imagePath']!='':
                         i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
@@ -6859,9 +6861,14 @@ def landingPageDashboardtest():
                         i['makedone']=1
                     else:
                         i['makedone']=0
+                    if i['isFeatured'] == 0:
+                        a.append(i)
+                    if i['isFeatured']==1:
+                        b.append(i)
 
 
-                data22={"result":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"status":"true","message":""}
+
+                data22={"result":{"featured Programs":b,"top Rated Programs":a},"status":"true","message":""}
                 return data22
             if key ==9:
 
