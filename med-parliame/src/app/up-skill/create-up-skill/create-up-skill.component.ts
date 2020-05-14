@@ -188,8 +188,13 @@ export class CreateUpSkillComponent implements OnInit {
       newsPrice: [''],
       newsEffort: [''],
       newsLength: [''],
+      isFeatured: ['',Validators.required]
       
     });
+
+    this.frmNews.get('isFeatured').valueChanges.subscribe(value=>{
+      console.log(value)
+    })
     this.frmNews.get('newsPrice').valueChanges.subscribe(value=>{
       if(value > 0){
 console.log(value)
@@ -272,6 +277,11 @@ console.log(value)
 
 
   UpdateNews(){
+    if(!this.frmNews.get('isFeatured').valid){
+      this.errorMessage = "Please select Featured"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
     if(!this.frmNews.get('userTypeId').valid){
       this.errorMessage = "Please select  Category"
       jQuery("#errorModal").modal('show')
@@ -317,7 +327,7 @@ console.log(value)
       status: 1,
       videoLink: this.frmNews.get('videoLink').value,
 
-
+      isFeatured: this.frmNews.get('isFeatured').value,
 
       videoTranscript: this.frmNews.get('newsvideoTranscript').value,
       language: this.frmNews.get('newsLanguage').value,
@@ -371,6 +381,11 @@ console.log(value)
   }
 
   submitNews() {
+    if(!this.frmNews.get('isFeatured').valid){
+      this.errorMessage = "Please select Featured"
+      jQuery("#errorModal").modal('show')
+      return;
+    }
     if(!this.frmNews.get('userTypeId').valid){
       this.errorMessage = "Please select  Category"
       jQuery("#errorModal").modal('show')
@@ -412,7 +427,7 @@ console.log(value)
         userTypeId: this.frmNews.get('userTypeId').value,
         flag: 'i',
         videoLink: this.frmNews.get('videoLink').value,
-
+        isFeatured: this.frmNews.get('isFeatured').value,
 
         videoTranscript: this.frmNews.get('newsvideoTranscript').value,
       language: this.frmNews.get('newsLanguage').value,
@@ -504,6 +519,8 @@ this.frmNews.get('videoLink').clearValidators();
     this.frmNews.get('summary').setValue(this.newsDetails[0]['summary']);
     this.frmNews.get('newsDesc').setValue(this.newsDetails[0]['newsDesc']);
     this.frmNews.get('id').setValue(this.newsDetails[0]['id']);
+    this.frmNews.get('isFeatured').setValue(this.newsDetails[0]['isFeatured']);
+    
     this.frmNews.get('newsvideoTranscript').setValue(this.newsDetails[0]['videoTranscript'])
       this.frmNews.get('newsLanguage').setValue(this.newsDetails[0]['language'])
       this.frmNews.get('newsLevel').setValue(this.newsDetails[0]['level'])

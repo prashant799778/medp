@@ -51,6 +51,7 @@
                               <th> Title</th>
                               <th> Subject</th>
                               <th> Description</th>
+                              <th>Is Featured</th>
                               <th> Date</th>
                               <th>Created By</th>
                               <th>Enrolls</th>
@@ -66,7 +67,9 @@
                                   <td> <p>{{news.newsTitle}} </p></td> 
                                   <td> <p>{{news.summary}} </p></td>                                       
                                   <td> <p [innerHtml]="news.newsDesc " class="inline-blk"></p> </td>
+                                  <td> <p *ngIf="news.isFeatured == 0">No</p> <p *ngIf="news.isFeatured == 1">Yes</p></td>
                                   <td> {{news.DateCreate}}</td>
+                                  
                                   <td>  <p>{{news.userName}} </p></td> 
                                   <td (click)="enroll(news.id)">
                                     <button  type="button" class="btn ab-btn dc-bg-color-active border-round-rem">{{news.enrollCount}}</button>

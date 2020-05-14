@@ -42,6 +42,18 @@
                 <div class="card-body p-4 border-rd">
                     <form [formGroup]="frmNews" autocomplete="off">
                       <div class="form-group">
+
+                        <label for="newsType">Is Featured</label>
+                        <br>
+                        <label>
+                          <input type="radio" value="1" formControlName="isFeatured">
+                            <span>Yes</span>
+                        </label>
+                        <label>
+                          <input type="radio" value="0" formControlName="isFeatured">
+                            <span>No</span>
+                        </label>
+                        <br>
                        <label for="newsType">Academic Council category</label>
                         <select formControlName="userTypeId">
                             <option *ngFor="let userType of userTypeDetails" [value]="userType.id">{{userType.userName}}</option>
