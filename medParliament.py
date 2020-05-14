@@ -4547,7 +4547,7 @@ def getPromissingIntiatives():
         column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("promissingIntiatives n,userMaster um",column,WhereCondition,"","0","10",orderby)
         print(data,"-------------------------------------------")
-        data2 = databasefile.SelectTotalCountQuery("promissingIntiatives",WhereCondition,"")
+        data2 = databasefile.SelectTotalCountQuery("promissingIntiatives n,userMaster um",WhereCondition,"")
         data["totalCount"]=data2
         if data != "0":
             
@@ -4735,7 +4735,7 @@ def getNews():
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,n.imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("news n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
-        data2 = databasefile.SelectTotalCountQuery("news",WhereCondition,"")
+        data2 = databasefile.SelectTotalCountQuery("news n,userMaster um ",WhereCondition,"")
         print(data2,"=====================")
         print(data['result'])
         if data != "0":
@@ -4925,7 +4925,7 @@ def getMarketingInsights():
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
         column = " n.id,n.Status,n.newsTitle,n.videoLink,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath ,um.userName "
         data = databasefile.SelectQueryOrderby("marketingInsights n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
-        data2 = databasefile.SelectTotalCountQuery("marketingInsights",WhereCondition,"")
+        data2 = databasefile.SelectTotalCountQuery("marketingInsights n,userMaster um",WhereCondition,"")
 
         if data != "0":
             data["totalCount"]=data2
@@ -5010,6 +5010,8 @@ def upSkillsOpportunity():
             if "language" in inputdata:
                 if inputdata['language'] != "":
                    language=commonfile.EscapeSpecialChar(inputdata["language"])
+            if "isFeatured" in inputdata:
+                isFeatured=commonfile.EscapeSpecialChar(inputdata["isFeatured"])
 
             if "videoTranscript" in inputdata:
                 if inputdata['videoTranscript'] != "":
@@ -5061,9 +5063,9 @@ def upSkillsOpportunity():
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
                       
-                    column =column+ "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate,length,effort,price,institutions,level,language,videoTranscript"
+                    column =column+ "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate,length,effort,price,institutions,level,language,videoTranscript,isFeatured"
                     values =values+ " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
-                    values= values+ " ,'"+ str(length) +"','" + str(effort)+"','" + str(price)+"','" + str(institutions) +"','" + str(level)  +"','" + str(language) +"','" + str(videoTranscript)+  "'"
+                    values= values+ " ,'"+ str(length) +"','" + str(effort)+"','" + str(price)+"','" + str(institutions) +"','" + str(level)  +"','" + str(language) +"','" + str(videoTranscript)+"','" + str(isFeatured)+  "'"
                     data = databasefile.InsertQuery("upSkillsOpportunity",column,values)        
                 else:
                     column =column+ "newsTitle,userTypeId,imagePath,summary,newsDesc,length,effort,price,institutions,level,language,videoTranscript"
@@ -5096,7 +5098,7 @@ def upSkillsOpportunity():
 
 
                         whereCondition=" and id= '"+ str(Id) +"'"
-                        column="videoLink='"+ str(videoLink) +"' ,newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"',length='"+ str(length) +"',effort='"+ str(effort) +"',price='"+ str(price) +"',institutions='"+ str(institutions) +"',level='"+ str(level) +"',language='"+ str(language) +"',videoTranscript='"+ str(videoTranscript) +"'"
+                        column="videoLink='"+ str(videoLink) +"' ,isFeatured='"+ str(isFeatured) +"',newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"',length='"+ str(length) +"',effort='"+ str(effort) +"',price='"+ str(price) +"',institutions='"+ str(institutions) +"',level='"+ str(level) +"',language='"+ str(language) +"',videoTranscript='"+ str(videoTranscript) +"'"
                         data=databasefile.UpdateQuery("upSkillsOpportunity",column,whereCondition)
 
 
@@ -5146,9 +5148,9 @@ def getupSkillsOpportunity():
 
         orderby=" n.id "
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
-        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath,n.videoLink ,um.userName,n.length,n.effort,n.price,n.institutions,n.level,n.language,n.videoTranscript"
+        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.isFeatured,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath,n.videoLink ,um.userName,n.length,n.effort,n.price,n.institutions,n.level,n.language,n.videoTranscript"
         data = databasefile.SelectQueryOrderby("upSkillsOpportunity n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
-        data2 = databasefile.SelectTotalCountQuery("upSkillsOpportunity",WhereCondition,"")
+        data2 = databasefile.SelectTotalCountQuery("upSkillsOpportunity n,userMaster um",WhereCondition,"")
 
         if data != "0":
             data["totalCount"]=data2
@@ -6252,10 +6254,12 @@ def landingPageDashboard1():
                             i['likeCount']=0
                             i['makedone']=0
                
-                column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(mi.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
+                column7 = "mi.id,mi.Status,mi.UserCreate,mi.isFeatured,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(mi.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition,"","0","10",orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
+                a=[]
+                b=[]
                 for i in data7['result']:
 
                     if 'userId' in inputdata:
@@ -6269,6 +6273,10 @@ def landingPageDashboard1():
                             i['makedone']=1
                         else:
                             i['makedone']=0
+                        if i['isFeatured'] ==0:
+                            a.append(i)
+                        if i['isFeatured']==1:
+                            b.append(i)
 
 
         if "userTypeId" not  in inputdata:
@@ -6356,7 +6364,7 @@ def landingPageDashboard1():
 
         if data != "0":
             
-            return {"message":"","status":"true","marketingInsights":data6['result'],"upSkillsOpportunity":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"promissingIntiatives":data5["result"],"news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"],"ourPartners":data99}
+            return {"message":"","status":"true","marketingInsights":data6['result'],"upSkillsOpportunity":{"featured Programs":a,"top Rated Programs":b},"promissingIntiatives":data5["result"],"news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"],"ourPartners":data99}
             
         else:
             return commonfile.Errormessage()
@@ -6816,11 +6824,15 @@ def landingPageDashboardtest():
 
 
                     
-                column7 = "mi.id,mi.Status,mi.videoLink as videoPath,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
+                column7 = "mi.id,mi.Status,mi.videoLink as videoPath,mi.isFeatured,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition229,"",startlimit,endlimit,orderby)
+                print(data7)
                 if data7["result"]=="":
                     data7["result"]=[]
+                a=[]
+                b=[]
                 for i in data7['result']:
+                    
 
                     if i['imagePath']!='':
                         i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
@@ -6852,8 +6864,17 @@ def landingPageDashboardtest():
                     else:
                         i['makedone']=0
 
+                    if i['isFeatured'] == 0:
+                        print(i,"++++++++++")
+                        a.append(i)
+                    
+                    if i['isFeatured']==1:
+                        print(b,"++++++++")
+                        b.append(i)
 
-                data22={"result":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"status":"true","message":""}
+
+
+                data22={"result":{"featured Programs":b,"top Rated Programs":a},"status":"true","message":""}
                 return data22
             if key ==9:
 
@@ -7675,8 +7696,10 @@ def getParliamentEvent():
         column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(CONVERT_TZ(eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath   "
         data = databasefile.SelectQuery("parliamentEvent",column,WhereCondition,"",startlimit,endlimit)
         print(data)
+        data2 = databasefile.SelectTotalCountQuery("parliamentEvent ",WhereCondition,"")
 
         if data['result'] != "":
+
 
 
             for i in data['result']:
@@ -8074,6 +8097,7 @@ def getpromisingInitiatives():
         
         column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
         data = databasefile.SelectQuery("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit)
+
         
          
         if data['result'] != "":
@@ -8120,9 +8144,11 @@ def getpromisingInitiatives1():
         
         column = "id,Status,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,videoPath,text,UserCreate  "
         data = databasefile.SelectQueryOrderby("promisingInitiatives",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data2 = databasefile.SelectTotalCountQuery("promisingInitiatives ",WhereCondition,"")
         
          
         if data['result'] != "":
+            data["totalCount"]=data2
             for i in data['result']:
                 if i['imagePath']!='':
                     i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
@@ -9690,8 +9716,10 @@ def getParliamentEventa():
         
         column = "id,Status,UserCreate,eventTitle,userTypeId,eventSummary,eventLocation,date_format(CONVERT_TZ(eventDate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')eventDate,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,videoLink,imagePath   "
         data = databasefile.SelectQueryOrderby("parliamentEvent",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data2 = databasefile.SelectTotalCountQuery("parliamentEvent ",WhereCondition,"")
         print(data)
         if data['result'] != "":
+            data['totalcount']=data2
 
 
             for i in data['result']:
