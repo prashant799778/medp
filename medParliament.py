@@ -5010,6 +5010,8 @@ def upSkillsOpportunity():
             if "language" in inputdata:
                 if inputdata['language'] != "":
                    language=commonfile.EscapeSpecialChar(inputdata["language"])
+            if "isFeatured" in inputdata:
+                isFeatured=commonfile.EscapeSpecialChar(inputdata["isFeatured"])
 
             if "videoTranscript" in inputdata:
                 if inputdata['videoTranscript'] != "":
@@ -5061,9 +5063,9 @@ def upSkillsOpportunity():
                     if inputdata['UserId'] != "":
                         UserId =inputdata["UserId"]
                       
-                    column =column+ "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate,length,effort,price,institutions,level,language,videoTranscript"
+                    column =column+ "newsTitle,userTypeId,imagePath,summary,newsDesc,UserCreate,length,effort,price,institutions,level,language,videoTranscript,isFeatured"
                     values =values+ " '"+ str(newsTitle) +"','" + str(userTypeId)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(newsDesc) + "','" + str(UserId) + "'"
-                    values= values+ " ,'"+ str(length) +"','" + str(effort)+"','" + str(price)+"','" + str(institutions) +"','" + str(level)  +"','" + str(language) +"','" + str(videoTranscript)+  "'"
+                    values= values+ " ,'"+ str(length) +"','" + str(effort)+"','" + str(price)+"','" + str(institutions) +"','" + str(level)  +"','" + str(language) +"','" + str(videoTranscript)+"','" + str(isFeatured)+  "'"
                     data = databasefile.InsertQuery("upSkillsOpportunity",column,values)        
                 else:
                     column =column+ "newsTitle,userTypeId,imagePath,summary,newsDesc,length,effort,price,institutions,level,language,videoTranscript"
@@ -5096,7 +5098,7 @@ def upSkillsOpportunity():
 
 
                         whereCondition=" and id= '"+ str(Id) +"'"
-                        column="videoLink='"+ str(videoLink) +"' ,newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"',length='"+ str(length) +"',effort='"+ str(effort) +"',price='"+ str(price) +"',institutions='"+ str(institutions) +"',level='"+ str(level) +"',language='"+ str(language) +"',videoTranscript='"+ str(videoTranscript) +"'"
+                        column="videoLink='"+ str(videoLink) +"' ,isFeatured='"+ str(isFeatured) +"',newsTitle='"+ str(newsTitle) +"',userTypeId='"+ str(userTypeId) +"',imagePath='"+ str(ImagePath) +"',summary='"+ str(summary) +"',newsDesc='"+ str(newsDesc) +"',Status='"+ str(status) +"',length='"+ str(length) +"',effort='"+ str(effort) +"',price='"+ str(price) +"',institutions='"+ str(institutions) +"',level='"+ str(level) +"',language='"+ str(language) +"',videoTranscript='"+ str(videoTranscript) +"'"
                         data=databasefile.UpdateQuery("upSkillsOpportunity",column,whereCondition)
 
 
@@ -5146,7 +5148,7 @@ def getupSkillsOpportunity():
 
         orderby=" n.id "
         WhereCondition=WhereCondition+" and n.UserCreate=um.userId "
-        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath,n.videoLink ,um.userName,n.length,n.effort,n.price,n.institutions,n.level,n.language,n.videoTranscript"
+        column = " n.id,n.Status,n.newsTitle,n.userTypeId,n.summary,n.isFeatured,n.newsDesc, date_format(CONVERT_TZ(n.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, n.imagePath,n.videoLink ,um.userName,n.length,n.effort,n.price,n.institutions,n.level,n.language,n.videoTranscript"
         data = databasefile.SelectQueryOrderby("upSkillsOpportunity n,userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)
         data2 = databasefile.SelectTotalCountQuery("upSkillsOpportunity n,userMaster um",WhereCondition,"")
 
@@ -6252,10 +6254,12 @@ def landingPageDashboard1():
                             i['likeCount']=0
                             i['makedone']=0
                
-                column7 = "mi.id,mi.Status,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(mi.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
+                column7 = "mi.id,mi.Status,mi.UserCreate,mi.isFeatured,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(mi.DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate, concat('"+ ConstantData.GetBaseURL() + "',mi.imagePath)imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition,"","0","10",orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
+                a=[]
+                b=[]
                 for i in data7['result']:
 
                     if 'userId' in inputdata:
@@ -6269,6 +6273,10 @@ def landingPageDashboard1():
                             i['makedone']=1
                         else:
                             i['makedone']=0
+                        if i['isFeatured'] ==0:
+                            a.append(i)
+                        if i['isFeatured']==1:
+                            b.append(i)
 
 
         if "userTypeId" not  in inputdata:
@@ -6356,7 +6364,7 @@ def landingPageDashboard1():
 
         if data != "0":
             
-            return {"message":"","status":"true","marketingInsights":data6['result'],"upSkillsOpportunity":{"featured Programs":data7['result'],"top Rated Programs":data7['result']},"promissingIntiatives":data5["result"],"news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"],"ourPartners":data99}
+            return {"message":"","status":"true","marketingInsights":data6['result'],"upSkillsOpportunity":{"featured Programs":a,"top Rated Programs":b},"promissingIntiatives":data5["result"],"news":data["result"],"announcement":data1["result"],"gallery":data2["result"],"event":data3["result"],"promisingInitiatives":data4["result"],"ourPartners":data99}
             
         else:
             return commonfile.Errormessage()
