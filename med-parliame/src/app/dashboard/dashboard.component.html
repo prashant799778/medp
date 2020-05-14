@@ -100,7 +100,7 @@
                               <tbody>
                                   <tr *ngFor="let post of PostList;let i = index;">
                                       <td>{{post.userName}}</td>
-                                      <td>{{getUserType(post.userTypeId)}}</td>
+                                      <td>{{post.userTypeId | userTypeId}}</td>
                                       <td>{{post.email}}</td>
                                       <td>{{post.postTitle}}</td>
                                       <td>{{post.DateCreate | date}}</td>
