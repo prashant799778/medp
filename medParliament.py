@@ -6863,9 +6863,13 @@ def landingPageDashboardtest():
                         i['makedone']=1
                     else:
                         i['makedone']=0
+
                     if i['isFeatured'] == 0:
+                        print(i,"++++++++++")
                         a.append(i)
+                    
                     if i['isFeatured']==1:
+                        print(b,"++++++++")
                         b.append(i)
 
 
