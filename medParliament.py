@@ -6826,6 +6826,7 @@ def landingPageDashboardtest():
                     
                 column7 = "mi.id,mi.Status,mi.videoLink as videoPath,mi.isFeatured,mi.UserCreate,mi.newsTitle,mi.userTypeId,mi.summary,mi.newsDesc,date_format(CONVERT_TZ(DateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate,imagePath,mi.length,mi.level,mi.language,mi.effort,mi.price,mi.videoTranscript"
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition229,"",startlimit,endlimit,orderby)
+                print(data7)
                 if data7["result"]=="":
                     data7["result"]=[]
                 a=[]
