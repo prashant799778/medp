@@ -6828,9 +6828,10 @@ def landingPageDashboardtest():
                 data7 = databasefile.SelectQueryOrderby("upSkillsOpportunity  as mi",column7,WhereCondition229,"",startlimit,endlimit,orderby)
                 if data7["result"]=="":
                     data7["result"]=[]
+                a=[]
+                b=[]
                 for i in data7['result']:
-                    a=[]
-                    b=[]
+                    
 
                     if i['imagePath']!='':
                         i['imagePath']=str(ConstantData.GetBaseURL())+ str(i['imagePath'])
