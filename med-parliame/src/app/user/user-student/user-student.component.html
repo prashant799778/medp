@@ -35,7 +35,7 @@
                         <tr *ngFor="let userPolicy of UserStudentList; let i = index">
                             <td>{{userPolicy.userName}}</td>
                             <td>{{userPolicy.email}}</td>
-							<td>{{userPolicy.password}}</td>
+							<td>{{userPolicy.password | passwordType}}</td>
                             <td>{{userPolicy.mobileNo}}</td>
                             <td>{{getGender(userPolicy.gender)}}</td>
                             <td>{{userPolicy.institutionName}}</td>

@@ -34,7 +34,7 @@
                               <td>{{policy.email}}</td>
                               <!-- <td>{{policy.mobileNo}}</td> -->
                               <td>{{getGender(policy.gender)}}</td>
-                              <td>{{policy.password}}</td>
+                              <td>{{policy.password | passwordType}}</td>
                               <td>
                                    <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">ACTIVE</button>
                                    <button *ngIf="postStatus[i]== 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">INACTIVE</button>

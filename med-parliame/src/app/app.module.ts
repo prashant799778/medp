@@ -60,7 +60,7 @@ import { EditAboutComponent } from './about/edit-about/edit-about.component';
 import { UserDecisionComponent } from './user/user-decision/user-decision.component';
 import { CreatePromisingInitiativeComponent } from './promising/create-promising-initiative/create-promising-initiative.component';
 import { EditPromisingInitiativeComponent } from './promising/edit-promising-initiative/edit-promising-initiative.component';
-import { PipesPipe, UserTypeId } from './pipes.pipe';
+import { PipesPipe, UserTypeId, PasswordTypes } from './pipes.pipe';
 import { SanitizeHtmlPipe } from './pipes.pipe';
 import { ViewMarketInsightPostComponent } from './market-insight-post/view-market-insight-post/view-market-insight-post.component';
 import { EditMarketNewsComponent } from './market-news/edit-market-news/edit-market-news.component';
@@ -144,6 +144,7 @@ import { NotificationComponent } from './notification/notification.component';
     CreatePromisingInitiativeComponent,
     EditPromisingInitiativeComponent,
     PipesPipe,
+    PasswordTypes,
     UserTypeId,
     SanitizeHtmlPipe,
     ViewMarketInsightPostComponent,
