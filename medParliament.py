@@ -1895,7 +1895,7 @@ def allstudents():
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='7' and cm.Id=um.countryId  and pm.userId=um.userId "
         
-        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm,CountryMasterNew as cm",column,WhereCondition,"",startlimit,endlimit,orderby)
       
         
         
