@@ -1618,6 +1618,8 @@ def allDoctorMaster():
             if (data!=0):
                 for i in data["result"]:
                     userId=i["userId"]
+                    
+
                     column="count(*) as count"
                     whereCondition=" and pm.usertypeId='8' and pm.userId='" + str(userId) + "' "
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
@@ -1889,7 +1891,9 @@ def allstudents():
         column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
         column=column+" pm.address,pm.qualificationId as qualificationName,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId as universityName,um.status,um.emailVerificationStatus as emailStatus"
         startlimit,endlimit="",""
-        WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId  "
+        column=column+"um.countryId,(cm.Name)countryName"
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='7' and cm.Id=um.countryId  and pm.userId=um.userId "
         
         data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
       
