@@ -1623,6 +1623,13 @@ def allDoctorMaster():
                     column="count(*) as count"
                     whereCondition=" and pm.usertypeId='8' and pm.userId='" + str(userId) + "' "
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                    column=" im.name " 
+                    WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                    data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                    a=[]
+                    for m in data5["result"]:
+                        a.append(m["name"]) 
+                        i['interest']=a
                     if data1['status'] !="False":
                         count=data1["result"]["count"]
                         i["noOfPosts"]=count
@@ -1669,6 +1676,14 @@ def allprofessionalsMaster():
                     column="count(*) as count"
                     whereCondition=" and pm.usertypeId='9' and pm.userId='" + str(userId) + "' "
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                    column=" im.name " 
+                    WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                    data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                    a=[]
+                    for m in data5["result"]:
+                        a.append(m["name"]) 
+                        i['interest']=a
+                    
                     print(data1,"d")
                     if data1['status'] !="False":
                         count=data1["result"]["count"]
@@ -1781,6 +1796,13 @@ def allenterprenuer():
                 column="count(*) as count"
                 whereCondition=" and pm.usertypeId='6' and pm.userId='" + str(userId) + "' "
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                column=" im.name " 
+                WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                a=[]
+                for m in data5["result"]:
+                    a.append(m["name"]) 
+                    i['interest']=a
                 print(data1,"")
                
                 if data1['status'] !="False":
@@ -1903,7 +1925,17 @@ def allstudents():
 
         if (data!=0):
             for i in data["result"]:
+
                 userId=i["userId"]
+
+                column=" im.name " 
+                WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                a=[]
+                for m in data5["result"]:
+                    a.append(m["name"]) 
+                    i['interest']=a
+
                 column="count(*) as count"
                 whereCondition=" and pm.usertypeId='7' and pm.userId='" + str(userId) + "' "
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
