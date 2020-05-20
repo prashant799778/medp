@@ -10472,6 +10472,149 @@ def adminNotification1():
         return output 
 
 
+
+# create notification by admin
+@app.route('/adduserNotification', methods=['POST'])
+def adduserNotification():
+
+    try:
+       
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        print("Notification",inputdata)
+        commonfile.writeLog("adminNotification",inputdata,0)
+        keyarr = ["Title","summary","Link","Desc"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            if "Title" in inputdata:
+                if inputdata['Title'] != "":
+                    Title =inputdata["Title"]
+
+            if "summary" in inputdata:
+                if inputdata['summary'] != "":
+                    summary =inputdata["summary"]
+
+           
+            if "Desc" in inputdata:
+                if inputdata['Desc'] != "":
+                    Desc =inputdata["Desc"]
+
+            if "UserType" in inputdata:
+                if inputdata['UserType'] != "":
+                    UserType =inputdata["UserType"]
+
+
+                             
+            
+            if 'NotificationBanner' in request.files:      
+                    file = request.files.get('NotificationBanner')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getNotificationPath(filename)  
+
+                    filepath = '/notificationimages/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+
+            if "UserId" in inputdata:
+                if inputdata['UserId'] != "":
+                    UserId =inputdata["UserId"]
+                
+                column = "title,imagePath,summary,description,UserCreate,UserType"
+                values = " '"+ str(Title) +"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  + "','" + str(UserId) + "','" + str(UserType)+ "'"
+                data = databasefile.InsertQuery("Notification",column,values)
+                print(data)
+
+            else:
+                column = "title,imagePath,summary,description,UserType"
+                values = " '"+ str(Title) +"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  +"','" + str(UserType)  + "'"
+                data = databasefile.InsertQuery("Notification",column,values)
+            
+            column="MobileToken,userId,userName"
+            WhereCondition=" and userTypeId='"+str(UserType)+"'"
+            data1=databasefile.SelectQuery4('userMaster',column,WhereCondition)
+            for i in  data1['result']:
+                MobileToken=i['MobileToken']
+                userId=i['userId']
+                userName=i['userName']
+                column="title,imagePath,summary,description,MobileToken,userId,userName"
+                values= " '"+ str(Title) +"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  + "','" + str(MobileToken)  + "','" + str(userId) + "','" + str(UserName)+ "'"
+                data66=databasefile.InsertQuery('Notification',column,values)
+                a=ConstantData.userNotification(MobileToken,title,description,summary,userName)
+
+
+
+
+
+
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+@app.route('/getUserNotification', methods=['GET'])
+def getUserNotification():
+    try:  
+        startlimit,endlimit="",""
+        inputdata = request.args.to_dict()     
+        if len(inputdata) > 0:           
+            commonfile.writeLog("getUserNotification",inputdata,0)
+        
+        WhereCondition = " and n.UserCreate = um.UserId "
+        orderby = " n.DateCreate "
+        NotificationId = ""
+        if 'NotificationId' in inputdata:
+            if  inputdata["NotificationId"]!= "":
+                NotificationId = inputdata["NotificationId"] 
+                if NotificationId != "" and NotificationId != "0":                           
+                    WhereCondition = WhereCondition + " and n.id = " + str(NotificationId)
+
+        if 'startlimit' in inputdata:
+            if inputdata["startlimit"] != "":
+                startlimit = str(inputdata["startlimit"])
+        if 'endlimit' in inputdata:
+            if inputdata["endlimit"] != "":
+                endlimit = str(inputdata["endlimit"])
+
+        column = "n.id,n.title,n.summary,n.description,n.UserCreate,n.UserType,um.UserName,n.DateCreate,"
+        column = column + "concat('" + ConstantData.GetBaseURL() + "',"
+        column = column + "if(n.imagePath is NULL or n.imagePath = '','"+ConstantData.GetdefaultNotificationImage()+"',n.imagePath))imagePath"
+ 
+        if 'UserId' in inputdata:
+            if  inputdata["UserId"]!= "":
+                UserId = inputdata["UserId"]
+                WhereCondition = WhereCondition + " and n.UserCreate = '" + str(UserId) + "' "
+                      
+        data= databasefile.SelectQueryOrderby("Notification n, UserMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)        
+        count = databasefile.SelectCountQuery("Notification","","")
+        data["totalnotification"]=count   
+        data1= databasefile.SelectQuery4("Notification n, UserMaster um",column,WhereCondition)
+        if data !=0 :
+           
+
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
     app.run(host='0.0.0.0',port=5031,debug=True)
