@@ -10731,6 +10731,60 @@ def updateWebToken():
         output = {"result":"somthing went wrong","status":"false"}
         return output
 
+
+
+@app.route('/Login11', methods=['GET'])
+def login122():
+    try:
+        password = request.args['password']
+       
+        mobile = request.args['email']
+        WebToken = request.args['WebToken']
+        MobileToken = request.args['MobileToken']
+
+        column=  "us.profilePic,us.mobileNo,us.userName,us.email,um.id as userTypeId,us.userId as userId,us.status as status"
+        whereCondition= " and us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.userTypeId=um.id "
+        groupby,startlimit,endlimit="","",""
+        loginuser=databasefile.SelectQuery("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
+        
+               
+      
+        if  (loginuser["status"]!="false"): 
+            if loginuser["result"][0]["profilePic"]==None:
+                loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/profilePic.jpg"
+            else:
+                loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(loginuser["result"][0]["profilePic"])
+
+            if loginuser["result"][0]["status"]== 0:
+                Data = {"status":"true","message":"","result":loginuser["result"]} 
+                return Data
+            if loginuser["result"][0]["status"]== 2:
+                Data = {"status":"false","message":"your account is Deactivated by admin","result":""} 
+                return Data
+            if MobileToken !=None:
+                databasefile.UpdateQuery("userMaster as us,userTypeMaster as um","MobileToken = '"+str(MobileToken)+"'",WhereCondition)
+            if WebToken !=None:
+                databasefile.UpdateQuery("userMaster as us,userTypeMaster as um","WebToken = '"+str(WebToken)+"'",WhereCondition)
+                
+
+            else:
+                Data = {"status":"False","message":"Till Now your account is not approved By admin, after admin approval you can access your account","result":""} 
+                return Data
+        else:
+            data = {"status":"false","message":" Your Email or Password is Wrong, Try Again","result":""}
+            return data
+
+    except KeyError as e:
+        print("Exception---->" +str(e))        
+        output = {"status":"false","message":"No Data Found","result":""}
+        return output 
+    
+    except Exception as e :
+        print("Exception---->" +str(e))           
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output 
+
+
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
     app.run(host='0.0.0.0',port=5031,debug=True)
