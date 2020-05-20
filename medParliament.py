@@ -1931,9 +1931,11 @@ def allstudents():
                 column=" im.name " 
                 WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
                 data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                print(data5,"+++++")
                 a=[]
                 for m in data5["result"]:
                     a.append(m["name"]) 
+                    print(a)
                     i['interest']=a
 
                 column="count(*) as count"
