@@ -24,8 +24,12 @@
 									<th>Password</th>
                                     <th>Phone</th>
                                     <th>Gender</th>
+                                    <th>Interest</th>
                                     <th>occupation</th>
                                     <th>Address</th>
+                                    <th>Company Name</th>
+                                    <th>Company Address</th>
+                                    <th>Destination</th>
                                     
                                     <th>Status</th>
                                     <th>Email Status</th>
@@ -39,8 +43,13 @@
                                     <td>{{userPolicy.password | passwordType}}</td>
                                     <td>{{userPolicy.mobileNo}}</td>
                                     <td>{{getGender(userPolicy.gender)}}</td>
+                                    <td><span *ngFor="let interest of userPolicy.interest">{{interest}},&nbsp;</span></td>
                                     <td>{{userPolicy.occupation}}</td>
                                     <td>{{userPolicy.address}}</td>
+                                   
+                                    <td>{{userPolicy.companyName}}</td>
+                                    <td>{{userPolicy.companyAddress}}</td>
+                                    <td>{{userPolicy.designation}}</td>
                                    
                                     <td>
                                             <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>

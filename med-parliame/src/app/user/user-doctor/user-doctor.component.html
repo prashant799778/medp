@@ -24,7 +24,11 @@
 									<th>Password</th>
                                     <th>Phone</th>
                                     <th>Gender</th>
-                                    <!-- <th>Institution</th> -->
+                                    <th>Interest</th>
+                                    <th>Hospital Practice</th>
+                                    <th>Hospital Address</th>
+                                    <th>Area of Expertise</th>
+                                    <th>Qualification</th>
                                     <!-- <th>Address</th> -->
                                     
                                     <th>Status</th>
@@ -39,8 +43,11 @@
 									<td>{{userPolicy.password | passwordType}}</td>
                                     <td>{{userPolicy.mobileNo}}</td>
                                     <td>{{getGender(userPolicy.gender)}}</td>
-                                    <!-- <td>{{userPolicy.institutionName}}</td> -->
-                                    <!-- <td>{{userPolicy.address}}</td> -->
+                                    <td><span *ngFor="let interest of userPolicy.interest">{{interest}},&nbsp;</span></td>
+                                    <td>{{userPolicy.hospital}}</td>
+                                    <td>{{userPolicy.hospitalAddress}}</td>
+                                    <td>{{userPolicy.areaOfExpertise}}</td>
+                                    <td>{{userPolicy.qualificationName}}</td>
                                     
                                     <td>
                                             <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>

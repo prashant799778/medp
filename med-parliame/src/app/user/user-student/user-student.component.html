@@ -24,6 +24,7 @@
 							<th>Password</th>
                             <th>Phone</th>
                             <th>Gender</th>
+                            <th>Interest</th>
                             <th>Institution</th>
                             <th>Address</th>
                             <th>Status</th>
@@ -38,6 +39,7 @@
 							<td>{{userPolicy.password | passwordType}}</td>
                             <td>{{userPolicy.mobileNo}}</td>
                             <td>{{getGender(userPolicy.gender)}}</td>
+                            <td><span *ngFor="let interest of userPolicy.interest">{{interest}},&nbsp;</span></td>
                             <td>{{userPolicy.institutionName}}</td>
                             <td>{{userPolicy.address}}</td>
                             
