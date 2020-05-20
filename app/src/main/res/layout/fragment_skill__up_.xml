@@ -20,16 +20,16 @@
         android:id="@+id/t1"
         android:paddingLeft="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
         android:text="@string/Featured_Programme"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
     </com.medparliament.Widget.Segow_UI_Bold_Font>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCarouselRecyclerView"
         android:layout_width="match_parent"
         android:layout_below="@id/t1"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="10dp"
         android:padding="0dp"
         android:scrollbars="horizontal" />
     <com.medparliament.Widget.Segow_UI_Bold_Font
@@ -38,12 +38,13 @@
         android:textSize="18dp"
         android:layout_weight="1"
         android:textStyle="bold"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/rvCarouselRecyclerView"
         android:id="@+id/t2"
         android:paddingLeft="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:text="@string/Top_Rate_Programme"
+        android:visibility="gone"
         android:layout_height="wrap_content">
     </com.medparliament.Widget.Segow_UI_Bold_Font>
     <androidx.recyclerview.widget.RecyclerView
@@ -51,7 +52,6 @@
         android:layout_below="@+id/t2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:padding="0dp"
         android:scrollbars="horizontal" />
 

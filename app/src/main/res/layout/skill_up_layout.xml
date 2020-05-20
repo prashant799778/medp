@@ -89,6 +89,7 @@
                 android:lineHeight="20dp"
                 android:textColor="@color/c1c1"
                 android:text="yyyy"
+                android:lines="3"
                 android:layout_height="wrap_content">
             </com.medparliament.Widget.Segow_UI_Font>
         </LinearLayout>

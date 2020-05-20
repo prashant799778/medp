@@ -114,6 +114,7 @@
                 android:id="@+id/name"
                 android:textCursorDrawable="@drawable/curcos"
                 android:layout_marginTop="@dimen/top"
+                android:focusable="false"
                 android:background="@color/transparent"
                 android:layout_height="wrap_content">
             </com.medparliament.Widget.Segow_UI_EditText>
@@ -149,6 +150,7 @@
                     android:background="@color/transparent"
                     android:textCursorDrawable="@drawable/curcos"
                     android:id="@+id/email"
+                    android:focusable="false"
                     android:layout_height="wrap_content">
                 </com.medparliament.Widget.Segow_UI_EditText>
                 <View

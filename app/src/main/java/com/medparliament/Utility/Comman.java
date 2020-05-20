@@ -116,8 +116,8 @@ public class Comman {
         Toast.makeText(context, text, Toast.LENGTH_LONG).show();
     }
     public static void log(String tag, String text) {
-//        if(text!=null)
-//        Log.d(tag, text);
+        if(text!=null)
+        Log.d(tag, text);
     }
     public static JSONObject deviceInformation(Context context)
     {

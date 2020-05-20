@@ -157,8 +157,8 @@ Transcript</string>
     <string name="Forgot1">Please enter your registered email id to reset
 your password</string>
     <string name="Email">E-mail Id</string>
-    <string name="Featured_Programme">Featured Programme</string>
-    <string name="Top_Rate_Programme">Top Rated Programme</string>
+    <string name="Featured_Programme">Courses Available</string>
+    <string name="Top_Rate_Programme">Highlighted Courses</string>
     <string name="OTP">Enter OTP</string>
     <string name="DecisionMaker">As Decision Maker</string>
     <string name="DM">Decision Maker</string>

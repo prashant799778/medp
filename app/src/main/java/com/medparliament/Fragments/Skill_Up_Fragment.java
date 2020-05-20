@@ -30,6 +30,7 @@ import com.medparliament.Internet.onResult;
 import com.medparliament.R;
 import com.medparliament.Utility.Comman;
 import com.medparliament.Utility.MySharedPrefrence;
+import com.medparliament.Widget.Segow_UI_Bold_Font;
 import com.medparliament.carouselrecyclerview.CarouselAdapter;
 import com.medparliament.carouselrecyclerview.CarouselLayoutManager;
 import com.tmall.ultraviewpager.UltraViewPager;
@@ -56,6 +57,7 @@ public class Skill_Up_Fragment extends Base_Fragement implements onResult {
     private CarouselAdapter mAdapter,adapter1;
     private LinearLayoutManager mLinearLayoutManager,manager;
     RecyclerView mRecyclerView,recyclerView;
+    Segow_UI_Bold_Font cavailable , havailable;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,6 +71,8 @@ public class Skill_Up_Fragment extends Base_Fragement implements onResult {
         progressDialog.show();
         this.onResult=this;
         nodata=v.findViewById(R.id.nodata);
+        cavailable = v.findViewById(R.id.t1) ;
+        havailable = v.findViewById(R.id.t2) ;
         m=MySharedPrefrence.instanceOf(getContext());
          mRecyclerView=v.findViewById(R.id.rvCarouselRecyclerView);
          recyclerView=v.findViewById(R.id.rvCarouselRecyclerView1);
@@ -76,23 +80,6 @@ public class Skill_Up_Fragment extends Base_Fragement implements onResult {
         manager = new CarouselLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         recyclerView.setLayoutManager(manager);
-
-//        ultraViewPager.getIndicator()
-//                .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
-//                .setFocusColor(Color.GREEN)
-//                .setNormalColor(Color.WHITE)
-//                .setRadius((int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics()));
-////set the alignment
-//        ultraViewPager.getIndicator().setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
-////construct built-in indicator, and add it to  UltraViewPager
-//        ultraViewPager.getIndicator().build();
-//
-////set an infinite loop
-//        ultraViewPager.setInfiniteLoop(true);
-////enable auto-scroll mode
-//        ultraViewPager.setAutoScroll(10000);
-//        ultraViewPager.disableIndicator();
-
         return v;
     }
 
@@ -105,58 +92,40 @@ public class Skill_Up_Fragment extends Base_Fragement implements onResult {
         nodata.setVisibility(View.VISIBLE);
         if (jsonObject != null && status) {
             nodata.setVisibility(View.GONE);
-            try {
-                if (jsonObject.getJSONObject("result").getJSONArray("featured Programs").length() > 0 && jsonObject.getJSONObject("result").getJSONArray("top Rated Programs").length() > 0) {
+            try
+            {
+                if (jsonObject.getJSONObject("result").getJSONArray("featured Programs").length() > 0)
+                {
+                    cavailable.setVisibility(View.VISIBLE);
+                    Gson gson = new GsonBuilder().create();
+                    ArrayList<up_skill_model> rm = gson.fromJson(jsonObject.getJSONObject("result").getString("featured Programs"), new TypeToken<ArrayList<up_skill_model>>() {
+                    }.getType());
+                    arrayList.clear();
+                    arrayList.addAll(rm);
+                    mAdapter = new CarouselAdapter(getContext());
+                    mRecyclerView.setAdapter(mAdapter);
+                    mAdapter.addAll(arrayList);
+                    mLinearLayoutManager.scrollToPositionWithOffset(arrayList.size() / 2, 55);
+                    mAdapter.notifyDataSetChanged();
+                }
+
+                if (jsonObject.getJSONObject("result").getJSONArray("top Rated Programs").length() > 0) {
                     try {
+                        havailable.setVisibility(View.VISIBLE);
                         Gson gson = new GsonBuilder().create();
-                        ArrayList<up_skill_model> rm = gson.fromJson(jsonObject.getJSONObject("result").getString("featured Programs"), new TypeToken<ArrayList<up_skill_model>>() {
-                        }.getType());
                         ArrayList<up_skill_model> rm1 = gson.fromJson(jsonObject.getJSONObject("result").getString("top Rated Programs"), new TypeToken<ArrayList<up_skill_model>>() {
                         }.getType());
-                        arrayList.clear();
-                        arrayList.addAll(rm);
-//                List<Integer> newItems = new ArrayList<>();
-//                newItems.add(R.drawable.ic_done);
-//                newItems.add(R.drawable.ic_home);
-//                newItems.add(R.drawable.ic_like);
-                        mAdapter = new CarouselAdapter(getContext());
                         adapter1 = new CarouselAdapter(getContext());
-
-                        mRecyclerView.setAdapter(mAdapter);
                         recyclerView.setAdapter(adapter1);
-
-
-                        mAdapter.addAll(arrayList);
-                        mLinearLayoutManager.scrollToPositionWithOffset(arrayList.size() / 2, 55);
-                        mAdapter.notifyDataSetChanged();
-
-
                         adapter1.addAll(rm1);
                         manager.scrollToPositionWithOffset(rm1.size() / 2, 55);
                         adapter1.notifyDataSetChanged();
-                        ////Log.d(TAG, "Response succeeded!!!");
-//                ultraViewPager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL);
-//                //initialize UltraPagerAdapter，and add child view to UltraViewPager
-//                adapter = new UltraViewPagerAdapterNew(true,arrayList,getContext());
-//                ultraViewPager.setAdapter(adapter);
-//
-////initialize built-in indicator
-//                ultraViewPager.initIndicator();
-////set style of indicators
-//                ultraViewPager.setMultiScreen(0.6f);
-//                ultraViewPager.setItemRatio(1.0f);
-//                ultraViewPager.setRatio(2.0f);
-//                ultraViewPager.setMaxHeight(1000);
-//                ultraViewPager.setAutoMeasureHeight(true);
-//                ultraViewPager.setPageTransformer(false, new UltraDepthScaleTransformer());
-//                adapter.notifyDataSetChanged();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }else {
-                    nodata.setVisibility(View.VISIBLE);
                 }
             } catch (JSONException e) {
+                nodata.setVisibility(View.VISIBLE);
                 e.printStackTrace();
             }
         }

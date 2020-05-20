@@ -147,7 +147,7 @@
                 android:layout_width="match_parent"
                 android:id="@+id/r1"
                 android:layout_below="@+id/t1"
-                android:layout_marginVertical="30dp"
+                android:layout_marginVertical="10dp"
                 android:layout_height="200dp">
                 <ImageView
                     android:visibility="gone"
@@ -199,6 +199,7 @@
                     android:textSize="14dp"
                     android:layout_marginTop="10dp"
                     android:id="@+id/msg"
+                    android:autoLink="all"
                     android:lineHeight="22dp"
                     android:layout_height="wrap_content">
                 </com.medparliament.Widget.Segow_UI_Semi_Font>
