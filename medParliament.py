@@ -10546,7 +10546,7 @@ def adduserNotification():
                 userName=i['userName']
                 column="title,imagePath,summary,description,MobileToken,userId,userName"
                 values= " '"+ str(Title) +"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  + "','" + str(MobileToken)  + "','" + str(userId) + "','" + str(UserName)+ "'"
-                data66=databasefile.InsertQuery('Notification',column,values)
+                data66=databasefile.InsertQuery('userNotification',column,values)
                 a=ConstantData.userNotification(MobileToken,title,description,summary,userName)
 
 
@@ -10646,8 +10646,8 @@ def getDynamicNotification():
 
         column = "title,imagePath,summary,description,MobileToken,userId,userName,date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate" 
 
-        data= databasefile.SelectQueryOrderby("Notification ",column,WhereCondition,"",startlimit,endlimit,orderby)        
-        count = databasefile.SelectCountQuery("Notification","","")
+        data= databasefile.SelectQueryOrderby("userNotification ",column,WhereCondition,"",startlimit,endlimit,orderby)        
+        count = databasefile.SelectCountQuery("userNotification","","")
         data["totalnotification"]=count
 
         if data !=0 :
