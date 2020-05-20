@@ -1796,12 +1796,14 @@ def allenterprenuer():
                 column="count(*) as count"
                 whereCondition=" and pm.usertypeId='6' and pm.userId='" + str(userId) + "' "
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+
                 column=" im.name " 
                 WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
                 data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
                 a=[]
                 for m in data5["result"]:
                     a.append(m["name"]) 
+                    print(a)
                     i['interest']=a
                 print(data1,"")
                
