@@ -10615,6 +10615,51 @@ def getUserNotification():
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
 
+
+
+
+
+@app.route('/getDynamicNotification', methods=['POST'])
+def getDynamicNotification():
+    try:  
+        startlimit,endlimit,UserId="","",""
+        
+        inputdata = commonfile.DecodeInputdata(request.get_data()) 
+        
+        commonfile.writeLog("getDynamicNotification",inputdata,0)
+        
+        WhereCondition= "  "
+
+        if 'userId' in inputdata:
+            if inputdata["userId"] != "":
+                UserId = inputdata["userId"]
+                WhereCondition = WhereCondition + " and userId = '"+str(UserId)+"'"
+
+        orderby = " DateCreate "
+
+        if 'startlimit' in inputdata:
+            if inputdata["startlimit"] != "":
+                startlimit = str(inputdata["startlimit"])
+        if 'endlimit' in inputdata:
+            if inputdata["endlimit"] != "":
+                endlimit = str(inputdata["endlimit"])
+
+        column = "title,imagePath,summary,description,MobileToken,userId,userName,date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate" 
+
+        data= databasefile.SelectQueryOrderby("Notification ",column,WhereCondition,"",startlimit,endlimit,orderby)        
+        count = databasefile.SelectCountQuery("Notification","","")
+        data["totalnotification"]=count
+
+        if data !=0 :
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
     app.run(host='0.0.0.0',port=5031,debug=True)
