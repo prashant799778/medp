@@ -1682,6 +1682,7 @@ def allprofessionalsMaster():
                     a=[]
                     for m in data5["result"]:
                         a.append(m["name"]) 
+                        print(a)
                         i['interest']=a
                     
                     print(data1,"d")
