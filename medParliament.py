@@ -10660,6 +10660,41 @@ def getDynamicNotification():
         return commonfile.Errormessage() 
 
 
+@app.route('/updateMobileToken', methods=['POST'])
+def updateMobileToken():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userId','MobileToken']
+        print(inputdata,"B")
+        commonfile.writeLog("updatePassword",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userId=str(inputdata["userId"])
+            MobileToken=str(inputdata["MobileToken"])
+         
+            column="MobileToken='" + MobileToken+ "'"
+            whereCondition= "  and UserId = '" + str(userId)+ "' "
+            output=databasefile.UpdateQuery("userMaster",column,whereCondition)
+                       
+            if output!='0':
+                Data = {"status":"true","message":commonfile.Successmessage('update'),"result":""}                   
+                return Data
+            else:
+                return commonfile.Errormessage()    
+        else:
+            return msg         
+ 
+    except KeyError :
+        print("Key Exception---->")   
+        output = {"result":"key error","status":"false"}
+        return output  
+
+    except Exception as e :
+        print("Exceptio`121QWAaUJIHUJG n---->" +str(e))    
+        output = {"result":"somthing went wrong","status":"false"}
+        return output
+
 if __name__ == "__main__":
     CORS(app, support_credentials=True)
     app.run(host='0.0.0.0',port=5031,debug=True)
