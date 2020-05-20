@@ -1938,6 +1938,7 @@ def allstudents():
                     print(a)
                     i['interest']=a
 
+
                 column="count(*) as count"
                 whereCondition=" and pm.usertypeId='7' and pm.userId='" + str(userId) + "' "
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
@@ -1946,7 +1947,8 @@ def allstudents():
                     count=data1["result"]["count"]
                     i["noOfPosts"]=count
                 else:
-                    i["noOfPosts"]=0      
+                    i["noOfPosts"]=0
+                print(i,"+++++++++=====")     
             Data = {"status":"true","message":"","result":data["result"]}
             return Data
         else:
