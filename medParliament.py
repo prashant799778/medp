@@ -483,7 +483,7 @@ def getMailBody(userName, link):
              </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
                <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
-               <p style="margin: 0">Hello Mr. ' + str(userName) + '<br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
+               <p style="margin: 0">Hello Dear, ' + str(userName) + '<br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
                of Healthcare Leadership. </strong><br><br>Thank you for joining our community.\
                 <br><br>Please validate your email address by clicking on the button below <br>\
                 <br><strong> </p><a href="'+str(link)+'" style="padding: 10px 23px; background:\

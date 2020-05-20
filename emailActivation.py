@@ -15,7 +15,7 @@ def getactivationmail(userName):#userName, link
              </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
                <div style="min-height: 250px;  text-align:left ; padding: 0 20px;background: #ffffff;"> \
-               <p style="margin: 0"><h4 style="margin: 0">Hello Mr. ' + str(userName) + '</h4><br>Congratulations! Your account has been activated successfully </strong> <br> <br>\
+               <p style="margin: 0"><h4 style="margin: 0">Hello Dear, ' + str(userName) + '</h4><br>Congratulations! Your account has been activated successfully </strong> <br> <br>\
               <strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
                of Healthcare Leadership.<br> </strong><br>Today, the nature of healthcare is very dynamic, global and interactive. This is era of <br>\
 genomics, personalized medicine, hospitals with hospitality, artificial intelligence, <br>\
@@ -161,7 +161,7 @@ def getactivationmailforDecisionMaker(userName):#userName, link
              </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
                <div style="min-height: 250px; text-align:left ; padding: 0 20px;background: #ffffff;"> \
-               <p style="margin: 0"><h4 style="margin: 0">Hello Mr. ' + str(userName) + '</h4><br>\
+               <p style="margin: 0"><h4 style="margin: 0">Hello Dear, ' + str(userName) + '</h4><br>\
                    Congratulations! Your account has been activated successfully </strong> <br> <br>\
                <strong>It is my pleasure to welcome you to MEDPARLIAMENT, the Global Parliament of<br>\
                    Healthcare leadership.\
