@@ -2129,7 +2129,7 @@ def UpdateUser1():
                 MobileNo = inputdata["mobileNo"]
 
             if Country == "":
-                Country='0'        
+                Country='101'        
 
             if 'country' in inputdata:                    
                 Country = inputdata["country"]  
