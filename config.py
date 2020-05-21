@@ -32,7 +32,7 @@ data ={
 "OrganizationId":"2",
 "content_available" : "true",
 "priority" : "high",
-"subtitle":"welcome to fandomLive",
-"Title":"hello fandomLivers"
+"subtitle":"welcome to MedParliament",
+"Title":"hello User"
 }
 }    
