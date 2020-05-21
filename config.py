@@ -17,3 +17,22 @@ def Connection():
 
     #cursor = connection.cursor()
     return connection
+
+
+
+URL = "https://fcm.googleapis.com/fcm/send"  # request url
+
+headers = {  
+"Content-Type": "application/json",
+"Authorization":"key=AAAAiJLwYcw:APA91bGlz5tuH5hPhSn0Gedr9Ffsrvt5iT06wWe_nE6HfWj9hw3ZAq8Qn6yacJaNvxIIArzOEoua991H8XM6v2-5UiCNrq3j8yGWEE-yNl2F3lH4Mvm_HuXDkqu9VyblpuCTnumikyjS"}
+data ={ 
+"to":"", 
+"notification" : {
+"body" : "New announcement assigned",
+"OrganizationId":"2",
+"content_available" : "true",
+"priority" : "high",
+"subtitle":"welcome to fandomLive",
+"Title":"hello fandomLivers"
+}
+}    
