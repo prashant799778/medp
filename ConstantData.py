@@ -58,6 +58,24 @@ def userNotification(DeviceToken,title,description,summary,UserName):
         return commonfile.Errormessage()
 
 
+
+def newmessage(DeviceToken,comment,adminName,UserName):
+    try:
+        config.data['to'] = str(DeviceToken)
+        config.data['subtitle'] = "Dear ,"+str(UserName)+" you got new message  from "+str(adminName)+" description "+str(description)+" message"+str(message)+" "
+        print(config.data)        
+        r=requests.post(config.URL, headers=config.headers, data=json.dumps(config.data))
+        response=json.loads(r.text) 
+        if response:
+            return response
+        else:
+            return commonfile.Errormessage()
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
 def GetSecurityDocumentPath(filename):
 
     path = "/var/www/FandomLive/backend/FandomLive/Api/SecurityDocuments/"+filename

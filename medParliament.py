@@ -3696,6 +3696,8 @@ def allStatus():
         return output 
 
 
+
+
 @app.route('/verifyPost1', methods=['POST'])
 def verifyPost1():
     try:
@@ -3711,6 +3713,27 @@ def verifyPost1():
         if msg == "1":
             approvedUserId = inputdata["approvedUserId"]
             postId = inputdata["postId"]
+            column=" userId"
+            
+            wherecondition=" and postId='"+str(postId)+"'"
+            da=databasefile.SelectQuery1('userPost',column,wherecondition)
+            userId=da['result']['userId']
+            
+            column="MobileToken,userName"
+            wherecondition=" and userId='"+str(userId)+"'"
+            Mt=databasefile.SelectQuery1('userMaster',column,wherecondition)
+
+            
+            MobileToken=Mt['result']['MobileToken']
+            userName=Mt['result']['userName']
+
+            column='userName'
+            wherecondition=" and userId='"+str(approvedUserId)+"'"
+            d=databasefile.SelectQuery1('userMaster',column,wherecondition)
+            adminName=d['result']['userName']
+
+
+            
             userTypeId = int(inputdata["userTypeId"])
             print("333333333333333333333")
          
@@ -3718,6 +3741,9 @@ def verifyPost1():
             column = "approvedUserId,postId,userTypeId,commentDescription"                
             values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription) + "'"
             data = databasefile.InsertQuery("approvedBy",column,values)
+            if MobileToken !=None:
+                message=ConstantData.newmessage(MobileToken,commentDescription,adminName,userName)
+            
             if data!="0":
                 return data
             else:
@@ -3729,6 +3755,7 @@ def verifyPost1():
         print("Exception---->" +str(e))           
         output = {"status":"false","message":"something went wrong","result":""}
         return output
+
 
 
 
@@ -10474,6 +10501,7 @@ def adminNotification1():
 
 
 # create notification by admin
+
 @app.route('/adduserNotification', methods=['POST'])
 def adduserNotification():
 
@@ -10566,6 +10594,7 @@ def adduserNotification():
     except Exception as e:
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage() 
+
 
 @app.route('/getUserNotification', methods=['GET'])
 def getUserNotification():
