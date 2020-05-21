@@ -62,7 +62,7 @@ def userNotification(DeviceToken,title,description,summary,UserName):
 def newmessage(DeviceToken,comment,adminName,UserName):
     try:
         config.data['to'] = str(DeviceToken)
-        config.data['subtitle'] = "Dear ,"+str(UserName)+" you got new message  from "+str(adminName)+" description "+str(description)+" message"+str(message)+" "
+        config.data['subtitle'] = "Dear ,"+str(UserName)+" you got new message  from "+str(adminName)+" message "+str(comment)+" "
         print(config.data)        
         r=requests.post(config.URL, headers=config.headers, data=json.dumps(config.data))
         response=json.loads(r.text) 
@@ -75,6 +75,22 @@ def newmessage(DeviceToken,comment,adminName,UserName):
         return commonfile.Errormessage()
 
 
+
+
+def newmessage1(DeviceToken,comment,adminName,UserName):
+    try:
+        config.data['to'] = str(DeviceToken)
+        config.data['subtitle'] = "Dear ,"+str(adminName)+" you got new message  from "+str(UserName)+" message"+str(comment)+" "
+        print(config.data)        
+        r=requests.post(config.URL, headers=config.headers, data=json.dumps(config.data))
+        response=json.loads(r.text) 
+        if response:
+            return response
+        else:
+            return commonfile.Errormessage()
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
 
 def GetSecurityDocumentPath(filename):
 

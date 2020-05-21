@@ -3713,11 +3713,12 @@ def verifyPost1():
         if msg == "1":
             approvedUserId = inputdata["approvedUserId"]
             postId = inputdata["postId"]
-            column=" userId"
+            column=" userId,userTypeId"
             
             wherecondition=" and postId='"+str(postId)+"'"
             da=databasefile.SelectQuery1('userPost',column,wherecondition)
             userId=da['result']['userId']
+            UserTypeId=da['result']['userId']
             
             column="MobileToken,userName"
             wherecondition=" and userId='"+str(userId)+"'"
@@ -3727,10 +3728,11 @@ def verifyPost1():
             MobileToken=Mt['result']['MobileToken']
             userName=Mt['result']['userName']
 
-            column='userName'
+            column='userName,WebToken'
             wherecondition=" and userId='"+str(approvedUserId)+"'"
             d=databasefile.SelectQuery1('userMaster',column,wherecondition)
             adminName=d['result']['userName']
+            WebToken=d['result']['WebToken']
 
 
             
@@ -3742,7 +3744,13 @@ def verifyPost1():
             values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription) + "'"
             data = databasefile.InsertQuery("approvedBy",column,values)
             if MobileToken !=None:
-                message=ConstantData.newmessage(MobileToken,commentDescription,adminName,userName)
+                if userTypeId != UserTypeId:
+                    message=ConstantData.newmessage(MobileToken,commentDescription,adminName,userName)
+            if WebToken !=None:
+                if userTypeId == UserTypeId:
+                    message=ConstantData.newmessage1(WebToken,commentDescription,adminName,userName)
+
+
             
             if data!="0":
                 return data
