@@ -38,7 +38,7 @@ def InsertRtnId(table,columns,values):
         con.commit()        
         cursor.close()
         message = commonfile.Successmessage('insert')
-        data = {"status":"true","message":message,"result":"","Id";Id}          
+        data = {"status":"true","message":message,"result":"","Id":Id}          
               
         return data
 
