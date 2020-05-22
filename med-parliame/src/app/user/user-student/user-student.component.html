@@ -29,6 +29,7 @@
                             <th>Address</th>
                             <th>Qualification</th>
                             <th>Batch Of Qualification</th>
+                            <th>Country</th>
                             <th>Status</th>
                             <th>Email Status</th>
                             <th>Action</th>
@@ -45,8 +46,8 @@
                             <td>{{userPolicy.institutionName}}</td>
                             <td>{{userPolicy.address}}</td>
                             <td>{{userPolicy.qualificationName}}</td>
-                                <td>{{userPolicy.batchofQualification}}</td>
-                            
+                            <td>{{userPolicy.batchofQualification}}</td>
+                            <td>{{userPolicy.countryName}}</td>
                             <td>
                                     <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>
                                     <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Inactive</button>
