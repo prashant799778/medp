@@ -10656,6 +10656,39 @@ def getUserNotification():
 
 
 
+
+
+@app.route('/deleteUserNotification', methods=['POST'])
+def deleteUserNotification():
+    try: 
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+
+        WhereCondition="" 
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteUserNotification",inputdata,0)
+
+        keyarr = ['id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if "id" in inputdata:
+            if inputdata['id'] != "":
+                Id =inputdata["id"] 
+                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("Notification",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
 @app.route('/getDynamicNotification', methods=['POST'])
 def getDynamicNotification():
     try:  
