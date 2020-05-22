@@ -10778,7 +10778,7 @@ def adduserNotificationUpdate():
                 if inputdata['UserId'] != "":
                     UserId =inputdata["UserId"]
                 
-                column = "title='"+ str(Title) +"',summary='"+ str(summary) +"',description='"+ str(description) +"',UserCreate='"+ str(UserCreate) +"',UserType='"+ str(UserType) +"'"+column2
+                column = "title='"+ str(Title) +"',summary='"+ str(summary) +"',description='"+ str(Desc) +"',UserCreate='"+ str(UserCreate) +"',UserType='"+ str(UserType) +"'"+column2
                 whereCondition=" and id ='"+str(Id)+"'"
                 data = databasefile.UpdateQuery("Notification",column,whereCondition)
                 print(data)
@@ -10795,7 +10795,7 @@ def adduserNotificationUpdate():
                 MobileToken=i['MobileToken']
                 userId=i['userId']
                 userName=i['userName']
-                column="title='" + str(Title)+"',summary='" + str(summary)+"',description='" + str(description)+"',MobileToken='" + str(MobileToken)+"',userId='" + str(userId)+"',userName='" + str(userName)+"'"+column2
+                column="title='" + str(Title)+"',summary='" + str(summary)+"',description='" + str(Desc)+"',MobileToken='" + str(MobileToken)+"',userId='" + str(userId)+"',userName='" + str(userName)+"'"+column2
                 whereCondition=" and notificationId='"+str(Id)+"'"
                 data66=databasefile.UpdateQuery('userNotification',column,whereCondition)
                 if MobileToken !=None:
