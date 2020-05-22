@@ -1960,8 +1960,9 @@ def allstudents():
                     i["noOfPosts"]=count
                 else:
                     i["noOfPosts"]=0
-                print(i,"+++++++++=====")     
-            Data = {"status":"true","message":"","result":data["result"]}
+                print(i,"+++++++++=====") 
+                data11=data['result'][ 0:-1 ]    
+            Data = {"status":"true","message":"","result":data11}
             return Data
         else:
             output = {"status":"false","message":"No Data Found","result":""}
