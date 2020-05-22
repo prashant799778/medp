@@ -171,10 +171,10 @@ export class AppComponent {
 			this.userService.dataPostApi(data,AppSettings.generateOtp).then(resp=>{
 				if(resp && resp['status']=='true'){
 
-					this.loginForm.get('otpForm').get('otp1').patchValue(resp['result'][0].otp[0]);
-					this.loginForm.get('otpForm').get('otp2').patchValue(resp['result'][0].otp[1]);
-					this.loginForm.get('otpForm').get('otp3').patchValue(resp['result'][0].otp[2]);
-					this.loginForm.get('otpForm').get('otp4').patchValue(resp['result'][0].otp[3]);
+					// this.loginForm.get('otpForm').get('otp1').patchValue(resp['result'][0].otp[0]);
+					// this.loginForm.get('otpForm').get('otp2').patchValue(resp['result'][0].otp[1]);
+					// this.loginForm.get('otpForm').get('otp3').patchValue(resp['result'][0].otp[2]);
+					// this.loginForm.get('otpForm').get('otp4').patchValue(resp['result'][0].otp[3]);
 					console.log(this.loginForm)
 					this.otpshow= true;
 				}
