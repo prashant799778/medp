@@ -10778,7 +10778,7 @@ def adduserNotificationUpdate():
                 if inputdata['UserId'] != "":
                     UserId =inputdata["UserId"]
                 
-                column = "title='"+ str(Title) +"',summary='"+ str(summary) +"',description='"+ str(Desc) +"',UserCreate='"+ str(UserCreate) +"',UserType='"+ str(UserType) +"'"+column2
+                column = "title='"+ str(Title) +"',summary='"+ str(summary) +"',description='"+ str(Desc) +"',UserCreate='"+ str(UserId) +"',UserType='"+ str(UserType) +"'"+column2
                 whereCondition=" and id ='"+str(Id)+"'"
                 data = databasefile.UpdateQuery("Notification",column,whereCondition)
                 print(data)
