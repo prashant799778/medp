@@ -4082,7 +4082,7 @@ def generateOtp():
                 from_email = 'medparliament@medachievers.com',
                 to_emails = str(email),
                 subject = "Otp for Reset Password",
-                html_content = '<strong> Otp To Reset Your Password is:' + str(OTP) + ' </strong> <br> <br> Thanks<br> <br> MedParliament Team')
+                html_content = '<strong> The OTP to reset your password is:' + str(OTP) + ' </strong> <br> <br> Thanks<br> <br> MedParliament Team')
             sg = SendGridAPIClient('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')
             response = sg.send(message)
            
@@ -10686,7 +10686,7 @@ def deleteUserNotification():
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if "Id" in inputdata:
             if inputdata['Id'] != "":
-                Id =inputdata["id"] 
+                Id =inputdata["Id"] 
                 WhereCondition=WhereCondition+" and Id='"+str(Id)+"'" 
         if msg == "1":                        
             
