@@ -19,7 +19,7 @@
                     <table class="table">                               
                         <thead>
                             <tr>
-                                <th>Name </th>
+                                <!-- <th>Name </th>
                                 <th>Phone Number</th>
                                 <th>Email</th>
                                 <th>Student Address</th>
@@ -28,12 +28,51 @@
                                 <th>University</th>
                                 <th>No. of Posts</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th>Action</th> -->
+
+
+
+                                <th>Name </th>
+                            <th>Email</th>
+							<th>Password</th>
+                            <th>Phone</th>
+                            <th>Gender</th>
+                            <th>Interest</th>
+                            <th>Institution</th>
+                            <th>Address</th>
+                            <th>Qualification</th>
+                            <th>Batch Of Qualification</th>
+                            <th>Status</th>
+                            <th>Email Status</th>
+                            <th>Action</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let enter of studentlist;let i = index">
+                               
                                 <td>{{enter.userName}}</td>
+                                <td>{{enter.email}}</td>
+                                <td>{{enter.password | passwordType}}</td>
+                                <td>{{enter.mobileNo}}</td>
+                                <td>{{getGender(enter.gender)}}</td>
+                                <td><span *ngFor="let interest of enter.interest">{{interest}},&nbsp;</span></td>
+                                <td>{{enter.institutionName}}</td>
+                                <td>{{enter.address}}</td>
+                                <td>{{enter.qualificationName}}</td>
+                                <td>{{enter.batchofQualification}}</td>
+                                
+                                <td>
+                                        <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>
+                                        <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Inactive</button>
+                                </td>
+                                <td>
+                                    <img class="emailImage" *ngIf="enter.emailStatus == 0" src="../../../assets/images/emailClose.svg">
+                                    <img class="emailImage" *ngIf="enter.emailStatus == 1" src="../../../assets/images/emailRight.svg">
+                                </td>
+                                
+                               
+                                <!-- <td>{{enter.userName}}</td>
                                 <td>{{enter.mobileNo}}</td>
                                 <td>{{enter.email}}</td>
                                 <td>{{enter.address}}</td>
@@ -42,11 +81,12 @@
                                 <td>{{enter.universityName}}</td>
                                 <td>{{enter.noOfPosts}}</td>
                                 <td>
-                                        <!--  -->
                                         <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>
                                         <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Inactive</button>
-                                        <!-- <button *ngIf="postStatus[i] == 2" type="button" class="btn ab-btn dc-bg-color-three border-round-rem">reject</button> -->
-                                </td>
+                                </td> -->
+
+
+
                                 <td>
                                     <button type="button" class="acton-btn" (click)="policyDetail(enter.userId)">
                                         <img src="../../../assets/images/view.svg" class="action-view">

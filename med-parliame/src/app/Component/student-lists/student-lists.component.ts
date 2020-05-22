@@ -27,6 +27,16 @@ export class StudentListsComponent implements OnInit {
     })
 
 }
+
+getGender(value){
+  if(value == '1'){
+    return 'Female'
+  }else if(value == '0'){
+    return 'Male'
+  }else{
+    return 'Other'
+  }
+}
 getStatus(status){
 
   if(status == '0'){

@@ -101,10 +101,10 @@ export class AppSettings {
     public static generateOtp = 'generateOtp';
     public static verifyOtp = 'verifyOtp';
     public static updatePassword = 'updatePassword';
-    
-    
-
-    
+    public static adduserNotification = 'adduserNotification';
+    public static getUserNotification = 'getUserNotification';
+    public static deleteUserNotification = 'deleteUserNotification';
+    public static adduserNotificationUpdate = 'adduserNotificationUpdate';
     
     
     

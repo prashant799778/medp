@@ -27,6 +27,8 @@
                             <th>Interest</th>
                             <th>Institution</th>
                             <th>Address</th>
+                            <th>Qualification</th>
+                            <th>Batch Of Qualification</th>
                             <th>Status</th>
                             <th>Email Status</th>
                             <th>Action</th>
@@ -42,6 +44,8 @@
                             <td><span *ngFor="let interest of userPolicy.interest">{{interest}},&nbsp;</span></td>
                             <td>{{userPolicy.institutionName}}</td>
                             <td>{{userPolicy.address}}</td>
+                            <td>{{userPolicy.qualificationName}}</td>
+                                <td>{{userPolicy.batchofQualification}}</td>
                             
                             <td>
                                     <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>
