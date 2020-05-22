@@ -43,7 +43,7 @@
 									<td>{{userPolicy.password | passwordType}}</td>
                                     <td>{{userPolicy.mobileNo}}</td>
                                     <td>{{getGender(userPolicy.gender)}}</td>
-                                    <td><span *ngFor="let interest of userPolicy.interest">{{interest}},&nbsp;</span></td>
+                                    <td><span *ngFor="let interest of userPolicy.interest;let last = last">{{interest}}<ng-container *ngIf="!last">,</ng-container>&nbsp;</span></td>
                                     <td>{{userPolicy.hospital}}</td>
                                     <td>{{userPolicy.hospitalAddress}}</td>
                                     <td>{{userPolicy.areaOfExpertise}}</td>
