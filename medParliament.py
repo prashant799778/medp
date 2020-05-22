@@ -5709,7 +5709,7 @@ def commentsevent():
             else:
                 commentDescription=inputdata['commentDescription']
                 column = "userId,eventId,userTypeId,commentDescription,status"                
-                values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription)+ "','" + str('0') + "'"
+                values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription)+ "','" + str('1') + "'"
                 data = databasefile.InsertQuery("eventComment",column,values)
 
 
@@ -5773,7 +5773,7 @@ def commentsMarketingInsight():
             else:
                 commentDescription=inputdata['commentDescription']
                 column = "userId,marketingInsightId,userTypeId,commentDescription,status"                
-                values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription)+ "','" + str('0') + "'"
+                values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription)+ "','" + str('1') + "'"
                 data = databasefile.InsertQuery("marketingInsightComment",column,values)
 
 
