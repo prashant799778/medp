@@ -10617,47 +10617,47 @@ def adduserNotification():
         return commonfile.Errormessage() 
 
 
-@app.route('/getUserNotification', methods=['GET'])
+@app.route('/getUserNotification', methods=['POST'])
 def getUserNotification():
     try:  
-        startlimit,endlimit="",""
-        inputdata = request.args.to_dict()     
-        if len(inputdata) > 0:           
-            commonfile.writeLog("getUserNotification",inputdata,0)
-        
-        WhereCondition = " and n.UserCreate = um.UserId "
-        orderby = " n.DateCreate "
-        NotificationId = ""
-        if 'Id' in inputdata:
-            if  inputdata["Id"]!= "":
-                Id = inputdata["Id"] 
-                if Id != "" and Id != "0":                           
-                    WhereCondition = WhereCondition + " and n.id = " + str(Id)
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+"  "
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())      
+            
+            WhereCondition = " and n.UserCreate = um.UserId "
+            orderby = " n.DateCreate "
+            NotificationId = ""
+            if 'Id' in inputdata:
+                if  inputdata["Id"]!= "":
+                    Id = inputdata["Id"] 
+                    if Id != "" and Id != "0":                           
+                        WhereCondition = WhereCondition + " and n.id = " + str(Id)
 
-        if 'startlimit' in inputdata:
-            if inputdata["startlimit"] != "":
-                startlimit = str(inputdata["startlimit"])
-        if 'endlimit' in inputdata:
-            if inputdata["endlimit"] != "":
-                endlimit = str(inputdata["endlimit"])
+            if 'startlimit' in inputdata:
+                if inputdata["startlimit"] != "":
+                    startlimit = str(inputdata["startlimit"])
+            if 'endlimit' in inputdata:
+                if inputdata["endlimit"] != "":
+                    endlimit = str(inputdata["endlimit"])
 
-        column = "n.id as Id,n.title,n.summary,n.description,n.UserCreate,n.UserType,um.UserName,n.DateCreate,"
-        column = column + "concat('" + ConstantData.GetBaseURL() + "',"
-        column = column + "if(n.imagePath is NULL or n.imagePath = '','"+ConstantData.GetdefaultNotificationImage()+"',n.imagePath))imagePath"
- 
-        if 'UserId' in inputdata:
-            if  inputdata["UserId"]!= "":
-                UserId = inputdata["UserId"]
-                WhereCondition = WhereCondition + " and n.UserCreate = '" + str(UserId) + "' "
-                      
-        data= databasefile.SelectQueryOrderby("Notification n, UserMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)        
-        count = databasefile.SelectCountQuery("Notification","","")
-        data["totalnotification"]=count   
-        data1= databasefile.SelectQuery4("Notification n, UserMaster um",column,WhereCondition)
-        if data !=0 :
-           
+            column = "n.id as Id,n.title,n.summary,n.description,n.UserCreate,n.UserType,um.UserName,n.DateCreate,"
+            column = column + "concat('" + ConstantData.GetBaseURL() + "',"
+            column = column + "if(n.imagePath is NULL or n.imagePath = '','"+ConstantData.GetdefaultNotificationImage()+"',n.imagePath))imagePath"
+     
+            if 'UserId' in inputdata:
+                if  inputdata["UserId"]!= "":
+                    UserId = inputdata["UserId"]
+                    WhereCondition = WhereCondition + " and n.UserCreate = '" + str(UserId) + "' "
+                          
+            data= databasefile.SelectQueryOrderby("Notification n, UserMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)        
+            count = databasefile.SelectCountQuery("Notification","","")
+            data["totalnotification"]=count   
+            data1= databasefile.SelectQuery4("Notification n, UserMaster um",column,WhereCondition)
+            if data !=0 :
+               
 
-            return data
+                return data
         else:
             return commonfile.Errormessage()
 
