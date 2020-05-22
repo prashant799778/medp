@@ -10615,11 +10615,11 @@ def getUserNotification():
         WhereCondition = " and n.UserCreate = um.UserId "
         orderby = " n.DateCreate "
         NotificationId = ""
-        if 'NotificationId' in inputdata:
-            if  inputdata["NotificationId"]!= "":
-                NotificationId = inputdata["NotificationId"] 
-                if NotificationId != "" and NotificationId != "0":                           
-                    WhereCondition = WhereCondition + " and n.id = " + str(NotificationId)
+        if 'Id' in inputdata:
+            if  inputdata["Id"]!= "":
+                Id = inputdata["Id"] 
+                if Id != "" and Id != "0":                           
+                    WhereCondition = WhereCondition + " and n.id = " + str(Id)
 
         if 'startlimit' in inputdata:
             if inputdata["startlimit"] != "":
@@ -10628,7 +10628,7 @@ def getUserNotification():
             if inputdata["endlimit"] != "":
                 endlimit = str(inputdata["endlimit"])
 
-        column = "n.id,n.title,n.summary,n.description,n.UserCreate,n.UserType,um.UserName,n.DateCreate,"
+        column = "n.id as Id,n.title,n.summary,n.description,n.UserCreate,n.UserType,um.UserName,n.DateCreate,"
         column = column + "concat('" + ConstantData.GetBaseURL() + "',"
         column = column + "if(n.imagePath is NULL or n.imagePath = '','"+ConstantData.GetdefaultNotificationImage()+"',n.imagePath))imagePath"
  
