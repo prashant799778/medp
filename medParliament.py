@@ -10784,19 +10784,20 @@ def adduserNotificationUpdate():
                 print(data)
 
            
-            print(data)
-            notificationId=data['Id']
+            print(Id,"+")
+          
 
             
             column="MobileToken,userId,userName"
             WhereCondition=" and userTypeId='"+str(UserType)+"'"
             data1=databasefile.SelectQuery4('userMaster',column,WhereCondition)
             for i in  data1['result']:
+                Id=inputdata['Id']
                 MobileToken=i['MobileToken']
                 userId=i['userId']
                 userName=i['userName']
                 column="title='" + str(Title)+"',summary='" + str(summary)+"',description='" + str(Desc)+"',MobileToken='" + str(MobileToken)+"',userId='" + str(userId)+"',userName='" + str(userName)+"'"+column2
-                whereCondition=" and notificationId='"+str(Id)+"'"
+                whereCondition=" and notificationId ='"+str(Id)+"'"
                 data66=databasefile.UpdateQuery('userNotification',column,whereCondition)
                 if MobileToken !=None:
                     a=ConstantData.userNotification(MobileToken,title,description,summary,userName)
