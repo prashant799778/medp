@@ -10574,13 +10574,16 @@ def adduserNotification():
                 
                 column = "title,imagePath,summary,description,UserCreate,UserType"
                 values = " '"+ str(Title) +"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  + "','" + str(UserId) + "','" + str(UserType)+ "'"
-                data = databasefile.InsertQuery("Notification",column,values)
+                data = databasefile.InsertRtnId("Notification",column,values)
                 print(data)
 
             else:
                 column = "title,imagePath,summary,description,UserType"
                 values = " '"+ str(Title) +"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  +"','" + str(UserType)  + "'"
-                data = databasefile.InsertQuery("Notification",column,values)
+                data = databasefile.InsertRtnId("Notification",column,values)
+            print(data)
+            notificationId=data['Id']
+
             
             column="MobileToken,userId,userName"
             WhereCondition=" and userTypeId='"+str(UserType)+"'"
@@ -10589,8 +10592,8 @@ def adduserNotification():
                 MobileToken=i['MobileToken']
                 userId=i['userId']
                 userName=i['userName']
-                column="title,imagePath,summary,description,MobileToken,userId,userName"
-                values= " '"+ str(Title) +"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  + "','" + str(MobileToken)  + "','" + str(userId) + "','" + str(UserName)+ "'"
+                column="notificationId,title,imagePath,summary,description,MobileToken,userId,userName"
+                values= " '"+ str(notificationId)  +"','" + str(Title)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  + "','" + str(MobileToken)  + "','" + str(userId) + "','" + str(UserName)+ "'"
                 data66=databasefile.InsertQuery('userNotification',column,values)
                 a=ConstantData.userNotification(MobileToken,title,description,summary,userName)
 
