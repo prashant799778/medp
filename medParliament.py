@@ -1925,7 +1925,7 @@ def allstudents():
         column="um.mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
         column=column+" pm.address,pm.qualificationId as qualificationName,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId as universityName,um.status,um.emailVerificationStatus as emailStatus"
         startlimit,endlimit="",""
-        # column=column+",um.countryId,(cm.Name)countryName"
+        column=column+",um.countryId,(cm.Name)countryName"
         startlimit,endlimit="",""
         WhereCondition=" and um.usertypeId='7'  and pm.userId=um.userId  and cm.id=um.countryId "
         
