@@ -10519,7 +10519,7 @@ def adduserNotification():
         inputdata = json.loads(inputdata) 
         print("Notification",inputdata)
         commonfile.writeLog("adminNotification",inputdata,0)
-        keyarr = ["Title","summary","Desc"]           
+        keyarr = ["Title","summary","Desc","UserType"]           
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         
         if msg == "1":
