@@ -44,7 +44,10 @@
                       <div class="form-group">
                        <label for="newsType"> Category</label>
                         <select formControlName="userTypeId">
-                            <option *ngFor="let userType of userTypeDetails" [value]="userType.id">{{userType.userName}}</option>
+                            <ng-container *ngFor="let userType of userTypeDetails;let last = last">
+                                <option *ngIf="!last" [value]="userType.id">{{userType.userName}}</option>
+                            </ng-container>
+                            
                         </select>
                         <!-- <div class="error" *ngIf="frmNews.get('userTypeId').errors && (frmNews.get('userTypeId').touched || frmNews.get('userTypeId').dirty)">
                             <p>Global Initiatives category is required</p>

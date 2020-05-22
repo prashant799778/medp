@@ -554,7 +554,7 @@
                         <div class="bottom-section up-spc admin-action">
                             <button *ngIf="!forgetPasswords && !otpshow  && !updatePassword" (click)="getLogin()" type="submit" id="signInLogin" class="sign-btn-bg-color">Sign In</button>
                             <button *ngIf="forgetPasswords && !otpshow  && !updatePassword" (click)="getForget()" type="submit" id="signInLogin" class="sign-btn-bg-color">Forget Password</button>
-                            <button *ngIf="otpshow  && !updatePassword" (click)="veryfyOTP()" type="submit" id="signInLogin" class="sign-btn-bg-color">Very OTP</button>
+                            <button *ngIf="otpshow  && !updatePassword" (click)="veryfyOTP()" type="submit" id="signInLogin" class="sign-btn-bg-color">Verify OTP</button>
                             <button *ngIf="!otpshow && updatePassword" (click)="updatePasswords()" type="submit" id="signInLogin" class="sign-btn-bg-color">Update Password</button>
                         </div>
                         
