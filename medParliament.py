@@ -10593,7 +10593,7 @@ def adduserNotification():
                 userId=i['userId']
                 userName=i['userName']
                 column="notificationId,title,imagePath,summary,description,MobileToken,userId,userName"
-                values= " '"+ str(notificationId)  +"','" + str(Title)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  + "','" + str(MobileToken)  + "','" + str(userId) + "','" + str(UserName)+ "'"
+                values= " '"+ str(notificationId)  +"','" + str(Title)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  + "','" + str(MobileToken)  + "','" + str(userId) + "','" + str(userName)+ "'"
                 data66=databasefile.InsertQuery('userNotification',column,values)
                 if MobileToken !=None:
                     a=ConstantData.userNotification(MobileToken,title,description,summary,userName)
@@ -10795,7 +10795,7 @@ def adduserNotificationUpdate():
                 MobileToken=i['MobileToken']
                 userId=i['userId']
                 userName=i['userName']
-                column="title='" + str(Title)+"',summary='" + str(summary)+"',description='" + str(description)+"',MobileToken='" + str(MobileToken)+"',userId='" + str(userId)+"',userName='" + str(UserName)+"'"+column2
+                column="title='" + str(Title)+"',summary='" + str(summary)+"',description='" + str(description)+"',MobileToken='" + str(MobileToken)+"',userId='" + str(userId)+"',userName='" + str(userName)+"'"+column2
                 whereCondition=" and notificationId='"+str(Id)+"'"
                 data66=databasefile.UpdateQuery('userNotification',column,whereCondition)
                 if MobileToken !=None:
