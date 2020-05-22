@@ -1922,7 +1922,7 @@ def studentMasterPannel():
 def allstudents():
     try:
         orderby=" um.id"
-        column="distinct(um.mobileNo) as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
+        column="distinct(um.mobileNo),um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
         column=column+" pm.address,pm.qualificationId as qualificationName,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId as universityName,um.status,um.emailVerificationStatus as emailStatus"
         startlimit,endlimit="",""
         # column=column+",um.countryId,(cm.Name)countryName"
