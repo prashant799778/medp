@@ -10653,7 +10653,7 @@ def getUserNotification():
             data= databasefile.SelectQueryOrderby("Notification n, userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)        
             count = databasefile.SelectCountQuery("Notification","","")
             data["totalnotification"]=count   
-            data1= databasefile.SelectQuery4("Notification n, UserMaster um",column,WhereCondition)
+            data1= databasefile.SelectQuery4("Notification n, userMaster um",column,WhereCondition)
             if data !=0 :
                
 
