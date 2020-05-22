@@ -101,6 +101,15 @@ def marketingInsights(image_name):
 
 
 
+
+@app.route("/notificationimages/<image_name>")
+def notificationimages(image_name):
+    try:
+        return send_from_directory('notificationimages', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
+
 @app.route("/dashboard/<image_name>")
 def marketingInsights1(image_name):
     try:
