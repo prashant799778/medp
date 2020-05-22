@@ -10701,6 +10701,122 @@ def deleteUserNotification():
     except Exception as e :
         print("Exception--->" + str(e))                                  
         return commonfile.Errormessage()
+
+
+
+@app.route('/adduserNotificationUpdate', methods=['POST'])
+def adduserNotificationUpdate():
+
+    try:
+       
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        print("Notification",inputdata)
+        commonfile.writeLog("adminNotification",inputdata,0)
+        keyarr = ["Title","summary","Desc","UserType","Id"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            ImagePath=""
+            column2=""
+            if "Title" in inputdata:
+                if inputdata['Title'] != "":
+                    Title =inputdata["Title"]
+
+            if "Id" in inputdata:
+                if inputdata['Id'] != "":
+                    Id =inputdata["Id"]        
+
+            if "summary" in inputdata:
+                if inputdata['summary'] != "":
+                    summary =inputdata["summary"]
+
+           
+            if "Desc" in inputdata:
+                if inputdata['Desc'] != "":
+                    Desc =inputdata["Desc"]
+
+            if "UserType" in inputdata:
+                if inputdata['UserType'] != "":
+                    UserType =inputdata["UserType"]
+
+
+                             
+            
+            if 'NotificationBanner' in request.files:      
+                    file = request.files.get('NotificationBanner')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getNotificationPath(filename)  
+
+                    filepath = '/notificationimages/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+                    column2=" ,imagePath='"+str(ImagePath)+"'"
+            else:
+                inputdata1 = request.form.get('NotificationBanner')
+                y=type(inputdata1)
+                print(y)
+                print("  update news1 ")
+                y2=len(inputdata1)
+                if  y2>4: 
+                    print("  update news ")
+                    index=re.search("/notificationimages/", inputdata1).start()
+                    ImagePath=""
+                    ImagePath=inputdata1[index:]
+                    print("  update news 2")
+                    print(inputdata1)
+
+            if "UserId" in inputdata:
+                if inputdata['UserId'] != "":
+                    UserId =inputdata["UserId"]
+                
+                column = "title='"+ str(Title) +"',summary='"+ str(summary) +"',description='"+ str(description) +"',UserCreate='"+ str(UserCreate) +"',UserType='"+ str(UserType) +"'"+column2
+                whereCondition=" and id ='"+str(Id)+"'"
+                data = databasefile.UpdateQuery("Notification",column,whereCondition)
+                print(data)
+
+           
+            print(data)
+            notificationId=data['Id']
+
+            
+            column="MobileToken,userId,userName"
+            WhereCondition=" and userTypeId='"+str(UserType)+"'"
+            data1=databasefile.SelectQuery4('userMaster',column,WhereCondition)
+            for i in  data1['result']:
+                MobileToken=i['MobileToken']
+                userId=i['userId']
+                userName=i['userName']
+                column="title='" + str(Title)+"',summary='" + str(summary)+"',description='" + str(description)+"',MobileToken='" + str(MobileToken)+"',userId='" + str(userId)+"',userName='" + str(UserName)+"'"+column2
+                whereCondition=" and notificationId='"+str(Id)+"'"
+                data66=databasefile.UpdateQuery('userNotification',column,whereCondition)
+                a=ConstantData.userNotification(MobileToken,title,description,summary,userName)
+
+
+
+
+
+
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()         
+
 @app.route('/getDynamicNotification', methods=['POST'])
 def getDynamicNotification():
     try:  
