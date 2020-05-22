@@ -10684,10 +10684,10 @@ def deleteUserNotification():
 
         keyarr = ['id']
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
-        if "id" in inputdata:
-            if inputdata['id'] != "":
+        if "Id" in inputdata:
+            if inputdata['Id'] != "":
                 Id =inputdata["id"] 
-                WhereCondition=WhereCondition+" and id='"+str(Id)+"'" 
+                WhereCondition=WhereCondition+" and Id='"+str(Id)+"'" 
         if msg == "1":                        
             
             data = databasefile.DeleteQuery("Notification",WhereCondition)
