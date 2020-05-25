@@ -10943,7 +10943,7 @@ def login122():
         mobile = request.args['email']
         
         MobileToken =str(request.args['notification_token'])
-        print(MobileToken,"++++++++++++++")
+        print(type(MobileToken),"++++++++++++++")
 
 
 
