@@ -10971,7 +10971,7 @@ def login122():
                 Data = {"status":"false","message":"your account is Deactivated by admin","result":""} 
                 return Data
             
-            i
+        
             
             # if WebToken !=None:
             #     d=databasefile.UpdateQuery("userMaster as us,userTypeMaster as um","WebToken = '"+str(WebToken)+"'",WhereCondition)
