@@ -10942,7 +10942,7 @@ def login122():
        
         mobile = request.args['email']
         
-        MobileToken =str( request.args['notification_token'])
+        MobileToken =str(request.args['notification_token'])
 
         column=  "us.profilePic,us.mobileNo,us.userName,us.email,um.id as userTypeId,us.userId as userId,us.status as status"
         whereCondition= " and us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.userTypeId=um.id "
@@ -10964,9 +10964,9 @@ def login122():
                 Data = {"status":"false","message":"your account is Deactivated by admin","result":""} 
                 return Data
             if MobileToken !=None:
-                databasefile.UpdateQuery("userMaster as us,userTypeMaster as um"," MobileToken = '"+str(MobileToken)+"'",whereCondition)
-            if WebToken !=None:
-                databasefile.UpdateQuery("userMaster as us,userTypeMaster as um","WebToken = '"+str(WebToken)+"'",WhereCondition)
+                d=databasefile.UpdateQuery("userMaster as us,userTypeMaster as um"," MobileToken = '"+str(MobileToken)+"'",whereCondition)
+            # if WebToken !=None:
+            #     d=databasefile.UpdateQuery("userMaster as us,userTypeMaster as um","WebToken = '"+str(WebToken)+"'",WhereCondition)
                 
 
             else:
