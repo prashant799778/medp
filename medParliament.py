@@ -10952,7 +10952,7 @@ def login122():
         groupby,startlimit,endlimit="","",""
         loginuser=databasefile.SelectQuery("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
 
-        if MobileToken =="":
+        if MobileToken !="":
                 print(MobileToken,"iiiiiiiiiiiiiiii")
                 d=databasefile.UpdateQuery("userMaster as us,userTypeMaster as um"," MobileToken = '"+str(MobileToken)+"'",whereCondition)
         
