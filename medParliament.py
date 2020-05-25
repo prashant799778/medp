@@ -10808,6 +10808,8 @@ def adduserNotificationUpdate():
                 d=databasefile.SelectQuery1('userNotification',column,whereCondition)
                 print(d,"+++++++++")
                 result=d['result']
+                if result['image']!='':
+                    result['image']=str(ConstantData.GetBaseURL())+ str(result['image'])
                 if MobileToken !=None:
                     a=ConstantData.sendNotification(MobileToken,Title,Desc,summary,userName,result)
 
