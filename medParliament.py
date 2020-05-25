@@ -10170,55 +10170,55 @@ def superAdminNotification():
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
 
-@app.route('/superAdminNotificationCount', methods=['POST'])
-def superAdminNotificationCount():
-    try:
+# @app.route('/superAdminNotificationCount', methods=['POST'])
+# def superAdminNotificationCount():
+#     try:
 
           
-        column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-        WhereCondition= "and pm.superadminStatus='0'"
-        data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
-        print(data,"999999999999999999")
-        print('11111111')
+#         column="pm.postDescription,pm.postId,pm.userId,pm.status,pm.id as Id,pm.postImage,pm.postTitle,pm.postImagePath,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+#         WhereCondition= "and pm.superadminStatus='0'"
+#         data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
+#         print(data,"999999999999999999")
+#         print('11111111')
         
-        if data['status'] !='false':
+#         if data['status'] !='false':
                    
-            Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
-            return Data
-        else:
-            print('1')
-            column="pm.postId"
-            WhereCondition= "and pm.superadminStatus='1'  "
-            data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
-            print(data,'11111111111111111111111')
-            a=[]
-            if data['status'] !='false':
+#             Data = {"status":"true","message":"","result":"","totalcount":len(data['result'])}
+#             return Data
+#         else:
+#             print('1')
+#             column="pm.postId"
+#             WhereCondition= "and pm.superadminStatus='1'  "
+#             data = databasefile.SelectQuery4("userPost as pm",column,WhereCondition)
+#             print(data,'11111111111111111111111')
+#             a=[]
+#             if data['status'] !='false':
                 
-                print(data['result'],"____________________________________________________-")
-                print(type(data['result']),"99999999999999999")
+#                 print(data['result'],"____________________________________________________-")
+#                 print(type(data['result']),"99999999999999999")
             
                 
              
 
 
-                for i in data['result']:
+#                 for i in data['result']:
 
-                    print("22222222222222222222222222222y373vedvsfswsf",i)
+#                     print("22222222222222222222222222222y373vedvsfswsf",i)
                 
-                    print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
-                    print("111111111111111")
+#                     print(i['postId'],'wwwwwwwwwwww9999999999999999999999999999999999999')
+#                     print("111111111111111")
 
-                    column= "pm.commentDescription as postDescription,um.userName,pm.postId,up.userId,pm.status,pm.id as Id,up.postTitle,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
-                    whereCondition= " and pm.approvedUserId=um.userId  and  pm.superstatus='0'  and pm.postId=up.postId and pm.postId= '"+str(i['postId'])+"'"
-                    data2=databasefile.SelectQuery4('approvedBy as pm,userPost as up,userMaster as um',column,whereCondition)
-                    print(data2['result'],"@@@@@@@@$%9999999999999999999999999999999999976666666")
+#                     column= "pm.commentDescription as postDescription,um.userName,pm.postId,up.userId,pm.status,pm.id as Id,up.postTitle,pm.userTypeId as userTypeId,date_format(CONVERT_TZ(pm.dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate"
+#                     whereCondition= " and pm.approvedUserId=um.userId  and  pm.superstatus='0'  and pm.postId=up.postId and pm.postId= '"+str(i['postId'])+"'"
+#                     data2=databasefile.SelectQuery4('approvedBy as pm,userPost as up,userMaster as um',column,whereCondition)
+#                     print(data2['result'],"@@@@@@@@$%9999999999999999999999999999999999976666666")
 
                     
                     
-                    if data2['status']!='false':
-                        print('sggggggggggggggggggggggg',data2['result'])
-                        for m in data2['result']:
-                            a.append(m)
+#                     if data2['status']!='false':
+#                         print('sggggggggggggggggggggggg',data2['result'])
+#                         for m in data2['result']:
+#                             a.append(m)
 
                         
                         
@@ -10226,19 +10226,19 @@ def superAdminNotificationCount():
                         
                     
 
-                Data = {"status":"true","message":"","result":"","totalcount":len(a)}
-                print(Data,"@@@@@@@@@@@@@@@@@@")
-                return Data
+#                 Data = {"status":"true","message":"","result":"","totalcount":len(a)}
+#                 print(Data,"@@@@@@@@@@@@@@@@@@")
+#                 return Data
 
                
-            else:
-                output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
-                return output
+#             else:
+#                 output = {"status":"false","message":"No Data Found","result":"","totalcount":0}
+#                 return output
       
-    except Exception as e :
-        print("Exception---->" + str(e))    
-        output = {"status":"false","message":"something went wrong","result":""}
-        return output
+#     except Exception as e :
+#         print("Exception---->" + str(e))    
+#         output = {"status":"false","message":"something went wrong","result":""}
+#         return output
 
 #_______________
 
