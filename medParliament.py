@@ -10802,6 +10802,7 @@ def adduserNotificationUpdate():
                 whereCondition=" and notificationId ='"+str(Id)+"'"
                 data66=databasefile.UpdateQuery('userNotification',column,whereCondition)
                 column="title,summary,description"
+                whereCondition=" and notificationId ="+str(Id)+" "
                 d=databasefile.SelectQuery1('userNotification',column,whereCondition)
                 print(d,"+++++++++")
                 result=d['result']
