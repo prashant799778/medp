@@ -49,7 +49,7 @@ def GetSecurityDefaultimage():
 def userNotification(DeviceToken,title,description,summary,UserName):
     try:
         config.data['to'] = str(DeviceToken)
-        config.data['subtitle'] = "Dear ,"+str(UserName)+"   "+str(title)+" description "+str(description)+" summary"+str(summary)+" "
+        config.data['subtitle'] = "Dear ,"+str(UserName)+" title  "+str(title)+" description "+str(description)+" summary"+str(summary)+" "
         print(config.data)        
         r=requests.post(config.URL, headers=config.headers, data=json.dumps(config.data))
         response=json.loads(r.text) 
