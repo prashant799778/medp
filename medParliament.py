@@ -10942,7 +10942,7 @@ def login122():
        
         mobile = request.args['email']
         WebToken = request.args['WebToken']
-        MobileToken = request.args['notification_token']
+        MobileToken =str( request.args['notification_token'])
 
         column=  "us.profilePic,us.mobileNo,us.userName,us.email,um.id as userTypeId,us.userId as userId,us.status as status"
         whereCondition= " and us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.userTypeId=um.id "
