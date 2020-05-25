@@ -10802,8 +10802,8 @@ def adduserNotificationUpdate():
                 whereCondition=" and notificationId ='"+str(Id)+"'"
                 data66=databasefile.UpdateQuery('userNotification',column,whereCondition)
                 column="title,summary,description"
-                d=databasefile.SelectQuery4('userNotification',column,whereCondition)
-                result=d['result'][0]
+                d=databasefile.SelectQuery1('userNotification',column,whereCondition)
+                result=d['result']
                 if MobileToken !=None:
                     a=ConstantData.userNotification(MobileToken,Title,Desc,summary,userName,result)
 
