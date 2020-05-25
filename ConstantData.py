@@ -46,10 +46,11 @@ def GetSecurityDefaultimage():
 
 
 
-def userNotification(DeviceToken,title,description,summary,UserName):
+def userNotification(DeviceToken,title,description,summary,UserName,result):
     try:
         config.data['to'] = str(DeviceToken)
         config.data['subtitle'] = "Dear ,"+str(UserName)+" title  "+str(title)+" description "+str(description)+" summary"+str(summary)+" "
+        config.data['result']=result
         print(config.data)        
         r=requests.post(config.URL, headers=config.headers, data=json.dumps(config.data))
         response=json.loads(r.text) 
@@ -67,6 +68,7 @@ def newmessage(DeviceToken,comment,adminName,UserName):
     try:
         config.data['to'] = str(DeviceToken)
         config.data['subtitle'] = "Dear ,"+str(UserName)+" you got new message  from "+str(adminName)+" message "+str(comment)+" "
+
         print(config.data)        
         r=requests.post(config.URL, headers=config.headers, data=json.dumps(config.data))
         response=json.loads(r.text) 

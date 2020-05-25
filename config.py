@@ -29,10 +29,6 @@ data ={
 "to":"", 
 "notification" : {
 "body" : "New announcement assigned",
-"OrganizationId":"2",
-"content_available" : "true",
-"priority" : "high",
-"subtitle":"welcome to MedParliament",
-"Title":"hello User"
+"result":{}
 }
 }    
