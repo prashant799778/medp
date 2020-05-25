@@ -10941,7 +10941,7 @@ def login122():
         password = request.args['password']
        
         mobile = request.args['email']
-        WebToken = request.args['WebToken']
+        
         MobileToken =str( request.args['notification_token'])
 
         column=  "us.profilePic,us.mobileNo,us.userName,us.email,um.id as userTypeId,us.userId as userId,us.status as status"
