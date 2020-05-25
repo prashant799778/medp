@@ -27,8 +27,7 @@ headers = {
 "Authorization":"key=AAAACCftdfM:APA91bG2v1DlrKLfDDNfso43UuaDXkzy2FZb-zgVY4rw1K3P3zSNn0dMbfpUfUDxfaGs_qu6kG0N2C6Rmw9c8v2BdhQQE3wR24BwZTHEjM50AU5xyFlNjQ_gF5gmUPD56R1GMQWszA-r"}
 data ={ 
 "to":"", 
-"notification" : {
-"body" : "New announcement assigned",
+
 "result":{}
 }
-}    
+    
