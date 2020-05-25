@@ -4,7 +4,7 @@ import config
 import requests
 import commonfile
 import json
-
+from pyfcm import FCMNotification
 
 
 
@@ -44,7 +44,14 @@ def GetSecurityDefaultimage():
     path = "/SecurityImage/default.jpg"
     return path
 
-
+def sendNotification(DeviceToken,title,description,summary,UserName,result):
+    try:
+        push_service = FCMNotification(api_key=config.FCM_KEY)
+        registration_id = str(DeviceToken)
+        result = push_service.single_device_data_message(registration_id=registration_id, data_message=json.dumps(result))
+    except Exception as e :
+        print("Exception--->" + str(e)) 
+        return commonfile.Errormessage() 
 
 def userNotification(DeviceToken,title,description,summary,UserName,result):
     try:
