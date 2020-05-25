@@ -10806,10 +10806,13 @@ def adduserNotificationUpdate():
                 column="notificationId,title,imagePath as image,summary,description,MobileToken,userId,userName,UserType"
                 whereCondition=" and notificationId ="+str(Id)+" "
                 d=databasefile.SelectQuery1('userNotification',column,whereCondition)
-                print(d,"+++++++++")
+                
+                if d['result']['image']!='':
+                    d['result']['image']=str(ConstantData.GetBaseURL())+ str(d['result']['image'])
+                print(d,"0323")
+
                 result=d['result']
-                if result['image']!='':
-                    result['image']=str(ConstantData.GetBaseURL())+ str(result['image'])
+                
                 if MobileToken !=None:
                     a=ConstantData.sendNotification(MobileToken,Title,Desc,summary,userName,result)
 
