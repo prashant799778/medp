@@ -10965,7 +10965,7 @@ def login122():
                 Data = {"status":"false","message":"your account is Deactivated by admin","result":""} 
                 return Data
             if MobileToken !=None:
-                print(MobileToken)
+                print(MobileToken,"iiiiiiiiiiiiiiii")
                 d=databasefile.UpdateQuery("userMaster as us,userTypeMaster as um"," MobileToken = '"+str(MobileToken)+"'",whereCondition)
             # if WebToken !=None:
             #     d=databasefile.UpdateQuery("userMaster as us,userTypeMaster as um","WebToken = '"+str(WebToken)+"'",WhereCondition)
