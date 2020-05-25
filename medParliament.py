@@ -10596,10 +10596,12 @@ def adduserNotification():
                 column="notificationId,title,imagePath,summary,description,MobileToken,userId,userName"
                 values= " '"+ str(notificationId)  +"','" + str(Title)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  + "','" + str(MobileToken)  + "','" + str(userId) + "','" + str(userName)+ "'"
                 data66=databasefile.InsertQuery('userNotification',column,values)
-
+                whereCondition=" and notificationId ="+str(Id)+" "
+                d=databasefile.SelectQuery1('userNotification',column,whereCondition)
+                print(d,"+++++++++")
+                result=d['result']
                 if MobileToken !=None:
-                    a=ConstantData.userNotification(MobileToken,Title,Desc,summary,userName)
-
+                    a=ConstantData.userNotification(MobileToken,Title,Desc,summary,userName,result)
 
 
 
