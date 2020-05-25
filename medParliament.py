@@ -10793,7 +10793,7 @@ def adduserNotificationUpdate():
 
             
             column="MobileToken,userId,userName"
-            WhereCondition=" and userTypeId='"+str(UserType)+"'"
+            WhereCondition=" and userTypeId IN ('"+str(UserType)+"')"
             data1=databasefile.SelectQuery4('userMaster',column,WhereCondition)
             for i in  data1['result']:
                 Id=inputdata['Id']
