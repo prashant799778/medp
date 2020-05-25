@@ -10868,7 +10868,7 @@ def updateMobileToken():
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
         keyarr = ['userId','MobileToken']
-        print(inputdata,"B")
+        print(inputdata,"B555555555555555555555555")
         commonfile.writeLog("updatePassword",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
         if msg =="1":
