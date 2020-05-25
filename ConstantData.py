@@ -46,8 +46,6 @@ def GetSecurityDefaultimage():
 
 def sendNotification(DeviceToken,title,description,summary,UserName,result):
     try:
-       
-        
         message_body = str(summary)
         push_service = FCMNotification(api_key=config.FCM_KEY)
         registration_id = str(DeviceToken)
@@ -80,14 +78,19 @@ def userNotification(DeviceToken,title,description,summary,UserName,result):
 
 def newmessage(DeviceToken,comment,adminName,UserName):
     try:
-        config.data['to'] = str(DeviceToken)
-        config.data['subtitle'] = "Dear ,"+str(UserName)+" you got new message  from "+str(adminName)+" message "+str(comment)+" "
+        push_service = FCMNotification(api_key=config.FCM_KEY)
+        registration_id = str(DeviceToken)
+        message_title = "New Reply Received"
+        message = "Dear ,"+str(UserName)+" You got new message  from "+str(adminName)+" message "+str(comment)+" "
+        result = push_service.notify_single_device(registration_id=registration_id, message_title=message_title, message_body=message)
+        # config.data['to'] = str(DeviceToken)
+        # config.data['subtitle'] = "Dear ,"+str(UserName)+" you got new message  from "+str(adminName)+" message "+str(comment)+" "
 
-        print(config.data)        
-        r=requests.post(config.URL, headers=config.headers, data=json.dumps(config.data))
-        response=json.loads(r.text) 
-        if response:
-            return response
+        # print(config.data)        
+        # r=requests.post(config.URL, headers=config.headers, data=json.dumps(config.data))
+        # response=json.loads(r.text) 
+        if result:
+            return result
         else:
             return commonfile.Errormessage()
     except Exception as e :
