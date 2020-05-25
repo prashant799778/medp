@@ -54,7 +54,7 @@ def sendNotification(DeviceToken,title,description,summary,UserName,result):
         message_body = str(summary)
         push_service = FCMNotification(api_key=config.FCM_KEY)
         registration_id = str(DeviceToken)
-        result = push_service.single_device_data_message(registration_id=registration_id, message_body=message_body, data_message=result)
+        result = push_service.notify_single_device(registration_id=registration_id, message_body=message_body, data_message=result)
         print(result,"r")
     except Exception as e :
         print("Exception--->" + str(e)) 
