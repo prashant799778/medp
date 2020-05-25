@@ -10726,7 +10726,7 @@ def adduserNotificationUpdate():
             column2=""
             if "Title" in inputdata:
                 if inputdata['Title'] != "":
-                    Title =inputdata["Title"]
+                    Title =commonfile.EscapeSpecialChar(inputdata["Title"])
 
             if "Id" in inputdata:
                 if inputdata['Id'] != "":
@@ -10734,12 +10734,12 @@ def adduserNotificationUpdate():
 
             if "summary" in inputdata:
                 if inputdata['summary'] != "":
-                    summary =inputdata["summary"]
+                    summary =commonfile.EscapeSpecialChar(inputdata["summary"])
 
            
             if "Desc" in inputdata:
                 if inputdata['Desc'] != "":
-                    Desc =inputdata["Desc"]
+                    Desc =commonfile.EscapeSpecialChar(inputdata["Desc"])
 
             if "UserType" in inputdata:
                 if inputdata['UserType'] != "":
