@@ -10789,6 +10789,8 @@ def adduserNotificationUpdate():
 
            
             print(Id,"+")
+            if UserType == "0" or UserType ==0:
+                UserType="5,6,7,8,9"
           
 
             
