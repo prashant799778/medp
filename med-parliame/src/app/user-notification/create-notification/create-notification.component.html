@@ -45,7 +45,7 @@
                        <label for="newsType"> Category</label>
                         <select formControlName="userTypeId">
                             <ng-container *ngFor="let userType of userTypeDetails;let last = last">
-                                <option *ngIf="!last" [value]="userType.id">{{userType.userName}}</option>
+                                <option  [value]="userType.id">{{userType.userName}}</option>
                             </ng-container>
                             
                         </select>
