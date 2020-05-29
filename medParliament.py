@@ -10535,21 +10535,22 @@ def adduserNotification():
         if msg == "1":
             if "Title" in inputdata:
                 if inputdata['Title'] != "":
-                    Title =inputdata["Title"]
+                    Title =commonfile.EscapeSpecialChar(inputdata["Title"])
+
+              
 
             if "summary" in inputdata:
                 if inputdata['summary'] != "":
-                    summary =inputdata["summary"]
+                    summary =commonfile.EscapeSpecialChar(inputdata["summary"])
 
            
             if "Desc" in inputdata:
                 if inputdata['Desc'] != "":
-                    Desc =inputdata["Desc"]
+                    Desc =commonfile.EscapeSpecialChar(inputdata["Desc"])
 
             if "UserType" in inputdata:
                 if inputdata['UserType'] != "":
                     UserType =inputdata["UserType"]
-
 
                              
             
