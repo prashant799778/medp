@@ -51,7 +51,7 @@
                               <th> Title</th>
                               <th> Subject</th>
                               <th> Description</th>
-                              <th>Is Featured</th>
+                              <th>Is Highlighted?</th>
                               <th> Date</th>
                               <th>Created By</th>
                               <th>Enrolls</th>
@@ -67,7 +67,7 @@
                                   <td> <p>{{news.newsTitle}} </p></td> 
                                   <td> <p>{{news.summary}} </p></td>                                       
                                   <td> <p [innerHtml]="news.newsDesc " class="inline-blk"></p> </td>
-                                  <td> <p *ngIf="news.isFeatured == 0">No</p> <p *ngIf="news.isFeatured == 1">Yes</p></td>
+                                  <td> <p *ngIf="news.isFeatured == 1">No</p> <p *ngIf="news.isFeatured == 0">Yes</p></td>
                                   <td> {{news.DateCreate}}</td>
                                   
                                   <td>  <p>{{news.userName}} </p></td> 
