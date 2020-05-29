@@ -492,7 +492,7 @@ def getMailBody(userName, link):
              </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
                <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
-               <p style="margin: 0">Hello Dear, ' + str(userName) + '<br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
+               <p style="margin: 0"> Dear, ' + str(userName) + '<br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
                of Healthcare Leadership. </strong><br><br>Thank you for joining our community.\
                 <br><br>Please validate your email address by clicking on the button below <br>\
                 <br><strong> </p><a href="'+str(link)+'" style="padding: 10px 23px; background:\
@@ -4083,7 +4083,7 @@ def generateOtp():
                 from_email = 'medparliament@medachievers.com',
                 to_emails = str(email),
                 subject = "Otp for Reset Password",
-                html_content = '<strong> The OTP to reset your password is:' + str(OTP) + ' </strong> <br> <br> Thank You,<br> <br>The MedParliament Team')
+                html_content = '<strong> <br> Hello,<br> The OTP to reset your password is:' + str(OTP) + ' </strong> <br> <br> Thank You,<br> <br>The MedParliament Team')
             sg = SendGridAPIClient('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')
             response = sg.send(message)
            
@@ -10585,10 +10585,19 @@ def adduserNotification():
             print(data)
             notificationId=data['Id']
 
+
+
+            if UserType == "0" or UserType ==0:
+                WhereCondition= " and userTypeId <> '0' and MobileToken is not Null"
+            else:
+                WhereCondition=" and userTypeId = '"+str(UserType)+"'"
+
+          
+
             
             column="MobileToken,userId,userName"
-            WhereCondition=" and userTypeId='"+str(UserType)+"'"
             data1=databasefile.SelectQuery4('userMaster',column,WhereCondition)
+            
             for i in  data1['result']:
                 MobileToken=i['MobileToken']
                 userId=i['userId']
@@ -10790,13 +10799,16 @@ def adduserNotificationUpdate():
            
             print(Id,"+")
             if UserType == "0" or UserType ==0:
-                UserType="5,6,7,8,9"
+                WhereCondition= " and userTypeId <> '0' and MobileToken is not Null"
+            else:
+                WhereCondition=" and userTypeId = '"+str(UserType)+"'"
+
           
 
             
             column="MobileToken,userId,userName"
-            WhereCondition=" and userTypeId IN ('"+str(UserType)+"')"
             data1=databasefile.SelectQuery4('userMaster',column,WhereCondition)
+            
             for i in  data1['result']:
                 Id=inputdata['Id']
                 MobileToken=i['MobileToken']
