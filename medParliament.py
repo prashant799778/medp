@@ -1614,10 +1614,14 @@ def allDoctorMaster():
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
             column=column+" dm.qualificationId as qualificationName,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress,um.emailVerificationStatus as emailStatus"
             startlimit,endlimit="",""
-            WhereCondition=" and um.usertypeId='8' and dm.userId=um.userId  "
+            column=column+",um.countryId,(cm.Name)countryName"
+            startlimit,endlimit="",""
+            WhereCondition=" and um.usertypeId='8'  and dm.userId=um.userId  and cm.id=um.countryId "
+        
+          
 
             
-            data = databasefile.SelectQueryOrderby("userMaster as um,doctorMaster as dm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            data = databasefile.SelectQueryOrderby("userMaster as um,doctorMaster as dm,CountryMasterNew as cm",column,WhereCondition,"",startlimit,endlimit,orderby)
 
           
             
@@ -1669,10 +1673,15 @@ def allprofessionalsMaster():
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
             column=column+"pm.userId,pm.designation,pm.occupation,pm.companyName,pm.companyAddress,pm.address,um.emailVerificationStatus as emailStatus"
             startlimit,endlimit="",""
-            WhereCondition=" and um.userTypeId='9' and pm.userId=um.userId  "
+            column=column+",um.countryId,(cm.Name)countryName"
+            startlimit,endlimit="",""
+            WhereCondition=" and um.usertypeId='7'  and pm.userId=um.userId  and cm.id=um.countryId "
+        
+
+           
 
             
-            data = databasefile.SelectQueryOrderby("userMaster as um,professionalMaster as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            data = databasefile.SelectQueryOrderby("userMaster as um,professionalMaster as pm,CountryMasterNew as cm",column,WhereCondition,"",startlimit,endlimit,orderby)
 
           
             
@@ -10799,7 +10808,7 @@ def adduserNotificationUpdate():
 
            
             print(Id,"+")
-            
+
             if UserType == "0" or UserType ==0:
                 WhereCondition= " and userTypeId <> '0' and MobileToken is not Null"
             else:
