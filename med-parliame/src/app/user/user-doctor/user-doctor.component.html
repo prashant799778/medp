@@ -29,7 +29,7 @@
                                     <th>Hospital Address</th>
                                     <th>Area of Expertise</th>
                                     <th>Qualification</th>
-                                    <!-- <th>Address</th> -->
+                                    <th>Country</th>
                                     
                                     <th>Status</th>
                                     <th>Email Status</th>
@@ -48,7 +48,7 @@
                                     <td>{{userPolicy.hospitalAddress}}</td>
                                     <td>{{userPolicy.areaOfExpertise}}</td>
                                     <td>{{userPolicy.qualificationName}}</td>
-                                    
+                                    <td>{{userPolicy.countryName}}</td>
                                     <td>
                                             <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>
                                             <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Inactive</button>

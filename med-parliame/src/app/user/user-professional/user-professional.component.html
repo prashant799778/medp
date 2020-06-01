@@ -30,7 +30,7 @@
                                     <th>Company Name</th>
                                     <th>Company Address</th>
                                     <th>Designation</th>
-                                    
+                                    <th>Country</th>
                                     <th>Status</th>
                                     <th>Email Status</th>
                                     <th>Action</th>
@@ -50,7 +50,7 @@
                                     <td>{{userPolicy.companyName}}</td>
                                     <td>{{userPolicy.companyAddress}}</td>
                                     <td>{{userPolicy.designation}}</td>
-                                   
+                                   <td>{{userPolicy.countryName}}</td>
                                     <td>
                                             <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>
                                             <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Inactive</button>
