@@ -1675,7 +1675,7 @@ def allprofessionalsMaster():
             startlimit,endlimit="",""
             column=column+",um.countryId,(cm.Name)countryName"
             startlimit,endlimit="",""
-            WhereCondition=" and um.usertypeId='7'  and pm.userId=um.userId  and cm.id=um.countryId "
+            WhereCondition=" and um.usertypeId='9'  and pm.userId=um.userId  and cm.id=um.countryId "
         
 
            
