@@ -101,6 +101,15 @@ def marketingInsights(image_name):
 
 
 
+
+@app.route("/notificationimages/<image_name>")
+def notificationimages(image_name):
+    try:
+        return send_from_directory('notificationimages', filename=image_name, as_attachment=False)
+    except FileNotFoundError:
+        abort(404)
+
+
 @app.route("/dashboard/<image_name>")
 def marketingInsights1(image_name):
     try:
@@ -483,7 +492,7 @@ def getMailBody(userName, link):
              </td></tr><tr> <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">\
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">\
                <div style="min-height: 250px; text-align: center;background: #ffffff;"> \
-               <p style="margin: 0">Hello Mr. ' + str(userName) + '<br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
+               <p style="margin: 0"> Dear, ' + str(userName) + '<br><br><strong> Welcome to the MEDPARLIAMENT, the Global Parliament \
                of Healthcare Leadership. </strong><br><br>Thank you for joining our community.\
                 <br><br>Please validate your email address by clicking on the button below <br>\
                 <br><strong> </p><a href="'+str(link)+'" style="padding: 10px 23px; background:\
@@ -850,7 +859,7 @@ def SignUp1():
 #         return output  
 
 
-@app.route('/Login', methods=['GET'])
+@app.route('/Login1', methods=['GET'])
 def login1():
     try:
         password = request.args['password']
@@ -1605,10 +1614,14 @@ def allDoctorMaster():
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
             column=column+" dm.qualificationId as qualificationName,dm.designation,dm.areaOfExpertise,dm.hospital,dm.hospitalAddress,um.emailVerificationStatus as emailStatus"
             startlimit,endlimit="",""
-            WhereCondition=" and um.usertypeId='8' and dm.userId=um.userId  "
+            column=column+",um.countryId,(cm.Name)countryName"
+            startlimit,endlimit="",""
+            WhereCondition=" and um.usertypeId='8'  and dm.userId=um.userId  and cm.id=um.countryId "
+        
+          
 
             
-            data = databasefile.SelectQueryOrderby("userMaster as um,doctorMaster as dm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            data = databasefile.SelectQueryOrderby("userMaster as um,doctorMaster as dm,CountryMasterNew as cm",column,WhereCondition,"",startlimit,endlimit,orderby)
 
           
             
@@ -1618,9 +1631,18 @@ def allDoctorMaster():
             if (data!=0):
                 for i in data["result"]:
                     userId=i["userId"]
+                    
+
                     column="count(*) as count"
                     whereCondition=" and pm.usertypeId='8' and pm.userId='" + str(userId) + "' "
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                    column=" im.name " 
+                    WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                    data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                    a=[]
+                    for m in data5["result"]:
+                        a.append(m["name"]) 
+                        i['interest']=a
                     if data1['status'] !="False":
                         count=data1["result"]["count"]
                         i["noOfPosts"]=count
@@ -1651,10 +1673,15 @@ def allprofessionalsMaster():
             column="um.mobileNo as mobileNo, um.userName as userName,um.password as password,um.userId,um.gender,um.email,um.status,"
             column=column+"pm.userId,pm.designation,pm.occupation,pm.companyName,pm.companyAddress,pm.address,um.emailVerificationStatus as emailStatus"
             startlimit,endlimit="",""
-            WhereCondition=" and um.userTypeId='9' and pm.userId=um.userId  "
+            column=column+",um.countryId,(cm.Name)countryName"
+            startlimit,endlimit="",""
+            WhereCondition=" and um.usertypeId='9'  and pm.userId=um.userId  and cm.id=um.countryId "
+        
+
+           
 
             
-            data = databasefile.SelectQueryOrderby("userMaster as um,professionalMaster as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+            data = databasefile.SelectQueryOrderby("userMaster as um,professionalMaster as pm,CountryMasterNew as cm",column,WhereCondition,"",startlimit,endlimit,orderby)
 
           
             
@@ -1667,6 +1694,15 @@ def allprofessionalsMaster():
                     column="count(*) as count"
                     whereCondition=" and pm.usertypeId='9' and pm.userId='" + str(userId) + "' "
                     data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+                    column=" im.name " 
+                    WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                    data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                    a=[]
+                    for m in data5["result"]:
+                        a.append(m["name"]) 
+                        print(a)
+                        i['interest']=a
+                    
                     print(data1,"d")
                     if data1['status'] !="False":
                         count=data1["result"]["count"]
@@ -1779,6 +1815,15 @@ def allenterprenuer():
                 column="count(*) as count"
                 whereCondition=" and pm.usertypeId='6' and pm.userId='" + str(userId) + "' "
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
+
+                column=" im.name " 
+                WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                a=[]
+                for m in data5["result"]:
+                    a.append(m["name"]) 
+                    print(a)
+                    i['interest']=a
                 print(data1,"")
                
                 if data1['status'] !="False":
@@ -1886,12 +1931,14 @@ def studentMasterPannel():
 def allstudents():
     try:
         orderby=" um.id"
-        column="um.mobileNo as mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
+        column="um.mobileNo,um.email,um.userName as userName,um.password as password,um.userId,um.gender,"
         column=column+" pm.address,pm.qualificationId as qualificationName,pm.batchofQualification,pm.institutionName,pm.universityAddress,pm.universityId as universityName,um.status,um.emailVerificationStatus as emailStatus"
         startlimit,endlimit="",""
-        WhereCondition=" and um.usertypeId='7' and pm.userId=um.userId  "
+        column=column+",um.countryId,(cm.Name)countryName"
+        startlimit,endlimit="",""
+        WhereCondition=" and um.usertypeId='7'  and pm.userId=um.userId  and cm.id=um.countryId "
         
-        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm",column,WhereCondition,"",startlimit,endlimit,orderby)
+        data = databasefile.SelectQueryOrderby("userMaster as um,studentMaster as pm,CountryMasterNew as cm",column,WhereCondition,"",startlimit,endlimit,orderby)
       
         
         
@@ -1899,7 +1946,20 @@ def allstudents():
 
         if (data!=0):
             for i in data["result"]:
+
                 userId=i["userId"]
+
+                column=" im.name " 
+                WhereCondition=" and im.id=uim.interestId and uim.userId='"+str(userId)+"'"
+                data5= databasefile.SelectQueryOrderby("interestMaster im,userInterestMapping uim",column,WhereCondition,"","","","")
+                print(data5,"+++++")
+                a=[]
+                for m in data5["result"]:
+                    a.append(m["name"]) 
+                    print(a)
+                    i['interest']=a
+
+
                 column="count(*) as count"
                 whereCondition=" and pm.usertypeId='7' and pm.userId='" + str(userId) + "' "
                 data1=databasefile.SelectQuery1("userPost as pm",column,whereCondition)
@@ -1908,8 +1968,10 @@ def allstudents():
                     count=data1["result"]["count"]
                     i["noOfPosts"]=count
                 else:
-                    i["noOfPosts"]=0      
-            Data = {"status":"true","message":"","result":data["result"]}
+                    i["noOfPosts"]=0
+                print(i,"+++++++++=====") 
+                data11=data['result'][ 0:-1 ]    
+            Data = {"status":"true","message":"","result":data11}
             return Data
         else:
             output = {"status":"false","message":"No Data Found","result":""}
@@ -2086,7 +2148,7 @@ def UpdateUser1():
                 MobileNo = inputdata["mobileNo"]
 
             if Country == "":
-                Country='0'        
+                Country='101'        
 
             if 'country' in inputdata:                    
                 Country = inputdata["country"]  
@@ -3653,6 +3715,8 @@ def allStatus():
         return output 
 
 
+
+
 @app.route('/verifyPost1', methods=['POST'])
 def verifyPost1():
     try:
@@ -3668,6 +3732,29 @@ def verifyPost1():
         if msg == "1":
             approvedUserId = inputdata["approvedUserId"]
             postId = inputdata["postId"]
+            column=" userId,userTypeId"
+            
+            wherecondition=" and postId='"+str(postId)+"'"
+            da=databasefile.SelectQuery1('userPost',column,wherecondition)
+            userId=da['result']['userId']
+            UserTypeId=da['result']['userId']
+            
+            column="MobileToken,userName"
+            wherecondition=" and userId='"+str(userId)+"'"
+            Mt=databasefile.SelectQuery1('userMaster',column,wherecondition)
+
+            
+            MobileToken=Mt['result']['MobileToken']
+            userName=Mt['result']['userName']
+
+            column='userName,WebToken'
+            wherecondition=" and userId='"+str(approvedUserId)+"'"
+            d=databasefile.SelectQuery1('userMaster',column,wherecondition)
+            adminName=d['result']['userName']
+            WebToken=d['result']['WebToken']
+
+
+            
             userTypeId = int(inputdata["userTypeId"])
             print("333333333333333333333")
          
@@ -3675,6 +3762,15 @@ def verifyPost1():
             column = "approvedUserId,postId,userTypeId,commentDescription"                
             values = " '" + str(approvedUserId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription) + "'"
             data = databasefile.InsertQuery("approvedBy",column,values)
+            if MobileToken !=None:
+                if userTypeId != UserTypeId:
+                    message=ConstantData.newmessage(MobileToken,commentDescription,adminName,userName)
+            if WebToken !=None:
+                if userTypeId == UserTypeId:
+                    message=ConstantData.newmessage1(WebToken,commentDescription,adminName,userName)
+
+
+            
             if data!="0":
                 return data
             else:
@@ -3686,6 +3782,7 @@ def verifyPost1():
         print("Exception---->" +str(e))           
         output = {"status":"false","message":"something went wrong","result":""}
         return output
+
 
 
 
@@ -3903,8 +4000,8 @@ def updateStatus1():
                 message = Mail(
                                 from_email = 'medparliament@medachievers.com',
                                 to_emails = str(email),
-                                subject = "Account DeActivated",
-                                html_content = '<strong> Your account has been DeActivated </strong> <br> .<br> Thanks,medParliament Team')
+                                subject = "Account Deactivated",
+                                html_content = '<strong> Your account has been Deactivated </strong> <br> .<br> Thanks,medParliament Team')
                 sg = SendGridAPIClient('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')
                 response = sg.send(message)
                 column="status='1'"
@@ -3995,7 +4092,7 @@ def generateOtp():
                 from_email = 'medparliament@medachievers.com',
                 to_emails = str(email),
                 subject = "Otp for Reset Password",
-                html_content = '<strong> Otp To Reset Your Password is:' + str(OTP) + ' </strong> <br> <br> Thanks<br> <br> MedParliament Team')
+                html_content = '<strong> <br> Hello,<br> The OTP to reset your password is:' + str(OTP) + ' </strong> <br> <br> Thank You,<br> <br>The MedParliament Team')
             sg = SendGridAPIClient('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')
             response = sg.send(message)
            
@@ -5622,7 +5719,7 @@ def commentsevent():
             else:
                 commentDescription=inputdata['commentDescription']
                 column = "userId,eventId,userTypeId,commentDescription,status"                
-                values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription)+ "','" + str('0') + "'"
+                values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription)+ "','" + str('1') + "'"
                 data = databasefile.InsertQuery("eventComment",column,values)
 
 
@@ -5686,7 +5783,7 @@ def commentsMarketingInsight():
             else:
                 commentDescription=inputdata['commentDescription']
                 column = "userId,marketingInsightId,userTypeId,commentDescription,status"                
-                values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription)+ "','" + str('0') + "'"
+                values = " '" + str(userId) + "','" + str(postId) + "','" + str(userTypeId) + "','" + str(commentDescription)+ "','" + str('1') + "'"
                 data = databasefile.InsertQuery("marketingInsightComment",column,values)
 
 
@@ -6495,7 +6592,8 @@ def landingPageDashboardtest():
         data1={"message":"","status":"true","result":[]}
         orderby=" id "
         if request.get_data():
-            inputdata =  commonfile.DecodeInputdata(request.get_data())        
+            inputdata =  commonfile.DecodeInputdata(request.get_data())   
+            print(inputdata)     
         
             if "startlimit" in inputdata:
                 if inputdata['startlimit'] != "":
@@ -10079,7 +10177,7 @@ def superAdminNotification():
     except Exception as e :
         print("Exception---->" + str(e))    
         output = {"status":"false","message":"something went wrong","result":""}
-        return output 
+#         return output 
 
 @app.route('/superAdminNotificationCount', methods=['POST'])
 def superAdminNotificationCount():
@@ -10151,7 +10249,7 @@ def superAdminNotificationCount():
         output = {"status":"false","message":"something went wrong","result":""}
         return output
 
-#_______________
+# #_______________
 
 
 @app.route('/adminNotification1', methods=['POST'])
@@ -10424,6 +10522,513 @@ def adminNotification1():
        
     except Exception as e :
         print("Exception---->" + str(e))    
+        output = {"status":"false","message":"something went wrong","result":""}
+        return output 
+
+
+
+# create notification by admin
+
+@app.route('/adduserNotification', methods=['POST'])
+def adduserNotification():
+
+    try:
+       
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        print("Notification",inputdata)
+        commonfile.writeLog("adminNotification",inputdata,0)
+        keyarr = ["Title","summary","Desc","UserType","UserId"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            if "Title" in inputdata:
+                if inputdata['Title'] != "":
+                    Title =commonfile.EscapeSpecialChar(inputdata["Title"])
+
+              
+
+            if "summary" in inputdata:
+                if inputdata['summary'] != "":
+                    summary =commonfile.EscapeSpecialChar(inputdata["summary"])
+
+           
+            if "Desc" in inputdata:
+                if inputdata['Desc'] != "":
+                    Desc =commonfile.EscapeSpecialChar(inputdata["Desc"])
+
+            if "UserType" in inputdata:
+                if inputdata['UserType'] != "":
+                    UserType =inputdata["UserType"]
+
+                             
+            
+            if 'NotificationBanner' in request.files:      
+                    file = request.files.get('NotificationBanner')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getNotificationPath(filename)  
+
+                    filepath = '/notificationimages/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+
+            if "UserId" in inputdata:
+                if inputdata['UserId'] != "":
+                    UserId =inputdata["UserId"]
+                
+                column = "title,imagePath,summary,description,UserCreate,UserType"
+                values = " '"+ str(Title) +"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  + "','" + str(UserId) + "','" + str(UserType)+ "'"
+                data = databasefile.InsertRtnId("Notification",column,values)
+                print(data)
+
+            else:
+                column = "title,imagePath,summary,description,UserType"
+                values = " '"+ str(Title) +"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  +"','" + str(UserType)  + "'"
+                data = databasefile.InsertRtnId("Notification",column,values)
+            print(data)
+            notificationId=data['Id']
+
+
+
+            if UserType == "0" or UserType ==0:
+                WhereCondition= " and userTypeId <> '0' and MobileToken is not Null"
+            else:
+                WhereCondition=" and userTypeId = '"+str(UserType)+"'"
+
+          
+
+            
+            column="MobileToken,userId,userName"
+            data1=databasefile.SelectQuery4('userMaster',column,WhereCondition)
+            
+            for i in  data1['result']:
+                MobileToken=i['MobileToken']
+                userId=i['userId']
+                userName=i['userName']
+                column="notificationId,title,imagePath,summary,description,MobileToken,userId,userName,UserType"
+                values= " '"+ str(notificationId)  +"','" + str(Title)+"','" + str(ImagePath)+"','" + str(summary) +"','" + str(Desc)  + "','" + str(MobileToken)  + "','" + str(userId) + "','" + str(userName)+ "','" + str(UserType)+ "'"
+                data66=databasefile.InsertQuery('userNotification',column,values)
+                whereCondition=" and notificationId ="+str(notificationId)+" "
+                d=databasefile.SelectQuery1('userNotification',column,whereCondition)
+                print(d,"+++++++++")
+                result=d['result']
+                if MobileToken !=None:
+                    a=ConstantData.userNotification(MobileToken,Title,Desc,summary,userName,result)
+
+
+
+
+
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+@app.route('/getUserNotification', methods=['POST'])
+def getUserNotification():
+    try:  
+        WhereCondition,startlimit,endlimit="","",""
+        WhereCondition=WhereCondition+"  "
+        if request.get_data():
+            inputdata =  commonfile.DecodeInputdata(request.get_data())      
+            
+            WhereCondition = " and n.UserCreate = um.UserId "
+            orderby = " n.DateCreate "
+            NotificationId = ""
+            if 'Id' in inputdata:
+                if  inputdata["Id"]!= "":
+                    Id = inputdata["Id"] 
+                    if Id != "" and Id != "0":                           
+                        WhereCondition = WhereCondition + " and n.id = " + str(Id)
+
+            if 'startlimit' in inputdata:
+                if inputdata["startlimit"] != "":
+                    startlimit = str(inputdata["startlimit"])
+            if 'endlimit' in inputdata:
+                if inputdata["endlimit"] != "":
+                    endlimit = str(inputdata["endlimit"])
+
+            column = "n.id as Id,n.title,n.summary,n.description,n.UserCreate,n.UserType,um.UserName,n.DateCreate,"
+            column = column + "concat('" + ConstantData.GetBaseURL() + "',"
+            column = column + "if(n.imagePath is NULL or n.imagePath = '','"+ConstantData.GetdefaultNotificationImage()+"',n.imagePath))imagePath"
+     
+            if 'UserId' in inputdata:
+                if  inputdata["UserId"]!= "":
+                    UserId = inputdata["UserId"]
+                    WhereCondition = WhereCondition + " and n.UserCreate = '" + str(UserId) + "' "
+                          
+            data= databasefile.SelectQueryOrderby("Notification n, userMaster um",column,WhereCondition,"",startlimit,endlimit,orderby)        
+            count = databasefile.SelectCountQuery("Notification","","")
+            data["totalnotification"]=count   
+            data1= databasefile.SelectQuery4("Notification n, userMaster um",column,WhereCondition)
+            if data !=0 :
+               
+
+                return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+
+
+
+
+
+@app.route('/deleteUserNotification', methods=['POST'])
+def deleteUserNotification():
+    try: 
+
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+
+        WhereCondition="" 
+  
+        if len(inputdata) > 0:           
+            commonfile.writeLog("deleteUserNotification",inputdata,0)
+
+        keyarr = ['Id']
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if "Id" in inputdata:
+            if inputdata['Id'] != "":
+                Id =inputdata["Id"] 
+                WhereCondition=WhereCondition+" and Id='"+str(Id)+"'" 
+        if msg == "1":                        
+            
+            data = databasefile.DeleteQuery("Notification",WhereCondition)
+
+            if data != "0":
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+@app.route('/adduserNotificationUpdate', methods=['POST'])
+def adduserNotificationUpdate():
+
+    try:
+       
+        inputdata = request.form.get('data')    
+        inputdata = json.loads(inputdata) 
+        print("Notification",inputdata)
+        commonfile.writeLog("adminNotification",inputdata,0)
+        keyarr = ["Title","summary","Desc","UserType","Id","UserId"]           
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        
+        if msg == "1":
+            ImagePath=""
+            column2=""
+            if "Title" in inputdata:
+                if inputdata['Title'] != "":
+                    Title =commonfile.EscapeSpecialChar(inputdata["Title"])
+
+            if "Id" in inputdata:
+                if inputdata['Id'] != "":
+                    Id =inputdata["Id"]        
+
+            if "summary" in inputdata:
+                if inputdata['summary'] != "":
+                    summary =commonfile.EscapeSpecialChar(inputdata["summary"])
+
+           
+            if "Desc" in inputdata:
+                if inputdata['Desc'] != "":
+                    Desc =commonfile.EscapeSpecialChar(inputdata["Desc"])
+
+            if "UserType" in inputdata:
+                if inputdata['UserType'] != "":
+                    UserType =inputdata["UserType"]
+
+
+                             
+            
+            if 'NotificationBanner' in request.files:      
+                    file = request.files.get('NotificationBanner')        
+                    filename = file.filename or ''                 
+                    filename = filename.replace("'","") 
+
+                    print(filename)
+                    # filename = str(campaignId)                    
+                    #folder path to save campaign image
+                    FolderPath = ConstantData.getNotificationPath(filename)  
+
+                    filepath = '/notificationimages/' + filename    
+                    
+
+                    file.save(FolderPath)
+                    ImagePath = filepath
+                    column2=" ,imagePath='"+str(ImagePath)+"'"
+            else:
+                inputdata1 = request.form.get('NotificationBanner')
+                y=type(inputdata1)
+                print(y)
+                print("  update news1 ")
+                y2=len(inputdata1)
+                if  y2>4: 
+                    print("  update news ")
+                    index=re.search("/notificationimages/", inputdata1).start()
+                    ImagePath=""
+                    ImagePath=inputdata1[index:]
+                    print("  update news 2")
+                    print(inputdata1)
+
+            if "UserId" in inputdata:
+                if inputdata['UserId'] != "":
+                    UserId =inputdata["UserId"]
+                
+                column = "title='"+ str(Title) +"',summary='"+ str(summary) +"',description='"+ str(Desc) +"',UserCreate='"+ str(UserId) +"',UserType='"+ str(UserType) +"'"+column2
+                whereCondition=" and id ='"+str(Id)+"'"
+                data = databasefile.UpdateQuery("Notification",column,whereCondition)
+                print(data)
+
+           
+            print(Id,"+")
+
+            if UserType == "0" or UserType ==0:
+                WhereCondition= " and userTypeId <> '0' and MobileToken is not Null"
+            else:
+                WhereCondition=" and userTypeId = '"+str(UserType)+"'"
+
+          
+
+            
+            column="MobileToken,userId,userName"
+            data1=databasefile.SelectQuery4('userMaster',column,WhereCondition)
+            
+            for i in  data1['result']:
+                Id=inputdata['Id']
+                MobileToken=i['MobileToken']
+                userId=i['userId']
+                userName=i['userName']
+                column="title='" + str(Title)+"',summary='" + str(summary)+"',description='" + str(Desc)+"',MobileToken='" + str(MobileToken)+"',userId='" + str(userId)+"',userName='" + str(userName)+"'"+column2
+                whereCondition=" and notificationId ='"+str(Id)+"'"
+                data66=databasefile.UpdateQuery('userNotification',column,whereCondition)
+                column="notificationId,title,imagePath as image,summary,description,MobileToken,userId,userName,UserType"
+                whereCondition=" and notificationId ="+str(Id)+" "
+                d=databasefile.SelectQuery1('userNotification',column,whereCondition)
+                
+                if d['result']['image']!='':
+                    d['result']['image']=str(ConstantData.GetBaseURL())+ str(d['result']['image'])
+                print(d,"0323")
+
+                result=d['result']
+                
+                if MobileToken !=None:
+                    a=ConstantData.sendNotification(MobileToken,Title,Desc,summary,userName,result)
+
+
+
+
+
+
+
+
+            if data !=0 :                
+                return data
+            else:
+                return commonfile.Errormessage()
+        else:
+            return msg
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()         
+
+@app.route('/getDynamicNotification', methods=['POST'])
+def getDynamicNotification():
+    try:  
+        startlimit,endlimit,UserId="","",""
+        
+        inputdata = commonfile.DecodeInputdata(request.get_data()) 
+        
+        commonfile.writeLog("getDynamicNotification",inputdata,0)
+        
+        WhereCondition= "  "
+
+        if 'userId' in inputdata:
+            if inputdata["userId"] != "":
+                UserId = inputdata["userId"]
+                WhereCondition = WhereCondition + " and userId = '"+str(UserId)+"'"
+
+        orderby = " DateCreate "
+
+        if 'startlimit' in inputdata:
+            if inputdata["startlimit"] != "":
+                startlimit = str(inputdata["startlimit"])
+        if 'endlimit' in inputdata:
+            if inputdata["endlimit"] != "":
+                endlimit = str(inputdata["endlimit"])
+
+        column = "title,imagePath,summary,description,MobileToken,userId,userName,date_format(CONVERT_TZ(dateCreate,'+00:00','+05:30'),'%Y-%m-%d %H:%i:%s')DateCreate" 
+
+        data= databasefile.SelectQueryOrderby("userNotification ",column,WhereCondition,"",startlimit,endlimit,orderby)        
+        count = databasefile.SelectCountQuery("userNotification","","")
+        data["totalnotification"]=count
+
+        if data !=0 :
+            return data
+        else:
+            return commonfile.Errormessage()
+
+    except Exception as e:
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage() 
+
+
+@app.route('/updateMobileToken', methods=['POST'])
+def updateMobileToken():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userId','MobileToken']
+        print(inputdata,"B555555555555555555555555")
+        commonfile.writeLog("updatePassword",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userId=str(inputdata["userId"])
+            MobileToken=str(inputdata["MobileToken"])
+         
+            column="MobileToken='" + MobileToken+ "'"
+            whereCondition= "  and UserId = '" + str(userId)+ "' "
+            output=databasefile.UpdateQuery("userMaster",column,whereCondition)
+                       
+            if output!='0':
+                Data = {"status":"true","message":commonfile.Successmessage('update'),"result":""}                   
+                return Data
+            else:
+                return commonfile.Errormessage()    
+        else:
+            return msg         
+ 
+    except KeyError :
+        print("Key Exception---->")   
+        output = {"result":"key error","status":"false"}
+        return output  
+
+    except Exception as e :
+        print("Exceptio`121QWAaUJIHUJG n---->" +str(e))    
+        output = {"result":"somthing went wrong","status":"false"}
+        return output
+
+
+@app.route('/updateWebToken', methods=['POST'])
+def updateWebToken():
+    try:
+        inputdata =  commonfile.DecodeInputdata(request.get_data())
+        startlimit,endlimit="",""
+        keyarr = ['userId','WebToken']
+        print(inputdata,"B")
+        commonfile.writeLog("updatePassword",inputdata,0)
+        msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
+        if msg =="1":
+            userId=str(inputdata["userId"])
+            WebToken=str(inputdata["WebToken"])
+         
+            column="WebToken='" + WebToken+ "'"
+            whereCondition= "  and UserId = '" + str(userId)+ "' "
+            output=databasefile.UpdateQuery("userMaster",column,whereCondition)
+                       
+            if output!='0':
+                Data = {"status":"true","message":commonfile.Successmessage('update'),"result":""}                   
+                return Data
+            else:
+                return commonfile.Errormessage()    
+        else:
+            return msg         
+ 
+    except KeyError :
+        print("Key Exception---->")   
+        output = {"result":"key error","status":"false"}
+        return output  
+
+    except Exception as e :
+        print("Exceptio`121QWAaUJIHUJG n---->" +str(e))    
+        output = {"result":"somthing went wrong","status":"false"}
+        return output
+
+
+
+@app.route('/Login', methods=['GET'])
+def login122():
+    try:
+        password = request.args['password']
+       
+        mobile = request.args['email']
+        
+        MobileToken =str(request.args['notification_token'])
+        print(type(MobileToken),"++++++++++++++")
+
+
+
+        column=  "us.profilePic,us.mobileNo,us.userName,us.email,um.id as userTypeId,us.userId as userId,us.status as status"
+        whereCondition= " and us.email = '" + mobile + "' and us.password = '" + password + "'  and  us.userTypeId=um.id "
+        groupby,startlimit,endlimit="","",""
+        loginuser=databasefile.SelectQuery("userMaster as us,userTypeMaster as um",column,whereCondition, groupby,startlimit,endlimit)
+
+        if MobileToken !="":
+                print(MobileToken,"iiiiiiiiiiiiiiii")
+                d=databasefile.UpdateQuery("userMaster as us,userTypeMaster as um"," MobileToken = '"+str(MobileToken)+"'",whereCondition)
+        
+               
+      
+        if  (loginuser["status"]!="false"): 
+            if loginuser["result"][0]["profilePic"]==None:
+                loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+"/profilePic/profilePic.jpg"
+            else:
+                loginuser["result"][0]["profilePic"]=str(ConstantData.GetBaseURL())+str(loginuser["result"][0]["profilePic"])
+
+            if loginuser["result"][0]["status"]== 0:
+                Data = {"status":"true","message":"","result":loginuser["result"]} 
+                return Data
+            if loginuser["result"][0]["status"]== 2:
+                Data = {"status":"false","message":"your account is Deactivated by admin","result":""} 
+                return Data
+            
+        
+            
+            # if WebToken !=None:
+            #     d=databasefile.UpdateQuery("userMaster as us,userTypeMaster as um","WebToken = '"+str(WebToken)+"'",WhereCondition)
+                
+
+            else:
+                Data = {"status":"False","message":"Till Now your account is not approved By admin, after admin approval you can access your account","result":""} 
+                return Data
+        else:
+            data = {"status":"false","message":" Your Email or Password is Wrong, Try Again","result":""}
+            return data
+
+    except KeyError as e:
+        print("Exception---->" +str(e))        
+        output = {"status":"false","message":"No Data Found","result":""}
+        return output 
+    
+    except Exception as e :
+        print("Exception---->" +str(e))           
         output = {"status":"false","message":"something went wrong","result":""}
         return output 
 

@@ -1,4 +1,13 @@
 
+
+import config  
+import requests
+import commonfile
+import json
+from pyfcm import FCMNotification
+
+
+
 def GetBaseURL():
  
     path = "http://54.169.46.109:5031"
@@ -34,6 +43,77 @@ def GetSecurityDefaultimage():
  
     path = "/SecurityImage/default.jpg"
     return path
+
+def sendNotification(DeviceToken,title,description,summary,UserName,result):
+    try:
+        message_body = str(summary)
+        push_service = FCMNotification(api_key=config.FCM_KEY)
+        registration_id = str(DeviceToken)
+
+        #result = push_service.notify_single_device(registration_id=registration_id, message_body=message_body, data_message=result)
+        result = push_service.single_device_data_message(registration_id=registration_id, data_message=result)
+        print(result,"r")
+
+    except Exception as e :
+        print("Exception--->" + str(e)) 
+        return commonfile.Errormessage() 
+
+def userNotification(DeviceToken,title,description,summary,UserName,result):
+    try:
+        config.data['to'] = str(DeviceToken)
+        # config.data['subtitle'] = "Dear ,"+str(UserName)+" title  "+str(title)+" description "+str(description)+" summary"+str(summary)+" "
+        config.data['result']=result
+        print(config.data)        
+        r=requests.post(config.URL, headers=config.headers, data=json.dumps(config.data))
+        response=json.loads(r.text) 
+        if response:
+            return response
+        else:
+            return commonfile.Errormessage()
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+def newmessage(DeviceToken,comment,adminName,UserName):
+    try:
+        push_service = FCMNotification(api_key=config.FCM_KEY)
+        registration_id = str(DeviceToken)
+        message_title = "New Reply Received"
+        message = "Dear ,"+str(UserName)+" You got new message  from "+str(adminName)+" message "+str(comment)+" "
+        result = push_service.notify_single_device(registration_id=registration_id, message_title=message_title, message_body=message)
+        # config.data['to'] = str(DeviceToken)
+        # config.data['subtitle'] = "Dear ,"+str(UserName)+" you got new message  from "+str(adminName)+" message "+str(comment)+" "
+
+        # print(config.data)        
+        # r=requests.post(config.URL, headers=config.headers, data=json.dumps(config.data))
+        # response=json.loads(r.text) 
+        if result:
+            return result
+        else:
+            return commonfile.Errormessage()
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
+
+
+
+
+def newmessage1(DeviceToken,comment,adminName,UserName):
+    try:
+        config.data['to'] = str(DeviceToken)
+        config.data['subtitle'] = "Dear ,"+str(adminName)+" you got new message  from "+str(UserName)+" message"+str(comment)+" "
+        print(config.data)        
+        r=requests.post(config.URL, headers=config.headers, data=json.dumps(config.data))
+        response=json.loads(r.text) 
+        if response:
+            return response
+        else:
+            return commonfile.Errormessage()
+    except Exception as e :
+        print("Exception--->" + str(e))                                  
+        return commonfile.Errormessage()
 
 def GetSecurityDocumentPath(filename):
 
@@ -77,6 +157,18 @@ def getNewsPath(filename):
 
     path = "/var/www/medParliament/backend/med_parliament/newsimages/"+filename
     return path
+
+
+def getNotificationPath(filename):
+
+    path = "/var/www/medParliament/backend/med_parliament/notificationimages/"+filename
+    return path    
+
+
+def GetdefaultNotificationImage():
+ 
+    path = "/notificationimages/default.jpg"
+    return path    
 
 
 def getMarketingInsightsPath(filename):

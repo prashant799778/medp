@@ -36,9 +36,11 @@ def InsertRtnId(table,columns,values):
         cursor.execute(query)     
         Id = cursor.lastrowid
         con.commit()        
-        cursor.close()   
+        cursor.close()
+        message = commonfile.Successmessage('insert')
+        data = {"status":"true","message":message,"result":"","Id":Id}          
               
-        return Id
+        return data
 
     except Exception as e:
         print("Error--->" + str(e))            
