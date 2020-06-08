@@ -65,6 +65,8 @@ import { NewsInterestComponent } from './news/news-interest/news-interest.compon
 import { EventInterestComponent } from './event/event-interest/event-interest.component';
 import { EnrolledComponent } from './up-skill/enrolled/enrolled.component';
 import { NotificationComponent } from './notification/notification.component';
+import { CreateNotificationComponent } from './user-notification/create-notification/create-notification.component';
+import { ListNotificationComponent } from './user-notification/list-notification/list-notification.component';
 
 const routes: Routes = [
   { path: '',redirectTo: '/dashboard',pathMatch: 'full'},
@@ -401,6 +403,29 @@ const routes: Routes = [
       
   ]
   },
+
+  { path: 'userNotification', 
+  children: [                          //<---- child components declared here
+    { path: '',redirectTo: '/userNotification/createNotification',pathMatch:'full'}, 
+   
+       {
+          path:'createNotification',
+          component: CreateNotificationComponent,
+          canActivate: [AuthGuard],
+      },
+      {
+        path:'editNotification',
+        component: ListNotificationComponent,
+        canActivate: [AuthGuard],
+    },
+    
+  
+    
+      
+  ]
+  },
+
+
 
   { path: 'announcement', 
   children: [                          //<---- child components declared here

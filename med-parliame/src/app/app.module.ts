@@ -88,6 +88,8 @@ import { EventInterestComponent } from './event/event-interest/event-interest.co
 import { NewsInterestComponent } from './news/news-interest/news-interest.component';
 import { EnrolledComponent } from './up-skill/enrolled/enrolled.component';
 import { NotificationComponent } from './notification/notification.component';
+import { CreateNotificationComponent } from './user-notification/create-notification/create-notification.component';
+import { ListNotificationComponent } from './user-notification/list-notification/list-notification.component';
 
 @NgModule({
   declarations: [
@@ -171,7 +173,9 @@ import { NotificationComponent } from './notification/notification.component';
     EventInterestComponent,
     NewsInterestComponent,
     EnrolledComponent,
-    NotificationComponent
+    NotificationComponent,
+    CreateNotificationComponent,
+    ListNotificationComponent
   ],
   imports: [
     AngularCropperjsModule,

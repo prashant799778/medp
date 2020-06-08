@@ -309,3 +309,8 @@ img.rt-banner {
             border-radius: 2px;
         }
     }
+    
+    .forget{
+        cursor: pointer;
+        /* background: red; */
+    }

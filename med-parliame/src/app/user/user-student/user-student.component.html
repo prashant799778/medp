@@ -24,8 +24,14 @@
 							<th>Password</th>
                             <th>Phone</th>
                             <th>Gender</th>
+                            <th>Interest</th>
                             <th>Institution</th>
                             <th>Address</th>
+                            <th>Qualification</th>
+                            <th>Batch Of Qualification</th>
+                            <th>University</th>
+                            <th>University Address</th>
+                            <th>Country</th>
                             <th>Status</th>
                             <th>Email Status</th>
                             <th>Action</th>
@@ -38,9 +44,14 @@
 							<td>{{userPolicy.password | passwordType}}</td>
                             <td>{{userPolicy.mobileNo}}</td>
                             <td>{{getGender(userPolicy.gender)}}</td>
+                            <td><span *ngFor="let interest of userPolicy.interest;let last = last">{{interest}}<ng-container *ngIf="!last">,</ng-container>&nbsp;</span></td>
                             <td>{{userPolicy.institutionName}}</td>
                             <td>{{userPolicy.address}}</td>
-                            
+                            <td>{{userPolicy.qualificationName}}</td>
+                            <td>{{userPolicy.batchofQualification}}</td>
+                            <td>{{userPolicy.universityName}}</td>
+                            <td>{{userPolicy.universityAddress}}</td>
+                            <td>{{userPolicy.countryName}}</td>
                             <td>
                                     <button *ngIf="postStatus[i] == 0" type="button" class="btn ab-btn dc-bg-color-active border-round-rem">Active</button>
                                     <button *ngIf="postStatus[i] == 1" type="button" class="btn ab-btn dc-bg-color-inactive border-round-rem">Inactive</button>

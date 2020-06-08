@@ -24,6 +24,10 @@ export class AppComponent {
   message: any;
   secondplit: any;
   emailVerified: boolean;
+  forgetPasswords: boolean;
+  otpshow: boolean;
+  updatePassword: boolean;
+  errorMessage: any;
   constructor(public fb: FormBuilder,
 				public userService: UserServiceService,
 				public route: ActivatedRoute,
@@ -86,7 +90,20 @@ export class AppComponent {
 				password: ['',Validators.required],
 				terms: ['']
 				
-      }),
+			}),
+			forgetPass: this.fb.group({
+				email: ['',[Validators.required, Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
+			})  ,
+			otpForm : this.fb.group({
+				otp1: [''],
+				otp2: [''],
+				otp3: [''],
+				otp4: [''],
+			}),
+			update: this.fb.group({
+				pass: [''],
+				pass1:['']
+			})
 	})
 	this.loginForm.get('login').get('terms').valueChanges.subscribe(value =>{
 		console.log(value)
@@ -141,6 +158,73 @@ export class AppComponent {
 		
 			
 	}
+
+	getForget(){
+		
+		// if(this.loginForm.get('forgetpass').get('terms').value == false){
+		// 	this.errors = 'Please select the terms and conditions'
+		// }else{
+			// let userData = this.loginForm.get('forgetPass').value;
+			let data = {
+				'email': this.loginForm.get('forgetPass').get('email').value
+			}
+			this.userService.dataPostApi(data,AppSettings.generateOtp).then(resp=>{
+				if(resp && resp['status']=='true'){
+
+					// this.loginForm.get('otpForm').get('otp1').patchValue(resp['result'][0].otp[0]);
+					// this.loginForm.get('otpForm').get('otp2').patchValue(resp['result'][0].otp[1]);
+					// this.loginForm.get('otpForm').get('otp3').patchValue(resp['result'][0].otp[2]);
+					// this.loginForm.get('otpForm').get('otp4').patchValue(resp['result'][0].otp[3]);
+					console.log(this.loginForm)
+					this.otpshow= true;
+				}
+				
+			})
+			// this.authsService.login(userData).subscribe(resp =>{
+
+			// 	if(resp['status'] == 'true'){
+			// 		if(resp['result'][0].userTypeId != 5  && resp['result'][0].userTypeId != 6 && resp['result'][0].userTypeId != 7 && resp['result'][0].userTypeId != 8 && resp['result'][0].userTypeId != 9 && resp['result'][0].userTypeId != 13 && (resp['result'][0].userTypeId <= 11 || resp['result'][0].userTypeId == 12) ){
+			// 			this.loginSuccess= true;
+			// 			this.getSaveCustomer(resp['result'])
+			// 			this.errors = '';
+
+			// 		}else{
+			// 			this.errors = 'you are not authorized Admin'
+			// 		}
+					
+			// 	}else{
+			// 		this.loginSuccess = false;
+			// 		this.errors = resp['message']
+			// 	}
+			// })
+		// }
+
+		
+			
+	}
+
+	veryfyOTP(){
+		let inputData: string = '';
+		let otp1 = this.loginForm.get('otpForm').get('otp1').value;
+		let otp2 = this.loginForm.get('otpForm').get('otp2').value;
+		let otp3 = this.loginForm.get('otpForm').get('otp3').value;
+		let otp4 = this.loginForm.get('otpForm').get('otp4').value;
+		
+		 	inputData = otp1 + otp2 + otp3 + otp4
+		
+		let data = {
+			'email': this.loginForm.get('forgetPass').get('email').value,
+			'otp': inputData
+		}
+		this.userService.dataPostApi(data,AppSettings.verifyOtp).then(resp=>{
+			if(resp && resp['status']=='true'){
+				this.forgetPasswords=false;
+				this.otpshow = false;
+				this.updatePassword=true
+			}
+			
+		})
+	}
 	getSaveCustomer(data){
 		console.log("data value",data)
 		// if(data != null){
@@ -178,6 +262,35 @@ export class AppComponent {
 			this.emailVerified = true;
 		})
 		
+	}
+
+	updatePasswords(){
+		if(this.loginForm.get('update').get('pass').value != this.loginForm.get('update').get('pass1').value){
+			this.errorMessage = 'Enter correct password'
+			jQuery("#messagePopuupss").modal('show')
+			setTimeout(()=>{
+				// jQuery("#messagePopuupss").modal('hide')
+			},2000)
+		}else{
+			let data ={
+				email: this.loginForm.get('login').get('email').value,
+				password: this.loginForm.get('update').get('pass').value
+			}	
+			this.userService.dataPostApi(data,AppSettings.updatePassword).then(resp=>{
+				if(resp && resp['status']=='true'){
+					this.errorMessage = 'Password update successfully'
+					jQuery("#messagePopuupss").modal('show')
+					setTimeout(()=>{
+						jQuery("#messagePopuupss").modal('hide')
+					},2000)
+
+				}
+			})
+		}
+	}
+
+	forgetPass(boll){
+		this.forgetPasswords=boll
 	}
 	
 }

@@ -1,0 +1,180 @@
+<div class="animated fadeIn">
+    <div class="card card-default crd-box">
+      <div class="card-header border-remo">
+        <div class="flx-ed">
+          <div class="upper-wrap">
+            <div class="image-section-set bg-color">
+              <svg class="image-set" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 477.867 477.867" xml:space="preserve">
+                <g>
+                  <g>
+                    <path d="M460.8,119.467h-85.333v-102.4C375.467,7.641,367.826,0,358.4,0H17.067C7.641,0,0,7.641,0,17.067V409.6
+                      c0,37.703,30.564,68.267,68.267,68.267H409.6c37.703,0,68.267-30.564,68.267-68.267V136.533
+                      C477.867,127.108,470.226,119.467,460.8,119.467z M136.533,85.333h102.4c9.426,0,17.067,7.641,17.067,17.067
+                      s-7.641,17.067-17.067,17.067h-102.4c-9.426,0-17.067-7.641-17.067-17.067S127.108,85.333,136.533,85.333z M290.133,409.6h-204.8
+                      c-9.426,0-17.067-7.641-17.067-17.067s7.641-17.067,17.067-17.067h204.8c9.426,0,17.067,7.641,17.067,17.067
+                      S299.559,409.6,290.133,409.6z M290.133,341.333h-204.8c-9.426,0-17.067-7.641-17.067-17.067c0-9.426,7.641-17.067,17.067-17.067
+                      h204.8c9.426,0,17.067,7.641,17.067,17.067C307.2,333.692,299.559,341.333,290.133,341.333z M290.133,273.067h-204.8
+                      c-9.426,0-17.067-7.641-17.067-17.067c0-9.426,7.641-17.067,17.067-17.067h204.8c9.426,0,17.067,7.641,17.067,17.067
+                      C307.2,265.426,299.559,273.067,290.133,273.067z M290.133,204.8h-204.8c-9.426,0-17.067-7.641-17.067-17.067
+                      c0-9.426,7.641-17.067,17.067-17.067h204.8c9.426,0,17.067,7.641,17.067,17.067C307.2,197.159,299.559,204.8,290.133,204.8z
+                       M443.733,409.6c0,18.851-15.282,34.133-34.133,34.133s-34.133-15.282-34.133-34.133v-256h68.267V409.6z"/>
+                  </g>
+                </g>
+          </svg>
+            </div>
+            <h2 class="main-hading">User Notification</h2>
+        </div>
+          <div class="card-header-actions crd-bnt">
+            <!-- <a [routerLink]="['/news/createNews']" class="btn" target="_self">Create News</a> -->
+            <a [routerLink]="['/userNotification/editNotification']" class="btn" target="_self">View User Notification </a>
+          </div>
+        </div>
+        <!-- <i class="fa fa-list"></i>Create News Data
+        <div class="card-header-actions d-flex">
+          
+          <a  class="btn btn-block btn-outline-dark" target="_self">Create News</a>
+          <a [routerLink]="['/news/editNews']" class="btn btn-block btn-outline-dark" target="_self">View News</a>
+       </div> -->
+    </div>
+     <div class="card-body">
+        <div class="row">
+              <div class="col-lg-12">
+                <div class="card-body p-4 border-rd">
+                    <form [formGroup]="frmNews" autocomplete="off">
+                      <div class="form-group">
+                       <label for="newsType"> Category</label>
+                        <select formControlName="userTypeId">
+                            <ng-container *ngFor="let userType of userTypeDetails;let last = last">
+                                <option  [value]="userType.id">{{userType.userName}}</option>
+                            </ng-container>
+                            
+                        </select>
+                        <!-- <div class="error" *ngIf="frmNews.get('userTypeId').errors && (frmNews.get('userTypeId').touched || frmNews.get('userTypeId').dirty)">
+                            <p>Global Initiatives category is required</p>
+                          </div> -->
+                        <!--  <ng-select 
+                                 [items]="categoryList"
+                                 bindLabel="category"
+                                 bindValue="id"
+                                 labelForId="newsType"
+                                 placeholder="Please select News Category"
+                                 clearAllText="Clear"
+                                 formControlName="newsType">
+                        </ng-select> -->
+                        <br>
+                        
+                        <label for="newsTitle"> Title</label>
+                            <input type="text" class="form-control" formControlName="newsTitle">
+                        <br>
+                        
+                        <!-- <button class="btn btn-success pull-right buttonsss ml-3">Image Upload</button> -->
+                        <br>
+                          
+                          <ng-container >
+                                  <label for="banner">Image Upload</label>
+                                  <input #coverFilesInput type="file" accept="image/*" (change)="onFileSelect($event)" class="form-control">
+                                  
+                                  <ng-container *ngIf="!isCropDone && isCropDone2">
+                                    <div id="imageFFFF">
+                                      <angular-cropper #angularCropper [cropperOptions]="configs" [imageUrl]="imageShow"></angular-cropper>
+                                    </div>
+                                    <div class="wrap-button-section d-flex justify-content-between">
+                                      <button class="btn btn-success mt-3 mb-3" (click)="cropingDone()">Done</button>
+                                      <div class="inner-wrap-button-section mt-3">
+                                        <button (click)="resizeed(1)" class="lti-spc"><img class="mag-button" src="../../../assets/images/plus.svg"></button>
+                                        <button (click)="resizeed(-1)"><img class="mag-button" src="../../../assets/images/ui.svg"></button>
+                                      </div>
+                                    
+                                  </div>
+                                    <!-- <img [src]="imageShow" id="img"/> -->
+                                  </ng-container>
+                                  
+                                  <ng-container *ngIf="isCropDone">
+
+                                    <div class="banner-section  new-sect" *ngIf = "showBanner == 0">
+                                      <img [src]="imageShow"  class="img-fluid  mx-auto d-block">
+                                      
+                                 </div>
+                                 <div class="banner-section  new-sect" *ngIf = "showBanner == 1">
+                                  <img src="{{frmNews.value.banner}}" class="img-fluid  mx-auto d-block">
+                                  
+
+                                  
+                             </div>
+                                  </ng-container>
+                                  <!-- <div class="error" *ngIf="frmNews.get('banner').errors && (frmNews.get('banner').touched || frmNews.get('banner').dirty)">
+                                    <p>Please Upload Video Link or Image</p>
+                                  </div> -->
+                                  
+                          </ng-container>
+                    <br>
+                        <label for="summary">Summary</label>
+                            <textarea maxlength="64" type="text" class="form-control" formControlName="summary" placeholder="Enter  Shots..." rows="4"></textarea>
+                            <!-- <div class=error *ngIf="frmNews.get('summary').errors && (frmNews.get('summary').touched || frmNews.get('summary').dirty)">
+                                <p>Global Initiatives Summary is required</p>
+                              </div> -->
+                        <br>
+                        <label for="newsDesc"> Description</label>
+                        <angular-editor formControlName="newsDesc" [config]="config"></angular-editor>
+                        <!-- <div class=error *ngIf="frmNews.get('newsDesc').errors && (frmNews.get('newsDesc').touched || frmNews.get('newsDesc').dirty)">
+                            <p>Global Initiatives Description is required</p>
+                          </div> -->
+                      </div>
+                      <button *ngIf="!updateCheck" type="submit" class="btn btn-success pull-right" (click)="submitNews()">Submit</button>
+                      <button *ngIf="updateCheck" type="submit" class="btn btn-success pull-right" (click)="UpdateNews()">Update</button>
+                    </form>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal fade" id="addAdmin-news11" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <template>
+                  <div class="modal-header border-remo paddign-remove">
+                  <button type="button" class="close cl-img" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                      <img src="../../../assets/images/close-im.svg">
+                  </button>
+                  </div>
+              </template>
+              
+              <div class="modal-body" >
+                      <div class="success-parent">
+                              <div class="child-success"><img src="../../../assets/images/correct.svg"></div>                           
+                              <div class="child-success"><h2>{{messageShow}} Successfully</h2></div> 
+                          </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <!-- <template> -->
+                  <div class="modal-header border-remo paddign-remove d-flex justify-content-end">
+                  <!-- <button type="button" class="close cl-img m-0" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                    <svg viewBox="0 0 512.001 512.001" class="red-icon">
+                      <path d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717    L34.143,5.859c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.475,0,28.285l221.857,221.857L5.858,477.859    c-7.811,7.811-7.811,20.475,0,28.285c3.905,3.905,9.024,5.857,14.143,5.857c5.119,0,10.237-1.952,14.143-5.857L256,284.287    l221.857,221.857c3.905,3.905,9.024,5.857,14.143,5.857s10.237-1.952,14.143-5.857c7.811-7.811,7.811-20.475,0-28.285    L284.286,256.002z" data-original="#000000" class="active-path" data-old_color="#000000" />
+                  </svg>
+                  </button> -->
+                  </div>
+              <!-- </template> -->
+              
+              <div class="modal-body" >
+                      <div class="success-parent">
+                        <button type="button" class="close cl-img m-0 close-oth" data-dismiss="modal" aria-label="Close" (click)="closeMOdal()">
+                          <svg viewBox="0 0 512.001 512.001" class="red-icon">
+                            <path d="M284.286,256.002L506.143,34.144c7.811-7.811,7.811-20.475,0-28.285c-7.811-7.81-20.475-7.811-28.285,0L256,227.717    L34.143,5.859c-7.811-7.811-20.475-7.811-28.285,0c-7.81,7.811-7.811,20.475,0,28.285l221.857,221.857L5.858,477.859    c-7.811,7.811-7.811,20.475,0,28.285c3.905,3.905,9.024,5.857,14.143,5.857c5.119,0,10.237-1.952,14.143-5.857L256,284.287    l221.857,221.857c3.905,3.905,9.024,5.857,14.143,5.857s10.237-1.952,14.143-5.857c7.811-7.811,7.811-20.475,0-28.285    L284.286,256.002z" data-original="#000000" class="active-path" data-old_color="#000000" />
+                        </svg>
+                        </button>
+                              <div class="child-success nex-sdc"><h2>{{errorMessage}}</h2></div> 
+                          </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+    

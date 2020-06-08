@@ -98,12 +98,13 @@ export class AppSettings {
     public static usersContent = 'usersContent';
     public static deleteUserContent = 'deleteUserContent';
     public static dashboard = 'dashboard';
-    
-    
-
-    
-
-    
+    public static generateOtp = 'generateOtp';
+    public static verifyOtp = 'verifyOtp';
+    public static updatePassword = 'updatePassword';
+    public static adduserNotification = 'adduserNotification';
+    public static getUserNotification = 'getUserNotification';
+    public static deleteUserNotification = 'deleteUserNotification';
+    public static adduserNotificationUpdate = 'adduserNotificationUpdate';
     
     
     

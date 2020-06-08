@@ -25,6 +25,7 @@
                             <th>Password</th>
                             <th>Phone Number</th>
                             <th>Gender</th>
+                            <th>Interest</th>
                             <th>No. of Post</th>
                             <th>Status</th>
                             <th>Email Status</th>
@@ -39,7 +40,7 @@
 							<td>{{userPolicy.password | passwordType}}</td>
                             <td>{{userPolicy.mobileNo}}</td>
                             <td>{{getGender(userPolicy.gender)}}</td>
-                            <!-- <td>{{userPolicy.city}}</td> -->
+                            <td><span *ngFor="let interest of userPolicy.interest;let last = last">{{interest}}<ng-container *ngIf="!last">,</ng-container>&nbsp;</span></td>
                             
                             <td>{{userPolicy.noOfPosts}}</td>
                             <td>

@@ -102,7 +102,7 @@ console.log(this.local.get('userData1')[0].userTypeId)
 		if(this.local.get('userData1')[0].userTypeId == 12){
 			console.log(this.locations)
 			console.log(this.secondLocation)
-			if(this.secondLocation != 'vent/' && this.secondLocation != 'lery/' && this.secondLocation != 'ment/'  && this.secondLocation != 'info/'  && this.secondLocation != 'edia/' && this.secondLocation != 'bout/' && this.secondLocation != 'sing/' && this.secondLocation != 'tent/'){
+			if(this.secondLocation != 'vent/' && this.secondLocation != 'lery/' && this.secondLocation != 'ment/'  && this.secondLocation != 'info/'  && this.secondLocation != 'edia/' && this.secondLocation != 'bout/' && this.secondLocation != 'sing/' && this.secondLocation != 'tent/' && this.secondLocation != 'tion/'){
 				console.log("changed routing")
 				this.router.navigateByUrl('/news/editNews')
 				setTimeout(()=>{
@@ -182,7 +182,16 @@ console.log(this.local.get('userData1')[0].userTypeId)
 				$("#galleryId33").addClass("active")
 			},100)
 		}
-		
+		if(this.secondLocation == 'tion/' ){
+			setTimeout(()=>{
+				// && this.locations == 'editMedia'
+				$(".side-menu ul li a").removeClass("active");
+				// var elem = document.getElementById("mediaId")
+				// console.log(elem)
+				// elem.click();
+				$("#galleryId335").addClass("active")
+			},100)
+		}
 console.log(this.locations, this.secondLocation)
 		if(this.locations == 'http://localhost:5002/allPosts'){
 			
@@ -550,5 +559,29 @@ console.log(this.locations, this.secondLocation)
       	$(event.target).addClass("active");
 		console.log("hello setting")
 		this.router.navigateByUrl('/setting')
+	}
+	setting1(event){
+		this.AdminImage = false;
+		this.UserImage = false;
+		this.PostImage = false;	
+
+			this.numbers = 1;
+			this.UserImage = false;	
+			$(".drop-showw").css({"display":"none"}); 
+
+			this.numberss = 1;
+			$(".drop-show").css({"display":"none"}); 
+			this.AdminImage = false;
+
+			this.number1 = 1;
+			this.PostImage = false;
+			$(".drop-show1").css({"display":"none"}); 
+
+		$(".side-menu ul li a").removeClass("active");
+		console.log(event.target)
+
+      	$(event.target).addClass("active");
+		console.log("hello setting")
+		this.router.navigateByUrl('/userNotification/editNotification')
 	}
 }

@@ -23,10 +23,10 @@
               </g>
         </svg>
           </div>
-          <h2 class="main-hading">Academic Council Master</h2>
+          <h2 class="main-hading">User Notification</h2>
       </div>
         <div class="card-header-actions crd-bnt">
-          <a [routerLink]="['/upSkill/createUpSkill']" class="btn" target="_self">Create Academic Council </a>
+          <a [routerLink]="['/userNotification/createNotification']" class="btn" target="_self">Create Notification</a>
           <!-- <a  class="btn btn-block btn-outline-dark" target="_self">View News</a> -->
         </div>
       </div>
@@ -47,37 +47,29 @@
                           <thead>
                             <tr>
                               <th> Image</th>
-                              <th>Video</th>
                               <th> Title</th>
-                              <th> Subject</th>
+                              <th> Summary</th>
                               <th> Description</th>
-                              <th>Is Highlighted?</th>
                               <th> Date</th>
-                              <th>Created By</th>
-                              <th>Enrolls</th>
+                              <th> User Type</th>
+                              <th> Created by</th>
                               <th>Action</th>
                             </tr>
                           </thead>
                               <tbody> 
                                 <ng-container *ngFor="let news of allnews">
                                      <tr >
-
-                                  <td> <img *ngIf="news.imagePath != ''" src="{{news.imagePath}}" class="hash-img tab-shadow"> <img *ngIf="news.imagePath == 'http://54.169.46.109:5031'" src="../../../assets/images/no-image-available.png" class="hash-img tab-shadow"> </td>
-                                  <td> {{news.videoLink}} </td>
-                                  <td> <p>{{news.newsTitle}} </p></td> 
+                                  <td> <img *ngIf="news.imagePath  != ''"  src="{{news.imagePath}}" class="hash-img tab-shadow"> </td>
+                                  <td> <p>{{news.title}} </p></td> 
                                   <td> <p>{{news.summary}} </p></td>                                       
-                                  <td> <p [innerHtml]="news.newsDesc " class="inline-blk"></p> </td>
-                                  <td> <p *ngIf="news.isFeatured == 1">No</p> <p *ngIf="news.isFeatured == 0">Yes</p></td>
-                                  <td> {{news.DateCreate}}</td>
-                                  
-                                  <td>  <p>{{news.userName}} </p></td> 
-                                  <td (click)="enroll(news.id)">
-                                    <button  type="button" class="btn ab-btn dc-bg-color-active border-round-rem">{{news.enrollCount}}</button>
-                                  </td>
+                                  <td> <p [innerHtml]="news.description " class="inline-blk"></p> </td>
+                                  <td> {{news.DateCreate | date}}</td>
+                                  <td>{{news.UserType | userTypeId}}</td>
+                                  <td>{{news.UserName}}</td>
                                   <td>
                                         <div class="btn-edit-group">
-                                                <button type="button" class="edit-btn" (click)="editNews(news.id)" >  <img src="../../../assets/images/edit-im.svg"></button>
-                                                <button type="button" class="delet-btn" (click)="deleteNews(news.id)">  <img src="../../../assets/images/bin.svg"></button>
+                                                <button type="button" class="edit-btn" (click)="editNews(news.Id)" >  <img src="../../../assets/images/edit-im.svg"></button>
+                                                <button type="button" class="delet-btn" (click)="deleteNews(news.Id)">  <img src="../../../assets/images/bin.svg"></button>
                                             </div>
                                       <!-- <a role="button" (click)="editNews(news.id)" class="card-header-action" target="_blank"><i class="fa fa-pencil-square-o"></i> </a>
                                       <a role="button" (click)="deleteNews(news.id)" class="card-header-action" target="_blank"><i class="fa fa-trash-o"></i> </a> -->
@@ -116,7 +108,7 @@
                     <div class="d-flex al-item">
                         <img src="../../../assets/images/caution.svg" class="altr">
                         <div class="dc-act">
-                            <h3>Delete Market Insights</h3>
+                            <h3>Delete Notification</h3>
                             <span >Are you sure you want to delete ?</span>
                         </div>
                     </div>
