@@ -32,7 +32,7 @@
                 android:layout_centerHorizontal="true"
                 android:textSize="18dp"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/new_logo"
+
                 android:textColor="@color/white"
                 android:textStyle="bold">
             </com.medparliament.Widget.Segow_UI_Bold_Font>

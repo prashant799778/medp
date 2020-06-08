@@ -42,6 +42,15 @@ public class MySharedPrefrence {
         return sharedPreferences.getString("userid", "");
 
     }
+    public void setFCMToken(String  token)  {
+        prefEditor.putString("fcm_token",token );
+        prefEditor.commit();
+    }
+
+    public String getFCMToken() {
+        return sharedPreferences.getString("fcm_token", "");
+
+    }
 
     public String getCounterValue(){
         return sharedPreferences.getString("totalcount", "");

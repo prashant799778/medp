@@ -1,8 +1,12 @@
 package com.medparliament.Activity;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
@@ -33,6 +37,8 @@ import com.medparliament.Widget.Segow_UI_Semi_Font;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static com.medparliament.Utility.Comman.REQUEST_ACCEPT;
+
 public class AboutUsActivity extends AppCompatActivity implements onResult {
     Button btn;
     Segow_UI_Semi_Font msg;
@@ -47,6 +53,7 @@ public class AboutUsActivity extends AppCompatActivity implements onResult {
     MySharedPrefrence m;
     WebView webView;
 
+    BroadcastReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +62,7 @@ public class AboutUsActivity extends AppCompatActivity implements onResult {
 
         m=MySharedPrefrence.instanceOf(AboutUsActivity.this);
         noti_counter = findViewById(R.id.noti_count);
-        apiCall(URLS.Notification, myPostJson2());
+//        apiCall(URLS.Notification, myPostJson2());
         noti_counter.setText(m.getCounterValue());
 
 
@@ -129,6 +136,27 @@ public class AboutUsActivity extends AppCompatActivity implements onResult {
         });
 
 
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    String   value= intent.getStringExtra("count_value");
+                    if(value!=null && !value.isEmpty()){
+                        noti_counter.setText(value);
+
+                        circle.setVisibility(View.VISIBLE);
+
+                    }else{
+                        circle.setVisibility(View.GONE);
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
 
 
         Animatoo.animateSwipeLeft(AboutUsActivity.this);
@@ -220,5 +248,19 @@ public class AboutUsActivity extends AppCompatActivity implements onResult {
         }
         Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
         return jsonObject;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(AboutUsActivity.this).registerReceiver((receiver),
+                new IntentFilter(REQUEST_ACCEPT)
+        );
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(AboutUsActivity.this).unregisterReceiver(receiver);
     }
 }

@@ -1,8 +1,12 @@
 package com.medparliament.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
@@ -39,9 +43,11 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static com.medparliament.Utility.Comman.REQUEST_ACCEPT;
+
 public class News_Activity_1 extends AppCompatActivity {
 
-    MySharedPrefrence m;
+    MySharedPrefrence  m;
     Segow_UI_Semi_Font date, created, msg,loc,header;
     ImageButton bck;
     YouTubePlayerView youTubePlayerView;
@@ -53,13 +59,15 @@ public class News_Activity_1 extends AppCompatActivity {
     Handler ha;
     ImageView img;
     Result result;
+    BroadcastReceiver receiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news__1);
         m = MySharedPrefrence.instanceOf(News_Activity_1.this);
         noti_counter = findViewById(R.id.noti_count);
-        apiCall(URLS.Notification, myPostJson2());
+//        apiCall(URLS.Notification, myPostJson2());
          noti_counter.setText(m.getCounterValue());
         Animatoo.animateSwipeLeft(News_Activity_1.this);
         Intent i=getIntent();
@@ -73,6 +81,27 @@ public class News_Activity_1 extends AppCompatActivity {
         share=findViewById(R.id.share_tool);
 
          error=findViewById(R.id.error);
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    String   value= intent.getStringExtra("count_value");
+                    if(value!=null && !value.isEmpty()){
+                        noti_counter.setText(value);
+
+                        circle.setVisibility(View.VISIBLE);
+
+                    }else{
+                        circle.setVisibility(View.GONE);
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
 
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -259,5 +288,18 @@ public class News_Activity_1 extends AppCompatActivity {
         }
         Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
         return jsonObject;
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(News_Activity_1.this).registerReceiver((receiver),
+                new IntentFilter(REQUEST_ACCEPT)
+        );
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(News_Activity_1 .this).unregisterReceiver(receiver);
     }
 }

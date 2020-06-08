@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "35029612019",
+    "firebase_url": "https://medparliament-6c387.firebaseio.com",
+    "project_id": "medparliament-6c387",
+    "storage_bucket": "medparliament-6c387.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35029612019:android:e07c473edd3e4f2f744e86",
+        "android_client_info": {
+          "package_name": "com.medparliament"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35029612019-0hssteb5snt5l7sicqlrrnqppe7pk5ft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL-hpzxkHQVXLOp9JWm5lVUYLSJp02O1Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35029612019-0hssteb5snt5l7sicqlrrnqppe7pk5ft.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

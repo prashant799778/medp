@@ -229,6 +229,7 @@ public class Student_SignUp_Activity extends Base_Activity implements View.OnCli
 
 
             jsonObject.put("userName", "" + name.getText().toString())
+            .put("notification_token", "" + m.getFCMToken())
                     .put("mobileNo", countrycode+"-"+  mobile.getText().toString())//mobile.getText().toString())
                     .put("email", "" + email.getText().toString()).
                     put("userTypeId", "7")

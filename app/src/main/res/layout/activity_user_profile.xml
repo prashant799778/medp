@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="105dp"
                 android:layout_toLeftOf="@+id/profile_image"
-                android:layout_below="@+id/imageViewplaces"
+
                 android:orientation="vertical">
                 <com.medparliament.Widget.Segow_UI_Semi_Font
                     android:layout_width="match_parent"

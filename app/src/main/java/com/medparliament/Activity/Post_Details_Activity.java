@@ -1,11 +1,15 @@
 package  com.medparliament.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -43,6 +47,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.medparliament.Utility.Comman.REQUEST_ACCEPT;
+
 public class Post_Details_Activity extends AppCompatActivity implements onResult {
   onResult onResult;
   String postId="";
@@ -61,13 +67,15 @@ public class Post_Details_Activity extends AppCompatActivity implements onResult
     ArrayList<Reply_Model> arrayList;
     RecyclerView recyclerView;
     ThreadAdapter threadAdapter;
+    BroadcastReceiver receiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post__details_);
         m=MySharedPrefrence.instanceOf(getApplicationContext());
         circle=findViewById(R.id.circle);
-        apiCall(URLS.Notification, myPostJson2());
+//         apiCall(URLS.Notification, myPostJson2());
 
         Animatoo.animateSwipeLeft(Post_Details_Activity.this);
 //        Window window = getWindow();
@@ -117,6 +125,27 @@ public class Post_Details_Activity extends AppCompatActivity implements onResult
 
             }
         });
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    String   value= intent.getStringExtra("count_value");
+                    if(value!=null && !value.isEmpty()){
+                        noti_counter.setText(value);
+
+                        circle.setVisibility(View.VISIBLE);
+
+                    }else{
+                        circle.setVisibility(View.GONE);
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
 
         share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,6 +230,12 @@ public class Post_Details_Activity extends AppCompatActivity implements onResult
     protected void onStart() {
         super.onStart();
         Api_Calling.postMethodCall(Post_Details_Activity.this,getWindow().getDecorView().getRootView(),onResult, URLS.ALL_POSTS_THREAD,setjson(),"PostDetails");
+
+        LocalBroadcastManager.getInstance(Post_Details_Activity.this).registerReceiver((receiver),
+                new IntentFilter(REQUEST_ACCEPT)
+        );
+
+
     }
     public JSONObject setjson()
     {
@@ -263,4 +298,15 @@ public class Post_Details_Activity extends AppCompatActivity implements onResult
         Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
         return jsonObject;
     }
+
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(Post_Details_Activity.this).unregisterReceiver(receiver);
+    }
+
+
+
 }

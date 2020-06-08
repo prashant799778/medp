@@ -1,8 +1,12 @@
 package com.medparliament.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -35,6 +39,8 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static com.medparliament.Utility.Comman.REQUEST_ACCEPT;
+
 public class VideoDetailsActivity extends AppCompatActivity {
     ImageButton bck;
     Segow_UI_Bold_Font titel,date,msg;
@@ -48,13 +54,14 @@ public class VideoDetailsActivity extends AppCompatActivity {
     MySharedPrefrence m;
     TvModel model;
     String videoId="";
+    BroadcastReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_details);
         m=MySharedPrefrence.instanceOf(VideoDetailsActivity.this);
         noti_counter = findViewById(R.id.noti_count);
-        apiCall(URLS.Notification, myPostJson2());
+//         apiCall(URLS.Notification, myPostJson2());
         noti_counter.setText(m.getCounterValue());
         Animatoo.animateSlideLeft(VideoDetailsActivity.this);
 
@@ -111,6 +118,30 @@ public class VideoDetailsActivity extends AppCompatActivity {
                 startActivity(Intent.createChooser(emailIntent, "Share via"));
             }
         });
+
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    String   value= intent.getStringExtra("count_value");
+                    if(value!=null && !value.isEmpty()){
+                        noti_counter.setText(value);
+
+                        circle.setVisibility(View.VISIBLE);
+
+                    }else{
+                        circle.setVisibility(View.GONE);
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+
 
 
 
@@ -251,5 +282,20 @@ public class VideoDetailsActivity extends AppCompatActivity {
         }
         Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
         return jsonObject;
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(VideoDetailsActivity.this).registerReceiver((receiver),
+                new IntentFilter(REQUEST_ACCEPT)
+        );
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(VideoDetailsActivity .this).unregisterReceiver(receiver);
     }
 }

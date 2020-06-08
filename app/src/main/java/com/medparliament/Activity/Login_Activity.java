@@ -4,16 +4,22 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.medparliament.Internet.Api_Calling;
 import com.medparliament.Internet.URLS;
 import com.medparliament.Internet.onResult;
@@ -52,6 +58,8 @@ public class Login_Activity extends Base_Activity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_);
         Animatoo.animateSwipeLeft(Login_Activity.this);
+
+
         this.onResult=this;
         bck=findViewById(R.id.bck);
 //        Window window = getWindow();
@@ -80,14 +88,18 @@ public class Login_Activity extends Base_Activity implements View.OnClickListene
     }
     @Override
     public void onClick(View v) {
-        Comman.log("GGG","ggggjjj");
+        Comman.log("GGG...............", m.getFCMToken());
+        Comman.log("GGG...............", "after tokennn");
         if(v.getId()==R.id.login) {
             if (!email.getText().toString().isEmpty() && !pswd.getText().toString().isEmpty()) {
                 progressDialog = new ProgressDialog(Login_Activity.this);
                 progressDialog.setMessage("Loading...");
                 progressDialog.setCancelable(true);
                 progressDialog.show();
-                Api_Calling.getMethodCall(Login_Activity.this, URLS.LOGIN + "?email=" + email.getText().toString() + "&&password=" + pswd.getText().toString(), v, onResult, "Login");
+                 String tkn=  m.getFCMToken() ;
+                Log.d("tokkknnnnn",tkn+"");
+                 Log.d("tokkknnnnn","?email=" + email.getText().toString() + "&&password=" + pswd.getText().toString() + "&&notification_token=" +tkn  );
+                Api_Calling.getMethodCall(Login_Activity.this, URLS.LOGIN + "?email=" + email.getText().toString() + "&&password=" + pswd.getText().toString() + "&&notification_token=" +tkn  , v, onResult, "Login");
             }else {
                 Comman.topSnakBar(Login_Activity.this,v, Constant.PLEASE_FILL_ALL_FIELD);
             }

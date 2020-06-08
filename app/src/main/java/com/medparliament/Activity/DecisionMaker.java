@@ -304,6 +304,7 @@ public class DecisionMaker extends AppCompatActivity implements View.OnClickList
                 id="";
             }
             jsonObject.put("userName",""+name.getText().toString())
+                    .put("notification_token", "" + m.getFCMToken())
                     .put("mobileNo",countrycode+"-"+  mobile.getText().toString())
                     .put("email",""+email.getText().toString()).
                     put("userTypeId","13")

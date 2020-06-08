@@ -406,7 +406,6 @@ public class Api_Calling {
         }
 
     }
-
     public static void postMethodCall_NO_MSG2(final Context context, final View view, final onNotificationResult onNotificationResult, String URL, JSONObject jsonObject, final String name)
     {
         if(!Comman.isConnectedToInternet(context))
@@ -428,6 +427,31 @@ public class Api_Calling {
                         e.printStackTrace();
                         Comman.topSnakBar(context,view, Constant.SOMETHING_WENT_WRONG);
                     }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+            RequestQueue requestQueue=Volley.newRequestQueue(context);
+            requestQueue.add(jsonObjectRequest);
+
+        }
+
+    }
+    public static void postMethodCall_NO_Result(final Context context, String URL, JSONObject jsonObject)
+    {    Comman.log("fcm_token","yyyyy"+"call api");
+        if(!Comman.isConnectedToInternet(context))
+        {
+//            Comman.topSnakBar(context,view, Constant.NO_INTERNET);
+
+        }else {
+            JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, URL, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    Comman.log("fcm_token","yyyyy"+response);
+
                 }
             }, new Response.ErrorListener() {
                 @Override

@@ -2,11 +2,14 @@ package com.medparliament.Activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -55,6 +58,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.medparliament.Utility.Comman.REQUEST_ACCEPT;
+
 public class Up_Skill_Details_Activity extends AppCompatActivity implements onResult, PaymentResultListener {
     Segow_UI_Semi_Font  msg;
     ImageButton bck;
@@ -75,14 +80,14 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
     Checkout checkout;
     RelativeLayout nodata;
     Segow_UI_Semi_Font lenght,effort,price,institute,subject,level,language,videotext;
-
+    BroadcastReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_up__skill__details_);
         noti_counter = findViewById(R.id.noti_count);
         m=MySharedPrefrence.instanceOf(Up_Skill_Details_Activity.this);
-        apiCall(URLS.Notification, myPostJson2());
+//        apiCall(URLS.Notification, myPostJson2());
         noti_counter.setText(m.getCounterValue());
 
         Animatoo.animateSwipeLeft(Up_Skill_Details_Activity.this);
@@ -94,6 +99,27 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
         circle=findViewById(R.id.circle);
         share=findViewById(R.id.share_tool);
 
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    String   value= intent.getStringExtra("count_value");
+                    if(value!=null && !value.isEmpty()){
+                        noti_counter.setText(value);
+
+                        circle.setVisibility(View.VISIBLE);
+
+                    }else{
+                        circle.setVisibility(View.GONE);
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
 
 
         bell.setOnClickListener(new View.OnClickListener() {
@@ -219,6 +245,12 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
     protected void onStart() {
         super.onStart();
         Api_Calling.postMethodCall(Up_Skill_Details_Activity.this,getWindow().getDecorView().getRootView(),onResult, URLS.getUpSkillsOpportunity,setJson(),"");
+
+        LocalBroadcastManager.getInstance(Up_Skill_Details_Activity.this).registerReceiver((receiver),
+                new IntentFilter(REQUEST_ACCEPT)
+        );
+
+
     }
     @Override
     public void onResult(JSONObject jsonObject, Boolean status) {
@@ -552,4 +584,10 @@ public class Up_Skill_Details_Activity extends AppCompatActivity implements onRe
         return jsonObject;
     }
 
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(Up_Skill_Details_Activity .this).unregisterReceiver(receiver);
+    }
 }

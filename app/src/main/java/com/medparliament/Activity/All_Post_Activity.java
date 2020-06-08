@@ -1,11 +1,15 @@
 package com.medparliament.Activity;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -40,6 +44,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.medparliament.Utility.Comman.REQUEST_ACCEPT;
+
 public class All_Post_Activity extends Base_Activity implements onResult {
 
     ImageButton bck;
@@ -66,6 +72,7 @@ public class All_Post_Activity extends Base_Activity implements onResult {
             R.drawable.white_note,
             R.drawable.white_note
     };
+    BroadcastReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +80,7 @@ public class All_Post_Activity extends Base_Activity implements onResult {
         m=MySharedPrefrence.instanceOf(All_Post_Activity.this);
         circle=findViewById(R.id.circle);
         noti_counter = findViewById(R.id.noti_count);
-        apiCall(URLS.Notification, myPostJson2());
+//         apiCall(URLS.Notification, myPostJson2());
         noti_counter.setText(m.getCounterValue());
         this.onResult=this;
 
@@ -130,19 +137,42 @@ public class All_Post_Activity extends Base_Activity implements onResult {
             }
         });
 
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    String   value= intent.getStringExtra("count_value");
+                    if(value!=null && !value.isEmpty()){
+                        noti_counter.setText(value);
+
+                        circle.setVisibility(View.VISIBLE);
+
+                    }else{
+                        circle.setVisibility(View.GONE);
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+
 
 
         ha=new Handler();
-        ha.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Comman.log("tdgfhvjgkfg","v bnm,,l;'lk;jhkhjgchfxgchgvjkbnl;;jhgfgdrsdytfuygiuhiljk");
-                if (Comman.Check_Login(All_Post_Activity.this)){
-                    apiCall(URLS.Notification, myPostJson2());
-                }
-                ha.postDelayed(this, 10000);
-            }
-        }, 10000);
+//        ha.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Comman.log("tdgfhvjgkfg","v bnm,,l;'lk;jhkhjgchfxgchgvjkbnl;;jhgfgdrsdytfuygiuhiljk");
+//                if (Comman.Check_Login(All_Post_Activity.this)){
+////                    apiCall(URLS.Notification, myPostJson2());
+//                }
+//                ha.postDelayed(this, 10000);
+//            }
+//        }, 10000);
 
 
         Window window = getWindow();
@@ -285,4 +315,21 @@ public class All_Post_Activity extends Base_Activity implements onResult {
         Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
         return jsonObject;
     }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(All_Post_Activity.this).registerReceiver((receiver),
+                new IntentFilter(REQUEST_ACCEPT)
+        );
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(All_Post_Activity .this).unregisterReceiver(receiver);
+    }
+
+
 }

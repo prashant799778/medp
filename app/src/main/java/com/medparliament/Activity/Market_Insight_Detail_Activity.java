@@ -2,8 +2,10 @@ package com.medparliament.Activity;
 
 
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
@@ -16,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -58,6 +61,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.medparliament.Utility.Comman.REQUEST_ACCEPT;
+
 public class Market_Insight_Detail_Activity extends AppCompatActivity implements onResult, OnListData {
     Segow_UI_Bold_Font title;
     Open_Sans_Regular_Font date,msg;
@@ -76,6 +81,9 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
 
 
     RecyclerView recyclerView;
+    BroadcastReceiver receiver;
+
+
     RelativeLayout rvideo;
     YouTubePlayerView video;
     Segow_UI_Semi_Font noti_counter;
@@ -93,7 +101,7 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
         setContentView(R.layout.activity_market__insight__detail_);
         m=MySharedPrefrence.instanceOf(Market_Insight_Detail_Activity.this);
         noti_counter = findViewById(R.id.noti_count);
-        apiCall(URLS.Notification, myPostJson2());
+//        apiCall(URLS.Notification, myPostJson2());
         noti_counter.setText(m.getCounterValue());
         Animatoo.animateSwipeLeft(Market_Insight_Detail_Activity.this);
 
@@ -103,6 +111,31 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
 
 
         circle=findViewById(R.id.circle);
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    String   value= intent.getStringExtra("count_value");
+                    if(value!=null && !value.isEmpty()){
+                        noti_counter.setText(value);
+
+                        circle.setVisibility(View.VISIBLE);
+
+                    }else{
+                        circle.setVisibility(View.GONE);
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+
+
+
         share=findViewById(R.id.share_tool);
 
 
@@ -307,10 +340,16 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
         });
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
         Api_Calling.postMethodCallForListData(Market_Insight_Detail_Activity.this,getWindow().getDecorView().getRootView(),onListData,URLS.allMarketingInsightThread,getDataJson(),"");
+
+        LocalBroadcastManager.getInstance(Market_Insight_Detail_Activity.this).registerReceiver((receiver),
+                new IntentFilter(REQUEST_ACCEPT)
+
+          );
     }
 
     @Override
@@ -435,4 +474,15 @@ public class Market_Insight_Detail_Activity extends AppCompatActivity implements
         Comman.log("Notificationscsdcsdcdsvdsfvfdv", "" + jsonObject);
         return jsonObject;
     }
+
+
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(Market_Insight_Detail_Activity.this).unregisterReceiver(receiver);
+    }
+
+
 }

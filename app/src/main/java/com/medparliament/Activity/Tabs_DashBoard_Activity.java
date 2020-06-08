@@ -5,14 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -37,6 +40,7 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.medparliament.Adapter.AnnoucementsAdapter;
 import com.medparliament.Adapter.DashBoardViewPagerAdapter;
 import com.medparliament.Adapter.Dashboard_News_Adapter;
@@ -45,6 +49,7 @@ import com.medparliament.Adapter.DrawerI_Adapter;
 import com.medparliament.Adapter.Event_Adapter;
 import com.medparliament.Adapter.GalleryAdapter;
 import com.medparliament.Adapter.ThreadAdapter;
+import com.medparliament.Internet.Api_Calling;
 import com.medparliament.Internet.Models.DrawerModel;
 import com.medparliament.Internet.URLS;
 import com.medparliament.Internet.onResult;
@@ -60,10 +65,12 @@ import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.medparliament.Utility.Comman.REQUEST_ACCEPT;
+
 public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResult {
     private static final long DELAY_MS = 500;
     private static final long PERIOD_MS = 10000;
-
+    private FirebaseAnalytics mFirebaseAnalytics;
     int currentPage=0;
     int currentPage1=0;
     int currentPage2=0;
@@ -113,13 +120,16 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
     Dashboard_news_adapter_new viewpager_news_adapter;
     GalleryAdapter galleryAdapter1;
     String id;
+    BroadcastReceiver receiver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs__dash_board_);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         m= MySharedPrefrence.instanceOf(Tabs_DashBoard_Activity.this);
-        noti_counter = findViewById(R.id.noti_count);
-        apiCall(URLS.Notification, myPostJson2());
+        Log.d("notificationnnnnn", m.getFCMToken() );
+              noti_counter = findViewById(R.id.noti_count);
+//       apiCall(URLS.Notification, myPostJson2());
         noti_counter.setText(m.getCounterValue());
 
         Animatoo.animateSlideLeft(Tabs_DashBoard_Activity.this);
@@ -133,7 +143,27 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
 
         share2=findViewById(R.id.share_tool);
 
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    String   value= intent.getStringExtra("count_value");
+                    if(value!=null && !value.isEmpty()){
+                        noti_counter.setText(value);
 
+                        circle.setVisibility(View.VISIBLE);
+
+                    }else{
+                        circle.setVisibility(View.GONE);
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
 
         bell.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -182,16 +212,16 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
 
 
         ha=new Handler();
-        ha.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Comman.log("tdgfhvjgkfg","v bnm,,l;'lk;jhkhjgchfxgchgvjkbnl;;jhgfgdrsdytfuygiuhiljk");
-                if (Comman.Check_Login(Tabs_DashBoard_Activity.this)){
-                    apiCall(URLS.Notification, myPostJson2());
-                }
-                ha.postDelayed(this, 10000);
-            }
-        }, 10000);
+//        ha.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Comman.log("tdgfhvjgkfg","v bnm,,l;'lk;jhkhjgchfxgchgvjkbnl;;jhgfgdrsdytfuygiuhiljk");
+//                if (Comman.Check_Login(Tabs_DashBoard_Activity.this)){
+////                    apiCall(URLS.Notification, myPostJson2());
+//                }
+//                ha.postDelayed(this, 10000);
+//            }
+//        }, 10000);
 
 
 
@@ -512,6 +542,13 @@ public class Tabs_DashBoard_Activity extends AppCompatActivity implements onResu
     @Override
     protected void onStart() {
         super.onStart();
-
+        LocalBroadcastManager.getInstance(Tabs_DashBoard_Activity.this).registerReceiver((receiver),
+                new IntentFilter(REQUEST_ACCEPT)
+        );
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance( Tabs_DashBoard_Activity.this).unregisterReceiver(receiver);
     }
 }

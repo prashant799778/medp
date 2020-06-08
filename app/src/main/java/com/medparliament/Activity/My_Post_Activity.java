@@ -1,11 +1,15 @@
 package  com.medparliament.Activity;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -41,6 +45,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.medparliament.Utility.Comman.REQUEST_ACCEPT;
+
 public class My_Post_Activity extends Base_Activity implements onResult , onNotificationResult {
     ImageButton bck;
     FloatingActionButton cmnt;
@@ -54,6 +60,7 @@ public class My_Post_Activity extends Base_Activity implements onResult , onNoti
     Handler ha;
 /////////////////////////////////////////////////////////////////
 
+    BroadcastReceiver receiver;
     MySharedPrefrence m;
     onNotificationResult onNotificationResult;
     Post_Adapter adapter;
@@ -77,7 +84,7 @@ public class My_Post_Activity extends Base_Activity implements onResult , onNoti
         setContentView(R.layout.activity_my__post_);
         m=MySharedPrefrence.instanceOf(My_Post_Activity.this);
         noti_counter = findViewById(R.id.noti_count);
-        apiCall(URLS.Notification, myPostJson2());
+//        apiCall(URLS.Notification, myPostJson2());
         noti_counter.setText(m.getCounterValue());
 
         this.onResult=this;
@@ -90,6 +97,28 @@ public class My_Post_Activity extends Base_Activity implements onResult , onNoti
 
         circle=findViewById(R.id.circle);
         share=findViewById(R.id.share_tool);
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    String   value= intent.getStringExtra("count_value");
+                    if(value!=null && !value.isEmpty()){
+                        noti_counter.setText(value);
+
+                        circle.setVisibility(View.VISIBLE);
+
+                    }else{
+                        circle.setVisibility(View.GONE);
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
 
 
 
@@ -307,5 +336,18 @@ public class My_Post_Activity extends Base_Activity implements onResult , onNoti
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(My_Post_Activity.this).registerReceiver((receiver),
+                new IntentFilter(REQUEST_ACCEPT)
+        );
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(My_Post_Activity .this).unregisterReceiver(receiver);
+    }
 
 }

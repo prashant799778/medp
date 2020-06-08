@@ -314,6 +314,7 @@ public class Policy_Maker_SignUp_Activity extends Base_Activity implements View.
                 id="";
             }
             jsonObject.put("userName",""+name.getText().toString())
+                    .put("notification_token", "" + m.getFCMToken())
                     .put("mobileNo",countrycode+"-"+ mobile.getText().toString())
                     .put("email",""+email.getText().toString()).
                     put("userTypeId","5")

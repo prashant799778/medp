@@ -1,25 +1,38 @@
 package com.medparliament.Activity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -37,6 +50,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.RemoteViews;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -100,6 +114,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.medparliament.Utility.Comman.REQUEST_ACCEPT;
 
 public class DashBoard_Activity extends AppCompatActivity implements onResult, onNotificationResult {
 
@@ -201,28 +217,51 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
             //Log.e("hashkey", "printHashKey()", e);
         }
     }
-
+    BroadcastReceiver receiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board_);
+
         noti_counter = findViewById(R.id.noti_count);
         m = MySharedPrefrence.instanceOf(DashBoard_Activity.this);
+
         noti_counter.setText(m.getCounterValue());
-        apiCall(URLS.Notification, myPostJson2());
+//        apiCall(URLS.Notification, myPostJson2());
         circle=findViewById(R.id.circle);
-        ha=new Handler();
-        ha.postDelayed(new Runnable() {
+        receiver = new BroadcastReceiver() {
             @Override
-            public void run() {
-              //  Comman.log("tdgfhvjgkfg","v bnm,,l;'lk;jhkhjgchfxgchgvjkbnl;;jhgfgdrsdytfuygiuhiljk");
-                if (Comman.Check_Login(DashBoard_Activity.this)){
-                    apiCall(URLS.Notification, myPostJson2());
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    String   value= intent.getStringExtra("count_value");
+                     if(value!=null && !value.isEmpty()){
+                         noti_counter.setText(value);
+
+                         circle.setVisibility(View.VISIBLE);
+
+                     }else{
+                           circle.setVisibility(View.GONE);
+                     }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                ha.postDelayed(this, 10000);
+
             }
-        }, 10000);
+        };
+        ha=new Handler();
+//        ha.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//              //  Comman.log("tdgfhvjgkfg","v bnm,,l;'lk;jhkhjgchfxgchgvjkbnl;;jhgfgdrsdytfuygiuhiljk");
+//                if (Comman.Check_Login(DashBoard_Activity.this)){
+////                    apiCall(URLS.Notification, myPostJson2());
+//                }
+//                ha.postDelayed(this, 10000);
+//            }
+//        }, 10000);
 
         this.onNotificationResult = this;
         adapter = new Post_Adapter(DashBoard_Activity.this, MarrayList, m.getUserName(), 1);
@@ -938,6 +977,19 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
         userName.setText(m.getUserName());
         Api_Calling.postMethodCall_NO_MSG(DashBoard_Activity.this, getWindow().getDecorView().getRootView(), onResult, URLS.landingPageDashboard2, myPostJson(), "MY_POST_LIST");
 
+
+
+        LocalBroadcastManager.getInstance(DashBoard_Activity.this).registerReceiver((receiver),
+                new IntentFilter(REQUEST_ACCEPT)
+        );
+
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(DashBoard_Activity.this).unregisterReceiver(receiver);
     }
 
     @Override
@@ -1104,7 +1156,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();
-                m.clearData();
+                m.setLoggedIn(false);
                 startActivity(new Intent(DashBoard_Activity.this, DashBoard_Activity.class));
                 finish();
             }
@@ -1171,4 +1223,7 @@ public class DashBoard_Activity extends AppCompatActivity implements onResult, o
         requestQueue.add(jsonObjectRequest);
 
     }
+
+
+
 }

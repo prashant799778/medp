@@ -3,12 +3,15 @@ package com.medparliament.Activity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
@@ -62,6 +65,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import static com.medparliament.Utility.Comman.REQUEST_ACCEPT;
+
 public class NewsDetails_Activity extends AppCompatActivity implements onResult, OnListData {
     onResult onResult;
     String postId = "";
@@ -78,6 +83,8 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
     ProgressDialog progressDialog;
     NewsModelList pm;
     Dashboard_News_Model newses;
+    BroadcastReceiver receiver;
+
     View view;
     Dashbooard_eventModel eventModel;
     DashboardAnnouncedModel announcedModel;
@@ -106,7 +113,7 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
         setContentView(R.layout.activity_news_details_);
         m = MySharedPrefrence.instanceOf(NewsDetails_Activity.this);
         noti_counter = findViewById(R.id.noti_count);
-        apiCall(URLS.Notification, myPostJson2());
+//        apiCall(URLS.Notification, myPostJson2());
         noti_counter.setText(m.getCounterValue());
 
         Animatoo.animateSwipeLeft(NewsDetails_Activity.this);
@@ -156,6 +163,30 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
 
             }
         });
+
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    String   value= intent.getStringExtra("count_value");
+                    if(value!=null && !value.isEmpty()){
+                        noti_counter.setText(value);
+
+                        circle.setVisibility(View.VISIBLE);
+
+                    }else{
+                        circle.setVisibility(View.GONE);
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+
 
         share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -488,6 +519,13 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
         }
         setResult();
 //        Api_Calling.postMethodCall(NewsDetails_Activity.this,getWindow().getDecorView().getRootView(),onResult, URLS.ALL_POSTS,setjson(),"NewstDetails");
+
+        LocalBroadcastManager.getInstance(NewsDetails_Activity.this).registerReceiver((receiver),
+                new IntentFilter(REQUEST_ACCEPT)
+        );
+
+
+
     }
     public JSONObject setjson()
     {
@@ -660,4 +698,16 @@ public class NewsDetails_Activity extends AppCompatActivity implements onResult,
         });
 
     }
+
+
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(NewsDetails_Activity .this).unregisterReceiver(receiver);
+    }
+
+
+
 }

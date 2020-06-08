@@ -47,6 +47,7 @@ public class Comman {
     public static  final  String   CLIENT_ID="81vcpjj66cwoe5";
     public static  final  String CLIENT_SECRET="KagaZFp3Uae6otPu";
     public static  final  String REDIRECT_URL="https://www.medachievers.com/";
+    public static final String REQUEST_ACCEPT = "counter_update";
     public  static boolean Check_Login(Context context)
     {
         com.medparliament.Utility.MySharedPrefrence mySharedPrefrence= com.medparliament.Utility.MySharedPrefrence.instanceOf(context);

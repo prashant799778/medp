@@ -24,6 +24,7 @@ import com.medparliament.Utility.PrettyTimeClass;
 import com.medparliament.Widget.Open_Sans_Regular_Font;
 import com.medparliament.Widget.Segow_UI_Font;
 import com.medparliament.Widget.Segow_UI_Semi_Font;
+import com.ms.square.android.expandabletextview.ExpandableTextView;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -54,20 +55,22 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
         final ListDataModel result=list.get(position);
         holder.name.setText(result.getUserName());
         holder.date.setText(PrettyTimeClass.PrettyTime(Comman.timeInms(result.getDateCreate())));
-        holder.msg.setText(result.getCommentDescription());
+        holder. expTv1.setText(result.getCommentDescription());
     }
     @Override
     public int getItemCount() {
         return list.size();
     }
     public class NotificationHolder extends RecyclerView.ViewHolder {
-
-        Segow_UI_Font name,date,msg;
+        ExpandableTextView expTv1;
+        Segow_UI_Font name,date;
         public NotificationHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.name);
-            msg=itemView.findViewById(R.id.msg);
+//            msg=itemView.findViewById(R.id.msg);
             date=itemView.findViewById(R.id.time);
+            expTv1 = (ExpandableTextView) itemView
+                    .findViewById(R.id.expand_text_view);
         }
     }
     @RequiresApi(api = Build.VERSION_CODES.N)

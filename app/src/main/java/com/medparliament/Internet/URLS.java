@@ -1,8 +1,9 @@
 package com.medparliament.Internet;
 
 public class URLS {
-    public static String BASE_URL="http://54.169.46.109:5031/";
-   //   "http://134.209.153.34:5031/"
+    public static String BASE_URL="http://134.209.153.34:5031/";
+
+ //"http://54.169.46.109:5031/"
     ////////////////////////GET_METHODS/////////////////////////
     public static String LOGIN=BASE_URL+"Login";
     public static String ALL_UNIVERSITY=BASE_URL+"allUniversities";
@@ -45,6 +46,7 @@ public class URLS {
     public  static  String myInbox=BASE_URL+"myInbox";
     public  static  String Notification=BASE_URL+"myNotificationCount";
     public  static  String Notification2=BASE_URL+"myNotification";
+   public  static  String  updateToken=BASE_URL+"updateMobileToken";
 
 
 

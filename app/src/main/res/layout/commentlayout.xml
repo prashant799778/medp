@@ -52,15 +52,39 @@
                          android:textSize="12dp"/>
 
                  </LinearLayout>
-                <com.medparliament.Widget.Segow_UI_Font
+                <com.ms.square.android.expandabletextview.ExpandableTextView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/expand_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="comment goes hear"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/msg"
-                    android:maxLines="2"
-                    android:textColor="@color/txt"
-                    android:textSize="12dp"/>
+                    expandableTextView:maxCollapsedLines="2"
+                    expandableTextView:animDuration="200">
+                    <com.medparliament.Widget.Segow_UI_Font
+                        android:id="@id/expandable_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:textSize="12dp"
+                        android:textColor="@color/txt" />
+                    <ImageButton
+                        android:id="@id/expand_collapse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:layout_gravity="right|bottom"
+                        android:background="@android:color/transparent"/>
+                </com.ms.square.android.expandabletextview.ExpandableTextView>
+<!--                <com.medparliament.Widget.Segow_UI_Font-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="comment goes hear"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:id="@+id/msg"-->
+<!--                    android:maxLines="2"-->
+<!--                    android:textColor="@color/txt"-->
+<!--                    android:textSize="12dp"/>-->
             </LinearLayout>
 
         </RelativeLayout>

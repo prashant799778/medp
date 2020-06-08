@@ -9,7 +9,7 @@ buildscript {
 }
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
-
+apply plugin: 'com.google.gms.google-services'
 repositories {
     maven { url 'https://maven.fabric.io/public' }
     mavenCentral()
@@ -36,13 +36,17 @@ android {
 
     lintOptions {
         checkReleaseBuilds true
-        // Or, if you prefer, you can continue to check for errors in release builds,
-        // but continue the build even when errors are found:
+//        // Or, if you prefer, you can continue to check for errors in release builds,
+//        // but continue the build even when errors are found:
         abortOnError false
     }
 
     configurations {
         all*.exclude group: 'com.android.volley'
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
     }
 }
 
@@ -93,6 +97,7 @@ dependencies {
     implementation 'com.camerakit:jpegkit:0.1.0'
     implementation 'com.mindorks:paracamera:0.2.2'
     implementation("com.squareup.moshi:moshi:1.9.2")
+    implementation  'com.ms-square:expandableTextView:0.1.4'
     //gradle
     implementation('com.alibaba.android:ultraviewpager:1.0.7.7@aar') {
         transitive = true
@@ -101,5 +106,8 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
     implementation 'com.razorpay:checkout:1.5.16'
     implementation 'com.hbb20:ccp:2.3.8'
+
+    implementation 'com.google.firebase:firebase-analytics:17.4.1'
+    implementation 'com.google.firebase:firebase-messaging:20.1.7'
 
 }
