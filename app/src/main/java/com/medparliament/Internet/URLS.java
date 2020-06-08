@@ -1,9 +1,10 @@
 package com.medparliament.Internet;
 
 public class URLS {
-    public static String BASE_URL="http://134.209.153.34:5031/";
+    public static String BASE_URL="http://54.169.46.109:5031/";
 
- //"http://54.169.46.109:5031/"
+
+//   "http://134.209.153.34:5031/"
     ////////////////////////GET_METHODS/////////////////////////
     public static String LOGIN=BASE_URL+"Login";
     public static String ALL_UNIVERSITY=BASE_URL+"allUniversities";

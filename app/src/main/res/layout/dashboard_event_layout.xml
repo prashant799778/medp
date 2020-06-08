@@ -126,7 +126,7 @@
                     android:id="@+id/video"
                     android:layout_height="match_parent"
                     app:autoPlay="false"
-                    android:layout_below="@+id/title"
+
                     android:background="@color/white"
                     app:showYouTubeButton="true">
                 </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
