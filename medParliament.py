@@ -4078,6 +4078,9 @@ def generateOtp():
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
         keyarr = ['email']
+        if inputdata["email"]!="h.v@medachievers.com":
+            return {"status":"false","message":"Tplease Enter Superadmin Email ID","result":""}
+
         print(inputdata,"B")
         commonfile.writeLog("generateOtp",inputdata,0)
         msg = commonfile.CheckKeyNameBlankValue(keyarr,inputdata)
