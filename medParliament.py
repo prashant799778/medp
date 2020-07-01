@@ -4079,7 +4079,7 @@ def generateOtp():
         startlimit,endlimit="",""
         keyarr = ['email']
         if inputdata["email"]!="h.v@medachievers.com":
-            return {"status":"false","message":"Tplease Enter Superadmin Email ID","result":""}
+            return {"status":"false","message":"please Enter Superadmin Email ID","result":"please Enter Superadmin Email ID"}
 
         print(inputdata,"B")
         commonfile.writeLog("generateOtp",inputdata,0)
