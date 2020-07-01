@@ -4078,7 +4078,7 @@ def generateOtp():
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
         keyarr = ['email']
-        if inputdata["email"]!="h.v@medachievers.com":
+        if inputdata["email"]!="harsha0003@gmail.com":
             return {"status":"false","message":"please Enter Superadmin Email ID","result":"please Enter Superadmin Email ID"}
 
         print(inputdata,"B")
