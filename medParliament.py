@@ -350,7 +350,7 @@ def profilePic(image_name):
 #                                 to_emails = str(y['email']),
 #                                 subject = "Welcome to medParliament",
 #                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-#                             sg = SendGridAPIClient('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')
+#                             sg = SendGridAPIClient('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')
 #                             response = sg.send(message)
 
 #                             columns="userId,aboutProfile,organization,designation"
@@ -367,7 +367,7 @@ def profilePic(image_name):
 #                                 to_emails = str(y['email']),
 #                                 subject = "Welcome to medParliament",
 #                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-#                             sg = SendGridAPIClient('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')
+#                             sg = SendGridAPIClient('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')
 #                             response = sg.send(message)
 
 #                             columns="userId,areaOfActivity,profileCategoryId,designation,companyName"
@@ -389,7 +389,7 @@ def profilePic(image_name):
 #                                             to_emails = str(y["email"]),
 #                                             subject = "Account Verification",
 #                                             html_content = '<strong> Click on Link: <br> <br> ' + str(Y) + ' </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-#                             sg = SendGridAPIClient('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')
+#                             sg = SendGridAPIClient('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')
 #                             response = sg.send(message)
 #                             print(response.status_code,'------------------',response.body,"============",response.headers)
                             
@@ -414,7 +414,7 @@ def profilePic(image_name):
 #                                 to_emails = str(y['email']),
 #                                 subject = "Welcome to medParliament",
 #                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-#                             sg = SendGridAPIClient('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')
+#                             sg = SendGridAPIClient('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')
 #                             response = sg.send(message)
                             
 #                             columns="userId,qualificationId,designation,areaOfExpertise,hospital,hospitalAddress"
@@ -431,7 +431,7 @@ def profilePic(image_name):
 #                                 to_emails = str(y['email']),
 #                                 subject = "Welcome to medParliament",
 #                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-#                             sg = SendGridAPIClient('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')
+#                             sg = SendGridAPIClient('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')
 #                             response = sg.send(message)
 #                             columns="userId,designation,occupation,companyName,companyAddress,address"
 #                             values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
@@ -448,7 +448,7 @@ def profilePic(image_name):
 #                                 to_emails = str(y['email']),
 #                                 subject = "Welcome to medParliament",
 #                                 html_content = '<strong>Congratulations, you have successfully Signed Up as MedParliaments User <br> <br> You will be notified once your account is  verified by ADMIN </strong> <br> <br> Thanks <br> <br> MedParliament Team')
-#                             sg = SendGridAPIClient('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')
+#                             sg = SendGridAPIClient('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')
 #                             response = sg.send(message)
                             
                                
@@ -689,7 +689,7 @@ def SignUp1():
                                             html_content = getMailBody(userName, Y))
                             #html_content = ' Hello Mr. ' + str(userName) + '<br> <br> <strong>  Welcome to the MEDPARLIAMENT, the Global Parliament of Healthcare Leadership. </strong><br> <br> Thank you for joining our community. <br> <br>    Please validate your email address by clicking on the button down below  <br> <br> <strong>   Verify  Your Email:  ' + str(Y) + ' </strong> <br> <br> '
                             
-                            sg = SendGridAPIClient('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')
+                            sg = SendGridAPIClient('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')
                             response = sg.send(message)
 
                             columns="userId,aboutProfile,organization,designation"
@@ -709,7 +709,7 @@ def SignUp1():
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content = getMailBody(userName, Y))
-                            sg = SendGridAPIClient('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')
+                            sg = SendGridAPIClient('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')
                             response = sg.send(message)
 
                             columns="userId,areaOfActivity,profileCategoryId,designation,companyName"
@@ -732,7 +732,7 @@ def SignUp1():
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content =getMailBody(userName, Y))
-                            sg = SendGridAPIClient('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')
+                            sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             print(response.status_code,'------------------',response.body,"============",response.headers)
                             
@@ -760,7 +760,7 @@ def SignUp1():
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content =getMailBody1(userName, Y))
-                            sg = SendGridAPIClient('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')
+                            sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             
                             columns="userId,qualificationId,designation,areaOfExpertise,hospital,hospitalAddress"
@@ -781,7 +781,7 @@ def SignUp1():
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content = getMailBody(userName, Y))
-                            sg = SendGridAPIClient('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')
+                            sg = SendGridAPIClient('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')
                             response = sg.send(message)
                             columns="userId,designation,occupation,companyName,companyAddress,address"
                             values=" '" + str(y["userId"])+ "','" + str(designation) + "','" + str(occupation) + "','" + str(CompanyName) + "','" + str(companyAddress)+ "','" + str(address) + "'"
@@ -800,7 +800,7 @@ def SignUp1():
                                             to_emails = str(y["email"]),
                                             subject = "Account Verification",
                                             html_content = getMailBody(userName, Y))
-                            sg = SendGridAPIClient('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')
+                            sg = SendGridAPIClient('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')
                             response = sg.send(message)
 
 
@@ -4002,7 +4002,7 @@ def updateStatus1():
                                 to_emails = str(email),
                                 subject = "Account Deactivated",
                                 html_content = '<strong> Your account has been Deactivated </strong> <br> .<br> Thanks,medParliament Team')
-                sg = SendGridAPIClient('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')
+                sg = SendGridAPIClient('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')
                 response = sg.send(message)
                 column="status='1'"
                 whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "' and userId = '" + str(userId)+ "' "
@@ -4048,7 +4048,7 @@ def updateStatus1():
                                     to_emails = str(email),
                                     subject = "Account Activated",
                                     html_content =getactivationmail(userName))# '<strong>Congratulations! Your account has been activated successfully </strong> <br> <br> Thanks,medParliament Team')
-                sg = SendGridAPIClient('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')
+                sg = SendGridAPIClient('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')
                 response = sg.send(message)
                 whereCondition= " and userTypeId='" + str(userTypeId)+ "' and email = '" + str(email)+ "' and userId = '" + str(userId)+ "' "
                 output1=databasefile.UpdateQuery("userMaster",column,whereCondition)
@@ -4078,7 +4078,7 @@ def generateOtp():
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
         keyarr = ['email']
-        if inputdata["email"]!="sharadmitec@gmail.com":
+        if inputdata["email"]!="harsha0003@gmail.com":
             return {"status":"false","message":"please Enter Superadmin Email ID","result":"please Enter Superadmin Email ID"}
 
         print(inputdata,"B")
