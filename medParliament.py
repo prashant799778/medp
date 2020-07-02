@@ -4078,7 +4078,7 @@ def generateOtp():
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
         keyarr = ['email']
-        if inputdata["email"]!="harsha0003@gmail.com":
+        if inputdata["email"]!="sharadmitec@gmail.com":
             return {"status":"false","message":"please Enter Superadmin Email ID","result":"please Enter Superadmin Email ID"}
 
         print(inputdata,"B")
@@ -4096,7 +4096,7 @@ def generateOtp():
                 to_emails = str(email),
                 subject = "Otp for Reset Password",
                 html_content = '<strong> <br> Hello,<br> The OTP to reset your password is:' + str(OTP) + ' </strong> <br> <br> Thank You,<br> <br>The MedParliament Team')
-            sg = SendGridAPIClient('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')
+            sg = SendGridAPIClient('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')
             response = sg.send(message)
            
 
