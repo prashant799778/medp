@@ -4078,8 +4078,8 @@ def generateOtp():
         inputdata =  commonfile.DecodeInputdata(request.get_data())
         startlimit,endlimit="",""
         keyarr = ['email']
-        if inputdata["email"]!="sharadmitec@gmail.com":#"harsha0003@gmail.com":
-            return {"status":"false","message":"please Enter Superadmin Email ID","result":"please Enter Superadmin Email ID"}
+        # if inputdata["email"]!="sharadmitec@gmail.com":#"harsha0003@gmail.com":
+        #     return {"status":"false","message":"please Enter Superadmin Email ID","result":"please Enter Superadmin Email ID"}
 
         print(inputdata,"B")
         commonfile.writeLog("generateOtp",inputdata,0)
